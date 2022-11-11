@@ -1,4 +1,4 @@
-### Creating Functions
+## Creating Functions
 
 ```sql
 # General syntax
@@ -15,7 +15,7 @@ END;
 $$
 ```
 
-### Counting Rows of Each Table in Database
+## Counting Rows of Each Table in Database
 
 ```sql
 CREATE FUNCTION count_rows(schema TEXT, tablename TEXT)
@@ -39,7 +39,7 @@ FROM information_schema.tables
 WHERE table_schema = 'public'
 ```
 
-### Split String
+## Split String
 
 ```sql
 USE [myassistant]

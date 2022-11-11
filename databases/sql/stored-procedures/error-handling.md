@@ -1,14 +1,17 @@
 ## MySQL
+
 ### START TRANSACTION, COMMIT and ROLLBACK
+
 MySQL runs with autocommit enabled i.e. if have 3 queries and second fails, first query will be committed. To disable autocommit, use START TRANSACTION.
 
 ### Implict Commits
+
 Some statements implicitly end any transaction active in current session i.e. done a commit before executing the statement, and also cause implicit commit after executing.
 
 https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html
 
-
 ### Example
+
 ```sql
 CREATE PROCEDURE `reorderPortfolio1`(
 IN delimiter VARCHAR(10),
@@ -51,10 +54,12 @@ END
 ```
 
 ## SQL Server
+
 https://www.sommarskog.se/error_handling/Part2.html#classification
 
 ### TRANCOUNT
- @@ in SQL Server denotes global variables. @@TRANCOUNT function records the current transaction nesting level, and counts system and user-defined transactions i.e. BEGIN TRANSACTION. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more. 
+
+@@ in SQL Server denotes global variables. @@TRANCOUNT function records the current transaction nesting level, and counts system and user-defined transactions i.e. BEGIN TRANSACTION. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more.
 
 ```
 BEGIN TRANSACTION		@@TRANCOUNT increments by 1
@@ -62,73 +67,82 @@ COMMIT TRANSACTION		@@TRANCOUNT decrements by 1
 COMMIT WORK			@@TRANCOUNT decrements by 1
 ROLLBACK WORK			@@TRANCOUNT decrements to 0 (not in transaction)
 ROLLBACK TRANSACTION		@@TRANCOUNT decrements by 0 (not in transaction)
-ROLLBACK <TRANSACTION NAME>	
+ROLLBACK <TRANSACTION NAME>
 ```
 
 ### XACT_STATE
-Function that reports the user transaction state of current running request. SET XACT_ABORT ON will auto rollback the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
+
+Function that reports the user transaction state of current running request. SET XACT_ABORT ON will auto rollback the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout.
+
 ```
-1	Current request has active user transaction and capable of committing 
+1	Current request has active user transaction and capable of committing
 0	No active user transaction for current request (commit/rollback operation would generate error)
 -1	Current request has active user transaction but an error has occurred (uncommittable)
 ```
 
 ### TRY CATCH
+
 Catches all execution errors that have severity higher than 10 that do not close the database connection. If there are no errors enclosed in TRY block, control passes to statement immediately after END CATCH after executing last statement in TRY block. If END CATCH statement is last statement in stored procedure/trigger, control is passed back to the statement that called the stored procedure/trigger.
 
 When transactions are doomed in CATCH block, you cannot perform write.
 
 #### Errors Unaffected by TRY CATCH
+
 - Warnings or informational messages that have severity of 10 or lower.
 - Errors having severity of 20 or higher that stop database connection (errors higher than 20 will terminate the connection and hence, uncatchable).
 - Sessions ended by system admin using KILL statement.
 
 Following errors are not handled by TRY CATCH when they occur at same level of execution as TRY CATCH; these errors are returned to the level that ran the batch/stored procedure/trigger:
+
 - Compile errors such as syntax errors that prevents a batch from running.
 - Object name resolution errors.
 
 https://docs.microsoft.com/en-us/sql/t-sql/language-elements/try-catch-transact-sql?view=sql-server-ver15
 
 ```sql
-BEGIN TRY  
-    -- Table does not exist; object name resolution  
-    -- error not caught.  
-    SELECT * FROM NonexistentTable;  
-END TRY  
-BEGIN CATCH  
-    SELECT   
-        ERROR_NUMBER() AS ErrorNumber  
-       ,ERROR_MESSAGE() AS ErrorMessage;  
-END CATCH  
+BEGIN TRY
+    -- Table does not exist; object name resolution
+    -- error not caught.
+    SELECT * FROM NonexistentTable;
+END TRY
+BEGIN CATCH
+    SELECT
+        ERROR_NUMBER() AS ErrorNumber
+       ,ERROR_MESSAGE() AS ErrorMessage;
+END CATCH
 ```
+
 ```sql
--- Verify that the stored procedure does not exist.  
-IF OBJECT_ID ( N'usp_ExampleProc', N'P' ) IS NOT NULL   
-    DROP PROCEDURE usp_ExampleProc;  
-GO  
-  
--- Create a stored procedure that will cause an   
--- object resolution error.  
-CREATE PROCEDURE usp_ExampleProc  
-AS  
-    SELECT * FROM NonexistentTable;  
-GO  
-  
-BEGIN TRY  
-    EXECUTE usp_ExampleProc;  
-END TRY  
-BEGIN CATCH  
-    SELECT   
-        ERROR_NUMBER() AS ErrorNumber  
-        ,ERROR_MESSAGE() AS ErrorMessage;  
-END CATCH;  
+-- Verify that the stored procedure does not exist.
+IF OBJECT_ID ( N'usp_ExampleProc', N'P' ) IS NOT NULL
+    DROP PROCEDURE usp_ExampleProc;
+GO
+
+-- Create a stored procedure that will cause an
+-- object resolution error.
+CREATE PROCEDURE usp_ExampleProc
+AS
+    SELECT * FROM NonexistentTable;
+GO
+
+BEGIN TRY
+    EXECUTE usp_ExampleProc;
+END TRY
+BEGIN CATCH
+    SELECT
+        ERROR_NUMBER() AS ErrorNumber
+        ,ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
 ```
 
 ### Common Errors
+
 #### Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements (266)
+
 When you exit a stored procedure, and @@trancaount has a different value from when the procedure started executing, SQL Server will raise this error. However, it may also appear as a consequence of other errors i.e. noise on the wire. In this situation, preferably to filter out error 266 as long as there are other errors.
 
 ### Example
+
 ```sql
 ALTER PROCEDURE [dbo].[update_user_settings]
 @delim VARCHAR(5),
@@ -147,7 +161,7 @@ BEGIN
 		SET NOCOUNT ON;
 		-- SET XACT_ABORT ON will auto rollback current transaction when run-time error occurs.
 		SET XACT_ABORT ON;
- 
+
 		 -- Deleting DIDs
 		DELETE FROM myassistant.dbo.user_settings WHERE
 		did IN (SELECT value FROM myassistant.dbo.SPLIT_STRING(@del_did, @delim)) OR
@@ -215,7 +229,7 @@ BEGIN
 		DECLARE @ErrorLine INT = ERROR_LINE();
 		DECLARE @ErrorState INT = ERROR_STATE();
 
-		SELECT  
+		SELECT
 		@ErrorNumber AS ErrorNumber,
 		@ErrorSeverity AS ErrorSeverity,
 		@ErrorProcedure AS ErrorProcedure,

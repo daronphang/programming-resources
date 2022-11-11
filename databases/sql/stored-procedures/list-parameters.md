@@ -1,4 +1,4 @@
-### Passing List as Parameter
+## Passing List as Parameter
 
 Three main contenders are Table-Valued Parameters, delimited list string and JSON string.
 

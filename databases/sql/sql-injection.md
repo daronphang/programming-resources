@@ -1,4 +1,4 @@
-### SQL Injection Attacks
+## SQL Injection Attacks
 
 Fundamental problem that causes SQL injection is data being treated as query language.
 
@@ -19,7 +19,7 @@ FROM Items
 WHERE ItemNumber = 999; DROP TABLE USERS
 ```
 
-### Preventions
+## Preventions
 
 Stored procedures can help to prevent SQL injection as it writes the query beforehand with markers for parameters. However, the introduction of dynamic SQL exposes vulnerability to SQL injection.
 

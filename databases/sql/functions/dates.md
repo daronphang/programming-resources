@@ -1,4 +1,4 @@
-### Common Date Functions
+## Common Date Functions
 
 ```sql
 CURRENT_DATE()
