@@ -6,7 +6,7 @@ An index is an additional structure that is derived from the primary data. Many 
 
 ## Hash Indexes (Log-Structured)
 
-Similar to dictionary which is implemented as a hash map. Every append to the storage file will update the hash map to reflect the offset of the data you wrote. When updating a key, it will append to files but never modify them in place.
+Similar to dictionary which is implemented as a hash map. Every append to the storage file will update the hash map to reflect the offset of the data you wrote. When updating a key, it will append to files and delete obsolete files but never modify them in place.
 
 To ensure disk space doesn't run out, a solution would be to break the log into segments (log-structured) of a certain size by closing it once it reaches, and making subsequent writes to a new segment file.
 
