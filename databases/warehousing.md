@@ -1,6 +1,6 @@
 ## OLTP (Online Transaction Processing)
 
-Interactive applications that are expected to be highly available, with read and write operations processing with low latency. Hence, OLTP databases are often closely guarded and administrators are reluctant to run adhoc queries as they are often expensive and can harm performance of concurrently executing transactions.
+Interactive applications that are expected to be highly available, with read and write operations processing with low latency. **Makes data management simple and efficient, and serves real-time transactions**. Hence, OLTP databases are often closely guarded and administrators are reluctant to run adhoc queries as they are often expensive and can harm performance of concurrently executing transactions.
 
 ## Data Warehousing
 

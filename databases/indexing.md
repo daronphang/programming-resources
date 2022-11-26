@@ -1,6 +1,10 @@
 ## Indexes
 
-Indexes are used to efficiently find the value for a particular key in the database. General idea behind them is to keep some additional metadata on the side, which acts as a signpost and helps you locate the data you want. If you want to search the same data is different ways, may need several different indexes on different parts of the data.
+Indexes are used to efficiently find the value for a particular key in the database. Without an index, query will have to read through the entire table to find the relevant rows.
+
+General idea behind them is to keep some additional metadata on the side, which acts as a signpost and helps you locate the data you want. If you want to search the same data is different ways, may need several different indexes on different parts of the data.
+
+Index causes the database to create a data structure (B-tree) that is sorted to make searches more efficient. Indexes can either store the rows or pointers to it.
 
 An index is an additional structure that is derived from the primary data. Many databases allow you to add and remove indexes which does not affect the content but the query performance. However, this incurs additional overhead on writes as the index also needs to be updated every time data is written. This is an important tradeoff between query performance and write speed.
 
@@ -31,6 +35,10 @@ The key in an index could either store the actual row or reference to the row st
 ### Clustered Index
 
 In MySQL, the primary key of a table is always a clustered index, and secondary indexes refer to the primary key. A clustered index stores the indexed row directly within an index, and does not use heap files as the extra hop from the index to the file can be too much of a performance penalty for reads i.e. all row data is stored within the index.
+
+### Nonclustered Index
+
+Have a structure separate from the data rows. A nonclustered index contains the nonclustered index key values and each key value has a pointer to the data row.
 
 ### Multi-dimensional Indexes
 
