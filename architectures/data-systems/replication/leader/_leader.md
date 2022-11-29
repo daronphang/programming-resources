@@ -1,15 +1,3 @@
-## Replication
-
-Replication means keeping a copy of the same data on multiple nodes for the following reasons:
-
-- To keep data geographically close to users and reduce latency
-- To allow the system to continue working even if some of its parts have failed
-- To scale out the number of machines that can serve read queries
-
-Difficulty in replication lies in handling changes to replicated data, and this is handled with popular algorithms including single-leader, multi-leader, and leaderless.
-
-Tradeoffs to consider are whether to use synchronous or asynchronous replication, and how to handle failed replicas.
-
 ## Leaders and Followers (Master/Slave)
 
 To ensure every write to the database ends up on all replicas, a solution would be to use **leader-based replication**:
@@ -18,6 +6,10 @@ To ensure every write to the database ends up on all replicas, a solution would 
 2. Other replicas are notified of the data change through replication log or change stream. Each follower takes the log from the leader and updates its local copy of the database.
 
 This mode of replication is a built-in feature across many relational and non-relational databases, including MySQL, PostgreSQL, Oracle, SQL Server, MongoDB, Kafka and RabbitMQ.
+
+### Types of Leader-Based Replications
+
+Single-leader or multi-leader.
 
 ## Setting Up New Followers
 
@@ -44,4 +36,20 @@ Some operation teams prefer to do failover manually due to the following issues:
 
 ## Replication Lag
 
-For asynchronous replications, if the follower has fallen behind the leader, will lead to inconsistencies as all writes have been reflected in the follower. However, this is just a temporary state, and this effect is known as **eventual consistency**. If the lag is large, the inconsistencies can become a problem for applications.
+For asynchronous replications involving distributed databases, if the follower has fallen behind the leader, will lead to inconsistencies as all writes have been reflected in the follower. However, this is just a temporary state, and this effect is known as **eventual consistency**. If the lag is large, the inconsistencies can become a problem for applications.
+
+Hence, need to design systems that provides a stronger guarantee for read-after-write.
+
+### Reading Your Own Writes
+
+To implement read-after-write consistency, can either read data that is editable by the user from the leader i.e. social media profile, and others from followers. Alternative is to track the time of the last update, and make all reads from the leader before a certain duration has passed i.e. one minute.
+
+### Monotonic Reads
+
+Monotonic reads means that if one user makes several reads in a sequence, they will not read older data that has not been updated by followers. This is achieved by making sure each user is reading from the same replica.
+
+### Consistent Prefix Reads
+
+This guarantee says that if a sequence of writes happens in a certain order, then anyone reading those writes will see them appear in the same order.
+
+Solution is to ensure that any writes that are casually related to each other are written to the same partition by using algorithms.

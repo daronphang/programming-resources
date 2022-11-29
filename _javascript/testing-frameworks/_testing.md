@@ -14,7 +14,7 @@ Test a series of steps i.e. logging in and navigating to page.
 
 ### Tools
 
-Use Jest for running tests and asserting results, and React Testing Library for simulating/rendering React app/components. Both are setup when using "create-react-app".
+Use Jest for running tests and asserting results.
 
 Tests are not executed in browser but in Jest environment and hence, do not need to import expect() or describe() as they are already available globally in Jest environment.
 
@@ -105,7 +105,9 @@ test('can open accordion items to see the contents', () => {
 
 ## Example
 
-Arrange, your app is in a certain original state. Act, then something happens like click event, input, etc. Lastly assert, or make a hypothesis of the new state of your app.
+- **Arrange**, your app is in a certain original state.
+- **Act**, then something happens like click event, input, etc.
+- **Assert**, or make a hypothesis of the new state of your app.
 
 ```js
 import { render, screen, cleanup } from '@testing-library/react';
