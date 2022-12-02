@@ -27,6 +27,8 @@ print(globals())
 
 Interpreter creates a new namespace whenever a function executes. That namespace is local to the function and remains in existence until the function terminates.
 
+Enclosing is similar to closures in Javascript.
+
 ```py
 def f():
     x = 'hi' # enclosing scope
@@ -35,4 +37,22 @@ def f():
         print(x)
     g()
     return
+```
+
+```py
+# closures
+
+def closure():
+    a = 1
+    def inner():
+        nonlocal a
+        a += 1
+        return a
+    return inner
+
+test = closure()
+print(test()) # 2
+print(test()) # 3
+print(test()) # 4
+print(test()) # 5
 ```

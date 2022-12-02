@@ -14,7 +14,7 @@ Database engine mantains versions of each row that is modified. Applications can
 
 ### Pessimistic
 
-A system of locks prevents users from modifying data in a way that affects other users After a user performs an action that causes a lock to be applied, other users cannot perform actions until the owner releases it. Used in environments where there is high contention for data.
+A system of locks prevents users from modifying data in a way that affects other users. After a user performs an action that causes a lock to be applied, other users cannot perform actions until the owner releases it. Used in environments where there is high contention for data.
 
 ### Optimistic
 

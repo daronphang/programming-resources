@@ -109,6 +109,8 @@ Shallow copy is bit-wise copy of an object (copying reference address only) i.e.
 
 When copying primitive data types (number, string, boolean, undefined, null), it will be deep copy.
 
+When using spread operator, it will create a deep copy of the top most data and a shallow copy of the nested data.
+
 ```js
 const a = 5;
 let b = a;
@@ -126,7 +128,7 @@ const person = {
   lastName: 'Doe',
 };
 
-// shallow copy using spread operator
+// shallow/deep copy
 let p1 = { ...person };
 
 // shallow copy using object.assign()
@@ -141,8 +143,7 @@ let p3 = JSON.parse(JSON.stringify(person));
 Shallow copy of an array means only top-level elements containing primitive values (strings, integers) are copied, but nested objects or arrays inside the array will still be referenced.
 
 ```js
-// shallow copy
-let shallowArr = [...fruits];
+let shallowDeepArr = [...fruits];
 
 shallowArr = fruits.slice();
 

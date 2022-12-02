@@ -26,7 +26,7 @@ Matt | Dave | Tim | 27 | 30 | 33 | Los Angeles | San Francisco | Oakland
 
 ### Column Compression
 
-Besides only loading those columsn from disk that are required from query, can further reduce the demands on disk throughput by compressing data (for similar/repetitive). Technique that is effective in data warehouses is **bitmap encoding**.
+Besides only loading those columns from disk that are required from query, can further reduce the demands on disk throughput by compressing data (for similar/repetitive). Technique that is effective in data warehouses is **bitmap encoding**.
 
 ### Memory Bandwidth and Vectorized Processing
 

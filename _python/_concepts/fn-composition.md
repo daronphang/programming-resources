@@ -20,7 +20,7 @@ from functools import reduce
 # composite_function accepts N number of function as an argument and then compose them
 def composite_function(*func):
     def compose(f, g):
-        return lambda x : f(g(x))
+        return lambda x : g(f(x)) # takes in an initial arg x
     return reduce(compose, func, lambda x : x)
 
 # Function to add 2

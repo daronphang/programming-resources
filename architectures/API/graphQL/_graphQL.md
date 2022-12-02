@@ -28,4 +28,4 @@ Trades off complexity for its power. Having too many nested fields in one reques
 
 ### Caching complexity
 
-As GraphQL isn't reusing HTTP caching semantics, it reuqires a custom caching effort such as Apollo Client.
+As GraphQL isn't reusing HTTP caching semantics, it requires a custom caching effort such as Apollo Client.
