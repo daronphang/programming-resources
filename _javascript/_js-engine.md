@@ -6,14 +6,14 @@
 
 A mechanism for an interpreter used to keep track of multiple function calls; data can be pushed and popped and follows LIFO principle i.e. last-in-first-out. Callstack is used for memorizing which function is currently running.
 
-Manages execution contexts including Global Execution Context and Function Execution Contexts. Primitives are stored in Global Execution Context (top level code that is not inside any function). Contains variable environment, scope chan and this keyword.
+Manages execution contexts including Global Execution Context and Function Execution Contexts. Primitives are stored in Global Execution Context (top level code that is not inside any function). Contains variable environment, scope chain and this keyword.
 
 How callstack works:
 
--   When a script calls a function, the interpreter adds it to the callstack and starts carrying out the function.
--   Any callback functions inside the function are pushed to the callstack to the top.
--   When current function is finished, the interpreter takes it off the stack and resumes execution where it left off in the last code listing.
--   If the stack takes up more space than it had assigned to it, it results in "stack overflow" error.
+- When a script calls a function, the interpreter adds it to the callstack and starts carrying out the function.
+- Any callback functions inside the function are pushed to the callstack to the top.
+- When current function is finished, the interpreter takes it off the stack and resumes execution where it left off in the last code listing.
+- If the stack takes up more space than it had assigned to it, it results in "stack overflow" error.
 
 ## Memory Heap and Stack
 

@@ -6,7 +6,7 @@ A lifetime of a namespace depends upon the scope of objects; if the scope of an 
 
 Python has four namespaces including Local, Enclosing, Global and Built-in (LEGB).
 
-### Built-In
+## Built-In
 
 Contains the names of all Python's built-in objects i.e. AttributeError, callable, dict, dir,list, zip.
 
@@ -14,7 +14,7 @@ Contains the names of all Python's built-in objects i.e. AttributeError, callabl
 print(dir(__builtins__))
 ```
 
-### Global
+## Global
 
 Contains any names defined at the level of the main program.
 
@@ -23,7 +23,29 @@ print(type(globals()))
 print(globals())
 ```
 
-### Enclosing and Local
+### \_\_name\_\_
+
+Special variable that determines if the module is being run directly when executed, or if it is imported. The interpreter will set the current module to \_\_main\_\_ if it is executed as the main program, else it will set it to the parent's module name.
+
+```py
+# file2.py
+import File1
+
+print ("File2 __name__ = %s" %__name__)
+
+if __name__ == "__main__":
+    print ("File2 is being run directly")
+else:
+    print ("File2 is being imported")
+'''
+File1 __name__ = File1
+File1 is being imported
+File2 __name__ = __main__
+File2 is being run directly
+'''
+```
+
+## Enclosing and Local
 
 Interpreter creates a new namespace whenever a function executes. That namespace is local to the function and remains in existence until the function terminates.
 

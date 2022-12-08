@@ -1,5 +1,11 @@
 ## CREATE
 
+To display information about the table.
+
+```sql
+DESCRIBE tablename;
+```
+
 ### PRIMARY KEY
 
 Primary key is a column or gorup of columns used to identify a row uniquely in a table. A table can have multiple primary keys, and each table SHOULD have a primary key to uniquely identify a row for CRUD.
