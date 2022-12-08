@@ -20,6 +20,13 @@ class Person(self, name, age):
 class PersonSchema(Schema):
     name = fields.Str()
     age = fields.Int()
+    
+    field4 = fields.Mapping(required=True)
+    userinfo = fields.Nested(UserInfoSchema, required=True)
+    lookbackWeekCount = fields.Integer(required=True)
+    meas_steps = fields.List(fields.String(required=True))
+    technodes = fields.Dict(keys=fields.Str(), values=fields.List(fields.String(required=True)))
+
 ```
 
 ### Validating Inputs (Deserialization)
