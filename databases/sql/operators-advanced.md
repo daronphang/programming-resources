@@ -1,3 +1,15 @@
+### IF NOT EXISTS
+
+Can be used to prevent inserting duplicates if duplicate key is not UNIQUE or PRIMARY constraint.
+
+```sql
+IF NOT EXISTS (
+       SELECT 1 FROM dbo.testing
+       WHERE username = 'JOHN'
+)
+INSERT INTO dbo.testing(username, fab) VALUES('testing123', 'f10w')
+```
+
 ### OVER
 
 Used in almost all invocations of window functions like AVG(), MAX(), and RANK(). Window functions operate on window frames which are sets of rows taht can be different for each record in the query result.
