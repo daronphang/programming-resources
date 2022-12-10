@@ -1,21 +1,22 @@
 ## aiohttp
 
 Compared with requests (blocks three times), aiohttp gives the evenet loop three opportunities to switch context:
+
 - When performing .get(), 'async with' gives guarantee that it does not block and is cleanly finalized.
 - When getting response.text(), aiohttp loads only when .get() is executed, hence need to await.
 - For ClientSession(), it does not perform I/O when entering the block, but at the end of it, ensuring all resources are closed correctly.
 
 ```py
+import requests
+
+response = requests.get('http://python.org')
+print(response.text)
+```
+
+```py
 import aiohttp
 import asyncio
 
-# 
-
-# requests
-response = requests.get('http://python.org')
-print(response.text)
-
-# aiohttp
 async def fetch(session, url):
     async with session.get(url) as response:
         return await response.text()

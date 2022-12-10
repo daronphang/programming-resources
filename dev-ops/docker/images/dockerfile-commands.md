@@ -4,6 +4,10 @@ Need to create .dockerignore file also.
 
 For WORKDIR, can set as absolute (/path/to/workdir) or relative path (relative/path).
 
+ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
+
+ENV can be changed using 'docker run --env key=value'.
+
 ```
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
@@ -18,10 +22,6 @@ EXPOSE        Assumes TCP by default; informs Docker that container listens on s
 VOLUME        Creates a mount point and marks it as holding externally mounted volumes
 USER          Sets username or usergroup when running the image
 WORKDIR       Sets default working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
-
-
-ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD)
-ENV can be changed using docker run --env key=value
 ```
 
 ### RUN vs CMD vs ENTRYPOINT

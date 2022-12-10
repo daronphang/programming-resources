@@ -11,7 +11,36 @@ As a synchronous WSGI application, each request still ties up one worker. Noneth
 https://testdriven.io/blog/flask-async/
 
 ```py
+urls = ['https://www.kennedyrecipes.com',
+        'https://www.kennedyrecipes.com/breakfast/pancakes/',
+        'https://www.kennedyrecipes.com/breakfast/honey_bran_muffins/']
 
+# Helper Functions
+
+async def fetch_url(session, url):
+    """Fetch the specified URL using the aiohttp session specified."""
+    response = await session.get(url)
+    return {'url': response.url, 'status': response.status}
+
+
+# Routes
+
+@app.route('/async_get_urls_v2')
+async def async_get_urls_v2():
+    """Asynchronously retrieve the list of URLs."""
+    async with ClientSession() as session:
+        tasks = []
+        for url in urls:
+            task = asyncio.create_task(fetch_url(session, url))
+            tasks.append(task)
+        sites = await asyncio.gather(*tasks)
+
+    # Generate the HTML response
+    response = '<h1>URLs:</h1>'
+    for site in sites:
+        response += f"<p>URL: {site['url']} --- Status Code: {site['status']}</p>"
+
+    return response
 ```
 
 ## Caveats
