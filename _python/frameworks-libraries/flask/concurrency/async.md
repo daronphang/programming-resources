@@ -81,4 +81,4 @@ if __name__ == "__main__":
 
 ## Alternatives
 
-Quart, FastAPI.
+Quart, FastAPI, aioflask (development).

@@ -1,0 +1,34 @@
+## Unitest vs Pytest
+
+Unittest is a testing framework set in Python by default. Created classes are derived from the unittest.TestCase module.
+
+Pytest involves a compact piece of code and has rich inbuilt features which require less pieces of code compared to unittest.
+
+```py
+import unittest
+
+class TestStringMethods(unittest.TestCase):
+
+    def test_upper(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+
+    def test_isupper(self):
+        self.assertTrue('FOO'.isupper())
+        self.assertFalse('Foo'.isupper())
+
+    def test_split(self):
+        s = 'hello world'
+        self.assertEqual(s.split(), ['hello', 'world'])
+        # check that s.split fails when the separator is not a string
+        with self.assertRaises(TypeError):
+            s.split(2)
+```
+
+```py
+def inc(x):
+    return x + 1
+
+
+def test_answer():
+    assert inc(3) == 5
+```
