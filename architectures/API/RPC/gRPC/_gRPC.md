@@ -1,6 +1,8 @@
 ## gRPC
 
-gRPC is an open-source framework for implementing RPC APIs via HTTP/2 developed by Google to efficiently connect services and build distributed systems.. Offers a refreshed take on the old RPC design method by making it interoperable, modern, and efficient using technologies including Protocol Buffers (to define service contracts) and HTTP/2.
+gRPC is an open-source framework for implementing RPC APIs via HTTP/2 developed by Google to efficiently connect services and build distributed systems. Offers a refreshed take on the old RPC design method by making it interoperable, modern, and efficient using technologies including Protocol Buffers (to define service contracts) and HTTP/2.
+
+gRPC supports both synchronous and asynchronous control flow semantics.
 
 Protocol Buffers (Protobuf) allow you to define the interface to be used in service-to-service communication regardless of the programming language. gRPC framework allows developers to create services that can communicate with each other efficiently and independently from their preferred programming language.
 
@@ -26,17 +28,33 @@ Main goal of protobufs is optimization. By removing many responsibilities done b
 
 Client sends a single request to the server and returns a single response back.
 
+```py
+rpc HelloServer(RequestMessage) returns (ResponseMessage)
+```
+
 ### Server Streaming
 
 Client sends a request to the server and gets a stream to read a sequence of messages back. Client reads from the returned stream until there are no more messages. gRPC guarantees message ordering within an individual RPC call.
+
+```py
+rpc HelloServer(RequestMessage) returns (stream ResponseMessage)
+```
 
 ### Client Streaming
 
 Client writes a sequence of messages and sends them to the server using a provided stream. Once it has finished writing, it waits for the server to return a response.
 
+```py
+rpc HelloServer(stream RequestMessage) returns (ResponseMessage)
+```
+
 ### Bidirectional Streaming
 
 Both sides send a sequence of messages using a read-write stream. The two streams operate independently, so clients and servers can read and write in whatever order they like i.e. server can receive all messages before writing its responsesm or read a message and write a message.
+
+```py
+rpc HelloServer(stream RequestMessage) returns (stream ResponseMessage)
+```
 
 ## gRPC vs REST (Benefits)
 

@@ -2,6 +2,8 @@
 
 Delivering a message to multiple consumers via an exchange.
 
+A binding is a relationship between an exchange and a queue i.e. the queue is interested in reading messages from this exchange.
+
 ```py
 # producer program
 
@@ -32,7 +34,17 @@ result = channel.queue_declare(
 channel.queue_bind(
     exchange='logs',
     queue=result.method.queue
+    routing_key='black' # binding_key for exchange
     )
+```
+
+### Exchanges
+
+```
+direct      Message goes to queues whose binding_key == routing_key
+topic
+headers
+fanout
 ```
 
 ### Temporary Queues

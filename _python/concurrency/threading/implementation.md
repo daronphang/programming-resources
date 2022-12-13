@@ -60,16 +60,46 @@ x.join()
 
 ## Multiple Threads
 
-Create a context manager with ThreadPoolExecutor. To pass both positional and named arguments instead of a list, use .submit().
+Create a context manager with ThreadPoolExecutor.
+
+### Subthread within Thread
+
+## Sub-threads within a Thread
 
 ```py
-# the end of the 'with' block causes executor to do an implicit .join() on each thread
-with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-    executor.map(thread_function, range(3))
+import concurrent.futures as c
 
-    for index in range(2):
-        # .submit(func, *args, **kwargs)
-        executor.submit(thread_function, index)
+def sub_thread(main_idx, idx):
+    print(f'sub thread running in main thread {main_idx}: {idx}')
+
+
+def main_thread(idx):
+    print(f'main thread running: {idx}')
+
+    with c.ThreadPoolExecutor(max_workers=3) as executor:
+        for i in range(3):
+            executor.submit(sub_thread, idx, i)
+
+
+if __name__ == '__main__':
+    with c.ThreadPoolExecutor(max_workers=3) as executor:
+        for i in range(3):
+            executor.submit(main_thread, i)
+
+'''
+main thread running: 0
+main thread running: 1
+main thread running: 2
+sub thread running in main thread 1: 0
+sub thread running in main thread 1: 1
+sub thread running in main thread 2: 0
+sub thread running in main thread 2: 1
+sub thread running in main thread 1: 2
+sub thread running in main thread 0: 0
+sub thread running in main thread 0: 1
+sub thread running in main thread 2: 2
+sub thread running in main thread 0: 2
+'''
 ```
 
 ## Race Conditions
