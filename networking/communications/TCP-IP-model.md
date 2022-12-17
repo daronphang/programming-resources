@@ -47,4 +47,4 @@ High-level protocols including SSH, Telnet and FTP use TCP.
 
 ## Privacy
 
-Data packets sent over TCP/IP are not private and hence, can be intercepted. One way of encrpyting data through TCP/IP is using VPN.
+Data packets sent over TCP/IP are not private and hence, can be intercepted. One way of encrypting data through TCP/IP is using VPN.

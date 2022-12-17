@@ -25,7 +25,7 @@ Controls the dialogues/connections between computers. This layer establishes, ma
 
 ### Transport (Layer 4)
 
-Provides the functiosn and means of transferring data sequences from a source to destination host via one or more networks, while maintaining the quality of service and ensuring complete delivery of data. Integrity of data can be guaranteed via error correction. Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) are essential protocols in this layer.
+Provides the functions and means of transferring data sequences from a source to destination host via one or more networks, while maintaining the quality of service and ensuring complete delivery of data. Integrity of data can be guaranteed via error correction. Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) are essential protocols in this layer.
 
 TCP provides one-to-one, connection-oriented and reliable service and is responsible for sequencing and acknowledgement of packets sent, and recovery of packets lost in tramission.
 

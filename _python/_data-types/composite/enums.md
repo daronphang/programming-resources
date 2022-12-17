@@ -59,10 +59,32 @@ class Size(Enum):
 ```py
 Day.MONDAY = 0  # error, cannot reassign members as they are constants
 
-print(Day.MONDAY)
-print(Day('MONDAY'))
-print(Day['MONDAY'])
+print(Day.MONDAY)       # Day.MONDAY, an object of type <enum 'Day'>
+print(Day('MONDAY'))    # Day.MONDAY
+print(Day['MONDAY'])    # Day.MONDAY
+print(Day.MONDAY.value) # 1
 
 for day in Day:
     print(f'{day.name}, {day.value}')
+```
+
+```py
+from enum import Enum
+
+class Direction(Enum):
+    LEFT = "left"
+    RIGHT = "right"
+    UP = "up"
+    DOWN = "down"
+
+def move(direction):
+
+    # Type checking
+    if not isinstance(direction, Direction):
+        raise TypeError('direction must be an instance of Direction Enum')
+
+    print direction.value
+
+move(Direction.LEFT)    # left
+move("right")   # TypeError: direction must be an instance of Direction Enum
 ```

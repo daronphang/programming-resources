@@ -1,4 +1,4 @@
-### Connection
+## Connection
 
 Can either connect directly to mysql or using flask-mysql.
 

@@ -60,3 +60,10 @@ $ realpath run_python.sh    # get absolute path
 ```console
 $ lscpu
 ```
+
+## Ports
+
+```console
+$ sudo lsof -i -P -n | grep LISTEN
+$ sudo lsof -i:22   # see a specific port
+```

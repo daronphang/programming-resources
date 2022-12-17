@@ -203,3 +203,11 @@ print(os.getcwd())                  # prints absolute path 'H:/tech/SECURE/test'
 
 os.chdir(os.path.join(os.getcwd(), '\app')) # 'H:\tech\SECURE\test\app'
 ```
+
+### Flags
+
+The -m flag makes sure that you are using the module that is tied to the active Python executable. Good practice to always use -m.
+
+```
+$ python3 -m pip install <some package>
+```

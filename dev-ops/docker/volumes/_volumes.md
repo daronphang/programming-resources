@@ -59,6 +59,8 @@ $ docker run -v /folder/with/files:/container/path image_name
 
 $ docker run -v $(pwd):/var/opt/project bash:latest \
   bash -c "ls /var/opt/project"
+
+$ docker volume inspect <VOLUME NAME> # check path of mountpoint
 ```
 
 ### Host-Mounted Volumes

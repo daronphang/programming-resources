@@ -1,3 +1,13 @@
+## Why not to use ORM
+
+- Performance
+- Not language agnostic
+- Not losing touch with raw SQL and learning how to build strings
+
+- Tedious and prone to bugs
+- Not database agnostic as each DB has their own dialects
+- Easier to perform migrations
+
 ### Retrieving Entries from Database
 
 Can use Flask-SQLAlchemy, an extension that simplifies the use of SQLAlchemy inside Flask applications. A powerful relational database
