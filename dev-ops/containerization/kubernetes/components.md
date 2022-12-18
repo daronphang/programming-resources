@@ -42,13 +42,23 @@ Runs on each node and helps in making services available to external host and fo
 
 ### Pods
 
-A group of one or more application containers that are tightly coupled i.e. API and database, and shared resources for them including networking, volumes, and information about how to run each container.
+A Pod is the smallest unit that can be deployed and managed by Kubernetes. Pods can contain multiple containers that are tightly coupled (deployed on the same server in pre-container world). A Pod always run on a Node, and each Node can have multiple pods.
 
-Containers in a Pod share an IP address and port space, are always co-located and co-scheduled, and run in a shared context on the same Node.
+**Each Pod is meant to run a single instance of a given application**. If you want to scale horizontally, should use multiple Pods, one for each instance i.e. replication.
 
 Pods that are running inside Kubernetes are running on a private, isolated network. By default, they are visible from other pods and services within the same cluster, but not outside of the network. When we use kubectl, we are interacting through an API endpoint to communicate with our application.
 
-a Pod always run on a Node, and each Node can have multiple pods.
+#### Motivation
+
+Having an additional layer of abstraction by the Pod instead of deploying a single container directly is needed as Kubernetes requires additional information including restart policy or live probe to manage a container. Instead of overloading the existing container, using a new entity, Pod, that logically wraps one or more containers and managed as a single entity.
+
+#### Multi-Container Pods
+
+Primary purpose is to support co-located, co-managed helper processes for a primary application including proxies (Apache, Nginx), bridges, adapters, log/data watchers, etc.
+
+Grouping multiple containers is a relatively advanced use case, and should only use in specific instances when your containers are tightly coupled.
+
+Containers in a Pod will share resources including networking (IP address, namespace), volumes, and information about how to run each container. They are always co-located and co-scheduled, and run in a shared context on the same Node.
 
 ## Namespaces
 

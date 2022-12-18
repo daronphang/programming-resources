@@ -15,10 +15,6 @@ $ kubectl delete <service/deployment/pod>
 $ kubectl delete service -l app=kubernetes-bootcamp # using label
 $ kubectl delete deployment my-nginx
 $ kubectl delete pod/my-nginx-544232
-
-$ kubectl create -f file.yml    # Create resources via CLI or YAML
-$ kubectl replace -f file.yml
-$ kubectl apply     # Create/update anything via YAML
 ```
 
 ### Cluster

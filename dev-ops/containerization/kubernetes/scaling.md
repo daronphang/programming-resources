@@ -14,6 +14,7 @@ $ kubectl get deployments
 When you have multiple instances of an application running, you can do rolling updates without downtime. Updates are versioned and any Deployment update can be reverted to a previous version.
 
 ```console
+$ kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
 $ kubectl set image deployments/kub-boot kub-boot=kub-boot:v2
 
 $ kubectl rollout status deployments/kub-boot

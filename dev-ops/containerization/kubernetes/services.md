@@ -1,6 +1,6 @@
 ## Services
 
-Used to expose Pods to the network. Allow defined access to Pods either within your clsuter or externally.
+Used to expose Pods to the network. Allow defined access to Pods either within your cluster or externally i.e. a Service is a set of Pods which can be reached by a fixed DNS name or IP address.
 
 An abstraction which defines a logical set of Pods and policy by which to access them, and this abstraction allows Pods to die and replicate in Kubernetes without impacting your application. Defined using YAML or JSON, and enables a loose coupling between dependent Pods.
 
@@ -17,6 +17,14 @@ $ # for Windows:=
 $ kubectl --generator=run-pod/v1 tmp-shell --rm -it --image bredfisher/netshoot -- bash
 $ curl httpenv:8888
 ```
+
+### Communication between Containers
+
+In a microservices architecture, the services will be realized as different Pods (frontend, backend, database).
+
+- Containers in the same Pod can connect with each other using localhost, but using different port number.
+- Container in a Pod can communicate with another by directly addressing its IP address (brittle approach as Pods are dispensable and can be restarted).
+- Recommended approach between containers in different Pods is through Services, and can connect by using DNS name.
 
 ### Ingress
 
@@ -42,23 +50,9 @@ Creates an external load balancer in the current cloud (only available when infr
 
 Maps the Service to an external name i.e. foo.bar.example.com, by returning a CNAME record with its value. No proxy is setup. Not used for pods but for giving pods a DNS name to use outside Kubernetes.
 
-## Labels
-
-Services match a set of Pods using labels/selectors, a grouping primitive that allows logical operation on objects in Kubernetes. Labels are key/value pairs and be used for:
-
-- Designating objects for development, testing and production
-- Embedding version tags
-- Classifying an object using tags
-
-```console
-$ kubectl label pods POD_NAME version-v1
-```
-
 ## Port Forwarding
 
-Can access a Service without binding it by using Kubectl's integrated port-forwarding functionality.
-
-works without Services i.e. can directly conenct to a Pod in your deployment.
+Can access a Service without binding it by using Kubectl's integrated port-forwarding functionality. Works without Services i.e. can directly conenct to a Pod in your deployment.
 
 ```console
 $ kubectl port-forward deployment/nginx 8080:80

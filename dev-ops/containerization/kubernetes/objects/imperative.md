@@ -1,10 +1,14 @@
 ## Create a Cluster
 
-For local deployment, can use Minikube. Katacoda provides a free, in-browser Kubernetes environment. Other packaged solutions using official Kubernetes distribution include MicroK8s, K3s or Kind.
+Kubernetes is not IaC (Infrastructure-as-Code), but designed to run in the cloud and integrates with providers including AWS, GCP and OpenShift. However, you can run it locally to ensure your application runs effectively in production. To setup the cluster environment locally, can use Minikube, MicroK8s, K3s and Kind.
 
 ```console
 $ minikube start
 ```
+
+### K3s
+
+Runs on any Linux distribution without additional external dependencies i.e. lightweight. Achieves by stripping features out of Kubernetes binaries (cloud-specific), replacing Docker with containerd, and using sqlite3 as the default DB instead of etcd.
 
 ## Create a Pod
 
