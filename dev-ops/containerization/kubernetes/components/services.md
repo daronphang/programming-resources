@@ -26,15 +26,17 @@ In a microservices architecture, the services will be realized as different Pods
 - Container in a Pod can communicate with another by directly addressing its IP address (brittle approach as Pods are dispensable and can be restarted).
 - Recommended approach between containers in different Pods is through Services, and can connect by using DNS name.
 
-### Ingress
+### Types
+
+#### Ingress
 
 Ingresses are closely related objects and are used to set up HTTP routes to Services via a load balancer. Also support HTTPS traffic secured by TLS certificates.
 
-### ClusterIP
+#### ClusterIP
 
 Default service type. Single, internal virtual IP allocated. Only reachable from within cluster (nodes and pods).
 
-### NodePort
+#### NodePort
 
 Exposes the Service on the same port of each selected Node in the cluster using NAT. Superset of ClusterIP.
 
@@ -42,19 +44,78 @@ Exposes the Service on the same port of each selected Node in the cluster using 
 <NodeIP>:<NodePort>
 ```
 
-### LoadBalancer
+#### LoadBalancer
 
-Creates an external load balancer in the current cloud (only available when infrastructure/cloud provider gives LB) and assigns a fixed, external IP to the Service. Superset of NodePort i.e. creates NodePort and ClusterIP Services.
+Standard way to expose a Service to the internet. Creates an external load balancer in the current cloud (only available when infrastructure/cloud provider gives LB) and assigns a fixed, external IP to the Service. Superset of NodePort i.e. creates NodePort and ClusterIP Services.
 
-### ExternalName
+#### ExternalName
 
 Maps the Service to an external name i.e. foo.bar.example.com, by returning a CNAME record with its value. No proxy is setup. Not used for pods but for giving pods a DNS name to use outside Kubernetes.
 
-## Port Forwarding
+### Port Forwarding
 
 Can access a Service without binding it by using Kubectl's integrated port-forwarding functionality. Works without Services i.e. can directly conenct to a Pod in your deployment.
 
 ```console
 $ kubectl port-forward deployment/nginx 8080:80
 $ kubectl port-forward service/nginx 8080:80
+```
+
+## Expose Service to Internet
+
+```console
+$ minikube service webapi # use URL provided
+```
+
+## Example
+
+Requests are received to the Service's port, and forwarded to Pods that are listening on the targetPort.
+
+```
+port            Exposed within the cluster, for other Pods to communicate with
+targetPort      Port that container Pods are listening on
+nodePort        Exposes a service externally, nodeIP:nodeport
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.27.0 (b0ed6a2c9)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: webapi
+  name: webapi
+spec:
+  ports:
+    - name: '8080'
+      port: 8080
+      targetPort: 8080
+  selector:
+    io.kompose.service: webapi
+status:
+  loadBalancer: {}
+```
+
+for some Services, may need to expose more than one port. Must provide port names so that they are unambiguous.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9376
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 9377
 ```

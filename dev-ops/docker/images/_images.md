@@ -37,6 +37,14 @@ $ docker images
 $ docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
 ```
 
+### Pushing Images to DockerHub
+
+```console
+$ rm ~/.docker/config.json # if encounter storing credentials error
+$ docker login -u username
+$ docker push username/image_tag_name
+```
+
 ### Parser Directives
 
 Must be at top of dockerfile. Affects the way in which subsequent lines are handled and do not add layers to build. Can only be used once. supports syntax and escape.

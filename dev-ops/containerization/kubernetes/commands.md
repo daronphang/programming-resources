@@ -8,13 +8,21 @@ $ kubectl get pods --all-namespaces
 
 $ kubectl describe <nodes/pods/deployment/services>
 $ kubectl describe services/kubernetes-bootcamp
+$ kubectl describe configmaps
 
 $ kubectl logs <pod name>
 
+$ # to delete pods, need delete deployment first
 $ kubectl delete <service/deployment/pod>
 $ kubectl delete service -l app=kubernetes-bootcamp # using label
 $ kubectl delete deployment my-nginx
 $ kubectl delete pod/my-nginx-544232
+```
+
+### Shell
+
+```console
+$ kubectl exec --stdin --tty shell-demo -- /bin/bash
 ```
 
 ### Cluster

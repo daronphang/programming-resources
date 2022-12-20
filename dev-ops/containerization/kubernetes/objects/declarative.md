@@ -2,6 +2,17 @@
 
 Tool to convert Docker Compose to Kubernetes objects.
 
+## Requirements
+
+```
+db-deployment.yaml
+db-service.yaml       # for other Pods to communicate with
+app-secret.yaml
+app-persistent-volume.yaml
+flask-deployment.yaml
+flask-service.yaml
+```
+
 ## Commands
 
 Multiple yaml files can be applied.

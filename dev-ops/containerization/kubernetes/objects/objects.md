@@ -57,14 +57,6 @@ environment: dev, qa, production
 tier: frontend, backend, cache
 ```
 
-## Env Variables
+#### selectors
 
-Kubernetes offers two ways of working with env variables: ConfigMaps and Secrets.
-
-### Secrets
-
-Value used in Secrets should be converted to base64 to allow uniform tranmission of data.
-
-```console
-$ echo -n 'database_username' | base64
-```
+Selectors act as filters i.e. help us in finding the labels attached to a kind. The label selector is the core grouping primitive in Kubernetes. Selectors depend on labels to select a group of resources such as Pods.
