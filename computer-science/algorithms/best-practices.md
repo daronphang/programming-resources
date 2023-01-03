@@ -34,3 +34,7 @@ If you want to iterate through each column, can unpack array for Python.
 for col in zip(*matrix):
     pass
 ```
+
+## Graphs
+
+Check if it is bidirectional i.e. x is a neigbhor of y, and y is a neighbor of x. Common solutions are DFS.

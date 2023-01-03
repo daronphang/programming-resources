@@ -4,11 +4,11 @@ FastAPI stands on the shoulders of giants: Starlette and Pydantic. Requires an A
 
 Provides OpenAPI and automatic data model documentation with JSON schema.
 
-```
+```console
 $ pip install uvicorn[standard]
 
 $ # reload is the same as flask debug mode
-$ uvicorn python/module:object_instance
+$ uvicorn python.module:object_instance
 $ uvicorn main:app --reload
 ```
 

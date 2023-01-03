@@ -34,12 +34,24 @@ $ docker volume prune    # removes all volumes not used by at least 1 container
 A Docker bind mount is a high-performance connection from the container to a directory on the host machine i.e. uses the host file system. It allows the host to share its own file system with the container, which can be made read-only or read-write.
 
 ```console
-# pwd is the source on the host
-# /var/opt/project is the target mount point of the container
-# after running, file.txt will exist in the pwd of our host machine
+$ # pwd is the source on the host
+$ # /var/opt/project is the target mount point of the container
+$ # after running, file.txt will exist in the pwd of our host machine
 
 $ docker run -v $(pwd):/var/opt/project bash:latest \
   bash -c "echo Hello > /var/opt/project/file.txt"
+```
+
+### Example
+
+Mounting local host directory and accessing the contents from within the container. Changes on host machine are reflected in the container, and vice versa.
+
+```console
+$ docker run -d --name bindmount -v "C:\Users\daronphang\Documents":/celery nginx:1.16.0
+$ docker exec -it bindmount bash
+$ cd ~
+$ cd /celery
+$ ls  # all contents in Documents will be listed here
 ```
 
 ## Docker Volumes
@@ -94,62 +106,4 @@ External volumes can be used across the Docker installation and they need to be 
 
 ```console
 $ docker volume create --name demo-earthly
-```
-
-### Declaring Volume from Dockerfile
-
-Statement declares that a specific path of the container must be mounted to a Docker volume. When the container is run, Docker will create an anonymous volume (with unique id) and mount it to the specified path.
-
-```dockerfile
-FROM nginx:latest
-
-RUN echo "<h1>Hello from Volume</h1>" > /usr/share/nginx/html/index.html
-VOLUME /usr/share/nginx/html
-```
-
-### Mounting Volume to Container
-
-```
-type                "volume" to indicate a volume mount
-src                 name of volume or source directory
-dst                 destionation mount point in the container
-volume-driver
-readonly            rw for read/write
-```
-
-```console
-$ docker run --mount source=[volume_name],destination=[path_in_container] [docker_image]
-
-$ docker run -it --name=example --mount source=demo-volume,destination=/data ubuntu
-
-$ docker run --mount \
-  'type=volume,src=data-volume,\
-  dst=/var/opt/project,volume-driver=local,\
-  readonly' \
-  bash -c "ls /var/opt/project"
-```
-
-### Using Docker Compose
-
-Multiple services can share the same volume; a named volumed MUST be declared in the top-level volumes key.
-
-```yaml
-version: '3.2'
-services:
-  web:
-    image: nginx:latest
-    ports:
-      - 8080:80
-    volumes:
-      # mount ./target from host to /usr/share/nginx/html of the container (mount point)
-      - ./target:/usr/share/nginx/html
-  web1:
-    image: nginx:latest
-    ports:
-      - 8081:80
-    volumes:
-      - html_files:/usr/share/nginx/html
-volumes:
-  html_files:
-  # implicit volume creation by Docker
 ```

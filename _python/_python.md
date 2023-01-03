@@ -33,11 +33,13 @@ With automatic memory management, runtime handles this for programmers. Python u
 
 Reference counting works by counting the number of times an object is referenced by other objects. When the count becomes zero, it is unusable by program code and is deallocated.
 
+An object's reference count changes as the number of aliases that point to it changes. It decreases when it is deleted with del, reference is reassigned, or its reference goes out of scope.
+
 ### Garbage Collection
 
 However, automatic memory management comes at a cost, whereby it requires to use additional memory and computation to track all of its references. Moreover, reference counting does not work for cyclic references i.e. a situation when an object refers to itself.
 
-As reference cycles take computational work to discover, garbage collection must be a scheduled activity. Python schedules garbage collection based upon a threshold of object allocations and deallocations. When the number of allocations is greater than the number of deallocations, garbage collector is executed.
+As reference cycles take computational work to discover, garbage collection must be a **scheduled activity**. Python schedules garbage collection based upon a threshold of object allocations and deallocations. When the number of allocations is greater than the number of deallocations, garbage collector is executed.
 
 Can be invoked manually during the execution of a program. Never disable garbage collector unless you have a good reason to do so.
 

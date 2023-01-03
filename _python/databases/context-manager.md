@@ -1,4 +1,4 @@
-## DB Context Manager
+## Context Manager
 
 Function that executes query in database is decorated with database context manager. Connection is passed to the query function as an implicit value. Cursor is used to execute statements to communicate with database and gives ability to have separate working environments through the same connection to the database.
 
@@ -54,4 +54,12 @@ def query_func(conn, username, password):
 
 
 example = query_func('admin', 'admin')      # do not need to pass conn variable as it is implicit
+```
+
+### Necessity
+
+Objects in Python do the "right thing" when they are deleted (normally when they go out of scope): files close, sockets close, database connections rollback (if commit is not called explicitly) and close. Hence, there is no need for context manager in Python.
+
+```py
+open('path/file', 'w').write('hello world\n')
 ```

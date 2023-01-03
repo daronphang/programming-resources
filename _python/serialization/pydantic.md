@@ -35,3 +35,33 @@ print(user.dict())
 }
 """
 ```
+
+### Strict Types
+
+By default, strings are accepted as-is, and Pydantic will coerce conversion using str(v). To enforce strict types, define in the class.
+
+```py
+from pydantic import BaseModel, StrictStr
+
+class Test(BaseModel):
+    name: StrictStr
+```
+
+### Reading Request Body
+
+Access attributes by dot notation. Else, can explicitly convert to dict using .dict() after parsing the class.
+
+```py
+from pydantinc import BaseModel
+
+class Test(BaseModel):
+    hello: str
+
+
+payload = {'hello': 'world'}
+c = Test(payload)
+print(c.hello)
+
+c = c.dict()
+print(c['hello'])
+```
