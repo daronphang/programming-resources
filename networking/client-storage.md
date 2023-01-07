@@ -1,4 +1,4 @@
-### Cookies
+## Cookies
 
 HTTP is stateless protocol; each request doesn't store any state or persisting information. However, if need to remember user's session, can use cookies. Cookies are assoicated with websites i.e. cannot access cookie_a in another website_b. Have two types: persistent and session cookies. Mainly used for three purposes:
 
@@ -10,7 +10,7 @@ Employed to store user data (password, preferences, IP address, date/time of vis
 
 Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are transferrred on each HTTP request.
 
-#### IMPORTANT
+### IMPORTANT
 
 For browser to set cookies from cross-site origin, need to configure:
 
@@ -19,22 +19,22 @@ For browser to set cookies from cross-site origin, need to configure:
 
 https://medium.com/swlh/how-the-new-chrome-80-cookie-rule-samesite-none-secure-affects-web-development-c06380220ced
 
-### Local Storage
+## Local Storage
 
 Store data without an end.
 
-### Session Storage
+## Session Storage
 
 Accessible from client-side only and has no SSL support. Unlike cookies where they are sent on each request, local and session storage data sits in browser until someone requests for it. Session storage data are gone when browser tab is closed.
 
-### Cache
+## Cache
 
 Temporary storage of web documents such as HTML pages and images in client's browser. Purpose is to reduce bandwidth usage, server load and browser loading. Web cache system stores copies of documents passing through it; subsequent requests may be satisfied from cache if conditions are met. Cache is kept indefinitely.
 
-### Session:
+## Session
 
 Data is stored on server and not on client. Cannot be viewed/manipulated by users and hence, useful for storing sensitive data that should survive across requests. Sessions are identified via Cookies which has an \_id value. Can either be saved on server's memory or in database.
 
-### Error Handling
+## Error Handling
 
 For synchronous code, use try-catch; then-catch for asynchronous. Can also throw errors to trigger in catch block.

@@ -1,4 +1,4 @@
-### CSRF
+## CSRF
 
 Refers to Cross-Site Request Forgery where sessions are abused and trick application users to execute malicious code. Type of attack which tricks the victim to do malicious task on a victim's authenticated web application on behalf of attacker's interests. Exploits the concept that if the user is authenticated, all requests that come from user must be originated by the user. Attacker exploits this concept by identifying the session cookie and use that to send his own payload to run on the application. Only works if the user is authenticated.
 

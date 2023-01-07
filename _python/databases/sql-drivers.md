@@ -6,7 +6,7 @@
 | Parameter Substitution | Performs on server side and impossible to retrieve logs.                                                                                | Performs on client side and allows developers to log actual query sent to SQL Server. |
 | Features               | executemany, connection pooling (turned on by default)                                                                                  | does not offer executemany, connection pooling through SQLAlchemy                     |
 
-### Pooling
+## Pooling
 
 For pyodbc, pooling is enabled by default, and can only be modified before the first connection is made.
 
@@ -57,4 +57,18 @@ conn.close()
 # ('98',)
 # ('455',)
 # ('203',)
+```
+
+## ODBC for Linux
+
+https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16
+
+### Microsoft
+
+### FreeTDS
+
+A Set of libraries for Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase.
+
+```console
+$ apt install tdsodbc unixodbc
 ```

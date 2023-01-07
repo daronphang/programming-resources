@@ -33,6 +33,8 @@ Number used to uniquely identify a transaction over a network. Default for TCP p
 
 ## IP Address
 
+IP addresses not reachable over the internet are private and enable communication between instances in the same network.
+
 ```
 127.0.0.1:<host port>         localhost
 ```

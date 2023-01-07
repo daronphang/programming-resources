@@ -12,7 +12,7 @@ ENV can be changed using 'docker run --env key=value'.
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
 ADD           Copies new files, directories or URLs from <src> and adds them to filesystem of image at path <dest>
-ENV           Environment variables available after built-time, key-value pairs
+ENV           Environment variables available during build and container run time, key-value pairs
 ARG           Instructions support variables, referenced with ${var} or $var, may precede FROM
 RUN           Used for installing software packages; default is run in shell /bin/sh -c; need to change on Windows
 ENTRYPOINT    Allows to configure container that will run as an executable

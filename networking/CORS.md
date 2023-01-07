@@ -1,4 +1,4 @@
-### CORS
+## CORS
 
 Cross-Origin Resource Sharing. A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme or port. Same-origin policy can be very restrictive as many websites interact with sub-domains or third-party sites.
 
