@@ -71,4 +71,8 @@ A Set of libraries for Linux that allows your programs to natively talk to Micro
 
 ```console
 $ apt install tdsodbc unixodbc
+$ echo "[FreeTDS]\n\
+Description = FreeTDS Driver\n\
+Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so\n\
+Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
 ```
