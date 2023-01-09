@@ -85,7 +85,7 @@ $  docker volume create \
 	--opt o=addr=uxxxxx.your-server.de,username=uxxxxxxx,password=*****,file_mode=0777,dir_mode=0777 \
 	--name cif-volume
 
-$ docker volume create --driver local --opt type=cifs --opt device=//fsf10peeuipathfs/F10_PEE_UIPATH/daronphang --opt o=user=daronphang,password=Funkiller123* mydockervolume
+$ docker volume create --driver local --opt type=cifs --opt device=//fsf10peeuipathfs/F10_PEE_UIPATH/daronphang --opt o=user=daronphang,password=123 mydockervolume
 ```
 
 ### Docker Compose
