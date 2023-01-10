@@ -4,6 +4,8 @@ A secure cloud platform that offers a broad set of global cloud-based products. 
 
 Common applications of AWS are storage and backup, websites, gaming, mobile, web and social media applications, big data, AI, messaging and IoT.
 
+https://www.simplilearn.com/tutorials/aws-tutorial/aws-s3
+
 ### Infrastructure
 
 Divided into geographic regions, and each geographic region is divided into availability zones and edge locations (caching).

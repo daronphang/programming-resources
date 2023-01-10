@@ -25,29 +25,22 @@ The former module is synthesized by protoc, which defines non-gRPC-specific code
 
 https://grpc.io/docs/languages/python/generated-code/
 
-```
-python -m grpc_tools.protoc
--I
---python_out=   --grpc_python_out=
-../../protos/helloworld.proto
-```
+### Command
 
-```
-Runs the protobuf compiler
-Tells the compiler where to find files that your protobuf code imports
-Tells the compiler where to output the Python files (2 files created)
-Path to the protobuf file
-```
+1. Runs the protobuf compiler
+2. Import path of protobuf code (not needed, but -I flag is required)
+3. Output paths of created files (client and server code)
+4. Path to the protobuf file
 
 ```console
-$ python -m grpc_tools.protoc -I../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
+$ python -m grpc_tools.protoc -I ../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
 ```
 
 For each service defined in the .proto file, three primary elements are generated.
 
 ### Stub
 
-Stub is used by the client to connect to a gRPC service. Has a constructor that takes a grpc.Channel object and initializes the stub.
+Stub is used by the client to connect to a gRPC service. Has a constructor that takes a gRPC.Channel object and initializes the stub.
 
 For each method in the service, the initializer adds a corresponding attribute to the stub object with the same name, that depends on the RPC type.
 
