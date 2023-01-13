@@ -14,10 +14,10 @@ Increasingly, many applications have such demanding or wide-ranging requirements
 
 Reliability means making systems work correctly, even when faults occur. Expectations include:
 
-- Application performs the function that the user expects.
-- Can tolerate user making mistakes or using software in unexpected ways.
-- Performance is good enough for the required use case.
-- System prevents any unauthorized access and abuse.
+- Application performs the function that the user expects
+- Can tolerate user making mistakes or using software in unexpected ways
+- Performance is good enough for the required use case
+- System prevents any unauthorized access and abuse
 
 ### Faults
 
