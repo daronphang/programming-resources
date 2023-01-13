@@ -2,26 +2,29 @@
 
 AWS provides web data storage service for archiving data. Its primary advantage is disaster data recovery with high durability.
 
-## S3 (Simple Storage Service)
-
-Open cloud-based storage service that can store and retrieve data from anywhere including websites, mobile apps, IoT sensors, etc. It is durable, provides comprehensive security, and flexibility in managing data. Provides 99.99% durability and availability, up to 5TB.
-
-### Buckets
+## Buckets
 
 A bucket is used store objects (consisting of data, key, metadata). When data is added to a bucket, S3 creates a unique ID and allocates it to the object.
 
 Users can define features to the bucket, including bucket policy, lifecycle policies, versioning control, etc.
 
-## EBS (Elastic Block Store)
+## Lifecycle
 
-Provides a high availability storage volume for persistent data. Mainly used by EC2 instances. Can be attached to any running EC2 instance in the same availability zone.
+Can choose which actions to define.
 
-EBS volumes are used explicitly for primary storage such as file storage, database storage, and block-level storage.
+### Transition Action
 
-## Glacier
+You can choose to move objects to another storage class. If the data is not used frequently for 30 days, it would be moved to S3 infrequent access class. After 60 days, it is moved to Glacier.
 
-Cloud storage service that is used for archiving data and long-term backup (low-cost solution).
+### Expiration Actions
 
-## EFS (Elastic File System)
+S3 removes all objects within the bucket when a specified date or time period in the object's lifetime is reached.
 
-PRovides elastic file storage, which can be used with AWS Cloud Services and resources that are on-premises.
+## Data Protection
+
+S3 provides IT teams with a highly durable, protected and scalable infrastructure designed for object storage.
+
+1. Data encryption
+2. Versioning
+3. Cross-region Replication
+4. Transfer Acceleration
