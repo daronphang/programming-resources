@@ -1,4 +1,4 @@
-### Service-Oriented Architecture
+## SOA (Service-Oriented Architecture)
 
 A design approach where multiple services (completely separate OS process) collaborate to provide some end set of capabilities. Communication between these services occurs via netowrk calls rather than method calls within a process boundary.
 

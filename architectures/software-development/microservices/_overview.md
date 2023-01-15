@@ -40,7 +40,7 @@ Minimizes the number of people working on any one codebase to increase productiv
 
 Microservices allow for functionality to be consumed in different ways for different purposes. As circumstances change, you can build things in different ways.
 
-### Drawbacks
+## Drawbacks
 
 - Centralized logging and monitoring is needed with distributed systems.
 - Partitioned database architecture requires updates in multiple databases by different services.

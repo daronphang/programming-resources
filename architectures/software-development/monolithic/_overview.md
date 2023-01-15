@@ -1,4 +1,4 @@
-### Monolithic
+## Monolithic
 
 Approach is considered to be a default/tranditional model for creating a software application i.e. built as a single and indivisible unit. Such a solution usually comprises a client-side user interface, a server-side application, and a database.
 

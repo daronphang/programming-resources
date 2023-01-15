@@ -30,14 +30,16 @@ Instead of a client initiating requests asking for things to be done, it instead
 
 When considering between request/response and event-based, need to consider how well they are suited for solving a complex problem of handling processes that span across service boundaries and may be long running.
 
-### Orchestration
+Two approaches are choreography (event-driven) and orchestration (request/response). In reality, most architects would use the amalgamation of both approaches to create a resilient system.
 
-With orchestration style, you rely on a central brain to guide and drive the process through a series of request/response calls. Downside is that the orchestrator can become too much of a central governing authority.
+## Best Practices
 
-<img src="../../../../_snapshots/orchestration.PNG">
+When building a microservices-based application, should minimize communication between them. **If possible, never depend on synchronous communication (request/response) between multiple microservices**, not even for queries. Your services should be designed such that each is able to execute its main function without relying on others.
 
-### Choreography
+The goal of each microservice is to be autonomous and available to the client consumer. **If you think you need to make a call from one microservice to other to provide a response, you have an architecture that won't be resilient when some microservices fail**. The more synchronous dependencies between microservices, the worse the overall response time gets for the client apps.
 
-With choreography, you inform each part of the system of its job, and let it work out the details. Downside is that the explicit view of the business process is only implicitly reflected in your system. This means additional work is needed to ensure that you can monitor and track that the right things have happened. This can be done by building a monitoring system that explictly matches the view of the business process, but then tracks what each of the services does as independent entities. Nonetheless, this approach is more loosely coupled, flexible and amenable to change.
+If your microservice needs to raise an additional action or requires data in another microservice, should do it asynchronously by replicating or propagating the data into the initial service's database by using eventual consistency.
 
-<img src="../../../../_snapshots/choreography.PNG">
+Nonetheless, if one microservices needs to perform a synchronous request to get data from another, should call the microservice's API, and not interact with the database directly.
+
+Ultimately, there is no right or wrong. Choose what is best that meets your needs.
