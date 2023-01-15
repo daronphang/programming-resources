@@ -1,14 +1,18 @@
 ## API Gateway
 
-An API gateway is an API management tool that sits between a client and a collection of backend services. Acts as a reverse proxy to accept all API calls, aggregate the various services required to fulfill them, and return the appropriate result. It is responsible for request routing, composition, and protocol translation. If there are failures in the backend services, the API gateway can mask them by returning cached or default data.
+An API gateway is an API management tool that sits between a client and a collection of backend services. A service that makes it easy for developers to create, publish, maintain, monitor and secure APIs at any scale.
+
+Acts as a reverse proxy and takes all API calls from clients, then routes them to the appropriate microservice with request routing, composition, and protocol translation. Typically, it handles a request by invoking multiple microservices and aggregating the results, to determine the best path. Handles all tasks involved in accepting/processing concurrent API calls, traffic management, CORS support, caching, authorization and access control, monitoring.
+
+If there are failures in the backend services, the API gateway can mask them by returning cached or default data. API gateway supports containerized and serverless workloads.
 
 Offers clients a simple and dependable experience, and decouples client interface from backend implementation. When a client makes a request, the API gateway breaks it into multiple requests, invokes multiple microservices and routes to the right places, aggregates the results, produces a response, and keeps track of everything.
 
-## Backends for Frontends (API Gateway)
+## Backends for Frontends (API Gateway Pattern)
 
-A common solution to the problem of chatty interfaces with backend services, or the need to vary content for different types of devices, is to have server-side aggregration endpoint, or API gateway. This can marshal multiple backend calls, vary and aggregate content if needed for different devices, and serve it up.
+A common solution to the problem of chatty interfaces with backend services, or the need to vary content for different types of devices, is to have server-side aggregration endpoint, or API gateway. This can marshal multiple backend calls, vary and aggregate content if needed for different devices, and serve it up. This pattern is a service that provides a single-entry point for certain groups of microservices.
 
-However, instead of having a monolithic gateway to handle all calls to/from UIs, another approach would be to restrict the use of these backends to one specific UI or application, whereby this pattern is referred to as "backends for frontends". If an API authentication and authorization layer is required, it can sit between BFFs and UIs.
+Usually it is not a good idea to have a single API gateway aggregating all the internal microservices of your application (monolithic) which violates microservice autonomy. Another approach would be to restrict the use of these backends to one specific UI or application (mobile, desktop, tablet), whereby this pattern is referred to as "backends for frontends". If an API authentication and authorization layer is required, it can sit between BFFs and UIs.
 
 Nonetheless, the danger with this approach is that it can take on logic it shouldn't. They should only contain behavior specific logic to deliver a particular user experience.
 
