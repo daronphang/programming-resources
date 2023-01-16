@@ -1,78 +1,56 @@
 ## Work Queues
 
-Work queue has the ability to parallelise work easily by scaling with more workers.
+Main idea is to avoid doing a resource-intensive task immmediately and waiting for it to complete. Work queue has the ability to parallelise work easily by scaling with more workers. Exchange medium is 'direct' and routing_key needs to be specified.
 
-Before sending a message, need to make sure the recipient queue exists. RabbitMQ will drop the message if sent to a non-existent queue. The queue_declare() is idempotent.
+RabbitMQ uses **round-robin dispatching** by default. To ensure workload is evenly distributed among workers (fair dispatch), need to inform RabbitMQ not to give more than one message to a worker at a time with prefetch_count arg.
 
-Messages cannot be sent directly to a queue but through an exchange.
-
-For better durability of queues and messages, use Publisher Confirms.
-
-To ensure workload is evenly distributed among workers (fair dispatch), need to inform RabbitMQ not to give more than one message to a worker at a time with prefetch_count arg.
+For better durability of queues and messages, need to declare durable argument for queue. However, marking messages as persistent doesn't guarantee a message won't be lost as there is short window when RabbitMQ has accepted a message and hasn't saved to a disk. For stronger durability, use **Publisher Confirms**.
 
 ```py
-# send.py
 import pika
+import sys
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
 
-# create the queue if it doesn't exist
-channel.queue_declare(
-    queue='hello',
-    durable=True    # queue survives if RabbitMQ restarts
-    )
+channel.queue_declare(queue='task_queue', durable=True)
 
+message = ' '.join(sys.argv[1:]) or "Hello World!"
 channel.basic_publish(
-    exchange='',            # default exchange
-    routing_key='hello',    # specifying which queue to go
-    body='Hello World!',
+    exchange='',
+    routing_key='task_queue',
+    body=message,
     properties=pika.BasicProperties(
-        delivery_mode = pika.spec.PERSISTENT_DELIVERY_MODE
+        delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE
     ))
-print(" [x] Sent 'Hello World!'")
-connection.close() # flush network buffers
+print(" [x] Sent %r" % message)
+connection.close()
 ```
 
-Receiving messages works by subscribing a callback function to a queue.
-
 ```py
-# worker.py
-import pika, sys, os
+import pika
+import time
 
-def main():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-    channel = connection.channel()
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='localhost'))
+channel = connection.channel()
 
-    channel.queue_declare(queue='hello', durable=True)
+channel.queue_declare(queue='task_queue', durable=True)
+print(' [*] Waiting for messages. To exit press CTRL+C')
 
-    def callback(ch, method, properties, body):
-        print(" [x] Received %r" % body)
 
-        # consequences are serious if ack is missed
-        # as messages will be redelivered and memory will be eaten
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+def callback(ch, method, properties, body):
+    print(" [x] Received %r" % body.decode())
+    time.sleep(body.count(b'.'))
+    print(" [x] Done")
+    ch.basic_ack(delivery_tag=method.delivery_tag)
 
-    channel.basic_qos(prefetch_count=1)
-    channel.basic_consume(
-        queue='hello',
-        on_message_callback=callback,
-        auto_ack=True   # turn off acknowledgement
-        )
 
-    print(' [*] Waiting for messages. To exit press CTRL+C')
-    channel.start_consuming()
+channel.basic_qos(prefetch_count=1)
+channel.basic_consume(queue='task_queue', on_message_callback=callback)
 
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        print('Interrupted')
-        try:
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)
+channel.start_consuming()
 ```
 
 ```console

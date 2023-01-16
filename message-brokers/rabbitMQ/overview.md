@@ -8,11 +8,13 @@ RabbitMQ can deal with high-throughput use cases such as online transacations or
 
 If a consumer dies (channel closed, TCP connection lost), RabbitMQ will re-queue if it didn't receive an acknowledgement from the consumer. Timeout is 30minutes by default.
 
+This can be turned off by setting auto_ack to True. However, any message delivered to the consumer will be marked for deletion, and if it terminates during processing, the message will be lost.
+
 ## Architecture
 
 Messages are not published directly to a queue; instead, producer sends messages to an exchange. The exchange is responsible for routing the messages to different queues with the help of bindings and routing keys. A binding is a link between a queue and an exchange.
 
-<img src="rabbitMQ.PNG">
+<img src="./pictures/rabbitMQ.PNG">
 
 ## Exchanges
 
