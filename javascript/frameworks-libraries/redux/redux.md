@@ -28,8 +28,8 @@ state.value = 123;
 
 // this is safe
 return {
-    ...state,
-    value: 123,
+  ...state,
+  value: 123,
 };
 ```
 
@@ -40,7 +40,7 @@ return {
 3. Reducer returns new state to Store.
 4. State is updated in component through subscription.
 
-<img src="./_snapshots/redux-flow.png">
+<img src="./assets/redux-flow.png">
 
 ## Actions
 
@@ -65,14 +65,14 @@ Should never mutate arguments in Reducer, perform side-effects like API calls, a
 
 ```js
 function counterReducer(state = { value: 0 }, action) {
-    switch (action.type) {
-        case "counter/incremented":
-            return { value: state.value + 1 };
-        case "counter/decremented":
-            return { value: state.value - 1 };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'counter/incremented':
+      return { value: state.value + 1 };
+    case 'counter/decremented':
+      return { value: state.value - 1 };
+    default:
+      return state;
+  }
 }
 ```
 
@@ -102,11 +102,11 @@ store.subscribe(() => console.log(store.getState()));
 
 // The only way to mutate the internal state is to dispatch an action
 // The actions can be serialized, logged or stored and later replayed
-store.dispatch({ type: "counter/incremented" });
+store.dispatch({ type: 'counter/incremented' });
 // {value: 1}
-store.dispatch({ type: "counter/incremented" });
+store.dispatch({ type: 'counter/incremented' });
 // {value: 2}
-store.dispatch({ type: "counter/decremented" });
+store.dispatch({ type: 'counter/decremented' });
 // {value: 1}
 ```
 
@@ -124,18 +124,18 @@ console.log(currentValue);
 Slice is a collection of Redux reducer logic and actions for a single feature in your app.
 
 ```js
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
 
 export default configureStore({
-    reducer: {
-        // redux slices
-        // we want to have a state.counter of Redux state object
-        // and counterReducer to handle to state changes
-        counter: counterReducer,
-        users: usersReducer,
-        posts: postsReducer,
-        comments: commentsReducer,
-    },
+  reducer: {
+    // redux slices
+    // we want to have a state.counter of Redux state object
+    // and counterReducer to handle to state changes
+    counter: counterReducer,
+    users: usersReducer,
+    posts: postsReducer,
+    comments: commentsReducer,
+  },
 });
 ```
