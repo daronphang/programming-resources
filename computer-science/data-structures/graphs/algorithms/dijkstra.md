@@ -65,7 +65,7 @@ for (each vertex z adjacent to u) {
 
 ### Example (Version 1)
 
-![b-nodes](../../images/dijkstra-example.PNG)
+![b-nodes](../../assets/dijkstra-example.PNG)
 
 #### Stage 1
 
@@ -95,7 +95,7 @@ D[E] remains same as 4 via D.
 
 Vertex E has minimal estimate, and so is tight.
 
-![b-nodes](../../images/dijkstra-example-1.PNG)
+![b-nodes](../../assets/dijkstra-example-1.PNG)
 
 ### Example (Version 2)
 

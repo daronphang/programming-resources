@@ -10,7 +10,7 @@ Hash table is an effective data structure for implementing dictionaries which su
 
 With direct addressing, element with key k is stored in slot k. With hashing, element is stored in slot h(k) whereby h() is hash function to compute the slot from key k.
 
-<img src="../../images/hash-table-hashing.PNG">
+<img src="../../assets/hash-table-hashing.PNG">
 
 ## Chaining
 
@@ -34,7 +34,7 @@ chainedHashDelete(T,x) {
 
 ### Figure
 
-<img src="../../images/hash-table-collision.PNG">
+<img src="../../assets/hash-table-collision.PNG">
 
 ## Load Factor
 

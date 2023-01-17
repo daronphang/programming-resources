@@ -20,7 +20,7 @@ Lines 19-20 update the set of nonbasic and basic variables.
 
 ### Pseudo
 
-<img src="../../../images/simplex-pivot.PNG">
+<img src="../../../assets/simplex-pivot.PNG">
 
 ## Simplex
 
@@ -41,7 +41,7 @@ For lines 3-4, if all the coefficients in objective function are negative, the l
 
 Lines 5-9 check each constraint and pick the one that most severely limits the amount by which we can increase Xe without violating any of the nonnegativity constraints. For leaving variable, we also assume that we use some prespecified deterministic rule for choosing this. If none of the constraints limits the amount by which the entering variable can increase, the algorithm terminates.
 
-<img src="../../../images/simplex-algo.PNG">
+<img src="../../../assets/simplex-algo.PNG">
 
 ## Termination
 

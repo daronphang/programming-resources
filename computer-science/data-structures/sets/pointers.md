@@ -6,7 +6,7 @@ For languages that do not have pointers, can implement via a multiple-array repr
 
 Can represent a collection of objects that have the same attributes by using an array to hold for each attribute i.e. key, next, and prev.
 
-<img src="../../images/linked-list-multiple-array.PNG">
+<img src="../../assets/linked-list-multiple-array.PNG">
 
 ```
 keys = [NIL, 4, 1, NIL, 16, NIL, 9]
@@ -21,4 +21,4 @@ In single-array, an object occupies a contiguous subarray A[j..k] whereby each a
 - Offsets corresponding to key, next and prev are 0, 1, 2 respectively.
 - Given a pointer i, A[i+1] returns i.next and A[i+2] returns i.prev.
 
-<img src="../../images/linked-list-single-array.PNG">
+<img src="../../assets/linked-list-single-array.PNG">

@@ -23,7 +23,7 @@ Be careful not to assume that optimal substructure exists when it does not. For 
 
 For instance, finding the longest path from q to t yields two subproblems: finding longest paths from q to r, and r to t. For the first subproblem, path q -> s -> t -> r is chosen; since s and t nodes are used, they cannot be used in second subproblem and hence, the problem cannot be solved at all.
 
-<img src="../../images/dp-subtleties.PNG" >
+<img src="../../assets/dp-subtleties.PNG" >
 
 ### Shortest Path
 
@@ -47,7 +47,7 @@ n     Number of times fib() called
 15    1219
 ```
 
-<img src="../../images/dp-fibonacci.PNG">
+<img src="../../assets/dp-fibonacci.PNG">
 
 ## Top-Down with Memoization
 

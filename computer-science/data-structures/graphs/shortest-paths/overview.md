@@ -14,7 +14,7 @@ Negative-weight edges can create negative-weight cycles i.e. a cycle that will r
 
 ### Figure
 
-<img src="../../../images/negative-weight-cycles.PNG">
+<img src="../../../assets/negative-weight-cycles.PNG">
 
 ## Representing Shortest Paths
 
@@ -47,7 +47,7 @@ relax(u,v,w) {
 
 ### Figure
 
-<img src="../../../images/shortest-paths-relaxation.PNG">
+<img src="../../../assets/shortest-paths-relaxation.PNG">
 
 ## Directed Acyclic Graphs (DAG)
 
@@ -70,4 +70,4 @@ DAGShortestPaths(G,w,s){
 
 ### Figure
 
-<img src="../../../images/dag-shortest-paths.PNG">
+<img src="../../../assets/dag-shortest-paths.PNG">

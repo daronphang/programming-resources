@@ -21,7 +21,7 @@ genericMST(G,w) {
 
 ### Figure
 
-<img src="../../../images/MST.PNG">
+<img src="../../../assets/MST.PNG">
 
 ## Greedy Algorithms
 

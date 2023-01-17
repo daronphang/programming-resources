@@ -20,4 +20,4 @@ directAddressDelete(T,x) {
 
 ### Figure
 
-<img src="../../images/hash-table-direct-address.PNG">
+<img src="../../assets/hash-table-direct-address.PNG">

@@ -47,7 +47,7 @@ Subject to
     x1,x2 >= 0
 ```
 
-<img src="../../images/lp-graphing.PNG">
+<img src="../../assets/lp-graphing.PNG">
 
 ## Political Problem Example
 

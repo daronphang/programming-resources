@@ -138,7 +138,7 @@ treeDelete(T, z) {
 
 ### Delete Cases
 
-![nodes](../../../images/BST-deletion.PNG)
+![nodes](../../../assets/BST-deletion.PNG)
 
 ### Minimum
 

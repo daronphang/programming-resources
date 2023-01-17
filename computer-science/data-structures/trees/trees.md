@@ -8,7 +8,7 @@ Path is a sequence of connected edges from one node to another. For every node, 
 
 Like most data structures, need primitive operators (constructors, seleectors, conditions) to build and manipulate trees.
 
-![nodes](../../images/tree-structure.PNG)
+![nodes](../../assets/tree-structure.PNG)
 
 ## Quad Trees
 

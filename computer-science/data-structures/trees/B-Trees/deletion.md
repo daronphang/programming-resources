@@ -28,4 +28,4 @@ b) If siblings have t-1 keys, merge x.Ci with one sibling and move a key from x 
 
 ## Figure
 
-  <img src="../../../images/b-trees-deletion.PNG">
+  <img src="../../../assets/b-trees-deletion.PNG">

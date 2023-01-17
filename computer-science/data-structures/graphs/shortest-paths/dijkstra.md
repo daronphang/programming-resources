@@ -32,7 +32,7 @@ dijkstra(G,w,s){
 
 ## Figure
 
-<img src="../../../images/shortest-paths-dijkstra.PNG">
+<img src="../../../assets/shortest-paths-dijkstra.PNG">
 
 ## Sequence
 

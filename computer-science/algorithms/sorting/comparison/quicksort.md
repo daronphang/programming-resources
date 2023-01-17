@@ -74,4 +74,4 @@ randomizedPartition(A, left, right) {
 
 ### Sequence of Events
 
-<img src="../../../images/quicksort.PNG" >
+<img src="../../../assets/quicksort.PNG" >

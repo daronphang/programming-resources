@@ -12,7 +12,7 @@ LEFT(i)         Returns 2i
 RIGHT(i)        Returns 2i+1
 ```
 
-<img src="../../../images/heap.PNG" />
+<img src="../../../assets/heap.PNG" />
 
 ### Maintaining Heap Property
 
@@ -25,7 +25,7 @@ Heapify is the process of creating a heap data structure from a binary tree. Can
 5. Swap largest with currentElement.
 6. Repeat steps for currentElement until subtrees are heapified.
 
-<img src="../../../images/heapify-example.PNG" />
+<img src="../../../assets/heapify-example.PNG" />
 
 ```
 // i refers to index
@@ -58,7 +58,7 @@ maxHeapify(A, i) {
 
 Can use maxHeapify in bottom-up manner to convert an array A[1..n] into max-heap. All elements in subarray A[([n/2]+1)..n] are all leaves of the tree. Has time complexity of O(n).
 
-<img src="../../../images/build-max-heap.PNG" />
+<img src="../../../assets/build-max-heap.PNG" />
 
 ```
 buildMaxHeap(A) {

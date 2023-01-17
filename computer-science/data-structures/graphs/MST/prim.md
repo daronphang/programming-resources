@@ -34,7 +34,7 @@ mstPrim(G,w,r) {
 
 ### Figure
 
-<img src="../../../images/graphs-MST-prim.PNG">
+<img src="../../../assets/graphs-MST-prim.PNG">
 
 ### Example
 
@@ -46,4 +46,4 @@ mstPrim(G,w,r) {
 6. Repeat until mstSet contains all vertices of given graph.
 7. Final mstSet becomes {0, 1, 7, 6, 5, 2, 8, 3, 4}.
 
-<img src="../../../images/prim-example.PNG">
+<img src="../../../assets/prim-example.PNG">

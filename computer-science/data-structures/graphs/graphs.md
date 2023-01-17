@@ -15,7 +15,7 @@ https://adrianmejia.com/data-structures-for-beginners-graphs-time-complexity-tut
 
 ### Data Structure
 
-<img src="../../images/graphs.PNG" />
+<img src="../../assets/graphs.PNG" />
 
 ### Types of Graphs
 
@@ -41,7 +41,7 @@ A forest is an undirected, disconnected acyclic graph i.e. a disjoint collection
 
 ### Figure
 
-<img src="../../images/graphs-forest.PNG" />
+<img src="../../assets/graphs-forest.PNG" />
 
 ## Weighted Graph Application
 
@@ -61,7 +61,7 @@ A **subgraph** of G is defined as any graph that has a vertex set which is a sub
 If nodes U and V are connected by edge E, and U and W are connected by edge E1, and W and V are connected by edge E2, then both E1 and E2 are subdivions of E. **Smoothing** refers to a process of removing vertex (W) which leaves an edge connecting the remaining adjacent vertices.
 
 <div style="text-align: center; padding: 15px">
-  <img src="../../images/subdivision.PNG" />
+  <img src="../../assets/subdivision.PNG" />
 </div>
 
 A subdivision of graph G can be defined as a graph resulting from the subdivision of edges in G. Two graphs G and H can be defined as **homeomorphic** if there is a graph isomorphism from some subdivision of G to some subdivision of H.
@@ -73,7 +73,7 @@ An **edge contraction** removes an edge from a graph and merges the two vertices
 A planar graph is one that can be embedded in a plane i.e. can be drawn on a sheet of paper in such a way that no edges cross each other. This is important in applications such as printed circuit design. Though planar graphs can have edges that cross each other, they can be transformed by moving vertices or deforming the edges.
 
 <div style="text-align: center; padding: 15px">
-  <img src="../../images/planar.PNG" />
+  <img src="../../assets/planar.PNG" />
 </div>
 
 To prove a finite graph is planar, it must not contain a subgraph that is homeomorphic to, or a subdivision of K5 (fully connected graph with five vertices) or K3,3 (three vertices fully connected to three other vertices).
