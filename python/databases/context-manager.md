@@ -58,7 +58,7 @@ example = query_func('admin', 'admin')      # do not need to pass conn variable 
 
 ### Necessity
 
-Objects in Python do the "right thing" when they are deleted (normally when they go out of scope): files close, sockets close, database connections rollback (if commit is not called explicitly) and close. Hence, there is no need for context manager in Python.
+Objects in CPython do the "right thing" when they are deleted (normally when they go out of scope): files close, sockets close, database connections rollback (if commit is not called explicitly) and close. It is guaranteed to be closed when an object reference count goes to zero. Hence, there is no need for context manager in Python.
 
 ```py
 open('path/file', 'w').write('hello world\n')

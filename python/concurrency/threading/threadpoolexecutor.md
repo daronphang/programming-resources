@@ -8,14 +8,37 @@ https://superfastpython.com/threadpoolexecutor-in-python/#What_Are_Thread_Pools
 
 ### Executor
 
-Defines three methods used to control our thread pool.
-
-For map(), each application of the function to an element happens async.
+Defines three methods used to control our thread pool. For map(), each application of the function to an element happens async.
 
 ```
 submit()        Dispatch a function to be executed and return a future object
 map()           Apply a function to an iterable of elements
 shutdown()      Shutdown the executor
+```
+
+### Worker
+
+Workers are created as daemon threads. This is to allow the interpreter to exit when there are still idle threads in a ThreadPoolExecutor's thread pool. However, allowing workers to die has two undesirable properties:
+
+- Workers would still be running during interpreter shutdown and would fail in unpredictable ways
+- Workers could be killed while evaluating a work item, which could be bad if the callable has external side effects
+
+This is workaround by installing an exit handler and calls join() to wait for threads to finish.
+
+```py
+_threads_queues = weakref.WeakKeyDictionary()
+_shutdown = False
+
+def _python_exit():
+    global _shutdown
+    _shutdown = True
+    items = list(_threads_queues.items())
+    for t, q in items:
+        q.put(None)
+    for t, q in items:
+        t.join()
+
+atexit.register(_python_exit)
 ```
 
 ### Future

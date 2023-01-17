@@ -1,4 +1,4 @@
-### Message Brokers
+## Message Brokers
 
 Any application, service or software that consists of multiple parts communicating with each other, after reaching moderate complexity, requires some form of event/message management. Such platforms may come in a message queue or broker.
 
@@ -6,11 +6,11 @@ A message broker acts as a middleman for various services to reduce loads and de
 
 Message queueing allows web servers to respond to requests quickly instead of being forced to perform resource-heavy procedures on the spot that may delay response time. Also useful when you want to distribute a message to multiple consumers or to balance loads between workers.
 
-### Messaging Protocols
+## Messaging Protocols
 
 - AMQP: Advanced Message Queuing Protocol
 
-### Architecture
+## Architecture
 
 1. Client applications (producers) create/publish messages and deliver them to the broker.
 2. Broker receives the message and enqueues them to a specific queue.
@@ -18,7 +18,7 @@ Message queueing allows web servers to respond to requests quickly instead of be
 
 Software may act as a producer, consumer, or both. Both producers and consumers may be on the same/different server, and the request can be created in one programming language and handled in another. Hence, two applications will only communicate through the messages they are sending to each other i.e. promotes loose coupling.
 
-### Concepts
+## Concepts
 
 - **Producer**: Application that sends the messages.
 - **Consumer**: Application that receives the messages.

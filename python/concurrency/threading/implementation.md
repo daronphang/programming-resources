@@ -62,8 +62,6 @@ x.join()
 
 Create a context manager with ThreadPoolExecutor.
 
-### Subthread within Thread
-
 ## Sub-threads within a Thread
 
 ```py

@@ -14,7 +14,7 @@ This can be turned off by setting auto_ack to True. However, any message deliver
 
 Messages are not published directly to a queue; instead, producer sends messages to an exchange. The exchange is responsible for routing the messages to different queues with the help of bindings and routing keys. A binding is a link between a queue and an exchange.
 
-<img src="./pictures/rabbitMQ.PNG">
+<img src="./assets/rabbitMQ.PNG">
 
 ## Exchanges
 

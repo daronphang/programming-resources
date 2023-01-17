@@ -61,4 +61,4 @@ Under the hood, join() uses merge() but provides a more efficient way to join Da
 df.join(df2, lsuffix='df1_col_name', rsuffix='df2_col_name')
 ```
 
-<img src="../_snapshots/pandas-join.PNG">
+<img src="../assets/pandas-join.PNG">

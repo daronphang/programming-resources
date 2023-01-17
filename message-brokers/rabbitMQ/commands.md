@@ -1,4 +1,4 @@
-## Listing Queues
+## Commands
 
 ```console
 $ sudo rabbitmqctl list_queues
