@@ -1,4 +1,4 @@
-### Behavioral Patterns
+## Behavioral Patterns
 
 Behavioral patterns are concerned with algorithms and assignment of responsibilities between objects. They describe not just patterns of objects or classes, but also the patterns of communication between them. These patterns characterize complex control flow that's difficult to follow at run-time.
 

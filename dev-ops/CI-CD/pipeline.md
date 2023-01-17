@@ -1,4 +1,4 @@
-### CI/CD Pipeline
+## CI/CD Pipeline
 
 Continuous Integration is the process where software is built and initial tests are completed. Continuous Deployment is the process of combining code with infrastructure, ensuring all tests are completed and policies followed.
 
@@ -10,7 +10,7 @@ CI/CD pipelines are a practice focused on improving software delivery using eith
 4. Deploy: Stage where code is deployed to production.
 5. Validation and Compliance: Determined by needs of organization.
 
-#### Benefits
+### Benefits
 
 - Developers can stay focused on writing code and monitoring the behavior of the system in production.
 - QA and product stakeholders have easy access to the latest, or any, version of the system.
@@ -21,7 +21,7 @@ CI/CD pipelines are a practice focused on improving software delivery using eith
 
 Good CI/CD pipeline is fast, reliable and accurate.
 
-### Best Practices with Docker
+## Best Practices with Docker
 
 - Before optimization, think how inner loop (code, build, run, test) relates with outer loop (push change, CI build, CI test, deployment).
 - Use Docker Hub access token when setting up CI rather than password.

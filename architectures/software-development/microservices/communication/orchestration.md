@@ -4,7 +4,7 @@ With orchestration style, you rely on a central brain to guide and drive the pro
 
 The orchestrator is responsible for invoking and combining the services. The relationship between all participating services are described by a single endpoint i.e. composite service.
 
-<img src="../../../_snapshots/orchestration.PNG">
+<img src="../assets/orchestration.PNG">
 
 ### Benefits
 

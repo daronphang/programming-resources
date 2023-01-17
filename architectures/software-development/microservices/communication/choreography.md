@@ -6,7 +6,7 @@ Downside is that the explicit view of the business process is only implicitly re
 
 For example, an e-commerce site completing a customer's checkout process can include sending an email to customer, sending order to the warehouse and creating points balance for rewards program. These tasks do not necessarily have to happen in any particular order, and asynchronous flow suits this process.
 
-<img src="../../../_snapshots/choreography.PNG">
+<img src="../assets/choreography.PNG">
 
 ### Benefits
 

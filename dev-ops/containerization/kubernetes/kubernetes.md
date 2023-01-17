@@ -26,7 +26,7 @@ Cloud or self-managed including Docker Enterprise, Rancher, OpenShift, Canonical
 
 Kubernetes deployment is called a cluster that consists of at least one control plane and one or more nodes. Both control planes and node instances can be physical devices, VMs or instances in the cloud.
 
-<img src="./_snapshots/kubernetes-architecture.png">
+<img src="./assets/kubernetes-architecture.png">
 
 ### Abstraction Layers
 

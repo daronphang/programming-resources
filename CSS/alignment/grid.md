@@ -6,7 +6,7 @@ The fr unit (fraction) works to assign a proportion of remaining space in the gr
 
 https://learncssgrid.com/
 
-<img src="../_snapshots/grid-eg.png">
+<img src="../assets/grid-eg.png">
 
 ### Explicit Grid
 
@@ -64,7 +64,7 @@ Grid lines are essentially lines that represent the start of, or end of, or betw
 }
 ```
 
-<img src="../_snapshots/grid-lines.png">
+<img src="../assets/grid-lines.png">
 
 ### Positioning Shorthands
 

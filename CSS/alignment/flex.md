@@ -56,7 +56,7 @@ When you wrap flex items, each new row/column is an independent flex line in the
 }
 ```
 
-<img src="./_snapshots/flexbox-eg1.png">
+<img src="../assets/flexbox-eg1.png">
 
 ### Horizontal/Vertical Alignment
 

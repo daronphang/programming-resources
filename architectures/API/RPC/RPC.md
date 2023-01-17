@@ -29,7 +29,7 @@ As the application software does not contain any communication code, it is indep
 5. When the procedure completes, it returns to the server stub which mashalls the return values into a message and hands it to the transport layer.
 6. Client stub receives and demarshalls the return paramaters and execution returns to the caller.
 
-<img src="../../_snapshots/RPC.PNG">
+<img src="./assets/RPC.PNG">
 
 ## Terminologies
 

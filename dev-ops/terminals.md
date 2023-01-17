@@ -1,4 +1,4 @@
-### PowerShell
+## PowerShell
 
 Powershell is a cross-platform task automation solution made up of command-line shell, scripting language, and a configuration management framework. Much more powerful than CMD. A Shell is a user interface that gives access to various services of OS. Can be installed on Windows, Linux and Mac. Used for task automation and configuration management. Commands are called cmdlets.
 
