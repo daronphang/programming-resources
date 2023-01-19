@@ -10,6 +10,7 @@ Python doesn't have a dedicated syntax for enums, but has an enum module that su
 
 ### Benefits
 
+- Helps to express characteristics of a category/list by modelling
 - Allows for convenient grouping of related constants in a sort of namespace
 - Allows for additional behavior with custom methods that operate on enum
 - Provides quick and flexible access to enum members
@@ -24,6 +25,15 @@ Python doesn't have a dedicated syntax for enums, but has an enum module that su
 - Are iterable, returning their members in a sequence.
 - Provide hashable members that can be used as dictionary keys.
 - Do not allow member reassignments.
+
+### Enumerations
+
+```
+Enum
+IntEnum     Provide ordered comparisons of members
+IntFlag     Similar to IntEnum and supports bitwise operations i.e. |
+Flag        Supports bitwise operations but does not inherit from int
+```
 
 ## Example
 
@@ -60,6 +70,7 @@ class Size(Enum):
 Day.MONDAY = 0  # error, cannot reassign members as they are constants
 
 print(Day.MONDAY)       # Day.MONDAY, an object of type <enum 'Day'>
+print(type(Day.MONDAY)) # <enum 'Day'>
 print(Day('MONDAY'))    # Day.MONDAY
 print(Day['MONDAY'])    # Day.MONDAY
 print(Day.MONDAY.value) # 1
@@ -87,4 +98,38 @@ def move(direction):
 
 move(Direction.LEFT)    # left
 move("right")   # TypeError: direction must be an instance of Direction Enum
+```
+
+### Checking Members
+
+```py
+class Color(Enum):
+    red = 1
+    green = 2
+    blue = 3
+    really_blue = 3
+
+    @classmethod
+    def has_member(cls, key):
+        return key in cls.__members__
+```
+
+### Aliases
+
+```py
+class Color(Enum):
+    red = 1
+    green = 2
+    blue = 3
+    really_blue = 3
+
+print(Color.blue is Color.really_blue)  # True
+```
+
+### Comparisons
+
+Use is keyword as members are singleton instance objects of the enumeration class. Equality works, but testing by identity is optimal.
+
+```py
+print(Color.red is Color.red)
 ```

@@ -25,7 +25,7 @@ print(globals())
 
 ### \_\_name\_\_
 
-Special variable that determines if the module is being run directly when executed, or if it is imported. The interpreter will set the current module to \_\_main\_\_ if it is executed as the main program, else it will set it to the parent's module name.
+Special variable that determines if the module is being run directly when executed, or if it is imported. The interpreter will set the current module to \_\_main\_\_ if it is executed as the main program, else it will set it to the parent's module name. Module's name is available as \_\_name\_\_.
 
 ```py
 # file2.py
@@ -43,6 +43,20 @@ File1 is being imported
 File2 __name__ = __main__
 File2 is being run directly
 '''
+```
+
+### Troubleshooting Namespaces
+
+1. ModuleNotFoundError: No module named testing
+
+Whenever you encounter an import error, print \_\_name\_\_ of the module to check how it is being called.
+
+2. ImportError: atempted relative import with no known parent package
+
+Occurs when you are using dot notation. Run script with -m flag. Do not append .py suffix as -m flag only requires module names.
+
+```console
+$ py -m src.main # instead of src/main    # declare path as module
 ```
 
 ## Enclosing and Local
