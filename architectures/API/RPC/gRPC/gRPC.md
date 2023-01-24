@@ -92,6 +92,10 @@ Since gRPC relies on HTTP/2, you can't call a gRPC service from a web browser di
 
 By compressing data into binary, protobuf files become non-human readable, unlike XML and JSON. Developers need to use gRPC command line tool and server reflection tool to perform debugging or analyze payloads.
 
+### Higher complexity
+
+gRPC is more complex and has less library and tooling support than HTTP.
+
 ## When to use gRPC
 
 - Real-time communication services where you deal with streaming calls.
