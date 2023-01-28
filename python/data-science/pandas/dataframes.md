@@ -59,11 +59,13 @@ df.index = np.arange(1, len(df) + 1)
 Use iloc for index, and loc for column name.
 
 ```py
-df['col_name1', 'col_name2']
+df[['col_name1', 'col_name2']]
 df.loc['row or col name']
 df.loc['row name', 'col name']
 df.iloc['index number']
 df.iloc[:3]                         # or df.iloc[0,2], access by index
+
+df.iloc[0]['col name']  # access first row, by col name
 ```
 
 ### Deleting Rows/Columns

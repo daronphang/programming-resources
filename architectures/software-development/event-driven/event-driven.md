@@ -4,6 +4,8 @@ An event-driven architecture consists of event producers that generate a stream 
 
 Events are delivered in near real-time, so consumers can respond immediately to events as they occur. Producers are decoupled from consumers i.e. it doesn't know which consumers are listening. Consumers are also decoupled from each other, and each consumer can see all of the events.
 
+Events are not destroyed upon consumption as in message-passing systems, but instead remain readily available for other consumers to read as they require. The services can consume events from input event streams, apply their business logic, and may emit their own output events.
+
 ### When to Use This Architecture
 
 - Multiple subsystems must process the same events.

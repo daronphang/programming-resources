@@ -4,6 +4,8 @@ Before diving into the specifics of different technology choices for communicati
 
 Both modes of communication can enable two different idiomatic styles of collaboration: request/response and event-based. Nonetheless, you are free to mix-and-match as some technologies would fit more naturally into one style or another.
 
+**Communication structures direct how software is created and managed through the life of an organization**.
+
 ## Synchronous
 
 Service calls an API that another service exposes, using a protocol such as HTTP or gRPC. This option is synchronous as the caller waits for a response from the receiver. Hence, client code block their thread, until the response reach from the server.
