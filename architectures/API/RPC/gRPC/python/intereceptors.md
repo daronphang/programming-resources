@@ -34,3 +34,59 @@ SimpleUnaryInterceptor.prototype.intercept = function (request, invoker) {
   });
 };
 ```
+
+## GRPC Interceptor
+
+```console
+$ pip install grpc-interceptor
+```
+
+### Binding Interceptors (Server)
+
+Interceptors are executed in order for request processing, and reverse order for response processing.
+
+```
+Client -> Request -> Interceptor1 -> Interceptor2 -> Interceptor3 -> Server
+Server -> Response -> Interceptor3 -> Interceptor2 -> Interceptor1 -> Client
+```
+
+```py
+from grpc_interceptor import ServerInterceptor
+
+
+class Interceptor1(ServerInterceptor):
+  def intercept(
+    self,
+      method: Callable,
+      request: Any,
+      context: grpc.ServicerContext,
+      method_name: str,
+  ):
+    logger.info('test1Start')
+    resp = method(request, context)
+    logger.info('test1End')
+
+
+class Interceptor2(ServerInterceptor):
+  def intercept(
+    self,
+      method: Callable,
+      request: Any,
+      context: grpc.ServicerContext,
+      method_name: str,
+  ):
+    logger.info('test2Start')
+    resp = method(request, context)
+    logger.info('test2End')
+```
+
+```py
+interceptors = [interceptor1(), interceptor2(), interceptor3()]
+
+'''
+test1Start
+test2Start
+test2End
+test1End
+'''
+```

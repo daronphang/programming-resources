@@ -34,3 +34,31 @@ if __name__ == "__main__":
 
     main()
 ```
+
+### Dynamic Arguments
+
+Can either inject the object and pass the arguments directly, or inject the container itself. Pass arguments to the container object normally as you would like normal functions/classes.
+
+```py
+@inject
+def container_example(db=Provide[Container.db.add_args('TSMSSPROD06')]):
+    print(db)   # connector object
+
+
+@inject
+def container_example(container=Provide[Container]):
+    db = container.db('TSMSSPROD06')
+    print(db)   # connector object
+
+```
+
+### Nested Functions
+
+Not allowed to inject with nested functions.
+
+```py
+def example():
+    def nested(v=Provide[Container.test]):
+        print(v)    # does not work!
+    nested()
+```
