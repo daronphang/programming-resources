@@ -79,7 +79,7 @@ If proxies are setup in Dockerfile, ensure that docker container names are added
 
 ```
 NO_PROXY=localhost,127.0.0.1,service1
-``
+```
 
 ### Load Balancer
 
