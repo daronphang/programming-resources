@@ -73,6 +73,14 @@ By default Compose sets up a single network for your app. Each container for a s
 
 When making a request from one container to another, use service name instead of localhost:port i.e. axios.get('http://service1/api/status').
 
+### With Proxies
+
+If proxies are setup in Dockerfile, ensure that docker container names are added to NO_PROXY for DNS resolution without going through proxy server.
+
+```
+NO_PROXY=localhost,127.0.0.1,service1
+``
+
 ### Load Balancer
 
 When having multiple services and using Docker to map unallocated ports for each service, we wouldn't know which port is being allocated for each container until all instances are up.
