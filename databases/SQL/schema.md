@@ -12,14 +12,14 @@ Schema always belongs to one database, whereas a database may have multiple sche
 
 Database schema includes:
 
--   All important or relevant data.
--   Consistent formatting for all data entries.
--   Unique keys for all entries and database objects.
--   Each column in a table has a name and data type.
+- All important or relevant data.
+- Consistent formatting for all data entries.
+- Unique keys for all entries and database objects.
+- Each column in a table has a name and data type.
 
 Schemas are important for designing database management systems (DBMS) or relational database management sysytems (RDBMS). Examples of DBMS include MySQL, Oracle, PostgreSQL, etc.
 
-<img src="db-schema.png">
+<img src="./assets/db-schema.png">
 
 ### Built-in Schemas
 

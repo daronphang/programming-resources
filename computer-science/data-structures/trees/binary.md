@@ -70,4 +70,4 @@ Generalization of self-balancing binary search tree in which each node can hold 
 - Non-leaf node with c children contains c-1 search keys which act as separation values to divide its subtrees.
 - All leaf nodes appear in the same level and carry information.
 
-![b-nodes](../../images/b-nodes.PNG)
+![b-nodes](../../assets/b-nodes.PNG)

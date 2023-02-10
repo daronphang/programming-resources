@@ -16,7 +16,7 @@ Price   1   5   8   9   10  17  17  20  24  30
 
 Since we don't know ahead of time which value of i optimizes revenue, have to consider all possible values of i. Once the first cut is made, we may consider the two pieces as independent instances of the rod-cutting problem i.e. subproblems. The overall optimal solution incorporates optimal solutions to the two related subproblems, maximizing revenue from each of those two pieces.
 
-<img src="../../images/dp-rod-cutting-example.PNG" >
+<img src="../../assets/dp-rod-cutting-example.PNG" >
 
 ```
 Rn = max(Pn, R1 + Rn-1, R2 + Rn-2, ..., Rn-1 + R1)
@@ -35,7 +35,7 @@ R4 = max(
 
 Algorithm is inefficient as it calls itself recursively with the same parameter values i.e. solves the same subproblems repeatedly. For n=4, it is computing the optimal solution for n=1 four times, and n=2 twice. Has time complexity of n^n.
 
-<img src="../../images/dp-brute-force.PNG" >
+<img src="../../assets/dp-brute-force.PNG" >
 
 ```
 // recursive top-down implementation

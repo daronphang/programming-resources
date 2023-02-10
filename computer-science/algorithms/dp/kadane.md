@@ -31,4 +31,4 @@ function kadane(arr) {
 
 ### Example
 
-<img src="../../images/kadane-example.PNG">
+<img src="../../assets/kadane-example.PNG">

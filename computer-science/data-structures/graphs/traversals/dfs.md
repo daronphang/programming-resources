@@ -57,13 +57,13 @@ dfsVisit(G,u) {
 
 ### Figure
 
-<img src="../../../images/graphs-DFS.PNG">
+<img src="../../../assets/graphs-DFS.PNG">
 
 ### Figure (Timestamps)
 
 All tree and forward edges head downward in a depth-first tree and all back edges go up.
 
-<img src="../../../images/graphs-DFS-timestamps.PNG">
+<img src="../../../assets/graphs-DFS-timestamps.PNG">
 
 ## Classification of Edges
 

@@ -11,7 +11,7 @@ To insert a key, we travel down from root and search for the position where the 
 
 ## Algorithm (Split)
 
-<img src="../../../images/b-trees-insertion.PNG">
+<img src="../../../assets/b-trees-insertion.PNG">
 
 ```
 // takes in as input a nonfull internal node x (assumed to be in main memory)
@@ -61,7 +61,7 @@ bTreeSplitChild(x,i) {
 
 ## Algorithm (Insert)
 
-<img src="../../../images/b-trees-insertion-root.PNG">
+<img src="../../../assets/b-trees-insertion-root.PNG">
 
 ```
 bTreeInsert(T,k) {
@@ -114,4 +114,4 @@ bTreeInsertNonFull(x,k) {
 }
 ```
 
-<img src="../../../images/b-trees-insertion-example.PNG">
+<img src="../../../assets/b-trees-insertion-example.PNG">

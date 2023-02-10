@@ -8,6 +8,6 @@ Similar to binary heap, but has advantage of more efficient procedures for inser
 - There can only be zero or one binomial tree of each order.
 - Each constituent binomial tree must satisfy the priority ordering property.
 
-![nodes](../../images/binomial-heaps.PNG)
+![nodes](../../assets/binomial-heaps.PNG)
 
 Most important operation for binomial heaps is merge as it can be used as a sub-process for most other operations. Has O(log2n) time complexity which is better than O(n) complexity of merging binary heaps.

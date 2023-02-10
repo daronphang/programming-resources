@@ -51,7 +51,7 @@ listDelete(L,x) {
 
 ### Figure
 
-<img src="../../images/linked-list.PNG" >
+<img src="../../assets/linked-list.PNG" >
 
 ## Sentinels
 
@@ -137,7 +137,7 @@ class LRUCache:
 
 ### Circular, Doubly-Linked List with Sentinel
 
-<img src="../../images/linked-list-sentinel.PNG" >
+<img src="../../assets/linked-list-sentinel.PNG" >
 
 ## Allocating and Freeing Objects (Doubly-Linked List)
 
@@ -168,7 +168,7 @@ freeObject(x) {
 
 ### Sequence of Events
 
-<img src="../../images/linked-list-free-object.PNG">
+<img src="../../assets/linked-list-free-object.PNG">
 
 ## Linked Lists vs Arrays
 

@@ -34,7 +34,7 @@ When a heap is used to implement priority-queue, often need to store a **handle*
 
 ### Operations (Max-Priority)
 
-<img src="../../images/priority-queue-increase-key.PNG" >
+<img src="../../assets/priority-queue-increase-key.PNG" >
 
 ```
 MAXIMUM(A) {

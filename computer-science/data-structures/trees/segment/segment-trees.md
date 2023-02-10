@@ -4,7 +4,7 @@ Segment tree is a very flexible data structure that can be used to solve numerou
 
 The segment tree for an array is a binary tree in which each node contains aggregate information (min, max, sum, etc.) for a subrange[i...j] of the array; left child will hold information for range [i, (i+j)/2] and right child for range [(i+j)/2+1, j].
 
-<img src="../../../images/segment-tree.png">
+<img src="../../../assets/segment-tree.png">
 
 Segment tree can be broken down to three steps:
 

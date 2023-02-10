@@ -18,4 +18,4 @@ For fractional:
 
 ### Example
 
-<img src="../../images/knapsack-problem.PNG">
+<img src="../../assets/knapsack-problem.PNG">

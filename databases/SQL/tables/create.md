@@ -125,3 +125,36 @@ SET orderId =  CASE WHEN portfolioName='Semiconductor' THEN 2 WHEN portfolioName
 WHERE userId = '7bd32724-550e-4921-93ab-e62798e24f6a';
 ALTER TABLE user_portfolios ADD UNIQUE KEY `userId_2` (`userId`,`orderId`);
 ```
+
+## Creating Tables Using SELECT
+
+```sql
+-- For single row, multiple columns
+ SELECT
+'12345ABE' AS req_id,
+'instacap' AS req_type,
+NULL AS req_completed
+```
+
+```sql
+-- For multiple rows and columns
+SELECT * FROM (
+VALUES
+('12345ABE', 'instacap', NULL),
+('12345ABE', 'instacap', NULL)
+) AS
+PLACEHOLDER
+(req_id, req_type, req_completed)
+```
+
+```sql
+-- alternative using UNION
+ SELECT
+'12345ABE' AS req_id,
+'instacap' AS req_type,
+NULL AS req_completed
+UNION ALL
+(SELECT '12345ABE', 'instacap', NULL)
+UNION ALL
+(SELECT '12345ABE', 'instacap', NULL)
+```

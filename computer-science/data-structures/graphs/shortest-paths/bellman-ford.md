@@ -25,7 +25,7 @@ bellmanFord(G,w,s){
 
 ## Figure
 
-<img src="../../../images/shortest-paths-bellman-ford.PNG">
+<img src="../../../assets/shortest-paths-bellman-ford.PNG">
 
 ## Sequence
 

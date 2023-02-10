@@ -12,4 +12,4 @@ Instead of having a monolith build that has significant downsides such as requir
 
 Each microservice has its own source repository, mapped to its own CI build. When making a change, you run only the build and tests you need to. Nonetheless, making changes across repositories can be more difficult, but it is easier to resolve.
 
-<img src="../../../_snapshots/microservice-CI.PNG">
+<img src="../assets/microservice-CI.PNG">

@@ -15,7 +15,7 @@ radixSort(A, d) {
 
 ### Sequence of Events
 
-<img src="../../../images/radix-sort.PNG">
+<img src="../../../assets/radix-sort.PNG">
 
 ### Sorting Dates
 

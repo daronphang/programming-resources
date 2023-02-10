@@ -2,7 +2,7 @@
 
 Overall ecosystem encompasses both core modules and related sub-modules.
 
-<img src="hadoop.PNG">
+<img src="./assets/hadoop.PNG">
 
 ### Core Modules
 

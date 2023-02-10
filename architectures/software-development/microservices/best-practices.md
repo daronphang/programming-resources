@@ -44,7 +44,7 @@ Rather than having the reporting system pull the data, we could instead have the
 
 Another option is to make use of materialized views (virtual tables) provided by relational databases to create the aggregated view. Hence, the reporting schema would only be exposed to the data pump.
 
-<img src="../../_snapshots/data-pump.PNG">
+<img src="./assets/data-pump.PNG">
 
 ### Event Data Pump
 

@@ -12,7 +12,7 @@ For convenience in dealing with boundary conditions, a single sentinel is used t
 
 ### Figure
 
-<img src="../../../images/red-black-tree.PNG">
+<img src="../../../assets/red-black-tree.PNG">
 
 ## Rotations
 
@@ -27,7 +27,7 @@ When a left rotation is performed on node x, we assume its right child y is not 
 
 ### Figure
 
-<img src="../../../images/red-black-rotation.PNG">
+<img src="../../../assets/red-black-rotation.PNG">
 
 ### Algorithm (Pseudo)
 
@@ -104,11 +104,11 @@ redBlackInsertFixup(T,z){
 
 ### Figure
 
-<img src="../../../images/red-black-insertion.PNG">
+<img src="../../../assets/red-black-insertion.PNG">
 
-<img src="../../../images/red-black-insertion-2.PNG">
+<img src="../../../assets/red-black-insertion-2.PNG">
 
-<img src="../../../images/red-black-insertion-3.PNG">
+<img src="../../../assets/red-black-insertion-3.PNG">
 
 ## Deletion
 
@@ -228,4 +228,4 @@ redBlackDeleteFixup(T,x){
 
 ### Figure
 
-<img src="../../../images/red-black-delete.PNG">
+<img src="../../../assets/red-black-delete.PNG">

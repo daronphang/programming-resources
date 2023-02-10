@@ -29,9 +29,9 @@ heapSort(A) {
 
 ### Sequence of Events
 
-<img src="../../../images/heapsort.PNG">
+<img src="../../../assets/heapsort.PNG">
 
-<img src="../../../images/heapsort-example-2.PNG">
+<img src="../../../assets/heapsort-example-2.PNG">
 
 ### Sample Code
 

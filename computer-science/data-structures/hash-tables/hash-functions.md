@@ -70,7 +70,7 @@ h2(k) = 1 + (k mod m')
 
 ### Figure
 
-<img src="../../images/hash-table-double-hashing.PNG">
+<img src="../../assets/hash-table-double-hashing.PNG">
 
 ## Perfect Hashing
 
@@ -92,8 +92,8 @@ http://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf
 3. For secondary function hh(k), set m = n^2 and choosing a and b randomly.
 4. Check to make sure resulting function doesn't cause any collisions within the secondary table.
 
-<img src="../../images/hash-table-perfect-hashing-example.PNG">
+<img src="../../assets/hash-table-perfect-hashing-example.PNG">
 
 ### Figure
 
-<img src="../../images/hash-table-perfect-hashing.PNG">
+<img src="../../assets/hash-table-perfect-hashing.PNG">

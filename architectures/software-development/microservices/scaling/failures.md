@@ -20,7 +20,7 @@ With a circuit breaker, after a certain number of requests to a downstream servi
 
 While the circuit breaker is blown, you can either queue up the requests and retry later, or simply fail fast to avoid propagating the error up the call chain (for asynchronous operations).
 
-<img src="../../../_snapshots/circuit-breaker.PNG">
+<img src="../assets/circuit-breaker.PNG">
 
 ### Bulkheads
 
