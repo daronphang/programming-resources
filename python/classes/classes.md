@@ -44,7 +44,7 @@ Returns a proxy object (temporary object of the superclass) that allows us to ac
 super().__init__()  # python 3
 
 class Person(object):
-    super(Student, self).__init__() # python 2
+    super(Person, self).__init__() # python 2, calls its parent class __init__
 ```
 
 ```python
