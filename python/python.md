@@ -13,14 +13,14 @@ def my_sum(*args):
         result += x
     return result
 
-def concantenate(**kwargs):
+def concantenate(name, **kwargs):
     result = ''
-    for arg in kwargs.values():
+    for arg in kwargs.values(): # excludes name
         result += arg
     return result
 
 print(my_sum(1, 2, 3))
-print(concantenate(first=1, second=2, third=3))
+print(concantenate(name='john', first=1, second=2, third=3))
 ```
 
 ## Memory Management

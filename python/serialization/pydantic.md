@@ -87,3 +87,23 @@ w = Worker(name="john")
 s = Student(**w.dict())
 s = Student(w)  # if init is modified
 ```
+
+## Validating and Parsing
+
+```py
+from enum import Enum
+from pydantic import BaseModel
+
+
+class Colors(Enum):
+    RED = 'red'
+    GREEN = 'green'
+    BLUE = 'blue'
+
+class Test(BaseModel):
+    color: Colors
+
+p = {'color': 'red'}
+v = Test(**p)
+print(v.color)  # Colors.RED of type Enum
+```

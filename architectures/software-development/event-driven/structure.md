@@ -15,3 +15,7 @@ Each event in a stream is a statement of fact, and together these statements for
 Data access and modeling requirements are shifted to the consumer, with each consumer obtaining their own copy of events from the source event streams. Consumer remains fully responsible for any mixing of data from multiple event streams, special query functionality, or other business-specific implementation logic.
 
 Both producers and consumers are otherwise relieved of their duty to provide querying mechanisms, data transfer mechanisms, APIs, and cross-team services for the means of communicating data.
+
+## Microservice Single Writer Principle
+
+Each event stream has only one producing microservice i.e. the microservice is the owner of each event produced to that stream. This allows for the authoritative source of truth to always be known for any given event, by permitting the tracing of data lineage through the system.
