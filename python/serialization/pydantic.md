@@ -107,3 +107,47 @@ p = {'color': 'red'}
 v = Test(**p)
 print(v.color)  # Colors.RED of type Enum
 ```
+
+## Arbitrary Field
+
+```py
+from pydantic import (
+    BaseModel,
+    Field,
+    StrictStr,
+    validator,
+    StrictBytes,
+    StrictFloat,
+    StrictInt,
+)
+from typing import Any, Dict, Union, Optional
+
+
+class SqlOperator(Enum):
+    EQUAL = '='
+    GT = '>'
+    GTE = '>='
+    LT = '<'
+    LTE = '<='
+    IN = 'IN'
+    OR = 'OR'   # composite
+    BETWEEN = 'BETWEEN'
+    LIKE = 'LIKE'
+
+
+class SomeDict(BaseModel):
+    __root__: Dict[StrictStr, Union[StrictStr, StrictFloat, StrictBytes]]
+
+
+class Test(BaseModel):
+    EQUAL: SomeDict = Field(alias=SqlOperator.EQUAL.value)
+    GT: Optional[SomeDict] = Field(alias=SqlOperator.GT.value)
+
+payload = {
+    "=": {
+        "test1": "hello"
+    }
+}
+
+print(Test(**payload).EQUAL)
+```
