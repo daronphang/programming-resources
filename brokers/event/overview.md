@@ -1,6 +1,6 @@
 ## Event Broker
 
-A system that is the heart of an event-driven microservice platform, and that receives events, stores them in a queue or partitioned event stream, and provides them for consumption by other processes.
+A system that is the heart of an event-driven microservice platform, and that receives events, stores them in a queue or partitioned event stream, and provides them for consumption by other processes. Examples include Kafka, Spark, Flink or Beam.
 
 ### Partitioning
 
