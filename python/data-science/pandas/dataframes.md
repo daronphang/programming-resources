@@ -54,17 +54,30 @@ df.set_index()
 df.index = np.arange(1, len(df) + 1)
 ```
 
-### Accessing Rows/Columns
+### Filtering Rows/Columns
 
-Use iloc for index, and loc for column name.
+Can use loc, query or simple. Use iloc for index, and loc for column name.
 
 ```py
+# simple
+# for OR, use pipe operator |
 df[['col_name1', 'col_name2']]
-df.loc['row or col name']
-df.loc['row name', 'col name']
-df.iloc['index number']
-df.iloc[:3]                         # or df.iloc[0,2], access by index
+df[df>0]
+df[df['col_name']>0][['row_name', 'col_name']]
+df[(df['col_name']>0) & (df['col_name1'])]
+df[df['WW'].isin([1,2,3])]
+```
 
+```py
+# loc
+df.loc[df['column_name'] == some_value]
+df.loc[df['column_name'] != some_value]
+df.loc[df['column_name'].isin(some_values)]
+df.loc[~df['column_name'].isin(some_values)]    # negate for boolean series with ~
+df.loc[(df['column_name'] >= A) & (df['column_name'] <= B)]
+
+df.iloc['index number']
+df.iloc[:3]   # or df.iloc[0,2], access by index
 df.iloc[0]['col name']  # access first row, by col name
 ```
 
@@ -72,17 +85,6 @@ df.iloc[0]['col name']  # access first row, by col name
 
 ```py
 df.drop('col_name', axis=1)   # axis=0 for rows
-```
-
-### Filtering Rows/Columns
-
-```py
-# for OR, use pipe operator |
-df[df>0]
-df[df['col_name']>0][['row_name', 'col_name']]
-df[(df['col_name']>0) & (df['col_name1'])]
-
-df[df['WW'].isin([1,2,3])]
 ```
 
 ### Mask
