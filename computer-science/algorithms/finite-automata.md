@@ -34,7 +34,7 @@ Given some starting state and each time a character is read:
 
 ### Example
 
-<img src="../images/DFA.PNG">
+<img src="../assets/DFA.PNG">
 
 ```js
 class StateMachine {

@@ -21,7 +21,7 @@ searchCostBST = summation of searchCostKey for each key
 
 ### Figure
 
-<img src="../../images/optimal-BST-example.PNG">
+<img src="../../assets/optimal-BST-example.PNG">
 
 ## Recursive Solution for Optimal Substructure
 
@@ -52,7 +52,7 @@ We try one by one all nodes as root (r varies from i to j). When rth node is mad
 - For each subproblem i.e. optCost(i, r-1) and optCost(r+1, j), we are choosing one node as root.
 - In reality, the level of subproblem root and all its descendant nodes will be one level greater than the level of subproblem root.
 
-<img src="../../images/optimal-BST-formula.PNG">
+<img src="../../assets/optimal-BST-formula.PNG">
 
 ## Final Solution
 
@@ -149,7 +149,7 @@ t = e[1,1] + e[3,2] + w[1,2] = 0.45 + 0.05 + 0.45 = 0.90    // no change
 
 ### Figure
 
-<img src="../../images/dp-optimal-BST.PNG">
+<img src="../../assets/dp-optimal-BST.PNG">
 
 ```
 // building optimal BST

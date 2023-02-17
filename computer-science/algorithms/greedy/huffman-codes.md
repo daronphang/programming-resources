@@ -11,7 +11,7 @@ variable-length = (45*1 + 13*3 + 12*3 + 16*3 + 9*4 + 5*4) * 1000
                 = 224,000 bits
 ```
 
-<img src="../../images/huffman-code-example.PNG">
+<img src="../../assets/huffman-code-example.PNG">
 
 ## Prefix Codes
 
@@ -52,8 +52,8 @@ return extractMin(Q)    // return root of the tree
 
 ### Figure
 
-<img src="../../images/huffman-code-trees.PNG">
+<img src="../../assets/huffman-code-trees.PNG">
 
 ### Algorithm Steps
 
-<img src="../../images/huffman-code-sequence.PNG">
+<img src="../../assets/huffman-code-sequence.PNG">

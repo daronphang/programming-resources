@@ -8,7 +8,7 @@
 
 Assumption: activities are sorted in monotonically increasing order of finish time.
 
-<img src="../../images/greedy-algo-example.PNG">
+<img src="../../assets/greedy-algo-example.PNG">
 
 ## Making the Greedy Choice (Choosing First Activity to Finish)
 
@@ -68,7 +68,7 @@ Activities selected: {A1, A4, A8, A11}
 
 ### Figure
 
-<img src="../../images/greedy-algo-operation.PNG">
+<img src="../../assets/greedy-algo-operation.PNG">
 
 ## Iterative Greedy Algorithm
 

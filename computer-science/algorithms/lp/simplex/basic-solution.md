@@ -81,4 +81,4 @@ Line 10 repeatedly calls PIVOT() to fully solve the auxiliary linear program.
 
 Line 11 creates a slack form for L for which the basic solution is feasible. Firstly, lines 12-13 handle the degenerate case in which X0 which may still be basic. In this case, we perform a pivot step to remove X0 from the basis.
 
-<img src="../../../images/simplex-initialize.PNG">
+<img src="../../../assets/simplex-initialize.PNG">

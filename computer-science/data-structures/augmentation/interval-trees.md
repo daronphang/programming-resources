@@ -13,7 +13,7 @@ c) i is to the right of i' i.e. i'high < i.low.
 
 ### Figure
 
-<img src="../../images/interval-trichotomy.PNG">
+<img src="../../assets/interval-trichotomy.PNG">
 
 ## Interval Trees
 
@@ -52,4 +52,4 @@ intervalSearch(T,i) {
 
 ### Figure
 
-<img src="../../images/interval-tree-red-black.PNG">
+<img src="../../assets/interval-tree-red-black.PNG">

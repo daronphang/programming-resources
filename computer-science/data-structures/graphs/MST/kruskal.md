@@ -28,11 +28,11 @@ mstKruskal(G,w) {
 
 ### Figure
 
-<img src="../../../images/graphs-MST-kruskal.PNG">
+<img src="../../../assets/graphs-MST-kruskal.PNG">
 
 ### Example
 
-<img src="../../../images/kruskal-example.PNG">
+<img src="../../../assets/kruskal-example.PNG">
 
 ```
 Weight   Src    Dest

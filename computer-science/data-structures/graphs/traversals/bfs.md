@@ -46,4 +46,4 @@ BFS(G,s) {
 
 ### Figure
 
-<img src="../../../images/graphs-BFS.PNG">
+<img src="../../../assets/graphs-BFS.PNG">

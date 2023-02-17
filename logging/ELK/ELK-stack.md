@@ -19,7 +19,7 @@ When dealing with large amounts of data, may need Kafka/RabbitMQ for buffering a
 - ElasticSearch: Transformed data from Logstash is stored, search and indexed.
 - Kibana: Kibana uses ElasticSearch DB to explore, visualize and share (visualization layer).
 
-<img src="../_snapshots/elk-stack.png">
+<img src="../assets/elk-stack.png">
 
 ### ElasticSearch
 

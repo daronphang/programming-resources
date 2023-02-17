@@ -29,4 +29,4 @@ bucketSort(A) {
 
 ### Sequence of Events
 
-<img src="../../../images/bucket-sort.PNG">
+<img src="../../../assets/bucket-sort.PNG">

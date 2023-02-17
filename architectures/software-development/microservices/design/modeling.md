@@ -8,7 +8,7 @@ Related behaviors should sit together as changing behaviors requires changing it
 
 ### Bounded Context
 
-Any given domain consists of multiple bounded contexts, and residing with each aremodels that do not need to be communicated outside as well as models that are shared externally with other bounded contexts. Hence, a bounded context can be defined as a specific responsibility enforced by explicit boundaries. If you want information or makg requests of functionality from a bounded context, you communicate with its explicit boundary using models.
+Any given domain consists of multiple bounded contexts, and residing with each are models that do not need to be communicated outside as well as models that are shared externally with other bounded contexts. Hence, a bounded context can be defined as a specific responsibility enforced by explicit boundaries. If you want information or make requests of functionality from a bounded context, you communicate with its explicit boundary using models.
 
 By thinking what models should be shared and kept hidden, you can avoid one of the potential pitfalls that can result in tight coupling.
 

@@ -4,7 +4,7 @@ Two standards ways to represent a directed/undirected graph G = (V,E) where V an
 
 ### Figure
 
-<img src="../../images/graph-representations.PNG">
+<img src="../../assets/graph-representations.PNG">
 
 ### Adjacency-List
 
@@ -19,10 +19,10 @@ Can also be represented using a hashmap.
 ```js
 // as hashmap
 const graph = {
-  a: ["a", "b"],
-  b: ["c"],
-  c: ["d"],
-  d: ["b", "c"],
+  a: ['a', 'b'],
+  b: ['c'],
+  c: ['d'],
+  d: ['b', 'c'],
 };
 ```
 

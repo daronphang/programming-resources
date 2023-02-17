@@ -8,7 +8,7 @@ x.size = x.left.size + x.right.size + 1
 
 ### Figure
 
-<img src="../../images/red-black-order-statistic.PNG">
+<img src="../../assets/red-black-order-statistic.PNG">
 
 ## Retrieving an Element with Given Rank
 
@@ -64,4 +64,4 @@ leftRotate(T,x) {
 
 ### Figure
 
-<img src="../../images/red-black-augment-maintain-size.PNG">
+<img src="../../assets/red-black-augment-maintain-size.PNG">

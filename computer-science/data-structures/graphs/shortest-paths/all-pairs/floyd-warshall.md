@@ -9,12 +9,12 @@ Time complexity is O(n^3) as it involves three nested for loops. Thought it has 
 
 ### Intermediate
 
-<img src="../../../../images/shortest-paths-floyd-intermediate.PNG">
+<img src="../../../../assets/shortest-paths-floyd-intermediate.PNG">
 
 ### Algorithm
 
-<img src="../../../../images/shortest-paths-floyd-algo.PNG">
+<img src="../../../../assets/shortest-paths-floyd-algo.PNG">
 
 ### Figure
 
-<img src="../../../../images/shortest-paths-floyd-matrix.PNG">
+<img src="../../../../assets/shortest-paths-floyd-matrix.PNG">

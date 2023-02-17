@@ -40,4 +40,4 @@ countingSort(A,B,k) {
 
 ### Sequence of Events
 
-<img src="../../../images/counting-sort.PNG">
+<img src="../../../assets/counting-sort.PNG">
