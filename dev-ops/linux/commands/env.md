@@ -52,4 +52,21 @@ $ source ~/.bashrc
 
 Createa a .sh file in one of the folders above. Syntax to add is the same for both global or user.
 
+## Proxies
 
+When running apt/yum, it uses root and hence, setting proxies in ~/.bashrc will not reflect. Need to modify yum/apt.conf file.
+
+```
+/etc/yum.conf                     # modify proxy globally
+/etc/yum.repos.d/some.repo        # modify proxy for specific repositories
+```
+
+```
+[docker-ce-stable]
+name=Docker CE Stable - $basearch
+baseurl=https://download.docker.com/linux/centos/$releasever/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+proxy=http://proxy-web.micron.com:80
+```
