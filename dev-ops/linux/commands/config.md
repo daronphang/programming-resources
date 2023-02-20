@@ -67,3 +67,10 @@ $ lscpu
 $ sudo lsof -i -P -n | grep LISTEN
 $ sudo lsof -i:22   # see a specific port
 ```
+
+### Kill Ports
+
+```console
+$ sudo netstat -tulpn
+$ sudo kill <PID>
+```
