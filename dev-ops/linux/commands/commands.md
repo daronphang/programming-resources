@@ -50,6 +50,14 @@ $ # upgrade performs the updates
 $ sudo apt update && apt upgrade
 ```
 
+### Setting Proxy
+
+To setup proxy for apt/yum, need to modify /etc/apt.conf or /etc/yum.conf.
+
+```
+proxy=http://micron.com:80
+```
+
 ## Substitute User
 
 Elevate privileges assigned to the current user. Both su and sudo are used to run commands with root permissions. Root user is equivalent to administrator user on Windows.
