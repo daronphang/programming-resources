@@ -19,6 +19,7 @@ Most Linux distro have a user group for sudo users. To grant the new user elevat
 $ sudo adduser newuser              # creates a new user, group and home directory
 $ sudo usermod -aG sudo newuser
 $ groups newuser
+$ grep /etc/group -e "docker"       # check to see who were successfully added to the group
 ```
 
 ### Remove User
