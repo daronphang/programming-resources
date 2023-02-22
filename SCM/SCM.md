@@ -20,16 +20,26 @@ $ git remote add origin <paste GIT URL>
 $ git push -u origin master
 ```
 
+## Revert Commit
+
+```console
+$ git revert <commit id>
+$ git add .
+$ git commit -m "your changes"
+```
+
 ## Reset Commit
 
 ```console
-$ git reset --hard HEAD
+$ git reset
+$ git reset --hard HEAD # revert back to current head
 $ git reset --soft HEAD
 ```
 
 ## Verification
 
 ```
+$ git log
 $ git log src/myassistant/app/api/v1/endpoint.py   # View all changes made to file
 ```
 
