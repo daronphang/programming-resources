@@ -4,7 +4,7 @@
 server {
     root /var/www/example.com;
     location / {
-        # checks if $uri exists, else check if directory exists, else serves index/html as fallback 
+        # checks if $uri exists, else check if directory exists, else serves index/html as fallback
         try_files $uri $uri/ /index.html;
         try_files $uri $uri/ $uri.html =404;
     }
@@ -30,4 +30,22 @@ location /static {
   alias /var/www/app/static/;
   autoindex off;
 }
-``` 
+```
+
+## Serving Static Images
+
+Source link specified in HTML must contain the location as prefix, else nginx will not serve.
+
+```
+/home/daronphang/images/some-image.png
+```
+
+```html
+<img src="espec/some-image.png" />
+```
+
+```conf
+location /espec {
+  alias /home/daronphang/images;
+}
+```
