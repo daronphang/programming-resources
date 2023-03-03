@@ -21,38 +21,6 @@ When dealing with large amounts of data, may need Kafka/RabbitMQ for buffering a
 
 <img src="../assets/elk-stack.png">
 
-### ElasticSearch
-
-- Open-source search server written in Java.
-- Based on Apache Lucene search engine.
-- Used to index any kind of heterogeneous data (noSQL).
-- Full-text and Near Real Time (NRT) search.
-- Has RESTful API interface with JSON output.
-- Sharded, replicated searchable, JSON document store.
-- Offers simple deployment, maximum reliability, and easy management.
-- Offers advanced queries to perform detail analysis and stores all the data centrally.
-
-### Logstash
-
-Data collection pipeline tool. Collects data inputs and feeds into Elasticsearch. Can unify data from disparate sources and normalize data into your desired destinations.
-
-Consists of three components:
-
-- Input: Passing logs to process them into machine understandable format.
-- Filters: Set of conditions to perform a particular action or event.
-- Output: Decision maker for processed event or log.
-
-### Kibana
-
-Data visualization tool for Elasticsearch documents and help developers to have a quick insight into it.
-
-Search types as follows:
-
-- Free text: Search a specific string.
-- Field-level: Search for a string within a specific field.
-- Logical statements: Combine searches into a logical statement.
-- Proximity: Searching terms witin specific character proximity.
-
 ## ELK vs Splunk
 
 | ELK                                                                    | Splunk                                                         |
