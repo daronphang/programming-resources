@@ -82,59 +82,6 @@ listDelete(L,x) {
 }
 ```
 
-### LRU Cache
-
-```py
-class Node:
-    def __init__(self, k, v):
-        self.key = k
-        self.val = v
-        self.prev = None
-        self.next = None
-
-class LRUCache:
-    def __init__(self, capacity):
-        self.capacity = capacity
-        self.dic = dict()
-        # do not need to maintain head or tail
-        # can access head by self.prev
-        # can access tail by self.next
-        # must match with Node.prev and Node.next
-        self.prev = self.next = self
-
-    def get(self, key):
-        if key in self.dic:
-            n = self.dic[key]
-            self._remove(n)
-            self._add(n)
-            return n.val
-        return -1
-
-    def put(self, key, value):
-        if key in self.dic:
-            self._remove(self.dic[key])
-        n = Node(key, value)
-        self._add(n)
-        self.dic[key] = n
-        if len(self.dic) > self.capacity:
-            n = self.next
-            self._remove(n)
-            del self.dic[n.key]
-
-    def _remove(self, node):
-        p = node.prev
-        n = node.next
-        p.next = n
-        n.prev = p
-
-    def _add(self, node):
-        p = self.prev
-        p.next = node
-        self.prev = node
-        node.prev = p
-        node.next = self
-```
-
 ### Circular, Doubly-Linked List with Sentinel
 
 <img src="../../assets/linked-list-sentinel.PNG" >
@@ -169,16 +116,3 @@ freeObject(x) {
 ### Sequence of Events
 
 <img src="../../assets/linked-list-free-object.PNG">
-
-## Linked Lists vs Arrays
-
-| Arrays                                                                                                         | Linked Lists                                                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| A collection of elements of similar data type.                                                                 | An ordered collection of elements of same type, connected to each other using pointers.                                                         |
-| Supports Random Access by indexing. Has time complexity of O(1).                                               | Supports Sequential Access and requires traversing the linked list. Has time complexity of O(n).                                                |
-| Elements are stored in contiguous memory location. Size needs to be declared and cannot be altered at runtime. | Data exist at scattered (non-contiguous) addresses which allows dynamic size at runtime. Address of memory location is stored in previous node. |
-| Elements are independent of each other.                                                                        | Elements are dependent on each other.                                                                                                           |
-| Insertion and deletion takes more time as memory locations are consecutive and fixed.                          | Insertion and deletion are fast and take constant time.                                                                                         |
-| Memory is allocated as soon it is declared at compile time i.e. Static Memory Allocation.                      | Memory is allocated at runtime i.e. Dynamic Memory Allocation.                                                                                  |
-| Array gets memory allocated in Stack.                                                                          | Linked list gets memory allocated in Heap.                                                                                                      |
-| Memory utilization is inefficient i.e. if size is 6 but consists of 3 elements.                                | Memory utilization is efficient as it can be allocated/deallocated at runtime.                                                                  |

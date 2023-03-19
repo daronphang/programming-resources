@@ -213,3 +213,16 @@ The -m flag makes sure that you are using the module that is tied to the active 
 ```
 $ python3 -m pip install <some package>
 ```
+
+### is Comparator
+
+Can be used to compare two variables pointing to the same memory address.
+
+```py
+x = {'hello': 'world'}
+y = x
+print(x is y)   # true
+
+y = {'hello': 'world'}
+print(x is y)   # false
+```
