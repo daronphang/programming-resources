@@ -1,13 +1,24 @@
-## Index Template
+## Index
 
-An index template is a way to tell Elasticsearch how to configure an index when it is created. For data streams, the index template configures the stream's backing indices as they are created. **Templates are configured prior to index creation**.
+An index contains a schema and is divided into one or more shards, each of whicih may be replicated across multiple nodes to protect against hardware failures. An Elasticsearch index is divided into shards and each shard is an instance of a Lucene index. Indices are used to store the documents in dedicated data structures corresponding to the data type of fields i.e. text fields are stored inside an inverted index, while numeric and geo fields are stored inside BKD trees.
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html
+You can have as many indices defined as you want. These in turn will hold documents that are unique to each index i.e. an index for products, another index for customers.
 
-## Component Template
+### Example
 
-Component templates are reusable building blocks that configure mappings, settings and aliases. While you can use component templates to construct index templates, they aren’t directly applied to a set of indices. Index templates can contain a collection of component templates, as well as directly specify settings, mappings, and aliases.
+```
+PUT /test_index1?pretty
 
-## Logstash Elasticsearch Output Index
-
-Default is [data_stream_type]-[data_stream_dataset]-[data_stream_namespace]-%{+yyyy.MM.dd}.
+{
+    "settings" : {
+        "number_of_shards" : 2,
+        "number_of_replicas" : 1
+    },
+    "mappings" : {
+        "properties" : {
+            "tags" : { "type" : "keyword" },
+            "updated_at" : { "type" : "date" }
+        }
+    }
+}
+```
