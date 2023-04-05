@@ -151,3 +151,22 @@ payload = {
 
 print(Test(**payload).EQUAL)
 ```
+
+## Validating Multiple Fields
+
+```py
+class UserModel(BaseModel):
+    name: str
+    username: str
+    password1: str
+    password2: str
+
+    # values is a dict containing the name-to-value mapping of any previously validated fields
+    # field ordering is important i.e. password2 has access to password1 but not vice versa
+    # if validation fails on another field, it will not be included in values; hence if 'password1' in values
+    @validator('password2')
+    def passwords_match(cls, v, values, **kwargs):
+        if 'password1' in values and v != values['password1']:
+            raise ValueError('passwords do not match')
+        return v
+```
