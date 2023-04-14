@@ -21,7 +21,7 @@ As data is written to a shard, it is periodically published into new immutable L
 
 - When an index is created, it will have default number of 5 shards
 - Each shard contains the documents data of index (primary and replicas)
-- Have multiple shards help take advantage of parallel processing on a single machine
+- Having multiple shards help take advantage of parallel processing on a single machine
 - If another node instance joins the same cluster, the shards will be distributed in an even way over the cluster
 
 ### Sizing

@@ -4,6 +4,8 @@ A class that is used to create and manage thread pools. Extends the Executor cla
 
 Using threading.Thread is manual as compared to concurrency.futures.ThreadPoolExecutor which is automatic.
 
+https://docs.python.org/3/library/concurrent.futures.html
+
 https://superfastpython.com/threadpoolexecutor-in-python/#What_Are_Thread_Pools
 
 ### Executor
@@ -62,6 +64,8 @@ add_done_callback() Adds a callback fn to the task to be executed after completi
 
 ### Wait
 
+Wait for the Future instances given by fs to complete. Duplicate futures given to fs are removed and will be returned only once. If timeout is not specified, there is no limit to the wait time.
+
 ```py
 done, not_done = wait(futures, return_when=concurrent.futures.FIRST_COMPLETED)
 done, not_done = wait(futures, return_when=concurrent.futures.ALL_COMPLETED)
@@ -70,6 +74,17 @@ done, not_done = wait(futures, return_when=concurrent.futures.FIRST_EXCEPTION)
 # get results as soon as they become available
 for future in as_completed(futures):
     result = future.result() # blocking
+```
+
+### Iterate Future Results
+
+This approach will iterate over future objects in the order the tasks are completed, rather than the order they were executed from the list.
+
+```py
+import concurrent.futures as c
+
+for future in c.as_completed(futures):
+    results = future.result()   # blocking
 ```
 
 ## Lifecycle

@@ -38,6 +38,12 @@ df.to_dict('records')
 df.to_dict().values()
 ```
 
+### Alter Columns
+
+```py
+df['col'] = df['col'].apply(method, axis=1)
+```
+
 ### Dealing with DateTime columns
 
 ```py
