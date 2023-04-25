@@ -20,6 +20,8 @@ Can either convert to dict and parse it through Pydantic, or perform validation 
 
 ## Dynamic Fields
 
+### Struct
+
 To read fields with composite types, need to perform recursion with value.items().
 
 ```proto
@@ -38,6 +40,21 @@ p.payload.update({'hello': 'world'})
 
 # server
 request.payload.items()
+```
+
+### JSON String
+
+If there is no strict definition for payload, you can convert it to JSON string.
+
+```py
+import json
+
+# client
+x = {'hello': 'world'}
+request.payload = json.dumps(payload)
+
+# server
+payload = json.loads(request.payload)
 ```
 
 ## Any

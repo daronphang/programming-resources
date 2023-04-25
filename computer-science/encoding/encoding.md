@@ -125,7 +125,7 @@ Unicode designed to support characters from all languages across the world (1,00
 
 ## Base64 vs HEX (Base16)
 
-different ways of representing bytes (binary). HEX takes 2 characters for each byte while Base64 takes 4 characters for every 3 bytes and hence, it is more efficient i.e. 100K file will take 200K to encode in HEX and 133K in Base64.
+Different ways of representing bytes (binary). HEX takes 2 characters for each byte while Base64 takes 4 characters for every 3 bytes and hence, it is more efficient i.e. 100K file will take 200K to encode in HEX and 133K in Base64.
 
 ## Reading Weird Characters
 

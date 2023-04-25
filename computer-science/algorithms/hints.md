@@ -17,6 +17,19 @@ for i in range(len(nums)):
         pass
 ```
 
+### Harder Difficulty
+
+For harder DP problems, can split into two smaller problems. Iterate the second problem and add the solution to the first problem if conditions are valid.
+
+```
+19930613    k = 1000
+dp[3] = '199' = 4
+
+199 3       3 is valid; add dp[3] to dp[4]
+199 30      30 is valid, add dp[3] to dp[5]
+199 306     306 is valid, add dp[3] to dp[6],6,4
+```
+
 ## Stacks
 
 Common characteristic will involve having left, center and right boundaries, making use of monotonic increasing/decreasing stack i.e. largest area in histogram. Can be combined with DP to cache the boundaries after each iteration, or require iteration from left-to-right and right-to-left.
@@ -24,6 +37,14 @@ Common characteristic will involve having left, center and right boundaries, mak
 ## O(1) Time Complexity
 
 For problems involving arrays that require O(1) time complexity, instead of iterating, can perform swapping to maintain time and space. Need to consider edge cases i.e. swapping last element with itself.
+
+## O(1) Space Complexity
+
+Can utilize the following:
+
+- pointers (tortoise and hare)
+- binary search (counting elements less than or equal to mid)
+- swapping elements in array if they are not sorted i.e. nums[0] with nums[nums[0]]
 
 ## 2x2 Matrices
 
