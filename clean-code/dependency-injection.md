@@ -1,17 +1,21 @@
-## DI (Dependency Injection)
+## Dependency Injection
 
 Main idea is to separate the construction and usage of objects i.e. building software that is modular and easy to extend. Popular with static languages like Go and Java. However, they are not popular with dynamically typed languages like Python.
 
-DI is a principle that helps to achieve an **inversion of control by decreasing coupling and increasing cohesion**. In DI, objects do not create each other but are injected.
+DI is a principle that helps to achieve an **inversion of control by decreasing coupling and increasing cohesion**. In DI, objects do not create each other but are injected. Most DI containers won't construct an object until needed.
+
+In the context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it should pass this responsibility to another "authoritative" mechanism, thereby inverting the control.
 
 Injection is the process of providing an instance of a type, to a method that uses that instance.
 
 ### Benefits
 
+- Easier to follow SRP (Single Responsibility Principle)
 - Flexibility of configurable components
-- Testing made easy
+- Testing made easy (inject mocks or test doubles of your dependencies)
 - High cohesion with reduced module complexity
 - Minimalistic dependencies
+- Improve the modularity of your application
 
 ### Without DI
 

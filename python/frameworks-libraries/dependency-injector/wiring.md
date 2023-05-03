@@ -62,3 +62,15 @@ def example():
         print(v)    # does not work!
     nested()
 ```
+
+### Dynamic Container Providers
+
+If the providers in a declarative container depends on a variable at runtime, simply add that variable to the providers.
+
+```py
+container = Container()
+container.config.add_args('TESTING')
+
+container.crud535.add_args(container.config())
+
+```
