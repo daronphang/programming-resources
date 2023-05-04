@@ -196,3 +196,38 @@ class UserModel(BaseModel):
             raise ValueError('passwords do not match')
         return values
 ```
+
+## Aliases
+
+```py
+from pydantic import BaseModel, StrictStr, StrictInt
+
+
+def convert_snake_to_camel_case(v: str):
+    strings = v.split("_")
+    return strings[0].lower() + "".join(word.lower().capitalize() for word in strings[1:])
+
+def convert_camel_to_snake_case(v: str):
+    return ''.join(['_' + i.lower() if i.isupper() else i for i in v]).lstrip('_')
+    
+    
+class Testing(BaseModel):
+    FIRST_NAME: StrictStr
+    LAST_AGE: StrictInt
+
+    class Config:
+        alias_generator = convert_snake_to_camel_case
+
+
+class Testing2(Testing):
+    USER_ID: StrictInt
+
+payload = {'firstName': 'John', 'lastAge': 5, 'userId': 100}
+
+test = Testing2(**payload)
+print(test)
+print(test.dict(by_alias=True))
+
+# FIRST_NAME='John' LAST_AGE=5 USER_ID=100
+# {'firstName': 'John', 'lastAge': 5, 'userId': 100}
+```
