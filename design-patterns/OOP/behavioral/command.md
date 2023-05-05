@@ -1,6 +1,6 @@
 ### Command
 
-Intent is to encapsulate a request as an object and hence, leeting you parameterize clients with different requests, queue or log requests, and support undoable operations.
+Intent is to encapsulate a request as an object and hence, letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
 ### Motivation
 
