@@ -197,7 +197,40 @@ class UserModel(BaseModel):
         return values
 ```
 
+## Creating Models Without Validation
+
+https://docs.pydantic.dev/latest/usage/models/#creating-models-without-validation
+
+```py
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    FIRST_NAME: StrictStr
+    LAST_AGE: StrictInt
+    SET_FIELD: StrictStr = 'this field is set'
+
+    @validator('FIRST_NAME')
+    def validate_name(cls, v):
+        if v == 'John':
+            return 'Hello World!'
+        return v
+
+
+payload = {'firstName': 'John', 'lastAge': 5, 'userId': 100}
+test = User.construct(**payload)
+print(test.dict())
+
+# {'FIRST_NAME': 'John', 'LAST_AGE': 5, 'SET_FIELD': 'this field is set'}
+```
+
 ## Aliases
+
+```py
+class TMDB_Category(BaseModel):
+    name: str = Field(alias="strCategory")
+    description: str = Field(alias="strCategoryDescription")
+```
 
 ```py
 from pydantic import BaseModel, StrictStr, StrictInt
@@ -209,8 +242,8 @@ def convert_snake_to_camel_case(v: str):
 
 def convert_camel_to_snake_case(v: str):
     return ''.join(['_' + i.lower() if i.isupper() else i for i in v]).lstrip('_')
-    
-    
+
+
 class Testing(BaseModel):
     FIRST_NAME: StrictStr
     LAST_AGE: StrictInt
