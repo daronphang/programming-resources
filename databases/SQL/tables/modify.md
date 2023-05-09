@@ -8,7 +8,12 @@ ALTER TABLE table_name ADD COLUMN new_col TINYINT NOT NULL AFTER col_2
 ## CONSTRAINTS
 
 ```sql
+ALTER TABLE myassistant_pie_rda_allowedstep ADD CONSTRAINT FK_workstation
+FOREIGN KEY (workstation) REFERENCES ENGREQ.dbo.myassistant_pie_rda_workstation_quota(workstation);
 
+select FK_column from FK_table
+WHERE FK_column NOT IN
+(SELECT PK_column from PK_table);
 ```
 
 ## MODIFY
