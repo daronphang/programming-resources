@@ -8,3 +8,4 @@
 - Complete error handling according to an articulated strategy (race conditions, memory leaks)
 - Reduced duplication
 - Early building of simply abstractions/interfaces
+- Avoid using reflection i.e. getattr() and hasattr() in Python
