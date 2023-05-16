@@ -51,8 +51,8 @@ CREATE TABLE table_name (
 ```sql
 -- sql server
 CREATE TABLE table_name (
-  created_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  created_datetime DATETIME DEFAULT GETDATE()
+  created_datetime DATETIME DEFAULT GETDATE(),
+  created_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   -- cannot create default for TIMESTAMP, avoid this
 )
 
 ```
