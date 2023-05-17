@@ -17,6 +17,14 @@
 - Should have noun or noun phrase i.e. Customer, WikiPage, Account
 - Should not be a verb
 
+## Class Attributes
+
+- lowercasing i.e. Student.name
+
 ## Method Names
 
 - Should have verb or verb phrase names i.e. postPayment, deletePage, save
+
+## Constant Variables
+
+- Capitalized i.e. config.SERVICE_NAME

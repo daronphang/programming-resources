@@ -62,6 +62,15 @@ exception()         Access any exception raised
 add_done_callback() Adds a callback fn to the task to be executed after completion
 ```
 
+### as_completed
+
+Returns an iterator over the Future instances as they complete i.e. returns as soon as they are available.
+
+```py
+for future in concurrent.futures.as_completed(futures, timeout=180):
+    print(future.result())
+```
+
 ### Wait
 
 Wait for the Future instances given by fs to complete. Duplicate futures given to fs are removed and will be returned only once. If timeout is not specified, there is no limit to the wait time.
@@ -85,6 +94,51 @@ import concurrent.futures as c
 
 for future in c.as_completed(futures):
     results = future.result()   # blocking
+```
+
+### Timeout
+
+```py
+import concurrency.futures as c
+import time
+
+
+def task(idx):
+    if idx != 0 and idx % 2 == 0:
+        time.sleep(5)
+    return idx
+
+with c.ThreadPoolExecutor(max_workers=5) as executor:
+    for i in range(20):
+        future = executor.submit(task, i)
+        print(future.result(timeout=2))
+```
+
+```py
+import concurrency.futures as c
+import time
+
+
+def task(idx):
+    if idx != 0 and idx % 2 == 0:
+        time.sleep(5)
+    return idx
+
+
+with c.ThreadPoolExecutor(max_workers=5) as executor:
+    chunk = []
+    for i in range(20):
+        future = executor.submit(task, i)
+        chunk.append(future)
+
+        if idx != 0 and idx % 4 == 0:
+            try:
+                for f in c.as_completed(chunk, timeout=2):
+                    print(f.result())
+            except c._base.TimeoutError as exc:
+                print(f'timeout reached: {str(exc)}')
+            finally:
+                chunk = []
 ```
 
 ## Lifecycle
