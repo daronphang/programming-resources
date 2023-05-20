@@ -1,6 +1,6 @@
 ## Test Double
 
-Generic term for any kind of pretend object used in place of a real object for testing purposes.
+A test double is an object or function that cna stand in for a real implementation in a test.
 
 https://martinfowler.com/articles/mocksArentStubs.html
 
@@ -24,6 +24,20 @@ Spies are stubs that also record some information based on how they were called 
 
 Objects pre-programmed with expectations which form a specification of the calls they are expected to receive. When mocking, it is to ensure that the call was made. If the expected call is not made, the test fails. Can be classified as **behavioral testing**. Implementing this approach requires more smarts in the fake collaborators that we create, and if overused can cause tests to become brittle.
 
-### Stubbing vs Mocking
+## Stubbing vs Mocking
 
 The easiest way to tell we are dealing with a stub is to notice that a stub can never fail the test. The assert the test uses are always against the class under test. On the other hand, the test will use a mock object to verify whether the test has failed or not. Mocks can be useful to ensure that the expected side effects happen.
+
+## Impact of Test Doubles on Software Development
+
+### Testability
+
+To use test doubles, a codebase needs to be designed to be testable: it should be possible for tests to swap out real implementations with test doubles. This could be achieved through dependency injection.
+
+### Applicability
+
+Although proper application of test doubles can provide a powerful boost to engineering velocity, their **improper use can lead to tests that are brittle, complex and less effective**. In many cases, test doubles are not suitable and engineers should prefer to **use real implementation instead**.
+
+### Fidelity
+
+Fidelity refers to how closely the behavior of a test double resembles the behavior of the real implementation that it's replacing. If the behavior of a test double significantly differs, it wouldn't provide much value.
