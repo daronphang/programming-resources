@@ -1,4 +1,4 @@
-## Shells
+## Shell
 
 The shell is a command line interpreter in Linux. It is a program that receives commands from the user and gives them to the OS to execute. Bash is the default login shell for most Linux distributions, but there are other types including Korn shell (ksh), Z shell (zsh) and C shell (csh).
 

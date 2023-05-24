@@ -50,3 +50,9 @@ if __name__ == '__main__':
         except SystemExit:
             os._exit(0)
 ```
+
+## Caveat
+
+Connections are considered 'expensive': they take up a TCP/IP port, require handsake, negotation, etc. Best practice is to open a single connection per application instance and keep it open as long as possible.
+
+Within the application instance, you create channels on top of the RMQ connection which are extremely fast. However, when using threads, limit your channel to a single thread.
