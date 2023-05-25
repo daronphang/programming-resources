@@ -6,6 +6,16 @@ import json
 from abc import ABC, abstractmethod
 from pydantic import BaseModel, StrictInt, StrictStr
 from typing import Union
+from enum import Enum, auto
+
+'''
+Pika is not threadsafe by default, and need to use one connection per thread as per docs.
+'''
+
+
+class RMQComponents(Enum):
+    PRODUCER = auto()
+    CONSUMER = auto()
 
 
 class RabbitMQConfig(BaseModel):
@@ -19,14 +29,50 @@ class RabbitMQChannelConfig(BaseModel):
     exchange_type: Union[StrictStr, None] = None
 
 
+class RabbitMQChannel:
+    def __init__(self, component: Enum, channel, config: RabbitMQChannelConfig):
+        self._component = component
+        self._channel = channel
+        self.config = config
+
+    @property
+    def channel(self):
+        return self._channel
+
+    def publish(self, body, properties: pika.BasicProperties, *args, **kwargs):
+        if self._component != RMQComponents.PRODUCER:
+            raise AttributeError('only producers can publish messages')
+
+        self.channel.basic_publish(
+            exchange=self.config.exchange,
+            routing_key=self.config.queue,
+            body=json.dumps(body),
+            properties=properties
+        )
+    
+    def consume(self, callback, *args, **kwargs):
+        if self._component != RMQComponents.CONSUMER:
+            raise AttributeError('only consumers can consume messages')
+
+        self.channel.basic_qos(prefetch_count=1)
+        self.channel.basic_consume(
+            queue=self.config.queue,
+            on_message_callback=callback,
+            # auto_ack=True
+        )
+        print('[*] Waiting for messages. To exit, press CTRL+C')
+        self.channel.start_consuming()  # blocking
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self._channel.close()
+    
+
 class RabbitMQPublisher(ABC):
     '''
-    As creating connections are expensive, and connection should be kept open per 
-    application instance.
-
-    When publishing messages, create a new channel per thread using context mananger:
-    with rmq.Channel() as chnl:
-        rmq.execute()
+    Use context manager with creating new channels with Publisher().Channel()
     '''
 
     def __init__(self, config: RabbitMQConfig):
@@ -37,45 +83,24 @@ class RabbitMQPublisher(ABC):
                 port=config.port
             )
         )
+    
+    @property
+    def conn(self):
+        return self._conn
         
     def Channel(self, channel_config: RabbitMQChannelConfig):
-        self.channel_config = channel_config
-        self.channel = self._conn.channel()
-        self.channel.exchange_declare(
+        # returns a factory instance of RabbitMQChannel()
+        channel = self.conn.channel()
+        channel.exchange_declare(
             exchange=channel_config.exchange,
             exchange_type=channel_config.exchange_type
         )
-        return self
-
-    @abstractmethod
-    def execute(self, *args, **kwargs):
-        # example
-        self.channel.basic_publish(
-            exchange=self.channel_config.exchange,
-            routing_key=self.channel_config.queue,
-            body=json.dumps({'hello': 'world'}),
-            properties=pika.BasicProperties(
-                content_encoding='application/json',
-                priority=1,
-                correlation_id='ABC123'
-            )
-        )
-    
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, traceback):
-        self.channel.close()
+        return RabbitMQChannel(RMQComponents.PRODUCER, channel, channel_config)
 
 
 class RabbitMQConsumer:
     '''
-    As creating connections are expensive, and connection should be kept open per 
-    application instance.
-
-    When publishing messages, create a new channel per thread using context manager:
-    with rmq.Channel() as chnl:
-        rmq.execute()
+    Use context manager with creating new channels with Consumer().Channel()
     '''
   
     def __init__(self, config: RabbitMQConfig):
@@ -86,46 +111,129 @@ class RabbitMQConsumer:
                 port=config.port
             )
         )
+    
+    @property
+    def conn(self):
+        return self._conn
 
     def Channel(self, channel_config: RabbitMQChannelConfig):
-        self.channel_config = channel_config
-        self.channel = self._conn.channel()
+        # returns a factory instance of RabbitMQChannel()
+        channel = self.conn.channel()
 
         # declare exchange, queue and binding between exchange and queue
-
-        self.channel.exchange_declare(
+        channel.exchange_declare(
             exchange=channel_config.exchange,
             exchange_type=channel_config.exchange_type
         )
 
-        result = self.channel.queue_declare(
+        result = channel.queue_declare(
             queue=channel_config.queue,
             # exclusive=True # delete queue once consumer connection is closed
         )
         # self.queue = result.method.queue
 
-        self.channel.queue_bind(
+        channel.queue_bind(
             exchange=channel_config.exchange,
             queue=channel_config.queue,
         )
+        return RabbitMQChannel(RMQComponents.CONSUMER, channel, channel_config)
+```
 
-    def consume(self, callback, *args, **kwargs):
-        global logger
+```py
+import pytest
+import unittest.mock as mock
 
-        self.channel.basic_qos(prefetch_count=1)
-        self.channel.basic_consume(
-            queue=self.channel_config.queue,
-            on_message_callback=callback,
-            # auto_ack=True
-        )
-        msg = '[*] Waiting for messages. To exit, press CTRL+C'
-        logger.info(msg)
-        self.channel.start_consuming()
+from mutils.brokers import RabbitMQChannelConfig, RabbitMQConfig, RabbitMQConsumer, RabbitMQPublisher
 
-    def __enter__(self):
-        return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
-        self.channel.close()
+class FakePikaChannel:
 
+    channel = True
+
+    def exchange_declare(self, *args, **kwargs):
+        pass
+
+    def queue_declare(self, *args, **kwargs):
+        pass
+
+    def queue_bind(self, *args, **kwargs):
+        pass
+
+    def basic_publish(self, *args, **kwargs):
+        pass
+
+    def basic_qos(self, *args, **kwargs):
+        pass
+
+    def basic_consume(self, *args, **kwargs):
+        pass
+
+    def start_consuming(self, *args, **kwargs):
+        pass
+
+    def close(self):
+        self.channel = False
+    
+
+class FakePikaConn:
+
+    conn = True
+
+    def channel(self):
+        return FakePikaChannel()
+
+    def close(self):
+        self.conn = False
+
+
+class Publisher(RabbitMQPublisher):
+    def __init__(self, config):
+        super().__init__(config)
+
+
+class Consumer(RabbitMQConsumer):
+    def __init__(self, config):
+        super().__init__(config)
+
+
+@mock.patch('pika.BlockingConnection', return_value=FakePikaConn())
+def test_rabbit_mq_publisher_can_call_publish_when_channel_method_is_called(mock_pika):
+    conn_config = RabbitMQConfig(host='testhost', port=123)
+    chnl_config = RabbitMQChannelConfig(
+        queue='testqueue',
+        exchange='testexchange',
+        exchange_type='testexchangetype',
+    )
+
+    instance = Publisher(conn_config)
+    with instance.Channel(chnl_config) as chnl:
+        assert chnl.channel.channel
+        chnl.publish('test body', None)
+
+        with pytest.raises(AttributeError) as exc:
+            chnl.consume('test callback')
+        assert str(exc.value) == 'only consumers can consume messages'
+        
+    assert not chnl.channel.channel
+
+
+@mock.patch('pika.BlockingConnection', return_value=FakePikaConn())
+def test_rabbit_mq_consumer_can_call_consume_when_channel_method_is_called(mock_pika):
+    conn_config = RabbitMQConfig(host='testhost', port=123)
+    chnl_config = RabbitMQChannelConfig(
+        queue='testqueue',
+        exchange='testexchange',
+        exchange_type='testexchangetype',
+    )
+
+    instance = Consumer(conn_config)
+    with instance.Channel(chnl_config) as chnl:
+        assert chnl.channel.channel
+        chnl.consume('test callback')
+        
+        with pytest.raises(AttributeError) as exc:
+            chnl.publish('test body', None)
+        assert str(exc.value) == 'only producers can publish messages'
+        
+    assert not chnl.channel.channel
 ```
