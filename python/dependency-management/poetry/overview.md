@@ -18,25 +18,21 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --no-root --no-dev --no-interaction --no-ansi
 ```
 
-### pyproject.toml
+### install
 
-Similar to npm package.json config file that packs similiar functionalities.
+If there is a poetry.lock file, it will use the exact versions from there instead of resolving them. This ensures that everyone using the library will get the same versions of the dependencies. If there is no lock file, Poetry will create one after dependency resolution.
 
-```toml
-[tool.poetry]
-name = "unbiased-coder-project"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+```console
+$ poetry install
+```
 
-[tool.poetry.dependencies]
-python = "^3.9"
-python-dotenv = "^0.20.0"
+### run
 
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
+The run command executes the given command inside the project's virtualenv.
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+If you have a script defined in pyproject.toml, you can execute it from this command.
+
+```console
+$ poetry run python -V
+$ poetry run my-script
 ```

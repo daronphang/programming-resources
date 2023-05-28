@@ -34,6 +34,8 @@ dp[3] = '199' = 4
 
 Common characteristic will involve having left, center and right boundaries, making use of monotonic increasing/decreasing stack i.e. largest area in histogram. Can be combined with DP to cache the boundaries after each iteration, or require iteration from left-to-right and right-to-left.
 
+Another characteristic is involving brackets i.e. () or [].
+
 ## O(1) Time Complexity
 
 For problems involving arrays that require O(1) time complexity, instead of iterating, can perform swapping to maintain time and space. Need to consider edge cases i.e. swapping last element with itself.
