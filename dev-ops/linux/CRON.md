@@ -8,6 +8,7 @@ https://crontab.guru/#____\*__\__
 
 ```console
 $ crontab -e
+$ sudo vim /etc/crontab # rhel
 $ crontab –u other_username –e
 ```
 

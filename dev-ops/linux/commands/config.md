@@ -45,6 +45,8 @@ $ speedtest
 ```console
 $ df -h /data     # h is short for human-readable
 $ df -h -total    # see total disk space available
+
+$ sudo du -h --max-depth=1 /var
 ```
 
 ## Checking Path
@@ -66,4 +68,11 @@ $ lscpu
 ```console
 $ sudo lsof -i -P -n | grep LISTEN
 $ sudo lsof -i:22   # see a specific port
+```
+
+### Kill Ports
+
+```console
+$ sudo netstat -tulpn
+$ sudo kill <PID>
 ```

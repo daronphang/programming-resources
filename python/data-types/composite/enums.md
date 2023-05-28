@@ -41,7 +41,7 @@ Flag        Supports bitwise operations but does not inherit from int
 from enum import Enum
 
 class Day(Enum):
-    MONDAY = 1
+    MONDAY = 'mon'
     TUESDAY = 2
     WEDNESDAY = 3
     THURSDAY = 4
@@ -69,11 +69,11 @@ class Size(Enum):
 ```py
 Day.MONDAY = 0  # error, cannot reassign members as they are constants
 
-print(Day.MONDAY)       # Day.MONDAY, an object of type <enum 'Day'>
-print(type(Day.MONDAY)) # <enum 'Day'>
-print(Day('MONDAY'))    # Day.MONDAY
-print(Day['MONDAY'])    # Day.MONDAY
-print(Day.MONDAY.value) # 1
+Day.MONDAY          # Day.MONDAY, an object of type <enum 'Day'>
+type(Day.MONDAY)    # <enum 'Day'>
+Day('mon')          # Day.MONDAY
+Day['MONDAY']       # Day.MONDAY
+Day.MONDAY.value    # mon
 
 for day in Day:
     print(f'{day.name}, {day.value}')

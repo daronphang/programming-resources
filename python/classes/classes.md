@@ -34,6 +34,19 @@ class ExampleClass(object):
     self.instance_attr = instance_attr
 ```
 
+## Comparing Classes
+
+```py
+class Test:
+    foo = 'hello'
+    bar = 'world'
+
+    def __eq__(self, other):
+        if not isinstance(other, Test):
+            return NotImplemented
+        return self.foo == other.foo and self.bar == other.bar
+```
+
 ## Super
 
 Primary use case is to extend the functionality of the inherited method.

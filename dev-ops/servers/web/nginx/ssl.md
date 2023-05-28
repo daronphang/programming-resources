@@ -2,7 +2,7 @@
 
 ## Certbot
 
-Certbot generates SSL/TLS certificates for free with validity of 90 days. Responsible for communicating with Let's Encrypt to request the certificate, performing required ACME challenges, installing the certificate, and configuring the web server.
+Use Certbot to enable HTTPS with Nginx on Ubuntu. Certbot generates SSL/TLS certificates for free with validity of 90 days. Responsible for communicating with Let's Encrypt to request the certificate, performing required ACME challenges, installing the certificate, and configuring the web server.
 
 https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/
 

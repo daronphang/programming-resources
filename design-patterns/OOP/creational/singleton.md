@@ -1,49 +1,53 @@
-### Singleton
+## Singleton
 
 Ensures a class only has one instance, and provides a global point of access to it. However, many developers consider this as anti-pattern as it introduces unncessary restrictions in situations where a sole instance of a class is not actually required i.e. makes code more complex, less useful, and difficult to test. Though it may simplify code, it will introduce difficulties later.
+
+### Singleton vs Global Variables
+
+The problem with the global variable approach is that you can always access and modify its content and hence, it is a weaker form of Singleton. Also, if you have more than one Singleton class, you have to define a function and a global variable for each, so it ends up being messier than the pattern.
 
 ### Applicability
 
 - When there must be exactly one instance of a class, and must be accessible to clients from a well-known access point.
 - When sole instance should be extensible by subclassing, and clients should be able to use an extended instance without modifying their code.
 
-### Participants
+## Participants
 
-#### Singleton
+### Singleton
 
 - Defines an Instance operation that lets clients access its unique instance.
 
-### Consequences
+## Consequences
 
-#### Controlled access to sole instance
+### Controlled access to sole instance
 
 Singleton class encapsulates its sole instance and hence, have strict control over how and when clients access it.
 
-#### Reduced name space
+### Reduced name space
 
 An improvement over global variables by avoiding polluting name space with global variables that store sole instances.
 
-#### Permits refinement of operations and representation
+### Permits refinement of operations and representation
 
 Singleton class may be subclasseed, and it's easy to configure an application with an instance of this extended class.
 
-#### Permits a variable number of instances
+### Permits a variable number of instances
 
 Allows more than one instance of Singleton class if needed.
 
-### Implementation
+## Implementation
 
-#### Ensuring a unique instance
+### Ensuring a unique instance
 
 Common way to do this is to hide the operation that creates the instance behind a class operation that guarantees only one instance is created. This operation has access to the variable that holds the unique instance, and ensures the variable is initialized with the unique instance before returning its value.
 
 Clients access the singleton exclusively through the Instance member function.
 
-#### Subclassing the Singleton class
+### Subclassing the Singleton class
 
 More flexible approach is to use a registry of singletons. Instead of having Instance define the set of possible Singleton classes, the Singleton classes can register their singleton instance by name in a well-known registry. The registry maps between string names and singletons. Singleton classes can register themselves in their constructor.
 
-### Example
+## Example
 
 ```py
 class Singleton:

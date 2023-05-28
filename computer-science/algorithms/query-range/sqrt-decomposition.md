@@ -44,16 +44,17 @@ class SqrtDecomp:
         sum = 0
 
         # get left boundary
-        while l < r and l % self.blk_sz != 0:
+        while l <= r and l % self.blk_sz != 0:
             sum += self.arr[l]
             l += 1
 
         # get completely overlapped block
-        sum += self.block[l // self.blk_sz]
-        l += self.blk_sz
+        while l + self.blk_sz <= r:
+            sum += self.block[l // self.blk_sz]
+            l += self.blk_sz
 
         # get right boundary
-        while l < r:
+        while l <= r:
             sum += self.arr[l]
             l += 1
 

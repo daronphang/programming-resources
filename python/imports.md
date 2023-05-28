@@ -1,4 +1,4 @@
-### Relative & Absolute Imports
+## Relative & Absolute Imports
 
 Absolute import uses the full part from project's root folder to the desired module. Relative import uses the relative path (starting from the path of current module). Module is a single Python file. Package is a collection of modules.
 
@@ -27,13 +27,34 @@ from ..module3 import class2
 # need to have __init__.py in packages for absolute import, else will be read as 'module' by Python
 ```
 
-### Best Practices
+## Best Practices
 
--   Do not import a module that imports from another module as it may cause circular dependencies and lead to unexpected errors if imported module is changed i.e. module A importing module B, C, D but module C imports module B.
--   Do not cross-import from different folders.
+- Do not import a module that imports from another module as it may cause circular dependencies and lead to unexpected errors if imported module is changed i.e. module A importing module B, C, D but module C imports module B.
+- Do not cross-import from different folders.
 
-### Import Errors
+## Import Errors
 
--   CD one directory higher than base directory and run python script.
--   Remove any unused imports (prevent circular imports).
--   Move run file into another folder.
+- CD one directory higher than base directory and run python script.
+- Remove any unused imports (prevent circular imports).
+- Move run file into another folder.
+
+## `__all__`
+
+It declares the semantically 'public' names from a module. Users are expected to use it, and they can have the expectation that it will not change.
+
+`__all__` affects when module is imported with \* behavior. Members that are not mentioned in `__all__` are still accessible from outside the module and can be imported with from <module> import <member>. Also, it overrides the default of hiding everything that begins with an underscore.
+
+```py
+# foo.py
+__all__ = ['foo', 'bar']
+
+foo = 'hello'
+bar = 'world'
+baz = 'yo'
+```
+
+```py
+# bar.py
+
+from foo import *   # imports foo and bar only
+```

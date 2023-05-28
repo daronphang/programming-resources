@@ -181,3 +181,15 @@ Thread 1: finishing update
 Testing locked update. Ending value is 2.
 '''
 ```
+
+```py
+import threading
+import time
+
+lock = threading.Lock()
+
+while lock.locked():
+    time.sleep(1)
+lock.acquire()
+lock.release()
+```
