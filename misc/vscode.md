@@ -21,6 +21,7 @@ Stable version: January 2021, version 1.53.2
 15. Remote Development
 16. TODO Highlight
 17. dotENV
+18. Jenkins Pipeline Linter Connector
 
 ### JS Prettier and ESLint Setup
 
