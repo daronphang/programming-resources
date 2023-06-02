@@ -9,9 +9,7 @@ For Declarative Pipeline, the basic statements and expressions follow the same r
 
 ### agent
 
-A machine or container which connects to a controller and executes tasks when directed by the controller. Must be defined at the top-level inside the pipeline block, but stage-level usage is optional.
-
-Allows configuration with parameters i.e. any, none, label, node, docker, kubernetes, etc.
+Must be defined at the top-level inside the pipeline block, but stage-level usage is optional. Allows configuration with parameters i.e. any, none, label, node, docker, kubernetes, etc.
 
 ### post
 

@@ -1,6 +1,20 @@
 ### Controller
 
-A central, coordinating process which stores configuration, laods plugins, and renders the various user interfaces for Jenkins.
+The Jenkins controller is the original node in the Jenkins installation. Administers the Jenkins agents and orchestrates their work, including scheduling jobs on agents and monitoring them. Agents may be connected to the Jenkins controller using either local or cloud computers.
+
+### agent
+
+A machine or container which connects to a controller and executes tasks when directed by the controller. Agents manage the task execution on behalf of the Jenkins controller by using executors.
+
+The agents require a Java installation and a network connection to the Jenkins controller.
+
+Tools required for builds and tests are installed on the node where the agent runs; they can be installed directly or in a container (Docker, Kubernetes, etc).
+
+https://www.jenkins.io/doc/book/using/using-agents/
+
+### nodes
+
+Nodes are the "machines" on which build agents run. In practice, nodes and agents are essentially the same but they are conceptually distinct.
 
 ### Build Artifacts
 

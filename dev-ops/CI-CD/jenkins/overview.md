@@ -10,10 +10,10 @@ Server-based application and requires a web server like Apache Tomcat to run on 
 
 Consists of a set of tools designed to host, monitor, compile and test code:
 
-- **Continuous Integration Server** (Jenkins, Bamboo, CruiseControl, Teamcity).
-- **Source Control Tool** (CVS, SVN, GIT, Mercurial, ClearCase).
-- **Build Tool** (Make, ANT, Maven, Ivy, Gradle).
-- **Automation Testing Framework** (Selenium, Appium, TestComplete, UFT).
+- **Continuous Integration Server** (Jenkins, Bamboo, CruiseControl, Teamcity)
+- **Source Control Tool** (CVS, SVN, GIT, Mercurial, ClearCase)
+- **Build Tool** (Make, ANT, Maven, Ivy, Gradle)
+- **Automation Testing Framework** (Selenium, Appium, TestComplete, UFT)
 
 ### Benefits
 
@@ -28,7 +28,3 @@ Consists of a set of tools designed to host, monitor, compile and test code:
 | Serialization/Parsing | No native support for serialization and parsing.                                           | Object to JSON using JSON.stringify(). JSON to object using JSON.parse(). |
 | Prototype             | Inherits from Map.prototype.                                                               | Inherits from Object.prototype.                                           |
 | Storage               | Able to store 16.7 million key/value pairs.                                                | Able to store 11.1 million key/value pairs.                               |
-
-### Setup
-
-Install Putty.
