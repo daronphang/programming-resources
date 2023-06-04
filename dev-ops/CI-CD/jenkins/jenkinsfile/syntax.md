@@ -28,3 +28,7 @@ A section defining tools to auto-install and put on the PATH. This is ignored if
 ### when
 
 The when directive allows the Pipeline to determine whether the stage should be executed depending on the given condition, and must contain at least one condition.
+
+### script
+
+script takes a block of Scripted Pipeline and executes in the Declarative Pipeline. For most cases, this step should be unnecessary, but it can provide a useful "escape hatch". Instead, script blocks of non-trivial size/complexity should be moved to **Shared Libraries**.
