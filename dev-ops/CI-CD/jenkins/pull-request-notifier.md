@@ -6,11 +6,21 @@ The SCM notifier should also be included in the Pipeline so that Jenkins can upd
 
 ## Configuration
 
+### Pipeline
+
+If you choose to build Pipeline script from SCM, use environment variable from parameterized as branch name, and disable "Lightweight checkout".
+
+```
+Branch Specifier: ${PULL_REQUEST_FROM_BRANCH}
+```
+
 ### Authentication
 
 Best practice is to use Jenkins API token and replace that in the password field.
 
 ### SCM Notifier
+
+For credentials, best practice is to use SCM access token to replace password field.
 
 For Bitbucket, use Stash Notifier.
 

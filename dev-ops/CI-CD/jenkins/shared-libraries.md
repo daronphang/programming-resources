@@ -1,6 +1,8 @@
 ## Shared Libraries
 
-Useful for sharing parts of Pipelines between various projects to reduce redundancies and keeping code DRY. A shared Library is defined with a name, a source code retrival method such as by SCM, and optionally a default version. To access them, the Jenkinsfile needs to use the @library annotation.
+Useful for sharing parts of Pipelines between various projects to reduce redundancies and keeping code DRY. A shared library is a collection of independent Groovy scripts which you pull into your Jenkinsfile at runtime. A shared Library is defined with a name, a source code retrival method such as by SCM, and optionally a default version.
+
+To access them, the Jenkinsfile needs to use the @library annotation. If the line immediate after @Library annotation is not an import statement, need to add an underscore.
 
 ```groovy
 @Library('my-shared-library') _
@@ -35,7 +37,9 @@ import com.mycorp.pipeline.somelib.UsefulClass
 
 The src directory is added to the classpath when executing Pipelines.
 
-The vars directory hosts script files that are exposed as a variable in Pipelines. The name of the file is the name of the variable in the Pipeline. So if you had a file called vars/log.groovy with a function like def info(message)…​ in it, you can access this function like log.info "hello world" in the Pipeline. You can put as many functions as you like inside this file.
+The vars directory hosts script files that are exposed as global variables in Pipelines. The name of the file is the name of the variable in the Pipeline i.e. fooBar.groovy creates a variable named fooBar (camelcase required). You can put as many functions as you like inside this file.
+
+https://github.com/darinpope/github-api-global-lib
 
 ### Defining Global Variables
 
@@ -59,3 +63,7 @@ def warning(message) {
 log.info 'Starting'
 log.warning 'Nothing to do!'
 ```
+
+### Other Common Code
+
+This includes helper classes, or common code that you might want to include inside pipeline steps themselves. You can also use it as a place to store static constants which you want to use throughout your pipelines.

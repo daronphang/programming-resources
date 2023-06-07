@@ -104,3 +104,13 @@ The name of the node the current build is running on. Set to 'master' for the Je
 ### WORKSPACE
 
 The absolute path of the workspac
+
+## Credentials
+
+When using credentials, select the appropriate kind in Credentials folder. To use them in Pipeline, can wrap them using withCredentials method. Variable defined will be used to access the variable/file in the Pipeline. CredentialsId is the id you have defined in Credentials folder.
+
+```groovy
+withCredentials([file(credentialsId: 'EMAIL_SERVICE_ENV', variable: 'EMAIL_SERVICE_ENV')]) {
+    sh "cp /${EMAIL_SERVICE_ENV} ${WORKSPACE}/packages/email_service/mmail"
+}
+```

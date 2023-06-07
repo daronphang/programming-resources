@@ -17,6 +17,23 @@ The post section defines one or more additional steps that are run upon the comp
 
 Conventionally, the post section should be placed at the end of the Pipeline.
 
+When declaring agents in individual stages, need to specify node.
+
+```jenkinsfile
+post {
+    success {
+        node(null) {
+            script {
+                def stash = new myassistant.notifyStash()
+                echo 'build succeeded, notifying Bitbucket'
+                stash.notifyStash("SUCCESS", "${PULL_REQUEST_FROM_HASH}")
+            }
+        }
+
+    }
+}
+```
+
 ### triggers
 
 The triggers directive defines the automated ways in which the Pipeline should be re-triggered. For Pipelines integrated with a source such as GitHub or BitBucket, triggers may not be necessary as webhooks-based integration will likely already be present. The triggers available are cron, pollSCM and upstream.

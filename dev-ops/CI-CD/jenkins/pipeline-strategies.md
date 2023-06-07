@@ -11,7 +11,7 @@ Can implement **dual Pipeline strategy** if PRs are not queuing up waiting to be
 ### Pipeline 2 (Integration)
 
 1. Bitbucket triggers a pipeline build when PR is approved
-2. Prevent new commits and post PR comment
+2. Prevent new commits, lock branch and post PR comment (Git Publisher only available for Freestyle projects)
 3. Merge PR branch to an integration branch
 4. Run automated tests
 5. Pushes integration branch to origin and delete PR branch

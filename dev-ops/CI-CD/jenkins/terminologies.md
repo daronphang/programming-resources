@@ -16,6 +16,10 @@ https://www.jenkins.io/doc/book/using/using-agents/
 
 Nodes are the "machines" on which build agents run. In practice, nodes and agents are essentially the same but they are conceptually distinct.
 
+### executor
+
+A Jenkins executor is one of the basic building blocks which allow a build to run on a node/agent. It can be thought of as a single process ID, or as the basic unit of resource that Jenkins executes on your machine to run a build.
+
 ### Build Artifacts
 
 Build artifacts allow you to use the exact same code that was compiled and passed testing. They are files like .exe and .dll that are "attached" to a build in the CI system. Can be downloaded as a zip file and used for deployment.

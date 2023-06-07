@@ -153,3 +153,17 @@ $ mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
 $ # setting permissions for public key directory in server
 $ sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 ```
+
+### Logs
+
+```bash
+$ sudo vim /var/log/auth.log
+$ sudo journalctl -t sshd
+```
+
+### Folder Permissions
+
+```
+~/.ssh 700
+~/.ssh/authorized_keys 600
+```
