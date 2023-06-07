@@ -1,11 +1,11 @@
-## References
+### References
 
 ```
 ~/        Refers to current user's home directory i.e. /home/daronphang or /root if root user
 ctrl+L    Clear terminal
 ```
 
-## Pipe Operator
+### Pipe Operator
 
 Lets you use two or more commands such that the output of one command serves as input to the next.
 
@@ -14,7 +14,7 @@ $ cat filename | less
 $ cat sample | grep Apple
 ```
 
-## Echo
+### Echo
 
 Used to display line of text to screen/file. Typically used in scripting language and batch files.
 
@@ -24,13 +24,13 @@ $ echo "hello world!"
 $ echo -e "hello \bworld"    e flag acts as an interpretor of escaped characters
 ```
 
-## CPU Load
+### CPU Load
 
 ```
 $ cat /proc/stat
 ```
 
-## Aliases
+### Aliases
 
 Can create aliases for most used commands. Custom shortcuts used to represent a command or set of commands executed with or without custom options. Can create temporary (available for current terminal session) or permanent.
 
@@ -48,7 +48,7 @@ To keep aliases permanently, can save them in your user's shell configuration pr
 $ source ~/.bashrc
 ```
 
-## Hard/Soft Links
+### Hard/Soft Links
 
 Link command creates a **'hard'** link named FILE2, which shares the same index node as existing file FILE1. Both share the same index node and hence, point to the same data on the disk. Modifying one is functionally the same as modifying the other.
 
@@ -75,7 +75,7 @@ $ ls documents
 $ ls dox-sym-link
 ```
 
-## Hostname
+### Hostname
 
 Used to obtain the DNS and set the system's hostname. Main purpose is to uniquely identify a computer over a network.
 
@@ -94,3 +94,7 @@ Used to view and change a system's domain and hostname. Can be confiured to be d
 -v      Verbose
 -y      Display NIS domain name
 ```
+
+### nohup (no hang up)
+
+Keeps processes running even after exiting the shell or terminal. Processes running with this command will ignore the SIGHUP signal even after exiting the shell. Once a job is started, stdin will not be available to the user.

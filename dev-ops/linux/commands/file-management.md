@@ -1,4 +1,6 @@
-## LS
+## Files
+
+### Listing
 
 List files or directories (similarly to file explorer) from CLI.
 
@@ -15,16 +17,7 @@ $ ls -a -lh
 $ ls -S         # Sort by
 ```
 
-## Directories
-
-```console
-$ pwd   # Present working directory
-$ mkdir -p test1/test2/test3 # Creates parent directory 'test1' if doesn't exist
-```
-
-## Files
-
-### Finding Files
+### Finding
 
 ```console
 $ find . -name "*.log"
@@ -32,7 +25,7 @@ $ find /Path -name " file_name*"        # Find all files in /Path with file_name
 $ find /Path/bar* -name "file_name*"    # Find all files with pattern in bar* subdirectory
 ```
 
-### Reading Files
+### Reading
 
 'cat' allows us to create single or multiple files, view content of a file, concatenate files and redirect output in terminal or files.
 
@@ -64,7 +57,7 @@ $ tac filename          # reverses order, starts from last line
 $ tac filename | less
 ```
 
-### Creating Files
+### Creating
 
 ```console
 $ cat > newfile         # creates a new file called newfile
@@ -73,7 +66,7 @@ $ cat copied-file > destination-file    # copying content
 $ touch /path/to/file filename.txt
 ```
 
-### Copying Files
+### Copying
 
 ```console
 $ scp filename username@IPaddress:path
@@ -82,10 +75,17 @@ $ scp readme.md roo@45.79.185.156:/home/daronphang
 $ scp roo@45.79.185.156:readme.md .     # copy from server to local pc
 ```
 
-### Emptying Files
+### Emptying
 
 ```console
 $ > test.log
 $ : > test.log
 $ true > test.log
+```
+
+## Directories
+
+```console
+$ pwd   # Present working directory
+$ mkdir -p test1/test2/test3 # Creates parent directory 'test1' if doesn't exist
 ```

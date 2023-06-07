@@ -1,4 +1,4 @@
-## Process Status
+### Process Status
 
 Used to get more detailed information about a specific process/processes i.e. check if a process is running or not.
 
@@ -33,7 +33,7 @@ $ ps aux | sort -nk +4 | tail -n 10      Sort by 4th field (%MEM), show last 10 
 $ ps aux --sort -rss | head
 ```
 
-### kill
+#### kill
 
 ```console
 $ kill <pid>
@@ -41,8 +41,7 @@ $ pkill <process name>
 $ killall <process name>
 ```
 
-
-## Installing Packages
+### Installing Packages
 
 ```console
 $ # update fetches latest versions for packages installed on system
@@ -50,7 +49,7 @@ $ # upgrade performs the updates
 $ sudo apt update && apt upgrade
 ```
 
-### Setting Proxy
+#### Setting Proxy
 
 To setup proxy for apt/yum, need to modify /etc/apt.conf or /etc/yum.conf.
 
@@ -58,7 +57,7 @@ To setup proxy for apt/yum, need to modify /etc/apt.conf or /etc/yum.conf.
 proxy=http://micron.com:80
 ```
 
-## Substitute User
+### Substitute User
 
 Elevate privileges assigned to the current user. Both su and sudo are used to run commands with root permissions. Root user is equivalent to administrator user on Windows.
 
@@ -72,7 +71,7 @@ $ sudo apt update             Updates packages but does not install them
 $ sudo apt upgrade
 ```
 
-## History
+### History
 
 View previously used commands.
 
@@ -80,14 +79,14 @@ View previously used commands.
 $ history
 ```
 
-## Ping
+### Ping
 
 ```console
 $ ping [option] [hostname/IP address]
 $ ping google.com
 ```
 
-## Extracting/Compressing Files
+### Extracting/Compressing Files
 
 tar.gz (gzip) file contains compressed files to save storage space and bandwidth during downloading process. It is a combination of .tar file and .gz file.
 
@@ -107,7 +106,7 @@ $ tar -xvzf documents.tar.gz
 tar –xvzf documents.tar.gz –C /home/user/destination    # put files to specific directory
 ```
 
-## Installing Files
+### Installing Files
 
 dpkg is a tool to install, build, remove and manage Debian packages.
 
