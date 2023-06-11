@@ -49,3 +49,7 @@ The when directive allows the Pipeline to determine whether the stage should be 
 ### script
 
 script takes a block of Scripted Pipeline and executes in the Declarative Pipeline. For most cases, this step should be unnecessary, but it can provide a useful "escape hatch". Instead, script blocks of non-trivial size/complexity should be moved to **Shared Libraries**.
+
+### dir
+
+Purpose is to change your current working directory to another on the Jenkins agent where the build itself is running. However, there is a limitation when running with **Docker plugin where dir() with an absolute path is not supported**.

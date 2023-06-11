@@ -20,7 +20,7 @@ Best practice is to use Jenkins API token and replace that in the password field
 
 ### SCM Notifier
 
-For credentials, best practice is to use SCM access token to replace password field.
+For credentials, best practice is to use SCM access token to replace password field. To trigger when branch is updated, check 'RESCOPED_FROM'.
 
 For Bitbucket, use Stash Notifier.
 

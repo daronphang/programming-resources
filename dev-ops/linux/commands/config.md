@@ -76,3 +76,13 @@ $ sudo lsof -i:22   # see a specific port
 $ sudo netstat -tulpn
 $ sudo kill <PID>
 ```
+
+### Mounting Directory
+
+```bash
+$ sudo mount -t cifs -o username=daronphang,password=password //10.195.111.11/F10_PEE_UIPATH/daronphang /mnt/uipath
+```
+
+```bash
+$ sudo mount -t cifs -o credentials=abs/path/to/.cifs //10.195.111.11/F10_PEE_UIPATH/daronphang /mnt/uipath
+```
