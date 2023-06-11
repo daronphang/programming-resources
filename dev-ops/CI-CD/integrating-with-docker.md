@@ -3,7 +3,7 @@
 - Before optimization, think how inner loop (code, build, run, test) relates with outer loop (push change, CI build, CI test, deployment).
 - Use Docker Hub access token when setting up CI rather than password.
 - Reduce build time and number of calls by making use of build cache to reuse layers that have been pulled.
-- Have release images goto DockerHub.
+- Have release images go to DockerHub.
 
 ```yaml
 name: CI to Docker Hub

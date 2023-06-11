@@ -1,6 +1,6 @@
 ## CI/CD Pipeline
 
-Continuous Integration is the process where software is built and testing stages are completed.
+Continuous Integration is the continuous assembling and testing of our entire complex and rapidly evolving ecosystem. Each integration is verified by an automated build (including test) to detect integration errors ASAP (fundamental goal of CI).
 
 Continuous Delivery is an extension of CI which automatically deploys all code changes to a testing or production environment after build stage.
 
