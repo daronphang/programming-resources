@@ -6,7 +6,9 @@ There are two distinct dimensions for every test case: size and scope. Both are 
 
 ### Hermetic
 
-All tests should strive to be hermetic; a test should contain all of the information necessary to set up, execute and tear down its environment. Tests should assume as little as possible about the outside environment, such as the order in which the tests are run. Tests also should not rely on a shared database.
+All tests should strive to be hermetic; a test should contain all of the information necessary to set up, execute and tear down its environment. In other words, tests run against a test environment (i.e. application servers, resources) that is entirely self-contained (i.e. no external dependencies like production backends).
+
+Tests should assume as little as possible about the outside environment, such as the order in which the tests are run. Tests also should not rely on a shared database.
 
 ### Deterministic
 

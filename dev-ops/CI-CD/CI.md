@@ -31,3 +31,27 @@ Automated development-related tasks saves engineering resources in the long run.
 #### Continuous Build
 
 The Continuous Build integrates the latest code changes at head and runs an automated build and test. Breaking the build or failing the build includes breaking tests as well as breaking compilation.
+
+## Best Practices
+
+### Green rate
+
+Having a 100% green rate on CI, just like having 100% uptime for a production service, is awfully expensive. One of the biggest problem is going to be a race condition between testing and submission.
+
+Policies that say "nobody can commit if our latest CI results are not green" are probably misguided. If CI reports an issue, such failures should definitely be investigated. If the root cause is well understood and clearly won't affect production, blocking commits is unreasonable.
+
+### Alert and alarm
+
+Treating every alert as an equal cause for alarm is not generally the correct approach. IF an alert fires in production but the service isn't actually impacted, silencing the alert is the correct choice.
+
+The same is true for test failures: if a test is known to be failing for irrelevant reasons, we should probably be more liberal in accepting changes that disable a failed test. Not all test failures are indicative of upcoming production issues.
+
+## Challenges
+
+Some challenges include:
+
+- Potential disruption to engineer productivity of unstable, slow, conflicting, or too many tests at presubmit
+- cuplrit finding and failure isolation (integrating upstream microservices is one approach)
+- resource constraints whereby large tests can be very expensive
+- Flaky tests eroding confidence
+- Failure management (what to do when tests fail, can be resolved with Hermetic testing)
