@@ -44,3 +44,26 @@ def read_item(item_id: int, q: Union[str, None] = None):
 http://localhost:8000/docs      Swagger UI
 http://localhost:8000/redoc     ReDoc (alternative)
 ```
+
+### Starting Programatically
+
+```py
+app, _ = create_app(standalone_mode=False) # to return app from click wrapper
+
+if __name__ == "__main__":
+    uvicorn.run("instacap.main:app", port=5000, host="0.0.0.0", log_level="info")
+```
+
+```py
+@click.command()
+@click.option('--configenv', default='DEVELOPMENT', help="config environment: TESTING, DEVLEOPMENT or PRODUCTION")
+def create_app(configenv: str):
+    # factory method
+    configenv = ConfigEnvs[configenv]
+    app = FastAPI()
+    return app
+```
+
+```py
+app, container = create_app(['--configenv', 'TESTING'], standalone_mode=False)
+```
