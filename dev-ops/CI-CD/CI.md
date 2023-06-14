@@ -32,6 +32,14 @@ Automated development-related tasks saves engineering resources in the long run.
 
 The Continuous Build integrates the latest code changes at head and runs an automated build and test. Breaking the build or failing the build includes breaking tests as well as breaking compilation.
 
+### Failure Management
+
+When a breaking change has been integrated by passing presubmit tests but not integrated tests, it is imperative to identify the failure. However, it can be difficult due to a prevalence of flakes and the occasional issues with the testing infrastructure itself.
+
+After a breaking change has been isolated, it is important to fix it ASAP. The presence of failing tests can quickly erode confidence in the test suite.
+
+Rolling a change back is often the fastest and safest route to fix a build as it quickly restores the system to a known good state.
+
 ## Best Practices
 
 ### Green rate

@@ -29,6 +29,8 @@ df.to_string()
 ```py
 df.dropna(axis=0)       # drops any row with NaN, axis=1 for column
 df.fillna(value='some value')
+
+df = df.replace(np.nan, None, regex=True)
 ```
 
 ### Converting to Python data structures

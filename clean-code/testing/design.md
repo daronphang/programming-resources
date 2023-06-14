@@ -16,6 +16,12 @@ Tests should be deterministic i.e. running the test always results in the same o
 
 A common cause of nondeterminism is code that is not hermetic i.e. it has dependencies on external services that are outside the control of a test.
 
+#### Flaky (Non-deterministic) and Brittle Tests
+
+A flaky test is one that yields both passing and failing results despite zero changes to the code or test i.e. they are non-deterministic that fail to produce the same outcome with each individual test run.
+
+On the other hand, brittle tests may consistently pass, but is balanced on a knife edge that a small change in conditions results in failure.
+
 ### Discourage Control Flows
 
 **The use of control flow statements like conditionals and loops, and operations are strongly discouraged** in a test. More complex test flows risk containing bugs themselves and make it more difficult to determine the cause of a test failure.
