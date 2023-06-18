@@ -38,6 +38,8 @@ df = df.replace(np.nan, None, regex=True)
 ```py
 df.to_dict('records')
 df.to_dict().values()
+
+df['columnA'].values.tolist()
 ```
 
 ### Alter Columns

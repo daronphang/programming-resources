@@ -20,7 +20,7 @@ Runs on each node and helps in making services available to external host and fo
 
 ## Pods
 
-A Pod is the smallest unit that can be deployed and managed by Kubernetes. Pods can contain multiple containers that are tightly coupled (deployed on the same server in pre-container world). A Pod always run on a Node, and each Node can have multiple pods.
+A Pod is the smallest unit that can be deployed and managed by Kubernetes i.e. containers. Pods can contain multiple containers that are tightly coupled (deployed on the same server in pre-container world). A Pod always run on a Node, and each Node can have multiple pods.
 
 **Each Pod is meant to run a single instance of a given application**. If you want to scale horizontally, should use multiple Pods, one for each instance i.e. replication.
 

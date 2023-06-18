@@ -2,7 +2,7 @@
 
 Docker is a platform to build, ship and run distributed applications – meaning that it runs applications in a distributed fashion across many machines, often with a variety of hardware and OS configurations. For this to be possible, it needs a sandboxing environment capable of abstracting the specifics of the underlying host (for portability), without requiring a complete rewrite of the application (for ubiquity), and without introducing excessive performance overhead (for scale).
 
-Allows users to create independent and isolated environments (called containers) to launch and deploy applications. Not a virtual machine as it only shares resources of host machine in order to run its environments (does not include complete OS).
+Allows users to create independent and isolated environments (called containers) to launch and deploy applications. Not a virtual machine as it only shares resources of host machine in order to run its environments (does not include complete OS). The containers are run in **PID namespaces**.
 
 ### Benefits
 
