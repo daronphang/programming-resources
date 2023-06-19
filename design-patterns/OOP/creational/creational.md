@@ -1,4 +1,4 @@
-### Creational Patterns
+## Creational Patterns
 
 Abstract the instantiation process i.e. make a system indepedent of how its objects are created, composed, and represented. A class creational pattern uses inheritance to vary the class that's instantiated, whereas an object creational pattern will delegate instantiation to another object.
 

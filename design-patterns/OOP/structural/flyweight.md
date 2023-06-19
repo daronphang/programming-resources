@@ -1,4 +1,4 @@
-### Flyweight
+## Flyweight
 
 Use sharing to support large numbers of fine-grained objects efficiently. Some applications could benefit from using objects throughout their design, but a native implementation would be expensive i.e. document editor with text formatting and using objects to represent characters, figures and tables. Using objects to represent fine-grained elements will consume lots of memory and may incur unacceptable run-time overhead. Each occurrence of a particular object refers to the same instance in the shared flyweight pool. Flyweight objects are immutable.
 
@@ -14,42 +14,42 @@ Pattern's effectiveness depends heavily on how and where it's used. Apply it whe
 - Many groups of objects may be replaced by relatively few shared objects once extrinsic state is removed.
 - Application doesn't depend on object identity.
 
-### Participants
+## Participants
 
-#### Flyweight
+### Flyweight
 
 - Declares an interface through which flyweights can receive and act on extrinsic state.
 
-#### ConcreteFlyweight
+### ConcreteFlyweight
 
 - Implements the Flyweight interface and adds storage for intrinsic state.
 - Object must be sharable and any state it stores must be intrinsic.
 
-#### UnsharedConcreteFlyweight
+### UnsharedConcreteFlyweight
 
 - Not all Flyweight subclasses need to be shared.
 - Common for unshared objects to have Concrete Flyweight objects as children.
 
-#### FlyweightFactory
+### FlyweightFactory
 
 - Creates and managees flyweight objects.
 - Ensures flyweight objects are shared properly i.e. supplies an existing instance or creates one if not exists.
 
-#### Client
+### Client
 
 - Maintains a reference to flyweights.
 
-### Collaborations
+## Collaborations
 
 Clients should not instantiate ConcreteFlyweight objects directly but exclusively from Factory. Often combined with Composite pattern to represent a hierarchial structure with shared leaf nodes.
 
-### Consequences
+## Consequences
 
-#### Run-time costs
+### Run-time costs
 
 Flyweights may introduce run-time costs associated with transferring, finding, and/or computing extrinsic state. However, costs are offset by space savings.
 
-### Example
+## Example
 
 ```py
 class ComplexCars:

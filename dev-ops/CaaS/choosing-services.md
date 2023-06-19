@@ -4,19 +4,19 @@ Modern compute offerings are available in both the open source world (Kubernetes
 
 The choice of a compute service is difficult to change over time is because eventually it will become surrounded by a large ecosystem of helper services i.e. tools for logging, monitoring, debugging, alerting, visualization, on-the-fly analysis, configuration langauges and meta-languages, user interfaces, etc. These tools will need to be rewritten as a part of a compute service change.
 
-### Centralization vs Customization
+## Centralization vs Customization
 
 From the point of view of management overhead of the compute stack and resource efficiency, the best an organization can do is adopt a single CaaS solution to manage its entire fleet of machines and use only the tools available there for everybody. This ensures that as the organization grows, the cost of managing the fleet remains manageable.
 
 However, a growing organization will have increasingly diverse needs. Nonetheless, there are ways to invest effort and get some of the benefits of customization while not suffering the worse downsides.
 
-### Level of Abstraction: Serverless
+## Level of Abstraction: Serverless
 
 Serverless offerings provide an even higher level of abstraction and provides inversion of control. The user will only be responsible for writing an 'Action' or 'Handler' function in the chosen language that takes the request parameters and returns the response. Examples include AWS Lambda and Google Cloud Run.
 
 If multiple teams are using the same framework, instead of making the machines multi-tenant, we can also make the framework servers themselves multi-tenant. In this approach, we end up running a larger number of framework servers, dynamically loading/unloading the action code on different servers as needed, and dynamically directing requests to those servers that have the relevant action code loaded.
 
-#### Pros and cons
+### Pros and cons
 
 Firstly, a serverless architecture requires your code to be truly **stateless**. There is no local state that is truly persisted across requests; everythign that you want to use, you should set up in the request-scope.
 
@@ -24,7 +24,7 @@ The managed serverless model is attractive for **adaptable scaling of the resour
 
 Finally, adopting a serverless solution implies a certain **loss of control over your environment**. More control means more management overhead; however, this also means that if you need some extra functionality that is not available in the framework you use, it will become a problem for you.
 
-### Public vs Private
+## Public vs Private
 
 An organization using a public cloud is effectively **outsourcing the management overhead** to a public cloud provider. For many, this is an attractive proposition as they can focus on providing value in their specific area of expertise, and do not need to grow significant infrastructure expertise.
 

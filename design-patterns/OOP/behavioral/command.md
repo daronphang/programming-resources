@@ -1,4 +1,4 @@
-### Command
+## Command
 
 Intent is to encapsulate a request as an object and hence, letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
@@ -20,43 +20,43 @@ Use when you want to:
 - Support logging changes so that they can be reapplied in case of system crash.
 - Structure a system around high-level operations built on primitives operations.
 
-### Participants
+## Participants
 
-#### Command
+### Command
 
 - Declares an interface for executing an operation.
 
-#### ConcreteDemand
+### ConcreteDemand
 
 - Defines a binding between a Receiver object and an action.
 
-#### Client
+### Client
 
 - Creates a ConcreteCommand object and sets its receiver.
 
-#### Invoker
+### Invoker
 
 - Asks the command to carry out the request.
 
-#### Receiver
+### Receiver
 
 - Knows how to perform the operations associated with carrying out a request.
 
-### Collaborations
+## Collaborations
 
 - Client creates a ConcreteCommand object and specifies its receiver.
 - Invoker object stores the ConcreteCommand object.
 - Invoker issues a request by calling Execute on the command; when commands are undoable, ConcreteCommand stores state for undoing the command prior to invoking Execute.
 - ConcreteCommand object invokes operations on its receiver to carry out the request.
 
-### Consequences
+## Consequences
 
 - Command decouples the object that invokes the operation from the one that knows how to perform it.
 - Commands are first-class objects which can be manipulated and extended like any other object.
 - Can assemble commands into a composite command.
 - Easy to add new Commands as you don't have to change existing classes.
 
-### Example
+## Example
 
 ```py
 from abc import ABC, abstractmethod

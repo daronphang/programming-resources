@@ -1,4 +1,4 @@
-### Decorator (Wrapper)
+## Decorator (Wrapper)
 
 Attach additional responsibilities to an object dynamically. Decorates provide a flexible alternative to subclassing for extending functionality. Sometimes we want to add responsibilities to individual objects, not to an entire class. One way is with inheritance but is inflexible as the choice is made statically.
 
@@ -10,16 +10,16 @@ Decorator confirms to the interface of the component it decorates so that its pr
 - For responsibilities that can be withdrawn.
 - When extension by subclassing is impractical.
 
-### Consequences
+## Consequences
 
-#### More flexibility than static inheritance
+### More flexibility than static inheritance
 
 Decorator pattern provides a more flexible way to add responsibilities to objects which can be added/removed during run-time.
 
-#### Avoids feature-laden classes high up in the hierarchy
+### Avoids feature-laden classes high up in the hierarchy
 
 Decorator offers pay-as-you-go approach to adding responsibilities by adding functionality incrementally with Decorator objects.
 
-#### Decorator and its component are not identical
+### Decorator and its component are not identical
 
 Decorator acts as a transparent enclosure. Should not rely on object identity when you use decorators.

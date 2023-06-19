@@ -1,6 +1,4 @@
-## Overall Comparison
-
-### Creational
+## Creational
 
 | Design Pattern   | Aspects That Can Vary                   |
 | ---------------- | --------------------------------------- |
@@ -10,7 +8,7 @@
 | Prototype        | Class of object that is instantiated    |
 | Singleton        | Sole instance of a class                |
 
-### Structural
+## Structural
 
 | Design Pattern | Aspects That Can Vary                             |
 | -------------- | ------------------------------------------------- |
@@ -22,7 +20,7 @@
 | Flyweight      | Storage costs of objects                          |
 | Proxy          | How an object is accessed i.e. its location       |
 
-### Behavioral
+## Behavioral
 
 | Design Pattern          | Aspects That Can Vary                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------ |

@@ -1,4 +1,4 @@
-### Observer
+## Observer
 
 Intent is to define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
@@ -12,50 +12,50 @@ Common side-effect of partitioning a system into a collection of cooperating cla
 - When a change to one object requires changing others, and you don't know how many objects need to be changed.
 - When an object should be able to notify other objects without making assumptions about who these objects are (loosely coupled).
 
-### Participants
+## Participants
 
-#### Subject
+### Subject
 
 - Knows its observers; any number of Observer objects may observe a subject.
 - Provides an interface for attaching and detaching Observer objects.
 - All Observers must implement the same interface and that the Subject communicates with them only via that interface.
 - Interface should declare the notification method along with a set of parameters that the subject/publisher can use to pass some data along with notification.
 
-#### Observer
+### Observer
 
 - Defines an updating interface for objects that should be notified of changes in a subject.
 
-#### ConcreteSubject
+### ConcreteSubject
 
 - Stores state of interest to ConcreteObserver objects.
 - Sends a notification to its observers when its state changes.
 
-#### ConcreteObserver
+### ConcreteObserver
 
 - Maintains a reference to a ConcreteSubject object.
 - Stores state that should stay consistent with the subject's.
 - Implements the Observer updating interface to keep its state consistent with subject's.
 
-### Collaborations
+## Collaborations
 
 - ConcreteSubject notifies its observers whenever a change occurs that could make its observers' state inconsistent with its own.
 - After being informed of a change, ConcreteObserver object may query the subject for information.
 
-### Consequences
+## Consequences
 
-#### Abstract coupling between Subject and Observer
+### Abstract coupling between Subject and Observer
 
 All a subject knows is that it has a list of observers, each conforming to the simple interface of the abstract Observer class. Subject doesn't know concrete class of any observer. Hence, both are loosely coupled.
 
-#### Support for broadcast communication
+### Support for broadcast communication
 
 Notification that a subject sends need not specify its receiver i.e. broadcast automatically to all interested objects that subscribed to it.
 
-#### Unexpected updates
+### Unexpected updates
 
 Observers can be blind to the ultimate cost of changing the subject. An operation on the subject may cause a cascade of updates to observers and their dependent objects.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

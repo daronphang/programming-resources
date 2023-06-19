@@ -1,4 +1,4 @@
-### Facade
+## Facade
 
 Provides a unified interface to a set of interfaces in a subsystem such as a library, framework, or complex set of classes. Facade defines a higher-level interface that makes the subsystem easier to use. Structuring a system into subsystems helps reduce complexity. Common design goal is to minimize communication and dependencies between subsystems which can be achieved through the introduction of a facade object that provides a simplified interface to the more general facilities of a subsystem.
 
@@ -10,30 +10,30 @@ Clients communicate with subsystem by sending requests to Facade, which forwards
 - When there are many dependencies between clients and implementation classes of an abstraction; facade will decouple the subsystem from clients and other subsystems and hence, promoting subsystem independence and portability.
 - When you want to layer your subsystems i.e. defining an entry point to each subsystem level.
 
-### Participants
+## Participants
 
-#### Facade
+### Facade
 
 - Knows which subsystem classes are responsible for a request.
 - Delegates client requests to appropriate subsystem objects.
 
-#### SubsystemClasses
+### SubsystemClasses
 
 - Implement subsystem functionality.
 - Handle work assigned by Facade object.
 - Have no knowledge of facade.
 
-### Consequences
+## Consequences
 
-#### Shields clients from subsystem component
+### Shields clients from subsystem component
 
 Reduces the number of objects that clients deal with.
 
-#### Promotes weak coupling between subsystem and clients
+### Promotes weak coupling between subsystem and clients
 
 Often components in a subsystem are tightly coupled. Weak coupling allows you to vary the components of subsystem without affecting its clients. Can also eliminate complex/circular dependencies. Reducing compilation dependencies is vital in large software systems; want to save time by minimizing recompilation when subsystem classes change. Facade also simplifies porting systems to other platforms.
 
-### Example
+## Example
 
 ```python
 class Washing:

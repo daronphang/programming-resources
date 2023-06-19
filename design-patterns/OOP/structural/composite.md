@@ -1,4 +1,4 @@
-### Composite
+## Composite
 
 Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly i.e. a group of objects is treated the same way as a single instance of the same type of objects. Composite pattern describes how to use recursive composition so that clients don't have to make distinction. An example would be a drawing editor allowing users to build complex diagrams out of simple components i.e. lines, rectangle and text to form a picture.
 
@@ -9,52 +9,52 @@ Key to Composite pattern is an abstract class that represents both primitives an
 - When you want to represent part-whole hierarchies of objects.
 - When you want clients to be able to ignore the difference between compositions of objects and individual objects i.e. clients will treat all objects in composite structure uniformly.
 
-### Participants
+## Participants
 
-#### Component
+### Component
 
 - Declares the interface for objects in the composition.
 - Implements default behavior for interface common to all classes.
 - Declares an interface for accessing and managing its child components.
 
-#### Leaf
+### Leaf
 
 - Represents leaf objects in the composition (has no children).
 - Defines behavior for primitive objects in the composition.
 
-#### Composite
+### Composite
 
 - Defines behavior for components having children.
 - Stores child components.
 - Implements child-related operations in the Component interface.
 
-#### Client
+### Client
 
 - Manipulates objects in composition through the Component interface.
 
-### Collaborations
+## Collaborations
 
 Clients use Component class interface to interact with objects in the composite structure. If the recipient is a Leaf, then the request is handled directly. If the recipient is a Composite, then it usually forwards requests to its child components, possibly performing additional operations before and/or after forwarding.
 
-### Consequences
+## Consequences
 
-#### Defines class hierarchies consisting of primitive objects and composite objects
+### Defines class hierarchies consisting of primitive objects and composite objects
 
 Primitive objects can be composed into more complex objects, which in turn can be composed, recursively. Wherever client code expects a primitive object, it can also take a composite object.
 
-#### Makes client simple
+### Makes client simple
 
 Clients can treat composite structures and individual objects uniformly. Clients normally do not know whether they are dealing with a Leaf or a Composite component.
 
-#### Makes it easier to add new kinds of components
+### Makes it easier to add new kinds of components
 
 Newly defined Composite or Leaf subclasses work automatically with existing structures and client code.
 
-#### Can make design overly general
+### Can make design overly general
 
 Makes it harder to restrict components of a Composite i.e. sometimes want to have a composite to have certain components. Have to use run-time checks instead.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

@@ -13,51 +13,51 @@ Use the Abstract Factory when:
 - A family of related project objects is designed to be used together.
 - Want to provide a class library of products, and want to reveal just their interfaces and not implementations.
 
-### Participants
+## Participants
 
-#### Client
+### Client
 
 - Client application that calls Abstract Factory.
 
-#### Abstract Factory
+### Abstract Factory
 
 - Common interface over all sub factories, declares a set of methods that return different abstract products.
 
-#### Concrete Factory
+### Concrete Factory
 
 - Sub factory of Abstract Factory and contains methods to create Concrete Product.
 
-#### Abstract Product
+### Abstract Product
 
 - Interface for product that sub factory returns.
 
-#### Concrete Product
+### Concrete Product
 
 - Object that is finally returned.
 
-### Consequences
+## Consequences
 
-#### Isolates concrete classes
+### Isolates concrete classes
 
 Helps control the classes of objects that an application creates. As factory encapsulates the responsibility and process of creating product objects, it isolates clients from implementation classes. Clients manipulate instances through abstract interfaces.
 
-#### Makes exchanging product families easy
+### Makes exchanging product families easy
 
 Classes of concrete factory can be configured easily by changing the concrete factory.
 
-#### Promotes consistency among products
+### Promotes consistency among products
 
 When product objects in a family are designed to work together, it is important that an application use objects from only one family at a time.
 
-#### Supporting new kinds of products is difficult
+### Supporting new kinds of products is difficult
 
 Extending abstract factories to produce new kinds of products isn't easy as its interface fixes the set of products that can be created.
 
-### Related Patterns
+## Related Patterns
 
 Often implemented with Factory Method, but can be implemented using Prototype. Concrete factory is often a Singleton.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

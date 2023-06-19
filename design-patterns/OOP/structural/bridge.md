@@ -1,4 +1,4 @@
-### Bridge (Handle/Body)
+## Bridge (Handle/Body)
 
 Decouples an abstraction from its implementation so that the two can vary independently. Considered one of the best methods to organize class hierarchy and avoiding complexity explosion whereby the number of class combinations exponentially increases i.e. different shapes of different colors. Favors composition over inheritance.
 
@@ -13,55 +13,55 @@ Useful when dealing with cross-platform apps, supporting multiple types of datab
 - When changes in implementation of an abstraction should have no impact on clients i.e. code should not be recompiled.
 - When you want to share an implementation among multiple objects.
 
-### Participants
+## Participants
 
-#### Abstraction
+### Abstraction
 
 - Defines the abstraction interface.
 - Maintains a reference to an object of second hierarchy of type Implementor.
 
-#### RefinedAbstraction
+### RefinedAbstraction
 
 - Extends the interface defined by Abstraction.
 
-#### Implementor
+### Implementor
 
 - Defines the interface for implementation classes.
 - Interface does not have to correspond exactly to Abstraction's interface; typically Implementor interface provides primitive operations while Abstraction defines higher-level operations.
 
-#### ConcreteImplementor
+### ConcreteImplementor
 
 - Implements the Implementor interface and deifnes its concrete implementation.
 
-### Consequences
+## Consequences
 
-#### Decoupling interface and implementation
+### Decoupling interface and implementation
 
 An implementation is not bound permanently to an interface and can be configured at run-time. Decoupling also eliminates compile-time dependencies on the implementation.
 
-#### Improved extensibility
+### Improved extensibility
 
 Can extend Abstraction and Implementor hierarchies independently.
 
-#### Hiding implementation details from clients
+### Hiding implementation details from clients
 
 Can shield clients from implementation details like sharing of implementor objects and accompanying reference count mechanism.
 
-### Implementation
+## Implementation
 
-#### Only one implementor
+### Only one implementor
 
 There's one-to-one relationship between Abstraction and Implementor.
 
-#### Creating the right implementor object
+### Creating the right implementor object
 
 If Abstraction knows about all ConcreteImplementor classes, then it can instantiate one of them in its constructor. Another approach is to choose a default implementation initially and change it later according to usage.
 
-#### Using multiple inheritance
+### Using multiple inheritance
 
 Can use multiple inheritance to combine an interface with its implementation. For example, a class can inherit publicly from Abstraction and privately from a ConcreteImplementor. However, can't implement a true Bridge with multiple inheritance for static language.
 
-### Example
+## Example
 
 Implementing an Airplane that can be miltiary/commercial and passenger/cargo. Can create a bridge between classes (Airplane and Carrier implementation).
 

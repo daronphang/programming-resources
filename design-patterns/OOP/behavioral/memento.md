@@ -1,4 +1,4 @@
-### Memento (Token)
+## Memento (Token)
 
 Intent is to capture and externalize an object's internal state so that the object can be restored to this state later without violating encapsulation.
 
@@ -15,49 +15,49 @@ Use the Memento pattern when:
 - A snapshot of an object's state must be saved so taht it can be restored to that state later.
 - A direct interface to obtaining the state would expose implementation details and break the object's encapsulation.
 
-### Participants
+## Participants
 
-#### Memento
+### Memento
 
 - Stores internal state of the Originator's object.
 - Protects against access by objects other than the originator; Mementos have effectively two interfaces.
 
-#### Originator
+### Originator
 
 - Creates a memento containing a snapshot of its current internal state.
 - Use the memento to restore its internal state.
 
-#### Caretaker
+### Caretaker
 
 - Is responsible for the memento's safekeeping.
 - Never operates on or examines the contents of a memento.
 - Provides a narrow interface to the mementos.
 
-### Collaborations
+## Collaborations
 
 - A caretaker requests a memento from an originator, holds it for a time, and passes it back to the originator.
 - Sometimes the caretaker won't pass the memento back to the originator because the originator might never need to revert to an earlier state.
 - Mementos are passive; only the originator that created a memento will assign or retrieve its state.
 
-### Consequences
+## Consequences
 
-#### Preserving encapsulation boundaries
+### Preserving encapsulation boundaries
 
 Memento avoids exposing information that only an originator should manage but that must be stored nevertheless outside the originator.
 
-#### Simplifies Originator
+### Simplifies Originator
 
 Originator keeps the versions of internal state that clients have requested and hence, put all storage management burden on Originator.
 
-#### Using mementos might be expensive
+### Using mementos might be expensive
 
 Might incur considerable overhead if Originator must copy large amounts of information to store, of if clients create and return mementos to the originator often enough.
 
-#### Hidden costs in caring for mementos
+### Hidden costs in caring for mementos
 
 Caretaker is responsible for deleting the mementos it cares for. However, the caretaker has no idea how much state is in the memento.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

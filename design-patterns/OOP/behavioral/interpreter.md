@@ -1,4 +1,4 @@
-### Interpreter
+## Interpreter
 
 Intent is to define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
 
@@ -15,25 +15,25 @@ Use the Interpreter pattern when there is a language to interpret, and you can r
 - Grammar is simple; for complex grammars, class hierarchy becomes large and unmanageable.
 - Efficiency is not a critical concern.
 
-### Participants
+## Participants
 
-#### AbstractExpression
+### AbstractExpression
 
 - Declares an abstract Interpret operation that is common to all nodes.
 
-#### TerminalExpression
+### TerminalExpression
 
 - Implements an Interpret operation associated with terminal symbols in grammar.
 - An instance is required for every terminal symbol in sentence.
 
-#### NonTerminalExpression
+### NonTerminalExpression
 
 - One such class required for every rule in grammar.
 
-#### Context
+### Context
 
 - Contains information that's global to the interpreter.
 
-#### Client
+### Client
 
 - Builds an abstract syntax tree representing a particular sentence in the language that the grammar defines.
