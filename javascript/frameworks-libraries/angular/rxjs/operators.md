@@ -1,4 +1,4 @@
-### Operators
+## Operators
 
 Two types: Pipeable and Creation Operators. Creation Operators are standalone functions to create a new Observable. Pipeable Operators are functions that can be piped to Observables; when called, they do not change existing Observable instance but returns new Observable. Takes an Observable as its input and returns another Observable; pure operation and the previous Observable stays unmodified.
 
@@ -7,12 +7,12 @@ of(1, 2, 3).subscribe((x) => console.log(x));
 obs.pipe(op1(), op2(), op3(), op4());
 ```
 
-## Pipeable
+### Pipeable
 
 https://indepth.dev/reference/rxjs/operators
 
 ```
-catchError        Returns a new observable or throws an error.
+catchError        Returns a new observable or throws an error
 tap               For running side effects
 from              Creates an Observable from an array-like/iterable object
 combineLatest     Combines values from all Observables passed in an Observable array; will not emit an initial value until each Obs emits at least once
@@ -56,9 +56,7 @@ from(urls).pipe(
   catchError((err) => of(null))
 );
 
-const obsArr = [1, 2, 3].map((item) =>
-  this.http.get().pipe(catchError((err) => of(null)))
-);
+const obsArr = [1, 2, 3].map((item) => this.http.get().pipe(catchError((err) => of(null))));
 
 forkJoin(obsArr).subscribe();
 ```

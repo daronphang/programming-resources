@@ -2,6 +2,8 @@
 
 Mapping a value into an Observable, which in turn can be subscribed to retrieve its corresponding value. ConcatMap, MergeMap, SwitchMap are all higher-order mapping operators which help to map (return an Observable) and flatten it (subscribe). Benefits of using them are avoiding nested subscription.
 
+By implementing higher-order Observables, we can **avoid nested subscribes anti-pattern**.
+
 https://blog.angular-university.io/rxjs-higher-order-mapping/
 
 ### Observable Concatenation
@@ -9,8 +11,8 @@ https://blog.angular-university.io/rxjs-higher-order-mapping/
 Only works when observables are completing i.e. all values are emitted.
 
 ```js
-const series1$ = of("a", "b");
-const series2$ = of("x", "y");
+const series1$ = of('a', 'b');
+const series2$ = of('x', 'y');
 
 const result$ = concat(series1$, series2$);
 result$.subscribe(console.log); // a b x y
@@ -41,6 +43,8 @@ Ignores new values in the source Observable until the previous value is complete
 
 Combination of higher-order mapping and concatenating Observables. Takes each value in array and transforming into an inner Observable, subscribes to it and sends the output to the result Observable. Waits for previous HTTP Observable to complete before mapping the new value to an HTTP Observable.
 
+The operator is best used if the order of emission and subscription of inner observables is important.
+
 ```js
 // Queues every new Observable, and subscribes to it only when the last Observable is completed
 from(urls)
@@ -52,6 +56,8 @@ from(urls)
 ### MergeMap
 
 Combines merge strategy and higher-order mapping. Immediately reflects output in output Observable once the inner Observable emits a value. Can have multiple inner Observables overlapping over time, emitting values in parallel. To gather all responses at once, use toArray() which will emit when source Observable is completed.
+
+The operator is best used when you wish to flatten an inner Observable but want to manually control the number of inner subscriptions. This allows for multiple inner subscriptions to be active at a time. Common use-case for mergeMap is requests that should not be canceled i.e. writes rather than reads.
 
 ```js
 from(urls)
@@ -68,7 +74,9 @@ from(urls)
 
 ### SwitchMap
 
-Very common use case is search Typeahead with debounceTime and distinctUntilChanged.
+The main difference between SwitchMap and other flattening operators is the cancelling effect. On each emission the previous inner observable is cancelled and the new observable is subscribed. Common use case is search Typeahead with debounceTime and distinctUntilChanged.
+
+For any source item, complets the previous Observable and immediately creates the next one i.e. only one active inner subscription is active at a time.
 
 ```js
 from(request1).pipe(switchMap(), switchMap()).subscribe();
@@ -83,3 +91,7 @@ https://www.tektutorialshub.com/angular/using-exhaustmap-in-angular/
 ```js
 from(urls).pipe(exhaustMap()).subscribe();
 ```
+
+### toArray
+
+Collects all source emissions and emits them as an array when the source completes.

@@ -1,15 +1,11 @@
-### Routing
+## Routing
 
 ```html
 <!--routerLink prevents page reloading by default -->
 <!--routerLinkActive used to add css class to element-->
 <!--routerLinkActiveOptions used to show active tab if full path is matched-->
 <li rounterLinkActive="myActiveClass" [routerLinkActiveOptions]="{exact: true}">
-  <a
-    [routerLink]="['/users', 10, 'anna']"
-    [queryParams]="{allowEdit: '1', value: '10'}"
-    [fragment]="loading"
-  >
+  <a [routerLink]="['/users', 10, 'anna']" [queryParams]="{allowEdit: '1', value: '10'}" [fragment]="loading">
     10/anna
   </a>
 </li>
@@ -60,9 +56,7 @@ goUsers() {
 
 ```html
 <!--with RouterLink-->
-<a [routerLink]="['/products']" [queryParams]="{ order: 'popular'}">
-  Products
-</a>
+<a [routerLink]="['/products']" [queryParams]="{ order: 'popular'}"> Products </a>
 ```
 
 ### Fetching Route Parameters
@@ -70,9 +64,7 @@ goUsers() {
 ```js
 // Fetching route parameters i.e. home/users/1/john
 // route.ts:
-const appRoutes: Routes = [
-  { path: "users/:id/:name", component: UserComponent },
-];
+const appRoutes: Routes = [{ path: 'users/:id/:name', component: UserComponent }];
 ```
 
 ```js
@@ -116,9 +108,9 @@ onEdit() {
 // routing.ts
 const appRoutes: Routes = [
   {
-    path: "users",
+    path: 'users',
     component: UserComponent,
-    children: [{ path: "id", component: UserIdComponent }],
+    children: [{ path: 'id', component: UserIdComponent }],
   },
 ];
 ```
@@ -132,7 +124,7 @@ const appRoutes: Routes = [
 
 ```js
 // in routing module
-RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" });
+RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' });
 ```
 
 ### Navigate With Anchor Tag

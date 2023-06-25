@@ -1,4 +1,4 @@
-### HTTP Requests
+## HTTP Requests
 
 HTTPClientTestingModule mocks the http requests while testing the service. HttpTestingController is injected into tests that allows for mocking and flushing of requests. Flush() is to provide dummy values as responses. Verify() is called after each test to verify that there are no outstanding http calls.
 

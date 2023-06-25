@@ -79,6 +79,8 @@ $ sudo kill <PID>
 
 ### Mounting Directory
 
+UID and GID only work for filesystems that don't support Linux permission schema i.e. FAT, NTFS.
+
 ```bash
 $ sudo mount -t cifs -o username=daronphang,password=password //10.195.111.11/F10_PEE_UIPATH/daronphang /mnt/uipath
 ```

@@ -1,3 +1,13 @@
+## Components
+
+Components are directives with template.
+
+## Style Guides
+
+### Put presentation logic in the component class, and data logic in services
+
+The component's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and let the component be simpler and more focused on the view.
+
 ## Dynamic Components (\*ngIf)
 
 Recommended way of approach as Angular does the heavy-lifting for us.
@@ -33,8 +43,8 @@ onHandleError(event) {
 <!--child.html-->
 <div class="backdrop" (click)="closeAlert()"></div>
 <div class="alert-box">
-    <p>{{ message }}</p>
-    <button class="btn btn-primary" (click)="closeAlert()">Close</button>
+  <p>{{ message }}</p>
+  <button class="btn btn-primary" (click)="closeAlert()">Close</button>
 </div>
 
 <!--parent.html-->
@@ -43,28 +53,28 @@ onHandleError(event) {
 
 ```css
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
 }
 
 .alert-box {
-    position: fixed;
-    top: 30vh;
-    left: 20vw;
-    width: 60vw;
-    padding: 16px;
-    z-index: 100;
-    background: white;
-    box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+  position: fixed;
+  top: 30vh;
+  left: 20vw;
+  width: 60vw;
+  padding: 16px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
 }
 
 .alert-box-actions {
-    text-align: right;
+  text-align: right;
 }
 ```
 

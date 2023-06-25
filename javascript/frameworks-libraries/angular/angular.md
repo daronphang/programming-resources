@@ -2,9 +2,9 @@
 
 Framework for building client applications in HTML, CSS, and Javascript/Typescript.
 
-### Cli
+### CLI
 
-```console
+```bash
 $ npm install -g @angular/cli
 $ ng new hello-world
 $ cd hello-world
@@ -13,9 +13,7 @@ $ ng build --prod
 
 $ ng generate component components/header --module app
 $ ng generate component components/buttons
-
 $ ng generate service hero
-
 $ ng generate directive example
 ```
 
@@ -58,12 +56,12 @@ ngAfterViewChecked          Called after change detector of child component has 
 
 ### Constructor vs NgOnInit
 
--   During initialization phase, Angular bootstrap process consists of components tree construction and running change detection.
--   Constructor is called in former, while lifecycle hooks are called in latter.
--   Constructor comes with every class (ES6 feature) which creates an instance of component class (not the component itself).
--   Constructor is a default method that will always be executed when the class is instantiated; common practice is to put as little logic as possible.
--   Dependencies are injected into the constructor.
--   Initialization code is placed in OnInit as it doesn't get executed in constructor.
+- During initialization phase, Angular bootstrap process consists of components tree construction and running change detection.
+- Constructor is called in former, while lifecycle hooks are called in latter.
+- Constructor comes with every class (ES6 feature) which creates an instance of component class (not the component itself).
+- Constructor is a default method that will always be executed when the class is instantiated; common practice is to put as little logic as possible.
+- Dependencies are injected into the constructor.
+- Initialization code is placed in OnInit as it doesn't get executed in constructor.
 
 ### Angular Structure
 
@@ -80,3 +78,15 @@ HMR exchanges, adds or removes modules while an application is running without a
 ### Webpack
 
 Module bundler, to bundle Javascript files for usage in browser. Automatically adds script files to index.html. Takes modules with dependencies and generates static assets representing those modules. Modules are reusuable chunks of code. Allows you to use require() for CSS files. If one file depends on another, Webpack treats this as a dependency.
+
+### Deployment Configuration
+
+```json
+"production": {
+    "optimization": {
+        "scripts": true,
+         "styles": true,
+         "fonts": false
+     },
+},
+```

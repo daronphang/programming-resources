@@ -1,4 +1,4 @@
-### Testing @Input/@Output
+## Testing @Input/@Output
 
 To test child component with @Input, create a testHost for parent component and declare child component in TestBed. Also, use @ViewChild ChildComponent to access and change its properties via data binding from parent component.
 

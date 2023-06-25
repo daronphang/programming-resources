@@ -1,14 +1,6 @@
-### Unittesting
+## Testing
 
-Unittests written in Jasmine framework with Karma as test runner. Best practices:
-
-- Used for testing behaviors such as if/for loops, executing functions etc.
-- Should be tested in isolation without any dependencies.
-- When subscribing to Observables, to provide both success and failure callbacks.
-- When testing components with services dependencies, always use mock services.
-- When accessing DOM, always use debugElement and not nativeElement.
-- Always use fixture.detectChanges() when making a change.
-- Don't overuse NO_ERRORS_SCHEMA.
+Unittests are written in Jasmine framework with Karma as test runner.
 
 ```
 describe(string, function)    Function takes a title and function containing one or more specs
@@ -25,6 +17,37 @@ ComponentFixture              Provides methods and proeprties that help test com
 jasmine.createSpy('service')                        Used when there is no function to spy on
 jasmine.createSpyObj('service', ['method'])         Used to create a mock that will spy on one ore more methods
 ```
+
+### Configuration
+
+If you want to customize Karma, you can create a karma.conf.js file.
+
+### Other test frameworks
+
+You can also unit test an Angular application with other testing libraries and test runners. Each library and runner has its own distinctive installation procedures, configuration, and syntax.
+
+### Running specific files
+
+Changing karma.conf.js does not do anything, nor does changing tsconfig.spec.json which just tells the compiler what files to compile. Tests are loaded via src/test.js file.
+
+You can change the regex to exclude some tests, but it may be hard on complicated setups. Alternatively, you can import the tests you want:
+
+```js
+// const context = require.context('./', true, /\.spec\.ts/);
+import './app/some/folder';
+```
+
+## Best Practices
+
+- Used for testing behaviors such as if/for loops, executing functions etc.
+- Should be tested in isolation without any dependencies
+- When subscribing to Observables, to provide both success and failure callbacks
+- When testing components with services dependencies, always use mock services
+- When accessing DOM, always use debugElement and not nativeElement
+- Always use fixture.detectChanges() when making a change
+- Don't overuse NO_ERRORS_SCHEMA
+
+## Example
 
 ```js
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';

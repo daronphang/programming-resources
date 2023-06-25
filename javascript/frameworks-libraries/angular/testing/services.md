@@ -1,4 +1,4 @@
-### Testing Services
+## Testing Services
 
 Firstly, should not add real service class in provider's array; always use mocks. Should have highest code coverage as they contain majority of business logic. Use spies for service-on-service as injecting real services can be difficult to create/control. For services with more complex logic, create mockService to mock dependencies. Mocks are used for behavior verification (i.e. check if correct calls are made) whereas stubs are used for state verification (i.e. return boolean, number, string).
 
