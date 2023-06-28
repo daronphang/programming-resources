@@ -88,3 +88,17 @@ someObs$.pipe(
 combineLatest()      Emits initial value only when all Observables emit at least one value
 forkJoin()           Emits the last emitted value from each observable when **all completes**
 ```
+
+### Keeping Observables alive on error
+
+When an error is caught, it will execute error() handler of subscription and kill the Observable; it will not fire complete(). If you catch the error in the source Observable, by return an Observable with EMPTY or of(null), it will complete the Observable.
+
+By catching errors in the inner Observable, you keep the source Observable alive. Place catchError() inside switchMap().
+
+```js
+this.data$.pipe(
+  switchMap((v) => {
+    return this.fetch$().pipe(catchError(() => {}));
+  })
+);
+```

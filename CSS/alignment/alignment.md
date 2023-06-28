@@ -1,13 +1,27 @@
 ## Horizontal Alignment
 
 ```css
-text-align: center; /* for inline-elements */
-
-margin-left: 5%;
-margin-right: 5%;
+.class {
+  text-align: center; /* for inline-elements */
+}
 ```
 
-## Vertical Align Property
+````css
+.class {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+```css .class {
+  display: relative;
+  width: 50rem;
+  left: calc(50% - 25rem);
+}
+````
+
+## Vertical Alignment
+
+### Vertical Align Property
 
 Property that sets the vertical alignment of an inline, inline-block or table-cell box. **It cannot be used to vertically align block-level elements**.
 
@@ -22,11 +36,9 @@ vertical-align: top;
 vertical-align: bottom;
 ```
 
-## Block Elements
+### Block Elements
 
 http://phrogz.net/CSS/vertical-align/index.html
-
-### Method 1
 
 ```css
 .parent {
