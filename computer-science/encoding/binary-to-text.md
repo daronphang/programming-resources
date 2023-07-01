@@ -1,13 +1,19 @@
+## Binary-to-text Encoding
+
+Binary-to-text encodings are designed to turn bits into human-printable ouput.
+
 ## Base64
 
-Base64 encoding allows us to convert bytes containing binary or text data into ASCII characters i.e. files, images. By encoding our data, we improve the chances of it being processed correctly by various systems. Each Base64 character represents 6 bits of information. **As this is not an encryption algorithm, it should not be used for security purposes**.
+Base64 encoding allows us to convert bytes containing binary or text data into ASCII characters i.e. encoding a byte sequence to a string. This is useful when dealing with files or images.
 
-The Base64 character set contains:
+By encoding our data, we improve the chances of it being processed correctly by various systems. Each Base64 character represents 6 bits of information. **As this is not an encryption algorithm, it should not be used for security purposes**.
+
+Base64 is a subset of ASCII, containing 64 of the 128 ASCII characters:
 
 - 26 uppercase letters
 - 26 lowercase letters
 - 10 numbers
-- - and / for new lines
+- `-` and `/` for new lines
 
 ### Why use Base64 Encoding
 
@@ -42,7 +48,7 @@ string = 'python'
 UHl0aG9u
 ```
 
-## Python
+## Example
 
 ### Encoding
 

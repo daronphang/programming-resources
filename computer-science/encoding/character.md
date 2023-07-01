@@ -1,29 +1,6 @@
-## Bytes and Bits (Base2)
+## Character Encodings
 
-Bit is a single binary digit that is atomic and is smallest unit of storage, either 0 or 1.
-
-Byte is the basic unit of information in computer storage and processing. Characters in computer are represented with 8 bits (one byte) of memory. One byte can have 256 different combinations of binary. The string of bits making up a byte is processed as a unit by a computer i.e. bytes are smallest operable units of storage in computer technology.
-
-## Decimal (Base10)
-
-Number system that is represented with 10 unique digits.
-
-## HEX (Base16)
-
-Uses a set of 16 unique digits. Uses standard 0-9 and A-F. Provides a human-friendly representation of binary-coded values. Each hexadecimal digit represents 4 bits.
-
-```
-00000000
-11111111      Can re presented as 00 or FF in hexadecimal
-```
-
-```
-Dec   Hex   Binary
-2     2     10
-10    A     1010
-17    11    10001
-37    25    100101
-```
+Character encodings used to turn bits into characters that are human-readable output.Character encodings are stored on disk.
 
 ## ASCII
 
@@ -99,7 +76,7 @@ UTF-8       Each symbol represented by 1-to-4 bytes code. Standard encoding on w
 UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
 ```
 
-### UTF-8
+### UTF-8 Encoding
 
 World Wide Web's most common character encoding. Each character is represented by one to four bytes (32 bits) and has backwards compatibility with ASCII. Leading bits of bytes contain metadata.For instance, two-byte UTF-8 representation:
 
@@ -120,13 +97,6 @@ Char Dec Unicode UTF-8             Binary
 
 ## Unicode vs ASCII
 
-ASCII is deisgned to represent basic English characters (128 characters). Uses one byte to represent each character.  
+ASCII is deisgned to represent basic English characters (128 characters). Uses one byte to represent each character.
+
 Unicode designed to support characters from all languages across the world (1,000,000 characters). Supports up to four bytes per character.
-
-## Base64 vs HEX (Base16)
-
-Different ways of representing bytes (binary). HEX takes 2 characters for each byte while Base64 takes 4 characters for every 3 bytes and hence, it is more efficient i.e. 100K file will take 200K to encode in HEX and 133K in Base64.
-
-## Reading Weird Characters
-
-The editor/browser that's trying to read the document is assuming the wrong encoding.

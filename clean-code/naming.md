@@ -12,19 +12,16 @@
 - Use solution domain names i.e. CS terms, algorithm names, etc.
 - Use problem domain names
 
-## Class Names
+## Class
 
 - Should have noun or noun phrase i.e. Customer, WikiPage, Account
 - Should not be a verb
+- ATtributes should be lowercasing i.e. Student.name
 
-## Class Attributes
-
-- lowercasing i.e. Student.name
-
-## Method Names
+## Method
 
 - Should have verb or verb phrase names i.e. postPayment, deletePage, save
 
-## Constant Variables
+## Constants
 
-- Capitalized i.e. config.SERVICE_NAME
+- Name constants in uppercase i.e. config.SERVICE_NAME
