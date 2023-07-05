@@ -70,6 +70,13 @@ from(urls)
     mergeMap(),
     toArray()
   ).subscribe();
+
+
+from(this.functionA, this.functionB).pipe(
+  mergeMap((f) => {
+    return f.call(this, arg1, arg2);
+  })
+)
 ```
 
 ### SwitchMap
