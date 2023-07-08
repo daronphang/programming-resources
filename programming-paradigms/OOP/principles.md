@@ -17,6 +17,10 @@ class Penguin(Bird):
 
 Encapsulation refers to hiding the internal state of the object from the outside i.e. making them private. This puts restrictions on accessing variables and properties directly, and prevents accidental modification of data. An object's variable can only be changed by an object's method. Hides data at implementation level.
 
+Encapsulation is simply combining data and behavior into one package and hiding the implementation details from the users of the object.
+
+The key to making encapsulation work is to have methods never directly access instance fields in a class other than their own. **Programs should interact with object data only through the object's methods**.
+
 ```py
 # python does not have a concept of private attributes
 # by convention, can define a private attribute by prefixing it with _

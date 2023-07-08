@@ -12,6 +12,20 @@ A purely OOP language has everything inside the program as objects i.e. it doesn
 6. All user-defined types must be objects
 7. Every operation on objects must be done with the help of methods
 
+### Procedural vs OOP
+
+Traditional structured programming consists of designing a set of procedures/algorithms to solve a problem. Once they are determined, the traditional next step was to find appropriate ways to store the data i.e. algorithm followed by data structure.
+
+OOP reverses the order: puts the data first, then looks at the algorithms to operate on the data.
+
+### Working with OOP
+
+To work with OOP, you should be able to identify three key characteristics of objects:
+
+- Behavior: what can you do with this object?
+- State: How does the object react when you invoke those methods?
+- Identity: How is the object distinguished from others?
+
 ### Class
 
 A class is a blueprint for the object and is used to construct instances. An object's class defines how the object is implemented by defining its internal state and the implementation of its operations. In contrast, an object's type refers to its interface.
@@ -24,7 +38,15 @@ An object is an instantiation of a class.
 
 Methods are functions defined inside the body of a class. They are used to define the behaviors of an object.
 
-### Interfaces
+### Relationships between Classes
+
+The most common relationships between classes are:
+
+- Dependence (uses-a)
+- Aggregation (has-a or contains-a)
+- Inheritance (is-a)
+
+## Interfaces
 
 Every operation declared by an object specifies the operation's name, the objects it takes as parameters, and the operation's return value; this is known as the operation's signature. The set of all signatures defined by an object's operations is called the interface. An object's interface characterizes the complete set of requests that can be sent to the object. A type is a name used to denote an interface. An object may have many types, and many objects can share a type.
 

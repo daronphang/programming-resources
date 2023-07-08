@@ -16,6 +16,10 @@ The compiler generates an architecture-neutral object file format that is execut
 
 Just-in-time compilers have become competitive with traditional compilers and in some cases, even outperform them as they have more information available i.e. JIT compiler can monitor which code is executed frequently and optimize just that code for speed.
 
+### Garbage Collection
+
+Java does automatic garbage colelction. If a block of memory is no longer needed, it will eventually be recycled.
+
 ## Jargons
 
 | Name                     | Acronym | Explanation                                                                                                                                      |
