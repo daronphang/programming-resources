@@ -20,7 +20,7 @@ Encapsulating variation is a theme of many behavioral patterns. When an aspect o
 
 Most patterns have two kinds of objects: the new object that encapsulate the aspect, and the existing object that use the new ones. Functionality of new objects would be an integral part of the existing objects.
 
-### Sumamry
+### Summary
 
 Behavioral patterns complement and reinforce each other:
 

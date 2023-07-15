@@ -1,8 +1,8 @@
 ## SAML (Security Assertion Markup Language)
 
-SAML is an open standard used for authentication. Its primary role in online security is that it enables you to access multiple web applications using one set of credentials.
+SAML is an open standard used for exchanging authentication and authorization data between SP (Service Provider) and IP (Identity Provider). Its primary role in online security is that it enables you to access multiple web applications using one set of credentials.
 
-SAML is an XML-based (SOAP) open single sign-on (SSO) standard for transferring identity data between two parties: an Identity Provider (IdP) and a Service Provider (SP). Hence, you can use one set of credentials to log into many different websites.
+SAML is an XML-based (SOAP) open single sign-on (SSO) standard for transferring identity data between an SP and IP. Hence, you can use one set of credentials to log into many different websites.
 
 Most organizations already know the identity of users as they are logged in to their Active Directory domain or intranet. Hence, it makes sense to use this information to log users into external services.
 

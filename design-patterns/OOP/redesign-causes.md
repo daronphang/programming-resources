@@ -12,7 +12,7 @@ When you specify a particular operation, you commit to one way of satisfying a r
 
 Design patterns: Chain of Responsibility, Command
 
-### Dependence on hardware and softare platform
+### Dependence on hardware and software platform
 
 External OS interfaces and APIs are different across different hardware and software platforms; software should not depend on a particular platform as it will be harder to port over.
 

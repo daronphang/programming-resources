@@ -1,60 +1,24 @@
-## REST
+## REST (Representational State Transfer)
 
-Unlike SOAP which is a protocol, REST is an architectural style for an API that uses HTTP requests to access and process data. Considered a simpler alternative to SOAP which many developers find difficult to use as it requires writing a lot of code to complete every task and following XML structure for every message sent (verbose).
+REST is an architectural style for building distributed systems based on hypermedia. REST APIs are designed around resources.
+
+While REST can be use over nearly any protocol, it is most commonly implemented using HTTP as the application protocol as HTTP uses open standards and does not bind the implementation of the API or the client applications to any specific implementation i.e. REST web service can be written in ASP.NET, Python, Javascript. HTTP protocol has similar concepts with REST.
 
 RESTful systems support messaging in different formats including plain text, HTML, YAML, XML, and JSON, while SOAP only allows XML.
 
-Examples of frameworks include Flask, Falcon and Django.
+### Resources
 
-## Criteria/Constraints
+Concept of resources is core to the REST architectural style. A resource is any kind of object, data or service that can be accessed by the client i.e. an item of interest. It is an object with a type, associated data, relationships to other resources, and a set of methods that operate on it.
 
-1. Clear separation between client and server.
-2. Client request must contain all information that is necessary to carry it out.
-3. Stateless client-server communication, meaning no client information is stored between get requests.
-4. Responses from server can be cacheable or noncacheable for streamlining client-server interactions.
-5. Layered system with proxy servers, caches or gateways inserted between servers and clients.
-6. Code-on-demand whereby clients can download code optimally from server to execute in their context.
+A resource has an identifier (URI) that uniquely identifies that resource i.e. URLs for HTTP.
 
-## Resources
+A resource is usually something that can be stored on a computer and represented as a stream of bits i.e. a document, text file, images, videos, row in database, or the result of running an algorithm.
 
-Concept of resources is core to the REST architectural style. A resource is an item of interest in the domain of the application i.e. users, blog posts, and comments are resources of blogging application. It is an object with a type, associated data, relationships to other resources, and a set of methods that operate on it (POST/GET/PUT/DELETE).
+Clients interact with a service by **exchanging representations of resources**. Many web APIs use JSON as the exchange format.
 
-A resource is usually something that can be stored on a computer and represented as a stream of bits i.e. a dcoument, text file, images, videos, row in database, or the result of running an algorithm.
+### Methods
 
-Each resource must have a unique identifier (URLs for HTTP), and one can request this resource by providing its URL.
-
-## Request Methods/Verbs
-
-Create, read, update and delete. Four major functions for interacting with database applications of persistent storage. REST APIs often involve the use of CRUD functions, but are not limited to them.
-
-```
-GET         Obtain the resource
-POST        Create a new resource or add it to the collection
-PUT         Modify an existing resource
-HEAD
-DELETE
-PATCH
-CONNECT
-TRACE
-OPTIONS
-```
-
-## Request and Response Bodies
-
-Resources are sent back and forth between client and server in the bodies of requests and responses in either JSON or XML. Headeres and parameters are also important in HTTP request as the contain important identifier information as to the request's metadata, authorization, URI, caching, cookies etc.
-
-Request: request.get_json(), request.headers.get('your header name')  
-Response: jsonify(response)
-
-## Common Headers
-
-```
-Authorization       Base64(username:password)
-WWWW-Authenticate   Sent by server
-Accept-Charset
-Content-Type        application/json (response type sent to client by server)
-Cache-Control
-```
+REST APIs often involve the use of CRUD functions (create, read, update, delete) that are used for interacting with database applications of persistent storage, but are not limited to them.
 
 ## Benefits
 

@@ -1,4 +1,12 @@
-### XML (Extensible Markup Language)
+## Standardized Encoding
+
+JSON, XML and CSV can be written/read by many programing languages, and are widely supported. However, they also have subtle problems:
+
+- There is a lot of ambiguity around the encoding of numbers i.e. cannot distinguish between number and string
+- Integers greater than 2^53 cannot be represented and requires workaround i.e. Twitter's API returns tweet IDs twice, once as JSON number and another as decimal string
+- JSON and XML have good support for unicode character strings but not for binary strings; workaround is to encode the binary data as text using Base64
+
+## XML (Extensible Markup Language)
 
 In today's world, there are many applications built on different programming languages. Exchanging of data between applications is crucial in today's networked world. However, data exchange between heterogeneous applications would be complex.
 
