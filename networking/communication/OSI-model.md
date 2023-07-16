@@ -1,6 +1,6 @@
 ## OSI Model (Open System Interconnection)
 
-OSI Model is a logical and conceptual/reference model that characterizes and standarizes how different software and hardware components involved in a network communication should divide labor and interact with one another. There are no real working implementations of the OSI model.
+OSI Model is a logical and conceptual/reference model that characterizes and standarizes how different software and hardware components involved in a network communication should divide labor and interact with one another. **There are no real working implementations of the OSI model**.
 
 ### Application (Layer 7)
 

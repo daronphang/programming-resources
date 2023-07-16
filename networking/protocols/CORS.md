@@ -1,8 +1,15 @@
-## CORS
+## SOP (Single Origin Policy)
 
-Cross-Origin Resource Sharing. A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme or port. Same-origin policy can be very restrictive as many websites interact with sub-domains or third-party sites.
+An important concept in the web application security model. The source combines the scheme (protocol), hostname, and port. **SOP prevents the resposne from being read by another domain, and is irrelevant to whether a CSRF attack is successful or not**. The only time SOP comes into play with CSRF is to prevent any token from being read by a different domain.
 
-However, provides potential for cross-domain based attacks such as cross-site request forgery (CSRF).
+```
+https://www.example.com:443
+scheme      hostname    port
+```
+
+## CORS (Cross-Origin Resource Sharing)
+
+A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme or port i.e. relaxing SOP. Same-origin policy can be very restrictive as many websites interact with sub-domains or third-party sites. However, provides potential for cross-domain based attacks such as cross-site request forgery (CSRF).
 
 ```
 // CORS headers in response

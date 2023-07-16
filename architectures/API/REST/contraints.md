@@ -1,5 +1,7 @@
 ## Key Constraints
 
+If a service violates any constraint, it cannot strictly be referred to as RESTful.
+
 ### Client-Server
 
 Client and server should be separate from each other and allowed to evolve individually and independently.
@@ -22,12 +24,19 @@ The key to the decoupling client from server is having a uniform interface that 
 
 The uniform interface lets the client talk to the server in a single language, independent of the architectural backend of either. It should also provide a standardized means of communication i.e. for REST APIs built on HTTP, the uniform interface includes HTTP verbs GET, POST, PUT, PATCH and DELETE for CRUD operations.
 
+Four guideline principles of uniform interface are:
+
+- Individual resources are identified in requests (resource-based)
+- Resources are manipulated through representations
+- Messages are self-descriptive and sufficient for the server to process the request
+- Includes HATEOAS for each response so taht clients can discover other resources easily
+
 ### Layered System
 
-A layered system is one comprised of layers, with each layer having a specific functionality and responsibility i.e. caches, gateways, proxy servers. It lets you encapsulate legacy systems and move less commonly accessed functionality to a shared intermediary, while also shielding more modern and commonly used components from them.
+A layered system is one comprised of layers, with each layer having a specific functionality and responsibility i.e. caches, gateways, proxy servers. It lets you encapsulate legacy systems and move less commonly accessed functionality to a shared intermediary, while also shielding more modern and commonly used components from them. Each layer does not know anything about other layers.
 
 There are substantial security benefits of having a layered system as it allows you to stop attacks at the proxy layer, or within other layers, preventing them from getting to your actual server architecture.
 
 ### Code on Demand (Optional)
 
-Code-on-demand allows for code or applets to be transmitted via the API for use within the application. In essence, it creates a smart application that is no longer solely dependent on its own code structure.
+Servers can also provide executable code to the client i.e. Java servlets, server-side scripts.Code-on-demand allows for code or applets to be transmitted via the API for use within the application. In essence, it creates a smart application that is no longer solely dependent on its own code structure.

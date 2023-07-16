@@ -6,6 +6,10 @@ JSON, XML and CSV can be written/read by many programing languages, and are wide
 - Integers greater than 2^53 cannot be represented and requires workaround i.e. Twitter's API returns tweet IDs twice, once as JSON number and another as decimal string
 - JSON and XML have good support for unicode character strings but not for binary strings; workaround is to encode the binary data as text using Base64
 
+## CSV
+
+CSV output format is a text file with each record from the crawl per line, with columns separated by commas. Useful when data is strictly tabular, structure is known and both generation and consumption of data file is in your control.
+
 ## XML (Extensible Markup Language)
 
 In today's world, there are many applications built on different programming languages. Exchanging of data between applications is crucial in today's networked world. However, data exchange between heterogeneous applications would be complex.
@@ -22,6 +26,18 @@ XML is a markup language similar to HTML, but without predefined tags to use. In
     </warning>
 </message>
 ```
+
+### Benefits
+
+Has larger overhead than CSV, but with strengths as follows:
+
+- Can validate XML data against XSD
+- Can have one-to-many relations in multi-levels in XML data representation
+- Can have more complex hierarchy and structure i.e. more flexibility
+- More readable than CSV (debatable)
+- Natively supported by .NET framework
+- Have standard parsers available everywhere
+- Preferred over CSV when data is unstructured i.e. unknown Schema
 
 ### WSDL
 

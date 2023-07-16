@@ -4,15 +4,15 @@ Protocol which allows you to connect securely to a remote Linux computer or serv
 
 Two most commonly used protocols for accessing remote machines are:
 
-- SSH for linux-based.
-- Remote Desktop Protocol (RDP) for Windows.
+- SSH for linux-based
+- Remote Desktop Protocol (RDP) for Windows
 
 ### How SSH Works
 
 Establishing an SSH connection requires two components:
 
-- Client: An application you install on the computer which you will use to connect to another server.
-- Server: SSH daemon that is constantly listening to a specific TCP/IP port for possible client connection requests.
+- Client: An application you install on the computer which you will use to connect to another server
+- Server: SSH daemon that is constantly listening to a specific TCP/IP port for possible client connection requests
 
 Need to ensure both client and server components are installed on local and remote machine. OpenSSH is a widely-used open-source SSH tool for Linux distro. For Windows, can install PuTTY. Most linux distro already have SSH client installed (except for Ubuntu).
 
@@ -84,11 +84,11 @@ $ exit
 
 ## Security Hardening
 
-- Change default TCP port from 22 to higher i.e. 24596.
-- Use SSH key pairs for authentication for passwordless SSH login.
-- Disable password-based logins on your server (need ensure key pair is working properly).
-- Disable root access to your server.
-- Use TCP wrappers to restrict access to certain IP addresses by editing '/etc/hosts.allow' and '/etc/hosts.deny' files.
+- Change default TCP port from 22 to higher i.e. 24596
+- Use SSH key pairs for authentication for passwordless SSH login
+- Disable password-based logins on your server (need ensure key pair is working properly)
+- Disable root access to your server
+- Use TCP wrappers to restrict access to certain IP addresses by editing '/etc/hosts.allow' and '/etc/hosts.deny' files
 
 For TCP wrappers, allowed hosts supersede denied hosts.
 

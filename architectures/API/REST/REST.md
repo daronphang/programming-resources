@@ -2,15 +2,17 @@
 
 REST is an architectural style for building distributed systems based on hypermedia. REST APIs are designed around resources.
 
+Considered a simpler alternative to SOAP which many developers find difficult to use as it requires writing a lot of code to complete every task and following XML structure for every message sent (verbose). Unlike RPC, users are not required to know procedure names or specific parameters in a specific order.
+
 While REST can be use over nearly any protocol, it is most commonly implemented using HTTP as the application protocol as HTTP uses open standards and does not bind the implementation of the API or the client applications to any specific implementation i.e. REST web service can be written in ASP.NET, Python, Javascript. HTTP protocol has similar concepts with REST.
 
-RESTful systems support messaging in different formats including plain text, HTML, YAML, XML, and JSON, while SOAP only allows XML.
+RESTful systems are not constrained by encoding format. Supports messaging in different formats including plain text, HTML, YAML, XML, and JSON, while SOAP only allows XML.
 
 ### Resources
 
 Concept of resources is core to the REST architectural style. A resource is any kind of object, data or service that can be accessed by the client i.e. an item of interest. It is an object with a type, associated data, relationships to other resources, and a set of methods that operate on it.
 
-A resource has an identifier (URI) that uniquely identifies that resource i.e. URLs for HTTP.
+A resource has an identifier (URI) that uniquely identifies that resource i.e. URLs for HTTP. It uses noun instead of action/verb i.e. api/users, api/users/john. Always use plurals to keep an API URI consistent throughout the application.
 
 A resource is usually something that can be stored on a computer and represented as a stream of bits i.e. a document, text file, images, videos, row in database, or the result of running an algorithm.
 
