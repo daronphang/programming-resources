@@ -1,6 +1,6 @@
 ## SOP (Single Origin Policy)
 
-An important concept in the web application security model. The source combines the scheme (protocol), hostname, and port. **SOP prevents the resposne from being read by another domain, and is irrelevant to whether a CSRF attack is successful or not**. The only time SOP comes into play with CSRF is to prevent any token from being read by a different domain.
+An important concept in the web application security model. The source combines the scheme (protocol), hostname, and port. **SOP prevents the response from being read by another domain, and is irrelevant to whether a CSRF attack is successful or not**. It does not prevent the request from being sent by the browser. The only time SOP comes into play with CSRF is to prevent any token from being read by a different domain.
 
 ```
 https://www.example.com:443
@@ -34,6 +34,10 @@ HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://malicious-website.com
 Access-Control-Allow-Credentials: true
 ```
+
+### CORS and CSRF
+
+CORS does prevent a specific type of CSRF attack, but not all scenarios. CORS is only implemented in browsers and prevent third-party websites from masquerading as a user in order to **read private data** from another site, but it does not prevent modifying of data through POST request.
 
 ### Preflight Requests (Complex HTTP Calls)
 

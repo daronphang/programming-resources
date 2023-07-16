@@ -6,14 +6,14 @@ Web servers are used to serve Web pages requested by clients i.e tool responsibl
 
 ### Web-Browser and Web-Server Communication Protocol
 
-1. Client specifies URL in web browser.
-2. Web browser makes request to Domain Name Server (DNS) and translates URL to obtain IP address which brings browser to web server.
-3. Browser establishes TCP/IP (protocols) socket connection with server.
-4. Browser asks for particular file by sending HTTP request.
-5. HTTP request is made to the server through GET/POST/PUT/DELETE.
-6. Two requests are made; first (of type OPTIONS) is to check if the server accepts request source, and the other is the request body.
-7. Web server accepts and responds by sending requested page with HTML file, images, etc. to browser through HTTP.
-8. Browser displays webpage.
+1. Client specifies URL in web browser
+2. Web browser makes request to Domain Name Server (DNS) and translates URL to obtain IP address which brings browser to web server
+3. Browser establishes TCP/IP (protocols) socket connection with server
+4. Browser asks for particular file by sending HTTP request
+5. HTTP request is made to the server through GET/POST/PUT/DELETE
+6. Two requests are made; first (of type OPTIONS) is to check if the server accepts request source, and the other is the request body
+7. Web server accepts and responds by sending requested page with HTML file, images, etc. to browser through HTTP
+8. Browser displays webpage
 
 To publish a website, need either static or dynamic web server. Static web server consists of computer (hardware) and HTTP server (software). Dynamic web server consists of both static web server plus extra software such as an application server and database. Application server is used to update files hosted before they are sent to browser.
 
