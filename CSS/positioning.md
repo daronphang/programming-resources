@@ -12,7 +12,7 @@ sticky      Positioned based on user's scroll position
 
 ## Static
 
-Position an element based on its current position in the flow. Top, right, bottom, left and z-index properties do not apply. This is the default for every single page element.
+Position an element based on its current position in the flow. **Top, right, bottom, left and z-index properties do not apply for non-positioned elements**. This is the default for every single page element.
 
 ## Relative
 
@@ -34,9 +34,10 @@ Positions based on the user's scroll position; toggles between 'relative' and 'f
 
 ### Requirements
 
-1. Specify an edge (top/left/bottom/right) for the element to stick to.
-2. Do not use overflow (auto/scroll/hidden) on parent element.
-3. Sticky only works when sticky container (parent element) has more than one child element. Sticky element can only float over sibling elements.
+1. Specify an edge (top/left/bottom/right) for the element to stick to
+2. Do not use overflow (auto/scroll/hidden) on parent element
+3. Sticky only works when sticky container (parent element) has more than one child element
+4. Sticky element can only float over sibling elements
 
 ## Example
 

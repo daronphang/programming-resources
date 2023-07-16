@@ -1,4 +1,4 @@
-### Chain of Responsibility
+## Chain of Responsibility
 
 Intent is to avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the reuqest. Chain the receiving objects and pass the request along the chain until an object handles it. First object in chain receives the request and either handles it or forwards it to the next candidate on chain. The object that made the request has no explicit knowledge of who will handle it i.e. request has an implicit receiver.
 
@@ -8,41 +8,41 @@ Intent is to avoid coupling the sender of a request to its receiver by giving mo
 - When you want to issue a request to one of several objects without specifying the receiver explicitly.
 - The set of objects that can handle a request should be specified dynamically.
 
-### Participants
+## Participants
 
-#### Handler
+### Handler
 
 - Defines an interface for handling requests.
 
-#### ConcreteHandler
+### ConcreteHandler
 
 - Handles requests it is responsible for.
 - Can access its successor.
 - If ConcreteHandler can handle the request, it does so; otherwise it forwards the request to its successor.
 
-#### Client
+### Client
 
 - Initiates the request to a ConcreteHandler object on the chain.
 
-### Collaborations
+## Collaborations
 
 When a client issues a request, the request propagates along the chain until a ConcreteHandler object takes responsibility for handling it.
 
-### Consequences
+## Consequences
 
-#### Reduced coupling
+### Reduced coupling
 
 Pattern frees an object from knowing which other object handles a request and hence, can simplify object interconnections.
 
-#### Added flexibility in assigning responsibilities to objects
+### Added flexibility in assigning responsibilities to objects
 
 Gives you added flexibility in distributing responsibilities among objects. Can add or change responsibilities for handling a request by adding to or changing the chain at run-time.
 
-#### Receipt isn't guaranteed
+### Receipt isn't guaranteed
 
 Since a request has no explicit receiver, there's no guarantee it'll be handled.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

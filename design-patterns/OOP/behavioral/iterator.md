@@ -1,4 +1,4 @@
-### Iterator (Cursor)
+## Iterator (Cursor)
 
 Intent is to provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
@@ -18,44 +18,44 @@ Use the Iterator pattern:
 - To support multiple traversals of aggregate objects.
 - To provide a uniform interface for traversing different aggregate structures i.e. support polymorphic iteration.
 
-### Participants
+## Participants
 
-#### Iterator
+### Iterator
 
 - Defines an interface for accessing and traversing elements.
 
-#### ConcreteIterator
+### ConcreteIterator
 
 - Implements the Iterator interface.
 - Keeps track of current position in the traversal of aggregate.
 
-#### Aggregate
+### Aggregate
 
 - Defines an interface for creating an Iterator object.
 
-#### ConcreteAggregate
+### ConcreteAggregate
 
 - Implements the Iterator creation interface to return an instance of the proper ConcreteIterator.
 
-### Collaborations
+## Collaborations
 
 ConcreteIterator keeps track of the current object in the aggregate and can compute the succeeding object in the traversal.
 
-### Consequences
+## Consequences
 
-#### Supports variations in the traversal of an aggregate
+### Supports variations in the traversal of an aggregate
 
 Complex aggregates may be traversed in many ways.
 
-#### Iterators simplify the Aggregate interface
+### Iterators simplify the Aggregate interface
 
 Iterator's traversal interface obviates the need for a similar interface in Aggregate.
 
-#### More than one traversal can be pending on an aggregate
+### More than one traversal can be pending on an aggregate
 
 An iterator keeps track of its own traversal state and hence, can have more than one traversal in progress at once.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

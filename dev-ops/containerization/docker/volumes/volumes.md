@@ -8,7 +8,7 @@ Containers are usually immutable (to change, only re-deploy). However, databases
 
 Volumes make special location outside of container Union File System. Bind Mounts link container path to host path i.e. maps files from host directory into a directory in the container. When container gets deleted, volume does not get automatically deleted.
 
-```console
+```bash
 $ docker volume create [OPTIONS] [VOLUME]
 
 $ docker volume create my-vol
@@ -33,7 +33,7 @@ $ docker volume prune    # removes all volumes not used by at least 1 container
 
 A Docker bind mount is a high-performance connection from the container to a directory on the host machine i.e. uses the host file system. It allows the host to share its own file system with the container, which can be made read-only or read-write.
 
-```console
+```bash
 $ # pwd is the source on the host
 $ # /var/opt/project is the target mount point of the container
 $ # after running, file.txt will exist in the pwd of our host machine
@@ -46,12 +46,20 @@ $ docker run -v $(pwd):/var/opt/project bash:latest \
 
 Mounting local host directory and accessing the contents from within the container. Changes on host machine are reflected in the container, and vice versa.
 
-```console
+```bash
 $ docker run -d --name bindmount -v "C:\Users\daronphang\Documents":/celery nginx:1.16.0
 $ docker exec -it bindmount bash
 $ cd ~
 $ cd /celery
 $ ls  # all contents in Documents will be listed here
+```
+
+### Selinux
+
+For servers running with SELinux. Need to perform additional configurations to bypass. Throws "permission denied" error when mounting host FS to container. Need to use z flag.
+
+```bash
+$ docker run -v -d ${pwd}:/var/data:Z some_image
 ```
 
 ## Docker Volumes
@@ -66,7 +74,7 @@ Using the -v command contains three components:
 
 When a host folder is mounted onto the container's path, all the content will be available in the container's path. **This is needed if the container needs to read a file from host, or to write to host's directory**.
 
-```console
+```bash
 $ docker run -v /folder/with/files:/container/path image_name
 
 $ docker run -v $(pwd):/var/opt/project bash:latest \
@@ -96,7 +104,7 @@ Windows with WSL        \\wsl$\docker-desktop-data\data\docker\volumes
 
 Internal volumes have the scope of a single Docker-compose file. If the source is a name, Docker tries to find the volume and creates if it doesn't exist.
 
-```console
+```bash
 $ docker run -it --rm --name nginx -p 8080:80 -v demo-earthly:/usr/share/nginx/html nginx
 ```
 
@@ -104,6 +112,6 @@ $ docker run -it --rm --name nginx -p 8080:80 -v demo-earthly:/usr/share/nginx/h
 
 External volumes can be used across the Docker installation and they need to be created by the user (otherwise fails) using the "docker volume create" command.
 
-```console
+```bash
 $ docker volume create --name demo-earthly
 ```

@@ -1,4 +1,4 @@
-### Mediator
+## Mediator
 
 Intent is to define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction indepedently.
 
@@ -20,51 +20,51 @@ Use the Mediator pattern when:
 - Reusing an object is difficult as it refers to and communicates with many other objects.
 - A behavior that's distributed between several classes should be customizable without a lot of subclassing.
 
-### Participants
+## Participants
 
-#### Mediator
+### Mediator
 
 - Defines an interface for communicating with Colleague objects.
 
-#### ConcreteMediator
+### ConcreteMediator
 
 - Implements cooperative behavior by coordinating Colleague objects.
 - Knows and maintains its colleagues.
 
-#### Colleague
+### Colleague
 
 - Each Colleague class knows its Mediator object.
 - Each Colleague communicates with its Mediator whenever it would have otherwise communicated with another Colleague.
 
-### Collaborations
+## Collaborations
 
 Colleagues send and receive requests from a Mediator object. The mediator implements cooperative behavior by routing requests between appropriate colleagues.
 
 Colleagues have to communicate with their mediator when an event of interest occurs. One approach is to implement the Observer pattern with Mediator as an Observer and Colleague classes as Subjects. Subjects send notifications to mediator whenever they change state. Mediator responds by propagating effects of the change to other Colleagues.
 
-### Consequences
+## Consequences
 
-#### Limits subclassing
+### Limits subclassing
 
 A mediator localizes behavior that otherwise would be distributed among several objects. Changing this behavior requires subclassing Mediator only.
 
-#### Decouples colleagues
+### Decouples colleagues
 
 Promotes loose coupling between colleagues.
 
-#### Simplifies object protocols
+### Simplifies object protocols
 
 Replaces many-to-many interactions with one-to-many interactions between Mediator and its Colleagues.
 
-#### Abstracts how objects cooperate
+### Abstracts how objects cooperate
 
 Making mediation an independent concept and encapsulating it in an object lets you focus how objects interact apart from their individual behavior.
 
-#### Centralizes control
+### Centralizes control
 
 Trades complexity of interaction for complexity in Mediator. Can make itself a monolith that's hard to maintain.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

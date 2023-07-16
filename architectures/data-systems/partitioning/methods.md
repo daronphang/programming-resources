@@ -1,12 +1,12 @@
 ## Partitioning of Key-Value Data (Primary)
 
-Goal is to spread the data and query load evenly across nodes. If it is skewed, partitioning will be less effective and may result on hotspots (a partition having a disproportionately high load).
+Goal is to spread the data and query load evenly across nodes. If it is skewed, partitioning will be less effective and may result in hotspots (a partition having a disproportionately high load).
 
-Simplest approach is to assign records to nodes randomly. However, as you do not know where node the data is stored on, need to query all nodes.
+Simplest approach is to assign records to nodes randomly. However, as you do not know which node the data is stored on, need to query all nodes.
 
 ### By Key Range
 
-One way of partitioning is to assign a continuous range of keys (minimum to maximum) to each partition i.e. boundaries between ranges. However, data may not be evenly distributed. 
+One way of partitioning is to assign a continuous range of keys (minimum to maximum) to each partition i.e. boundaries between ranges. However, data may not be evenly distributed.
 
 ### By Hash Key
 
@@ -20,13 +20,13 @@ Examples include using a compound key, where one part of the key is used to iden
 
 ## Partitioning Secondary Indexes
 
-A secondary index doesnt identify a record uniquely but rather is a way of searching for occurrences of a particular value i.e. all cars whose color is read. 
+A secondary index doesnt identify a record uniquely but rather is a way of searching for occurrences of a particular value i.e. all cars whose color is read.
 
 Secondary indexes are teh bread and butter of relational databases, and common in document databases. However, they don't map neatly to partitions.
 
 ### By Document
 
-In this approach, each partition maintains its own secondary indexes, converting only the documents in that partition. 
+In this approach, each partition maintains its own secondary indexes, converting only the documents in that partition.
 
 However, querying from a document-partitioned index requires scatter/gather, and makes it expensive. Nonetheless, it is widely used in MongoDB, Riak, Cassandra, ElasticSearch, and VoltDB.
 
@@ -39,10 +39,11 @@ Primary Index
 Secondary Index
 color: red [191,306]
 color: black [214]
+```
 
 ### By Term
 
-Instead of each partition having its own secondary index, we can construct a global index that covers data in all partitions. The term is used to determine the partition of the index. This is useful for range scans i.e. asking price of a car. 
+Instead of each partition having its own secondary index, we can construct a global index that covers data in all partitions. The term is used to determine the partition of the index. This is useful for range scans i.e. asking price of a car.
 
 ```
 Partition 0
@@ -50,7 +51,4 @@ Secondary Index (colors starting with letter a to r)
 
 Partition 1
 Secondary Index (colors starting with letter s to z)
-```
-
-
 ```

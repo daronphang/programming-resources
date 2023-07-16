@@ -6,6 +6,16 @@ A file system defines how files are named, stored and retrieved from a storage d
 
 Type of file system differs by OS and needs of OS. Each file system has its own logical structures and properties such as speed and size.
 
+## Network
+
+### CIFS (Common Internet File System)
+
+For mounting Windows network drives to Linux computers. Uses TCP/IP protocol and works best on Windows OS to share files between machines over a network. Has more security features than NFS.
+
+### NFS (Network File System)
+
+Protocol for mounting between Linux OS only i.e. Linux/Linux. Does not have any special security features and is unreliable. Highly scalable and faster than CIFS.
+
 ## Windows
 
 ### FAT

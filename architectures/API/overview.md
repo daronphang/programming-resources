@@ -6,7 +6,7 @@ Each API contains and is implemented by functions calls i.e. language statements
 
 API enables companies to open up their applications' data and functionality to external third-party developers, business partners, and internal departments within their companies. This allows services and products to communicate with each other and leverage each other's data and functionality. Developers do not need to know how an API is implemented; they simply use the interface to communicate with other products/services. Hence, APIs simplify software development and innovation by enabling applications to exchange data and functionality easily and securely.
 
-## How an API works
+### How an API works
 
 APIs sit between an application and the web server, acting as the intermediary layer that processes data transfer between systems:
 
@@ -14,6 +14,18 @@ APIs sit between an application and the web server, acting as the intermediary l
 2. After receiving a valid request, the API makes a call to the external program or web server.
 3. The server sends a response to the API with requested information.
 4. API transfers the data to the initial requesting application.
+
+### Design
+
+Most modern web applications expose APIs that clients can use to interact with the application. A well-designed web API should aim to support platform independence and service evolution.
+
+#### Platform independence
+
+Any client should be able to call the API, regardless of how the API is implemented internally. This requires using standard protocols, and having a mechanism whereby the client and the web service can agree on the format of the data to exchange.
+
+#### Service evolution
+
+The web API should be able to evolve and add functionality independently from client applications. As the API evolves, existing client applications should continue to function without modification. All functionality should be discoverable so that client applications can fully use it.
 
 ## Types of APIs
 

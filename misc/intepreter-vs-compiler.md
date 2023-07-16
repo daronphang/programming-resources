@@ -1,10 +1,10 @@
-### Compilers
+## Compilers
 
 Compilers take a whole program of instructions and translate it to an executable binary code once (parsing). They give the developer more control over hardware aspects including memory management and CPU usage. Translation and execution are separated.
 
 Compiled langauges require a "build" step i.e. need to be manually compiled first. If a change is made, the entire program needs to be rebuilt.
 
-### Interpreters
+## Interpreters
 
 Interpreters run through a program line by line, converts it first into an intermediary form known as bytecode, followed by converting into binary/machine code, and executing it at run-time. Do not produce binary executable files as compared to compilers. Requires the interpreter to be invoked each time a program is run. Both translation and execution are intertwined if an interpreter is used.
 
@@ -14,7 +14,7 @@ Interpreted languages were once significantly slower than compiled languages, bu
 
 JIT compilation is a method for improving the performance of interpreted programs. During execution, JIT compiler determines the most frequently used code and compiles it to machine code.
 
-### Compiled vs Interpreted
+## Compiled vs Interpreted
 
 |             | Compiled                                                                                                                               | Interpreted                                                                                                                                      |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |

@@ -1,10 +1,18 @@
 ## Setup
 
+### .bashrc
+
+Setup for environment variables whenever user opens an interactive login shell.
+
+```bash
+$ sudo vim ~/.bashrc
+```
+
 ### Proxies
 
 Proxy configuration is setup but disabled by default.
 
-```console
+```bash
 $ vim /etc/profile.d/proxy.sh   # uncomment proxy_on fn
 ```
 
@@ -22,14 +30,14 @@ skip_if_unavailable=False
 proxy=http://proxy-web.micron.com:80/   # enable this!
 ```
 
-```console
+```bash
 $ /etc/yum.conf     # modifying proxy globally
 $ /etc/yum.repos.d/some.repo
 ```
 
 To bypass local redhat repositories and enable curl to use proxy, need to temporarily disable checking for repos. Make sure proxy is enabled in /etc/yum.conf.
 
-```console
+```bash
 $ sudo yum repolist
 $ sudo yum install <package> --disablerepo=ansible-2.9-for-rhel-8-x86_64-rpms --disablerepo=rhel-8-for-x86_64-appstream-rpms --disablerepo=rhel-8-for-x86_64-baseos-rpms --disablerepo=satellite-client-6-for-rhel-8-x86_64-rpms
 ```
@@ -39,7 +47,7 @@ $ sudo yum install <package> --disablerepo=ansible-2.9-for-rhel-8-x86_64-rpms --
 Install git net-tools. For supervisor and freetds, requires epel-release.
 
 ```
-$ sudo yum install net-tools git unixODBC
+$ sudo yum install net-tools git unixODBC nginx
 $ touch /etc/odbcinst.ini
 ```
 
@@ -49,11 +57,21 @@ Description = FreeTDS Driver
 Driver = /usr/lib64/libtdsodbc.so.0
 ```
 
+### Git
+
+Disable proxies in git config.
+
+```bash
+$ git config --global http.proxy ""
+$ git config --global https.proxy ""
+$ git config --global http.sslVerify false
+```
+
 ### Python
 
 Python3.6 is only available through yum repository. To install later versions, need to download manually.
 
-```console
+```bash
 $ sudo dnf install gcc openssl-devel bzip2-devel libffi-devel
 $ cd download/path
 $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
@@ -81,7 +99,7 @@ supervisord.conf        /etc/supervisord
 supervisord.service     /lib/systemd/system
 ```
 
-```console
+```bash
 $ sudo pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org --proxy http://proxy-web.micron.com:80 supervisor
 $ which supervisord
 $ sudo systemctl enable supervisord
@@ -212,12 +230,13 @@ stderr_logfile=/var/log/supervisord/df_espec_celery_service.err.log
 
 Take note Docker is not supported for RedHat, but CentOS has support. Make sure proxies are configured.
 
+1. Follow instructions from Docker website for CentOS (removing old Docker and installing RPM repository).
+
 https://docs.docker.com/engine/install/centos/
 
-1. Follow instructions from Docker website for CentOS.
 2. Modify repo files to include proxy.
 
-```console
+```bash
 $ vim /etc/yum.repos.d/docker-ce.repo
 ```
 
@@ -231,33 +250,64 @@ gpgkey=https://download.docker.com/linux/centos/gpg
 proxy=http://proxy-web.micron.com:80
 ```
 
-3. Install Docker.
+3. Install Docker Engine. If encounter dependencies error, check the error message and resolve.
 
-```console
+```bash
 $ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Might need to remove dependencies buildah and podman.
+
+```bash
+$ sudo yum remove buildah podman
+$ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+If require dependencies i.e. container-selinux, need to update epel-release and install.
+
+```bash
+$ sudo yum install epel-release
+$ sudo yum install container-selinux
 ```
 
 4. Configure Docker group.
 
-```console
+```bash
 $ sudo groupadd docker
-$ sudo usermod -aG docker $USER
+$ sudo usermod -aG docker $USER jenkins
 $ grep /etc/group -e "docker"
 ```
 
-5. Start Docker
+5. Configure Docker proxy.
 
-```console
+```bash
+$ sudo mkdir -p /etc/systemd/system/docker.service.d
+$ sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf
+$ sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+```
+
+```conf
+[Service]
+Environment="HTTP_PROXY=http://proxy-web.micron.com:80/"
+Environment="HTTPS_PROXY=http://proxy-web.micron.com:80/"
+Environment="NO_PROXY=localhost,127.0.0.1,.micron.com,addmmsi,*.micron.com,.snowflakecomputing.com,*.snowflakecomputing.com,tableau-apac,analytics-apac,tableau-boise,analytics,analytics-boise"
+```
+
+6. Start Docker.
+
+```bash
 $ sudo systemctl start docker
 $ sudo docker run hello-world
 ```
 
 ### Ports
 
-```console
+```bash
 $ sudo firewall-cmd --list-ports
 $ sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
-$ sudo firewall-cmd --zone=public --remove-port=10050/tcp --permanent
+$ sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
 $ sudo firewall-cmd --reload
 ```
 
@@ -265,10 +315,12 @@ $ sudo firewall-cmd --reload
 
 https://confluence.micron.com/confluence/display/~LINLINK/How+to+Apply+SSL+Certificate
 
-https://pkienroll.micron.com/certsrv/
+1. Generate private key.
 
-```console
-openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key
+```bash
+$ cd ~
+$ hostname
+$ openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key
 ```
 
 ```
@@ -283,9 +335,15 @@ Email Address []:daronphang@micron.com
 HelloWorld123!      Challenge password
 ```
 
-### Storage Space
+2. Download certificate from https://pkienroll.micron.com/certsrv/
 
-To increase storage space, submit itnow request under "unix issue", escalate to msb_unix_l2.
+- Request a certificate
+- For SSL, date is 2 years but you can get it right away
+- Navigate to 'Submit a certificate using base64 encoded'
+- Copy the cert from CSR.csr (without BEGIN/END CERTIFICATE REQUEST lines)
+- Certificate template should be 'Micron SSL Certificate'
+- Additional attributes need to be populated with 'SAN:dns=tsldf01.wlsg.micron.com&dns=tsldf01'
+- Download base64 crt and copy to /etc/pki/tls/certs/ssl_cert.cer
 
 ## Conf Files
 
@@ -316,7 +374,7 @@ Throws forbidden when accessing contents outside /usr/share/nginx/html.
 
 Change user in /etc/nginx/nginx.conf to your username.
 
-```console
+```bash
 $ sudo setenforce 0
 ```
 

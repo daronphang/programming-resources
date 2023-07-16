@@ -70,3 +70,24 @@ $ docker container start -ai
 ### Linux Distributions for Container Images
 
 Alpine, Ubuntu.
+
+## Container User
+
+During Dockerfile build and running of containers, Docker will use root user by default. However, you cannot use usernames stored in the host machine as we cannot easily share usernames between a Docker host and its containers. Only usernames that exist on Docker container can be used i.e. nobody, root.
+
+```bash
+$ docker run --user=$(whoami)   # fails!
+
+$ docker run --user $(id -u):$(id -g)
+```
+
+To change user, you can specify any arbitrary UID. However, your user will be $HOME-less and nameless as we are asking Docker container to do things using the ID of a user it knows nothing about.
+
+### Dockerfile
+
+```dockerifle
+USER UID:GID
+
+RUN useradd -u 8877 john
+USER john
+```

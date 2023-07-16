@@ -6,13 +6,21 @@ There are two distinct dimensions for every test case: size and scope. Both are 
 
 ### Hermetic
 
-All tests should strive to be hermetic; a test should contain all of the information necessary to set up, execute and tear down its environment. Tests should assume as little as possible about the outside environment, such as the order in which the tests are run. Tests also should not rely on a shared database.
+All tests should strive to be hermetic; a test should contain all of the information necessary to set up, execute and tear down its environment. In other words, tests run against a test environment (i.e. application servers, resources) that is entirely self-contained (i.e. no external dependencies like production backends).
+
+Tests should assume as little as possible about the outside environment, such as the order in which the tests are run. Tests also should not rely on a shared database.
 
 ### Deterministic
 
 Tests should be deterministic i.e. running the test always results in the same outcome. Nondeterminism in tests can lead to flakiness, which can harm the health of a test suite if developers start to distrust the results of the test and ignore failures.
 
 A common cause of nondeterminism is code that is not hermetic i.e. it has dependencies on external services that are outside the control of a test.
+
+#### Flaky (Non-deterministic) and Brittle Tests
+
+A flaky test is one that yields both passing and failing results despite zero changes to the code or test i.e. they are non-deterministic that fail to produce the same outcome with each individual test run.
+
+On the other hand, brittle tests may consistently pass, but is balanced on a knife edge that a small change in conditions results in failure.
 
 ### Discourage Control Flows
 

@@ -24,17 +24,17 @@ Cookie: X-API-KEY=12345
 
 ### Security
 
-API keys are generally not considered secureas they hav no expiration date, are typically accessible to clients and hence, can be easily stolen.
+API keys are generally not considered secure as they have no expiration date, are typically accessible to clients and hence, can be easily stolen.
 
 ### When to Use
 
-- You want to block anonymous traffic.
-- You want to share data publicly but do not want users to abuse it i.e. control the number of calls made to your API.
-- You want to identify usage patterns in your API's traffic.
-- You want to filter logs by API key.
+- You want to block anonymous traffic
+- You want to share data publicly but do not want users to abuse it i.e. control the number of calls made to your API
+- You want to identify usage patterns in your API's traffic
+- You want to filter logs by API key
 
 Cannot be used for:
 
-- Identifying individual users.
-- Secure authorization.
-- Identifying the creators of a project.
+- Identifying individual users
+- Secure authorization
+- Identifying the creators of a project

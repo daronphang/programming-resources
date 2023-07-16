@@ -1,11 +1,24 @@
 ## Docker
 
-Allows users to create independent and isolated environments (called containers) to launch and deploy applications. Not a virtual machine as it only shares resources of host machine in order to run its environments (does not include complete OS). Benefits of Docker:
+Docker is a platform to build, ship and run distributed applications – meaning that it runs applications in a distributed fashion across many machines, often with a variety of hardware and OS configurations. For this to be possible, it needs a sandboxing environment capable of abstracting the specifics of the underlying host (for portability), without requiring a complete rewrite of the application (for ubiquity), and without introducing excessive performance overhead (for scale).
+
+Allows users to create independent and isolated environments (called containers) to launch and deploy applications. Not a virtual machine as it only shares resources of host machine in order to run its environments (does not include complete OS). The containers are run in **PID namespaces**.
+
+### Benefits
 
 - Can be built and destroyed faster than VM.
 - Multi-platform i.e. can launch containers on any system on Mac, PC, Linux.
 - Each environment is isolated.
 - Reduces complexity and maintenance as backend, frontend, db, queues are packaged in containers.
+
+### Stack
+
+1. Developer interacts with Docker daemon through Docker CLI tool
+2. Docker daemon (dockerd) is a process that runs in the background and talks to the container runtime (containerd)
+3. containerd sits above the low-level container runtime (runc) that pulls images, manages networking and storage, and uses runc to run containers
+4. runc uses native features of Linux to create and run containers and follows OCI standard
+
+### Global Commands
 
 ```console
 $ docker --help

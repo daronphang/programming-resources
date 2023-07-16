@@ -1,4 +1,4 @@
-### Factory Method
+## Factory Method
 
 Intent is to define an interface for creating an object, but let subclasses decide which class to instantiate. Can take in a parameter to identify the kind of object to create. Used to create concrete implementations of a common interface. Decision to instantiate a specific class is delegated to subclasses.
 
@@ -6,7 +6,7 @@ Intent is to define an interface for creating an object, but let subclasses deci
 
 Frameworks use abstract classes to define and maintain relationships between objects. Framework is often responsible for creating these objects as well. However, some subclasses are application-specific. Instead of using complex if/elif/else conditional structure (Simple Factory pattern having one creation method with large conditional) to determine the concrete implementation, the application delegates that decision to a separate component that creates the concrete object. For Simple Factory, over time the method may become too big and it would be easier to extract parts of the method to subclasses. Simple Factory is an intermediate step of introducing Factory Method or Abstract Factory.
 
-Factory pattern enhances loose coupling through the creation of an abstract class that will be used to create different types of objects that share some common attributes and functionality. Increases flexibility as shared functionality will not be rewritten having been inherited from the same class.  
+Factory pattern enhances loose coupling through the creation of an abstract class that will be used to create different types of objects that share some common attributes and functionality. Increases flexibility as shared functionality will not be rewritten having been inherited from the same class.
 
 ### Applicability
 
@@ -14,38 +14,38 @@ Factory pattern enhances loose coupling through the creation of an abstract clas
 - When a class wants its subclasses to specify the objects it creates.
 - When classes delegate responsibility to one of several helper subclasses, and want to localize the knowledge of which helper subclass is the delegate.
 
-### Participants
+## Participants
 
-#### Product
+### Product
 
 - Defines the interface of objects the factory method creates.
 
-#### ConcreteProduct
+### ConcreteProduct
 
 - Implements the Product interface.
 
-#### Creator
+### Creator
 
 - Declares the factory method, which returns an object of type Product.
 - May call the factory method to create a Product object.
 
-#### ConcreteCreator
+### ConcreteCreator
 
 - Overrides the factory method to return an instance of a ConcreteProduct.
 
-### Consequences
+## Consequences
 
 Factory methods eliminate the need to bind application-specific classes into code.
 
-#### Provides hooks for subclasses
+### Provides hooks for subclasses
 
 Creating objects inside a class with a factory method is always more flexible than creating an object directly. Factory Method gives subclasses a hook for providing an extended version of an object.
 
-#### Connects parallel class hierarchies
+### Connects parallel class hierarchies
 
 Parallel class hierarchies results when a class delegates some of its responsibilities to a separate class.
 
-### Example (Factory Method)
+## Example
 
 ```py
 from __future__ import annotations
@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
     print("App: Launched with the ConcreteCreator2.")
     client_code(ConcreteCreator2())
-    
+
     creator_matching = {
         'creator1': ConcreteCreator1(),
         'creator2': ConcreteCreator2(),

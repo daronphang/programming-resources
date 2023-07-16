@@ -8,26 +8,26 @@ In RPC, each server supplies a program that is a set of remote service procedure
 
 RPC is a request-response protocol i.e. follows client-server model:
 
-1. Client makes a request to execute a procedure on the remote server.
-2. Client is suspended like a synchronous local call (blocking).
-3. Procedure's parameters are passed over the network to the server-side.
-4. Server calls the requested dispatch routine.
-5. Results are transferred back to the client and client resumes execution.
+1. Client makes a request to execute a procedure on the remote server
+2. Client is suspended like a synchronous local call (blocking)
+3. Procedure's parameters are passed over the network to the server-side
+4. Server calls the requested dispatch routine
+5. Results are transferred back to the client and client resumes execution
 
 As the application software does not contain any communication code, it is independent of:
 
-- Particular communications hardware and protocols used.
-- OS and programming language used.
-- Calling sequence needed to use the underlying communications software.
+- Particular communications hardware and protocols used
+- OS and programming language used
+- Calling sequence needed to use the underlying communications software
 
 ## RPC Procedure
 
-1. Client invokes a client stub procedure with parameters that resides within the client's address space.
-2. Client stub marshalls (packs) the parameters into a message. Marshalling includes converting the representation of the parameters into a standard format.
-3. Client stub passes the message to the transport layer, which sends it to the remote server.
-4. Server demarshalls (unpacks) the parameters and calls the desired subroutine.
-5. When the procedure completes, it returns to the server stub which mashalls the return values into a message and hands it to the transport layer.
-6. Client stub receives and demarshalls the return paramaters and execution returns to the caller.
+1. Client invokes a client stub procedure with parameters that resides within the client's address space
+2. Client stub marshalls (packs) the parameters into a message; marshalling includes converting the representation of the parameters into a standard format
+3. Client stub passes the message to the transport layer, which sends it to the remote server
+4. Server demarshalls (unpacks) the parameters and calls the desired subroutine
+5. When the procedure completes, it returns to the server stub which mashalls the return values into a message and hands it to the transport layer
+6. Client stub receives and demarshalls the return parameters and execution returns to the caller
 
 <img src="./assets/RPC.PNG">
 

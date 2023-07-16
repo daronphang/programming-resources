@@ -16,6 +16,16 @@ packages = [
 ]
 ```
 
+### dependencies
+
+```toml
+[tool.poetry.dependencies]
+python = ">=3.7.9,<4.0"
+asyncio = "3.4.3"
+click = "8.1.3"
+mutils = {path = "../mutils", develop = false}
+```
+
 ### include and exclude
 
 A list of patterns that will be included/excluded in the final package. If a VCS is used, the exclude field will be seeded with the VCS' ignore settings i.e. gitignore.
