@@ -1,4 +1,4 @@
-class Solution {
+public class Slopes {
     public int candy(int[] ratings) {
 		if(ratings==null || ratings.length==0) return 0;
 		int start=0,sum=0,len=ratings.length;

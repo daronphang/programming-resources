@@ -2,7 +2,7 @@
 
 Help us frame the various decisions when building systems.
 
-### Model around business concpets
+### Model around business concepts
 
 Interfaces structures around business-bounded contexts are more stable than those structured around technical concepts.
 
@@ -30,7 +30,7 @@ Prefer choreography over orchestration and dumb middleware, with smart endpoints
 
 ### Independently deployable
 
-Should always strive to ensure that our microservices can and are dpeloyed by themselves. It should be the norm that you can make a change to a single service and release it into production, without having to deploy any other services in lock-step.
+Should always strive to ensure that our microservices can and are deployed by themselves. It should be the norm that you can make a change to a single service and release it into production, without having to deploy any other services in lock-step.
 
 By adopting a one service-per-host model, you reduce side effects that could cause deploying one service to impact another unrelated service. Consider using blue/green or canary release techniques to separate deployment from release.
 

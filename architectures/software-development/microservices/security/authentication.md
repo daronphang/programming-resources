@@ -1,4 +1,4 @@
-### SSO (Single Sign-On)
+## SSO (Single Sign-On)
 
 A common approach to authentication and authorization is to use some sort of single sign-on (SSO) solution. Examples include SAML and OpenID.
 
@@ -8,7 +8,7 @@ The Identity Provider may be an externally or internally hosted system. For ente
 
 SAML is SOAP-based standard and is known for being fairly complex to work with despite the libraries and tooling available to support it. OIDC is a standard that has emerged as a specific implementation of OAuth2.0 and uses simpler REST calls. It is likely to make inroads into enterprises but the biggest stumbling block is the lack of IdPs that support it.
 
-### SSO Gateway
+## SSO Gateway
 
 Within a microservices setup, each service could decide to handle the redirection/handshaking with the IdP. However, this could mean a lot of duplicated work. Instead, can use a gateway to act as a proxy that sits between your services and the outside world. Hence, you can centralize the behavior for redirecting the user and perform handshake in one place.
 
