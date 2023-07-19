@@ -1,4 +1,4 @@
-### State
+## State
 
 Intent is to allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
@@ -13,18 +13,18 @@ Instead of storing a value in an attribute, and then using conditional statement
 - Use when an object's behavior depends on its state, and must change its behavior at run-time depending on its state.
 - Operations have large, multipart conditional statements that depend on object's state (state usually represented by one or more enumerated constants). Often, several operations will contain this same conditional structure. State pattern puts each branch of conditional in a separate class.
 
-### Participants
+## Participants
 
-#### Context
+### Context
 
 - Defines the interface of interest to clients.
 - Maintains an instance of a ConcreteState subclass that defines the current state.
 
-#### State
+### State
 
 - Defines an interface for encapsulating the behavior associated with a particular state of the Context.
 
-#### ConcreteState subclasses
+### ConcreteState subclasses
 
 - Each subclass implements a behavior associated with a state of the Context.
 
@@ -35,21 +35,21 @@ Instead of storing a value in an attribute, and then using conditional statement
 - Context is primary interface for clients.
 - Either Context or ConcreteState subclasses can decide which state succeeds another and under what circumstances.
 
-### Consequences
+## Consequences
 
-#### Localizes state-specific behavior and partitions behavior for different states
+### Localizes state-specific behavior and partitions behavior for different states
 
 State pattern puts all behavior associated with a particular state into one object. Like long procedures, large conditional statements are undesirable, monolithic and make code less explicit, which makes them difficult to modify and extend. State pattern offers a better way to structure state-specific code. Logic that determines state transitions doesn't reside in monolithic if or switch statements but instead is partitioned between State subclasses.
 
-#### Makes state transitions explicit
+### Makes state transitions explicit
 
 When an object defines its current state solely in terms of internal values, its state transitions have no explicit representation; introducing separate objects for different states mkaes the transitions more explicit.
 
-#### State objects can be shared
+### State objects can be shared
 
 If State objects have no instance variables, the state they represent is encoded entirely in their type and hence, contexts can share a State object. When states are shared this way, they are essentially flyweights with no intrinsic state, only behavior.
 
-### Example
+## Example
 
 ```py
 from __future__ import annotations

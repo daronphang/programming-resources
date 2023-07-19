@@ -43,6 +43,18 @@ public void raiseSalary(double byPercent) {
 }
 ```
 
+### Methods with Variable Number of Parameters
+
+You can pass in an ellipsis to denote an arbitrary number of objects.
+
+```java
+public class PrintStream {
+    public PrintStream printf(String fmt, Object... args) {
+        return format(fmt, args);
+    }
+}
+```
+
 ### Encapsulation
 
 If you want to get and set the value of an instance field, you need to supply three items:
