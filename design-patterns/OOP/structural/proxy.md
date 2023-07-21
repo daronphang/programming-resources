@@ -6,29 +6,29 @@ Provides a surrogate or placeholder for another object to control access to it (
 
 Proxy is applicable whenever there is a need for more versatile/sophisticated reference to an object than a simple pointer:
 
-- Remote proxy provides a local representative for an object in a different address space.
-- Virtual proxy creates expensive objects on demand.
-- Protection proxy controls access to an original object i.e. for different rights.
+- Remote proxy provides a local representative for an object in a different address space
+- Virtual proxy creates expensive objects on demand
+- Protection proxy controls access to an original object i.e. for different rights
 
 ## Participants
 
 ### Proxy
 
-- Maintains a reference that lets proxy access the real subject.
-- Provides an interface identical to Subject's.
-- Controls access to the real object and may be responsible for creating/deleting it.
+- Maintains a reference that lets proxy access the real subject
+- Provides an interface identical to Subject's
+- Controls access to the real object and may be responsible for creating/deleting it
 
 ### Subject
 
-- Defines the common interface for RealSubject and Proxy.
+- Defines the common interface for RealSubject and Proxy
 
 ### RealSubject
 
-- Defines the real object that proxy represents.
+- Defines the real object that proxy represents
 
 ## Collaborations
 
-Proxy forwards requests to RealSubject when appropriate.
+Proxy forwards requests to RealSubject when appropriate
 
 ## Consequences
 
