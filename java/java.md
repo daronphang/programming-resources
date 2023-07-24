@@ -70,3 +70,23 @@ $ java Welcome  # launches JVM
 ## Applets
 
 Most of the early hype about Java came from its ability to run applets inside a web browser. Applets are meant to be viewed in a browser; however, many browsers do not have Java support or make it difficult to enable it (best bet is Firefox).
+
+## jconsole
+
+The Java VM has support for monitoring and management of Java applications, allowing the installation of agents in the VM to track memory consumption, thread usage, class loading, etc.
+
+This feature is important for large and long-running Java programs, such as application servers.
+
+```bash
+$ ps aux | grep java
+$ jconsole processID
+```
+
+## jmap
+
+The jmap utility is used to get a heap dump that shows you every object on the heap. Point your browser to localhost:7000.
+
+```bash
+$ jmap -dump:format=b,file=dumpFileName processID
+$ jhat dumpFileName
+```
