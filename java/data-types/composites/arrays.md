@@ -49,7 +49,7 @@ Arrays.sort(a)
 
 ## Multidimensional Arrays
 
-Java has no multidimensional arrays, and they are fked as "arrays of arrays".
+Java has no multidimensional arrays, and they are implemented as "arrays of arrays".
 
 ```java
 double[][] balances;
@@ -86,7 +86,7 @@ staff.set(i, harry);
 
 ### Object Wrappers and Autoboxing
 
-Unfortunately, the type parameter inside the angle brackets cannot be a primitive type. Instead, we can can wrap the primitive inside an object i.e. Integer.
+Unfortunately, the type parameter inside the angle brackets cannot be a primitive type. Instead, we can wrap the primitive inside an object i.e. Integer.
 
 When an element of type primitive is added to the array, it will be automatically translated to the object type. This is called **autoboxing**. Boxing and unboxing is a courtesy of the compiler, which inserts the necessary calls when it generates the bytecodes of a class. The VM simply executes those bytecodes.
 
