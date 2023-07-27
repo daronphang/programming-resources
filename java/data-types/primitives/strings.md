@@ -25,3 +25,22 @@ builder.append(ch); // appends a char
 builder.append(str); // appends a str
 String completed = builder.toString();
 ```
+
+Nonetheless, you can simply use add operator, and VM will implicitly use StringBuilder.
+
+```java
+String a = "hello";
+String b = "world";
+string c = a + b;
+```
+
+### Iterating
+
+```java
+String a = "hello";
+for (int i = 0; i < a.length(); i++) {
+    char c = a.charAt(i);
+    int num = Character.getNumericValue(c);
+    System.out.println(c);
+}
+```
