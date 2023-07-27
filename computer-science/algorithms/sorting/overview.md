@@ -17,7 +17,7 @@ for ( i = 0 ; i < n; i++ ) {
 
 ### Sorting Stability
 
-A sorting algorithm is stable if it can never swap identical items past each other i.e. members with the same value appear in the output array in the same order as they do in the input array.
+A sorting algorithm is stable if it can never swap identical items past each other i.e. members with the same value appear in the output array in the same order as they do in the input array. This is important when you perform multiple sorting i.e. name followed by salary.
 
 - Bubble: Stable, items with identical keys will have their original order preserved.
 - Insertion: Stable, items with identical keys will have their original order preserved.

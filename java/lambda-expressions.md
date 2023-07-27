@@ -69,6 +69,14 @@ You never specify the type of a lambda expression as the type is always inferred
 You can supply a lambda expression whenever an object of an interface with a single abstract method is expected. Such an interface is called a functional interface.
 
 ```java
+public interface Runnable {
+    void run();
+}
+
+Runnable r = () => { some code };
+```
+
+```java
 Arrays.sort(
     words,
     (first, second) -> first.length() - second.length()
