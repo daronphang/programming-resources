@@ -10,6 +10,10 @@ If the checks are determined i.e. tic-tack-toe (3 rows, 3 columns, 2 diagonals),
 
 Common characteristic of DP problems is asking for optimum value (max/min), or the number of ways there are to do something. Another characteristic is that future decisions depend on earlier decisions.
 
+For a more intuitive approach, try reducing the number of dp objects required by **taking the difference or remainder**. For alternating choice problems that requires finding the maximum, use subtraction instead of addition.
+
+Most dp problems require initialization; need to deduce what can be initialized/set as default value.
+
 ```py
 for i in range(len(nums)):
     for j in range(i):
