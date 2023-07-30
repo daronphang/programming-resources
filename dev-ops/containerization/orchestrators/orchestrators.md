@@ -16,27 +16,27 @@ Offers consistent security, built-in monitoring, centralized policy management, 
 
 ## OpenShift vs Kubernetes
 
-- Both manage groups of containers called clusters that contains a control plane and worker nodes.
-- Both feature robust and scalable architecture that enables rapid and large-scale application development, deployment and management, and also running on Apache license.
-- Kubernetes offers more flexibility and can be installed on any platform including Azure and AWS.
-- OpenShift has stricter security policies i.e. forbidden to run container as root.
-- Kubernetes has larger community of developers while OpenShift is limited primarily to Red Hat Developers.
-- Kubernetes lack networking solution while OpenShift offers Open vSwitch which comes in three native plug-ins.
+- Both manage groups of containers called clusters that contains a control plane and worker nodes
+- Both feature robust and scalable architecture that enables rapid and large-scale application development, deployment and management, and also running on Apache license
+- Kubernetes offers more flexibility and can be installed on any platform including Azure and AWS
+- OpenShift has stricter security policies i.e. forbidden to run container as root
+- Kubernetes has larger community of developers while OpenShift is limited primarily to Red Hat Developers
+- Kubernetes lack networking solution while OpenShift offers Open vSwitch which comes in three native plug-ins
 
 ## Kubernetes vs Swarm
 
 Advatanges of Swarm:
 
-- Easier to deploy/manage.
-- Comes with Docker and follows 80/20 rule.
-- Runs anywhere Docker does including local, cloud, datacenter, ARM, Windows, 32-bit, 64-bit etc.
-- Secure by default.
+- Easier to deploy/manage
+- Comes with Docker and follows 80/20 rule
+- Runs anywhere Docker does including local, cloud, datacenter, ARM, Windows,32-bit, 64-bit etc
+- Secure by default
 
 Advantages of Kubernetes:
 
-- Have more features and flexibility.
-- Cloud vendors will deploy/manage Kubernetes.
-- Checkbox for CIO/CTO.
+- Have more features and flexibility
+- Cloud vendors will deploy/manage Kubernetes
+- Checkbox for CIO/CTO
 
 ## Similarities
 

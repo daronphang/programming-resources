@@ -1,8 +1,6 @@
-## Commands
+## General
 
-### General
-
-```console
+```bash
 $ kubectl get <nodes/pods/deployment/events/replicaset>
 $ kubectl get pods --all-namespaces
 
@@ -19,29 +17,29 @@ $ kubectl delete deployment my-nginx
 $ kubectl delete pod/my-nginx-544232
 ```
 
-### Shell
+## Shell
 
-```console
+```bash
 $ kubectl exec --stdin --tty shell-demo -- /bin/bash
 ```
 
-### Cluster
+## Cluster
 
-```console
+```bash
 $ kubectl cluster-info
 ```
 
-### Deployment
+## Deployment
 
-```console
+```bash
 $ kubectl config view
 ```
 
-### Generators
+## Generators
 
 Helper templates for Run, Create and Expose commands. Every resource has a specification. Shows the output generated with that command.
 
-```console
+```bash
 $ kubectl create deployment sample --image nginx --dry-run -o yaml
 $ kubectl create job test --image nginx --dry-run -o yaml
 ```
