@@ -6,13 +6,17 @@ Try to use a decision tree to work out and see if repeated sub-problems can be r
 
 If the checks are determined i.e. tic-tack-toe (3 rows, 3 columns, 2 diagonals), can initialize the checks and iterate through them.
 
+## Two Pointers Approach
+
+Check if sorting will help. Pointers can either move together or one pointer at a time. For sum problems, can sort the array and take the **first and last numbers** and iterate them as necessary i.e. if sum is less than target, increment first pointer.
+
 ## DP Problems
 
 Common characteristic of DP problems is asking for optimum value (max/min), or the number of ways there are to do something. Another characteristic is that future decisions depend on earlier decisions.
 
-For a more intuitive approach, try reducing the number of dp objects required by **taking the difference or remainder**. For alternating choice problems that requires finding the maximum, use subtraction instead of addition.
+For a more intuitive approach, try reducing the number of dp objects required by **taking the difference or remainder**. The problem can then be iterated by increasing the count or size. For alternating choice problems that requires finding the maximum, use subtraction instead of addition.
 
-Most dp problems require initialization; need to deduce what can be initialized/set as default value.
+**Most dp problems require initialization**; need to deduce what can be initialized/set as default value.
 
 ```py
 for i in range(len(nums)):
@@ -36,7 +40,7 @@ dp[3] = '199' = 4
 
 ## Stacks
 
-Common characteristic will involve having left, center and right boundaries, making use of monotonic increasing/decreasing stack i.e. largest area in histogram. Can be combined with DP to cache the boundaries after each iteration, or require iteration from left-to-right and right-to-left.
+Common characteristic will involve having left, center and right **boundaries**, making use of monotonic increasing/decreasing stack i.e. largest area in histogram. Can be combined with DP to cache the boundaries after each iteration, or require iteration from left-to-right and right-to-left.
 
 Another characteristic is involving brackets i.e. () or [].
 

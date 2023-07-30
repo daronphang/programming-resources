@@ -84,7 +84,30 @@ staff.get(i);
 staff.set(i, harry);
 ```
 
-### Object Wrappers and Autoboxing
+### Operations
+
+```java
+ArrayList<Integer> nums = new ArrayList();
+nums.add(Integer.valueOf(5));
+nums.get(4); // pass index
+nums.remove(nums.size() - 1);   // pop
+```
+
+### Shallow Copy
+
+```java
+ArrayList<Integer> nums = new ArrayList();
+ArrayList<Integer> copy = new ArrayList(nums);
+```
+
+### Sorting
+
+```java
+Collections.sort(nums);
+Collections.reverse(nums);
+```
+
+## Object Wrappers and Autoboxing
 
 Unfortunately, the type parameter inside the angle brackets cannot be a primitive type. Instead, we can wrap the primitive inside an object i.e. Integer.
 
