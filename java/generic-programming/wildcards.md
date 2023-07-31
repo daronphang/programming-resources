@@ -50,15 +50,3 @@ public static boolean hasNulls(Pair<?> p) {
     return p.getFirst() == null || p.getSecond() == null;
 }
 ```
-
-## Wildcards vs Type Parameters
-
-- A wildcard is not a type variable and you cannot write code that uses wildcard as a type
-- If you have only one parameterized type argument, you can use wildcard
-- Type parameters support multiple bounds, wildcards don't
-- Wildcards support both upper and lower bounds (super, extends), type parameters just support upper bounds
-
-```java
-? t = p.getFirst(); // Error
-T t = p.getFirst(); // okay
-```

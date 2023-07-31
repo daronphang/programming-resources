@@ -1,10 +1,10 @@
-## Thread-Safe collections
+## Thread-Safe Collections
 
 The java.util.concurrent package supplies efficient implementations for maps, sorted sets, and queues. These collections use sophisticated algorithms that minimize contention by allowing concurrent access to different parts of the data structure.
 
 The collections return **weakly consistent iterators**. That means that the iterators may or may not reflect all modifications that are made after they were constructed. In constrast, an iterator of a collection will throw a ConcurrentModificaitonException when the collection has been modified after construction.
 
-```
+```java
 ConcurrentHashMap()
 ConcurrentSkipListMap()
 ConcurrentSkipListSet()
@@ -62,12 +62,11 @@ map.merge(word, 1L, (existingValue, newValue) -> existingValue + newValue);
 map.merge(word, 1L, Long::sum);
 ```
 
-### Bulk Operations on Concurrent Hash Maps
+## Unsafe Collections
 
-Java SE8 provides bulk operations on concurrent hash maps that can safely execute even while other threads operate on the map. They traverse the map and operate on the elements they find as they go along. No effort is made to freeze a snapshot of the map in time.
+For unsafe collections in the collections library such as ArrayList and HashMap, that can be made thread-safe by means of a synchronization wrapper.
 
-There are three kinds of operations:
-
-- search: applies a function to each key and/or value, until the function yields a non-null result
-- reduce: combines all keys and/or values, using a provided accumulation function
-- forEach: applies a function to all keys and/or values
+```java
+List<E> syncArrayList = Collections.synchronizedList(new ArrayList<E>());
+Map<K, V> syncHashMap = Collections.synchronizedMap(new HashMap<K, V>());
+```

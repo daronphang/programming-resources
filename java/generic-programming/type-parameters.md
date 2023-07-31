@@ -2,7 +2,7 @@
 
 Generics offer a better solution: type parameters. This makes your code easier to read. Also, no cast is required as the compiler knows the return type is String, not Object.
 
-It is common practice to use uppercase letters for type variables, and to keep them short.
+It is common practice to use uppercase letters for type variables (one letter), and to keep them short. When instantiating, we need to provide a concrete type.
 
 ```java
 ArrayList<String> files = new ArrayList<String>();
