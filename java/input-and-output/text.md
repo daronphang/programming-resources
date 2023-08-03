@@ -45,9 +45,36 @@ out.print(' ');
 out.println(salary);
 ```
 
+### Encodings
+
+```
+StandardCharsets.UTF_8
+StandardCharsets.UTF_16
+StandardCharsets.UTF_16BE
+StandardCharsets.UTF_16LE
+StandardCharsets.ISO_8859_1
+StandardCharsets.US_ASCII
+```
+
+To obtain the Charset for another encoding, use the static forName().
+
+```java
+Charset shiftJIS = Charset.forName("Shift-JIS");
+```
+
 ## Example
 
 ```java
+private static void writeData(Employee[] employees, PrintWriter out) throws IOException {
+    // write number of employees
+    out.println(employees.length);
+    for (Employee e : employees) writeEmployee(out, e);
+}
+
+public static void writeEmployee(PrintWriter out, Employee e) {
+    out.println(e.getName() + "|" + e.getSalary() + "|" + e.getHireDay());
+}
+
 private static Employee[] readData(Scanner in) {
     int n = in.nextInt(); // retrieve the array size
     in.nextLine(); // consume newline

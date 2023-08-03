@@ -1,6 +1,12 @@
 ## Combination Problems
 
-Try to use a decision tree to work out and see if repeated sub-problems can be resolved using DP. Break down the problems into smaller subproblems, use divide and conquer approach.
+For simple problems, can use backtracking approach.
+
+For harder problems, try to use a decision tree to work out and see if repeated sub-problems can be resolved using DP. Break down the problems into smaller subproblems, use divide and conquer approach.
+
+## Permutation Problems
+
+Iterate through each element in the array and add to existing dp i.e. use the results from previous iteration for the next.
 
 ## Predefined Checks
 
