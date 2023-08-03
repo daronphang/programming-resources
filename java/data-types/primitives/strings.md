@@ -40,6 +40,7 @@ string c = a + b;
 String a = "hello";
 for (int i = 0; i < a.length(); i++) {
     char c = a.charAt(i);
+    String s = Character.toString(a.charAt(i));
     int num = Character.getNumericValue(c);
     System.out.println(c);
 }
