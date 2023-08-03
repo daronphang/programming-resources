@@ -34,7 +34,7 @@ Nonetheless, programmers rarely touch them, but use the concrete input/output st
 
 ## Reading and Writing Unicode
 
-The concrete classes inherit from the abstract Reader and Writer classes. They both operate one Unicode unit (UTF-16) at a time.
+The concrete classes inherit from the abstract **Reader and Writer** classes. They both operate one Unicode unit (UTF-16) at a time.
 
 ```java
 abstract int read()

@@ -87,13 +87,23 @@ try {
 
 ## Try-with-Resources Statement
 
-For closing of resources, if the resource belongs to a class that implements the AutoCloseable interface, you do not need to use finally clause. When the block exits normally or when there was an exception, the close() method is called, as if you had used a finally block.
+For closing of resources, if the resource belongs to a class that implements the AutoCloseable interface, you do not need to use finally clause. When the block exits normally or when there was an exception, the close() method is called, as if you had used a finally block. **The resources need to be declared and initialized inside the try**.
 
 ```java
-Scanner in = new Scanner(new FileInputStream("/path/to/file", "UTF-8"));
-try {
-    while (in.hasNext()) {
-        System.out.println(in.next());
+try (Scanner scanner = new Scanner(new File("test.txt"))) {
+    while (scanner.hasNext()) {
+        System.out.println(scanner.nextLine());
+    }
+} catch (FileNotFoundException fnfe) {
+    fnfe.printStackTrace();
+}
+
+static String readFirstLineFromFile(String path) throws IOException {
+    try (
+        FileReader fr = new FileReader(path);
+        BufferedReader br = new BufferedReader(fr);
+    ) {
+        return br.readLine();
     }
 }
 ```
