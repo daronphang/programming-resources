@@ -17,3 +17,12 @@ Monolithic applications have one large code base and lack modularity. Updates wi
 - Continuous deployment is difficult.
 - Unable to scale components independently.
 - Difficult to apply a new technology as the entire application has to be rewritten (new technology barrier).
+
+### Why Monolith Exists
+
+Under various circumstances, a monolithic application that provides numerous capabilities in one package may still make sense in the following settings:
+
+- Domain and domain boundaries are unknown
+- Provided capabilities are tightly coupled, and performance of module interactions takes precedence over flexibility
+- Scaling requirements for all related capabilities are known and consistent
+- Functionality isn't volatile; change is slow, limited in scope, or both

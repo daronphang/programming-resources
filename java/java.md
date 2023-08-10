@@ -34,11 +34,24 @@ Java does automatic garbage colelction. If a block of memory is no longer needed
 | OpenJDK                  | -       | A free and open source implementation of Java SE. It does not include browser integration or JavaFX. Licensed under General Public License (GNU) |
 | Software Development Kit | SDK     | An outdated term that described JDK from 1998 until 2006                                                                                         |
 
+## Installation
+
 ### OpenJDK vs OracleJDK
 
 There is no technical difference between the two, since the build process for OracleJDK is based on OpenJDK. When it comes to performance, Oracle's is much better regarding responsiveness and JVM performance. It puts more focus on stability because of the importance it gives to its enterprise customers. However, openJDK has more releases and is continually improving and becoming more stable with the contributions from the community.
 
-## Installation
+### Managing Multiple JDKs
+
+The easier way to manage one or more JDKs on your machine is by usign SDKMAN!. This package manager also facilitiates the installation of the Spring Boot CLI. It is recommended to choose the current LTS version packaged by AdoptOpenJDK.
+
+https://sdkman.io/install
+
+```bash
+$ sdk list java
+$ sdk install java <version>
+```
+
+### Manual
 
 1. Download OpenJDK i.e. Microsoft OpenJDK 17
 2. Uncompress the file
