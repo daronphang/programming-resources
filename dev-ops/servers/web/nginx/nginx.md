@@ -10,7 +10,7 @@ Once loaded, can test by navigating to http://127.0.0.1 or http://localhost.
 
 https://www.linode.com/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/#use-nginx
 
-```console
+```bash
 $ sudo apt update
 $ sudo apt install nginx
 $ systemctl nginx status
@@ -22,7 +22,7 @@ $ sudo unlink /etc/nginx/sites-enabled/default  # disable default config file
 
 Nginx registers itself as a serice with ufw upon installation, making it straightforward to allow Nginx access.
 
-```console
+```bash
 $ sudo ufw app list
 $ sudo ufw allow 'Nginx HTTP'
 $ sudo ufw status
@@ -36,7 +36,7 @@ Nginx HTTPS     Opens port 443 (TLS/SSL encrypted traffic)
 
 ## Services
 
-```console
+```bash
 $ sudo systemctl status nginx
 
 $ sudo nginx -t     # test for syntax errors in nginx files
@@ -48,4 +48,16 @@ $ sudo systemctl reload nginx       # reload config files
 $ sudo systemctl restart nginx      # hard restart
 
 $ curl -4 icanhazip.com         # to find server's IP address
+```
+
+## Nginx File Locations
+
+```
+/var/www/html                   Static HTML content
+/etc/nginx                      Location of main Nginx application files
+/etc/nginx/nginx.conf           Main Nginx conf file
+/etc/nginx/sites-available      List of all websites configured through Nginx
+/etc/nginx/sites-enabled        List of sites actively served by Nginx
+/var/log/nginx/access.log
+/var/log/nginx/error.log
 ```

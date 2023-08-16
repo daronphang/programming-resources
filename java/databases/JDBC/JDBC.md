@@ -1,6 +1,6 @@
 ## JDBC
 
-The JDBC API allows programmers to connect to a database to query/update using SQL. Programs written according to the API talk to the driver manager, which in turn, uses a driver to talk to the actual database.
+The JDBC API allows programmers to connect to a database to query/update using SQL. Programs written according to the API talk to the driver manager, which in turn, uses a driver to talk to the actual database. JDBC is a layer of abstraction that lets an application issue SQL commands without thinking about the underlying database implementation.
 
 ### Driver Types
 

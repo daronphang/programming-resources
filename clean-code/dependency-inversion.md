@@ -20,7 +20,7 @@ def cook(food: str):
         bread = Bread()
         bread.bake()
     elif food == 'cookies':
-        cookie = Cooke()
+        cookie = Cookie()
         cookie.bake()
 
 cook('bread')

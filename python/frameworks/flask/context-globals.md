@@ -2,6 +2,8 @@
 
 Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client. The Flask.wsgi_app() handles and manages the contexts during each request. Both request and application contexts work as stacks. When request starts, context is created and pushed, and global proxies (g, request, session) are available. As contexts are stacks, other contexts may be pushed to change the proxies during a request. After request, context is popped, and teardown_request() and teardown_appcontext() are executed even if there is an unhandled exception.
 
+The application context keeps track of the application-level data during a request, CLI command, or other activity. Rather than passing the application around to each function, the current_app and g proxies are accessed instead.
+
 ```
 _request_ctx_stack
 _app_ctx_stack
@@ -18,6 +20,12 @@ session         Request Context         User session, a dictionary that the app 
 g.current_user
 session['x'] = form.x.data
 ```
+
+### Purpose of the Context
+
+The Flask application object has attributes, such as config, that are useful to access within views and CLI commands. However, importing the app instance within the modules is prone to circular import issues. When using the app factory pattern, there won't be an app instance to import at all.
+
+Flask solves this issue with the application context. Rather than referring to an app directly, you use the current_app proxy, which points to the application handling the current activity.
 
 ### Request Objects
 
@@ -96,7 +104,7 @@ get_data()              Gets the response body
 
 ## Activating Application Context
 
-Flask activates the application and request contexts before dispatching a request to the application, and removes them after the request is handled. When the application context is pushed, current_app and g variables become available to the thread. Likewise, when request context is pushed, request and session become available. When using app factory pattern, there won't be an app instnace to import; Flask solves this with the application context. Rather than referring to an app directly, use current_app proxy which points to the application handing during currnet activity.
+Flask activates the application and request contexts before dispatching a request to the application, and removes them after the request is handled. When the application context is pushed, current_app and g variables become available to the thread. Likewise, when request context is pushed, request and session become available.
 
 Flask automatically pushes an application and request context when handling a request (inside view functions), or when running CLI commands registered with Flask.cli using @app.cli.command(). Flask will pop the request context then the application context when the request ends.
 

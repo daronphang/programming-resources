@@ -1,5 +1,9 @@
 ## Spring Boot
 
+Spring Boot is an extension of the Spring framework, which eliminates boilerplate configurations required for setting up a Spring application. It takes an **opinionated view of the Spring platform**, which paves the way for a faster and more efficient development ecosystem.
+
+Spring boot aims to simplify to the maximum extend possible; the patterns of code and process that developers do over and over again. Once patterns are identified, Boot springs into action to initialize the required beans automatically, with sensible default configurations.
+
 The three core features of Spring Boot upon which everything else builds are simplified dependency management, simplified deployment, and autoconfiguration.
 
 ## Simplified Dependency Management
@@ -17,6 +21,25 @@ When building an API, we expose endpoints, listen for requests, process requests
 Adding a single starter, i.e. spring-boot-starter-web, provides all of those related functionalities in a **single appliation dependency**. All dependencies encompassed by it are **version-synchronized** too.
 
 In rare cases when you must incorporate functionality provided by a different version, you can simply override the tested version.
+
+The versions of starter dependencies themselves are determined by the version of Spring Boot you are using. Nonetheless, rest assured that all the dependencies pulled are compatible with each other as they have been tested.
+
+```
+// gradle
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile "com.h2database:h2"
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+```
+
+```bash
+$ gradle dependencies
+$ mvn dependency:tree
+```
 
 ## Executable JARs for Simplified Deployment
 
