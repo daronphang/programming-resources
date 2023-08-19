@@ -12,3 +12,13 @@ The project Lombok is a popular and widely used Java library that is used to min
 - Easy cleanup
 - Safe locking
 - Effortless logging
+
+### Adding to Spring
+
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional>
+</dependency>
+```

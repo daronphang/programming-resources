@@ -39,3 +39,19 @@ $ spring init   # same as spring initialzr, with defaults
 $ spring init -a demo -l java --build maven demo
 $ unzip demo.zip -d demo
 ```
+
+## DevTools
+
+DevTools provides developers with handy development-time tools:
+
+- Automatic application restart when code changes
+- Automatic browser refresh when browser-destined resource change (templates, stylsheets, Javascript)
+- Automatic disable of template caches
+- Built in H2 console if H2 database is in use
+
+When DevTools is in play, the application is loaded into two separate class loaders in the JVM:
+
+- One is loaded with Java code
+- Other is loaded with dependency libraries (unlikely to change)
+
+When a change is detected, DevTools reloads only the class loader containing your project code and restarts the Spring application context. However, **changes to dependency will not be available in automatic restarts**. You will need to do a hard restart.
