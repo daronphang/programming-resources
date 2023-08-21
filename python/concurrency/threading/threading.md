@@ -14,19 +14,19 @@ GIL effectively locks any shared data structures whenever it is being used and r
 
 ### Thead Safety Checklist
 
-- Global variables are either read-only or have access properly controlled (using locks).
-- Each request gets its own database connection.
-- Any request that does multiple SQL operations need to consider whether those operations produce "race conditions" i.e. checking if something exists in table and inserting if it doesn't exist is not "thread-safe".
+- Global variables are either read-only or have access properly controlled (using locks)
+- Each request gets its own database connection
+- Any request that does multiple SQL operations need to consider whether those operations produce "race conditions" i.e. checking if something exists in table and inserting if it doesn't exist is not "thread-safe"
 
 ### Highlights
 
-- Context switches are cheap as it has lesser overhead and same program is being executed so there is no swapping pages in and out of memory.
-- Lighter than processes as threads share same memory space and has more flexible software design.
-- Allows server to save computation time as it is cheaper to start a thread than to compile and run a program.
-- Allows to retain values between web requests.
-- Multiple threads can exist in a single process.
-- Harder to program as they can interfere with one another.
-- Increases complexity of program which can make debugging more difficult.
+- Context switches are cheap as it has lesser overhead and same program is being executed so there is no swapping pages in and out of memory
+- Lighter than processes as threads share same memory space and has more flexible software design
+- Allows server to save computation time as it is cheaper to start a thread than to compile and run a program
+- Allows to retain values between web requests
+- Multiple threads can exist in a single process
+- Harder to program as they can interfere with one another
+- Increases complexity of program which can make debugging more difficult
 
 ## Example
 

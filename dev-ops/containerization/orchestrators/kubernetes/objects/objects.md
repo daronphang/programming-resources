@@ -14,13 +14,13 @@ Each file can contain more than one manifest. Each manifest describes an API obj
 
 When using imperative commands, a user operates directly on live objects in a cluster and provides operations to the kubectl command.
 
-```console
+```bash
 $ kubectl create deployment nginx --image nginx
 ```
 
 When using declarative, a user operates on object config stored locally.
 
-```console
+```bash
 $ kubectl diff -f configs/
 $ kubectl apply -f configs/
 ```

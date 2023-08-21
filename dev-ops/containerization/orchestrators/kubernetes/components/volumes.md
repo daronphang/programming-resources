@@ -2,7 +2,7 @@
 
 Kubernetes supports many types of volumes. A Pod can use any number of volume types simultaneously Volumes are defined in the .spec.containers[*].volumeMounts field of the Pod template.
 
-```console
+```bash
 $ kubectl get pv/pvc
 ```
 

@@ -22,7 +22,7 @@ Need to ensure both client and server components are installed on local and remo
 
 For Windows, need to install a version of OpenSSH such as MobaXTerm. To have a full Linux environment available, can setup WSL which has SSH by default.
 
-```console
+```bash
 $ ssh   # check for ssh client
 $ sudo apt-get install openssh-client
 ```
@@ -31,7 +31,7 @@ $ sudo apt-get install openssh-client
 
 On most Linux environments, the ssh server 'sshd' should start automatically.
 
-```console
+```bash
 $ sudo systemctl start ssh      # for ubuntu distro, to manually start ssh
 
 $ ssh localhost
@@ -43,7 +43,7 @@ $ sudo service ssh status       # check if SSH server is running
 
 ### Configuring SSH
 
-Config file is located at '/etc/ssh/sshd_config' whereby you can change the settings i.e. port number. Can use any editor of your choice i.e. Nano, Vim.
+Config file is located at '/etc/ssh/sshd_config' whereby you can change the settings.
 
 ```config
 Port 22
@@ -67,14 +67,14 @@ PubkeyAuthentication yes
 ChallengeResponseAuthentication no
 ```
 
-```console
+```bash
 $ sudo service ssh restart         # need to restart everytime a change is made
 $ sudo systemctl reload ssh        # alternative for restart
 ```
 
 ### Connecting via SSH
 
-```console
+```bash
 $ ssh your_username@host_ip_address
 $ ssh your_username@host_ip_address -p 8080
 $ ssh our_username@host_ip_address command_to_run
@@ -109,7 +109,7 @@ Server will use public key to create a message for the client computer that can 
 
 Though you may be prompted to set a password on the key files themselves, it is an uncommon practice i.e. accepting defaults is sufficient.
 
-```console
+```bash
 $ # keys are created at ~/.ssh/id_rsa.pub and ~/.ssh/id_rsa
 
 $ ls ~/.ssh/id_rsa*     # check for existing keys
@@ -134,12 +134,12 @@ $ ls -l
 
 Uploading public key to compute/server instance. To use public key authentication, the public key must be copied to a server and installed in an authorized_keys file.
 
-```console
+```bash
 $ # from local Linux
 $ ssh-copy-id server_username@192.0.2.1
 ```
 
-```console
+```bash
 $ # for windows
 
 $ # on windows local computer
@@ -149,7 +149,7 @@ $ # on linux server
 $ mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
 ```
 
-```console
+```bash
 $ # setting permissions for public key directory in server
 $ sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 ```

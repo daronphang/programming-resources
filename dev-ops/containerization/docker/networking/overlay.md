@@ -15,9 +15,9 @@ UDP 4789
 
 ### Create
 
-```console
-$ docker nerwork create --driver=overlay my-overlay
-$ docker nerwork create --driver=overlay --attachable my-overlay
+```bash
+$ docker network create --driver=overlay my-overlay
+$ docker network create --driver=overlay --attachable my-overlay
 ```
 
 ## Standalone Containers

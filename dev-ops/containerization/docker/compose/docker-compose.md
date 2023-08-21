@@ -64,7 +64,7 @@ services:
   network-example-service:
     image: karthequian/helloworld:latest
     ports:
-      - "8080:3000" # port 8080 is exposed by host, port 3000 exposed by container
+      - '8080:3000' # port 8080 is exposed by host, port 3000 exposed by container
 ```
 
 ### Connecting between Containers
@@ -89,10 +89,10 @@ When having multiple services and using Docker to map unallocated ports for each
 services:
   service1:
     ports:
-      - "5000" # expose 5000 of container to an ephermeral unallocated port on host machine
+      - '5000' # expose 5000 of container to an ephermeral unallocated port on host machine
   service2:
     ports:
-      - "5000"
+      - '5000'
 ```
 
 ```console
@@ -119,7 +119,7 @@ http {
 ```
 
 ```yaml
-version: "3"
+version: '3'
 
 services:
   db:
@@ -129,7 +129,7 @@ services:
       POSTGRES_PASSWORD: password
       # ... other environment variables
   pspdfkit:
-    image: "pspdfkit/pspdfkit:latest"
+    image: 'pspdfkit/pspdfkit:latest'
 
     environment:
       PGUSER: pspdfkit
@@ -138,7 +138,7 @@ services:
     depends_on:
       - db
     expose:
-      - "5000"
+      - '5000'
   nginx:
     image: nginx:latest
     volumes:
@@ -146,7 +146,7 @@ services:
     depends_on:
       - pspdfkit
     ports:
-      - "4000:4000"
+      - '4000:4000'
 ```
 
 ## ENV
@@ -156,12 +156,12 @@ For ENV configuration, can pass in .env file:
 ```yaml
 services:
   some_service:
-    image: "postgres:${POSTGRES_VERSION}"
+    image: 'postgres:${POSTGRES_VERSION}'
     env_file:
       - web-variables.env
     environment:
       DB: mydb
-      USER: "${USER}"
+      USER: '${USER}'
 ```
 
 https://docs.docker.com/compose/environment-variables/#the-env_file-configuration-option

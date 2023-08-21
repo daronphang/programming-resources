@@ -23,7 +23,7 @@ dequeue(Q) {
 }
 ```
 
-### Priority Queues
+## Priority Queues
 
 Heap data structure is primarily used to represent a PQ.
 
@@ -42,7 +42,7 @@ class Solution:
         return -sum(pq)
 ```
 
-#### Heapify List of Objects
+### Heapify List of Objects
 
 Can either transform each object into a tuple, and heapify will sort each item based on the first element of the tuple.
 
@@ -65,3 +65,7 @@ def __lt__(self, other):
 
 heapq.__lt__ = __lt__
 ```
+
+## Deque (Double-Ended Queue)
+
+A linear collection that supports elements insertion and removal at both ends. Deque provides O(1) time complexity for append and pop operations as compared to a list that provides O(n) time complexity.

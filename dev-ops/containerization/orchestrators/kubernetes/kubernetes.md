@@ -10,13 +10,13 @@ Docker is relatively low-level and relies on CLI that interact with one containe
 
 ### Features
 
-- Automated rollouts, scaling and rollbacks.
-- Service discovery, load balancing, and network ingress.
-- Stateless and stateful applications.
-- Storage management with persistent storage.
-- Declarative state.
-- Works across environments including AWS/GCP.
-- Highly extensible including custom object types, controllers, and operators.
+- Automated rollouts, scaling and rollbacks
+- Service discovery, load balancing, and network ingress
+- Stateless and stateful applications
+- Storage management with persistent storage
+- Declarative state
+- Works across environments including AWS/GCP
+- Highly extensible including custom object types, controllers, and operators
 
 ### Distributions
 
@@ -34,11 +34,11 @@ When kubectl create, it creates the Deployment controller -> Replicaset -> Pod. 
 
 ### Imperative vs Declarative
 
-- Imperative refers to how a program operates, Declarative focuses on what it should accomplish (end state).
-- RUN, CREATE, UPDATE are Imperative.
-- -Middle ground is using Imperative objects such as create -f file.yml.
-- APPLY is Declarative; requires understanding of YAML keys and values and easiest to automate.
-- Overall, don't mix three approaches.
+- Imperative refers to how a program operates, Declarative focuses on what it should accomplish (end state)
+- RUN, CREATE, UPDATE are Imperative
+- -Middle ground is using Imperative objects such as create -f file.yml
+- APPLY is Declarative; requires understanding of YAML keys and values and easiest to automate
+- Overall, don't mix three approaches
 
 ## Storage/Volume
 

@@ -1,4 +1,4 @@
-### Disk Fragmentation
+## Disk Fragmentation
 
 When a file is written to a disk, they are allocated one or more blocks depending on its size. One block is the minimum space that can be allocated to a file i.e. remaining space of partially-filled block cannot be used by another file.
 

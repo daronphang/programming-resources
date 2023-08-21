@@ -1,4 +1,4 @@
-### Template
+## Template
 
 Intent is to define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
 
@@ -14,26 +14,26 @@ Pattern allows us to create a base class that contains some number of steps need
 
 Should be used:
 
-- To implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary.
-- When common behavior among subclasses should be factored and localized in a common class to avoid code duplication.
-- To control subclasses extensions.
-
-### Participants
-
-#### AbstractClass
-
-- Defines abstract primitive operations that concrete subclasses define to implement steps of an algorithm.
-- Implements a template method defining the skeleton of an algorithm.
-
-#### ConcreteClass
-
-- Implements primitive operations to carry out subclass-psecific steps of the algorithm.
+- To implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary
+- When common behavior among subclasses should be factored and localized in a common class to avoid code duplication
+- To control subclasses extensions
 
 ### Collaborations
 
-ConcreteClass relies on AbstractClass to implement the invariant steps of the algorithm.
+ConcreteClass relies on AbstractClass to implement the invariant steps of the algorithm
 
-### Consequences
+## Participants
+
+### AbstractClass
+
+- Defines abstract primitive operations that concrete subclasses define to implement steps of an algorithm
+- Implements a template method defining the skeleton of an algorithm
+
+### ConcreteClass
+
+- Implements primitive operations to carry out subclass-psecific steps of the algorithm
+
+## Consequences
 
 Template methods are a fundamental technique for code reuse and particularly important in class libraries. They also lead to an inverted control structure that is referred to as "the Hollywood Principle" which is "Don't call us, we'll call you". In other words, parent class calls the the operations of a subclass and not the other way around.
 
@@ -45,7 +45,7 @@ Template methods call the following operations:
 - Factory methods
 - Hook operations, which provide default behavior that subclasses can extend if necessary. Hook operation does nothing by default.
 
-### Example
+## Example
 
 ```py
 from abc import ABC, abstractmethod

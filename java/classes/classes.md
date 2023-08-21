@@ -43,6 +43,29 @@ public void raiseSalary(double byPercent) {
 }
 ```
 
+### Defining Methods
+
+Method declarations have six components:
+
+- Modifiers
+- Return type
+- Method name
+- Parameter list in parenthesis
+- An exception list
+- The method body, enclosed between braces
+
+### Methods with Variable Number of Parameters
+
+You can pass in an ellipsis to denote an arbitrary number of objects.
+
+```java
+public class PrintStream {
+    public PrintStream printf(String fmt, Object... args) {
+        return format(fmt, args);
+    }
+}
+```
+
 ### Encapsulation
 
 If you want to get and set the value of an instance field, you need to supply three items:
@@ -73,24 +96,6 @@ class Employee {
 }
 ```
 
-### Static Fields and Methods
-
-If you define a field as static, there is only one such field per class i.e. class attribute and not instance attribute. All objects of the class will share that field.
-
-If static has been omitted, the variable would then be an instance field and requires an object of that class to access the field.
-
-```java
-public class Math {
-    public static final double PI = 3.1415;
-}
-```
-
-Use static methods in the following situations:
-
-- When a method does not need to access the object state
-- When a method only needs to access static fields of the class
-- When using static factory methods to construct objects i.e. LocalDate.now, LocalDate.of
-
 ### Main Method
 
 The main method does not operate on any objects. When the program starts, there aren't any objects yet; the main method executes and construct the objects the program needs.
@@ -114,9 +119,11 @@ class Employee {
 
 ### Method Parameters
 
-Parameters can be passed to a method in two ways: 'call by value' or 'call by reference'. 'Call by value' means the method gets just the value that the caller provides. In constrast, 'call by reference' means that the method gets the location of the variable that the caller provides.
+Parameters can be passed to a method in two ways: 'call by value' or 'call by reference'. 'Call by value' means the method gets just the value that the caller provides. In contrast, 'call by reference' means that the method gets the location of the variable that the caller provides.
 
-Java always uses call by value i.e. makes a copy of the parameters. The method cannot modify the contents of any parameter variables passed to it. However, this is **only applicable for primitive values**. When an object is passed to a function, the object reference gets copied, and both the copy and original refer to the same object.
+Java always uses call by value i.e. makes a copy of the parameters. The method cannot modify the contents of any parameter variables passed to it. However, this is **only applicable for primitive values**.
+
+When an object is passed to a function, the object reference gets copied, and both the copy and original refer to the same object. Hence, **we can modify the object in any way**. However, **we cannot make the reference refer to a different object**. To do so, we need to return the reference.
 
 A method can change the state of an object parameter. Nonetheless, Java does not use call by reference for objects, which is a common misunderstanding.
 

@@ -10,7 +10,7 @@ https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ub
 
 Remove any prior installation from apt and install from snap.
 
-```console
+```bash
 $ sudo apt update
 $ sudo apt install snapd
 
@@ -26,7 +26,7 @@ $ sudo ln -s /snap/bin/certbot /usr/bin/certbot   # configure a symbolic link
 
 Should request separate certificates with and without www prefix if Certbot is unable to display the names of eligible domains.
 
-```console
+```bash
 $ sudo certbot --nginx
 ```
 
@@ -34,7 +34,7 @@ $ sudo certbot --nginx
 
 Certbot is configured to renew any certificates automatically by scheduling a task in the background.
 
-```console
+```bash
 $ sudo certbot renew --dry-run  # testing if auto works
 $ sudo certbot renew    # manual
 ```

@@ -46,25 +46,26 @@ Power   Base2   Binary
 
 ## Unicode
 
-Universal character standard that assigns a codepoint to every character, number and symbol in every language in the world. Unicode characters can be referenced by their codepoint. Has backwards compatability with ASCII. Total of 143,859 characters.
+Universal character standard that assigns a codepoint to every character, number and symbol in every language in the world. Unicode characters can be referenced by their codepoint. Has backwards compatability with ASCII. Total of 143,859 characters. **Unicode uses hexadecimal base**.
 
 ```
-# U+<hex-code> from U+0000 to U+10FFFF
+U+<hex-code> from U+0000 to U+10FFFF
 Computer Hope
 U+0043 U+006F U+006D U+0070 U+0075 U+0074 U+0065 U+0072 U+00A0 U+0048 U+006F U+0070 U+0065
+```
 
-# First 128 characters of Unicode are the same as ASCII characte set
+First 128 characters of Unicode are the same as ASCII character set.
+
+```
 Unicode ASCII Char
 U+0041	65    A
 U+0042	66    B
 U+0043	67    C
 U+0044	68    D
 U+0045	69    E
-
-# Unicode uses hexadecimal base
 ```
 
-### Unicode Transformation Format
+### Unicode Transformation Format (UTF)
 
 Problem with Unicode is that to represent 100,000 characters (or 100,000 numbers equivalent), need 32 bits per character. However, first 128 characters of ASCII need only 7 bits. To eliminate wastage, different UTF encodings were introduced. To represent Unicode characters as binary data (raw 8-bit values).
 
@@ -76,12 +77,14 @@ UTF-8       Each symbol represented by 1-to-4 bytes code. Standard encoding on w
 UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
 ```
 
-### UTF-8 Encoding
+### UTF-8 Encoding (8 bits)
 
-World Wide Web's most common character encoding. Each character is represented by one to four bytes (32 bits) and has backwards compatibility with ASCII. Leading bits of bytes contain metadata.For instance, two-byte UTF-8 representation:
+World Wide Web's most common character encoding. It can translate any Unicode character to a matching unique binary string. Each character is represented by one to four bytes (saving memory) and has backwards compatibility with ASCII.
 
-- First byte has 110; 11 indicates two-byte sequence, 0 indicates code bits will follow.
-- Second byte has 10: signals that it is a continuation in UTF-8 sequence.
+Leading bits of bytes contain metadata specific to UTF. For instance, two-byte UTF-8 representation:
+
+- First byte has 110; 11 indicates two-byte sequence, 0 indicates code bits will follow
+- Second byte has 10: signals that it is a continuation in UTF-8 sequence
 
 ```
 One-byte        0XXXXXXX                For first 128 ASCII characters
@@ -94,6 +97,10 @@ Char Dec Unicode UTF-8             Binary
 ç    231 U+0347  11000011 10100111 00011100111 = 11100111
 ã    227 U+0343  11000011 10100011 00011100011 = 11100011
 ```
+
+### UTF-16 (2 bytes)
+
+Encodes a Unicode character into a string of either two or four bytes. **UTF-16 is not compatible with UTF-8** as they use different algorithms to map code points back to binary strings.
 
 ## Unicode vs ASCII
 

@@ -1,4 +1,4 @@
-### Mounting in File System
+## Mounting in File System
 
 On Unix-OS, the VFS assigns a device ID (dev/disk1s1) to each partition or removable storage device. The contents of each device are then placed in a virtual directory tree as separate directories.
 
@@ -8,7 +8,7 @@ When a file system is mounted, any files or directories in the underlying mount 
 
 Mounting may be local or remote. In local, it connects the disk drivers as one machine. while remote uses NFS (Network File System) to connect to directories on other machines so that they can be used as if they are part of the user's file system.
 
-#### Linux
+### Linux
 
 All partitions and removable storage devices appear as if they are directories under root directory.
 
@@ -16,7 +16,7 @@ All partitions and removable storage devices appear as if they are directories u
 /media
 ```
 
-#### Manual Mounting
+### Manual Mounting
 
 Mount-point (/media) should already exist as a directory, else need to be created first. If mount-point already contains files, they will be hidden so long the device is mounted.
 

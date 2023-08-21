@@ -1,22 +1,35 @@
-## Docs
-
-http://nginx.org/en/docs/http/ngx_http_core_module.html
-
-## Nginx File Locations
-
-```
-/var/www/html                   Static HTML content
-/etc/nginx                      Location of main Nginx application files
-/etc/nginx/nginx.conf           Main Nginx conf file
-/etc/nginx/sites-available      List of all websites configured through Nginx
-/etc/nginx/sites-enabled        List of sites actively served by Nginx
-/var/log/nginx/access.log
-/var/log/nginx/error.log
-```
-
-## Configuration File Structure
+## File Structure
 
 https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts
+
+```conf
+# main context
+http {
+    # http context
+
+    server {
+        # first server context
+
+        location /match/criteria {
+          # first location context
+        }
+
+        location /other/criteria {
+            # second location context
+            location nested_match {
+                # first nested location
+            }
+        }
+
+    server {
+        # second server context
+    }
+}
+```
+
+### Keywords Docs
+
+http://nginx.org/en/docs/http/ngx_http_core_module.html
 
 ### Directives
 

@@ -13,7 +13,7 @@ You can choose between processes or threads, using the --pool argument. Celery s
 - eventlet
 - gevent
 
-```console
+```bash
 $ celery worker --app=worker.app --pool=gevent --concurrency=100
 ```
 
@@ -33,7 +33,7 @@ You want to use prefork pool if your tasks are CPU bound. The number of availabl
 
 Solo pool is neither threaded nor process-based. The solo pool runs inside the worker process, and runs inline which means there is no book-keeping overhead. However, it blocks the worker while it executes tasks.
 
-```console
+```bash
 celery worker --app=worker.app --pool=solo
 ```
 
@@ -53,17 +53,19 @@ Greenlets emulate multi-threaded environments without relying on any native OS c
 
 Need to pip install gevent or eventlet. Both options are based on the same concept of spawning a greenlet pool. Gevent uses the gevent greenlet pool, while eventlet uses eventlet greenlet pool.
 
-```console
-$ ~$ celery worker --app=worker.app --pool=gevent --concurreny=500
+```bash
+$ ~$ celery worker --app=worker.app --pool=gevent --concurrency=500
 ```
 
-```console
+```bash
 $ celery -A proj worker -P eventlet -c 1000
 ```
 
 ## Conclusion
 
-You may want to mix of both Eventlet and prefork workers, and route tasks according to compatibility of what works best. There is even evidence to support that **having multiple worker instances running, may perform better than having a single worker** i.e. 3 workers with 10 pool porcesses each.
+You may want to mix of both Eventlet and prefork workers, and route tasks according to compatibility of what works best.
+
+There is even evidence to support that **having multiple worker instances running, may perform better than having a single worker** i.e. 3 workers with 10 pool processes each.
 
 You need to experiment to find the numbers that work bests for you, as this varies on application, work load, task run times and other factors.
 
