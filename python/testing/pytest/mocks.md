@@ -1,5 +1,7 @@
 ## Mocking Functions
 
+If mocking a method or class in a module that imports directly, need to mock that module.
+
 ```py
 from unittest.mock import Mock
 import pytest

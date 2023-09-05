@@ -25,9 +25,9 @@ If not set, Celery defaults to the number of CPUs, whatever the execution pool.
 
 ## Prefork
 
-The prefork is based on Python's multiprocessing package. It allows your worker to side-step Python's GIL and fully leverage multiple processors on a given machine.
+The prefork is based on Python's multiprocessing package and is enabled by default. It allows your worker to side-step Python's GIL and fully leverage multiple processors on a given machine.
 
-You want to use prefork pool if your tasks are CPU bound. The number of available cores limits the number of concurrent processes.
+You want to use prefork pool if your tasks are CPU bound. The number of available cores limits the number of concurrent processes i.e. one worker will spawn child-processes that are equivalent to the number of cores. The child processes will then execute the tasks.
 
 ## Solo
 
@@ -68,3 +68,17 @@ You may want to mix of both Eventlet and prefork workers, and route tasks accord
 There is even evidence to support that **having multiple worker instances running, may perform better than having a single worker** i.e. 3 workers with 10 pool processes each.
 
 You need to experiment to find the numbers that work bests for you, as this varies on application, work load, task run times and other factors.
+
+```bash
+$ celery -A proj multi start 2 -P gevent -c 1000
+
+$ celery -A proj worker start -P gevent -Q:queue1 -c 500
+$ celery -A proj worker start -P prefork -Q:queue2 -c 4
+```
+
+For Docker, simply start multiple workers.
+
+```bash
+$ celery -A proj worker start -P gevent -Q:queue1 -c 500
+$ celery -A proj worker start -P gevent -Q:queue1 -c 500
+```

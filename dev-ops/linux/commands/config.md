@@ -88,3 +88,9 @@ $ sudo mount -t cifs -o username=daronphang,password=password //10.195.111.11/F1
 ```bash
 $ sudo mount -t cifs -o credentials=abs/path/to/.cifs //10.195.111.11/F10_PEE_UIPATH/daronphang /mnt/uipath
 ```
+
+### Checking Assigned CPU to Process
+
+```bash
+$ top -p <PID> -p <PID>  # add Last Used CPU by pressing f followed by space
+```

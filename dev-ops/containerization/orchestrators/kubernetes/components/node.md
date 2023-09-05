@@ -4,7 +4,7 @@ VM or physical machine that contains the services necessary to run containerized
 
 Each node has a Kubelet, which is an agent for managing the node and communicating with the Kubernetes control plane. The node should also have tools for handling container operations i.e. containerd or Docker.
 
-Comes unopinionated i.e. don't have to adopt a particular workflow to make something work. Have Imperative and Declarative.
+Comes unopinionated i.e. doesn't have to adopt a particular workflow to make something work. Have Imperative and Declarative.
 
 ## Docker
 
@@ -22,7 +22,7 @@ Runs on each node and helps in making services available to external host and fo
 
 A Pod is the smallest unit that can be deployed and managed by Kubernetes i.e. containers. Pods can contain multiple containers that are tightly coupled (deployed on the same server in pre-container world). A Pod always run on a Node, and each Node can have multiple pods.
 
-**Each Pod is meant to run a single instance of a given application**. If you want to scale horizontally, should use multiple Pods, one for each instance i.e. replication.
+**Each Pod is meant to run a single instance of a given application** i.e. one-container-per-pod model. If you want to scale horizontally, should use multiple Pods, one for each instance i.e. replication. Kubernetes manages Pods rather than managing containers directly.
 
 Pods that are running inside Kubernetes are running on a private, isolated network. By default, they are visible from other pods and services within the same cluster, but not outside of the network. When we use kubectl, we are interacting through an API endpoint to communicate with our application.
 
@@ -32,7 +32,7 @@ Having an additional layer of abstraction by the Pod instead of deploying a sing
 
 ### Multi-Container Pods
 
-Primary purpose is to support co-located, co-managed helper processes for a primary application including proxies (Apache, Nginx), bridges, adapters, log/data watchers, etc.
+Primary purpose is to support co-located, co-managed helper processes for a primary application including proxies (Apache, Nginx), bridges, adapters, log/data watchers, sidecars etc.
 
 Grouping multiple containers is a relatively advanced use case, and should only use in specific instances when your containers are tightly coupled.
 
