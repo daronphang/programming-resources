@@ -51,11 +51,11 @@ File2 is being run directly
 
 Whenever you encounter an import error, print \_\_name\_\_ of the module to check how it is being called.
 
-2. ImportError: atempted relative import with no known parent package
+2. ImportError: attempted relative import with no known parent package
 
 Occurs when you are using dot notation. Run script with -m flag. Do not append .py suffix as -m flag only requires module names.
 
-```console
+```bash
 $ py -m src.main # instead of src/main    # declare path as module
 ```
 

@@ -44,6 +44,10 @@ dp[3] = '199' = 4
 199 306     306 is valid, add dp[3] to dp[6],6,4
 ```
 
+## Greeedy Problems
+
+For problems that will result in TLE if DP approach is used, try using greedy.
+
 ## Stacks
 
 Common characteristic will involve having left, center and right **boundaries**, making use of monotonic increasing/decreasing stack i.e. largest area in histogram. Can be combined with DP to cache the boundaries after each iteration, or require iteration from left-to-right and right-to-left.

@@ -1,12 +1,3 @@
-## Load Balancer
-
-- Distributes incoming client requests among a group of servers and returning the response from selected server to appropriate client
-- Most commonly deployed when site needs multiple servers as the volume of requests is too much for a single server to handle efficiently
-- Deploying multiple servers also eliminates single point of failure, making website more reliable
-- Distribute workload in a way that makes the best use of each server's capacity, prevents overload on any server, and results in fastest possible resposne to client
-- Enhance user experience by reducing number of error responses the client sees (diverts requests away from servers that are down)
-- Provides session persistence by sending all requests from a particular client to same server
-
 ## Reverse Proxy
 
 Reverse proxy is used by the server such as web server to achieve load balancing and high availability. Reverse proxies are used to protect servers. Takes requests from the browser and forwards them to one of the backend web servers. Nginx, Apache and HAProxy can act both as a web server and reverse proxy. Client only communicates directly with the reverse proxy server and does not know that other servers actually processed its request.

@@ -19,21 +19,6 @@ public class HomeController {
 }
 ```
 
-## @ResponseBody
-
-Instructs a Controller class to return a formatted response as JSON by default, or another format if specified.
-
-## @RestController
-
-The @RestController annotation is a convenience notation that combines @Controller with @ResponseBody into a single annotation.
-
-```java
-@RestController
-class RestApiDemoController {
-    private List<Coffee> coffees = new ArrayList<>();
-}
-```
-
 ## @RequestMapping
 
 To map a function to a request. Spring Boot performs marshalling/demarshalling (JSON by default) automatically. There are also specialized convenience annotations for streamlining:
