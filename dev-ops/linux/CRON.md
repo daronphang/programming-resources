@@ -4,22 +4,35 @@ Built-in Linux utility that runs processes on your system at a scheduled time. R
 
 https://crontab.guru/#____\*__\__
 
+### Service
+
+```bash
+$ sudo systemctl status crond.service
+```
+
 ### Crontab
 
-```console
-$ crontab -e
-$ sudo vim /etc/crontab # rhel
+```bash
+$ crontab -e    # for user
 $ crontab –u other_username –e
+$ sudo vim /etc/crontab # for root
 ```
 
 ## Syntax
 
 ```
 a b c d e /directory/command output
-
 * 2 0 * 4 /root/backup.sh # runs 2am on first day of month on Wed
-
 * * * * * /root/backup.sh # runs job every minute
+```
+
+### Troubleshooting
+
+Add bash/sh path in crontab.
+
+```
+* * * * * touch /tmp/testing.txt
+* * * * * /bin/bash /root/backup.sh
 ```
 
 ### Time Format
