@@ -12,8 +12,10 @@ Cloud services are also typically managed and maintained by third-party provider
 
 ### Benefits
 
+- Trade upfront expense for variable expense
 - Faster time to market by spinning up new instances or retiring them
 - Scalability and flexibility to meet business demands without investment
+- Stop guessing capacity and resource requirements
 - Cost savings as you pay for resources you use
 - Better collaboration as data is made available anywhere
 - Advanced security employed by cloud providers

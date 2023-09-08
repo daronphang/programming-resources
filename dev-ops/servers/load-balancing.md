@@ -38,6 +38,8 @@ When we bind a server to a specific request, we remove the ability to use other 
 
 Binding sessions to specific servers can cause security concerns. An attacker can perform DDOS and perform very CPU intensive requests, which can cause the server to go down.
 
-### Alternative
+### Alternatives
 
-Session storage can be stored in a shareable resource i.e. database, or in-memory cache like Redis.
+To provide a shared data storage for sessions accessible from any web server, you can leverage an in-memory cache such as Redis or Memcached. However, there is an additional network latency and cost.
+
+Another consideration is to replicate the sessions in the event of a node failure.
