@@ -19,7 +19,14 @@ With serverless computing, you can focus more on innovating new products and fea
 
 ## Elastic Beanstalk
 
-Helps to scale and deploy web applications made with several programming languages. EBS handles the deployment of the code as soon as it is uploaded.
+Helps to scale and deploy web applications made with several programming languages. AWS Elastic Beanstalk handles the deployment of the code as soon as it is uploaded.
+
+With AWS Elastic Beanstalk, you provide code and configuration settings, and EBS deploys the resources necessary to perform the following tasks:
+
+- Adjust capacity
+- Load balancing
+- Automatic scaling
+- Application health monitoring
 
 ## Lightsail
 
@@ -42,3 +49,9 @@ AWS EKS is a fully managed service that you can use to run Kubernetes on AWS.
 AWS Fargate is a serverless compute engine for containers. It works with both ECS and EKS.
 
 When using Fargate, you don't need to provision or manage servers. AWS Fargate manages your server infrastructure for you.
+
+## CloudFormation
+
+With AWS CloudFormation, you can treat infrastructure as code. This means that you can build an environment by writing lines of code instead of using the AWS Management Console to individually provision resources.
+
+AWS CloudFormation provisions your resources in a safe, repeatable manner, enabling you to frequently build your infrastructure and applications without having to perform manual actions. It determines the right operations to perform when managing your stack and rolls back changes automatically if it detects errors.

@@ -8,9 +8,28 @@ Elastic IP addresses are static/persistent public IPs that come with your accoun
 
 ## Subnet
 
-Subnet is a range of IP addresses in your VPC. Subnet is always mapped to a single availability zone. Two types of subnets: public and private.
+A subnet is a section of a VPC that you can contain/group resources such as EC2 instances. Subnet is a range of IP addresses in your VPC. Subnet is always mapped to a single Availability Zone. Two types of subnets:
 
-Should use private subnets to secure resources that do not need to be available to the internet i.e. database.
+- Public: Has access to the internet gateway; contains resources that need to be accessible by the public
+- Private: Does not have access to the internet gateway; contains resources that should be accessible only through your private network i.e. databases
+
+## Network Access control List (ACLs)
+
+A network ACL is a virtual firewall that controls inbound and outbound traffic at the subnet level. Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
+
+### Stateless packet filtering
+
+Network ACLs perform **stateless** packet filtering. They remember nothing and check packets that cross the subnet border each way i.e. inbound and outbound, double checking.
+
+After a packet has entered a subnet, it must have its permissions evaluated for resources within the subnet. The VPC component that checks packet permissions for an EC2 instance is a **Security Group**.
+
+## Security Groups
+
+A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance. By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
+
+### Stateful packet filtering
+
+Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets.
 
 ## Gateway
 
