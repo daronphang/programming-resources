@@ -4,11 +4,11 @@ When selecting a cloud strategy, a company must consider factors such as require
 
 ### Cloud-Based
 
-All existing applications are migrated to the cloud, or you design and build new applications in the cloud.
+All existing applications are migrated to the cloud, or you design and build new applications in the cloud. Companies do not have to manage and maintain their own hardware and data centers.
 
 ### On-Premises (Private Cloud)
 
-Resources are deployed on premises by using virtualization and resource management tools.
+Resources are deployed on premises by using virtualization and resource management tools. Companies hosted and maintained hardware such as compute, storage, and networking equipment in their own data centers.
 
 ### Hybrid
 

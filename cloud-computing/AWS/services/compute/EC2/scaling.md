@@ -4,13 +4,24 @@ Scalability involves beginning with only the resources you need and designing yo
 
 ## EC2 Auto Scaling
 
-This feature enables you to automatically add or remove EC2 instances in response to changing application demand. Two approaches include:
+This feature enables you to automatically add or remove EC2 instances in response to changing application demand i.e. adjusts the capacity to maintain steady, predictable performance at the lowest possible cost. Two approaches include:
 
 - Dynamic Scaling: Responds to changing demand
 - Predictive Scaling: Automatically schedules the right number of EC2 instances based on predicted demand
 
 With auto scaling, you define the **minimum capacity**, **desired capacity** (defaults to your minimum capacity), and **maximum capacity**.
 
-## Elastic Load Balancing
+### Benefits
 
-ELB is the AWS service that automatically distributes incoming application traffic across multiple resources.
+- Better fault tolerance
+- High availabity of resources
+- Better cost management
+- High reliability of resources
+- High flexibility of resources
+
+### Scaling Plans
+
+- **Manual scaling**: Helps in managing the task of building or terminating EC2 instances on its own
+- **Scaling based on schedule**: Developers can predict future traffic and schedule the time for executing AWS autoscaling
+- **Scaling based on demand**: Scaling lets developers define required scaling in response to client demand
+- **Maintaining the current instance-level**: Developers configure an Auto Scaling group for managing running instances

@@ -10,7 +10,7 @@ AWS offers four different Support plans to help you troubleshoot issues, lower c
 
 Basic support is free for all AWS customers. It includes access to whitepapers, documentation, and support communities.
 
-With Basic Support, you have access to a l**imited selection of AWS Trusted Advisor checks**. You can also use the **AWS Personal Health Dashboard**, a tool that provides alerts and remediation guidancee when AWS is experiencing events that may affect you.
+With Basic Support, you have access to a **limited selection of AWS Trusted Advisor checks**. You can also use the **AWS Personal Health Dashboard**, a tool that provides alerts and remediation guidancee when AWS is experiencing events that may affect you.
 
 ### Developer
 
@@ -19,6 +19,7 @@ Have access to features such as:
 - Best practice guidance
 - Client-side diagnostic tools
 - Building-block architecture support, which consists of guidance for how to use AWS offerings, features, and services together
+- Email creation of support tickets (no phone support)
 
 ### Business
 
@@ -27,6 +28,7 @@ Have access to features such as:
 - Use-case guidance to identify AWS offerings, features, and services that can best support your specific needs
 - All AWS Trusted Advisor checks
 - Limited support for third-party software, such as common OS and application stack components
+- Call or chat with technical support
 
 ### Enterprise On-Ramp
 

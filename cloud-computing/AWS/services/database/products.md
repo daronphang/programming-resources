@@ -58,7 +58,7 @@ Consider Amazon Aurora if your workloads require **high availability**. It repli
 
 ## DynamoDB
 
-Flexible NoSQL that offers fast and reliable performance with no scalability issues. It is serverless, which means that you do not have to provision, patch, and manage servers.
+Amazon DynamoDB is a key-value and flexible NoSQL that offers fast and reliable performance with no scalability issues. It is serverless, which means that you do not have to provision, patch, and manage servers.
 
 DynamoDB provides **automatic scaling**. As the size grows/shrinks, it automatically scales to adjust for changes in capacity while maintaining consistent performance. This makes a suitable choice that require **high performance while scaling**.
 
