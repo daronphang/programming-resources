@@ -2,6 +2,8 @@
 
 Decorator method used for listening to DOM events on the host element of both component and attribute directives. Sets the listeners once the directive is initialized and removes them automatically once the directive gets destroyed. Also listens to events from children or nested elements.
 
+Accepts an event name as an argument. When that event gets fired on the host element, it calls the associated function.
+
 In a component, the host element is the outer most shell element that contains the template, and its tag name is your chosen selector string in the component’s configuration.
 
 ```js
@@ -21,20 +23,20 @@ onMouseEnter() {
 ```
 
 ```js
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener } from "@angular/core";
 
-@Directive({ selector: '[onlyMyBacon]' }) // any html element containing onlyMyBacon will be directive's host element
+@Directive({ selector: "[onlyMyBacon]" }) // any html element containing onlyMyBacon will be directive's host element
 export class OnlyMyBacon {
-  @HostListener('mouseenter') onMouseEnter() {
+  @HostListener("mouseenter") onMouseEnter() {
     alert("Don't touch my bacon!");
   }
 
-  @HostListener('mouseenter', ['$event']) // $event accesses event payload object
+  @HostListener("mouseenter", ["$event"]) // $event accesses event payload object
   onMouseEnter(event: any) {
     console.log(event.target.id);
   }
 
-  @HostListener('window:click', ['$event.target'])
+  @HostListener("window:click", ["$event.target"])
   onClick(targetElement: string) {
     console.log(`You clicked on`, targetElement);
   }
@@ -44,6 +46,8 @@ export class OnlyMyBacon {
 ## Host Binding
 
 Directives can also bind input properties in the host element. Similar to property binding. Helps to bind a class property to a property of the host element.
+
+This directive can change the properties of the host element. It can be used to link an internal property to an input property of the host element. If the internal property changes, the input property of the host element would also change.
 
 ```html
 <!-- _elementBorder is a property in host component -->
@@ -78,7 +82,12 @@ Property decorator that configures a view query i.e. to access a directive, chil
 <h2 #title>Choose Brand Colors:</h2>
 <mat-input-container>
   <mat-label>Primary Color</mat-label>
-  <input matInput #primaryInput [(colorPicker)]="primary" [(ngModel)]="primary" />
+  <input
+    matInput
+    #primaryInput
+    [(colorPicker)]="primary"
+    [(ngModel)]="primary"
+  />
 </mat-input-container>
 ```
 
@@ -97,7 +106,7 @@ Variable is injected after view initialization is completed. To use references i
 // parent component
 export class ParentComponent implements AfterViewInit {
   @ViewChild(ColorSampleComponent) primarySampleComponent: ColorSampleComponent;
-  @ViewChild('primaryColorSample') sample: ColorSampleComponent; // same as above
+  @ViewChild("primaryColorSample") sample: ColorSampleComponent; // same as above
 
   ngAfterViewInit() {
     console.log(this.primarySampleComponent);
