@@ -4,14 +4,7 @@ Offers a highly secure cloud platform and connects your physical network to VPN 
 
 ## Elastic IP Addresses
 
-Elastic IP addresses are static/persistent public IPs that come with your account. If any software/instances fail, they can be remapped to anotehr instance quickly i.e. not allocated to an instance.
-
-## Subnet
-
-A subnet is a section of a VPC that you can contain/group resources such as EC2 instances. Subnet is a range of IP addresses in your VPC. Subnet is always mapped to a single Availability Zone. Two types of subnets:
-
-- Public: Has access to the internet gateway; contains resources that need to be accessible by the public
-- Private: Does not have access to the internet gateway; contains resources that should be accessible only through your private network i.e. databases
+Elastic IP addresses are static/persistent public IPs that come with your account. If any software/instances fail, they can be remapped to another instance quickly i.e. not allocated to an instance.
 
 ## Network Access control List (ACLs)
 
