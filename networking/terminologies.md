@@ -56,8 +56,9 @@ The number after the slash specifies how many bits of the IP address are **fixed
 The smallest IP range you can have is `/28`, which provides 16 IP addresses. The largest range is `/16`, which provides 65,536 IP addresses.
 
 ```
-# the 0 is flexible
-192.168.1.0/24
+192.168.1.0/24  # the 0 is flexible, range of 256
+192.168.1.0/16  # range of 65,536 (256*256, 8bits, 8bits)
+192.168.1.0/22  # range of 1024 (2*2*256)
 ```
 
 ## Secure Socket Shell (SSH)
