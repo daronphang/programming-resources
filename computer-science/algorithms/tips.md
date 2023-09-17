@@ -79,3 +79,7 @@ for col in zip(*matrix):
 ## Graphs
 
 Check if it is bidirectional i.e. x is a neigbhor of y, and y is a neighbor of x. Common solutions are DFS.
+
+### Shortest Path
+
+Whenever you encounter a problem to find the shortest path in the graph, we apply **bfs** as it guarantees us to return the minimum value.
