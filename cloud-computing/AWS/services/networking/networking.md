@@ -8,7 +8,9 @@ Elastic IP addresses are static/persistent public IPs that come with your accoun
 
 ## Network Access control List (ACLs)
 
-A network ACL is a virtual firewall that controls inbound and outbound traffic at the subnet level. Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
+A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level**. Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
+
+You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
 
 ### Stateless packet filtering
 

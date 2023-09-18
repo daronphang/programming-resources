@@ -75,3 +75,21 @@ Data Center -> AWS Direct Connect -> VPC (Virtual Private Gateway)
 When a customer requests data from an application hosted in the AWS Cloud, the request is sent as a **packet**. A packet is a unit of data sent over the internet or network.
 
 Before a packet can enter into or exit from a subnet, the **network ACL** checks for permissions. These permissions indicate who sent the packet and how the packet is trying to communicate with the resources in a subnet.
+
+## Route table
+
+When you create a VPC, AWS creates a main route table that contains a set of rules (routes) that are used to determined where network traffic is directed. AWS assumes that when you create a new VPC with subnets, you want traffic to flow between them. Hence, the default configuration is to allow traffic between all subnets in the local network.
+
+The following rules apply to the main route table:
+
+- You cannot delete the main route table
+- You cannot set a gateway route table as the main route table
+- You can replace the main route table with a custom subnet route table
+- You can add, remove, and modify routes in the main route table
+- You can explicitly associate a subnet with the main route table
+
+### Custom route table
+
+The main route table is used implicitly by subnets that do not have an explicit route table association. You can create separate subnets for the resources and provide different routes for each of them.
+
+If you associate a subnet with a custom route table, the subnet will use it **instead** of the main route table. Each custom route table will have the **local route already inside it**, allowing communication to flow between all resources and subnets in a VPC.

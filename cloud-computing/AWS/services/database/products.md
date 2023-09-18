@@ -8,7 +8,18 @@ An AWS EBS is a service that provides block-level storage volumes that you can u
 
 An EBS volume stores data in a **single Availability Zone**. To attach an EC2 instance to an EBS volume, **both must reside within the same Availability Zone**.
 
-As EBS volumes are for data that needs to persist, it is important to backup the data. You can take incremental backups by creating **EBS snapshots**.
+As EBS volumes are for data that needs to persist, it is important to backup the data. You can take incremental backups by creating **EBS snapshots**. Nonetheless, EBS is **automatically replicated** in its Availability Zone to prevent data loss from single points of failure.
+
+EBS volumes act similarly to external drives:
+
+- Detachable: You can detach an EBS volume from one EC2 instance and attach it to another
+- Distinct: The external drive is separate from the computer
+- Size-limited: Volume has a max limitation of how much content you can store on it
+- 1-to-1 connection: Most EBS volumes can only be connected with one computer at a time
+
+### Volume Types
+
+EBS volumes are organized into SSDs and HDDs. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for large streaming workloads that need **high throughput** performance.
 
 ### EBS Snapshots
 
@@ -19,7 +30,7 @@ An EBS snapshot is an incremental backup:
 
 ## EFS (Elastic File System)
 
-An AWS EFS is a scalable file system used with AWS Cloud services and on-premises resources. As you add and remove files, EFS grows and shrinks automatically. It **can scale on demand to petabytes without disrupting applications**.
+An AWS EFS is a scalable file system that can be used with AWS Cloud services and on-premises resources. As you add and remove files, EFS grows and shrinks automatically. It **can scale on demand to petabytes without disrupting applications**. There is no need for provisioning or managing storage capacity and performance.
 
 EFS is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access EFS using AWS Direct Connect.
 
