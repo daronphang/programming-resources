@@ -4,6 +4,14 @@ Amazon CloudWatch is a web service that enables you to monitor and manage variou
 
 For instance, you can create an alarm that automatically stops an EC2 instance when the CPU utilization percentage remains below a certain threshold for a specified period.
 
+### Metrics
+
+Metrics are the fundamental concept in CloudWatch. A metric represents a time-ordered set of data points that are published to CloudWatch. AWS resources send metrics to CloudWatch for free at a rate of 1 data point per metric per 5-minute interval.
+
+### Custom Metrics
+
+To gain more granular visibility, you can use high-resolution custom metrics, which makes it possible for you to collect custom metrics down to a 1-second resolution.
+
 ## AWS CloudTrail
 
 AWS CloudTrail records API calls for your account i.e. trail of breadcrumbs or log of actions that someone has left behind them. **You can use API calls to provision, manage and configure your AWS resources**. The recorded information includes (non-exhaustive):

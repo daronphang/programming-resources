@@ -1,6 +1,6 @@
 ## Region
 
-When selecting the right Region for your services, data, and applications, need to consider several factors.
+When selecting the right Region for your services, data, and applications, need to consider several factors. AWS supports three Regions: Standard Regions, China Regions, and AWS GovCloud (US).
 
 ### Compliance with data governance and legal requirements
 

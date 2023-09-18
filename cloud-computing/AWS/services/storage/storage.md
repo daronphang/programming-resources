@@ -1,30 +1,13 @@
-## Storage
+## Object Storage
 
-AWS provides web data storage service for archiving data. Its primary advantage is disaster data recovery with high durability.
+In object storage, each object consists of:
 
-## Buckets
+- Data: Might be an image, video, text document, or any type of file
+- Metadata: Contains information about what the data is, how it is used, etc.
+- Key: Unique identifier
 
-A bucket is used store objects (consisting of data, key, metadata). When data is added to a bucket, S3 creates a unique ID and allocates it to the object.
+## File Storage
 
-Users can define features to the bucket, including bucket policy, lifecycle policies, versioning control, etc.
+In file storage, multiple clients (users, applications, servers) can access data that is stored in shared file folders. In this approach, a storage server uses **block storage with a local file system to organize files**.
 
-## Lifecycle
-
-Can choose which actions to define.
-
-### Transition Action
-
-You can choose to move objects to another storage class. If the data is not used frequently for 30 days, it would be moved to S3 infrequent access class. After 60 days, it is moved to Glacier.
-
-### Expiration Actions
-
-S3 removes all objects within the bucket when a specified date or time period in the object's lifetime is reached.
-
-## Data Protection
-
-S3 provides IT teams with a highly durable, protected and scalable infrastructure designed for object storage.
-
-1. Data encryption
-2. Versioning
-3. Cross-region Replication
-4. Transfer Acceleration
+Compared to block storage and object storage, file storage is ideal for use cases in which a large number of services and resources need to access the same data at the same time.
