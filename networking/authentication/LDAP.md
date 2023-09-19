@@ -65,7 +65,6 @@ i.e. uid=roger,ou=people,dc=example,dc=com
 
 LDAP is an application protocol for querying and editing items in directory service providers like AD, which supports LDAP. Together, LDAP and AD make it possible for clients throughout businesses to access the information they need.
 
-LDAP is the protocol or language that servers use to communicate with AD and similar directory services. LDAP allows you to seearch for someone or something without knowing the location. In a nutshell, **LDAP is a language to talk to directory services, and AD is one such directory service**.
+LDAP is the protocol or language that servers use to communicate with AD and similar directory services. LDAP allows you to seearch for someone or something without knowing the location. In a nutshell, **LDAP is a language to talk to directory services, and AD is one such directory service**. LDAP can be used to create secretive policy i.e. some users have acccess to view certain files.
 
 Frontend login route sends credentials to API -> API sends data to LDAP/AD
-LDAP can be used to create secretive policy i.e. some users have acccess to view certain files.

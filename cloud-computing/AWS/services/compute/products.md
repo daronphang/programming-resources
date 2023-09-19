@@ -87,15 +87,3 @@ AWS Fargate is a serverless compute engine for containers. It works with both EC
 With AWS CloudFormation, you can treat infrastructure as code. This means that you can build an environment by writing lines of code instead of using the AWS Management Console to individually provision resources.
 
 AWS CloudFormation provisions your resources in a safe, repeatable manner, enabling you to frequently build your infrastructure and applications without having to perform manual actions. It determines the right operations to perform when managing your stack and rolls back changes automatically if it detects errors.
-
-## Elastic Load Balancing (ELB)
-
-ELB is a servie that can distribute incoming application traffic across EC2 instances, containers, IP addresses, and Lambda functions. Key features include:
-
-- **Hybrid mode**: As ELB can load balance to IP addresses, it can work in hybrid mode i.e. load balances to on-premises servers
-- **High availability**: ELB is highly available
-- **Scalability**: ELB automatically scales to meet the demand of the incoming traffic.
-
-### Health checks
-
-Monitoring is an important part of load balancers as they should route traffic to only healthy EC2 instances.

@@ -95,3 +95,38 @@ def binary_search(arr, k):
 
 print(binary_search([1,4,6,8,9,10,12,15,25,30,45,50], 45))
 ```
+
+## Pigeonhole principle with Binary Search
+
+Can combine pigeonhole principle with binary search i.e. counting the number of elements less than or equal to a number.
+
+https://leetcode.com/problems/find-the-duplicate-number/solutions/?envType=daily-question&envId=2023-09-19
+
+```java
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int start = 0;
+        int end = nums.length - 2;
+
+        while (start < end) {
+            // count the numbers that are <= mid
+            int mid = start + (int) Math.floor((end - start) / 2);
+
+
+            if (countNumber(nums, mid) > mid) end = mid;
+            else start = mid + 1;
+        }
+
+        if (countNumber(nums, start) > start) return start;
+        return start + 1;
+    }
+
+    public int countNumber(int[] nums, int v) {
+        int counter = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] <= v) counter += 1;
+        }
+        return counter;
+    }
+}
+```
