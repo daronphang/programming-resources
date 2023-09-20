@@ -1,6 +1,6 @@
 ## Amazon CodeWhisperer
 
-Get code recommendations while writing code and identify security issues in your code.
+Amazon CodeWhisperer is a machine learning-powered code generator that provides you with code recommendations in real time. It analyzes your code and comments as you write code in an IDE. Additionally, it analyzes surrounding code, ensuring the generated code matches your style, naming conventions, etc.
 
 ## Amazon Transcribe
 
