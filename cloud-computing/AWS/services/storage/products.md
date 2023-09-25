@@ -8,7 +8,7 @@ An AWS EBS is a service that provides block-level storage volumes that you can u
 
 Amazon EBS is meant for data that **changes frequently** and must persist through instance stops, terminations, or hardware failures.
 
-An EBS volume stores data in a **single Availability Zone**. To attach an EC2 instance to an EBS volume, **both must reside within the same Availability Zone**.
+An EBS volume stores data in a **single Availability Zone**. To attach an EBS volume to an EC2 instance, **both must reside within the same Availability Zone**.
 
 As EBS volumes are for data that needs to persist, it is important to backup the data. You can take incremental backups by creating **EBS snapshots**. Nonetheless, EBS is **automatically replicated** in its Availability Zone to prevent data loss from single points of failure.
 
@@ -30,13 +30,13 @@ An EBS snapshot is an incremental backup:
 - First backup copies all the data
 - Subsequent backups copy blocks of data that have changed since the most recent snapshot are saved
 
-## EFS (Elastic File System)
+## Amazon EFS (Elastic File System)
 
 Amazon EFS provides highly optimized file storage for a broad range of workloads and applications. It is a scalable file system that can be used with AWS Cloud services and on-premises resources.
 
 As you add and remove files, EFS grows and shrinks automatically. It **can scale on demand to petabytes without disrupting applications**. It is the only cloud-native shared file system with fully automatic lifecycle management. There is no need for provisioning or managing storage capacity and performance.
 
-Amazon is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access EFS using AWS Direct Connect.
+Amazon EFS is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access EFS using AWS Direct Connect.
 
 ## Amazon FSx
 

@@ -88,6 +88,8 @@ The following rules apply to the main route table:
 - You can add, remove, and modify routes in the main route table
 - You can explicitly associate a subnet with the main route table
 
+Each subnet has to be linked to a route table, and a subnet can only be linked to one route table. Every VPC has a default route table, and is good practice to leave it in the original state, and create a new table to customize network traffic associated with your VPC.
+
 ### Custom route table
 
 The main route table is used implicitly by subnets that do not have an explicit route table association. You can create separate subnets for the resources and provide different routes for each of them.

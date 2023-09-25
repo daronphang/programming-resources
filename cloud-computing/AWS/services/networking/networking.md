@@ -32,12 +32,6 @@ An internet gateway is a redundant, horizontally scaled, and highly available VP
 
 Only one gateway can be attached per VPC.
 
-## Route Table
-
-Route table is a set of rules (routes) which are used to determine where network traffic is directed.
-
-Each subnet has to be linked to a route table, and a subnet can only be linked to one route table. Every VPC has a default route table, and is good practice to leave it in the original state, and create a new table to customize network traffic associated with your VPC.
-
 ## NAT Devices (Network Address Translation)
 
 A NAT device can be used to enable instances in a private subnet to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet.
@@ -46,4 +40,4 @@ AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway
 
 ### NAT Gateway
 
-Must be launched in a public subnet because it needs internet connectivity, and requires an elastic public IP address
+Must be launched in a public subnet because it needs internet connectivity, and requires an elastic public IP address.

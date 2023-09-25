@@ -1,4 +1,4 @@
-## Load Balancer
+## Elastic Load Balancing
 
 Distributes network traffic across its components including EC2, Lambda and containers.
 

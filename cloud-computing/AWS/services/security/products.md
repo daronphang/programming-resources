@@ -1,7 +1,3 @@
-## IAM (Identity Access Management)
-
-A web service that helps in maintaining access to AWS services in a secure way. Enables you to create and control services for user authentication or limit access to a certain set of people who use your AWS resources.
-
 ## AWS Organizations
 
 You can use AWS Organizations to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts.

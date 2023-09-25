@@ -8,16 +8,16 @@ IAM gives you flexibility to configure access based on your company's specific o
 - IAM policies
 - Multi-factor authentication
 
-### Root user
+## Root user
 
 When you create an AWS account, you begin with an identity known as the root user. Should not be used for everyday tasks.
 
 The AWS root user has two sets of credentials:
 
 - Email address and password used to create the account, to access the AWS Management Console
-- Access keys (key ID and secret access key) to make progammatic requests from the AWS CLI for authentication
+- Access keys (key ID and secret access key) to make programmatic requests from the AWS CLI for authentication
 
-### IAM users
+## IAM users
 
 An IAM user is an identity you create in AWS (by root user). It represents the person or application that interacts with AWS services and resources. It consists of a name and credentials.
 
@@ -25,34 +25,53 @@ By default, no permissions are associated with a newly created IAM user. Require
 
 Individual IAM users should be created for each individual, even if they have similar level of access.
 
-### IAM policies
+## IAM policies
 
 An IAM policy is a document that allows or denies permissions to AWS services and resources. IAM policies enable you to customize users' levels of access to resources. Follow the security principle of **least privilege** when granting permissions.
 
-IAM policies are attached to IAM users.
+### Structure
+
+- Version: Policy language version
+- Id: Identifier for the policy (optional)
+- Statement: One or more individual statements (required)
+
+#### Statement
+
+- Sid: Identifier for the statement (optional)
+- Effect: Whether the statement allows or denies access
+- Principal: Account/user/role to which the policy is applied to
+- Action: List of actions this policy allows or denies
+- Resource: List of resources to which the actions are applied to
+- Condition: Conditions for when this policy is in effect
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": {
+    "Sid": "1",
     "Effect": "Allow",
-    "Action": "s3:ListObject",
-    "Resource": "arn:aws:s3:::AWSDOC-EXAMPLE-BUCKET"
+    "Principal": {
+      "AWS": ["arn:aws:iam:1234567:root"]
+    },
+    "Action": ["s3:ListObject", "s3:GetObject"],
+    "Resource": ["arn:aws:s3:::AWSDOC-EXAMPLE-BUCKET"]
   }
 }
 ```
 
-### IAM groups
+## IAM groups
 
 An IAM group is a collection of IAM users. When you assign an IAM policy to a group, all users in the group are granted permissions specified by the policy.
 
-### IAM roles
+Groups can only contain users, **not other groups**. Users can belong to multiple groups.
+
+## IAM roles
 
 An IAM role is an identity that you can assume to gain **temporary access** to permissions. Before an IAM user, application or service can assume an IAM role, they must be granted permissions to switch to the role.
 
 When someone assumes an IAM role, they abandon all previous permissions they had under a previous role, and assume new permissions of the new role.
 
-### Mutli-factor authentication (MFA)
+## Mutli-factor authentication (MFA)
 
 In IAM, MFA provides an extra layer of security for your AWS account.
 
