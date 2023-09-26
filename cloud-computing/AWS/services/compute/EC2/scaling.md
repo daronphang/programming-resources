@@ -26,7 +26,7 @@ With auto scaling, you define the **minimum capacity**, **desired capacity** (de
 - **Scaling based on demand**: Scaling lets developers define required scaling in response to client demand
 - **Maintaining the current instance-level**: Developers configure an Auto Scaling group for managing running instances
 
-### Components:
+### Components
 
 - Launch template: configuration template for EC2 instances
 - Scaling policies: Configuration for a group to scale based on the occurrence of specified conditions or on a schedule

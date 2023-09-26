@@ -16,16 +16,16 @@ When launching an EC2 instance, the following are required/optional:
 
 ### Instance Types
 
-```
-c5n.xlarge
-```
-
 The instance can be broken down as follows:
 
 - First position (c): Indicates the instance family
 - Second position (5): Indicates the generation of the instance
 - Remaining letters before period (n): Indicates additional attributes
 - After the period (xlarge): Indicates the instance size
+
+```
+c5n.xlarge
+```
 
 ### Lifecycle
 
@@ -67,7 +67,7 @@ In the traditional infrastructure world, spinning up a server consists of instal
 
 An AMI includes the OS, storage mapping, architecture type, launch permissions, and any additional preinstalled software applications.
 
-There are multiple ways to select an API:
+There are multiple ways to select an AMI:
 
 - AWS Marketplace
 - Personal AMIs

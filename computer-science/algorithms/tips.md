@@ -14,7 +14,9 @@ If the checks are determined i.e. tic-tack-toe (3 rows, 3 columns, 2 diagonals),
 
 ## Two Pointers Approach
 
-Check if sorting will help. Pointers can either move together or one pointer at a time. For sum problems, can sort the array and take the **first and last numbers** and iterate them as necessary i.e. if sum is less than target, increment first pointer.
+Check if sorting will help. Pointers can either move together (tortoise and hare approach) or one pointer at a time.
+
+For sum problems, can sort the array and take the **first and last numbers** and iterate them as necessary i.e. if sum is less than target, increment first pointer.
 
 ## DP Problems
 
@@ -52,7 +54,7 @@ For problems that will result in TLE if DP approach is used, try using greedy.
 
 Common characteristic will involve having left, center and right **boundaries**, making use of monotonic increasing/decreasing stack i.e. largest area in histogram. Can be combined with DP to cache the boundaries after each iteration, or require iteration from left-to-right and right-to-left.
 
-Another characteristic is involving brackets i.e. () or [].
+Another characteristic is finding the output given an input, a condition and **order is preserved** i.e. checking for closing brackets, removing duplicates in lexicographical order, etc.
 
 ## O(1) Time Complexity
 
