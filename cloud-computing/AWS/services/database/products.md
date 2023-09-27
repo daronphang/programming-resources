@@ -75,7 +75,7 @@ Amazon Neptune is a graph database service. You can use it to build and run appl
 
 ## Amazon Quantum Ledger Database (QLDB)
 
-Amazon QLDB is a ledger database service that is fully managed and serverless. You can use it to review a complete history of all the changes that have been made to your application data.
+Amazon QLDB is a financial transactions ledger database service that is fully managed and serverless. You can use it to review a complete history of all the changes that have been made to your application data.
 
 Compared to Managed Blockchain, **QLDB does not have the concept of decentralization** i.e. it has a central authority DB component owned by Amazon.
 
