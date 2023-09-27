@@ -22,6 +22,8 @@ After a packet has entered a subnet, it must have its permissions evaluated for 
 
 A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance. By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
 
+Security groups can be attached to multiple EC2 instances and are locked down to a Region/VPC combination.
+
 ### Stateful packet filtering
 
 Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets.

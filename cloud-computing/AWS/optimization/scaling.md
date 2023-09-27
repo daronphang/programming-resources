@@ -30,4 +30,4 @@ With auto scaling, you define the **minimum capacity**, **desired capacity** (de
 
 - Launch template: configuration template for EC2 instances
 - Scaling policies: Configuration for a group to scale based on the occurrence of specified conditions or on a schedule
-- Auto Scaling group: minimum, maximum, and desired capacity
+- Auto Scaling group: minimum, maximum, and desired capacity (horizontal scaling)

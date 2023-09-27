@@ -27,7 +27,7 @@ Individual IAM users should be created for each individual, even if they have si
 
 ## IAM policies
 
-An IAM policy is a document that allows or denies permissions to AWS services and resources. IAM policies enable you to customize users' levels of access to resources. Follow the security principle of **least privilege** when granting permissions.
+An IAM policy is a JSON document that defines users, groups or roles' permissions to AWS services and resources (allow/deny). IAM policies enable you to customize users' levels of access to resources. Follow the security principle of **least privilege** when granting permissions i.e. don't give more permissions than the user needs.
 
 ### Structure
 
@@ -67,13 +67,15 @@ Groups can only contain users, **not other groups**. Users can belong to multipl
 
 ## IAM roles
 
-An IAM role is an identity that you can assume to gain **temporary access** to permissions. Before an IAM user, application or service can assume an IAM role, they must be granted permissions to switch to the role.
+An IAM role is an identity that you can assume to gain **temporary access** to permissions. Before an **IAM user, application or service can assume an IAM role**, they must be granted permissions to switch to the role.
 
 When someone assumes an IAM role, they abandon all previous permissions they had under a previous role, and assume new permissions of the new role.
 
+**Never enter IAM access ID and access keys into EC2 instance**. Instead, use IAM roles to provide EC2 with credentials.
+
 ## Mutli-factor authentication (MFA)
 
-In IAM, MFA provides an extra layer of security for your AWS account.
+In IAM, MFA provides an extra layer of security for your AWS account. MFA device options include Google Authenticator, Authy, YubiKey Fob
 
 ### Elements
 
@@ -83,3 +85,13 @@ In IAM, MFA provides an extra layer of security for your AWS account.
 - **Authorization**: All resources are denied by default and IAM authorizes a request only if all parts are allowed by a matching policy
 - **Actions**: Used to view, create, edit or delete a resource
 - **Resources**: A set of actions that can be performed on a resource related to your AWS account
+
+## Auditing IAM usage
+
+### IAM Credentials Report (account-level)
+
+A report that lists all your account's users and the status of their various credentials.
+
+### IAM Access Advisor (user-level)
+
+Access Advisor shows the service permissions granted to a user and when those services were last accessed.

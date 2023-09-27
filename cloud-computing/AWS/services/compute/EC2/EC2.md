@@ -10,7 +10,7 @@ When launching an EC2 instance, the following are required/optional:
 
 - Instance type
 - Storage type
-- OS
+- OS (AMI)
 - User data (optional)
 - Tenancy (optional)
 
@@ -21,7 +21,7 @@ The instance can be broken down as follows:
 - First position (c): Indicates the instance family
 - Second position (5): Indicates the generation of the instance
 - Remaining letters before period (n): Indicates additional attributes
-- After the period (xlarge): Indicates the instance size
+- After the period (xlarge): Indicates the instance size (including CPU and RAM)
 
 ```
 c5n.xlarge
@@ -43,7 +43,7 @@ Ideal for compute-bound applications that benefit from high-performance processo
 
 ### Memory optimized
 
-Designed to deliver fast performance for workloads that process large datasets of memory. Can be useful for situations where you have a workload that requires large amounts of data to be preloaded before running an application.
+Designed to deliver fast performance for workloads that process large datasets in memory. Can be useful for situations where you have a workload that requires large amounts of data to be preloaded before running an application.
 
 ### Accelerated computing
 
@@ -59,7 +59,7 @@ In computing IOPS (input/output operations per second) is a metric that measures
 
 HPC instances are purpose built to offer the best price performance for running HPC workloads at scale on AWS. Ideal for applications that benefit from high-performance processors, such as large, complex simulations and deep learning workloads.
 
-## Amazon Machine Image
+## Amazon Machine Image (AMI)
 
 When launching an EC2 instance, the first setting you configure is which OS you want by selecting an AMI.
 
@@ -81,3 +81,37 @@ Each AMI in the AWS Management Console has an AMI ID, which is prefixed by `ami-
 The AMI is how you model and define your instance i.e. AMI is the class, EC2 is the instance.
 
 One advantage of using AMIs is that they are reusuable. If you can spin up another EC2 instance with the same configuration, you can simply create an AMI from your running instance and use it to start a new instance.
+
+## EC2 Image Builder
+
+EC2 Image Builder is used to automate the creation, maintenance, validation and testing of VMs or container images:
+
+1. Creates an EC2 instance
+2. Builds components and customize software on instance
+3. Creates an AMI
+4. Runs a test suite on AMI (working, secure, etc.)
+5. Distributes AMI to multiple Regions
+
+It is a **free** service and only pay for the underlying resources i.e. EC2, AMI storage, etc. It can be run on a schedule.
+
+## EC2 User Data
+
+It is possible to bootstrap our instances using an EC2 User Data script (runs with root user). Bootstrapping means launching commands when a machine starts.
+
+The script is run once at the instance first start and is used to automate boot tasks including:
+
+- Installing updates
+- Installing software
+- Downloading common files from the internet
+
+```bash
+#!bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+```
+
+## Connecting to EC2
+
+Can either use SSH (port 20), Putty or EC2 Instance Connect (uses temporary SSH keys).
