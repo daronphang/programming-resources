@@ -1,6 +1,6 @@
-## Lambda
+## AWS Lambda
 
-Serveless compute service that is responsible for executing code on schedule. No need for provisioning and managing servers, and executes code only when required (pay only for compute time).
+Serverless compute service that is **event-driven** and responsible for executing code on schedule. No need for provisioning and managing servers, and executes code only when required (pay by compute time or number of invoked calls). Useful for executing CRON jobs.
 
 With serverless computing, you can focus more on innovating new products and features instead of maintaining servers. Another benefit is the flexibility to scale serverless applications automatically.
 
@@ -12,22 +12,17 @@ With serverless computing, you can focus more on innovating new products and fea
 4. Lambda runs your code only when triggered
 5. You pay only for the compute time you use (number of times invoked and time taken to run)
 
-## Elastic Beanstalk
+## Amazon API Gateway
 
-Helps to scale and deploy web applications made with several programming languages. AWS Elastic Beanstalk handles the deployment of the code as soon as it is uploaded.
-
-With AWS Elastic Beanstalk, you provide code and configuration settings, and EBS deploys the resources necessary to perform the following tasks:
-
-- Adjust capacity
-- Load balancing
-- Automatic scaling
-- Application health monitoring
+The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda. It will proxy the request to AWS Lambda. Supports RESTful APIs and WebSocket APIs.
 
 ## Lightsail
 
-Enables a VPS to be launched and managed with ease.
+Enables a VPS to be launched and managed with ease. It is a simpler alternative to using EC2, RDS, ELB, EBS, Route 53, etc. It is great for people with minimal cloud experience.
 
-## Amazon ECS (Elastic Container Service)
+It has high availability but no auto-scaling, and limited AWS integrations with other resources.
+
+## Amazon Elastic Container Service (ECS)
 
 Containers provide you a standard way to package your application's code and dependencies into a single object. You can use containers for processes and workflows in which there are essential requirements for security, reliability and scalability.
 
@@ -59,7 +54,7 @@ To prepare your application to run on Amazon ECS, you create a **task definition
 
 If you choose to have more control by running and managing your containers on a cluster of EC2 instances, you will need to install ECS container agent on your EC2 instances. An EC2 instance with the container agent is often called a **container instance**. The container agent is responsible for communicating to Amazon ECS service about cluster management details.
 
-## Amazon EKS (Elastic Kubernetes Service)
+## Amazon Elastic Kubernetes Service (EKS)
 
 AWS EKS is a fully managed service that you can use to run Kubernetes on AWS.
 
@@ -76,8 +71,18 @@ Both are conceptually similar but with the following differences:
 
 AWS Fargate is a serverless compute engine for containers. It works with both ECS and EKS. When using Fargate, you don't need to provision or manage servers. AWS Fargate manages your server infrastructure for you.
 
-## CloudFormation
+## Amazon Elastic Container Registry (ECR)
 
-With AWS CloudFormation, you can treat infrastructure as code. This means that you can build an environment by writing lines of code instead of using the AWS Management Console to individually provision resources.
+ECR is a private Docker Registry on AWS that is used to store your Docker images so that they can be run by ECS or Fargate.
 
-AWS CloudFormation provisions your resources in a safe, repeatable manner, enabling you to frequently build your infrastructure and applications without having to perform manual actions. It determines the right operations to perform when managing your stack and rolls back changes automatically if it detects errors.
+## AWS Batch
+
+AWS Batch is fully managed service that performs batch processing at any scale. Batch will **dynamically launch EC2 instances or Spot Instances**, and will provision the right amount of compute and memory.
+
+Batch jobs are defined as Docker images and run on ECS.
+
+### Batch vs Lambda
+
+AWS Lambda has time limit (15 minutes), limited runtimes, and limited temporary disk space, and is serverless.
+
+AWS Batch has no time limit with any runtime, relies on EBS/Instance Store for disk space and relies on EC2.

@@ -46,26 +46,66 @@ You must ensure that your applications' data is secure while in storage (**encry
 
 AWS KMS enables you to perform encryption operations through the use of cryptographic keys. You can use AWS KMS to create, manage and use cryptographic keys. Your keys never leave KMS, and you are always in control of them.
 
+Types of Customer Master Keys (CMK):
+
+- Customer managed CMK: Created by the customer
+- AWS managed CMK: Used by AWS services
+- AWS owned CMK: Used to protect resources in your account
+- CloudHSM Keys: Keys generated from your own CloudHSM hardware device
+
 ## AWS Web Application Firewall (WAF)
 
-AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications.
+AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications. Fucntions at Layer 7 (HTTP/HTTPS).
 
-AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses.
+AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, SQL injection, XSS, etc.
 
 ## Amazon Inspector
 
 Amazon Inspector helps to improve the security and compliance of applications by running **automated security assessments**. It checks applications for security vulnerabilities and deviations from security best practices, such as open access to EC2 instances and installations of vulnerable software versions.
 
-After assessment, it provides you with a list of security findings. However, AWS does not guarantee that following provided recommendations resolves every potential security issue.
+After assessment, it provides you with a list of security findings with a risk score for prioritization. However, AWS does not guarantee that following provided recommendations resolves every potential security issue.
 
 ## Amazon GuardDuty
 
-Amazon GuardDuty is a service that provides intelligent threat detection for your AWS infrastructure and resources. It identifies threats by continuously monitoring the network security and account behavior within your AWS environment by analyzing data from multiple AWS sources including VPC Flow Logs and DNS logs.
+Amazon GuardDuty is a service that provides intelligent threat detection for your AWS infrastructure and resources. It identifies threats by continuously monitoring the network security and account behavior within your AWS environment by analyzing data from multiple AWS sources including:
+
+- VPC Flow Logs
+- CloudTrail Events Logs
+- DNS Logs
+
+If an anomaly is detected, an event can be created in EventBridge to trigger automations including SNS or Lambda functions. GuardDuty can protect against cryptocurrency attacks (has a dedicated 'finding').
 
 ## Amazon Macie
 
-Amazon Macie is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS.
+Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern maching to discover and protect your sensitive data in AWS. Macie helps identify and alert you to sensitive data, such as personally identifiable information (PII).
 
 ## AWS Secrets Manager
 
-AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources.
+AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. Secrets are encrypted using KMS.
+
+## AWS Network Firewall
+
+Protects your entire VPC from Layer 3 to Layer 7. You can inspect, in any direction:
+
+- VPC to VPC traffic
+- Outbound to internet
+- Inbound from internet
+- To/from Direct Connect and Site-to-Site VPN
+
+## Penetration Testing
+
+You can perform pentration testing on your AWS infrastructure. However, prohibited activities include:
+
+- DNS zone walking
+- DoS, DDoS, Simulated DoS, Simulated DDoS
+- Port flooding
+- Protocol flooding
+- Request flooding
+
+## AWS Certificate Manager (ACM)
+
+Allows you to easily provision, manage and deploy SSL/TLS certificates. Supports both public (free) and private TLS certificates.
+
+## AWS Config
+
+Helps with auditing and compliance of your AWS resources by recording configurations and changes over time.

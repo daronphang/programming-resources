@@ -2,7 +2,7 @@
 
 A globally-distributed network of caching (edge) servers that are deployed to efficiently deliver content to users worldwide. Objective is to **reduce latency and increase availability** of website or application.
 
-A properly configured CDN can also help to protect websites against common malicious attacks i.e. DDoS.
+A properly configured CDN can also help to protect websites against common malicious attacks by integrating with AWS Shield i.e. DDoS.
 
 ## Amazon CloudFront
 

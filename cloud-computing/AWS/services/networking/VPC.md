@@ -44,6 +44,12 @@ There are five IP addresses that are reserved by AWS.
 
 To maintain redundancy and fault tolerance, create at least two subnets configured in two Availability Zones i.e. minimum of four subnets.
 
+### Network Traffic
+
+When a customer requests data from an application hosted in the AWS Cloud, the request is sent as a **packet**. A packet is a unit of data sent over the internet or network.
+
+Before a packet can enter into or exit from a subnet, the **network ACL** checks for permissions. These permissions indicate who sent the packet and how the packet is trying to communicate with the resources in a subnet.
+
 ## Internet Gateway
 
 To allow public traffic from the internet to access your VPC, you attach an **internet gateway** to the VPC. An internet gateway is **highly available and scalable**.
@@ -51,6 +57,7 @@ To allow public traffic from the internet to access your VPC, you attach an **in
 ## Virtual Private Gateway
 
 A virtual private gateway connects your VPC to another private network i.e. it is the component that allows protected internet traffic to enter into the VPC. However, it still uses the same traffic as public users.
+
 When you create and attach a virtual private gateway to a VPC:
 
 - The gateway acts as an anchor on the AWS side of the connection
@@ -58,23 +65,47 @@ When you create and attach a virtual private gateway to a VPC:
 - A customer gateway device is a physical device or software application
 - When you have both gateways, you can then establish an encrypted virtual private network (VPN)
 
+## VPC Peering
+
+VPC Peering is used to connect two VPCs privately using AWS network. **Must not have overlapping CIDR**. VPC Peering connection is **not transitive** (must be established for each VPC that needs to communicate with one another, does not inherit existing peerings).
+
+## VPC Endpoints
+
+Endpoints provide private access to AWS services within a VPC using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
+
+There are two kinds of endpoints:
+
+- VPC Endpoint Gateway: S3 and DynamoDB
+- VPC Endpoint Interface: Rest of AWS services
+
+## AWS PrivateLink (VPC Endpoint Service)
+
+Provides the most secure and scalable way to expose a service to other VPCs. Does not require VPC peering, internet gateway, NAT, route tables, etc.
+
+- Your VPC exposes an ENI (Elastic Network Interface)
+- Third party VPC exposes a network load balancer
+- You establish a private link between both VPCs
+
 ### Virtual Private Network (VPN)
 
-A virtual private gateway enables you to establish a virutal private network (VPN) connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**.
+A virtual private gateway enables you to establish a virutal private network (VPN) connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**. However, it goes over the public internet and may have limited bandwidth, but relatively fast to setup.
+
+There are two types of VPN:
+
+- Site-to-Site VPN: VPN over public internet between on-premises DC and AWS
+- ClientVPN: OpenVPN connection from your computer into your VPC
 
 ## AWS Direct Connect
 
-AWS Direct Connect is a service that lets you to establish a dedicated private connection between your **data center** and a VPC. As a different traffic is used as compared to public users, it helps you to reduce network costs and increase the amount of bandwidth that can travel through your network.
+AWS Direct Connect is a service that lets you to establish a dedicated private connection between your **data center** and a VPC. As a different traffic is used as compared to public users, it helps you to reduce network costs and increase the amount of bandwidth that can travel through your network. However, it takes at least a month to establish.
 
 ```
 Data Center -> AWS Direct Connect -> VPC (Virtual Private Gateway)
 ```
 
-### Network Traffic
+## Transit Gateway
 
-When a customer requests data from an application hosted in the AWS Cloud, the request is sent as a **packet**. A packet is a unit of data sent over the internet or network.
-
-Before a packet can enter into or exit from a subnet, the **network ACL** checks for permissions. These permissions indicate who sent the packet and how the packet is trying to communicate with the resources in a subnet.
+A single gateway to provide transitive peering between thousands of VPC and on-premises, through hub-and-spoke (star) connection.
 
 ## Route table
 
@@ -89,6 +120,12 @@ The following rules apply to the main route table:
 - You can explicitly associate a subnet with the main route table
 
 Each subnet has to be linked to a route table, and a subnet can only be linked to one route table. Every VPC has a default route table, and is good practice to leave it in the original state, and create a new table to customize network traffic associated with your VPC.
+
+```
+Destination             Target
+172.31.0.0/16           local (default)
+0.0.0.0/0               igw-12345 (internet gateway)
+```
 
 ### Custom route table
 

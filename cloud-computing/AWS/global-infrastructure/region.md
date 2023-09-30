@@ -36,3 +36,7 @@ For example:
 - You don't have to migrate all content to one of the Chinese Regions
 - Instead, you cache a copy locally at an edge location that is close to your customers in China
 - When a customer requests for data in China, Amazon CloudFront retrieves the file from the cache in the edge location and delivers it to your customer
+
+## Local Zones
+
+Places AWS compute, storage, database and other selected AWS services closer to end users to run **latency-sensitive applications**. Extends your VPC to more locations i.e. extension of an AWS Region.

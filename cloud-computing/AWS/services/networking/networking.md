@@ -8,7 +8,7 @@ Elastic IP addresses are static/persistent public IPs that come with your accoun
 
 ## Network Access control List (ACLs)
 
-A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level**. Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
+A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level** (ALLOW/DENY). Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
 
 You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
 
@@ -20,7 +20,7 @@ After a packet has entered a subnet, it must have its permissions evaluated for 
 
 ## Security Groups
 
-A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance. By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
+A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance (only ALLOW). By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
 
 Security groups can be attached to multiple EC2 instances and are locked down to a Region/VPC combination.
 
