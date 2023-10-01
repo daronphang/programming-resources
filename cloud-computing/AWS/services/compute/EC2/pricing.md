@@ -36,7 +36,7 @@ At the end of the term, you can continue to use without interruption. However, y
 
 #### Marketplace
 
-You can buy and sell in the Reserved Instance Marketplace if you do not need them anymore.
+You can buy and sell in the Reserved Instance Marketplace if you do not need them anymore (root user can perform this).
 
 ### EC2 Instance Savings Plans
 

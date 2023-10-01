@@ -1,13 +1,3 @@
-## AWS Organizations
-
-You can use AWS Organizations to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts.
-
-You can centrally control permissions for the accounts in your organization (individual member account, OUs) by using **service control policies** (SCPs). SCPs enable you to place restrictions on the AWS services, resources, and individual API actions that users and roles in each account can access.
-
-### Organization units (OUs)
-
-You can group accounts into OUs to make it easier to manage accounts with similar business or security requirements.
-
 ## AWS Artifact
 
 AWS Artifact is a service that provides on-demand access to AWS security and compliance reports and select online agreements for audit purposes.
@@ -36,7 +26,7 @@ As network traffic comes into your applications, AWS Shield Standard uses a vari
 
 ### Advanced
 
-A paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated DDoS attacks.
+A paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated DDoS attacks, and with **24/7 support**.
 
 It also integrates with other services such as Amazon CloudFront, Amazon Route 53, and Elastic Load Balancing.
 
@@ -51,7 +41,7 @@ Types of Customer Master Keys (CMK):
 - Customer managed CMK: Created by the customer
 - AWS managed CMK: Used by AWS services
 - AWS owned CMK: Used to protect resources in your account
-- CloudHSM Keys: Keys generated from your own CloudHSM hardware device
+- **CloudHSM** Keys: Keys generated from your own CloudHSM hardware device
 
 ## AWS Web Application Firewall (WAF)
 
@@ -109,3 +99,44 @@ Allows you to easily provision, manage and deploy SSL/TLS certificates. Supports
 ## AWS Config
 
 Helps with auditing and compliance of your AWS resources by recording configurations and changes over time.
+
+## AWS Security Hub
+
+Central security tool to manage security across several AWS accounts and automate security checks. Aggregates alerts and findings from various AWS services into a consolidated dashboard:
+
+- Config
+- GuardDuty
+- Inspector
+- Macie
+- IAM Access Analyzer
+
+## Amazon Detective
+
+Amazon Detective analyzes, investigates, and quickly identifies the root cause of security issues or suspicious activities using ML and graphs. Automatically collects and processes events from:
+
+- VPC Flow Logs
+- CloudTrail
+- GuardDuty
+
+## AWS Abuse
+
+Service used to report AWS resources suspected of using abusive or illegal purposes including:
+
+- Spam
+- Port scanning (sending packets to your ports to discover unsecured ones)
+- DDoS
+- Intrusion attempts (logging into your resources)
+- Hosting copyrighted content
+- Distributing malware
+
+## IAM Access Analyzer
+
+Service used to find out which resources are shared externally including:
+
+- S3 Buckets
+- IAM Roles
+- KMS Keys
+- Lambda functions
+- Secrets Manager Secrets
+
+Need to define Zone of Trust, and any access outside will be flagged as findings.
