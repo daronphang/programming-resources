@@ -5,7 +5,7 @@
 - If have SELinux, need perform additional configurations.
 - Give Nginx access to filesystem.
 
-```console
+```bash
 $ getenforce                                        # if ENABLED, need perform additional config
 $ sudo setsebool -P httpd_can_network_connect on    # enable SELinux httpd_can_network_connect feature
 $ chcon -Rt httpd_sys_content_t /path/to/www        # if enforcing
@@ -16,6 +16,7 @@ $ sudo setsebool -P httpd_read_user_content 1       # give nginx access to files
 
 $ sudo setsebool -P httpd_enable_homedirs=1
 ```
-```console
+
+```bash
 $ sudo chmod nginx:nginx directory/or/file
 ```

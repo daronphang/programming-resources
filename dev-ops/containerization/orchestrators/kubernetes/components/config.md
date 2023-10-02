@@ -36,11 +36,11 @@ By default, Secrets are stored unencrypted in the API's server underlying data s
 
 To safely use Secrets, consider:
 
-- Enabling encryption REST.
-- Enabling or configuring RBAC rules.
-- Using external Secret store providers.
+- Enabling encryption REST
+- Enabling or configuring RBAC rules
+- Using external Secret store providers
 
-```console
+```bash
 $ kubectl get secret
 ```
 

@@ -59,6 +59,10 @@ subject.subscribe((x) => console.log(x));
 // console outputs 1
 ```
 
+### Completing Subjects
+
+To complete subjects, use takeUntil operator.
+
 ## Subjects vs Variables
 
 When sharing data between components using Services, preferred is to use Observables:

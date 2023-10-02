@@ -1,15 +1,19 @@
 ## Primitives
 
-Java is a strongly typed language and every variable must have a declared type. There are eight primitive types:
+Java is a strongly typed language and every variable must have a declared type. There are eight primitive types and they are **stored directly on the stack**:
 
-1. int (most practical)
-2. short
-3. long
-4. byte
-5. char
-6. boolean
-7. float (has suffix F of f i.e. 3.14F)
-8. double (twice the precision of float type)
+| Type    | Size (bits) | Minimum | Maximum               |
+| ------- | ----------- | ------- | --------------------- |
+| byte    | 8           | -2^7    | 2^7 - 1               |
+| short   | 16          | -2^15   | 2^15 - 1              |
+| int     | 32          | -2^31   | 2^31 - 1              |
+| long    | 64          | -2^63   | 2^63 - 1              |
+| float   | 32          | -2^-149 | (2 - 2^-23) \* 2^127  |
+| double  | 64          | -2^1074 | (2 - 2^-52) \* 2^1023 |
+| char    | 16          | 0       | 2^16 - 1              |
+| boolean | 1           | -       | -                     |
+
+The most practical is int. Float has suffix F or f i.e. 3.14F. Double has twice the precision of float.
 
 All floating-point computations follow the IEEE 754 specification. There are three special floating-point values to denote overflows and errors:
 

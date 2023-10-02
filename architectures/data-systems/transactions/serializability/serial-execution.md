@@ -2,7 +2,7 @@
 
 The simplest way of avoiding concurrency problems is to remove concurrency entirely i.e. executing one transaction at a time on a single thread (pessimistic concurrency control mechanism). However, this limits the transaction throughput to the speed of a single CPU core. Nonetheless, this was implemented in 2007 due to the following developments:
 
-- RAM became cheap enough that for many use cases is now feasible.
+- RAM became cheap enough that for many use cases is now feasible
 - OLTP transactions are usually short and only make a small number of reads and writes, whereas long-running queries are typically read-only
 
 ### Encapsulating Transactions in Stored Procedures

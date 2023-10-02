@@ -4,7 +4,7 @@ XSS attacks are a type of injection in which malicious scripts are injected into
 
 Browsers have no way to know that the script should not be trusted and hence, will execute script. The malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. Allows the attacker to carry out any actions the user is able to perform.
 
-<img src="./assets/XSS.png">
+<img src="../assets/XSS.png">
 
 ## XSS Types
 

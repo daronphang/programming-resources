@@ -1,6 +1,6 @@
 ## Building Resilience
 
-Though it is good to put processes and controls in place to stop failures from occurring, we also need to put thought into making the services easier to recover from failure (**resilience**). To understand which techniques make most sense, need to have knowledge on how much failure you can tolerate, or fast your system needs to be i.e. response time/latency, availability, and durability of data (how much data loss is acceptable).
+Though it is good to put processes and controls in place to stop failures from occurring, we also need to put thought into making the services easier to recover from failure (**resilience**). To understand which techniques make most sense, need to have knowledge on how much failure you can tolerate, or how fast your system needs to be i.e. response time/latency, availability, and durability of data (how much data loss is acceptable).
 
 ## Architectural Safety Measures
 
@@ -8,7 +8,7 @@ Should consider standardizing in your system to ensure that one bad citizen does
 
 ### Simulating Failures
 
-Some organizations like Netflix and Google write programs that simulate/incite failures such as Chaos Monkey, which during certain hours of the day will turn off random machines. By causing failures to happen and building for it, you can ensure that the systems can scal reliably.
+Some organizations like Netflix and Google write programs that simulate/incite failures such as Chaos Monkey, which during certain hours of the day will turn off random machines. By causing failures to happen and building for it, you can ensure that the systems can scale reliably.
 
 ### Timeouts
 
@@ -28,6 +28,6 @@ Bulkheads are used to isolate part of a system that is failing. One example woul
 
 Separation of concerns (SoC) can also be a way to implement bulkheads. By tearing apart functionality into separate microservices, we can reduce the change of an outage in one area affecting another.
 
-Load shedding (rejecting requests in certain conditions) can also be implemented and sometimes be the best method for stopping an important system from being overwhelemed and becoming a bottleneck.
+Load shedding (rejecting requests in certain conditions) can also be implemented and sometimes be the best method for stopping an important system from being overwhelmed and becoming a bottleneck.
 
 Examples of libraries include Hystrix, Polly, and circuit_breaker mixin.

@@ -2,8 +2,8 @@
 
 To prevent page from reloading, use Link from react-router-dom. Do not use href. To add CSS class to active router link, use NavLink.
 
-```
-$npm install react-router-dom
+```bash
+$ npm install react-router-dom
 ```
 
 ```js
@@ -58,12 +58,7 @@ ReactDOM.render(
 ### Passing Props to Routes
 
 ```js
-return (
-  <Route
-    path="/home"
-    component={() => <HomePageComponent handleNavBar={handleNavBar} />}
-  />
-);
+return <Route path="/home" component={() => <HomePageComponent handleNavBar={handleNavBar} />} />;
 ```
 
 ### Dynamic Routes
@@ -71,24 +66,23 @@ return (
 Can extract route params with react-router-dom.
 
 ```javascript
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 return (
   <Switch>
-    {" "}
+    {' '}
     // loads the first one that matches, not specificity
     <Route path="/" exact>
       <Redirect to="/welcome" />
     </Route>
     <Route path="/product" exact>
-      {" "}
+      {' '}
       // exact tells React to load if it matches exactly
       <Product />
     </Route>
     <Route path="/product/:productId">
-      {" "}
-      // if navigate to this, both Product and ProductDetail routes will be active
-      if no Switch
+      {' '}
+      // if navigate to this, both Product and ProductDetail routes will be active if no Switch
       <ProductDetail />
     </Route>
   </Switch>
@@ -117,7 +111,7 @@ export default ProductDetail;
 UseLocation gives access to a location object which has info about currently loaded page.
 
 ```js
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from 'react-router-dom';
 
 const QuoteList = (props) => {
   const history = useHistory();
@@ -125,10 +119,10 @@ const QuoteList = (props) => {
 
   const queryParams = new URLSearchParams(location.search); // search is a location property holding ? values
 
-  const isSortingAsc = queryParams.get("sort") === "asc"; // boolean
+  const isSortingAsc = queryParams.get('sort') === 'asc'; // boolean
 
   const changeSortingHandler = () => {
-    history.push("/quotes?=sort=" + (isSortingAsc ? "desc" : "asc")); // re-renders component even if it's the same page
+    history.push('/quotes?=sort=' + (isSortingAsc ? 'desc' : 'asc')); // re-renders component even if it's the same page
   };
 };
 ```

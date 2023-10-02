@@ -2,7 +2,7 @@
 
 Kubernetes is not IaC (Infrastructure-as-Code), but designed to run in the cloud and integrates with providers including AWS, GCP and OpenShift. However, you can run it locally to ensure your application runs effectively in production. To setup the cluster environment locally, can use Minikube, MicroK8s, K3s and Kind.
 
-```console
+```bash
 $ minikube start
 ```
 
@@ -12,13 +12,13 @@ Runs on any Linux distribution without additional external dependencies i.e. lig
 
 ## Create a Pod
 
-```console
+```bash
 $ kubectl run nginx --image nginx:latest
 ```
 
 ## Create a Deployment
 
-```console
+```bash
 $ kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
 $ kubectl create deployment nginx --image nginx:latest --replicas 3
 
@@ -32,7 +32,7 @@ By default, the Pod is only accessible by its internal IP address within the Kub
 
 The type LoadBalancer flag indicates that you want to expose the Service outside of the cluster.
 
-```console
+```bash
 $ kubectl expose deployment hello-node --type=LoadBalancer --port=8080
 $ kubectl get services
 ```
@@ -41,13 +41,13 @@ $ kubectl get services
 
 Proxy will forward communications into the clusterwide, private network and hence, creating a connection between host and cluster.
 
-```console
+```bash
 $ kubectl proxy # to run in a separate terminal
 ```
 
 ## Clean Up
 
-```console
+```bash
 $ kubectl delete service hello-node
 $ kubectl delete deployment hello-node
 ```

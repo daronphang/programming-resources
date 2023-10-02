@@ -48,8 +48,8 @@ class Graph:
         # vertices. Initialize all indegrees as 0.
         in_degree = [0]*(self.V)
 
-        # Traverse adjacency lists to fill indegrees of
-           # vertices.  This step takes O(V + E) time
+        # Traverse adjacency lists to fill indegrees of vertices.
+        # This step takes O(V + E) time
         for i in self.graph:
             for j in self.graph[i]:
                 in_degree[j] += 1

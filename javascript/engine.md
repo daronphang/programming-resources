@@ -44,6 +44,8 @@ Common memory leaks include global variables, event listeners and setInterval().
 
 The activity of event loop taking a callback function from callback queue and execute in the callstack is known as event loop tick. Coordinates between callstack and callback functions in callback queue.
 
+The event loop is the secret behind JS' asynchronous programming. It executes all operations on a single thread, but using a few smart data structures (stack, queue) to give the impression of multi-threading.
+
 ```js
 console.log('Test Start');
 setTimeout(() => console.log('0 sec timer'), 0);
@@ -60,3 +62,9 @@ console.log('Test End');
 // resolved promise 2
 // 0 sec timer      Happens after microtasks queue is completed. Cannot do high precision tasks with Javascript timers.
 ```
+
+## Web API
+
+Web APIs are browser-provided interfaces that empower JS to interact with the browser environment. They include functionalities like DOM manipulation, AJAX requests, and timers.
+
+When a task requires a significant time to complete, it is handed over to the appropriate Web API, allowing JS to continue its execution without waiting. Once the Web API task is completed, a corresponding callback function is placed in the task queue, ready to be executed in the future.

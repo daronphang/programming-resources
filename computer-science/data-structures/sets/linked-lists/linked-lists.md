@@ -51,7 +51,7 @@ listDelete(L,x) {
 
 ### Figure
 
-<img src="../../assets/linked-list.PNG" >
+<img src="../../../assets/linked-list.PNG" >
 
 ## Sentinels
 
@@ -84,7 +84,7 @@ listDelete(L,x) {
 
 ### Circular, Doubly-Linked List with Sentinel
 
-<img src="../../assets/linked-list-sentinel.PNG" >
+<img src="../../../assets/linked-list-sentinel.PNG" >
 
 ## Allocating and Freeing Objects (Doubly-Linked List)
 
@@ -115,4 +115,4 @@ freeObject(x) {
 
 ### Sequence of Events
 
-<img src="../../assets/linked-list-free-object.PNG">
+<img src="../../../assets/linked-list-free-object.PNG">

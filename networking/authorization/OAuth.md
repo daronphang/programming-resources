@@ -2,9 +2,9 @@
 
 Oauth is an authorization framework and not an authentication protocol. It is an open standard for authorization that grants secure delegated access to applications, devices, APIs and servers via access tokens. OAuth authorizes an application to access your data without giving it access to your credentials. Can be used with either SAML or OIDC.
 
-- Users don't need to remember their credentials (only need to authorize the app to access their info for selected OAuth provider).
-- Prevents security holes as user doesn't provide passwords for sign in/sign up.
-- Able to handle non-web clients.
+- Users don't need to remember their credentials (only need to authorize the app to access their info for selected OAuth provider)
+- Prevents security holes as user doesn't provide passwords for sign in/sign up
+- Able to handle non-web clients
 
 https://developers.google.com/identity/protocols/oauth2
 
@@ -23,7 +23,7 @@ https://developers.google.com/identity/protocols/oauth2
 3. Authorization Server asks permission from User who thereby grants access for Client to access the user's data
 4. Authorization Server authorizes User and redirects to redirect/callback URL (backend/frontend server) with request token
 5. Backend Server sends GET/POST request to Authorization Server's access token URL with request token to exchange for access token
-6. Access token is used to authenticate future requests sent to Resource Server.
+6. Access token is used to authenticate future requests sent to Resource Server
 7. Authorization Server sends response to redirect_uri specified with access token in #hash fragment parameter
 8. Client uses access token to request user's profile from Resource Server in Bearer Authorization header
 9. Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page

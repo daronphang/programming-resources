@@ -5,7 +5,7 @@ The search tree data structure supports many dynamic-set operations, including S
 At each node, we want the value of that node to either tell us that we have found the required item, or tell us which of its two subtrees should search for it in. By definition, a binary search tree is one that is either empty or satifies the following conditions:
 
 - All values occurring in left subtree are smaller than that of root.
-- All vlaues occurring in right subtree are larger than that of root.
+- All values occurring in right subtree are larger than that of root.
 - Left and right subtrees are themselves binary search trees.
 - There must be no duplicate nodes.
 

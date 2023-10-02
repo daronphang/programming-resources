@@ -47,3 +47,52 @@ mstPrim(G,w,r) {
 7. Final mstSet becomes {0, 1, 7, 6, 5, 2, 8, 3, 4}.
 
 <img src="../../../assets/prim-example.PNG">
+
+### Implementation
+
+```java
+class Edge {
+    int source;
+    int dest;
+    int cost;
+
+    public Edge(int source, int dest, int cost) {
+        this.source = source;
+        this.dest = dest;
+        this.cost = cost;
+    }
+
+    public int getCost(){
+        return this.cost;
+    }
+}
+
+class Solution {
+    public int minCostConnectPoints(int[][] points) {
+        int vertices = points.length;
+        Set<Integer> visited = new HashSet<>() {{ add(0); }};
+        Queue<Edge> pq = new PriorityQueue<>(Comparator.comparing(Edge::getCost));
+        int cur = 0;
+        int ans = 0;
+
+        while (visited.size() < vertices) {
+            for (int i = 0; i < vertices; i++) {
+                if (i == cur || visited.contains(i)) continue;
+                int[] x = points[cur];
+                int[] y = points[i];
+                int cost = Math.abs(x[0] - y[0]) + Math.abs(x[1] - y[1]);
+                pq.add(new Edge(cur, i, cost));
+            }
+            Edge edge;
+            do {
+                edge = pq.poll();
+            }
+            while (visited.contains(edge.dest));
+            cur = edge.dest;
+            visited.add(cur);
+            ans += edge.getCost();
+        }
+        return ans;
+    }
+}
+```
