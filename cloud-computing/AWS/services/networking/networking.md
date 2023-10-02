@@ -6,6 +6,15 @@ Offers a highly secure cloud platform and connects your physical network to VPN 
 
 Elastic IP addresses are static/persistent public IPs that come with your account. If any software/instances fail, they can be remapped to another instance quickly i.e. not allocated to an instance.
 
+## AWS Network Firewall
+
+Protects your entire VPC from Layer 3 to Layer 7. You can inspect, in any direction:
+
+- VPC to VPC traffic
+- Outbound to internet
+- Inbound from internet
+- To/from Direct Connect and Site-to-Site VPN
+
 ## Network Access control List (ACLs)
 
 A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level** (ALLOW/DENY). Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
@@ -28,7 +37,7 @@ Security groups can be attached to multiple EC2 instances and are locked down to
 
 Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets.
 
-## Gateway
+## Internet Gateway
 
 An internet gateway is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet. Imposes no availability risks or bandwidth constraints on your network traffic.
 
@@ -40,6 +49,12 @@ A NAT device can be used to enable instances in a private subnet to connect to t
 
 AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances.
 
-### NAT Gateway
+## NAT Gateway
 
-Must be launched in a public subnet because it needs internet connectivity, and requires an elastic public IP address.
+### Public
+
+To provide instances in private subnets connectivity to the internet, but cannot receive unsolicited inbound connections. Must be created in a public subnet and associate an elastic IP address with the NAT gateway. You route traffic from the NAT gateway to the internet gateway for the VP.
+
+### Private
+
+Instances in private subnets can connect to other VPCs or your on-premises network through a private NAT gateway. You can route traffic from the NAT gateway through a **transit gateway or a virtual private gateway**. You cannot associate an elastic IP address with a private NAT gateway.

@@ -73,15 +73,6 @@ Amazon Macie is a fully managed data security and data privacy service that uses
 
 AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. Secrets are encrypted using KMS.
 
-## AWS Network Firewall
-
-Protects your entire VPC from Layer 3 to Layer 7. You can inspect, in any direction:
-
-- VPC to VPC traffic
-- Outbound to internet
-- Inbound from internet
-- To/from Direct Connect and Site-to-Site VPN
-
 ## Penetration Testing
 
 You can perform pentration testing on your AWS infrastructure. However, prohibited activities include:

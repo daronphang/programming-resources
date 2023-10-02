@@ -65,27 +65,6 @@ When you create and attach a virtual private gateway to a VPC:
 - A customer gateway device is a physical device or software application
 - When you have both gateways, you can then establish an encrypted virtual private network (VPN)
 
-## VPC Peering
-
-VPC Peering is used to connect two VPCs privately using AWS network. **Must not have overlapping CIDR**. VPC Peering connection is **not transitive** (must be established for each VPC that needs to communicate with one another, does not inherit existing peerings).
-
-## VPC Endpoints
-
-Endpoints provide private access to AWS services within a VPC using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
-
-There are two kinds of endpoints:
-
-- VPC Endpoint Gateway: S3 and DynamoDB
-- VPC Endpoint Interface: Rest of AWS services
-
-## AWS PrivateLink (VPC Endpoint Service)
-
-Provides the most secure and scalable way to expose a service to other VPCs. Does not require VPC peering, internet gateway, NAT, route tables, etc.
-
-- Your VPC exposes an ENI (Elastic Network Interface)
-- Third party VPC exposes a network load balancer
-- You establish a private link between both VPCs
-
 ### Virtual Private Network (VPN)
 
 A virtual private gateway enables you to establish a virutal private network (VPN) connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**. However, it goes over the public internet and may have limited bandwidth, but relatively fast to setup.
@@ -94,6 +73,27 @@ There are two types of VPN:
 
 - Site-to-Site VPN: VPN over public internet between on-premises DC and AWS
 - ClientVPN: OpenVPN connection from your computer into your VPC
+
+## VPC Peering
+
+VPC Peering is used to connect two VPCs privately using AWS network. **Must not have overlapping CIDR**. VPC Peering connection is **not transitive** (must be established for each VPC that needs to communicate with one another, does not inherit existing peerings).
+
+## AWS PrivateLink (VPC Endpoint Service)
+
+A technology that provides the most secure and scalable way to expose a service to other VPCs. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
+
+- Third party VPC exposes an ENI (Elastic Network Interface)
+- Your VPC exposes a network load balancer
+- You establish a private link between both VPCs
+
+## VPC Endpoints
+
+Endpoints provide private access to AWS services within a VPC using a private network instead of the public network (www), powered by AWS PrivateLink. This gives you enhanced security and lower latency to access AWS services.
+
+There are two kinds of endpoints:
+
+- VPC Endpoint Gateway: S3 and DynamoDB
+- VPC Endpoint Interface: Rest of AWS services
 
 ## AWS Direct Connect
 

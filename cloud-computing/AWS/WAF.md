@@ -1,6 +1,6 @@
 ## Well-Architectured Framework (WAF)
 
-The AWS WAF helps you understand how to design and operate reliable, secure, efficient, and cost-effective systems in the AWS cloud. It provides a way for you to consistently measure your architecture against best practices and design principles and identify areas for improvement.
+The AWS WAF consists of 6 pillars that help you understand how to design and operate reliable, secure, efficient, and cost-effective systems in the AWS cloud. It provides a way for you to consistently measure your architecture against best practices and design principles and identify areas for improvement.
 
 ### Operational excellence
 

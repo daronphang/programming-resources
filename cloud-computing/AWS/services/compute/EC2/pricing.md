@@ -53,6 +53,12 @@ EC2 Instance Savings Plans are a good option if you need flexibility in your EC2
 
 You don't need to specify upfront what resource and instance type is required to get a discount. You also don't have to commit to a certain number of EC2 instances over a 1-year or 3-year term.
 
+### Compute Savings Plan (most flexible)
+
+- Up to 66% discount compared to On-Demand
+- Regardless of Family, Region, size, OS, tenancy, compute options
+- Applicable for EC2, Fargate, Lambda
+
 ### Spot Instances
 
 Spot instances are ideal for workloads with flexible start and end times, or that can withstand interruptions i.e. **resilient to failture**. They use unused EC2 computing capacity and offer you cost savings at up to 90% off of On-Demand prices.

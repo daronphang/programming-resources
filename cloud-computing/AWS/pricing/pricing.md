@@ -20,21 +20,6 @@ Three types of offers:
 - Free if two EC2 instances communicate with each other in the same Availability Zone using private IP
 - $0.01 and $0.02 per GB using private IP and public IP respectively for two instances communicating in different Availability Zones
 
-## Savings Plan
-
-### EC2 Savings Plan
-
-- Up to 72% discount compared to On-Demand
-- Commit to instance families in a Region
-- Regardless of Availability Zone, size, OS, or tenancy
-- All upfront, partial upfront, no upfront
-
-### Compute Savings Plan (most flexible)
-
-- Up to 66% discount compared to On-Demand
-- Regardless of Family, Region, size, OS, tenancy, compute options
-- Applicable for EC2, Fargate, Lambda
-
 ## AWS Pricing Calculator
 
 The AWS Pricing Calculator lets you explore AWS services and create an estimate for the cost of your use cases on AWS. You can provide details such as OS, memory requirements, location, etc.
