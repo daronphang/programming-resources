@@ -2,7 +2,7 @@
 
 CodeCommit is a source code version control service (alternative to GitHub). CodeCommit helps users store and manage developers' source code in AWS.
 
-## AWS CodeBuild (CI/CD)
+## AWS CodeBuild
 
 Removes the hassle of managing physical servers and helps developers build and test code with continuous scaling i.e. compiles your code, executes unit tests, and gives output artifacts that are ready to deploy.
 

@@ -21,7 +21,7 @@ EBS volumes act similarly to external drives:
 
 ### Volume Types
 
-EBS volumes are organized into SSDs and HDDs. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for large streaming workloads that need **high throughput** performance.
+EBS volumes are organized into SSDs and HDDs. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for streaming large workloads that need **high throughput** performance.
 
 ## EBS Snapshots
 

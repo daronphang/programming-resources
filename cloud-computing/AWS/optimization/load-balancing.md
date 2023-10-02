@@ -18,21 +18,21 @@ ELB is a service that can distribute incoming application traffic across EC2 ins
 
 Monitoring is an important part of load balancers as they should route traffic to only healthy EC2 instances.
 
-## Algorithms
+### Algorithms
 
-### Round Robin Method
+#### Round Robin Method
 
 Simple algorithm that is used to distribute client's request across a group of servers. Once a server has received a request, it will be moved to the bottom of the queue. Client request is sent to each server one by one, based on availability.
 
-### Least Connection Method
+#### Least Connection Method
 
 Directs network traffic to the server, and is specifically used when there is a large number of client requests unevenly distributed between the servers.
 
-### Least Response Time Method
+#### Least Response Time Method
 
 Directs client requests to the server with the lowest average response time, and ensures that the load is balanced adequately among servers.
 
-### IP Hash
+#### IP Hash
 
 Uses client's IP address to route network traffic to the available backend server.
 
