@@ -2,6 +2,10 @@
 
 Use the AWS Billing & Cost Management dashboard to pay your AWS bill, monitor your usage, and analyze and control your costs.
 
+### Cost Allocation Tags
+
+Use cost allocation tags to track your AWS costs on a detailed level.
+
 ## AWS Organizations
 
 You can use AWS Organizations to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts.
@@ -18,7 +22,7 @@ AWS Organizations provides the option for consolidated billing i.e. receive a si
 
 Another benefit is the ability to share bulk discount pricing, Savings Plans, and Reserved Instances across the accounts in your organization. For instance, one account may not have enough monthly usage to qualify for discount pricing. However, when multiple accounts are combined, their aggregated usage may qualify for this benefit.
 
-### AWS Control Tower
+## AWS Control Tower
 
 An easy way to setup and govern a secure and compliant multi-account AWS environment based on best practices. Runs on top of AWS Organizations i.e. automatically sets up AWS Organizations to organize accounts and implement SCPs.
 
@@ -32,7 +36,7 @@ You can set custom alerts that will notify you when your service usage exceeds t
 
 ## AWS Cost Explorer
 
-AWS Cost Explorer is a tool that lets you visualize, understand, and manage your AWS costs and usage over time.
+AWS Cost Explorer is a tool that lets you visualize, understand, and manage your AWS costs and usage over time. You can **forecast usage up to 12 months based on previous usage**.
 
 AWS Cost Explorer includes a default report of the costs and usage for your top five cost-accruing AWS services. You can apply custom filters and groups to analyze your data.
 
@@ -43,3 +47,7 @@ Share AWS resources that you own with other AWS accounts to avoid resource dupli
 ## AWS Service Catalog
 
 Users that are new to AWS have too many options, and may create stacks that are not compliant with the rest of the organization. Service Catalog provides a quick self-service portal to launch a set of authorized products pre-defined by admins.
+
+## AWS Service Quotas
+
+Notify you when you are close to a service quota value threshold through CloudWatch alarms. You can request a quota increase from AWS Service Quotas or shutdown resources before limit is reached.

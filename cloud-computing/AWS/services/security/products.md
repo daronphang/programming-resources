@@ -140,3 +140,11 @@ Service used to find out which resources are shared externally including:
 - Secrets Manager Secrets
 
 Need to define Zone of Trust, and any access outside will be flagged as findings.
+
+## AWS Security Token Service (STS)
+
+STS enables you to create temporary, limited-privileges credentials to access your AWS resources.
+
+## Amazon Cognito
+
+Provides identity for your web and mobile application users. Instead of creating an IAM user, you create a user in Cognito.

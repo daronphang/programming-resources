@@ -95,3 +95,17 @@ A report that lists all your account's users and the status of their various cre
 ### IAM Access Advisor (user-level)
 
 Access Advisor shows the service permissions granted to a user and when those services were last accessed.
+
+## AWS IAM Identity Center (Single Sign-On)
+
+One login for:
+
+- All your AWS accounts in AWS Organizations
+- Business cloud applications (Salesforce, Microsoft 365)
+- SAML2.0-enabled applications
+- EC2 Windows Instances
+
+For Identity Providers, can either use:
+
+- Built-in identity store in IAM Identity Center
+- Third parties (AD, OneLogin, Okta)

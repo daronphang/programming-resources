@@ -28,7 +28,7 @@ Have access to features such as:
 - Use-case guidance to identify AWS offerings, features, and services that can best support your specific needs
 - All AWS Trusted Advisor checks
 - Limited support for third-party software, such as common OS and application stack components
-- Call or chat with technical support
+- Call or chat with technical support (24/7)
 
 ### Enterprise On-Ramp
 

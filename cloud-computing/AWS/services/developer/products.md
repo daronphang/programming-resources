@@ -25,3 +25,7 @@ Service designed to manage application development in a **single place**. Develo
 ## AWS Cloud9
 
 AWS Cloud9 is a cloud IDE (Integrated Development Environment) used for writing, running and debugging code within a web browser. It also allows for code collaboration in real-time.
+
+## AWS Device Farm
+
+Fully-managed service that tests your web and mobile apps against desktop browsers, mobile devices, and tablets (not emulators).

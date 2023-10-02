@@ -80,3 +80,24 @@ In the dashboard, it has three categories:
 - Green check indicates items for which it detected no problems
 - Orange triangle represents recommended investigations
 - Red circle represents recommended actions
+
+### Support Plans
+
+There are core checks for each category.
+
+#### Basic & Developer
+
+- S3 Bucket permissions
+- Security Groups (unrestricted ports)
+- IAM use (one IAM user minimum)
+- MFA on Root Account
+- EBS Public Snapshots
+- RDS Public Snapshots
+- Service Limits
+
+#### Business & Enterprise
+
+Inclusive of basic, with additional of:
+
+- Ability to set CloudWatch alarms when reaching limits
+- Programmatic access using AWS Support API
