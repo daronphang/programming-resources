@@ -15,7 +15,7 @@ Amazon RDS is available on on the following engines:
 
 ### Database instances
 
-Amazon RDS is built from compute (DB instance) and storage. A DB instance can contain multiple databases with the same engine, and each DB can contain multiple tables.
+Amazon RDS is built from compute (EC2 instance) and storage. A DB instance can contain multiple databases with the same engine, and each DB can contain multiple tables.
 
 Underneath the DB instance is an EC2 instance. However, this instance is managed through the Amazon RDS console instead of the Amazon EC2 console.
 
@@ -49,10 +49,6 @@ DynamoDB is a fully managed service that handles the operations work. You can of
 
 DynamoDB provides **automatic scaling**. As the size grows/shrinks, it automatically scales to adjust for changes in capacity while maintaining consistent performance. This makes a suitable choice that require **high performance while scaling**.
 
-## Amazon DynamoDB Accelerator
-
-Amazon DAX is an in-memory cache for DynamoDB.
-
 ### Core components
 
 In DynamoDB, there are three core components:
@@ -60,6 +56,10 @@ In DynamoDB, there are three core components:
 - Table: A collection of data
 - Primary Key: Consists of a partition key and sort key
 - Attribute: A fundamental data element that does not need to be broken down any further i.e. fields
+
+## Amazon DynamoDB Accelerator
+
+Amazon DAX is an in-memory cache for DynamoDB.
 
 ## RedShift
 

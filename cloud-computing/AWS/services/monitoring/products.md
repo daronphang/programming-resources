@@ -20,6 +20,10 @@ By default, no logs from your EC2 instance are pushed to CloudWatch. You need to
 
 Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
 
+### Event Bus
+
+An event bus is a router that receives events and delivers them to zero or more destinations (targets). Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.
+
 You can send events to the following event buses:
 
 - Default Event Bus (AWS Services)
