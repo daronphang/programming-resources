@@ -64,4 +64,4 @@ Lustre is a fully managed, high-performance, scalable file storage for **High Pe
 
 ## AWS Storage Gateway
 
-AWS Storage Gateway is used to bridge between on-premise data and cloud data in S3 i.e. hybrid. Behind the scenes, the Storage Gateway will be using Amazon EBS, S3 and Glacier.
+AWS Storage Gateway is a hybrid service that provides on-premises applications with access to virtually unlimited cloud storage. Behind the scenes, the Storage Gateway will be using Amazon EBS, S3 and Glacier. It gives you All data transferred between the gateway and AWS storage is encrypted using SSL.

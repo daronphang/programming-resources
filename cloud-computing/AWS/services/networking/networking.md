@@ -41,7 +41,7 @@ Security Groups perform **stateful** packet filtering. They remember previous de
 
 An internet gateway is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet. Imposes no availability risks or bandwidth constraints on your network traffic.
 
-Only one gateway can be attached per VPC.
+Only one internet gateway can be attached per VPC.
 
 ## NAT Devices (Network Address Translation)
 
@@ -58,3 +58,10 @@ To provide instances in private subnets connectivity to the internet, but cannot
 ### Private
 
 Instances in private subnets can connect to other VPCs or your on-premises network through a private NAT gateway. You can route traffic from the NAT gateway through a **transit gateway or a virtual private gateway**. You cannot associate an elastic IP address with a private NAT gateway.
+
+### NAT vs IGW
+
+- IgW allows both inbound and outbound access to the internet whereas the NAT Gateway only allows outbound access
+- IgW allows instances with public IPs to access the internet whereas NAT Gateway allows instances with private IPs to access internet
+- You only need one Internet Gateway per VPC whereas you need one NAT Gateway per Availability Zone (AZ)
+- There is no additional cost to use Internet Gateway whereas NAT Gateway incurs charges based on the creation and usage

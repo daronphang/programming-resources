@@ -45,6 +45,7 @@ Have access to proactive support services such as:
 - Infrastructure Event Management support (one per year)
 - Support automation workflows
 - 30 minutes or less response time for business-critical issues
+- Online training with self-paced labs
 
 #### Technical Account Manager (TAM)
 

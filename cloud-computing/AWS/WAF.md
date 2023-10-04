@@ -20,7 +20,7 @@ Reliability is the ability of a system to do the following:
 - Dynamically acquire computing resources to meet demand
 - Mitigate disruptions such as misconfigurations or transient network issues
 
-Reliability includes testing recovery procedures, scaling horizontally to increase aggregate system availability, and automatically recovering from failure.
+Reliability includes testing recovery procedures, scaling horizontally to increase aggregate system availability, and automatically recovering from failure. Services include Trusted Advisor and Service Quotas.
 
 ### Performance efficiency
 

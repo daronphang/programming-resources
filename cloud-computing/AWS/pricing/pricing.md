@@ -26,4 +26,4 @@ The AWS Pricing Calculator lets you explore AWS services and create an estimate 
 
 ## AWS Compute Optimizer
 
-Reduce costs and improve performance by recommending optimal AWS resources for your workloads using ML to analyze your resources' configurations and their utilization CloudWatch metrics. Helps you choose optimal configurations and right-size your workloads (over/under provisioned).
+Reduce costs and improve performance by recommending optimal AWS resources for your workloads using ML to analyze your resources' configurations and their utilization CloudWatch metrics. Helps you choose optimal configurations and right-size your workloads (over/under provisioned). Resources include EC2 instance types, EBS volume configurations and Lambda function memory sizes.

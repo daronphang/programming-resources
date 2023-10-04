@@ -65,7 +65,7 @@ When launching an EC2 instance, the first setting you configure is which OS you 
 
 In the traditional infrastructure world, spinning up a server consists of installing an OS from installation disks, drives, or wizards over the network. In AWS, the OS installation is built into the AMI.
 
-An AMI includes the OS, storage mapping, architecture type, launch permissions, and any additional preinstalled software applications.
+An AMI includes the OS, storage mapping, architecture type, launch permissions, and any additional preinstalled software applications. You must use an AMI from the same region as that of the EC2 instance, but the region of the AMI has no bearing on the performance of the EC2 instance.
 
 There are multiple ways to select an AMI:
 

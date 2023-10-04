@@ -8,7 +8,7 @@ Use cost allocation tags to track your AWS costs on a detailed level.
 
 ## AWS Organizations
 
-You can use AWS Organizations to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts.
+You can use AWS Organizations to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts. You can use it to share resources across your AWS accounts.
 
 You can centrally control permissions for the accounts in your organization (individual member account, OUs) by using **service control policies** (SCPs). SCPs enable you to place restrictions on the AWS services, resources, and individual API actions that users and roles in each account can access.
 
