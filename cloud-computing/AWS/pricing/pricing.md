@@ -1,3 +1,13 @@
+## AWS Costs
+
+There are three fundamental drivers of cost with AWS: compute, storage and outbound data transfer. In most cases, there is no charge for **inbound data transfer** or **data transfer between other AWS services within the same Region**. Outbound data transfer is aggregated across services and then charged at the outbound data transfer rate.
+
+### Networking
+
+- Free for traffic inbound
+- Free if two EC2 instances communicate with each other in the same Availability Zone using private IP
+- $0.01 and $0.02 per GB using private IP and public IP respectively for two instances communicating in different Availability Zones
+
 ## AWS Pricing
 
 Has the following three categories:
@@ -13,12 +23,6 @@ Three types of offers:
 - Always free (Lambda)
 - 12 Months free (EC2)
 - Trials
-
-### Networking Costs
-
-- Free for traffic inbound
-- Free if two EC2 instances communicate with each other in the same Availability Zone using private IP
-- $0.01 and $0.02 per GB using private IP and public IP respectively for two instances communicating in different Availability Zones
 
 ## AWS Pricing Calculator
 

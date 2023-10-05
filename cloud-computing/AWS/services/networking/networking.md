@@ -21,6 +21,8 @@ A network ACL is a virtual firewall that controls inbound and outbound traffic a
 
 You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
 
+A network ACL contains a numbered list of rules and evaluates them in the increasing order while deciding whether to allow the traffic.
+
 ### Stateless packet filtering
 
 Network ACLs perform **stateless** packet filtering. They remember nothing and check packets that cross the subnet border each way i.e. inbound and outbound, double checking.

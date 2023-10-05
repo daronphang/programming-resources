@@ -86,3 +86,7 @@ Batch jobs are defined as Docker images and run on ECS.
 AWS Lambda has time limit (15 minutes), limited runtimes, and limited temporary disk space, and is serverless.
 
 AWS Batch has no time limit with any runtime, relies on EBS/Instance Store for disk space and relies on EC2.
+
+## Amazon EMR
+
+Amazon EMR is the industry-leading cloud big data platform for processing vast amounts of data using open source tools such as Hadoop, Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi, and Presto.

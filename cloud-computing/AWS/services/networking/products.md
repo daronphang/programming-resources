@@ -29,7 +29,9 @@ In AWS the most common records are:
 
 ## AWS Global Accelerator
 
-Improves global application availability and performance by leveraging the AWS internal network (similar to S3 Transfer Acceleration).
+Improves global application availability and performance by leveraging the AWS internal network (similar to S3 Transfer Acceleration). Provides static IP addresses that act as a fixed entry point to your applications.
+
+Global Accelerator is a good fit for non-HTTP use cases i.e. useful for applications over TCP/UDP by proxying packets at the edge of the locations running in one or more AWS Regions.
 
 ### CloudFront vs Global Accelerator
 

@@ -19,6 +19,7 @@ Reliability is the ability of a system to do the following:
 - Recover from infrastructure or service disruptions
 - Dynamically acquire computing resources to meet demand
 - Mitigate disruptions such as misconfigurations or transient network issues
+- Cognizant of how change affects a system (change management)
 
 Reliability includes testing recovery procedures, scaling horizontally to increase aggregate system availability, and automatically recovering from failure. Services include Trusted Advisor and Service Quotas.
 
