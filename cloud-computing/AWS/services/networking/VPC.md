@@ -88,7 +88,7 @@ A technology that provides the most secure and scalable way to expose a service 
 
 ## VPC Endpoints
 
-Endpoints provide private access to AWS services within a VPC using a private network instead of the public network (www), powered by AWS PrivateLink. This gives you enhanced security and lower latency to access AWS services.
+Endpoints allows customers to private connect to AWS services powered by PrivateLink using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
 
 There are two kinds of endpoints:
 
