@@ -2,6 +2,10 @@
 
 Used to expose Pods to the network. Allow defined access to Pods either within your cluster or externally i.e. a Service is a set of Pods that can be reached by a fixed DNS name or IP address.
 
+Services are fully-fledged objects in the Kubernetes API. They have a front-end consisting of a stable DNS name, IP address and port. On the back-end, they load-balance traffic across a dynamic set of Pods. New Pods are seamlessly added to the Service and will receive traffic. Terminated Pods are seamlessly removed.
+
+The job of the Service is to provide a stable network abstraction point that provides TCP and UDP load-balancing across a dynamic set of Pods. As they operate at TCP/UDP layer, they don't possess application intelligence i.e. provide application-layer host and path routing. This is done through an **Ingress**.
+
 An abstraction which defines a logical set of Pods and policy by which to access them, and this abstraction allows Pods to die and replicate in Kubernetes without impacting your application. Defined using YAML or JSON, and enables a loose coupling between dependent Pods.
 
 Although each Pod has a unique IP address, they are not exposed outside the cluster, and a Service is required to route traffic across the Pods. Can be exposed in different ways by specifying a type.
@@ -90,7 +94,7 @@ metadata:
   name: webapi
 spec:
   ports:
-    - name: '8080'
+    - name: "8080"
       port: 8080
       targetPort: 8080
   selector:

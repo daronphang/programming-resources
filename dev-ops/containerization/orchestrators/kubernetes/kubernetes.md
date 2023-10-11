@@ -1,8 +1,14 @@
 ## Kubernetes
 
-An open-source system for automating deployment, scaling, and management of containerized applications across a cluster of machines. Platform is designed to completely manage the lifecycle of applications and services using API/CLI methods that provide predictability, scalability and high availability. Containers are executed in Docker.
+An open-source system for automating deployment, scaling, and management of containerized applications (cloud-native microservices apps) across a cluster of machines. Platform is designed to completely manage the lifecycle of applications and services using API/CLI methods that provide predictability, scalability and high availability. Containers are executed in Docker.
 
 As a Kubernetes user, you can define how your applications run i.e. scaling services up/down, performing graceful rolling updates, switching traffic between different versions, or rollback problematic deployments.
+
+### Cloud-native
+
+A cloud-native application is one that's designed to meet cloud-like demands of auto-scaling, self-healing, rolling updates, rollbacks, etc. Though cloud-native apps can absolutely run in the public cloud, they can also run in on-premises datacenter. Instead, cloud-native is about the way applications **behave and react to events**.
+
+Kubernetes abstract cloud resources and schedules application microservices.
 
 ### Kubernetes vs Docker
 

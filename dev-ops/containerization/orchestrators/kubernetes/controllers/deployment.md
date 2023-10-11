@@ -1,6 +1,6 @@
 ## Deployment
 
-To deploy containerized applications on top of a running cluster, need to create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes how to create and update instances of your application, and keep them running across Nodes in the event of failure. Resides within the Control Plane. Deployments are the recommended way to manage the creation and scaling of Pods.
+To deploy containerized applications on top of a running cluster, need to create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes how to create and update instances of your application, and keep them running across Nodes in the event of failure. Resides within the Control Plane. Deployments are the recommended way to manage the creation and scaling of Pods as it offers scalability, self-healing, and rolling updates for stateless apps.
 
 When creating a Deployment, need to specify the container image and number of replicas you want to run. Once a deployment is created, the control plane schedules the application instances included in the Deployment to run on individual Nodes in the cluster.
 
