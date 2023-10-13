@@ -25,27 +25,27 @@ $ kubectl diff -f configs/
 $ kubectl apply -f configs/
 ```
 
-### Describing Objects
+## Describing Objects
 
 Required fields are apiVersion, kind, metadata, and spec.
 
-#### spec
+### spec
 
 Provides a description of the characteristics you want the resource to have i.e. its desired state.
 
-#### status
+### status
 
 Describes the current state of the object, supplied and updated by the Kubernetes system.
 
-#### kind
+### kind
 
 The kind of objects you want to create i.e. deployment, service, pod.
 
-#### metadata
+### metadata
 
 Data that helps uniquely identify the object, including a name, UID, and optional namespace.
 
-#### labels
+### labels
 
 Labels are key/value pairs attached to objects, and are intended to be used to specify identifying attributes of objects that are meaningful to users, but do not directly imply semantics to the core system.
 
@@ -57,6 +57,6 @@ environment: dev, qa, production
 tier: frontend, backend, cache
 ```
 
-#### selectors
+### selectors
 
 Selectors act as filters i.e. help us in finding the labels attached to a kind. The label selector is the core grouping primitive in Kubernetes. Selectors depend on labels to select a group of resources such as Pods.

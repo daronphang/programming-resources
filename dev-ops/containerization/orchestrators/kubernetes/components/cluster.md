@@ -11,3 +11,25 @@ Control plane schedules the containers to run on the cluster's nodes, and the no
 ### DNS
 
 Every Kubernetes cluster has an internal DNS service that is vital to service discovery. The cluster's DNS service has a static IP address that is hard-coded into every Pod on the cluster. This ensures every container and Pod can locate it and use it for discovery.
+
+## Kubernetes Playgrounds
+
+Playgrounds are the easiest way to get Kubernetes, but they are not for production. Examples include:
+
+- Play with Kubernetes
+- Katakoda
+- Docker Desktop
+- minikube
+- k3d
+
+## Hosted Kubernetes
+
+All major cloud platforms offer a hosted Kubernetes service. This is a model where you outsource a bunch of Kubernetes infrastructure responsibility to your cloud provider, letting them take care of things including high availability, performance, and updates. Popular services include:
+
+- AWS Elastic Kubernetes Service (EKS)
+- Azure Kubernetes Service (AKS)
+- Linode Kubernetes Engine (LKE)
+- DigitalOcean Kubernetes (DOKS)
+- GCP Kubernetes Engine (GKE)
+
+## DIY Kubernetes Clusters
