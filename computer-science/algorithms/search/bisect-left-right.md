@@ -1,12 +1,14 @@
 ### Bisect Left
 
+Use Math.floor. To know how to compute logic, compare two numbers; since we are using Math.floor, we need to increment by one if target is greater than mid index.
+
 ```py
 def bisect_left(nums, target):
     s = 0
     e = len(nums) - 1
 
     while s < e:
-        mid = s + ((e-s) // 2)
+        mid = s + Math.floor((e-s) / 2)
         if nums[mid] < target:
             s = mid + 1
         else:
@@ -25,13 +27,15 @@ def bisect_left(nums, target):
 
 ### Bisect Right
 
+Use Math.ceil.
+
 ```py
 def bisect_right(nums, target):
     s = 0
     e = len(nums) - 1
 
     while s < e:
-        mid = s + ceil((e-s) / 2)
+        mid = s + Math.ceil((e-s) / 2)
         if nums[mid] <= target:
             s = mid
         else:

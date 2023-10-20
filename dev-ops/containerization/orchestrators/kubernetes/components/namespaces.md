@@ -27,5 +27,3 @@ The default Namespace is where newly created objects go unless you explicitly sp
 ### Kubernetes vs Linux Kernel
 
 Linux Kernel Namespaces divide OS into virtual OS called containers. Kubernetes Namespaces divide Kubernetes clusters into virtual clusters called Namespaces.
-
-###

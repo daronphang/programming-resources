@@ -9,7 +9,7 @@ It is fine for services to share the same physical database server. However, **t
 ## Challenges
 
 - Redundancy across data stores as the same item of data can appear in multiple places i.e. analytics, reporting, archiving
-- Need to consider how updates are propagated across esrvices and to maange eventual consistency
+- Need to consider how updates are propagated across services and to maange eventual consistency
 
 ## Approaches
 
