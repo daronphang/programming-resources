@@ -1,0 +1,100 @@
+## API
+
+The API is where all Kubernetes resources are defined. Resources and objects are used interchangeably, as most API resources happen to be objects i.e. Pods, Services, Ingresses, etc.
+
+Resources can either be namespaced or cluster-scoped. Namespaced objects have to be deployed to a particular Namespace, while cluster-scoped objects can either be bound to multiple Namespaces, or exist outside of Namespaces.
+
+At the highest level, there are two types of API group: core and named groups.
+
+<img src="../../assets/simplified-API.png">
+
+```bash
+$ kubectl api-resources # see resources and api groups
+$ kubectl api-versions # shows which versions are supported by cluster
+$ for kind in `kubectl api-resources | tail +2 | awk '{ print $1 }'`; \
+do kubectl explain $kind; done | grep -e "KIND:" -e "VERSION:"
+```
+
+### Core group
+
+Resources in the core group are mature objects that were created in the early days of Kubernetes before the API was divided into groups i.e. Pods, nodes, Services, Secrets, ServiceAccounts. They are located in /api/v1. New resources are added to a named group, and not to the core group.
+
+```
+Pods        /api/v1/namespaces/<namespace>/pods/
+Services    /api/v1/namespaces/<namespace>/services/
+Nodes       /api/v1/nodes/
+Namespaces  /api/v1/namespaces/
+```
+
+### Named group
+
+All new resources go into named groups, and each refers to a collection of related resources. Dividing the API into smaller groups makes it more scalable and easier to navigate.
+
+```
+Ingress         /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/
+RoleBinding     /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/
+ClusterRole     /apis/rbac.authorization.k8s.io/v1/clusterroles/
+StorageClass    /apis/storage.k8s.io/v1/storageclasses/
+```
+
+### Accessing the API
+
+You can explore the API more directly using the following options:
+
+- API development tools
+- Commands like curl, wget
+- Web browser
+
+The simplest way to do this is to run a kubectl proxy on your localhost adapter that handles all security and authentication.
+
+```bash
+$ kubectl proxy --port 9000
+```
+
+### Versioning
+
+New resources come in as alpha, progress through beta, and eventually reach stable status.
+
+Resources in alpha are experimental and should expect bugs, features to be dropped without warning, and changes as they graduate through beta to stable. Use it with extreme caution.
+
+### Process flow
+
+1. Subject (user, Pods, kubelets, services, etc.) makes a request to the API server secured with TLS
+2. Authentication module authenticates subject
+3. Authorization module (RBAC) authorizes subject to perform requests
+4. Policies are enforced with admission controls
+5. Request is accepted and executed (persisted to the cluster store)
+
+### JSON serialization
+
+Kubernetes serializes objects as JSON to be sent over HTTP, but also supports Protobuf as a serialization schema.
+
+### Resources
+
+All deployable objects (Pods, Services, Ingresses, etc.) are defined as resources in the API. If the object is not defined in the API, you cannot deploy it.
+
+API resources have properties that you can view and configure.
+
+## API Server
+
+The main job of the API server is to make API available to clients inside and outside the cluster. It exposes the API over a secure RESTful interface using HTTPS exposed on port 443 or 6443:
+
+- All kubectl commands go to the API server
+- All node kubelets watch the API server for new tasks and report status
+- All control plane services communicate via the API server (components don't talk directly to each other)
+
+The API server is a Kubernetes control plane service and runs as a set of Pods in the kube-system Namespace on the control plane nodes of your cluster. If you build and manage your own Kubernetes clusters, you need to make sure the **control plane is highly-available and has enough performance** to keep the API server up and running. If you are using a hosted cluster, the way the API server is implemented is hidden from you.
+
+```bash
+$ kubectl cluster-info
+$ kubectl proxy --port 9000 # exposes the API on localhost adapter
+```
+
+```
+GET /api/v1/namespaces/shield/pods
+$ kubectl get pods --namespace shield
+```
+
+## Custom API
+
+You can extend Kubernetes by adding your own resources and controllers. Kubernetes has a CustomResourceDefintion (CRD) object that lets you create new resources in the API. They also get their REST paths in the API.

@@ -18,21 +18,21 @@ $ crontab –u other_username –e
 $ sudo vim /etc/crontab # for root
 ```
 
+### Operators (Optional)
+
+```
+*   Stands for all values; use it to keep running everyday
+,   separate individual values
+-   Range of values
+/   Divide a value into steps
+```
+
 ## Syntax
 
 ```
 a b c d e /directory/command output
 * 2 0 * 4 /root/backup.sh # runs 2am on first day of month on Wed
 * * * * * /root/backup.sh # runs job every minute
-```
-
-### Troubleshooting
-
-Add bash/sh path in crontab.
-
-```
-* * * * * touch /tmp/testing.txt
-* * * * * /bin/bash /root/backup.sh
 ```
 
 ### Time Format
@@ -45,27 +45,26 @@ d   Month, 0=None, 12=December
 e   Day of week, 0=Sunday, 7=Sunday
 ```
 
-### Command
-
-Represents the exact directory and filename to execute.
-
-```
-/root/backup.sh
-```
-
 ### Output (Optional)
 
-CRON sends an email to the owner of the crontab by default. To disable, add >/dev/null 2>&1, after the timing and command fields.
+CRON sends an email to the owner of the crontab by default. You can also push stdout and stderr to a single/multiple files.
 
 ```
 a b c d e /directory/command /dev/null 2>&1
+a b c d e /bin/bash hello-world.sh >> /tmp/cron.log 2>&1
 ```
 
-### Operators (Optional)
+### Logs
+
+```bash
+tail /var/log/cron
+```
+
+## Troubleshooting
+
+Add bash/sh path in crontab.
 
 ```
-*   Stands for all values; use it to keep running everyday
-,   separate individual values
--   Range of values
-/   Divide a value into steps
+* * * * * touch /tmp/testing.txt
+* * * * * /bin/bash /root/backup.sh
 ```
