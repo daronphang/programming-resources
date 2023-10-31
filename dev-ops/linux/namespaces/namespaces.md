@@ -14,7 +14,7 @@ A security flaw in the process running under a given namespace won't give the at
 
 ### Containers
 
-Namespaces are one of the technologies containers are built on (Docker, Podman, etc.), used to enforce segregation of resources.
+Namespaces are one of the technologies containers are built on (Docker, Podman, etc.), used to enforce segregation of resources. When using a container runtime, it creates a set of namespaces and control groups behind the scenes for you.
 
 Using containers gives the developer an isolated environment that looks and feels like a complete VM, but is actually another process running on the server.
 
@@ -54,7 +54,7 @@ Allows our system to have different host names and domain names for each namespa
 
 Allows having different system times within our system by specifying different time namespaces.
 
-### Control Groups namespace
+### Cgroups (Control Groups) namespace
 
 Limits the resource usage (CPU, memory, disk, etc.) for a particular group of processes.
 

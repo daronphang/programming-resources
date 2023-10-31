@@ -1,8 +1,12 @@
 ## containerd
 
-containerd is a **high-level container runtime** built by Docker and implements the CRI specification. It pulls images from registries (OCI-compliant), manages them and hen hands over to a lover-level runtime, which uses the features of the Linux kernel to create processes called 'containers'.
+containerd is a **high-level container runtime** built by Docker and implements the CRI specification. It pulls images from registries (OCI-compliant), manages them and then hands over to a lover-level runtime, which uses the features of the Linux kernel to create processes called 'containers'.
 
 containerd is available as a daemon for Linux and Windows that controls runc. It manages the complete container lifecycle of its host system, from image transfer and storage to container execution and supervision, to low-level storage, to network attachments and beyond.
+
+### nerdctl
+
+nerdctl provides a Docker-like CLI for containerd, and supports Docker Compose.
 
 ## CRI-O
 

@@ -10,3 +10,7 @@ Currently, it has two specifications:
 ## Container Runtime Interface (CRI)
 
 CRI is an API that allows you to use different container runtimes in Kubernetes (container-agnostic platform). Hence, instead of the Kubernetes project needing to add support for each runtime individually, the CRI API describes how Kubernetes will interact with any runtime. As long as a given container runtime implements the CRI API, the runtime can create and start containers however it likes.
+
+### crictl
+
+crictl provides a CLI for CRI compatible container runtimes. Used to inspect and debug container runtimes.
