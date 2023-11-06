@@ -94,3 +94,26 @@ The ambassador pattern is another variation of the sidecar pattern. The helper c
 ### Init Pattern
 
 The init container guarantees to start and complete before your main application container, and only runs once. The job is to run tasks and initialize the environment for the main application container.
+
+## Commands
+
+```bash
+$ kubectl get pod --name
+$ kubectl get pod <pod-name> -o yaml > pod-definition.yaml # extract to yaml
+$ kubectl edit pod <pod-name>
+```
+
+## Example
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+spec:
+  containers:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      command: ["sleep"] # same as ENTRYPOINT
+      args: [10] # same as CMD
+```

@@ -85,6 +85,8 @@ There are three main ways to inejct ConfigMap data:
 
 A drawback to using this method is that environment variables are **static**. This means updates made to the ConfigMap are not reflected in running containers.
 
+Use envFrom to define all of the ConfigMap's data as container environment variables.
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -102,6 +104,11 @@ spec:
         configMapKeyRef:
           name: multimap
           key: family
+
+  # alternative
+  envFrom:
+    - configMapRef:
+      name: multimap
 ```
 
 ### Volumes

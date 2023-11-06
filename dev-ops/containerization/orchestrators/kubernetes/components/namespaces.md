@@ -10,6 +10,11 @@ If you don’t explicitly define a target Namespace when deploying a namespaced 
 
 ```bash
 $ kubectl get namespaces
+$ kubectl get pods --namespace=dev
+$ kubectl get pods --all-namespaces
+```
+
+```bash
 $ kubectl config set-context --current --namespace shield # auto use specific ns
 ```
 

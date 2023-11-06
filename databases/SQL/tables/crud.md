@@ -2,6 +2,8 @@
 
 SERIAL columns do not need to be provided a value. Inserted row values must match up for the table including constraints.
 
+For SQL Server, it allows a maximum of 1000 inserts per statement. If using database cursors, executemany() is preferred over execute().
+
 ```sql
 INSERT INTO account(username, passwword, create_on)
 VALUES('Jose', '1234', CURRENT_TIMESTAMP),

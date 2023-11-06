@@ -31,5 +31,3 @@ All major cloud platforms offer a hosted Kubernetes service. This is a model whe
 - Linode Kubernetes Engine (LKE)
 - DigitalOcean Kubernetes (DOKS)
 - GCP Kubernetes Engine (GKE)
-
-## DIY Kubernetes Clusters

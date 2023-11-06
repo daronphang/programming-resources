@@ -30,7 +30,7 @@ contexts:
 current-context: director
 ```
 
-## General
+### General
 
 ```bash
 $ kubectl get <nodes/pods/deployment/events/replicaset>
@@ -49,29 +49,46 @@ $ kubectl delete deployment my-nginx
 $ kubectl delete pod/my-nginx-544232
 ```
 
-## Shell
+### Shell
 
 ```bash
 $ kubectl exec --stdin --tty shell-demo -- /bin/bash
 ```
 
-## Cluster
+### Cluster
 
 ```bash
 $ kubectl cluster-info
 ```
 
-## Deployment
+### Deployment
 
 ```bash
 $ kubectl config view
 ```
 
-## Generators
+### Generators
 
 Helper templates for Run, Create and Expose commands. Every resource has a specification. Shows the output generated with that command.
 
 ```bash
 $ kubectl create deployment sample --image nginx --dry-run -o yaml
 $ kubectl create job test --image nginx --dry-run -o yaml
+```
+
+### Output
+
+The -o flag allows us to output details in different formats.
+
+```bash
+$ kubectl create namespace test-123 --dry-run -o json
+$ kubectl create namespace test-123 --dry-run -o yaml
+$ kubectl get pods -o wide # with additional info
+```
+
+### Logging
+
+```bash
+$ kubectl logs -f <pod-name>
+$ kubectl logs -f <container-name> # for multiple containers
 ```

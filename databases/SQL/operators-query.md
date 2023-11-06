@@ -62,7 +62,16 @@ SELECT * FROM table WHERE col2 BETWEEN '2007-02-01' AND '2007-02-15'
 Used to replace group of arguments using <> or != operator that are combined with AND. It CANNOT replace =, <, >, <=, >=, BETWEEN, or LIKE.
 
 ```sql
-SELECT * FROM table WHERE col1 IN ('red','blue')    # Red or Blue
+SELECT * FROM table WHERE col1 IN ('red','blue')
+```
+
+For dealing with large clauses, create a temporary table and SELECT from it.
+
+```sql
+CREATE #temp (colors VARCHAR null);
+INSERT INTO #temp (colors) VALUES ('red'), ('blue');
+SELECT * FROM t1 WHERE colors IN (SELECT colors FROM #temp);
+
 ```
 
 ### LIKE, ILIKE

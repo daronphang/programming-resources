@@ -12,8 +12,11 @@ Runs on any Linux distribution without additional external dependencies i.e. lig
 
 ## Create a Pod
 
+Use dry-run option if you want to test whether the resource can be created, and if your command is right.
+
 ```bash
 $ kubectl run nginx --image nginx:latest
+$ kubectl run nginx --image=nginx --dry-run=client -o yaml > nginx-pod.yaml
 ```
 
 ## Create a Deployment
@@ -43,6 +46,12 @@ Proxy will forward communications into the clusterwide, private network and henc
 
 ```bash
 $ kubectl proxy # to run in a separate terminal
+```
+
+## Output in YAML
+
+```bash
+$ kubectl get deploy <deployment-name> -o yaml
 ```
 
 ## Clean Up

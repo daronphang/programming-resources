@@ -21,6 +21,7 @@ metadata:
 spec:
   # Deployment
   replicas: 3
+  # selector helps to identify what Pods fall under it
   selector:
     matchLabels:
       app: nginx
@@ -48,6 +49,14 @@ Behind the scenes, Deployments rely heavily on another object called ReplicaSet.
 
 ReplicaSets manage Pods and bring self-healing and scaling. Deployments manage ReplicaSets and add rollouts and rollbacks.
 
+### Recreating updates
+
+All existing Pods are killed before new ones are created.
+
+```
+.spec.strategy.type==Recreate
+```
+
 ### Rolling updates
 
 To enable rolling updates with zero-downtime, two things are required from microservices:
@@ -60,9 +69,23 @@ To perform a rollout, Kubernetes creates a new replica running the new version a
 
 Kubernetes know which Pods to terminate and replace via label selectors.
 
+```
+.spec.strategy.type==RollingUpdate
+```
+
+```bash
+$ kubectl apply -f deployment-def.yml --record
+$ kubectl rollout status deployment/myapp-deployment
+$ kubectl rollout history deployment/myapp-deployment
+```
+
 ### Rollbacks
 
 When performing a rolling update, older ReplicaSets are wound down and no longer manage any Pods. However, it still exists with its configuration intact to provide the option for reverting to previous versions i.e. old and new ReplicaSets coexist.
+
+```bash
+$ kubectl rollout undo deployment/myapp-deployment
+```
 
 ## Components
 
@@ -110,12 +133,13 @@ $ kubectl apply -f deploy.yml
 $ kubectl get deploy hello-deploy
 $ kubectl describe deploy hello-deploy
 $ kubectl get rs # replicaset
+$ kubectl replace -f definition.yml
 ```
 
 ### Rollouts and Rollback
 
 ```bash
-$ kubectl apply -f deploy.yml --record
+$ kubectl apply -f deploy.yml --record=true
 $ kubectl rollout status deployment hello-deploy
 $ kubectl rollout pause deploy hello-deploy # pause rollouts
 $ kubectl rollout resume deploy hello-deploy

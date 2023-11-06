@@ -34,6 +34,8 @@ zone=prod
 
 With a Service in place, Pods can scale up and down without interruption as the Service is observing the changes and updating its list of healthy Pods. It does this through a combination of label selection and a construct called an **Endpoints** object.
 
+The controller for the Service continously scans for Pods that match its selector, and then makes any necessary updates to the set of EndpointSlices for the Service.
+
 The Endpoints object is used to store a dynamic list of healthy Pods matching the Service's label selector. Any new Pods that match the selector gets added to the Endpoints object.
 
 ### Communication between Containers
