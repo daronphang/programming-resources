@@ -18,7 +18,7 @@ All Pods managed by a StatefulSet get predictable and persistent names. The form
 
 ### Ordered creation and deletion
 
-Another fundamental characteristic of StatefulSets is the controlled and ordered way they start and stop Pods.
+Another fundamental characteristic of StatefulSets is the controlled and ordered way they start and stop Pods i.e. Pods are created in a sequential order.
 
 StatefulSets create one Pod at a time, and always wait for previous Pods to be **ready and running** before creating the next. This is different from Deployments that use a ReplicaSet controller to **start all Pods at the same time**, causing potential race conditions. When scaling up or down, the same principle applies.
 
