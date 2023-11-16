@@ -93,22 +93,24 @@ kind: Pod
 spec:
   containers:
     - name: ctr1
-  env:
-    - name: FIRSTNAME
-      valueFrom:
-        configMapKeyRef:
-          name: multimap
-          key: given
-    - name: LASTNAME
-      valueFrom:
-        configMapKeyRef:
-          name: multimap
-          key: family
+      env:
+        - name: FIRSTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: multimap
+              key: given
+        - name: LASTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: multimap
+              key: family
 
-  # alternative
-  envFrom:
-    - configMapRef:
-      name: multimap
+      # alternative, to inherit all env variables
+      envFrom:
+        - configMapRef:
+          name: multimap
+        - secretRef:
+          name: secret
 ```
 
 ### Volumes

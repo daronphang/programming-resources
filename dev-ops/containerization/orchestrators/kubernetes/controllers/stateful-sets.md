@@ -36,7 +36,7 @@ Volumes are an important part of StatefulSet Pod's sticky ID.
 
 When a StatefulSet is created, any volumes it needs are created at the same time and named in a special way that connects them to the right Pod with naming of `vol-<StatefulSetName>-<Integer>`.
 
-Volumes are appropriately decoupled from Pods via the PVC system i.e. volumes have separate lifecycles to Pods. If a StatefulSet Pod is terminated, the replacement Pod will be attached to the **same storage it is replacing**. This statemenet holds true even if the replacement Pods are scheduled to different cluser nodes.
+Volumes are appropriately decoupled from Pods via the PVC system i.e. volumes have separate lifecycles to Pods. If a StatefulSet Pod is terminated, the replacement Pod will be attached to the **same storage it is replacing**. This statement holds true even if the replacement Pods are scheduled to different cluster nodes.
 
 For scaling operations, if a Pod is deleted as part of a scale-down operation, subsequent scale-up operations will attach new Pods to the surviving volumes that match their names. Hence, future scale-up operations only need to create a new Pod.
 
@@ -54,7 +54,7 @@ Possible node failures are very difficult to deal with. If Kubernetes has lost c
 
 ### Networking and Headless Services
 
-As Pods have predictable names, other parts of the app may connect directly to the Pods. To make this possible, StatefulSets use a **headless service** to create predictable DNS hostnames for every Pod replica. Other apps can then query DNS for the full list of Pod replicas and use those details to connect directly to Pods.
+Sometimes you don't need load-balancing and a single Service IP. As Pods have predictable names, other parts of the app may connect directly to the Pods. To make this possible, StatefulSets use a **headless service** to create predictable DNS hostnames for every Pod replica. Other apps can then query DNS for the full list of Pod replicas and use those details to connect directly to Pods.
 
 A headless service is a regular Kubernetes Service object without an IP address i.e. **spec.clusterIP is set to None**. It becomes a StatefulSet's governing Service when you list it in the manifest under spec.serviceName.
 
@@ -80,7 +80,26 @@ kind: StatefulSet
 metadata:
   name: sts-mongo
 spec:
+  # automatically assigns the hostname and subdomain for each Pod
+  # based on the headless service
   serviceName: mongo-prod # governing service
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: mongo
+    env: prod
+spec:
+  containers:
+    - name: mongodb
+      image: mongodb
+  # for Deployment, to create DNS record for Pod, need specify subdomain and hotname
+  # for StatefulSets, both are not required fields
+  # mongodb-pod.mongo-pod.default.service.cluster.local
+  subdomain: mongo-prod # name of headless service
+  hostname: mongodb-pod
 ```
 
 ## Example

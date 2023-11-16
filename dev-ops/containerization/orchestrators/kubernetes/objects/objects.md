@@ -61,6 +61,18 @@ tier: frontend, backend, cache
 
 Selectors act as filters i.e. help us in finding the labels attached to a kind. The label selector is the core grouping primitive in Kubernetes. Selectors depend on labels to select a group of resources such as Pods.
 
+### matchExpressions, matchLabels
+
+matchLabels is a map of key/value pairs and supports exact matching. matchExpressions is more expressive in nature and supports set-based matching. Only Job, Deployment, ReplicaSet, and DaemonSet support matchLabels.
+
+```yaml
+selector:
+  matchLabels:
+    environment: staging
+  matchExpressions:
+    - { key: tier, operator: NotIn, values: [front-end] }
+```
+
 ### Annotations
 
 Annotations are not used to identify and select objects. Instead, they simply provide additional metadata to Kubernetes objects.

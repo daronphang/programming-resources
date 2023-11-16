@@ -1,4 +1,4 @@
-## Admission Control
+## Admission Controllers
 
 Admission control is about policies and runs immediately after successful authentication and authorization. There are two types of admission controllers:
 
@@ -11,9 +11,45 @@ For instance, if all new and updated objects to your cluster require env=prod la
 
 If any admission controller rejects a request, the request will not check the remaining admission controllers. If all controllers approve the request, it gets persisted to the cluster store and instantiated on the cluster.
 
+Examples of admission controllers are AlwaysPullImages, DefaultStorageClass, EventRateLimit, NamespaceExists, etc. Updating of admission controllers can be performed in:
+
+1. kube-apiserver.service
+2. `/etc/kubernetes/manifests/kube-apiserver.yaml`
+
+```bash
+$ kube-apiserver -h | grep enable-admission-plugins
+```
+
 ### Example
 
 An example is the AlwaysPullImages controller. It is a mutating controller that sets the spec.containers.imagePullPolicy of all new Pods to 'Always' i.e. images will always be pulled from the registry. This ensures the following:
 
 - Prevents the use of locally cached images that could be malicious
 - Forcing the container runtime to present valid credentials to the registry to get the image
+
+### Custom controllers
+
+To use a custom controller, you need to deploy a webhook server with custom logic that returns either an allow or reject JSON response.
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: "pod-policy.example.com"
+webhooks:
+  - name: "pod-policy.example.com"
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE"]
+        resources: ["pods"]
+        scope: "Namespaced"
+    clientConfig:
+      service:
+        namespace: "example-namespace"
+        name: "example-service"
+      caBundle: <CA_BUNDLE> # PEM-encoded i.e. base64 encoded
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    timeoutSeconds: 5
+```

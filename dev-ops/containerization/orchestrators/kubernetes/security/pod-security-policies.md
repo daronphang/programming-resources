@@ -1,6 +1,54 @@
-## Pod Security Policies
+## Security Context
 
-You can enable security settings on a per-Pod basis by setting security context attributes in individual Pod YAML files. However, this approach does not scale.
+You can enable security settings on a per-Pod basis by setting **security context** attributes in individual Pod YAML files. A security context defines privilege and access control settings for a Pod or Container. However, this approach does not scale.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+  volumes:
+    - name: sec-ctx-vol
+      emptyDir: {}
+  containers:
+    - name: sec-ctx-demo
+      image: busybox:1.28
+      command: ["sh", "-c", "sleep 1h"]
+      volumeMounts:
+        - name: sec-ctx-vol
+          mountPath: /data/demo
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"] # only applicable at container level
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod
+spec:
+  securityContext:
+    runAsUser: 1001
+  containers:
+    - image: ubuntu
+      name: web
+      command: ["sleep", "5000"]
+      securityContext:
+        runAsUser: 1002 # overriding 1001
+
+    - image: ubuntu
+      name: sidecar
+      command: ["sleep", "5000"]
+```
+
+## Pod Security Policies
 
 Pod Security Policies allows you to define security settings at the cluster level. You can then apply them to target sets of Pods as part of the deployment process.
 

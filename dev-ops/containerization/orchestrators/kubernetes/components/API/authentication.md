@@ -6,7 +6,14 @@ Kubernetes does not have its built-in identity database and hence, it is impossi
 
 ### kubeconfig
 
-Cluster details and credentials are stored in a kubeconfig file. Many Kubernetes installations can automatically merge cluster endpoint details and credentials into your existing kubeconfig.
+You can use kubeconfig files to organize information about clusters, users, namespaces, credentials, and authentication mechanisms. The kubectl CLI uses kubeconfig files to find the information it needs to choose a cluster and communicate with the API server of a cluster.
+
+Many Kubernetes installations can automatically merge cluster endpoint details and credentials into your existing kubeconfig.
+
+```bash
+$ kubectl config view # uses default kubeconfig file
+$ kubectl config view --kubeconfig=my-custom-config
+```
 
 ```
 /home/<user>/.kube/config
@@ -20,6 +27,9 @@ clusters:
     - cluster:
         name: prod-shield
         server: https://<url-or-ip-address-of-api-server>:443
+        certificate-authority: /etc/kubernetes/pki/ca.crt
+        # better to convert the contents to base64 and pass directly
+        # cat ca.crt | base64
         certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0...LS0tCg==
 users:
 # each user requires a name and token

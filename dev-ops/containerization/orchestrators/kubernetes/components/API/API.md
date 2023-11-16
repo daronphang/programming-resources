@@ -57,6 +57,21 @@ New resources come in as alpha, progress through beta, and eventually reach stab
 
 Resources in alpha are experimental and should expect bugs, features to be dropped without warning, and changes as they graduate through beta to stable. Use it with extreme caution.
 
+```bash
+$ kubectl convert -f <old-file> --output-version <new-api>
+```
+
+### Deprecation policy rules
+
+1. API elements may only be removed by incrementing the version of the API group
+2. API objects must be able to round-trip between API versions in a given release without information loss, with the exception of whole REST resources that do not exist in some versions
+3. An API version in a given track may not be deprecated until a new API version at least as stable is released (GA can deprecate alpha and beta versions, but not the other way around)
+4. Other than the most recent API versions in each track, older API versions must be supported after their announced deprecation for a duration of no less than:
+
+- GA: 12 months or 3 releases (whichever is longer)
+- Beta: 9 months or 3 releases (whichever is longer)
+- Alpha: 0 releases
+
 ### Process flow
 
 1. Subject (user, Pods, kubelets, services, etc.) makes a request to the API server secured with TLS

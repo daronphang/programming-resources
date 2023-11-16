@@ -1,3 +1,18 @@
+## Aliases
+
+```
+k=kubectl
+ns=namespace
+po=pods
+rs=replicasets
+deploy=deployments
+svc=services
+netpol=networkpolicies
+pv=persistentvolumes
+pvc=persistentvolumeclaims
+sa=serviceaccounts
+```
+
 ## Create a Cluster
 
 Kubernetes is not IaC (Infrastructure-as-Code), but designed to run in the cloud and integrates with providers including AWS, GCP and OpenShift. However, you can run it locally to ensure your application runs effectively in production. To setup the cluster environment locally, can use Minikube, MicroK8s, K3s and Kind.
@@ -59,4 +74,37 @@ $ kubectl get deploy <deployment-name> -o yaml
 ```bash
 $ kubectl delete service hello-node
 $ kubectl delete deployment hello-node
+```
+
+## Namespaces
+
+```bash
+$ kubectl get pod -n <namespace>
+$ kubectl get deployment -n <namespace>
+$ kubectl get pod --all-namespaces
+$ kubectl config get-contexts
+```
+
+## Commands
+
+```bash
+$ kubectl run webapp-green --image kodekloud/webapp-color -- --color=green
+```
+
+## Create Configmaps
+
+```bash
+$ k create configmap webapp-config-map --from-literal=APP_COLOR=darkblue --from-literal=APP_OTHER=disregard
+```
+
+## Create Secrets
+
+```bash
+$ kubectl create secret generic <name> --from-literal=HELLO=WORLD
+```
+
+## Editing
+
+```bash
+$ kubectl edit pod <pod-name> # opens up text editor
 ```
