@@ -53,6 +53,7 @@ However, taints and tolerations **do not tell the Pod to go to a particular Node
 ```bash
 # no Pod can schedule onto node1 unless it has a matching toleration
 $ kubectl taint nodes node1 key1=value1:NoSchedule
+$ kubectl taint nodes node1 key1=value1:NoSchedule- # add - to remove taint
 ```
 
 ```yaml
@@ -71,9 +72,25 @@ tolerations:
   - key: "key1"
     operator: "Exists"
     effect: "NoSchedule"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      imagePullPolicy: IfNotPresent
+  tolerations:
+    - key: "example-key"
+      operator: "Exists"
+      effect: "NoSchedule"
 ```
 
-## Node Selectors
+## Node Selectors (Labels)
 
 NodeSelector is the simplest recommended form of node selection constraint. You can add the nodeSelector field to your Pod spec and specify the node labels you want the target node to have. Kubernetes only schedules the Pod onto nodes that have each of the labels you specify. However, for **more complex rules**, use node affinity and anti-affinity features.
 
@@ -92,6 +109,7 @@ spec:
 ```
 
 ```bash
+$ kubectl get nodes --show-labels
 $ kubectl label nodes <node-name> <key>=<value>
 $ kubectl label nodes node1 size=large
 ```

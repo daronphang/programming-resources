@@ -12,6 +12,16 @@ By default, a Pod is non-isolated for ingress and egress i.e. all inbound and ou
 
 Network policies **do not conflict but are additive**. If any policy or policies apply to a given Pod for a given direction, the connections allowed in that direction from that Pod is the union of what the applicable policies allow.
 
+### Selectors
+
+There are four kinds of selectors that can be specified in an ingress-from or egress-to section:
+
+- podSelector: This selects particular Pods in the same namespace as the NetworkPolicy
+- namespaceSelector: This selects particular namespaces for which all Pods should be allowed
+- namespaceSelector and podSelector: A single to/from entry that specifies both namespaceSelector and podSelector selects particular Pods within particular namespaces
+
+### Example
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -45,7 +55,7 @@ spec:
               project: myproject
           podSelector:
             matchLabels:
-            role: frontend
+              role: frontend
 
       ports:
         - protocol: TCP
@@ -54,6 +64,13 @@ spec:
     - to:
         - ipBlock:
             cidr: 10.0.0.0/24
+      ports:
+        - protocol: TCP
+          port: 5978
+    - to:
+        - podSelector:
+            matchLabels:
+              role: frontend
       ports:
         - protocol: TCP
           port: 5978

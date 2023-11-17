@@ -43,12 +43,12 @@ $ kubectl exec -it <pod> ls /var/run/secrets/kubernetes.io/serviceaccount
 
 A kubernetes.io/service-account-token type of Secret is used to store a token credential that identifies a ServiceAccount.
 
-Since 1.22, this Secret is no longer used to mount credentials into Pods, and obtaining tokens via the TokenRequest API via the service account admission controller is recommended instead of using service account token Secret objects.
+Since 1.22, this Secret is no longer used to mount credentials into Pods, and obtaining tokens via the TokenRequest API via the service account admission controller is recommended instead of using service account token Secret objects. Kubernetes gets a short-lived, **automatically rotating token using the TokenRequest API and mounts the token as a projected volume**.
 
 Tokens are more secure as they are audience bound, time bound and object bound. They are also not readable by other API clients.
 
 ```bash
-$ kubectl create token
+$ kubectl create token <service-account> # outputs a token
 ```
 
 ## UserAccounts vs ServiceAccounts

@@ -1,6 +1,10 @@
+## Communicating Sequential Processes (CSP)
+
+When it comes to concurrency, many programming languages adopt the Shared Memory/State Model. However, Go distinguishes itself by implementing CSP. In CSP, a program consists of parallel processes that do not share state; instead, they communicate and synchronize their actions using channels.
+
 ## Channels
 
-Channels are the connections between goroutines i.e. a communication mechanism that lets one goroutine send values to another goroutine. A channel has two principal operations, send and receive. Also supports a third operation, close, which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic. Receive operations on a close channel yield the values that have been sent until no more values are left.
+Channels are the connections between goroutines i.e. a communication mechanism that lets one goroutine send values to another goroutine. A channel has two principal operations, **send** and **receive**. Also supports a third operation, **close**, which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic. Receive operations on a close channel yield the values that have been sent until no more values are left.
 
 ### Send, Receive, Close
 
@@ -10,8 +14,8 @@ Channels support a third operation "close" which sets a flag indicating that no 
 
 ```go
 ch := make(chan int)    // ch has type 'chan int', unbuffered channel
-ch := make(chan, int, 0)  // unbuffered channel
-ch := make(chan, int, 3)  // buffered channel with capacity 3
+ch := make(chan int, 0)  // unbuffered channel
+ch := make(chan int, 3)  // buffered channel with capacity 3
 
 close(ch)
 
@@ -20,7 +24,7 @@ x = <-ch    // a receive expression in an assignment statement
 <-ch    // a receive statement, reuslt is discarded
 ```
 
-### Unbuffered Channels (Synchronous)
+## Unbuffered Channels (Synchronous)
 
 A send operation on an unbuffered channel blocks the sending goroutine until another goroutine executes a corresponding receive on the same channel, at which point the value is transmitted and both goroutines may continue. Conversely, if the receive operation is attempted first, the receiving goroutine is blocked until a send is transmitted.
 
@@ -42,7 +46,7 @@ func main() {
 }
 ```
 
-### Unidirectional Channel Types
+## Unidirectional Channel Types
 
 To document the intent exclusively and prevent misuse.
 
@@ -79,7 +83,7 @@ func main() {
 }
 ```
 
-### Buffered Channels
+## Buffered Channels
 
 A buffered channel has a queue of elements. The queue's maximum size is determined when it is created, by the capacity argument to make.
 
@@ -96,11 +100,11 @@ ch <- "C"
 fmt.Println(<-ch) // receive "A", frees up one space
 ```
 
-### Buffered vs Unbuffered
+## Buffered vs Unbuffered
 
 The choice between unbuffered and buffered channels may affect the correctness of a program. Unbuffered channels give stronger synchronization guarantees while in buffered channels, the operations are decoupled.
 
-### Cancellation
+## Cancellation
 
 Sometimes may need to instruct goroutine to stop what it is doing i.e. web server performing computation on behalf of a client that has disconnected.
 
@@ -139,75 +143,5 @@ for {
     case size, ok := <-fileSizes:
         // ...
     }
-}
-```
-
-## Examples
-
-### Looping in Parallel
-
-Problems that consist of subproblems that are completely independent of each other are described as "embarassingly parallel". These problems are the easiest kind to implement concurrently and enjoy performance that scales linearly with the amount of parallelism.
-
-There is no direct way to wait until a goroutine has finished, but we can change the inner goroutine to report its completion to the outer goroutine by sending an event on a shared channel.
-
-```go
-// makeThumbnails makes thumbnails of the specified files
-// takes a set of full-size images and produces thumbnail-size images
-// order doesn't matter
-
-func makeThumbnails(filenames []string) {
-    for _, f := range filenames {
-        if _, err := thumbnail.ImageFile(f); err != nil {
-            log.Println(err)
-        }
-    }
-}
-
-func makeThumbnails2(filenames []string) {
-    ch := make(chan struct{})
-
-    for _, f := range filenames {
-        // value of f is passed as an explicit argument
-        // this is to avoid reading the same value in inner goroutines
-        go func(f string) {
-            thumbnail.ImageFile(f) // NOTE: ignoring errors
-            ch <- struct{}{}
-        }(f)
-    }
-
-    // waits for goroutines to complete
-    // since we know there are len(filenames) inner goroutines,
-    // the outer goroutine need only to count that many events before it returns
-    for range filenames {
-        <-ch
-    }
-}
-
-// uses a buffered channel to return the names of generated image files
-// or an error if any step failed
-func makeThumbnails5(filenames []string) (thumbfiles []string, err error) {
-    type item struct {
-        thumbfile string
-        err
-        error
-    }
-
-    ch := make(chan item, len(filenames))
-
-    for _, f := range filenames {
-        go func(f string) {
-            var it item
-            it.thumbfile, it.err = thumbnail.ImageFile(f)
-            ch <- it
-        }(f)
-    }
-    for range filenames {
-        it := <-ch
-        if it.err != nil {
-            return nil, it.err
-        }
-        thumbfiles = append(thumbfiles, it.thumbfile)
-    }
-    return thumbfiles, nil
 }
 ```

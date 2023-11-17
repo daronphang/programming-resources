@@ -47,3 +47,33 @@ There are two types of volume binding mode: Immediate and WaitForFirstConsumer.
 Setting it to 'Immediate' will create the volume on the external storage system as soon as the PVC is created. If you have multiple datacenters or cloud regions, the volume might be created in a different region than the Pod that eventually consumes it.
 
 Setting it to 'WaitForFirstConsumer' will delay creation until a Pod using the PVC is created. This ensures that the volume will be created in the same datacenter or region as the Pod.
+
+## Example
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-pod
+spec:
+  containers:
+    - name: test
+      image: busybox:1.28
+      command: ["sh", "-c", 'echo "The app is running!" && tail -f /dev/null']
+      volumeMounts:
+        - name: config-vol
+          mountPath: /etc/config
+  volumes:
+    - name: config-vol
+      configMap:
+        name: log-config
+        items:
+          - key: log_level
+            path: log_level
+    - name: test-volume
+      hostPath:
+        # directory location on host
+        path: /data
+        # this field is optional
+        type: Directory
+```

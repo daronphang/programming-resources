@@ -14,9 +14,26 @@ spec:
     namespace: foo
   accessModes:
     - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+  capacity:
+    storage: 10Gi
+  hostPath:
+    path: "/mnt/data"
+  persistentVolumeReclaimPolicy: Retain
+```
+
+```bash
+$ kubectl get pv
+```
+
+### Pre-bind PV to PVC
+
+Use the ClaimRef field referencing a PVC that you will subsequently create.
+
+```yaml
+spec:
+  claimRef:
+    name: foo-pvc # name of PVC
+    namespace: foo
 ```
 
 ## Persistent Volume Claim (PVC)
@@ -41,4 +58,40 @@ spec:
   resources:
     requests:
       storage: 500Mi
+```
+
+```bash
+$ kubectl get pvc
+```
+
+### Pre-bind PVC to PV
+
+Use volumeName field.
+
+```yaml
+spec:
+  volumeName: foo-pv # name of PV
+```
+
+## Pod
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: task-pv-pod
+spec:
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: task-pv-claim
+  containers:
+    - name: task-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
 ```
