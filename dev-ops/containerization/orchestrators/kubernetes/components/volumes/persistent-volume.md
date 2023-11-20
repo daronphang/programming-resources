@@ -66,7 +66,7 @@ $ kubectl get pvc
 
 ### Pre-bind PVC to PV
 
-Use volumeName field.
+You can use volumeName field. The binding happens regardless of some volume matching criteria, including node affinity. The control plane still checks that **storage class, access modes, and requested storage size are valid**.
 
 ```yaml
 spec:

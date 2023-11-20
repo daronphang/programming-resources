@@ -4,7 +4,7 @@ SCs lets you dynamically create physical back-end storage resources that get aut
 
 When SCs are deployed, the SC watches the API server for new PVC objects referencing its name. When matching PVCs appear, the SC dynamically creates the required asset on the back-end storage system and maps it to a PV on Kubernetes. Apps can then claim it with a PVC.
 
-Key components:
+### Key components
 
 - SCs are immutable after they are deployed
 - Parameters block is for **plugin-specific values**, and each plugin is free to support its own set of values
@@ -15,18 +15,24 @@ You can configure as many SCs as you need; however, each class can only relate t
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-    name: fast-local
+  name: fast-local
 provisioner: ebs.csi.aws.com # tells k8s which plugin to use
 parameters: # lets you finely tune storage attributes
-    type: io1
-    iopsPerGB: "10"
-    encrypted: true
+  type: io1
+  iopsPerGB: "10"
+  encrypted: true
 allowedTopologies: # list where replicas should go
-- matchLabelExpressions:
-    - key: topology.ebs.csi.aws.com/zone
-    values:
-    - eu-west-1a
+  - matchLabelExpressions:
+      - key: topology.ebs.csi.aws.com/zone
+        values:
+          - eu-west-1a
 ```
+
+### Volume binding mode
+
+The volumeBindingMode field controls when volume binding and dynamic provisioning should occur. When unset, "Immediate" mode is used by default.
+
+The **Immediate** mode indicates that volume binding and dynamic provisioning occurs once the PersistentVolumeClaim is created. The **WaitForFirstConsumer** mode will delay the binding and provisioning of a PersistentVolume until a Pod using the PersistentVolumeClaim is created.
 
 ### Workflow
 

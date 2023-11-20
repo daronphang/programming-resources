@@ -45,20 +45,13 @@ Kubernetes-native apps can access ConfigMap data directly via the API without ne
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: multimap
+  name: test-conf
 data:
-  given: Nigel
-  family: Poulton
-```
-
-```yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-    name: test-conf
-data:
-    # pipe treats following as a single literal value i.e. full config file
-    test.conf: |
+  # key/value pairs
+  given: "Nigel"
+  family: "Poulton"
+  # pipe treats following as a single literal value i.e. full config file
+  test.conf: |
     env = plex-test
     endpoint = 0.0.0.0:31001
     char = utf8
@@ -75,7 +68,7 @@ $ kubectl describe cm testmap
 
 ## Injecting ConfigMap data into Pods
 
-There are three main ways to inejct ConfigMap data:
+There are three main ways to inject ConfigMap data:
 
 - As environment variables
 - As arguments to container startup commands
@@ -90,6 +83,8 @@ Use envFrom to define all of the ConfigMap's data as container environment varia
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: dapi-test-pod
 spec:
   containers:
     - name: ctr1
@@ -108,14 +103,42 @@ spec:
       # alternative, to inherit all env variables
       envFrom:
         - configMapRef:
-          name: multimap
+            name: multimap
         - secretRef:
-          name: secret
+            name: secret
+```
+
+```yaml
+# using configmap env variables in Pod commands
+# $(VAR_NAME) syntax
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dapi-test-pod
+spec:
+  containers:
+    - name: test-container
+      image: registry.k8s.io/busybox
+      command: ["/bin/echo", "$(SPECIAL_LEVEL_KEY) $(SPECIAL_TYPE_KEY)"]
+      env:
+        - name: SPECIAL_LEVEL_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: SPECIAL_LEVEL
+        - name: SPECIAL_TYPE_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: SPECIAL_TYPE
+  restartPolicy: Never
 ```
 
 ### Volumes
 
 Using ConfigMaps with volumes is the most flexible option. You can reference entire configuration files, as well as make updates and have them reflected in running containers. This means you can make changes to entries in a ConfigMap, after you have deployed a a container, and those changes will be reflected for running apps.
+
+Each property name in this ConfigMap becomes a new file in the mounted directory after you mount it. Use `cat` to look at the contents of each file and you’ll see the values from the ConfigMap. A ConfigMap is always mounted as **readOnly**.
 
 The high-level process for exposing ConfigMap data via a volume is as follows:
 
@@ -135,10 +158,50 @@ spec:
         - name: volmap
           configMap:
             name: multimap  # creates a ConfigMap volume
+            items:
+              # all contents stored in multimap.data.hello
+              # are mounted into the Pod in path /etc/name/world
+              - key: hello
+                path: world
     containers:
         - name: ctr
         image: nginx
         volumeMounts:
             - name: volmap
             mountPath: /etc/name
+```
+
+## Examples
+
+### Running shell script
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-script-configmap
+data:
+  my-script.sh: |
+    #!/bin/bash
+    echo "Hello, World!"
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: alpine
+      volumeMounts:
+        - name: my-script-volume
+          mountPath: /script
+      command: ["/script/my-script.sh"]
+  volumes:
+    - name: my-script-volume
+      configMap:
+        name: my-script-configmap
+        defaultMode: 0744
 ```

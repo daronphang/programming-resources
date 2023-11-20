@@ -109,6 +109,18 @@ $ kubectl edit pod <pod-name>
 apiVersion: v1
 kind: Pod
 metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
   name: hello-world
 spec:
   containers:
@@ -116,4 +128,28 @@ spec:
       image: ubuntu-sleeper
       command: ["sleep"] # same as ENTRYPOINT
       args: [10] # same as CMD
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: time-check
+  namespace: dv11987
+spec:
+  containers:
+    - name: time-check
+      image: busybox
+      command:
+        - "/bin/sh"
+        - "-c"
+      args:
+        - "while true; do date; sleep $TIME_FREQ;done >> /opt/time/time-check.log;"
+      envFrom:
+        - configMapRef:
+            name: time-config
+      volumeMounts:
+        - name: vol
+          mountPath: /opt/time
+  volumes:
+    - name: vol
 ```

@@ -47,7 +47,7 @@ spec:
               service:
                 name: service1
                 port:
-                  number: 80
+                  number: 80 # port of service
     - host: "*.foo.com"
       http:
         paths:

@@ -25,6 +25,10 @@ spec:
   selector:
     matchLabels:
       app: nginx
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   # Pod
   template:
     metadata:
@@ -74,6 +78,9 @@ Kubernetes know which Pods to terminate and replace via label selectors.
 ```
 
 ```bash
+$ kubectl set image deployments/<deployment-name> <container-name>=<image-name>:<version>
+$ kubectl set image deployments/nginx-deploy nginx=1.17
+
 $ kubectl apply -f deployment-def.yml --record
 $ kubectl rollout status deployment/myapp-deployment
 $ kubectl rollout history deployment/myapp-deployment

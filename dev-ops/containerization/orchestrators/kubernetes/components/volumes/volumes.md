@@ -48,6 +48,10 @@ Setting it to 'Immediate' will create the volume on the external storage system 
 
 Setting it to 'WaitForFirstConsumer' will delay creation until a Pod using the PVC is created. This ensures that the volume will be created in the same datacenter or region as the Pod.
 
+### emptyDir
+
+For a Pod that defines an emptyDir volume, the volume is created when the Pod is assigned to a node. All containers in the Pod can read and write the same files in the emptyDir volume, though it can be mounted at the same or different paths in each container. When a Pod is removed, the **data in emptyDir is deleted permanently**.
+
 ## Example
 
 ```yaml
@@ -63,6 +67,8 @@ spec:
       volumeMounts:
         - name: config-vol
           mountPath: /etc/config
+        - name: empty-vol
+          mountPath: /etc/empty
   volumes:
     - name: config-vol
       configMap:
@@ -76,4 +82,6 @@ spec:
         path: /data
         # this field is optional
         type: Directory
+    - name: empty-vol
+      emptyDir: {}
 ```

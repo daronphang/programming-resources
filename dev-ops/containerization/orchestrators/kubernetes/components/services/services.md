@@ -46,6 +46,11 @@ In a microservices architecture, the services will be realized as different Pods
 - Container in a Pod can communicate with another by directly addressing its IP address (brittle approach as Pods are dispensable and can be restarted)
 - Recommended approach between containers in different Pods is through Services, and can connect by using DNS name
 
+```bash
+$ ping <IP-address>
+$ curl <service-name>
+```
+
 ### Port Forwarding
 
 Can access a Service without binding it by using Kubectl's integrated port-forwarding functionality. Works without Services i.e. can directly connect to a Pod in your deployment.
