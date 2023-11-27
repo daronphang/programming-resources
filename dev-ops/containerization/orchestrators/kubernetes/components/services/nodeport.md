@@ -22,6 +22,10 @@ spec:
     app: hello-world
 ```
 
+```bash
+$ curl localhost:30050 # nodeport
+```
+
 ### Process flow
 
 <img src="../../assets/nodeport.png">

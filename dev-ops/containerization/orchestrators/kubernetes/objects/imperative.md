@@ -1,16 +1,18 @@
 ## Aliases
 
 ```
-k=kubectl
-ns=namespace
-po=pods
-rs=replicasets
-deploy=deployments
-svc=services
-netpol=networkpolicies
-pv=persistentvolumes
-pvc=persistentvolumeclaims
-sa=serviceaccounts
+k       kubectl
+ns      namespace
+po      pods
+rs      replicasets
+deploy  deployments
+svc     services
+netpol  networkpolicies
+pv      persistentvolumes
+pvc     persistentvolumeclaims
+sa      serviceaccounts
+cj      cronjobs
+crd     customresourcedefintions
 ```
 
 ## Create a Cluster
@@ -107,4 +109,10 @@ $ kubectl create secret generic <name> --from-literal=HELLO=WORLD
 
 ```bash
 $ kubectl edit pod <pod-name> # opens up text editor
+```
+
+## Exposing
+
+```bash
+$ k expose deployment redis --selector name=redis-pod --port 6379 --target-port 6379 --type ClusterIP --name messaging-service --namespace marketing
 ```

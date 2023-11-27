@@ -116,6 +116,11 @@ spec:
       image: nginx:1.14.2
       ports:
         - containerPort: 80
+      env:
+        - name: DEMO_GREETING
+          value: "Hello from the environment"
+        - name: DEMO_FAREWELL
+          value: "Such a sweet sorrow"
 
 ---
 apiVersion: v1

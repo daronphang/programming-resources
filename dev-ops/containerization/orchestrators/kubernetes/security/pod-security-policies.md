@@ -9,7 +9,7 @@ metadata:
   name: security-context-demo
 spec:
   securityContext:
-    runAsUser: 1000
+    runAsUser: 1000 # 0 for root
     runAsGroup: 3000
     fsGroup: 2000
   volumes:

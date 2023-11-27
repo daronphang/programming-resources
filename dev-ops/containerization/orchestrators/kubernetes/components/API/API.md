@@ -15,26 +15,58 @@ $ for kind in `kubectl api-resources | tail +2 | awk '{ print $1 }'`; \
 do kubectl explain $kind; done | grep -e "KIND:" -e "VERSION:"
 ```
 
-### Core group
+### API Core groups (legacy)
 
 Resources in the core group are mature objects that were created in the early days of Kubernetes before the API was divided into groups i.e. Pods, nodes, Services, Secrets, ServiceAccounts. They are located in /api/v1. New resources are added to a named group, and not to the core group.
 
 ```
+/api/v1
+
 Pods        /api/v1/namespaces/<namespace>/pods/
 Services    /api/v1/namespaces/<namespace>/services/
 Nodes       /api/v1/nodes/
 Namespaces  /api/v1/namespaces/
 ```
 
-### Named group
+### API Named groups
 
 All new resources go into named groups, and each refers to a collection of related resources. Dividing the API into smaller groups makes it more scalable and easier to navigate.
 
 ```
+/apis/$GROUP_NAME/$VERSION
+
 Ingress         /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/
 RoleBinding     /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/
 ClusterRole     /apis/rbac.authorization.k8s.io/v1/clusterroles/
 StorageClass    /apis/storage.k8s.io/v1/storageclasses/
+```
+
+### Enabling/disabling API groups
+
+you can enable or disable them by setting --runtime-config on the API server. The flag accepts comma separated key=value pairs. If value part is omitted, it is treated as true. After making changes, the API server needs to be restarted.
+
+```bash
+$ vim /etc/kubernetes/manifests/kube-apiserver.yaml
+```
+
+```conf
+--runtime-config=batch/v1=false,batch/v2alpha1
+```
+
+### Versioning
+
+New resources come in as alpha, progress through beta, and eventually reach stable status.
+
+Resources in alpha are experimental and should expect bugs, features to be dropped without warning, and changes as they graduate through beta to stable. Use it with extreme caution.
+
+You can use `kubectl convert` to convert config files between different API versions.
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-convert-plugin
+
+```bash
+$ kubectl convert -f <old-file> --output-version <new-api>
+$ kubectl convert -f pod.yaml # convert to latest version
+$ k convert -f ingress-old.yaml --output-version networking.k8s.io/v1
 ```
 
 ### Accessing the API
@@ -49,16 +81,6 @@ The simplest way to do this is to run a kubectl proxy on your localhost adapter 
 
 ```bash
 $ kubectl proxy --port 9000
-```
-
-### Versioning
-
-New resources come in as alpha, progress through beta, and eventually reach stable status.
-
-Resources in alpha are experimental and should expect bugs, features to be dropped without warning, and changes as they graduate through beta to stable. Use it with extreme caution.
-
-```bash
-$ kubectl convert -f <old-file> --output-version <new-api>
 ```
 
 ### Deprecation policy rules

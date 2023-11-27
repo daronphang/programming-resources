@@ -13,6 +13,10 @@ When you combine a custom resource with a custom controller, custom resources pr
 
 ## Custom Resource Defintion (CRD)
 
+```bash
+$ kubectl describe crd <crd-name>
+```
+
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -54,6 +58,39 @@ spec:
     # shortNames allow shorter string to match your resource on the CLI
     shortNames:
       - ct
+```
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: internals.datasets.kodekloud.com
+spec:
+  group: datasets.kodekloud.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                internalLoad:
+                  type: string
+                range:
+                  type: integer
+                percentage:
+                  type: string
+  scope: Namespaced
+  names:
+    plural: internals
+    singular: internal
+    kind: Internal
+    shortNames:
+      - int
 ```
 
 ## Operator framework

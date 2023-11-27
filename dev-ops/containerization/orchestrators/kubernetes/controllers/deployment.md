@@ -90,6 +90,16 @@ $ kubectl rollout history deployment/myapp-deployment
 
 When performing a rolling update, older ReplicaSets are wound down and no longer manage any Pods. However, it still exists with its configuration intact to provide the option for reverting to previous versions i.e. old and new ReplicaSets coexist.
 
+### Scaling
+
+```bash
+$ kubectl scale deployment --replicas=5 my-app
+```
+
+### Deployment strategies
+
+To use blue green or canary, deploy a newer version of the application in a separate deployment (with the same labels), and traffic will be split between the old and new versions.
+
 ```bash
 $ kubectl rollout undo deployment/myapp-deployment
 ```

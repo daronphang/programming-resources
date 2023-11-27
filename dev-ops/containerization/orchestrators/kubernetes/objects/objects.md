@@ -57,6 +57,8 @@ environment: dev, qa, production
 tier: frontend, backend, cache
 ```
 
+labels/selectors in controllers?
+
 ### selectors
 
 Selectors act as filters i.e. help us in finding the labels attached to a kind. The label selector is the core grouping primitive in Kubernetes. Selectors depend on labels to select a group of resources such as Pods.

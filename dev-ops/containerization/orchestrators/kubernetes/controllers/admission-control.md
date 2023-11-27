@@ -14,10 +14,14 @@ If any admission controller rejects a request, the request will not check the re
 Examples of admission controllers are AlwaysPullImages, DefaultStorageClass, EventRateLimit, NamespaceExists, etc. Updating of admission controllers can be performed in:
 
 1. kube-apiserver.service
-2. `/etc/kubernetes/manifests/kube-apiserver.yaml`
+2. `/etc/kubernetes/manifests/kube-apiserver.yaml` with fields --enable-admission-plugins and --disable-admission-plugins
 
 ```bash
-$ kube-apiserver -h | grep enable-admission-plugins
+# need to execute command in apiserver container
+# check for enabled plugins
+$ ps -ef | grep kube-apiserver | grep admission-plugins
+
+$ kubectl exec -it kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | grep enable-admission-plugins
 ```
 
 ### Example
@@ -27,13 +31,16 @@ An example is the AlwaysPullImages controller. It is a mutating controller that 
 - Prevents the use of locally cached images that could be malicious
 - Forcing the container runtime to present valid credentials to the registry to get the image
 
-### Custom controllers
+## Custom controllers
 
 To use a custom controller, you need to deploy a webhook server with custom logic that returns either an allow or reject JSON response.
 
+Each webhook must specify a list of rules used to determine if a request to the API server should be sent to the webhook. Each rule specifies one or more operations, apiGroups, apiVersions, and resources, and a resource scope
+
 ```yaml
+# when creating pods, this custom validating controller will run
 apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingWebhookConfiguration
+kind: ValidatingWebhookConfiguration # or MutatingWebhookConfiguration
 metadata:
   name: "pod-policy.example.com"
 webhooks:
@@ -52,4 +59,21 @@ webhooks:
     admissionReviewVersions: ["v1"]
     sideEffects: None
     timeoutSeconds: 5
+```
+
+### Response
+
+```json
+{
+  "apiVersion": "admission.k8s.io/v1",
+  "kind": "AdmissionReview",
+  "response": {
+    "uid": "<value from request.uid>",
+    "allowed": true,
+    "patchType": "JSONPatch",
+    // base64 encoded
+    // [{"op": "add", "path": "/spec/replicas", "value": 3}]
+    "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
+  }
+}
 ```

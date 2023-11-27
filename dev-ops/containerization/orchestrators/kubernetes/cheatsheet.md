@@ -92,3 +92,9 @@ $ kubectl get pods -o wide # with additional info
 $ kubectl logs -f <pod-name>
 $ kubectl logs -f <container-name> # for multiple containers
 ```
+
+### Labels
+
+```bash
+$ kubectl get all --selector key=value
+```

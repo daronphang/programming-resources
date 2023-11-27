@@ -16,6 +16,10 @@ You must include a flag in your policy to indicate which authorization module yo
 --authorization-mode=ABAC,RBAC,Webhook
 ```
 
+```
+/etc/kubernetes/manifests/kube-apiserver.yaml
+```
+
 ## Node
 
 A special-purpose authorization mode that grants permissions to kubelets based on the pods they are scheduled to run.
@@ -67,9 +71,10 @@ metadata:
   namespace: shield
   name: read-deployments
 rules:
-  - apiGroups: ["apps"]
-    resources: ["deployments"]
+  - apiGroups: ["apps", ""]
+    resources: ["deployments", "persistentvolumes", "nodes"]
     verbs: ["get", "watch", "list"]
+    resourceNames: ["my-deployment"]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -84,7 +89,7 @@ subjects:
 roleRef:
   kind: Role
   name: read-deployments # Role to bind to the user
-  apiGroup: authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io
 ```
 
 ### Role
@@ -131,6 +136,20 @@ rules:
   - apiGroups: ["apps"]
     resources: ["deployments"]
     verbs: ["get", "watch", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-secrets-global
+subjects:
+  - kind: Group
+    name: manager # Name is case sensitive
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io
 ```
 
 ```bash

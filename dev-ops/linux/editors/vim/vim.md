@@ -76,3 +76,13 @@ ctrl+w  +       Increase window height
 ctrl+w  -       Decrease window height
 ctrl+w  =       Reset window height
 ```
+
+## Indenting
+
+```
+:set paste    # turn off auto indenting
+:set nopaste
+
+>10>            # indent 10 lines to the right
+<5<             # indent 5 lines to the left
+```
