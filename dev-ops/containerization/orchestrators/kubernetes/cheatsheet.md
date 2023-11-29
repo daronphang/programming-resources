@@ -91,6 +91,9 @@ $ kubectl get pods -o wide # with additional info
 ```bash
 $ kubectl logs -f <pod-name>
 $ kubectl logs -f <container-name> # for multiple containers
+
+$ vim /var/log/pods
+$ journalctl | grep apiserver
 ```
 
 ### Labels

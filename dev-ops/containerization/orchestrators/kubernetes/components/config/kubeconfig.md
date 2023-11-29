@@ -15,6 +15,7 @@ The loading order follows these rules:
 ```bash
 $ kubectl config view # uses default kubeconfig file
 $ kubectl config view --kubeconfig=my-custom-config
+$ kubectl config get-contexts
 
 $ k config use-context research --kubeconfig my-kube-config
 ```

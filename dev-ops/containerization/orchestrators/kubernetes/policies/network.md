@@ -20,6 +20,30 @@ There are four kinds of selectors that can be specified in an ingress-from or eg
 - namespaceSelector: This selects particular namespaces for which all Pods should be allowed
 - namespaceSelector and podSelector: A single to/from entry that specifies both namespaceSelector and podSelector selects particular Pods within particular namespaces
 
+### Targeting namespaces
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np
+  namespace: space1
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: space2
+    - ports:
+        - protocol: TCP
+          port: 53
+        - protocol: UDP
+          port: 53
+```
+
 ### Example
 
 ```yaml

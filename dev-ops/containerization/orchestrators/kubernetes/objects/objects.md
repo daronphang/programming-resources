@@ -65,7 +65,9 @@ Selectors act as filters i.e. help us in finding the labels attached to a kind. 
 
 ### matchExpressions, matchLabels
 
-matchLabels is a map of key/value pairs and supports exact matching. matchExpressions is more expressive in nature and supports set-based matching. Only Job, Deployment, ReplicaSet, and DaemonSet support matchLabels.
+matchLabels is a map of key/value pairs and supports exact matching.
+
+matchExpressions is more expressive in nature and supports set-based matching. Only Job, Deployment, ReplicaSet, and DaemonSet support matchLabels.
 
 ```yaml
 selector:

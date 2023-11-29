@@ -18,6 +18,8 @@ As C# is a hybrid of numerous languages, the result is a product that is as synt
 
 C# demands that all program logic be contained with a type definition. A type is a general term referring to a member of the set: class, interface, structure, enumeration, and delegate. Unlike other languages, it is **not possible** to create global functions or global points of data.
 
+The class that defines the Main() is termed the application object. It is possible for a single executable application to have more than one application object (useful for performing unit tests), but the compiler must know which Main() should be used as the entry point. This can be done via '<StartupObject>' element in the project file.
+
 ## Console app
 
 ```c#
@@ -28,7 +30,11 @@ namespace Basics
     {
         static void Main(string[] args)
         {
-        Console.WriteLine("Hello World!"); // a statement }
+            Console.WriteLine("Hello World!"); // a statement }
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine("Arg: {0}", args[i]);
+            }
         }
     } // a close brace indicates the end of a block
 }

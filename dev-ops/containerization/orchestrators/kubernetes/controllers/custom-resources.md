@@ -14,6 +14,7 @@ When you combine a custom resource with a custom controller, custom resources pr
 ## Custom Resource Defintion (CRD)
 
 ```bash
+$ kubectl get crds -A
 $ kubectl describe crd <crd-name>
 ```
 

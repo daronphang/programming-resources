@@ -24,9 +24,9 @@ For controller configurations, you can deploy a ConfigMap. You also need a Servi
 
 ### Resource
 
-**Ingress and its corresponding service need to be in same namespace** otherwise ingress cannot discover endpoints from the service.
+**Ingress and its corresponding service need to be in same namespace**; otherwise ingress cannot discover endpoints from the service.
 
-Ingress resources are namespaced.
+If the ingressClassName is omitted, the default should be defined through an IngressClass resource.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -37,6 +37,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx-example
   rules:
     - host: "foo.bar.com"
       http:
@@ -74,6 +75,27 @@ spec:
     app: webapp-pay
   sessionAffinity: None
   type: ClusterIP
+```
+
+### Ingress class
+
+An Ingress resource can target a specific ingress controller instance, which is useful when running multiple ingress controllers in the same cluster. To target a specific ingress controller, you must first install that ingress controller with a unique class name.
+
+Ingresses can be implemented by different controllers, often with different configuration. Each Ingress should specify a class, a reference to an IngressClass resource that contains additional configuration including the name of the controller that should implement the class.
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: external-lb
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true" # sets the default ingress class if not specified
+spec:
+  controller: example.com/ingress-controller
+  parameters:
+    apiGroup: k8s.example.com
+    kind: IngressParameters
+    name: external-lb
 ```
 
 ### Ingress Controller and Service

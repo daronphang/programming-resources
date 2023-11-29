@@ -41,13 +41,29 @@ ClusterRole     /apis/rbac.authorization.k8s.io/v1/clusterroles/
 StorageClass    /apis/storage.k8s.io/v1/storageclasses/
 ```
 
-### Enabling/disabling API groups
+### Modifying API server
 
-you can enable or disable them by setting --runtime-config on the API server. The flag accepts comma separated key=value pairs. If value part is omitted, it is treated as true. After making changes, the API server needs to be restarted.
+kube-apiserver runs as a static pod on master node and static pod definition files are available at a path defined by parameter called **staticPodPath**.
+
+The API server configurations are stored under `/etc/kubernetes/manifests/kube-apiserver.yaml`. This file is monitored by the Kubelet service, which runs the kube-apiserver process in a container. If the Kubelet detects a chance in that file, it restarts the container with the updated configuration.
+
+It is recommended to make a copy before performing any changes.
 
 ```bash
+$ cp /etc/kubernetes/manifests/kube-apiserver.yaml . # not in same directory as manifests
 $ vim /etc/kubernetes/manifests/kube-apiserver.yaml
+
+# validating changes
+$ watch crictl ps
+$ ps aux | grep kube-apiserver | grep privileged
+
+# restarting
+$ systemctl restart kubelet.service
 ```
+
+### Enabling/disabling API groups
+
+You can enable or disable them by setting --runtime-config on the API server. The flag accepts comma separated key=value pairs. If value part is omitted, it is treated as true.
 
 ```conf
 --runtime-config=batch/v1=false,batch/v2alpha1
