@@ -21,7 +21,3 @@ Use cases include:
 - Enabling developers to test applications against production data without affecting production users
 - Combining several databases into a single database
 - Sending ongoing copies of data to other target sources (replication)
-
-## AWS DataSync
-
-Moves large amount of data from on-premises to AWS. The replication tasks are **incremental** after the first full load.

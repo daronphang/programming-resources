@@ -14,7 +14,7 @@ Both servers are available and hence, can perform load balancing. Works better f
 
 ## Elasticity
 
-Once a system is scalable, elasticity means that there will be some '**auto-scaling**' so that the system can scale based on the load/demand. Elasticity is cloud-friendly i.e. pay-per-use, match demand, optimizing costs, etc.
+Once a system is scalable, elasticity means that there will be some '**auto-scaling**' so that the system can scale based on the load/demand i.e ability to handle bursts of traffic. Elasticity is cloud-friendly i.e. pay-per-use, match demand, optimizing costs, etc.
 
 ## Agility
 

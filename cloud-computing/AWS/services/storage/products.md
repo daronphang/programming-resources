@@ -21,7 +21,7 @@ EBS volumes act similarly to external drives:
 
 ### Volume Types
 
-EBS volumes are organized into SSDs and HDDs. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for large streaming workloads that need **high throughput** performance.
+EBS volumes are organized into SSDs and HDDs. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for streaming large workloads that need **high throughput** performance.
 
 ## EBS Snapshots
 
@@ -46,7 +46,7 @@ Amazon EFS is a **network file system (NFS) that works only on Linux** provides 
 
 As you add and remove files, EFS grows and shrinks automatically. It **can scale on demand to petabytes without disrupting applications**. It is the only cloud-native shared file system with fully automatic lifecycle management. There is no need for provisioning or managing storage capacity and performance.
 
-Amazon EFS is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access EFS using AWS Direct Connect.
+Amazon EFS is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access **data concurrently across multiple Availability Zones, Regions and VPCs**. Additionally, on-premises servers can access EFS using AWS Direct Connect.
 
 ### EFS Infrequent Access (EFS-IA)
 
@@ -64,4 +64,6 @@ Lustre is a fully managed, high-performance, scalable file storage for **High Pe
 
 ## AWS Storage Gateway
 
-AWS Storage Gateway is used to bridge between on-premise data and cloud data in S3 i.e. hybrid. Behind the scenes, the Storage Gateway will be using Amazon EBS, S3 and Glacier.
+AWS Storage Gateway is a hybrid service that provides on-premises applications with access to virtually unlimited cloud storage. Behind the scenes, the Storage Gateway will be using Amazon EBS, S3 and Glacier. All data transferred between the gateway and AWS storage is encrypted using SSL.
+
+Supports Tape Gateway, File Gateway and Volume Gateway.

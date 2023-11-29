@@ -13,15 +13,15 @@ Amazon Sagemaker is a cloud-based machine-learning platform that allows users to
 - Labeling
 - Training
 
+## Amazon Augmented AI
+
+Amazon Augmented AI provides built-in human review workflows for common machine learning use cases, such as content moderation and text extraction from documents.
+
+With Amazon A2I, a person can also create their own workflows for machine learning models built on Amazon SageMaker or any other tools.
+
 ## Amazon Textract
 
 Amazon Textract is a machine learning service that automatically extracts text and data from scanned documents.
-
-## Amazon Augmented AI
-
-Amazon Augmented AI provides built-in human review worklows for common machine learning use cases, such as content moderation and text extraction from documents.
-
-With Amazon A2I, a person can also create their own workflows for machine learning models built on Amazon SageMaker or any other tools.
 
 ## Amazon Polly
 
@@ -31,14 +31,6 @@ Amazon Polly is a machine learning service that converts text to speech. This se
 
 Automatically converts speech to text using a deep learning process called automatic speech recognition (ASR). Supports Automatic Language Identification for multi-lingual audio.
 
-## Amazon Rekognition
-
-Find objects, people, text, scenes in images and vidoes using ML. Able to perform facial analysis and facial search to do user verification, people counting, etc.
-
-## Amazon Translate
-
-Provides natural and accurate language translation.
-
 ## Amazon Lex
 
 Provides ASR to convert speech to text (using same technology that powers Alexa). Helps build chatbots and call center bots.
@@ -46,6 +38,14 @@ Provides ASR to convert speech to text (using same technology that powers Alexa)
 ## Amazon Connect
 
 Cloud-based virtual contact center to receive calls and create contact flows. Can integrate with other Customer Relations Management (CRM) systems or AWS.
+
+## Amazon Rekognition
+
+Find objects, people, text, scenes in images and vidoes using ML. Able to perform facial analysis and facial search to do user verification, people counting, etc.
+
+## Amazon Translate
+
+Provides natural and accurate language translation.
 
 ## Amazon Comprehend
 

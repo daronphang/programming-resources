@@ -94,3 +94,10 @@ $ sudo mount -t cifs -o credentials=abs/path/to/.cifs //10.195.111.11/F10_PEE_UI
 ```bash
 $ top -p <PID> -p <PID>  # add Last Used CPU by pressing f followed by space
 ```
+
+### Checking Directory Size
+
+```bash
+$ df -h
+$ sudo du -h --max-depth=1 /var
+```

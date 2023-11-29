@@ -1,3 +1,20 @@
+## Aliases
+
+```
+k       kubectl
+ns      namespace
+po      pods
+rs      replicasets
+deploy  deployments
+svc     services
+netpol  networkpolicies
+pv      persistentvolumes
+pvc     persistentvolumeclaims
+sa      serviceaccounts
+cj      cronjobs
+crd     customresourcedefintions
+```
+
 ## Create a Cluster
 
 Kubernetes is not IaC (Infrastructure-as-Code), but designed to run in the cloud and integrates with providers including AWS, GCP and OpenShift. However, you can run it locally to ensure your application runs effectively in production. To setup the cluster environment locally, can use Minikube, MicroK8s, K3s and Kind.
@@ -12,8 +29,11 @@ Runs on any Linux distribution without additional external dependencies i.e. lig
 
 ## Create a Pod
 
+Use dry-run option if you want to test whether the resource can be created, and if your command is right.
+
 ```bash
 $ kubectl run nginx --image nginx:latest
+$ kubectl run nginx --image=nginx --dry-run=client -o yaml > nginx-pod.yaml
 ```
 
 ## Create a Deployment
@@ -45,9 +65,54 @@ Proxy will forward communications into the clusterwide, private network and henc
 $ kubectl proxy # to run in a separate terminal
 ```
 
+## Output in YAML
+
+```bash
+$ kubectl get deploy <deployment-name> -o yaml
+```
+
 ## Clean Up
 
 ```bash
 $ kubectl delete service hello-node
 $ kubectl delete deployment hello-node
+```
+
+## Namespaces
+
+```bash
+$ kubectl get pod -n <namespace>
+$ kubectl get deployment -n <namespace>
+$ kubectl get pod --all-namespaces
+$ kubectl config get-contexts
+```
+
+## Commands
+
+```bash
+$ kubectl run webapp-green --image kodekloud/webapp-color -- --color=green
+```
+
+## Create Configmaps
+
+```bash
+$ k create configmap webapp-config-map --from-literal=APP_COLOR=darkblue --from-literal=APP_OTHER=disregard
+```
+
+## Create Secrets
+
+```bash
+$ kubectl create secret generic <name> --from-literal=HELLO=WORLD
+```
+
+## Editing
+
+```bash
+$ kubectl edit pod <pod-name> # opens up text editor
+```
+
+## Exposing
+
+```bash
+$ k expose deployment redis --selector name=redis-pod --port 6379 --target-port 6379 --type ClusterIP --name messaging-service --namespace marketing
 ```

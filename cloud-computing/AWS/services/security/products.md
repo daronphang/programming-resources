@@ -24,6 +24,8 @@ Automatically protects all AWS customers at no cost. It protects your AWS resour
 
 As network traffic comes into your applications, AWS Shield Standard uses a variety of analysis techniques to detect malicious traffic in real time and automatically mitigates it.
 
+Provides expanded DDoS attack protection for web applications running on EC2, ELB, CloudFront, Route 53, and AWS Global Accelerator.
+
 ### Advanced
 
 A paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated DDoS attacks, and with **24/7 support**.
@@ -33,6 +35,8 @@ It also integrates with other services such as Amazon CloudFront, Amazon Route 5
 ## AWS Key Management Service (KMS)
 
 You must ensure that your applications' data is secure while in storage (**encryption at rest**) and while it is transmitted (**encryption in transit**).
+
+Encryption is always enabled by default for AWS CloudTrail Logs, AWS Storage Gateway and S3. For other services (EBS, EFS, RDS), encryption is an optional feature that must be enabled by the user.
 
 AWS KMS enables you to perform encryption operations through the use of cryptographic keys. You can use AWS KMS to create, manage and use cryptographic keys. Your keys never leave KMS, and you are always in control of them.
 
@@ -48,6 +52,8 @@ Types of Customer Master Keys (CMK):
 AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications. Fucntions at Layer 7 (HTTP/HTTPS).
 
 AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, SQL injection, XSS, etc.
+
+Charges are based on the number of web ACLs you create, and the number of rules that you add per web ACL, and the number of web requests you receive.
 
 ## Amazon Inspector
 
@@ -72,15 +78,6 @@ Amazon Macie is a fully managed data security and data privacy service that uses
 ## AWS Secrets Manager
 
 AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. Secrets are encrypted using KMS.
-
-## AWS Network Firewall
-
-Protects your entire VPC from Layer 3 to Layer 7. You can inspect, in any direction:
-
-- VPC to VPC traffic
-- Outbound to internet
-- Inbound from internet
-- To/from Direct Connect and Site-to-Site VPN
 
 ## Penetration Testing
 

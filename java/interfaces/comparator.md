@@ -88,4 +88,10 @@ Arrays.sort(
         (s,t) => Integer.compare(s.length(), t.length()),
     )
 )
+
+// sorting 2D arrays by one field
+Arrays.sort(
+  flowers,
+  Comparator.comparingInt((x) -> x[0])
+);
 ```

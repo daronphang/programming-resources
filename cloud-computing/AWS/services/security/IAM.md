@@ -75,7 +75,13 @@ When someone assumes an IAM role, they abandon all previous permissions they had
 
 ## Mutli-factor authentication (MFA)
 
-In IAM, MFA provides an extra layer of security for your AWS account. MFA device options include Google Authenticator, Authy, YubiKey Fob
+In IAM, MFA provides an extra layer of security for your AWS account. MFA device options include Google Authenticator, Authy, YubiKey Fob.
+
+There are three types of MFA:
+
+- Hardware: A device that generates a six-digit numeric code
+- Virtual: A software app that generates a six-digit numeric code
+- U2F: A device that you plug into a USB port on your computer instead of manually entering a code
 
 ### Elements
 

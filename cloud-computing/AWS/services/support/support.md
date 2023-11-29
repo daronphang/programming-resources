@@ -25,7 +25,7 @@ Have access to features such as:
 
 Have access to features such as:
 
-- Use-case guidance to identify AWS offerings, features, and services that can best support your specific needs
+- Use-case/architectural guidance to identify AWS offerings, features, and services that can best support your specific needs
 - All AWS Trusted Advisor checks
 - Limited support for third-party software, such as common OS and application stack components
 - Call or chat with technical support (24/7)
@@ -45,6 +45,7 @@ Have access to proactive support services such as:
 - Infrastructure Event Management support (one per year)
 - Support automation workflows
 - 30 minutes or less response time for business-critical issues
+- Online training with self-paced labs
 
 #### Technical Account Manager (TAM)
 
@@ -54,6 +55,7 @@ TAM is your primary point of contact at AWS.
 
 Similar to Enterprise On-Ramp, but with additional features such as:
 
+- Designated TAM to coorindate access to proactive/preventive programs and AWS SMEs
 - Training and Game Days to drive innovation
 - 15 minutes or less response time for business-critical issues
 
@@ -62,3 +64,10 @@ Similar to Enterprise On-Ramp, but with additional features such as:
 AWS Marketplace is a digital catalog that includes software listings from independent software vendors. You can use AWS Marketplace to find, test, and buy software that runs on AWS.
 
 You can explore software solutions by industry and use case i.e. Infrastructure Software, DevOps, IoT, Machine Learning, etc.
+
+## AWS Partner Network (APN)
+
+The AWS APN is a global community of partners that lverages programs, expertise, and resources to build, market and sell customer offerings. Available entities include:
+
+- Consulting
+- Technology

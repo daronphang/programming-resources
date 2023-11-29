@@ -2,6 +2,8 @@
 
 Amazon CloudWatch is a web service that enables you to monitor and manage various metrics and configure alarm actions based on data from those metrics. AWS resources send metrics and logs to CloudWatch, which uses them to create graphs automatically and show how performance has changed over time.
 
+CloudWatch is built for DevOps engineers, developers, site reliability engineers (SREs) and IT managers. It provides data and actionable insights to monitor applications, respond to system-wide performance changes, optimize resource utilization, and get a unified view of operational health.
+
 For instance, you can create an alarm that automatically stops an EC2 instance when the CPU utilization percentage remains below a certain threshold for a specified period.
 
 ### Metrics
@@ -19,6 +21,10 @@ By default, no logs from your EC2 instance are pushed to CloudWatch. You need to
 ## Amazon EventBridge (CloudWatch Events)
 
 Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
+
+### Event Bus
+
+An event bus is a router that receives events and delivers them to zero or more destinations (targets). Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.
 
 You can send events to the following event buses:
 
@@ -63,9 +69,11 @@ Allows you to get visual analysis of your applications by **tracing requests mad
 
 For service, shows the health for all Regions and services. For account, it provides alerts and remediation guidance when AWS is experiencing events that may impact you.
 
+While the Service Health Dashboard dispalys the general status of AWS services, Personal Health dashboard gives you a personalized view of the performance and availability of the AWS services underlying your AWS resources.
+
 ## AWS Trusted Advisor
 
-AWS Trusted Advisor is a web service that inspects your AWS environment and provides **real-time recommendations** in accordance with AWS best practices.
+AWS Trusted Advisor is a web service that inspects your AWS environment and provides **real-time recommendations** to help you provision your resources in accordance with AWS best practices.
 
 Trusted Advisor compares its findings to AWS best practices in five categories:
 
@@ -89,7 +97,7 @@ There are core checks for each category.
 
 - S3 Bucket permissions
 - Security Groups (unrestricted ports)
-- IAM use (one IAM user minimum)
+- IAM user (one IAM user minimum)
 - MFA on Root Account
 - EBS Public Snapshots
 - RDS Public Snapshots

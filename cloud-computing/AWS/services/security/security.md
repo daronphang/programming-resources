@@ -8,6 +8,7 @@ Customers are responsible for security **in** the cloud i.e. everything that the
 - Platform, applications, Identity and Access Management (IAM)
 - Operating systems, network and firewall configuration
 - Client-side data encryption, server-side data encryption, network traffic protection
+- Management of guest OS (updates and security patches)
 
 AWS is responsible for security **of** the cloud. AWS operates, manages, and controls the components at all layers of the infrastructure. Although you cannot visit the data centers, AWS provides reports from third-party auditors. AWS manages the physical infrastructure that hosts your resources:
 

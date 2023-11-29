@@ -1,6 +1,6 @@
 ### Environment Variables
 
-```console
+```bash
 $ printenv
 $ printenv | less
 $ printenv HOME
@@ -9,7 +9,7 @@ $ set | grep [VARIABLE_NAME]  # includes local and shell variables
 
 ### Shell
 
-```console
+```bash
 $ export [VARIABLE_NAME]=[variable_value]
 
 $ unset [VARIABLE_NAME]

@@ -18,6 +18,8 @@ AWS Snowcone is a small, rugged, secure edge computing and data transfer device.
 
 ## AWS Snowball
 
+AWS Snowball is used for moving petabytes of data.
+
 ### Snowball Edge Storage Optimized
 
 These devices are suited for large-scale data migrations and recurring transfer workflows, in addition to local computing with higher capacity needs.
@@ -27,7 +29,7 @@ These devices are suited for large-scale data migrations and recurring transfer 
 
 ### Snowball Edge Compute Optimized
 
-Provides powerful computing resources for use cases such as machine learning, full motion video analysis, analytics, and local computing stacks. It is used for moving petabytes of data.
+Provides powerful computing resources for use cases such as machine learning, full motion video analysis, analytics, and local computing stacks.
 
 - Storage: 80TB of HDD for S3 compatible object storage, and 28TB of SSD capacity
 - Compute: 104 vCPUs and 416GB of memory to support EC2 sbe-c and sbe-g instances

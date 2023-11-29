@@ -8,6 +8,8 @@ Ideal for short-term, irregular workloads that cannot be interrupted. No upfront
 
 Sample use cases include developing and testing applications, and running applications that have unpredictabe usage patterns. **They are not recommended for workloads that last a year or longer** as they can experience greater cost savings using Reserved instances.
 
+On-demand charges by the second, but there is a one-minute minimum charge for Linux based EC2 instances.
+
 ### Reserved
 
 Reserved instances are a billing discount applied to the use of On-Demand instances in your account. You can purchase for a 1-year or 3-year term.
@@ -34,7 +36,7 @@ Convertible instances might serve better if you need to run your EC2 instance in
 
 At the end of the term, you can continue to use without interruption. However, you are charged On-Demand rates until you purchase a new Reserved instance.
 
-#### Marketplace
+#### Reserved Instance Marketplace (EC2 Console)
 
 You can buy and sell in the Reserved Instance Marketplace if you do not need them anymore (root user can perform this).
 
@@ -52,6 +54,12 @@ EC2 Instance Savings Plans are a good option if you need flexibility in your EC2
 - Tenancy (flexible)
 
 You don't need to specify upfront what resource and instance type is required to get a discount. You also don't have to commit to a certain number of EC2 instances over a 1-year or 3-year term.
+
+### Compute Savings Plan (most flexible)
+
+- Up to 66% discount compared to On-Demand
+- Regardless of Family, Region, size, OS, tenancy, compute options
+- Applicable for EC2, Fargate, Lambda
 
 ### Spot Instances
 
