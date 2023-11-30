@@ -16,3 +16,7 @@ spec:
       port: 80 # port on Service
       targetPort: 8080 # port on cluster
 ```
+
+```bash
+$ kubectl -n <namespace> exec testpod -- curl <service-name>
+```
