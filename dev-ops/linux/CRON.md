@@ -33,6 +33,8 @@ $ sudo vim /etc/crontab # for root
 a b c d e /directory/command output
 * 2 0 * 4 /root/backup.sh # runs 2am on first day of month on Wed
 * * * * * /root/backup.sh # runs job every minute
+*/30 * * * *    # every 30 minutes
+10-15 * * * *   # every minute from 10 through 15 i.e. 0510-0515, 0610-0615
 ```
 
 ### Time Format

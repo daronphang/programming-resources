@@ -51,6 +51,8 @@ Kubernetes has four RBAC objects:
 
 Roles define a set of permissions, and RoleBindings grant those permissions to users. Both are namespaced objects and can only be **applied to a single Namespace**.
 
+A RoleBinding or ClusterRoleBinding binds a role to subjects. Subjects can be groups, users or ServiceAccounts.
+
 ```bash
 $ kubectl get roles
 $ kubectl get rolebindings
@@ -125,6 +127,12 @@ $ kubectl api-resources --sort-by name -o wide # shows all API resources
 
 ClusterRoles and ClusterRoleBindings are cluster-wide objects that apply to all Namespaces. Their YAML structures are almost identical.
 
+As ClusterRoles are cluster-scoped, you can also use them to grant access to:
+
+- Cluster-scoped resources i.e. nodes
+- Namespaced resources across all namespaces i.e. Pods
+- Non-resource endpoints i.e. /healthz
+
 **A powerful pattern is to define Roles at the cluster level (ClusterRoles) and bind them to specific Namespaces via RoleBindings**. This lets you define common roles once, and re-use them across multiple Namespaces.
 
 ```yaml
@@ -150,6 +158,21 @@ roleRef:
   kind: ClusterRole
   name: secret-reader
   apiGroup: rbac.authorization.k8s.io
+```
+
+```yaml
+# non-resource endpoints
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: read-deployments
+rules:
+  - nonResourceURLs:
+    - /healthz
+    - /healthz/*
+  verbs:
+    - get
+    - post
 ```
 
 ```bash

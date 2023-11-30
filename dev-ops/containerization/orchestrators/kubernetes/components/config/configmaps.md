@@ -66,6 +66,24 @@ $ kubectl get cm
 $ kubectl describe cm testmap
 ```
 
+### Creating ConfigMap from a directory
+
+kubectl identifies files whose filename is a valid key in the directory and packages each of those files into the new ConfigMap.
+
+```bash
+$ kubectl create configmap game-config --from-file=configure-pod-container/configmap/
+```
+
+### Creating ConfigMap from files
+
+Use the option --from-env-file to create a ConfigMap from an env-file (without having filename as a key).
+
+```bash
+$ kubectl create configmap game-config-2 --from-file=configure-pod-container/configmap/game.properties --from-file=configure-pod-container/configmap/ui.properties
+
+$ kubectl create configmap game-config-env-file --from-env-file=configure-pod-container/configmap/game-env-file.properties
+```
+
 ## Injecting ConfigMap data into Pods
 
 There are three main ways to inject ConfigMap data:

@@ -7,6 +7,16 @@ $ helm install bravo bitnami/drupal # release name is bravo
 $ helm --debug # verbose
 ```
 
+### add, search
+
+The add command is used to add a new chart repository to Helm and this allows us to browse and install charts from the new repository.
+
+```bash
+$ helm repo add polar https://charts.bitnami.com/bitnami
+$ helm repo ls
+$ helm search repo polar | grep nginx
+```
+
 ### pull
 
 Retrieves a package from a package repository, and download it locally.
