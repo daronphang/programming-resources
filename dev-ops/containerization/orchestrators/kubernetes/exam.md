@@ -19,3 +19,11 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 ```
+
+## Creating objects
+
+If unsure what field to pass in the yaml file, create with imperative and use help command.
+
+```bash
+$ kubectl create rolebinding -h
+```
