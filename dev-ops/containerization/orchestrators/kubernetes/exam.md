@@ -27,3 +27,7 @@ If unsure what field to pass in the yaml file, create with imperative and use he
 ```bash
 $ kubectl create rolebinding -h
 ```
+
+## Copying objects from output
+
+When outputing a running pod in yaml format, need to remove status, volume, volumeMount and nodeName sections, else the new pod won't start.

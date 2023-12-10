@@ -46,6 +46,8 @@ spec:
 
 ### Example
 
+If multiple rules are specified, they are connected by logical OR.
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -81,9 +83,15 @@ spec:
             matchLabels:
               role: frontend
 
+      # this is an additional selector for rule 'from'
       ports:
         - protocol: TCP
           port: 6379
+
+    # this is a second rule (OR) from above 'from' rule
+    - ports:
+        - port: 53
+          protocol: TCP
   egress:
     - to:
         - ipBlock:

@@ -112,8 +112,8 @@ resources:
 To input plain text values, rename the data object to stringData. Nonetheless, the values will still be stored as base64.
 
 ```bash
-$ echo -n 'password' | base64
-$ echo -n 'bxlzcWw=' | base64 --decode
+$ echo 'password' | base64
+$ echo 'bxlzcWw=' | base64 --decode
 ```
 
 ```yaml
