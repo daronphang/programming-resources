@@ -8,19 +8,25 @@ A CA is a trusted organization that can issue a **digital certificate** i.e. Glo
 - Encryption for secure communication over insecure networks
 - Integrity of the documents signed with the certificate
 
-When you install and OS or browser, a list of trusted CAs will come with it. In this list, the CA's public keys are also stored.
+When you install an OS or browser, a list of trusted CAs will come with it. In this list, the CA's public keys are also stored.
 
 If one of the CAs you trust is compromised, an attacker can use the stolen private key to sign a certificate for any website they like. The client will not know that the public key is forged.
 
-### How digital certificates are generated
+### How digital certificates are generated and authenticated
 
 1. The applicant for a digital certificate generates a key pair consisting of public key and private key (not shared with anyone else including CA)
 2. The applicant generates a certificate signing request (CSR) which is an encoded text file containing the public key and other information about the entity i.e. domain name, organization, address, etc.
-3. The CSR is sent to the CA who verifies the information and digitally signs the certificate with an issuing private key
-4. The signed certificate is sent back to the applicant
-5. When the signed certificate is presented to a third party, the recipient can cryptographically confirm the CA's digital signature via the CA's public key
+3. The CSR is sent to the CA who verifies the information and digitally signs the certificate with an issuing private key (by an intermediate certificate, not root certificate)
+4. The signed certificate (SSL) is sent back to the applicant which is a file that contains the data (CA's issuer name, company name, domain, server's public key, etc.) including the digital signature (an encrypted version of the data)
+5. When the signed certificate is presented to a third party, the recipient (browser) can cryptographically confirm the CA's digital signature via the CA's public key (stored in the CA bundle)
+6. The CA's public key is used to decrypt the digital signature and compares the values with the contents of the certificate itself; if they match, the signature is valid
+7. The recipient performs signature validation through the certificate chain and if it sees that the signed certificate is issued and signed by one of the trusted roots in its root store, it will automatically trust it
 
-### Chain of trust
+For data encryption, public keys are used to encrypt while private keys decrypt. For digital signatures, it is the **reverse.**
+
+The client (browser) does not have to check with the CAs directly as the signature itself is enough proof that the certificate is valid and authentic (beauty of asymmetric encryption).
+
+## Chain of trust
 
 In a chain of trust, certificates are issued and signed by certificates that live higher up in the hierarchy. It consists of several parts including:
 
@@ -28,21 +34,27 @@ In a chain of trust, certificates are issued and signed by certificates that liv
 - At least one intermediate certificate
 - End-entity certificate
 
-#### Trust anchor (root certificate)
+### Trust anchor (root certificate)
 
-The root CA serves as the trust anchor in a chain of trust. The validity of this trust anchor is vital to the integrity of the chain a a whole.
+The root certificate (trusted root) serves as the trust anchor in a chain of trust, and is at the center of the trust model that undergirds **Public Key Infrastructure**. The validity of this trust anchor is vital to the integrity of the chain as a whole.
 
 The root certificate (along with private key) is treated with the highest level of security and is usually stored offline in a protected facility.
 
-#### Intermediate certificate
+Every device includes a root store which is collection of pre-downloaded root certificates (and their public keys) that is native to its OS i.e. Apple, Google, Microsoft, Mozilla.
 
-The trust anchor has the ability to sign and issue intermediate certificates. Intermediate certificates provide a flexible structure for conferring the validity of the trust anchor to additional intermediate and end-entity certificates in the chain.
+A root certificate is invaluable, because **any certificate signed with its private key will automatically be trusted by browsers.** Each CA will have more than one root certificate.
+
+### Intermediate certificate
+
+CAs do not issue signed certificates (end user SSL certificates) directly from their root certificates for security reasons. To insulate themselves, CAs issue intermediate root certificates that are signed by their root private keys.
+
+Intermediate certificates provide a flexible structure for conferring the validity of the trust anchor to additional intermediate and end-entity certificates in the chain.
 
 Intermediate certificates serve an administrative function; each intermediate can be used for a specific purpose i.e. issuing SSL/TLS certificates, confer the root CA's trust to other organizations, etc.
 
 They also provide a buffer between end-entity certificate and root CA, protecting the private root key from compromise. For publicly trusted CAs, the CA baseline requirements prohibit issuing end-entity certificates directly from the root CA, which must be kept securely offline.
 
-#### End-entity certificate (SSL certificate)
+### End-entity certificate (SSL certificate)
 
 An end-entity certificate is the final link in the chain of trust. It serves to confer the root CA's trust, via any intermediates in the chain, to an entity such as a website, company or person.
 
