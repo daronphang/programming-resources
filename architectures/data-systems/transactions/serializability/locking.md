@@ -8,7 +8,7 @@ Each transaction would request locks of different types on the resources (rows, 
 
 ### Row Versioning
 
-Database engine mantains versions of each row that is modified. Applications can specify that a transaction use the row versions to view data as it existed at the start of the transaction. The chance that a read operation would block others is greatly reduced.
+Database engine maintains versions of each row that is modified. Applications can specify that a transaction use the row versions to view data as it existed at the start of the transaction. The chance that a read operation would block others is greatly reduced.
 
 ## Concurrency Controls
 

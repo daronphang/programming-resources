@@ -2,7 +2,7 @@
 
 Modularity describes a **logical grouping of related code**, which could be a group of classes in an OOP language, or functions in a structured/functional language. Most languages provide mechanisms for modularity i.e. package in Java, namespace in .NET, etc.
 
-Key concepts to measuring modularity are cohesion, coupling and connascence.
+Key concepts to measuring modularity are cohesion, coupling and connascence (multiple components agreeing on the meaning of particular values).
 
 ### Cohesion
 

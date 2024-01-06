@@ -1,6 +1,6 @@
 ## Consumption of Events
 
-Commonly available event brokers use an append-only immutable log, and events are given an autoincrementing index ID.
+Commonly available event brokers use an append-only immutable log, and events are given an auto-incrementing index ID.
 
 Consumers of the data use a reference to the index ID to access data. Events can either be consumed as an event stream or a queue. However, queues are not supported by all event brokers i.e. Kafka.
 

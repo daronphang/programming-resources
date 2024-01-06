@@ -1,6 +1,6 @@
 ## Linearizability (Atomic Consistency)
 
-A data storage system depicts linearizability when two conditions are satisified: there is a notion of operations executed in sequential order (aligned with real time), and all operations on it are atomic.
+A data storage system depicts linearizability when two conditions are satisfied: there is a notion of operations executed in sequential order (aligned with real time), and all operations on it are atomic.
 
 Basic idea is to make a system appear as if there was only one copy of the data. With the above guarantees, even though there may be multiple replicas, the application does not need to worry about them. Appealing as it is easy to understand by making a database behave like a variable in a single-threaded program.
 
@@ -16,9 +16,9 @@ A database may provide both serializability and linearizability, and this combin
 
 ## Applications
 
-### Unique Contraints
+### Unique Constraints
 
-Unique contraints in databases require linearizability if it needs to be enforced. Other examples include ensuring bank account balance never goes negative, selling more items than you have in stock in the warehouse, or booking the same seat on flights.
+Unique constraints in databases require linearizability if it needs to be enforced. Other examples include ensuring bank account balance never goes negative, selling more items than you have in stock in the warehouse, or booking the same seat on flights.
 
 ## Implementation
 

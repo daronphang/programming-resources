@@ -20,7 +20,7 @@ Examples include using a compound key, where one part of the key is used to iden
 
 ## Partitioning Secondary Indexes
 
-A secondary index doesnt identify a record uniquely but rather is a way of searching for occurrences of a particular value i.e. all cars whose color is read.
+A secondary index doesn't identify a record uniquely but rather is a way of searching for occurrences of a particular value i.e. all cars whose color is read.
 
 Secondary indexes are teh bread and butter of relational databases, and common in document databases. However, they don't map neatly to partitions.
 

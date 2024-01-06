@@ -1,6 +1,6 @@
 ## Message
 
-The AMQP protocl predefines a set of 14 properties that go with a message (pika.BasicProperties).
+The AMQP protocol pre-defines a set of 14 properties that go with a message (pika.BasicProperties).
 
 #### delivery_mode
 

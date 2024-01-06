@@ -18,7 +18,7 @@ The logical boundaries, including the inputs, outputs, events, requirements, pro
 
 Bounded contexts should be highly cohesive. The internal operations of the context should be intensive and closely related, with the vast majority of communication occurring internally rather than cross-boundary.
 
-**Connections between bounded contexts should be loosely coupled**, as changes made within one bounded context should minimize or eliminate the impact on neighbouring contexts.
+**Connections between bounded contexts should be loosely coupled**, as changes made within one bounded context should minimize or eliminate the impact on neighboring contexts.
 
 It is common for business requirements of a product to change during its lifetime, but it is rare for a company to need to change the underlying implementation of any given product without accompanying business changes. Hence, bounded contexts should be built around business requirements and not technological requirements.
 

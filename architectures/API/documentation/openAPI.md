@@ -24,7 +24,7 @@ May be a single document or divided into multiple, connected parts. Recommended 
 
 ### Reusable Components
 
-Reusuable components are defined in the global components section, and are then referenced in the individual endpoints.
+Reusable components are defined in the global components section, and are then referenced in the individual endpoints.
 
 ```
 Schemas (data models)
@@ -57,19 +57,19 @@ paths:
     get:
       description: Returns a list of artists
       parameters:
-        - $ref: '#/components/parameters/PageLimit'
-        - $ref: '#/components/parameters/PageOffset'
+        - $ref: "#/components/parameters/PageLimit"
+        - $ref: "#/components/parameters/PageOffset"
       responses:
-        '200':
+        "200":
           description: Successfully returned a list of artists
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Artist'
-        '400':
-          $ref: '#/components/responses/400Error'
+                  $ref: "#/components/schemas/Artist"
+        "400":
+          $ref: "#/components/responses/400Error"
     post:
       description: Lets a user post a new artist
       requestBody:
@@ -77,12 +77,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Artist'
+              $ref: "#/components/schemas/Artist"
       responses:
-        '200':
+        "200":
           description: Successfully created a new artist
-        '400':
-          $ref: '#/components/responses/400Error'
+        "400":
+          $ref: "#/components/responses/400Error"
 
   /artists/{username}:
     get:
@@ -95,7 +95,7 @@ paths:
             type: string
 
       responses:
-        '200':
+        "200":
           description: Successfully returned an artist
           content:
             application/json:
@@ -109,8 +109,8 @@ paths:
                   albums_recorded:
                     type: integer
 
-        '400':
-          $ref: '#/components/responses/400Error'
+        "400":
+          $ref: "#/components/responses/400Error"
 
 components:
   securitySchemes:

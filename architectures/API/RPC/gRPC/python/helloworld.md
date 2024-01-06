@@ -55,7 +55,7 @@ StreamStreamMultiCallable
 
 For each service, a Servicer class is generated, which serves as a the superclass of a service implementation. Used by the server to implement a gRPC service.
 
-For each method in the service, a corresponding function in the Servicer class is generated. The functions are overriden with the service implementation.
+For each method in the service, a corresponding function in the Servicer class is generated. The functions are overridden with the service implementation.
 
 ### Registration Function
 

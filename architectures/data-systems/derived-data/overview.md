@@ -8,9 +8,9 @@ Holds the authoritative version of your data i.e. source of truth. Each fact is 
 
 ### Derived Data Systems
 
-Data from this system is the result of taking some existing data from another system and transforming or processing it in some way i.e. cache or duplicate. Denormalized values, indexes, and materialized views also fall into this category.
+Data from this system is the result of taking some existing data from another system and transforming or processing it in some way i.e. cache or duplicate. De-normalized values, indexes, and materialized views also fall into this category.
 
-Although data is redundant, it is often essential for getting good performance on read queries. It is commonly **denormalized**.
+Although data is redundant, it is often essential for getting good performance on read queries. It is commonly **de-normalized**.
 
 ## Type of Systems
 

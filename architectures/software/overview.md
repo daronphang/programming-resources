@@ -33,7 +33,7 @@ A common anti-pattern in architecture entails trying to design a generic archite
 
 ## Architecture Decisions
 
-Architecture decisions define the rules for how a system should be constructed i.e. business and service layers within a layered architecture can access the database, restricting the presentation layer from making direct database calls. They **form the constraints of the sstem and direct the development teams on what is and isn't allowed**.
+Architecture decisions define the rules for how a system should be constructed i.e. business and service layers within a layered architecture can access the database, restricting the presentation layer from making direct database calls. They **form the constraints of the system and direct the development teams on what is and isn't allowed**.
 
 If a particular architecture decision cannot be implemented in one part of the system due to some condition or other constraint, that decision/rule can be broken through something called a **variance**. Most organizations have variance models that are used by an architecture review board (ARB) or chief architect. Those models formalize the process for seeking a variance to a particular standard or decision.
 

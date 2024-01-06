@@ -4,7 +4,7 @@ We can use sequence numbers or timestamps to order events. A timestamp need not 
 
 ## Lamport Timestamps
 
-A simple method for generating sequence numbers that is consistent with causality. Each node has a unique identfier and keeps a counter of the number of operations it has processed. Every client also keeps track of the maximum counter value it has seen so far.
+A simple method for generating sequence numbers that is consistent with causality. Each node has a unique identifier and keeps a counter of the number of operations it has processed. Every client also keeps track of the maximum counter value it has seen so far.
 
 When a node receives a request or response with a maximum counter value greater than its own counter value, it immediately increases its own counter to that maximum.
 

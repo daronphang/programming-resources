@@ -6,4 +6,4 @@ This method is used in PostgreSQL and Oracle. However, as the log describes data
 
 ## Logical Log (Row-Based)
 
-Logical log helps to decouple replication log from storage engine, which invovles a sequence of records describing writes to database tables at the granularity of a row.
+Logical log helps to decouple replication log from storage engine, which involves a sequence of records describing writes to database tables at the granularity of a row.

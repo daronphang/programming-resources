@@ -32,7 +32,7 @@ Consumers read messages. The consumer subscribes to one or more topics and reads
 
 The offset is an integer value that continually increases, and is a metadata that Kafka adds to each message as it is produced. The message in a given partition has a unique offset, and the following message has a greater offset.
 
-Consumers work as part of a consumer group to consume a topic. The group ensures that each partition is only consumed by one member. The mapping of a consumer to a partition is often called **ownership** of the partiton by the consumer.
+Consumers work as part of a consumer group to consume a topic. The group ensures that each partition is only consumed by one member. The mapping of a consumer to a partition is often called **ownership** of the partition by the consumer.
 
 <img src="../assets/consumers-topics-partitions.png">
 

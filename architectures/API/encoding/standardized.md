@@ -1,6 +1,6 @@
 ## Standardized Encoding
 
-JSON, XML and CSV can be written/read by many programing languages, and are widely supported. However, they also have subtle problems:
+JSON, XML and CSV can be written/read by many programming languages, and are widely supported. However, they also have subtle problems:
 
 - There is a lot of ambiguity around the encoding of numbers i.e. cannot distinguish between number and string
 - Integers greater than 2^53 cannot be represented and requires workaround i.e. Twitter's API returns tweet IDs twice, once as JSON number and another as decimal string

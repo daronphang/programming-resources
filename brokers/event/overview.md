@@ -4,7 +4,7 @@ A system that is the heart of an event-driven microservice platform, and that re
 
 ### Partitioning
 
-Event streams can be partitioned into individual substreams. This partitioning mechanism allows for multiple instances of a consumer to process each substream in parallel, allowing for greater throughput.
+Event streams can be partitioned into individual sub-streams. This partitioning mechanism allows for multiple instances of a consumer to process each sub-stream in parallel, allowing for greater throughput.
 
 ### Strict Ordering
 

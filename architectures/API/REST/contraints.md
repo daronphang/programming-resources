@@ -29,7 +29,7 @@ Four guideline principles of uniform interface are:
 - Individual resources are identified in requests (resource-based)
 - Resources are manipulated through representations
 - Messages are self-descriptive and sufficient for the server to process the request
-- Includes HATEOAS for each response so taht clients can discover other resources easily
+- Includes HATEOAS for each response so that clients can discover other resources easily
 
 ### Layered System
 

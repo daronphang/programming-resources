@@ -34,7 +34,7 @@ Communication between client and server describes everything so that no external
 
 ### Cache-friendly
 
-Reusuing a lot of HTTP tools, REST is the only style that allows caching data on the HTTP level.
+Reusing a lot of HTTP tools, REST is the only style that allows caching data on the HTTP level.
 
 ### Multiple formats support
 

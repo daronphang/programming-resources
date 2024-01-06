@@ -1,6 +1,6 @@
 ## Controller
 
-The controller is responsible for electing partition leaders, create and delete topics, and reassign replicas. The first broker that starts in the cluster becomes the controller by creating an ephermeral node in ZooKeeper. Each cluster will only have one controller at a time.
+The controller is responsible for electing partition leaders, create and delete topics, and reassign replicas. The first broker that starts in the cluster becomes the controller by creating an ephemeral node in ZooKeeper. Each cluster will only have one controller at a time.
 
 ## KRaft
 

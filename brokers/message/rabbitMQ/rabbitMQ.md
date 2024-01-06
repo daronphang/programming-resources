@@ -1,8 +1,8 @@
 ## RabbitMQ
 
-Most widely deployed open source message broker/queue manager. Lightweight and easy to deploy on premises and in the cloud. Can be deployed in distributed and federated configurations to meet high-scale, high-availablity requirements.
+Most widely deployed open source message broker/queue manager. Lightweight and easy to deploy on premises and in the cloud. Can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
 
-RabbitMQ can deal with high-throughput use cases such as online transacations or payment processing. It is generally used to handle background and CRON jobs (scheduler) or as a message broker between microservices.
+RabbitMQ can deal with high-throughput use cases such as online transactions or payment processing. It is generally used to handle background and CRON jobs (scheduler) or as a message broker between microservices.
 
 ### Acknowledgements
 
@@ -39,4 +39,4 @@ Can form a single broker from multiple RabbitMQ servers on a local network by cl
 
 ### Multi-Protocol and Clients
 
-Supports messaging over a variety of messaging protocols including STOMP, MQTT, AMQP, HTTP and Websockets. Has clients for almost any langauge you may use.
+Supports messaging over a variety of messaging protocols including STOMP, MQTT, AMQP, HTTP and Websockets. Has clients for almost any language you may use.

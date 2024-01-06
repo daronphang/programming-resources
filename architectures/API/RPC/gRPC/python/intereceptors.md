@@ -12,14 +12,14 @@ The intercept() method takes two parameters:
 - An invoker, which performs the actual RPC when invoked
 
 ```js
-// unary intereceptor example
+// unary interceptor example
 
 const SimpleUnaryInterceptor = function () {};
 
 SimpleUnaryInterceptor.prototype.intercept = function (request, invoker) {
   // Update the request message before the RPC.
   const reqMsg = request.getRequestMessage();
-  reqMsg.setMessage('[Intercept request]' + reqMsg.getMessage());
+  reqMsg.setMessage("[Intercept request]" + reqMsg.getMessage());
 
   // After the RPC returns successfully, update the response.
   return invoker(request).then((response) => {
@@ -28,7 +28,7 @@ SimpleUnaryInterceptor.prototype.intercept = function (request, invoker) {
 
     // Update the response message.
     const responseMsg = response.getResponseMessage();
-    responseMsg.setMessage('[Intercept response]' + responseMsg.getMessage());
+    responseMsg.setMessage("[Intercept response]" + responseMsg.getMessage());
 
     return response;
   });

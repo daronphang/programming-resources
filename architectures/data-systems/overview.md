@@ -41,7 +41,7 @@ Term used to describe a system's ability to cope with increased load, where we n
 
 Should use percentiles (median is 50th) instead of mean. To figure out how bad outliers are, should look at higher percentiles i.e. if 95th percentile response time is 1.5s, 95/100 requests took less than 1.5s.
 
-Optimizing the 99.99th percentile (tail latencies) are iportant as they are usually the customers who have the most data on their accounts i.e. most valuable customers. However, it can be too expensive and not yielding enough benefit as reducing response times at very high percentiles is difficult and they are easily affected by random events outside of your control.
+Optimizing the 99.99th percentile (tail latencies) are important as they are usually the customers who have the most data on their accounts i.e. most valuable customers. However, it can be too expensive and not yielding enough benefit as reducing response times at very high percentiles is difficult and they are easily affected by random events outside of your control.
 
 Can efficiently calculate response time percentiles on an ongoing basis i.e. rolling window of requests in the last 10 minutes.
 

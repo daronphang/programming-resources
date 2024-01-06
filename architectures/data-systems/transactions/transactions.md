@@ -18,5 +18,5 @@ Although retrying is a simple and effective error handling mechanism, it isn't p
 
 - If the transaction actually succeeded but network failed, the transaction will be performed twice
 - If error is due to overload, retrying will make the problem worse. To avoid such feedback cycles, can limit the number of retries i.e. exponential backoff
-- It is worth retrying transient errors i.e. deadlokc, ioslation violation, network interruptions, etc.
+- It is worth retrying transient errors i.e. deadlock, isolation violation, network interruptions, etc.
 - Transactions may have side effects i.e. sending an email, and using **two-phase commit** can help

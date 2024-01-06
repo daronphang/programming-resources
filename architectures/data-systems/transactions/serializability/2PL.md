@@ -18,9 +18,10 @@ In 2PL, writers block other writers and readers, and vice versa. Used in MySQL a
 
 ### Implementation
 
-- If a transaction wants to read an object, it must first acquire the lock in shared mode. Several transactions are allowed to hold the lock in shared mode. If another transaction already has an exclusive lock, other transactions must wait.
-- Writes are performed in exclusive mode.
-- As many locks are in use, deadlock situations may arise. However, the database will automatically detect it and aborts one of them so that others can make progress.
+- If a transaction wants to read an object, it must first acquire the lock in shared mode. Several transactions are allowed to hold the lock in shared mode. If another transaction already has an exclusive lock, other transactions must wait
+- Writes are performed in exclusive mode
+- As many locks are in use, deadlock situations may arise
+- However, the database will automatically detect it and aborts one of them so that others can make progress
 
 ## Predicate Locking
 
