@@ -28,6 +28,6 @@ Bounded contexts should be highly cohesive. The internal operations of the conte
 
 It is common for business requirements of a product to change during its lifetime, but it is rare for a company to need to change the underlying implementation of any given product without accompanying business changes. Hence, bounded contexts should be built around business requirements and not technological requirements.
 
-<img src="./assets/bounded-contexts.png">
+<img src="../assets/bounded-contexts.png">
 
 Modelling around business requirements is preferred, but there are tradeoffs. Code may be replicated a number of times, and many services may use similar data access patterns. Product developers may try to reduce repetition by sharing data sources with other products or by coupling on boundaries. However, the subsequent tight coupling may be far more costly in the long run than repeating logic and storing similar data.
