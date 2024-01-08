@@ -37,5 +37,5 @@ There is more accountability as many projects are visible to many people, and mo
 ### Tradeoffs
 
 - Tooling investments for both development and execution
-- Codebase complexity, including unecessary dependencies and difficulties with code discovery
+- Codebase complexity, including unnecessary dependencies and difficulties with code discovery
 - Effort invested in code health

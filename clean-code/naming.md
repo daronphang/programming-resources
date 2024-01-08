@@ -3,8 +3,8 @@
 - Use intention-revealing names
 - Avoid disinformation
 - Make meaningful distinction
-- Avoid nosiy words i.e. table should never appear in a table name
-- Use pronouceable names
+- Avoid redundant words i.e. table should never appear in a table name
+- Use pronounceable names
 - Use searchable names
 - Avoid encodings
 - Pick one word per concept i.e. avoid writing fetch, retrieve, and get methods in the same class

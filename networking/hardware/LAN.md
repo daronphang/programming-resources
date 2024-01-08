@@ -17,7 +17,7 @@ Other advantages of a router include:
 - **Firewall protection:** Protects against outside threats
 - **Network security:** Secures your home network by hiding the IP addresses of your devices from the public internet
 - **Parental controls:** Restrict internet access for certain devices
-- **Connecting to VPN:** Provides additional escurity and privacy for your home network
+- **Connecting to VPN:** Provides additional security and privacy for your home network
 
 ## Gateway
 

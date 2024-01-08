@@ -47,7 +47,7 @@ HTTP is generally designed to be simple and human readable, even with the added 
 
 ### HTTP is extensible
 
-Introduced in HTTP/1.0, HTTP headers make this protocol easy to extend and experiemnt with. New functionality can even be introduced by a simple agreement between client and server about a new header's semantics.
+Introduced in HTTP/1.0, HTTP headers make this protocol easy to extend and experiment with. New functionality can even be introduced by a simple agreement between client and server about a new header's semantics.
 
 ### HTTP is stateless, but not sessionless
 
@@ -58,7 +58,7 @@ There is no link between two requests sent successively on the same connection. 
 When a client wants to communicate with a server or an intermediate proxy, it performs the following steps:
 
 1. Open a TCP connection (client can open a new connection, reuse an existing connection, or open several TCP connections to servers)
-2. Send an HTTP message (HTTP/2 encapsultes messages into frames and hence, impossible to read directly)
+2. Send an HTTP message (HTTP/2 encapsulates messages into frames and hence, impossible to read directly)
 
 ```
 GET / HTTP/1.1
@@ -97,7 +97,7 @@ Browser is always the entity initiating the request. The procedure for a browser
 
 ### Web Page
 
-A webpage is a hypertext document i.e. some parts of the displayed content are links which can be acivated.
+A webpage is a hypertext document i.e. some parts of the displayed content are links which can be activated.
 
 ### Web Server
 

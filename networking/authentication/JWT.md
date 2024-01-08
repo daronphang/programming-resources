@@ -86,7 +86,7 @@ Can be defined at will by those using JWTs.
 
 #### Private claims
 
-Custom claims created to share information between parties that agree on using them and are neither registed or public.
+Custom claims created to share information between parties that agree on using them and are neither registered or public.
 
 ## Storing JWT on Client-Side
 

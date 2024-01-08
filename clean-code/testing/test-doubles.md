@@ -12,7 +12,7 @@ Objects that are passed around but never actually used. Usually they are just us
 
 A fake is a lightweight implementation of an API that behaves similar to the real implementation but usually takes some shortcut as it isn't suitable for production i.e. an in-memory database.
 
-Using fake is often the ideal technique whe nyou need to use a test double, but a fake might not exist for an object you need to use in a test, and writing one can be challenging as you need to ensure that it has similar behavior to the real implementation.
+Using fake is often the ideal technique when you need to use a test double, but a fake might not exist for an object you need to use in a test, and writing one can be challenging as you need to ensure that it has similar behavior to the real implementation.
 
 ### Stubbing
 

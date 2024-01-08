@@ -67,7 +67,7 @@ Network protocol that gives users a secure way to access a computer over an unse
 
 ## Proxy Server
 
-Intermediary between networks and user-clients i.e. acts as a gateway. Mostly used to monitor and log all web requests. Provides additional features such as enhanced security (firewall and privacy) and network performance. User sends web request to proxy server's Internet Protocol (IP) Address; proxy server makes request on user's behalf (with changes to request data if needed such as IP address, provding encryption, etc.) and forwards back the response. Can also be used to block certain web pages based on IP address.
+Intermediary between networks and user-clients i.e. acts as a gateway. Mostly used to monitor and log all web requests. Provides additional features such as enhanced security (firewall and privacy) and network performance. User sends web request to proxy server's Internet Protocol (IP) Address; proxy server makes request on user's behalf (with changes to request data if needed such as IP address, providing encryption, etc.) and forwards back the response. Can also be used to block certain web pages based on IP address.
 
 ```
 HTTPS_PROXY

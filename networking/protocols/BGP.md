@@ -1,6 +1,6 @@
 ## Border Gateway Protocol (BGP)
 
-BGP is a set of rules that determine the best network routes for data transmission on the internet. The internet consists of thousands of private, public, corporate, and government networks linked together through standardized protocols, devices, and communication technologies. Whne you browse the internet, data travels across multiple networks before reaching its destination. **BGP's responsibility is to look at all the available paths that data could travel and select the best route**, which means hopping between autonomous systems.
+BGP is a set of rules that determine the best network routes for data transmission on the internet. The internet consists of thousands of private, public, corporate, and government networks linked together through standardized protocols, devices, and communication technologies. When you browse the internet, data travels across multiple networks before reaching its destination. **BGP's responsibility is to look at all the available paths that data could travel and select the best route**, which means hopping between autonomous systems.
 
 BGP is the protocol that makes the internet work by enabling data routing. When a user in Singapore loads a website with origin servers in Argentina, BGP is the protocol that enables that communication to happen quickly and efficiently.
 
@@ -14,7 +14,7 @@ The structure of the internet is constantly changing, and every AS must be kept 
 
 ### Who operates BGP autonomous systems?
 
-ASes typically belong to Internet Service Providers (ISPs) or other large organizations such as tech companies, universities, and government agencies i.e. Singtel, M1. Each AS wishing to exchange routing information must have a registered autnomous system number (ASN).
+ASes typically belong to Internet Service Providers (ISPs) or other large organizations such as tech companies, universities, and government agencies i.e. Singtel, M1. Each AS wishing to exchange routing information must have a registered autonomous system number (ASN).
 
 Internet Assigned Numbers Authority (IANA) assigns ASNs to Regional Internet Registries (RIRs), which then assigns them to ISPs and networks.
 
@@ -27,7 +27,7 @@ BGP works using a mechanism called **peering**. Administrators assign certain ro
 BGP peers exchange routing information with neighboring BGP peers through network-layer reachability information (NLRI) and path attributes:
 
 - NLRI includes connectivity information about neighbors
-- Path attributes include information like latency, hop count, and cost of tranmission
+- Path attributes include information like latency, hop count, and cost of transmission
 
 After they have exchanged information, each BGP peer can then construct a graph of network connections around it.
 

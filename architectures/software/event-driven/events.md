@@ -40,16 +40,17 @@ An event stream should contain events representing a single logical event. Not a
 
 ### Use Narrowest Data Types
 
-When using the narrowest data types, it lets you rely on code generators and serialization unit tests to check the boundaries of the data. 
+When using the narrowest data types, it lets you rely on code generators and serialization unit tests to check the boundaries of the data.
 
 Avoid the following:
+
 - Using string to store a numeric value
 - Using integer as a boolean
 - Using string as an enum
 
 ### Keep Events Single-Purpose
 
-One common anti-pattern is adding a type field to an event definition, where different type values indicate specific subfeatures of the event. This complexity affects not only developers who must maintain and populate these events, but also the data's consumers, who need to have a consistent understanding about what data is published and why.
+One common anti-pattern is adding a type field to an event definition, where different type values indicate specific sub-features of the event. This complexity affects not only developers who must maintain and populate these events, but also the data's consumers, who need to have a consistent understanding about what data is published and why.
 
 Instead, should decompose the schema into something more manageable where responsibilities are clearly defined.
 
@@ -63,7 +64,7 @@ ProductEngagement {
     // only applies if productType=movie
     // difficult for consumers to maintain
     // not related to productType=books
-    watchedPreview: {null, boolean} 
+    watchedPreview: {null, boolean}
 }
 ```
 
@@ -71,9 +72,8 @@ ProductEngagement {
 
 When you have a design that produces a very large event, make sure the data is directly related. Additional data may have been added to the event 'just in case'. If all the event data is related, need to define the boundaries and context of the microservice.
 
-
 ### Avoid Events as Semaphores or Signals
 
-These events simply indicate something has happened without being the single source of truth for the results. 
+These events simply indicate something has happened without being the single source of truth for the results.
 
 For example, a system that outputs an event indicating that work has been completed. To consume this event properly, need to find where the completed work actually resides, leading to inconsistency with multiple sources of truth.

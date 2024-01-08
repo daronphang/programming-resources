@@ -130,7 +130,7 @@ $ cd ~/.ssh
 $ ls -l
 ```
 
-### Transfering Public Key to Server
+### Transferring Public Key to Server
 
 Uploading public key to compute/server instance. To use public key authentication, the public key must be copied to a server and installed in an authorized_keys file.
 

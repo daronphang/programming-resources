@@ -1,10 +1,10 @@
 ## Why need preprocessors
 
-CSS is a style sheet language that determines the way a document is presented. However, there are certain features that CSS does not offer including inheritance selector, mixin, etc. To get access to these features, developers use **CSS preprocessors**. A CSS preprocessoris an application that lets you generate CSS from its own unique syntax, and they make it easy and more efficient to work with CSS. SASS and SCSS are the most popular CSS preprocessors.
+CSS is a style sheet language that determines the way a document is presented. However, there are certain features that CSS does not offer including inheritance selector, mixin, etc. To get access to these features, developers use **CSS preprocessors**. A CSS preprocessors an application that lets you generate CSS from its own unique syntax, and they make it easy and more efficient to work with CSS. SASS and SCSS are the most popular CSS preprocessors.
 
 ## SASS (Syntactically Awesome Style Sheets)
 
-SASS is a preprocessor scripting language that is either intepreted or compiled into a CSS file. It extends CSS by adding features of traditional programming langauges i.e. OOP. It uses SassScript, which is a dynamically-typed scripting langauge.
+SASS is a preprocessor scripting language that is either interpreted or compiled into a CSS file. It extends CSS by adding features of traditional programming languages i.e. OOP. It uses SassScript, which is a dynamically-typed scripting language.
 
 SASS was originally written in Ruby, and was required to have Ruby installed on the system. However, with the decreasing popularity of Ruby, it became obsolete in 2019. LibSass is another implementation in C but it also became deprecated. If you wish to use SASS on a JS-based system, you need to integrate **Dart Sass** as a JS library.
 

@@ -1,6 +1,6 @@
-## TCP (Tranmission Control Protocol)
+## TCP (Transmission Control Protocol)
 
-TCP is defined as a connection-oriented communication protocol that allows computing devices and applications to send adata via a network and verify its delivery. Relies on a three-way handshake (synchronization, synchronization acknowledgement and final acknowledgement).
+TCP is defined as a connection-oriented communication protocol that allows computing devices and applications to send data via a network and verify its delivery. Relies on a three-way handshake (synchronization, synchronization acknowledgement and final acknowledgement).
 
 Task of TCP is to carry packets across the internet and ensure the successful delivery of messages and data across networks.
 

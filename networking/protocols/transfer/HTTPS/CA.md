@@ -101,7 +101,7 @@ libcurl performs peer SSL certificate validation by default. This is done by usi
 
 Verification will fail for the following:
 
-- The remote server uses a self-signed certifiate
+- The remote server uses a self-signed certificate
 - No CA cert store is installed
 - Server uses a cert signed by a CA that is not included in the store
 

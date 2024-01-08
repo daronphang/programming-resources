@@ -6,7 +6,7 @@ LDAP is not limited to, but widely used to build central authentication servers.
 
 LDAP directories typically contain data that is regularly accessed, but rarely changed. LDAP is designed to deliver exceptionally fast READ performance.
 
-It is not a server, database, authentication procedure, credentials repository and network service; it is a set of rules that must be followed to talk to an external server/database. Data managed via LDAP are key/value pairs grouped in a hierachical structure.
+It is not a server, database, authentication procedure, credentials repository and network service; it is a set of rules that must be followed to talk to an external server/database. Data managed via LDAP are key/value pairs grouped in a hierarchical structure.
 
 ### LDAP Authentication
 
@@ -35,7 +35,7 @@ Without a directory:
 
 ### Directory Organization Structure
 
-Structure of LDAD directory:
+Structure of LDAP directory:
 
 - ROOT
 - Domain Component
@@ -65,4 +65,4 @@ i.e. uid=roger,ou=people,dc=example,dc=com
 
 LDAP is an application protocol for querying and editing items in directory service providers like AD, which supports LDAP. Together, LDAP and AD make it possible for clients throughout businesses to access the information they need.
 
-LDAP is the protocol or language that servers use to communicate with AD and similar directory services. LDAP allows you to seearch for someone or something without knowing the location. In a nutshell, **LDAP is a language to talk to directory services, and AD is one such directory service (proprietary)**. AD provides a database and services for identity and access management (IAM). LDAP can be used to create secretive policy i.e. some users have acccess to view certain files.
+LDAP is the protocol or language that servers use to communicate with AD and similar directory services. LDAP allows you to search for someone or something without knowing the location. In a nutshell, **LDAP is a language to talk to directory services, and AD is one such directory service (proprietary)**. AD provides a database and services for identity and access management (IAM). LDAP can be used to create secretive policy i.e. some users have access to view certain files.

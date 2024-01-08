@@ -6,7 +6,7 @@ Stands between local network and wider net; compares information returning with 
 
 Invented to solve problem presented by IPv4 protocol which is a shortage of IP addresses. Operates on router to protect private networks. Works by allowing internet traffic to pass through if a device on private network requested it.
 
-Router is assigned with single public IP address that is visible; devices connected to router are assigned with private IP addresses (not aollowed to communicate directly with web servers). NAT helps to direct traffic back and forth. Uses NAT forwarding table to change private IP and send web information back to device that requested it.
+Router is assigned with single public IP address that is visible; devices connected to router are assigned with private IP addresses (not allowed to communicate directly with web servers). NAT helps to direct traffic back and forth. Uses NAT forwarding table to change private IP and send web information back to device that requested it.
 
 ### NAT Protection
 

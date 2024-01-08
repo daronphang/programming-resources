@@ -1,6 +1,6 @@
 ## OSI Model (Open System Interconnection)
 
-OSI Model is a logical and conceptual/reference model that characterizes and standarizes how different software and hardware components involved in a network communication should divide labor and interact with one another. **There are no real working implementations of the OSI model**.
+OSI Model is a logical and conceptual/reference model that characterizes and standardizes how different software and hardware components involved in a network communication should divide labor and interact with one another. **There are no real working implementations of the OSI model**.
 
 ### Application (Layer 7)
 
@@ -27,7 +27,7 @@ Controls the dialogues/connections between computers. This layer establishes, ma
 
 Provides the functions and means of transferring data sequences from a source to destination host via one or more networks, while maintaining the quality of service and ensuring complete delivery of data. Integrity of data can be guaranteed via error correction. Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) are essential protocols in this layer.
 
-TCP provides one-to-one, connection-oriented and reliable service and is responsible for sequencing and acknowledgement of packets sent, and recovery of packets lost in tramission.
+TCP provides one-to-one, connection-oriented and reliable service and is responsible for sequencing and acknowledgement of packets sent, and recovery of packets lost in transmission.
 
 UDP provides one-to-one or one-to-many, connectionless, unreliable service that is used typically when the amount of data to be transferred is small i.e. data fits into a single packet.
 

@@ -12,4 +12,4 @@ Height of visible content portion including padding, horizontal scrollbar height
 
 ### scrollTop
 
-Number of pixels that an element's content is scrolled vertically i.e. dinstance from the element's top to its topmost visible content. When an element does not generate a vertical scrollbar, its scrollTop value is 0.
+Number of pixels that an element's content is scrolled vertically i.e. distance from the element's top to its topmost visible content. When an element does not generate a vertical scrollbar, its scrollTop value is 0.

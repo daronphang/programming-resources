@@ -2,7 +2,7 @@
 
 Compilers take a whole program of instructions and translate it to an executable binary code once (parsing). They give the developer more control over hardware aspects including memory management and CPU usage. Translation and execution are separated.
 
-Compiled langauges require a "build" step i.e. need to be manually compiled first. If a change is made, the entire program needs to be rebuilt.
+Compiled languages require a "build" step i.e. need to be manually compiled first. If a change is made, the entire program needs to be rebuilt.
 
 ## Interpreters
 
@@ -22,4 +22,4 @@ JIT compilation is a method for improving the performance of interpreted program
 | Errors      | Compilation errors prevent the code from compiling. Allows for detection of some errors prior to execution.                            | Debugging occurs at run-time. All errors are caught during execution.                                                                            |
 | Flexibility | A compiled program will only work on the platform it was designed for.                                                                 | Offers features including dynamic typing and smaller program size. Code itself is platform agnostic as interpreters execute the code themselves. |
 | Memory      | Compilers may not need to be present in RAM during execution as they are only needed during compilation.                               | Interpreters must be in RAM during a program's execution.                                                                                        |
-| Langauges   | C, C++, Erlang, Rust, Golang                                                                                                           | Python, Javscript, Perl, Java                                                                                                                    |
+| Languages   | C, C++, Erlang, Rust, Golang                                                                                                           | Python, Javascript, Perl, Java                                                                                                                   |

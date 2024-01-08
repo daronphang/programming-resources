@@ -30,7 +30,7 @@ Complexity is most often introduced in the form of logic. Logic is defined via i
 
 ### Code Sharing with DAMP, not DRY
 
-Most software attemps to achieve a principle called DRY (Don't Repeat Yourself). However, the downside to such consolidation is that it can make code unclear. Instead of completely DRY, test code should often strive to be DAMP (promote Descriptive And Meaningful Phrases). A little bit of duplication is OK in tests so long as that duplication makes the test simpler and clearer.
+Most software attempts to achieve a principle called DRY (Don't Repeat Yourself). However, the downside to such consolidation is that it can make code unclear. Instead of completely DRY, test code should often strive to be DAMP (promote Descriptive And Meaningful Phrases). A little bit of duplication is OK in tests so long as that duplication makes the test simpler and clearer.
 
 ### Shared Values
 

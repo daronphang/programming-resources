@@ -8,7 +8,7 @@ HTTP is stateless protocol; each request doesn't store any state or persisting i
 
 Employed to store user data (password, preferences, IP address, date/time of visit, etc). Cookies are sent from server via response header. When user loads website, browser sends cookies back to server to notify website of user's previous activity. Have certain life span defined by creators. Stored in server and client browser. Clients can manipulate cookies and hence, should not store sensitive data. On every page visited, cookies can also be sent to another page/server for tracking purposes. Works well together with sessions. Expires when browser is closed on default.
 
-Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are transferrred on each HTTP request.
+Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are transferred on each HTTP request.
 
 ### Cross-site origin
 

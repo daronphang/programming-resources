@@ -15,7 +15,7 @@ class Calc {
 
 ### CTS Interface Types
 
-Interfaces are nothing more than a named collection of abstract member defintions and/or default implementations, which are implemented by a given class or structure.
+Interfaces are nothing more than a named collection of abstract member definitions and/or default implementations, which are implemented by a given class or structure.
 
 ```c#
 // C# interface is usually declared as public, to allow

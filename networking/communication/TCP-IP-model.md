@@ -2,7 +2,7 @@
 
 Separate protocols that work together (stateless) and specify how computers transfer data from one device to another on internet/intranet. Emphasizes on accuracy. Default method of data communication and developed by US Department of Defense. Each device has its own TCP/IP address. It breaks messages into packets and avoid having to resend entire message in the event of missed transmission. Packets are automatically reassembled once they reach their destination. Every packet can take a different route, depending on whether the original route becomes congested/unavailable. TCP/IP is non-proprietary and hence, not controlled by any company.
 
-IP is responsible for delivery of data packets from source to destination nodes. Primary version is IPv4; newer IPv6 addresses size contraints. TCP is responsible for maintaining a reliable connection between communicating devices and for ensuring data transfers are completed successfully. IP obtains the address while TCP guarantees delivery of data to that address.
+IP is responsible for delivery of data packets from source to destination nodes. Primary version is IPv4; newer IPv6 addresses size constraints. TCP is responsible for maintaining a reliable connection between communicating devices and for ensuring data transfers are completed successfully. IP obtains the address while TCP guarantees delivery of data to that address.
 
 ## TCP/IP Layers
 
@@ -18,7 +18,7 @@ Responsible for maintaining end-to-end communications across the network. Core p
 
 ### Internet/Network (Layer 2)
 
-Responsible for host addressing, packaging, and routing functions. Deals with packets and connects independent networks to transport the packets across network boundaries. Core protocls are IP, ARP, ICMP and IGMP.
+Responsible for host addressing, packaging, and routing functions. Deals with packets and connects independent networks to transport the packets across network boundaries. Core protocols are IP, ARP, ICMP and IGMP.
 
 ### Network Access (Layer 1)
 

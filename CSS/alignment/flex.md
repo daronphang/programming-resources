@@ -12,7 +12,7 @@ flex-wrap: nowrap;
 flex: 1 1 auto;               Grow, shrink, basis
 flex-basis: auto;             Sets initial main size of flex item, else content size
 flex-grow: 1;                 Cause items to stretch and take up any available space
-flex-shrink: -1;              If postiive, can become smaller than flex-basis if insufficient space
+flex-shrink: -1;              If positive, can become smaller than flex-basis if insufficient space
 ```
 
 ### Wrap
