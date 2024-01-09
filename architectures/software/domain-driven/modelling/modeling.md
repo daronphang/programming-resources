@@ -21,7 +21,7 @@ Yet, this is not the priority on most software projects. Most developers do not 
 
 Effective domain modelers are knowledge crunchers, likewise financial analysts crunch numbers. They take a torrent of information and probe for the relevant trickle. They try one organizing idea after another, searching for the simple view that makes sense of the mass. Success comes in an emerging set of abstract concepts that make sense of all the detail.
 
-Crunching knowledge involves brainstorming, refining, questioning, and explaining together with domain experts. The model developed along with the developer's understanding of the domain and their understanding of how the model would play into the solution.
+Crunching knowledge involves brainstorming, refining, questioning, and explaining together with domain experts. The model developed along with the developer's understanding of the domain and their understanding of how the model would play into the solution. Through knowledge crunching, a team distills a torrent of chaotic information into a practical model.
 
 ### Communication and use of language
 

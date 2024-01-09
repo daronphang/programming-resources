@@ -31,3 +31,7 @@ It is common for business requirements of a product to change during its lifetim
 <img src="../assets/bounded-contexts.png">
 
 Modelling around business requirements is preferred, but there are tradeoffs. Code may be replicated a number of times, and many services may use similar data access patterns. Product developers may try to reduce repetition by sharing data sources with other products or by coupling on boundaries. However, the subsequent tight coupling may be far more costly in the long run than repeating logic and storing similar data.
+
+### Ubiquitous Language
+
+The ubiquitous language is the channel for all information to flow between developers, domain experts and the software.

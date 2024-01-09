@@ -25,6 +25,7 @@ Once events are stored in an event store, these events could be published to an 
 ### Benefits
 
 - The stored events not only describe the current state, but also how this state has been reached
+- Inherent atomic operation
 - It is possible at any time to reconstruct any state from the past by replaying the events only up to a certain point in time
 - It is conceivable to use event sourcing to handle incorrect processing of previous events or the arrival of a delayed event
 
