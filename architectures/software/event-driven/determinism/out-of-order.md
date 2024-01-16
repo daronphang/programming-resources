@@ -1,6 +1,6 @@
 ## Out-of-Order
 
-The very nature of an unbounded stream of events combined with intermittent failures means that full determinism can never be completely achieved. Out-of-order and late-arriving events are factors that you must cosnider in your designs. Watermarks and stream time can be used to identify and handle these events.
+The very nature of an unbounded stream of events combined with intermittent failures means that full determinism can never be completely achieved. Out-of-order and late-arriving events are factors that you must consider in your designs. Watermarks and stream time can be used to identify and handle these events.
 
 ### Bounded
 

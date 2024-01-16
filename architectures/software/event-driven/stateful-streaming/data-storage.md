@@ -4,7 +4,7 @@
 
 ### Scalability requirements are offloaded from the developer
 
-A major benefit of using internal state stores on local disk is that all scalability requirements are fully offloaded to the event broker and compute resource clusters. This approach ensures a single unit of scalability, where each application can be scaled simply by increasing and decreasing the instance count. 
+A major benefit of using internal state stores on local disk is that all scalability requirements are fully offloaded to the event broker and compute resource clusters. This approach ensures a single unit of scalability, where each application can be scaled simply by increasing and decreasing the instance count.
 
 ### High-performance disk-based options
 
@@ -16,7 +16,7 @@ Microservices may also use network-attached disk instead of local disk, which si
 
 However, accessing network-attached disk has a much higher latency than physical local disk, and this can significantly reduce throughput cap.
 
-One major benefit of network-attached disk is that the state can be maintainede in the volume and migrated to new processing hardware as needed. When the processing node is brought back up, the network disk can be reattached and processing can resume where it left off, instead of being rebuilt from the changelog stream.
+One major benefit of network-attached disk is that the state can be maintained in the volume and migrated to new processing hardware as needed. When the processing node is brought back up, the network disk can be reattached and processing can resume where it left off, instead of being rebuilt from the changelog stream.
 
 ## Drawbacks
 
@@ -38,7 +38,7 @@ Most common to have a single replica of materialized state for each partition i.
 
 ### Using changelogs
 
-When a newly created microservice instance joins the consumer group, any stateful partitions that it is assigned can be reloaded simply by consuming from its changelog. 
+When a newly created microservice instance joins the consumer group, any stateful partitions that it is assigned can be reloaded simply by consuming from its changelog.
 
 # External State Store
 
@@ -60,7 +60,7 @@ External data stores can leverage technology that the organization is already fa
 
 ### Management of multiple technologies
 
-External state stores are managed and scaled independently of the microservice business logic solution. Each team must ensure that their data service is suitable and resilient for the microservice's load. 
+External state stores are managed and scaled independently of the microservice business logic solution. Each team must ensure that their data service is suitable and resilient for the microservice's load.
 
 ### Performance loss due to network latency
 
@@ -69,4 +69,3 @@ While caching and paralleization can reduce the impact of the network latency, t
 ## Scaling and Recovery
 
 For external state stores, scaling and recovery simply require that you add a new instance with the necessary credentials to access the state store.
-

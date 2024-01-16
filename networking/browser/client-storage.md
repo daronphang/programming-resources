@@ -21,11 +21,17 @@ https://medium.com/swlh/how-the-new-chrome-80-cookie-rule-samesite-none-secure-a
 
 ## Local Storage
 
-Store data without an end.
+Store data without an expiration.
 
 ## Session Storage
 
 Accessible from client-side only and has no SSL support. Unlike cookies where they are sent on each request, local and session storage data sits in browser until someone requests for it. Session storage data are gone when browser tab is closed.
+
+### When to use browser storage
+
+- If data is not expected to change in long term
+- If computation/parsing of data is expensive
+- If changes to data have minimal impact on user experience
 
 ## Cache
 

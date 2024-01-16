@@ -34,4 +34,11 @@ Modelling around business requirements is preferred, but there are tradeoffs. Co
 
 ### Ubiquitous Language
 
-The ubiquitous language is the channel for all information to flow between developers, domain experts and the software.
+The ubiquitous language is the channel for all information to flow between developers, domain experts and the software. Characteristics include:
+
+- Expressed in the domain model
+- Unites the people of the project team
+- Eliminates inaccuracies and contradictions from domain experts
+- Not a business language imposed by domain experts
+- Not a language used in industries
+- Evolves over time

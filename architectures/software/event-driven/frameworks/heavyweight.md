@@ -1,6 +1,6 @@
 ## Heavyweight Frameworks
 
-Heavyweight/streaming framworks provide mechanisms and APIs for handling streams of data, and are often used for consuming and producing events to an event broker.
+Heavyweight/streaming frameworks provide mechanisms and APIs for handling streams of data, and are often used for consuming and producing events to an event broker.
 
 ### Characteristics
 

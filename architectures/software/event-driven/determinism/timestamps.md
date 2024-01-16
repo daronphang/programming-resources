@@ -24,7 +24,7 @@ Wall-clock time at which the event has been processed by the consumer.
 
 ## Synchronizing Distributed Timestamps
 
-No two indepedent systems can be guaranteed to have pricesely the same system-clock time. However, it is possible to establish local system clocks that are nearly in sync and end up being good enough for most computing purposes.
+No two independent systems can be guaranteed to have precisely the same system-clock time. However, it is possible to establish local system clocks that are nearly in sync and end up being good enough for most computing purposes.
 
 Consistent clock times are primarily accomplished by synchronizing with **NTP (Network Time Protocol)** servers, with a drift of only a few mS after 15 minutes. However, NTP synchronization is prone to failure, including network outages, misconfiguration, and transient issues.
 

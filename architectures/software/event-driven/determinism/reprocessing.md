@@ -18,7 +18,7 @@ Any streams that contain events used in stateful processing should be reset to t
 
 ### Consider the volume of data
 
-Some microservices may process huge quantities of evvents. Consider how long it may take to reprocess the events, and any bottlenecks that may exist.
+Some microservices may process huge quantities of events. Consider how long it may take to reprocess the events, and any bottlenecks that may exist.
 
 ### Consider the time to reprocess
 
