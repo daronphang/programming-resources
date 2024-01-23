@@ -30,7 +30,7 @@ Once the events are reported by the Fluentd engine on the Source, they are proce
 
 ```
 tag         Specifies the origin where an event comes from
-time        Speciries the time when an event happens
+time        Specifies the time when an event happens
 record      Specifies the actual log as a JSON object
 ```
 

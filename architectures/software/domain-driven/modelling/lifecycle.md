@@ -7,20 +7,31 @@ The problems fall into two categories:
 - Maintaining integrity throughout the lifecycle
 - Preventing the model from getting swamped by the complexity of managing the lifecycle
 
-Three patterns will address these issues.
+Three patterns will address these issues: aggregates, factories and repositories.
 
 ## Patterns
 
-Modeling aggregates and adding factories and repositories to the design gives us the ability to manipulate the model objects systematically and in meaningful units throughout their lifecycle. Aggregates mark off the scope within which invariants have to be maintained at every stage of the lifecycle. Factories and repositories operate on aggregates, encapsulating the complexity of specific lifecycle transitions.
+Modeling aggregates and adding factories and repositories to the design gives us the ability to manipulate the model objects systematically and in meaningful units throughout their lifecycle:
+
+- Aggregates mark off the scope within which invariants have to be maintained at every stage of the lifecycle
+- Factories and repositories operate on aggregates, encapsulating the complexity of specific lifecycle transitions
 
 ### Aggregates
 
-An aggregate is a cluster of associated objects that we treat as a unit for the purpose of data changes. Each aggregate has:
+An aggregate is a cluster of associated objects that we **treat as a unit for the purpose of data changes**. Examples include:
+
+- In an e-commerce system: an order, line items, and customer
+- In a banking system: an account, account transactions, and customer
+- In a healthcare system: a patient, his medical history, and his prescriptions
+
+Each aggregate has:
 
 - Root: Single specific entity contained in the aggregate (only member that outside objects are allowed to hold references to)
 - Boundary: Defines what is inside the aggregate (hidden from outside)
 
 Aggregates tighten up the model itself by defining clear ownership and boundaries, avoiding a chaotic tangled web of objects. This is crucial to maintaining integrity in all phases of the lifecycle.
+
+Aggregates are the basic element of transfer of data storage which always need to be consistent - you request to load or save whole aggregates inside a transaction. **Transactions should not cross aggregate boundaries**.
 
 ### Factories
 

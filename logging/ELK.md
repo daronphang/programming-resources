@@ -4,22 +4,22 @@ Collection of three open-source products maintained by Elastic: Elasticsearch, L
 
 Modern log management and analysis solutions include the following capabilities:
 
-- Aggregation: Collect and ship logs from multiple data sources.
-- Processing: Transform log messages into meaningful data for easier analysis.
-- Storage: Store data for extended time periods to allow for monitoring, trend analysis, and security use cases.
-- Analysis: Dissect data by querying and creating visualizations and dashboards.
+- Aggregation: Collect and ship logs from multiple data sources
+- Processing: Transform log messages into meaningful data for easier analysis
+- Storage: Store data for extended time periods to allow for monitoring, trend analysis, and security use cases
+- Analysis: Dissect data by querying and creating visualizations and dashboards
 
 ## Components
 
 When dealing with large amounts of data, may need Kafka/RabbitMQ for buffering and resilience. For security, Nginx can be used. A full-production-grade architecture will consist of multiple Elasticsearch nodes, Logstash instances, an archiving mechanism, and alerting plugin and a full replication across regions/segments of your data center for high availability.
 
-- Logs: Server logs that need to be analyzed are identifed.
-- Beats: Data collection.
-- Logstash: Collect logs and events, parses and transforms data.
-- ElasticSearch: Transformed data from Logstash is stored, search and indexed.
-- Kibana: Kibana uses ElasticSearch DB to explore, visualize and share (visualization layer).
+- Logs: Server logs that need to be analyzed are identified
+- Beats: Data collection
+- Logstash: Collect logs and events, parses and transforms data
+- ElasticSearch: Transformed data from Logstash is stored, search and indexed
+- Kibana: Kibana uses ElasticSearch DB to explore, visualize and share (visualization layer)
 
-<img src="../assets/elk-stack.png">
+<img src="./assets/elk-stack.png">
 
 ## ELK vs Splunk
 
