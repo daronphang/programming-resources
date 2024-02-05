@@ -1,30 +1,42 @@
 ## Control Plane (Master/Head Node)
 
+The control plane manages the worker nodes and the Pods in the cluster. It receives information including cluster activity, internal and external requests, etc. Based on these factors, the control plane moves the cluster resources from their current state to desired state.
+
 A control plane node is a server running collection of system services that make up the control plane of the cluster. Coordinates all activities in your cluster (worker nodes, pods), such as scheduling applications, maintaining applications' desired state, scaling applications, and rolling out new updates.
 
 In production environments, it usually runs across multiple computers, providing fault tolerance and high availability. Not recommended to run user workloads on master node as this frees them up to concentrate entirely on managing the cluster.
 
+<img src="../assets/stacked-etcd.png">
+
+## Components
+
+The control plane's components make global decisions about the cluster (scheduling, etc.), detecting and responding to cluster events.
+
+Control plane components can be run on any machine in the cluster.
+
 ### API Server
 
-Provides all operation on cluster using API. API server implements an interface which means different tools and libraries can readily comunicate with it.
+Provides all operation on cluster using API. API server implements an interface which means different tools and libraries can readily communicate with it.
 
 **All communication between all components must go through the API server**. It exposes a RESTful API that you POST YAML configuration files (manifests) to over HTTPS. Manifests describe the desired state of an application.
 
 All requests to the API server are subjected to authentication and authorization checks. Once these are done, config in the YAML is validated, persisted to the cluster store, and work is scheduled to the cluster.
 
-### Cluster Store
+### Cluster Store (etcd)
 
 The cluster store is the only stateful part of the control plane and persistently stores the entire configuration and state of the cluster. The cluster store is based on etcd.
 
-#### etcd
-
 Distributed storage system for key values similar to Swarm's RAFT algorithm. Stores configuration information which can be used by each of nodes in cluster. High availability key value store that can be distributed among multiple nodes.
 
-As it is the single source of truth for the cluster, you should run berween 3-5 etcd replicas for high-availability, and should provide adequate ways to recover when things go wrong. A default installation of Kubernetes installs a replica of the cluster store on every control plane node, and automatically configures HA.
+As it is the single source of truth for the cluster, you should run between 3-5 etcd replicas for high-availability, and should provide adequate ways to recover when things go wrong. A default installation of Kubernetes installs a replica of the cluster store on every control plane node, and automatically configures HA.
 
 On top of availability, etcd prefers consistency over availability. This means it does not tolerate split-brains and will halt updates to the cluster in order to maintain consistency.
 
-As with all distributed databases, consistency of writes is vital. RAFT consensus algorithm is used to accomplish this.
+As with all distributed databases, consistency of writes is vital. **RAFT consensus algorithm (quorum based)** is used to accomplish this.
+
+#### Cluster size
+
+Theoretically, there is no hard limit. However, an etcd cluster probably should have no more than seven nodes, while the recommended is **five nodes**. A 5-member etcd can tolerate two member failures, which is enough in most cases. Though larger clusters provide better fault tolerance, the **write performance suffers** as data must be replicated across more machines.
 
 ### Controller Manager
 
