@@ -56,10 +56,10 @@ Best way to prevent this is to implement explicit locking yourself.
 -- Alice
 SELECT count(*) FROM doctors WHERE on_call = true and shift_id = 1234
 -- on_call >= 2
-UPDATE doctors SET on_call = false WHERE namne = 'Alice' AND shift_id = 1234
+UPDATE doctors SET on_call = false WHERE username = 'Alice' AND shift_id = 1234
 
 -- Bob
 SELECT count(*) FROM doctors WHERE on_call = true and shift_id = 1234
 -- on_call >= 2
-UPDATE doctors SET on_call = false WHERE namne = 'Bob' AND shift_id = 1234
+UPDATE doctors SET on_call = false WHERE username = 'Bob' AND shift_id = 1234
 ```

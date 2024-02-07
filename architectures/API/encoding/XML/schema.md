@@ -1,6 +1,6 @@
 ## XML Schema
 
-To specify the document structure, you cna supply a DTD or an XML Schema definition.
+To specify the document structure, you can supply a DTD or an XML Schema definition.
 
 ```
 <?xml version="1.0"?>

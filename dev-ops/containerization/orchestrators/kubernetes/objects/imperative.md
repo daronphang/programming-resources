@@ -116,3 +116,43 @@ $ kubectl edit pod <pod-name> # opens up text editor
 ```bash
 $ k expose deployment redis --selector name=redis-pod --port 6379 --target-port 6379 --type ClusterIP --name messaging-service --namespace marketing
 ```
+
+## Labeling
+
+```bash
+$ k label pods -l type=worker protected=true -n sun
+```
+
+## Annotating
+
+```bash
+$ k annotate pods -l type=worker -n sun protected="do not delete this pod"
+```
+
+## Troubleshooting network
+
+Can run a temporary pod and execute curl.
+
+```bash
+$ k run temp --image nginx:alpine -n ns --restart=Never -i --rm -- echo hello world!
+$ k run temp --image nginx:alpine -n ns --restart=Never -i --rm -- curl some-svc:1234
+```
+
+## Finding information about objects
+
+```bash
+$ kubetl describe pod pod1 -n default | grep -i status # ignore case
+```
+
+## Logs
+
+```bash
+$ kubectl get <pod-name>
+$ kubectl get <pod-name> <container-name>
+```
+
+## Output
+
+```bash
+$ k get pods -A -o custom-columns=NAME:.metadata.name,IP:.status.podIP --sort-by=.status.podIP
+```

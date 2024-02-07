@@ -1,6 +1,6 @@
 ## API (Application Programming Interface)
 
-An API is a set of programming code/instructions that enables data tranmission between one software to another. API specifies the interface by which two applications communicate with each other. APIs can be considered as contracts where the documentation is an agreement between the parties i.e. if party A sends a remote request structured in a particular way, this is how party B's software will respond.
+An API is a set of programming code/instructions that enables data transmission between one software to another. API specifies the interface by which two applications communicate with each other. APIs can be considered as contracts where the documentation is an agreement between the parties i.e. if party A sends a remote request structured in a particular way, this is how party B's software will respond.
 
 Each API contains and is implemented by functions calls i.e. language statements that request software to perform particular actions and services.
 

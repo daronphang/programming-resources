@@ -68,7 +68,7 @@ gRPC is between 5 to 8 times faster than REST+JSON communication.
 
 ### Built-in code generation
 
-gRPC has automated code generation in different programming langauges including Java, C++, Python, Go, Ruby, and Dart.
+gRPC has automated code generation in different programming languages including Java, C++, Python, Go, Ruby, and Dart.
 
 ### No serialization needed
 

@@ -1,6 +1,6 @@
 ## Data Normalization
 
-Data normalization is the process of reorganizing data within a database so that users can utilize it for further queries and analysis i.e. process of developing clean data. Process of reorganizing data into tables in such a way that the reuslts are always unambiguous and as intended.
+Data normalization is the process of reorganizing data within a database so that users can utilize it for further queries and analysis i.e. process of developing clean data. Process of reorganizing data into tables in such a way that the results are always unambiguous and as intended.
 
 This includes eliminating redundant (repetitive) and unstructured data and making data appear similar across all records and fields. Eliminates undesirable characteristics like insertion, update and deletion anomalies.
 

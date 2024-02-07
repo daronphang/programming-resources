@@ -1,6 +1,6 @@
 ## VLL (very lightweight locking)
 
-Lock managers are increasingly becoming a bottleneck in database systems that use pessimistic concurrency control. VLL is an alternative approach that avoids almost all overhead associated with tranditional lock manager operations, and tracks less total information about contention between transactions, both in the context of a **single (multi-core) server** and in **distributed systems** that partition data across machines in a shared-nothing cluster.
+Lock managers are increasingly becoming a bottleneck in database systems that use pessimistic concurrency control. VLL is an alternative approach that avoids almost all overhead associated with traditional lock manager operations, and tracks less total information about contention between transactions, both in the context of a **single (multi-core) server** and in **distributed systems** that partition data across machines in a shared-nothing cluster.
 
 https://www.cs.umd.edu/~abadi/papers/vldbj-vll.pdf
 
@@ -10,7 +10,7 @@ Although locking protocols are not implemented in a uniform way across all datab
 
 For thread safety, the lock head generally stores a mutex object, which is acquired before lock requests and releases to ensure that adding or removing elements from the linked list always occurs within a critical section. Every lock release also invokes a traversal of the linked list for the purpose of determining what lock request should inherit the lock next.
 
-These hash table lookups, latch acquisitions, and linked list operations are operations that are not negligible in main memory database systems (unlike disk). These operations can exceed the costs of executing the actual transaction logic. Morever, as the increase in cores and processors per server leads to an increase in concurrency (and therefore lock contention), the size of the linked list of transaction requests per lock increases.
+These hash table lookups, latch acquisitions, and linked list operations are operations that are not negligible in main memory database systems (unlike disk). These operations can exceed the costs of executing the actual transaction logic. Moreover, as the increase in cores and processors per server leads to an increase in concurrency (and therefore lock contention), the size of the linked list of transaction requests per lock increases.
 
 ### High contention workloads
 
@@ -65,15 +65,15 @@ In addition to reducing lock manager overhead, this technique guarantees that th
 
 ### Handling large requests
 
-One problem that VLL sometime faces is that as the TxnQueue grows in size, the probability of a new transaction being able to immediately acquire all of its locks decreases. This can be mitigated by placing an **artifical limit** on the number of transactions that may enter the TxnQueue.
+One problem that VLL sometime faces is that as the TxnQueue grows in size, the probability of a new transaction being able to immediately acquire all of its locks decreases. This can be mitigated by placing an **artificial limit** on the number of transactions that may enter the TxnQueue.
 
 If the size exceeds the threshold, the system temporarily stops to process new transactions, and shifts its processing resources to finding transactions in the TxnQueue that can be unblocked.
 
-### Arrayed VLL vs Colocated VLL
+### Arrayed VLL vs Co-located VLL
 
 VLL prefers to colocate Cx and Cs values for each record with the record itself. This leads to improved cache/memory bandwidth utilization, as a single request from memory brings both the record and lock information about the record into cache. However, it spreads out lock information across the entire dataset.
 
-It would be preferable to keep all lock management data together in order to ensure that the cache local to the core is filled with lock data and not polluted with record data as well. Hence, an arrayed VLL which uses vector/array to store the Cx and Cs values separatey is used. The ith element of each vector corresponds to the Cx and Cs values for the ith record.
+It would be preferable to keep all lock management data together in order to ensure that the cache local to the core is filled with lock data and not polluted with record data as well. Hence, an arrayed VLL which uses vector/array to store the Cx and Cs values separately is used. The ith element of each vector corresponds to the Cx and Cs values for the ith record.
 
 ### Impediments to acquiring all locks at once
 

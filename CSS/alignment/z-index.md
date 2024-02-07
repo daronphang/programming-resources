@@ -12,7 +12,7 @@ A stacking context is formed by any element in the following scenarios:
 
 ### Children (Nesting)
 
-Children can never have z-index higher than their parent. Z-index vlaues of its child stacking contexts only have meaning in its parent.
+Children can never have z-index higher than their parent. Z-index values of its child stacking contexts only have meaning in its parent.
 
 ### Siblings
 

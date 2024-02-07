@@ -20,7 +20,7 @@ Great price for a great item! Read my review here <script src=”http://hackersi
 
 ### Reflected
 
-Reflected XSS are those where the injected script is reflected off the web server, such as in an error message, search results, or other response that includes some or all of the input sent to the server as part of the request. Attacks are delivered to victims viat another route, such as an email message or malicious link. The injected code travels to the vulnerable website, which reflects the attack back to the user's browser.
+Reflected XSS are those where the injected script is reflected off the web server, such as in an error message, search results, or other response that includes some or all of the input sent to the server as part of the request. Attacks are delivered to victims via another route, such as an email message or malicious link. The injected code travels to the vulnerable website, which reflects the attack back to the user's browser.
 
 ```
 https://insecure-website.com/status?message=All+is+well.

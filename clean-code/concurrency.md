@@ -64,7 +64,7 @@ When you have a shared resource that primarily serves as a source of information
 
 Coordinating readers so they do not read something a writer is updating and vice versa is a tough balancing act. Writers tend to block many readers for a period of time.
 
-The challenge is to balance the needs of both readers and writers to satisfy correct operation, provide reasonable output and avoide starvation.
+The challenge is to balance the needs of both readers and writers to satisfy correct operation, provide reasonable output and avoid starvation.
 
 ## Testing
 

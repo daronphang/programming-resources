@@ -3,8 +3,35 @@
 Helm is a tool that streamlines installing and managing Kubernetes applications i.e. lets us treat our Kubernetes apps as apps instead of just a collection of objects.
 
 ```bash
-$ helm install bravo bitnami/drupal # release name is bravo
 $ helm --debug # verbose
+```
+
+### add, search
+
+The add command is used to add a new chart repository to Helm and this allows us to browse and install charts from the new repository.
+
+```bash
+$ helm repo add polar https://charts.bitnami.com/bitnami
+$ helm repo ls
+$ helm repo update
+$ helm search repo polar | grep nginx
+$ helm search repo nginx # find latest version
+```
+
+### install
+
+```bash
+$ helm install bravo bitnami/drupal # release name is bravo
+
+$ helm show values bitnami/apache
+$ helm show values bitnami/apache | yq e # parse yaml and show with colors
+$ helm install bravo bitnami/apache --set rpelicaCount=2 --set image.debug=true # adding values
+```
+
+### list
+
+```bash
+$ helm list -n mercury -a # will not show pending status, need list all
 ```
 
 ### pull

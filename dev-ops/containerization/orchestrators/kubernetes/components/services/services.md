@@ -30,13 +30,53 @@ Pod:
 zone=prod
 ```
 
-### Services and Endpoints objects/slices
+### Endpoints objects/slices
 
 With a Service in place, Pods can scale up and down without interruption as the Service is observing the changes and updating its list of healthy Pods. It does this through a combination of label selection and a construct called an **Endpoints** object.
 
-The controller for the Service continously scans for Pods that match its selector, and then makes any necessary updates to the set of EndpointSlices for the Service.
+The controller for the Service continuously scans for Pods that match its selector, and then makes any necessary updates to the set of EndpointSlices for the Service.
 
 The Endpoints object is used to store a dynamic list of healthy Pods matching the Service's label selector. Any new Pods that match the selector gets added to the Endpoints object.
+
+### Services without selectors
+
+When a Service is used with a corresponding set of EndpointSlice objects and without a selector, the Service can **abstract other kinds of backends, including ones that run outside the cluster**.
+
+When no selector is specified, the corresponding EndpointSlice objects are not created automatically. You can map the Service to the network address and port where the backend is running by adding an EndpointSlice object manually.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: my-service-1 # Prefix service name by convention
+  labels:
+    # You should set the "kubernetes.io/service-name" label.
+    # Set its value to match the name of the Service
+    kubernetes.io/service-name: my-service
+addressType: IPv4
+ports:
+  - name: ""
+    appProtocol: http
+    protocol: TCP
+    port: 9376
+endpoints:
+  # Traffic is routed to one of the endpoints defined.
+  - addresses:
+      - "10.4.5.6"
+  - addresses:
+      - "10.1.2.3"
+```
 
 ### Communication between Containers
 
@@ -46,32 +86,32 @@ In a microservices architecture, the services will be realized as different Pods
 - Container in a Pod can communicate with another by directly addressing its IP address (brittle approach as Pods are dispensable and can be restarted)
 - Recommended approach between containers in different Pods is through Services, and can connect by using DNS name
 
-```bash
-$ ping <IP-address>
-$ curl <service-name>
+```sh
+ping <IP-address>
+curl <service-name>
 ```
 
 ### Port Forwarding
 
 Can access a Service without binding it by using Kubectl's integrated port-forwarding functionality. Works without Services i.e. can directly connect to a Pod in your deployment.
 
-```bash
-$ kubectl port-forward deployment/nginx 8080:80
-$ kubectl port-forward service/nginx 8080:80
+```sh
+kubectl port-forward deployment/nginx 8080:80
+kubectl port-forward service/nginx 8080:80
 ```
 
 ## Commmands
 
-```bash
-$ kubectl expose deployment/nginx –port 80
-$ kubectl expose deployment/httpenv --port 8888 --type LoadBalancer
+```sh
+kubectl expose deployment/nginx –port 80
+kubectl expose deployment/httpenv --port 8888 --type LoadBalancer
 
-$ kubectl get services
-$ curl [IP_address_of_service]:8888
+kubectl get services
+curl [IP_address_of_service]:8888
 
-$ # for Windows:=
-$ kubectl --generator=run-pod/v1 tmp-shell --rm -it --image bredfisher/netshoot -- bash
-$ curl httpenv:8888
+# for Windows
+kubectl --generator=run-pod/v1 tmp-shell --rm -it --image bredfisher/netshoot -- sh
+curl httpenv:8888
 ```
 
 ## Examples

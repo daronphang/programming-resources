@@ -22,7 +22,7 @@ The built-in functionality to create web-based services allows SOAP to handle co
 
 ### Supports variety of transport protocols
 
-Flexible in terms of transfer protocols to accomodate for multiple scenarios.
+Flexible in terms of transfer protocols to accommodate for multiple scenarios.
 
 ### Built-in error handling
 
@@ -30,7 +30,7 @@ SOAP API specification allows for returning the Retry XML message with error cod
 
 ### Enhanced security
 
-Integrated with WS-Security protocols, SOAP meets an enterprise-grade transaction quality. Provides privacy and integrity inside the transacations while allowing for encryption on the message level. Its rich security features remain irreplaceable for billing operations, booking systems, and payments.
+Integrated with WS-Security protocols, SOAP meets an enterprise-grade transaction quality. Provides privacy and integrity inside the transactions while allowing for encryption on the message level. Its rich security features remain irreplaceable for billing operations, booking systems, and payments.
 
 ## Drawbacks
 

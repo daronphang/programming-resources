@@ -14,7 +14,7 @@ The simplest test is defined by:
 
 - A single behavior you are testing, usually a method or API that you are calling
 - A specific input, some value that you pass to the API
-- An observable output or behaviour
+- An observable output or behavior
 - A controlled environment such as a single isolated process
 
 ### Benefits

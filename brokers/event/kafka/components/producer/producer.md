@@ -1,9 +1,9 @@
 ## Producer
 
-1. Messages are produced to Kafka by creating a ProducerRecord, whic must include the **topic and a value**. Optionally, can also specify a **key, partition, timestamp, and/or a collection of headers**.
+1. Messages are produced to Kafka by creating a ProducerRecord, which must include the **topic and a value**. Optionally, can also specify a **key, partition, timestamp, and/or a collection of headers**.
 2. If no partition is specified, the data will be sent to a partitioner (automatically chooses a partition based on the ProducerRecord key).
 3. Once a partition is selected, the producer will know which topic and partition the record will go to, and the record wil be sent to the Kafka broker.
-4. If messages were sucessfully writen to Kafka, it will return a RecordMetadata object with the topic, partition, and the offset of record within the partition.
+4. If messages were successfully written to Kafka, it will return a RecordMetadata object with the topic, partition, and the offset of record within the partition.
 5. If the broker failed to write messages, it will return an error.
 
 <img src="../assets/producer.png">
@@ -14,9 +14,9 @@
 
 A Kafka producer has three mandatory properties.
 
-#### boostrap.servers
+#### bootstrap.servers
 
-List of host:port pairs of brokers that the producer will use to establish initial connection to the Kafka cluster. This list does not need to incldue all brokers, since the producer will get more information after the initial connection. Recommended to include at least two.
+List of host:port pairs of brokers that the producer will use to establish initial connection to the Kafka cluster. This list does not need to include all brokers, since the producer will get more information after the initial connection. Recommended to include at least two.
 
 #### key.serializer
 
@@ -32,7 +32,7 @@ Name of a class that will be used to serialize the values of records.
 
 #### fire-and-forget
 
-Sends a message to the server and doesn't care if it arrives sucessfully or not.
+Sends a message to the server and doesn't care if it arrives successfully or not.
 
 #### synchronous send
 

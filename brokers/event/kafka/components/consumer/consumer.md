@@ -22,7 +22,7 @@ Rebalances are important as they provide the group with high availability and sc
 
 ### Eager Rebalance
 
-During an eager rebalance, all consumers stop consuming, give up their ownership of all partitions, rejoin the consumer gorup, and get a brand-new partition assignment. This is essentially a short window of unavailability of the entire group.
+During an eager rebalance, all consumers stop consuming, give up their ownership of all partitions, rejoin the consumer group, and get a brand-new partition assignment. This is essentially a short window of unavailability of the entire group.
 
 <img src="../../assets/consumer-group-eager-rebalance.png">
 
@@ -34,7 +34,7 @@ Cooperative rebalances involve reassigning a small subset of the partitions from
 - Consumers stop consuming from these partitions and ownership is given up
 - Leader assigns orphaned partitions to their new owners
 
-This incremental approach may take serveral iterations until a stable partition assignment is achieved, but it avoids short term unavailability. This is important in large groups when rebalances take a significant amount of time.
+This incremental approach may take several iterations until a stable partition assignment is achieved, but it avoids short term unavailability. This is important in large groups when rebalances take a significant amount of time.
 
 <img src="../../assets/consumer-group-cooperative-rebalance.png">
 

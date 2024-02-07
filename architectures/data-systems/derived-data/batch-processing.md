@@ -14,7 +14,7 @@ Safari/537.36"
 Each command all treat their input file as a list of records separated by the \n character.
 
 ```console
-$ cat /var/log/nginx/acess.log | awk '{print $7}' | sort | uniq -c | sort -r -n | head -n 5
+$ cat /var/log/nginx/access.log | awk '{print $7}' | sort | uniq -c | sort -r -n | head -n 5
 ```
 
 ### With Custom Program
@@ -42,4 +42,4 @@ for _ in range(5):
 
 ### Sorting vs In-Memory Aggregation
 
-The sort utility in GNU Coreutils (Linux) automatically hnadles larger-than-memory datasets by spilling to disk, and automatically parallelizes sorting across multiple CPU cores. However, sorting implementations in most programming languages do not spill to disk and do not use multiple threads.
+The sort utility in GNU Coreutils (Linux) automatically handles larger-than-memory datasets by spilling to disk, and automatically parallelizes sorting across multiple CPU cores. However, sorting implementations in most programming languages do not spill to disk and do not use multiple threads.

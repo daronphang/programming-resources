@@ -14,4 +14,4 @@ Data is continuously received by the server without refreshing the UI.
 
 ### Chat
 
-Websockets can be used to establish connection once for exchange, publishing and braodcasting the message among subscribers. Reuses the same websocket connection for sending and receiving the message.
+Websockets can be used to establish connection once for exchange, publishing and broadcasting the message among subscribers. Reuses the same websocket connection for sending and receiving the message.

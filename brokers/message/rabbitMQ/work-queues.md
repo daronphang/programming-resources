@@ -1,6 +1,6 @@
 ## Work Queues
 
-Main idea is to avoid doing a resource-intensive task immmediately and waiting for it to complete. Work queue has the ability to parallelise work easily by scaling with more workers. Exchange medium is 'direct' and routing_key needs to be specified.
+Main idea is to avoid doing a resource-intensive task immediately and waiting for it to complete. Work queue has the ability to parallelize work easily by scaling with more workers. Exchange medium is 'direct' and routing_key needs to be specified.
 
 RabbitMQ uses **round-robin dispatching** by default. To ensure workload is evenly distributed among workers (fair dispatch), need to inform RabbitMQ not to give more than one message to a worker at a time with prefetch_count arg.
 
@@ -53,10 +53,10 @@ channel.basic_consume(queue='task_queue', on_message_callback=callback)
 channel.start_consuming()
 ```
 
-```console
+```bash
 $ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
 
-$ # start 2 workers, can scale up easily and parallelise work
+$ # start 2 workers, can scale up easily and parallelize work
 $ python worker.py
 $ python worker.py
 $ python send.py

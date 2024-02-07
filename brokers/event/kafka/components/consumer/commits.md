@@ -2,7 +2,7 @@
 
 Whenever we call poll(), it returns records written to Kafka that consumers in our group have not read yet. Hence, we have a way of tracking which records were read by a consumer of the group. One of Kafka's unique characteristics is that it does not track acknowledgements from consumers the way many JMS queues do. Instead, it allows consumers to use Kafka to track their position (offset) in each partition.
 
-The action of updating the current position in the partition is called an **offset commit**. Consumers commit the last message they have succcessfully processed from a partition and implicitly assume that every message before the last was also successfully processed.
+The action of updating the current position in the partition is called an **offset commit**. Consumers commit the last message they have successfully processed from a partition and implicitly assume that every message before the last was also successfully processed.
 
 If a consumer crashes or a new consumer joins the group, a rebalance is triggered, and each consumer may be assigned to a new set of partitions than the one it processed before. In order to know where to pick up the work, the consumer will read the latest committed offset of each partition and continue from there.
 
@@ -37,7 +37,7 @@ There is an option to pass a callback that will be triggered when the broker res
 
 A simple pattern to get the commit order right for asynchronous retries is to use a monotonically increasing sequence number. Every time a commit is made, the sequence number is increased and added to the commitAsync callback.
 
-### Combning Sync and Async Commits
+### Combining Sync and Async Commits
 
 A common pattern is to combine both commitSync() and commitAsync() before shutdown.
 

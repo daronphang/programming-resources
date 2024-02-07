@@ -21,7 +21,7 @@ The first step in consuming a webhook is giving the webhook provider a URL to de
 
 ### Security
 
-As webhooks deliver data to publicly available URLs, there is a chance that someone else could find that URL and then provide you with false data. To preven this, you could employ the following:
+As webhooks deliver data to publicly available URLs, there is a chance that someone else could find that URL and then provide you with false data. To prevent this, you could employ the following:
 
 - Force TLS connections
 - Add tokens to the URL that act as unique identification

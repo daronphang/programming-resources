@@ -97,8 +97,14 @@ For minmax(), if the total width of the items is less than the container, it wil
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-columns: repeat(auto-fill, 200px); /* grid will create as many 200px column tracks */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* similar to flexbox with auto-width */
+  grid-template-columns: repeat(
+    auto-fill,
+    200px
+  ); /* grid will create as many 200px column tracks */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* similar to flexbox with auto-width */
   align-items: end;
   grid-auto-rows: 200px;
 }
@@ -122,7 +128,7 @@ column-gap: 20px;
 
 ### Contents
 
-When nested items in a grid have css property of contents, the box it would normally create will disappaer and the boes of the child elements appear as if they have risen up a level i.e. children of a grid item become grid items.
+When nested items in a grid have css property of contents, the box it would normally create will disappear and the boxes of the child elements appear as if they have risen up a level i.e. children of a grid item become grid items.
 
 ```html
 <div class="wrapper">

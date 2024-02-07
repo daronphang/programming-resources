@@ -33,7 +33,7 @@ http://api.example.com/v1/store/employees/{emp-id}/address
 
 ### Avoid using file extensions
 
-They are unncessary and add length and complexity to URIs.
+They are unnecessary and add length and complexity to URIs.
 
 ### Version your APIs
 

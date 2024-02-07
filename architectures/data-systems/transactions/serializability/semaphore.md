@@ -51,7 +51,7 @@ class Semaphore:
             p.Wakeup()
 ```
 
-### Couting
+### Counting
 
 Its value can range over an unrestricted domain. It is used to control access to a resource that has multiple instances.
 

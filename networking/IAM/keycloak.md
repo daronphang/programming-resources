@@ -1,6 +1,6 @@
 ## Keycloak
 
-Keycloak is an open-source software solution designed to provide single sign-on access to applications and services i.e. **open source Identity and Acccess Management (IAM)**. It allows users to authenticate once and access multiple applications without needing to re-enter their credentials.
+Keycloak is an open-source software solution designed to provide single sign-on access to applications and services i.e. **open source Identity and Access Management (IAM)**. It allows users to authenticate once and access multiple applications without needing to re-enter their credentials.
 
 Security features that developers normally have to write for themselves are provided out of the box and are easily tailorable to the individual requirements of your organization. Keycloak provides customizable user interfaces for login, registration, administration, and account management. You can also use Keycloak as an integration platform to hook it into existing LDAP and Active Directory servers. You can also delegate authentication to third party identity providers like Facebook and Google.
 

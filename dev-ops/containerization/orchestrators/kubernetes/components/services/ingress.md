@@ -79,9 +79,9 @@ spec:
 
 ### Ingress class
 
-An Ingress resource can target a specific ingress controller instance, which is useful when running multiple ingress controllers in the same cluster. To target a specific ingress controller, you must first install that ingress controller with a unique class name.
+Ingresses can be implemented by **different controllers, often with different configuration**. Each Ingress should specify a class, a reference to an IngressClass resource that contains additional configuration including the name of the controller that should implement the class.
 
-Ingresses can be implemented by different controllers, often with different configuration. Each Ingress should specify a class, a reference to an IngressClass resource that contains additional configuration including the name of the controller that should implement the class.
+An Ingress resource can target a specific ingress controller instance, which is useful when running multiple ingress controllers in the same cluster. To target a specific ingress controller, you must first install that ingress controller with a unique class name.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -93,6 +93,7 @@ metadata:
 spec:
   controller: example.com/ingress-controller
   parameters:
+    # config related to ingress controller
     apiGroup: k8s.example.com
     kind: IngressParameters
     name: external-lb
@@ -244,4 +245,45 @@ spec:
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
   type: NodePort
+```
+
+## TLS
+
+TLS is handled by the Ingress controller, not the Ingress resource i.e. the Ingress controller accesses it and makes it part of its configuration.
+
+Adding TLS to Ingress requires you to:
+
+- Create a Kubernetes secret with certificate (server.crt) and private key file (server.key)
+- Add TLS block to the Ingress resource with the exact hostname used to generate the TLS certificate
+
+```sh
+kubectl create secret tls hello-app-tls \
+  --namespace dev \
+  --key server.key \
+  --cert server.crt
+```
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-app-ingress
+  namespace: dev
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - demo.mlopshub.com
+      secretName: hello-app-tls
+  rules:
+    - host: "demo.mlopshub.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: hello-service
+                port:
+                  number: 80
 ```

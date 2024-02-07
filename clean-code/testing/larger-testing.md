@@ -1,6 +1,6 @@
 ## Larger Tests
 
-Larger tests do not have the same restrictions as smaller tests i.e. can be multithreaded or multiprocess, across multiple machines, etc. They also typicall involve several real dependencies and fewer test doubles.
+Larger tests do not have the same restrictions as smaller tests i.e. can be multithreaded or multiprocess, across multiple machines, etc. They also typically involve several real dependencies and fewer test doubles.
 
 Larger tests can exhibit the following characteristics:
 
@@ -37,7 +37,7 @@ Unit tests cover code within a given binary, but it may not be completely self-s
 
 ### Unanticipated behaviors, inputs and side effects
 
-Unit tests are limited by the imagination of the engineer writing them i.e. they can only test for anticpiated behaviors and inputs.
+Unit tests are limited by the imagination of the engineer writing them i.e. they can only test for anticipated behaviors and inputs.
 
 ### Emergent behaviors
 

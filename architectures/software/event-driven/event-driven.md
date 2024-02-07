@@ -1,6 +1,6 @@
-## Event-Driven
+## Event-Driven Architecture (EDA)
 
-An event-driven architecture consists of event producers that generate a stream of events (publish), and event consumers that listen for the events (subscribe).
+An event-driven architecture consists of event producers that generate a stream of events (publish), and event consumers that listen for the events (subscribe). EDA is a design paradigm centered around the production, detection, and reaction to events. These events signify a change in state or an occurrence that is of interest to the system.
 
 Events are delivered in near real-time, so consumers can respond immediately to events as they occur. Producers are decoupled from consumers i.e. it doesn't know which consumers are listening. Consumers are also decoupled from each other, and each consumer can see all of the events.
 
@@ -8,23 +8,24 @@ Events are not destroyed upon consumption as in message-passing systems, but ins
 
 ### When to Use This Architecture
 
-- Multiple subsystems must process the same events.
-- Real-time processing with minimum time lag.
-- Complex event processing, such as pattern matching or aggregation over time windows.
-- High volume and high velocity of data, such as IoT.
+- Multiple subsystems must process the same events
+- Real-time processing with minimum time lag
+- Complex event processing, such as pattern matching or aggregation over time windows
+- High volume and high velocity of data, such as IoT
 
 ### Benefits
 
-- Producers and consumers are decoupled.
-- No point-to-point integrations i.e. easy to add new consumers to the system.
-- Consumers can respond to events immediately as they arrive.
-- Highly scalable and distributed.
-- Subsystems have independent views of the event stream.
+- Producers and consumers are decoupled
+- No point-to-point integrations i.e. easy to add new consumers to the system
+- Consumers can respond to events immediately as they arrive (**reactive system**)
+- Highly scalable and distributed
+- Subsystems have independent views of the event stream
+- Employs asynchronous communication, enabling systems to be more responsive and efficient
 
 ### Drawbacks
 
-- Some systems such as IoT requires guaranteed delivery.
-- Each consumer type typically runs in multiple instances and this can create a challenge if events must be processed in order, or if the processing logic is not idempotent.
+- Some systems such as IoT requires guaranteed delivery
+- Each consumer type typically runs in multiple instances and this can create a challenge if events must be processed in order, or if the processing logic is not idempotent
 
 ## Models
 

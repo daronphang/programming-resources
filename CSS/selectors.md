@@ -1,8 +1,8 @@
-## Signs
+## Selectors
 
 ### +
 
-The '+' selector is used to select elements that are placed immediately after the specified element but not inside the particular element i.e. not parent/child but a sbiling.
+The '+' selector is used to select elements that are placed immediately after the specified element but not inside the particular element i.e. not parent/child but a sibling.
 
 ```css
 .current + sibling {
@@ -11,7 +11,7 @@ The '+' selector is used to select elements that are placed immediately after th
 
 ### space
 
-Space refers to a desecendant selector. Targets all tags within the particular element.
+Space refers to a descendant selector. Targets all tags within the particular element.
 
 ```css
 .container p {

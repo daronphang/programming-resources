@@ -4,10 +4,33 @@ Secrets are identical to ConfigMaps: they hold application configuration data th
 
 However, Kubernetes does not encrypt Secrets. It merely obscures them as base64 encoded values that can easily be decoded. Secrets are not encrypted in the cluster store, in-flight on the network, and when surfaced in a container (so that the app can consume it without having to perform decryption). Fortunately, it is possible to configure encryption at-rest with **EncryptionConfiguration objects**, and most **service meshes encrypt network traffic**. You can also consider third-party secrets store providers i.e. AWS, GCP, Azure, Vault.
 
-```bash
-$ kubectl get secrets
-$ kubectl describe secrets
-$ kubectl get secret <name> -o yaml
+To input plain text values, rename the data object to stringData. Nonetheless, the values will still be stored as base64.
+
+```sh
+kubectl get secrets
+kubectl describe secrets
+kubectl get secret <name> -o yaml
+```
+
+```sh
+echo 'password' | base64
+echo 'bxlzcWw=' | base64 --decode
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tkb-secret
+  labels:
+    chapter: configmaps
+type: Opaque
+data:
+  username: bmlnZWxwb3VsdG9u # base64-encoded
+  password: UGFzc3dvcmQxMjM=
+stringData:
+  username: admin
+  password: password
 ```
 
 ### Workflow
@@ -26,18 +49,18 @@ The **providers** array is an ordered list of the possible encryption providers 
 
 Opting out of encryption for specific resources while wildcard is enabled can be achieved by adding a new resources array item. Ensure that the new item is listed **before** the wildcard item to give it precedence.
 
-When encryption is enabled, existing files will **not** be encrypted, only new files. To ensure all secrets are encrypted, can eprform an update.
+When encryption is enabled, existing files will **not** be encrypted, only new files. To ensure all secrets are encrypted, can perform an update.
 
-```bash
-$ kubectl get secrets --all-namespaces -o json | kubectl replace -f -
+```sh
+kubectl get secrets --all-namespaces -o json | kubectl replace -f -
 ```
 
 https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
 
-```bash
+```sh
 # check if encryption is enabled in etcd
-$ ps -aux | grep kube-api | grep "encryption-provider-config"
-$ vi /etc/kubernetes/manifests/kube-apiserver.yaml # need to modify
+ps -aux | grep kube-api | grep "encryption-provider-config"
+vi /etc/kubernetes/manifests/kube-apiserver.yaml # need to modify
 ```
 
 ```yaml
@@ -107,32 +130,7 @@ resources:
               secret: c2VjcmV0IGlzIHNlY3VyZSwgSSB0aGluaw==
 ```
 
-## Example
-
-To input plain text values, rename the data object to stringData. Nonetheless, the values will still be stored as base64.
-
-```bash
-$ echo -n 'password' | base64
-$ echo -n 'bxlzcWw=' | base64 --decode
-```
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: tkb-secret
-  labels:
-    chapter: configmaps
-type: Opaque
-data:
-  username: bmlnZWxwb3VsdG9u # base64-encoded
-  password: UGFzc3dvcmQxMjM=
-stringData:
-  username: admin
-  password: password
-```
-
-## Injecting into Pods
+### Injecting into Pods
 
 The most flexible way to inject a Secret into a Pod is via a Secret volume. They are automatically mounted as read-only to prevent containers and applications from accidentally modifying them.
 
@@ -154,4 +152,46 @@ spec:
       volumeMounts:
         - name: secret-vol
           mountPath: "/etc/tkb"
+```
+
+### Pulling an image from private repository
+
+```sh
+kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-password> --docker-email=<your-email>
+kubectl get secret regcred --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  ...
+  name: regcred
+  ...
+data:
+  # base64 representation of Docker credentials
+  .dockerconfigjson: eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
+type: kubernetes.io/dockerconfigjson
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-reg
+spec:
+  containers:
+  - name: private-reg-container
+    image: <your-private-image>
+  imagePullSecrets:
+  - name: regcred
+```
+
+### Copying across namespaces
+
+```sh
+kubectl get secret my-user-pass \
+  --namespace=namespace1 \
+  --export -o yaml | \
+  kubectl apply --namespace=namespace1 -f -
 ```

@@ -100,8 +100,20 @@ spec:
       type: Container
 ```
 
-## Commands
+### Object count
 
-```bash
-$ kubectl describe quota
+```yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-counts
+spec:
+  hard:
+    configmaps: "10"
+    persistentvolumeclaims: "4"
+    pods: "4"
+    replicationcontrollers: "20"
+    secrets: "10"
+    services: "10"
+    services.loadbalancers: "2"
 ```

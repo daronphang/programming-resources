@@ -25,9 +25,9 @@ As the application software does not contain any communication code, it is indep
 1. Client invokes a client stub procedure with parameters that resides within the client's address space
 2. Client stub marshalls (packs) the parameters into a message; marshalling includes converting the representation of the parameters into a standard format
 3. Client stub passes the message to the transport layer, which sends it to the remote server
-4. Server demarshalls (unpacks) the parameters and calls the desired subroutine
-5. When the procedure completes, it returns to the server stub which mashalls the return values into a message and hands it to the transport layer
-6. Client stub receives and demarshalls the return parameters and execution returns to the caller
+4. Server de-marshalls (unpacks) the parameters and calls the desired subroutine
+5. When the procedure completes, it returns to the server stub which marshalls the return values into a message and hands it to the transport layer
+6. Client stub receives and de-marshalls the return parameters and execution returns to the caller
 
 <img src="./assets/RPC.PNG">
 
@@ -41,13 +41,13 @@ RPC run-time system is a library of subroutines and a set of services that handl
 
 For RPCs, the stub converts the methods, request types and response types into the forms used by the RPC system i.e. a piece of code that is used to convert the parameters during a RPC. It is essentially a usability feature to provide the appearance the remote method is present locally. Function of the stub is to provide transparency to the application code.
 
-On the client slide, stub handles the interface between client's local procedure call and run-time system, marshalling and unmarshalling data, invoking the RPC run-time protocol, and carrying out binding steps.
+On the client slide, stub handles the interface between client's local procedure call and run-time system, marshalling and un-marshalling data, invoking the RPC run-time protocol, and carrying out binding steps.
 
 On the server side, stub provides a similar interface between the run-time system and local manager procedures that are executed by the server.
 
 ### Binding
 
-Dynamic binding is used to find the server at run-time when the RPC is first called. Binding consits of naming and locating.
+Dynamic binding is used to find the server at run-time when the RPC is first called. Binding consists of naming and locating.
 
 ## Benefits
 

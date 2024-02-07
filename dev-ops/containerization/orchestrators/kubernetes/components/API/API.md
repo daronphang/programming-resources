@@ -8,10 +8,10 @@ At the highest level, there are two types of API group: core and named groups.
 
 <img src="../../assets/simplified-API.png">
 
-```bash
-$ kubectl api-resources # see resources and api groups
-$ kubectl api-versions # shows which versions are supported by cluster
-$ for kind in `kubectl api-resources | tail +2 | awk '{ print $1 }'`; \
+```sh
+kubectl api-resources # see resources and api groups
+kubectl api-versions # shows which versions are supported by cluster
+for kind in `kubectl api-resources | tail +2 | awk '{ print $1 }'`;
 do kubectl explain $kind; done | grep -e "KIND:" -e "VERSION:"
 ```
 
@@ -49,16 +49,16 @@ The API server configurations are stored under `/etc/kubernetes/manifests/kube-a
 
 It is recommended to make a copy before performing any changes.
 
-```bash
-$ cp /etc/kubernetes/manifests/kube-apiserver.yaml . # not in same directory as manifests
-$ vim /etc/kubernetes/manifests/kube-apiserver.yaml
+```sh
+cp /etc/kubernetes/manifests/kube-apiserver.yaml . # not in same directory as manifests
+vim /etc/kubernetes/manifests/kube-apiserver.yaml
 
 # validating changes
-$ watch crictl ps
-$ ps aux | grep kube-apiserver | grep privileged
+watch crictl ps
+ps aux | grep kube-apiserver | grep privileged
 
 # restarting
-$ systemctl restart kubelet.service
+systemctl restart kubelet.service
 ```
 
 ### Enabling/disabling API groups
@@ -79,10 +79,10 @@ You can use `kubectl convert` to convert config files between different API vers
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-convert-plugin
 
-```bash
-$ kubectl convert -f <old-file> --output-version <new-api>
-$ kubectl convert -f pod.yaml # convert to latest version
-$ k convert -f ingress-old.yaml --output-version networking.k8s.io/v1
+```sh
+kubectl convert -f <old-file> --output-version <new-api>
+kubectl convert -f pod.yaml # convert to latest version
+k convert -f ingress-old.yaml --output-version networking.k8s.io/v1
 ```
 
 ### Accessing the API
@@ -95,8 +95,8 @@ You can explore the API more directly using the following options:
 
 The simplest way to do this is to run a kubectl proxy on your localhost adapter that handles all security and authentication.
 
-```bash
-$ kubectl proxy --port 9000
+```sh
+kubectl proxy --port 9000
 ```
 
 ### Deprecation policy rules
@@ -138,14 +138,14 @@ The main job of the API server is to make API available to clients inside and ou
 
 The API server is a Kubernetes control plane service and runs as a set of Pods in the kube-system Namespace on the control plane nodes of your cluster. If you build and manage your own Kubernetes clusters, you need to make sure the **control plane is highly-available and has enough performance** to keep the API server up and running. If you are using a hosted cluster, the way the API server is implemented is hidden from you.
 
-```bash
-$ kubectl cluster-info
-$ kubectl proxy --port 9000 # exposes the API on localhost adapter
+```sh
+kubectl cluster-info
+kubectl proxy --port 9000 # exposes the API on localhost adapter
 ```
 
 ```
 GET /api/v1/namespaces/shield/pods
-$ kubectl get pods --namespace shield
+kubectl get pods --namespace shield
 ```
 
 ## Custom API

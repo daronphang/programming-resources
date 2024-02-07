@@ -1,4 +1,4 @@
-## Sizing
+## Unit of Measurements
 
 When building accessible websites, need to consider inclusion. Hence, should use em or rem over px as they scale with the user's setting.
 
