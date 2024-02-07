@@ -12,7 +12,7 @@ However, we like to think that once an abstraction is defined, it is concrete. I
 
 Taken to its logical extreme, given enough use, there is no such thing as a private implementation. If an interface has enough consumers, they will collectively depend on every aspect of the implementation, intentionally or not. This effect serves to **constrain changes to the implementation**, which must now conform to both the explicitly documented interface, as well as the implicit interface captured by usage.
 
-### Implict Interface
+### Implicit Interface
 
 The creation of the implicit interface usually happens gradually, and interface consumers generally are not aware as it is happening. For instance, an interface may make no guarantees about performance, yet consumers often come to expect a certain level of performance from its implementation. Those expectations become part of the implicit interface to a system, and changes of the system must maintain these performance characteristics to continue functioning for its consumers.
 
