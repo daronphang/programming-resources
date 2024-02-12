@@ -1,24 +1,17 @@
-## Scaling
+## Horizontal Pod Autoscaler (HPA)
 
-Accomplished by changing the number of replicas in a Deployment. Ensures new Pods are created and scheduled to Nodes with available resources.
+HPA automatically updates a workload resource (Deployment, StatefulSet) with the aim of automatically scaling the workload to match demand.
 
-Services have an integrated load-balancer that will distribute network traffic to all Pods of an exposed Deployment. Services will monitor continuously the running Pods using endpoints, to ensure the traffic is sent only to available Pods.
+The response to increased load is to deploy more Pods.
 
-```bash
-$ kubectl scale deployments/my-nginx --replicas=2
-$ kubectl get deployments
-```
+## Vertical Pod Autoscaler (VPA)
 
-## Updating
+VPA automatically adjusts the CPU and memory reservations for the Pods to help 'right size' your applications. This adjustment can improve cluster resource utilization and free up CPU and memory for other Pods.
 
-When you have multiple instances of an application running, you can do rolling updates without downtime. Updates are versioned and any Deployment update can be reverted to a previous version.
+## Cluster Autoscaler (CA)
 
-```bash
-$ kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
-$ kubectl set image deployments/kub-boot kub-boot=kub-boot:v2
+CA is a component that automatically adjusts the size of a Kubernetes Cluster so that all pods have a place to run and there are no unneeded nodes.
 
-$ kubectl rollout status deployments/kub-boot
-$ kubectl describe services/kub-boot
+### Heterogenous cluster
 
-$ kubectl rollout undo deployments/kub-boot
-```
+Heterogenous clusters means having multiple instance types per cluster i.e. general purpose cluster. This greatly reduces cluster management overhead, as having fewer, more general purpose clusters reduces the number configurations to test.

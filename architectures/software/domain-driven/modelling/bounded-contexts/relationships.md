@@ -1,41 +1,12 @@
-## Model integrity
-
-The most fundamental requirement of a model is that it be **internally consistent** (unification); that every term always have the same meaning, and it contains no contradictory rules.
-
-In an ideal world, we would have a single model spanning the whole domain of the enterprise. However, in a world of large systems development, it is not feasible nor cost-effective, and is necessary to allow multiple models to develop in different parts of the system.
-
-To maintain that level of unification, careful choices about which parts of the system will be allowed to diverge and what their relationship to each other will be like need to be made. **We need to make the boundaries and relationships between different models clear**.
-
-### Risks of unified model for a large system
-
-- Too many legacy replacements may be attempted at once
-- Large projects may bog down as the coordination overhead exceeds their abilities
-- Application with specialized needs may have to use models that don't fully satisfy their needs, forcing them to put behavior elsewhere
-- Attempting to satisfy everyone with a single model may lead to complex options that make the model difficult to use
-
-## Bounded context
-
-A model applies in a context. To begin to solve the problems of multiple models, we need to **explicitly define the scope of a particular model** as a bounded part of a software system.
-
-Within the context, work to keep the model logically unified, and do not worry about applicability outside those bounds.
-
-Combining elements of distinct models causes two categories of problems: duplicate concepts and false cognates. **Duplication of concepts** means that there are two model elements that actually represent the same concept. Every time this information changes, it has to be updated in two places with conversions. **False cognates** is the case when two people who are using the same term think they are talking about the same thing, but really are not.
-
-## Context map
-
-An individual bounded context leaves some problems in the absence of a global view. The context of other models may still be vague and in flux. As people on other teams won't be very aware of the context bounds, they may unknowingly make changes that **blur the edges or complicate the interconnections**.
-
-Code reuse between bounded contexts is a hazard to be avoided. Instead, integration of functionality and data **must go through a translation** that defines the relationship between different contexts.
-
-A context map is in the overlap between project management and software design. Both managers and team members need a clear view into of the ongoing conceptual subdivision of the software model and design.
-
-Whatever form the context map takes (textual description, graphical representation, conceptual diagrams, etc.), it must be shared and understood by everyone on the project.
-
 ## Relationships between bounded contexts
 
-The following patterns cover a range of strategies for relating two models that can be composed to encompass an entire enterprise. These served the dual purpose of providing targets for successfully organizing development work, and providing vocabulary for describing the existing organization.
+If two sets of functionalities have no significant relationship, or call upon each other's functionality, they should be completely cut loose from each other. Even if the features are related in a use-case, does not mean they must be integrated.
 
-### Shared kernel
+**Integration is always expensive, and sometimes the benefit is small**. In addition to the usual expense of coordinating teams, there are compromises that have to be made.
+
+Nonetheless, the following patterns cover a range of strategies for relating two models that can be composed to encompass an entire enterprise. These served the dual purpose of providing targets for successfully organizing development work, and providing vocabulary for describing the existing organization.
+
+## Shared kernel
 
 Uncoordinated teams working on closely related applications can produce contexts that may not fit together. They can end up spending more on translation layers and retrofitting than they would have on continuous integration. Nonetheless, it may be too much overhead to fully synchronize the entire model and codebase across teams.
 
@@ -43,7 +14,7 @@ Instead, designate some subset of the domain model that the **two teams agree to
 
 The shared kernel **cannot be changed as freely as other stuff**. Decisions involve consultation with another team. Automated test suites must be integrated because all tests from both teams must pass when changes are made.
 
-### Customer/Supplier development teams
+## Customer/Supplier development teams
 
 For upstream and downstream subsystems, where the downstream component takes the output from the upstream component, should have translation in a single direction. Yet, problems can emerge in this situation.
 
@@ -55,7 +26,7 @@ Hence, establish a clear customer/supplier relationship between both teams. In p
 
 There needs to be an automated test suite that can give the upstream team the ability to change their code without fear of breaking the downstream, and lets the downstream team concentrate on their own work without constantly monitoring the upstream team.
 
-### Anti-corruption layer
+## Anti-corruption layer
 
 New systems almost always have to be integrated with legacy systems that will have their own models. When control or communication is not adequate to pull off a shared kernel or customer/supplier development teams, the interface can become complex.
 
@@ -67,4 +38,8 @@ If you take some data from one system and misinterpret it in another. You may ev
 
 Combining systems with different models has pitfalls, but it is nonetheless unavoidable. A means is needed to provide a **translation between the parts that adhere to different models**, so that the models are not corrupted with undigested elements of foreign models.
 
-An anti-corruption layer is a mechanism that translates conceptual objects and actions from one model and protocol to another. **It is not a mechanism for transporting data from one program to another**.
+An anti-corruption layer (translation layer) is a mechanism that translates conceptual objects and actions from one model and protocol to another. **It is not a mechanism for transporting data from one program to another**.
+
+### How to implement
+
+An anti-corruption layer can be implemented using a facade or adapter layer between different subsystems that don't share the same semantics. The layer can be implemented as a **component within the application** or as an **independent service**.

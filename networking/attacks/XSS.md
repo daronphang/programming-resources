@@ -1,4 +1,4 @@
-## XSS (Cross Site Scripting)
+## Cross Site Scripting (XSS)
 
 XSS attacks are a type of injection in which malicious scripts are injected into benign/trusted websites. Occurs when an attacker uses a vulnerable web application to send malicious code, generally in the form of browser side script, to end users. This can happen anywhere when a web application uses input within the output it generates without validating or encoding it.
 

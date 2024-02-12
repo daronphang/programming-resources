@@ -1,6 +1,6 @@
 ## Certificate Authority (CA)
 
-A website wants to communicate with you securely. In order to prove its identity and make sure it is not an attacker, you must have the server's public key. However, you can't store all keys from all websites, and the solution is CA.
+A website wants to communicate with you securely. In order to prove its identity and make sure it is not an attacker, you must have the server's public key. However, just receiving a public key alone does not guarantee that it is indeed owned by the correct remote subject. **Man-in-the-middle attackers** can manipulate networks to serve their own keys, thereby compromising any communication. Also, you can't store all keys from all websites, and the solution is CA.
 
 A CA is a trusted organization that can issue a **digital certificate** i.e. GlobalSign, DigiCert, GoDaddy. TLS/SSL makes a connection secure by validating SSL/TLS certificate. Digital certificates are data files used to cryptographically link an entity with a public key. A digital certificate provides:
 
@@ -14,17 +14,22 @@ If one of the CAs you trust is compromised, an attacker can use the stolen priva
 
 ### How digital certificates are generated and authenticated
 
+For data encryption, public keys are used to encrypt while private keys decrypt. For digital signatures, it is the **reverse.**
+
+The client (browser) does not have to check with the CAs directly as the signature itself is enough proof that the certificate is valid and authentic (beauty of asymmetric encryption).
+
+The process is as follows:
+
 1. The applicant for a digital certificate generates a key pair consisting of public key and private key (not shared with anyone else including CA)
-2. The applicant generates a certificate signing request (CSR) which is an encoded text file containing the public key and other information about the entity i.e. domain name, organization, address, etc.
+2. The applicant generates a certificate signing request (CSR) which is an encoded text file containing the public key and other information about the entity i.e. domain name, organization, address, etc. (signed with the applicant's private key)
 3. The CSR is sent to the CA who verifies the information and digitally signs the certificate with an issuing private key (by an intermediate certificate, not root certificate)
 4. The signed certificate (SSL) is sent back to the applicant which is a file that contains the data (CA's issuer name, company name, domain, server's public key, etc.) including the digital signature (an encrypted version of the data)
 5. When the signed certificate is presented to a third party, the recipient (browser) can cryptographically confirm the CA's digital signature via the CA's public key (stored in the CA bundle)
 6. The CA's public key is used to decrypt the digital signature and compares the values with the contents of the certificate itself; if they match, the signature is valid
-7. The recipient performs signature validation through the certificate chain and if it sees that the signed certificate is issued and signed by one of the trusted roots in its root store, it will automatically trust it
+7. The recipient performs signature validation through the certificate chain (or certificate path) to obtain the root CA certificate (the signatures of all certificates in the chain must be verified)
+8. If the client trusts the root CA, it will automatically trust the server
 
-For data encryption, public keys are used to encrypt while private keys decrypt. For digital signatures, it is the **reverse.**
-
-The client (browser) does not have to check with the CAs directly as the signature itself is enough proof that the certificate is valid and authentic (beauty of asymmetric encryption).
+<img src="../assets/certificate-chain.png">
 
 ## Chain of trust
 

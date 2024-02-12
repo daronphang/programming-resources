@@ -30,19 +30,37 @@ Pod:
 zone=prod
 ```
 
-### Endpoints objects/slices
+### Endpoints
 
 With a Service in place, Pods can scale up and down without interruption as the Service is observing the changes and updating its list of healthy Pods. It does this through a combination of label selection and a construct called an **Endpoints** object.
 
-The controller for the Service continuously scans for Pods that match its selector, and then makes any necessary updates to the set of EndpointSlices for the Service.
+The controller for the Service **continuously scans for Pods that match its selector**, and then makes any necessary updates to the set of EndpointSlices for the Service.
 
 The Endpoints object is used to store a dynamic list of healthy Pods matching the Service's label selector. Any new Pods that match the selector gets added to the Endpoints object.
+
+### EndpointSlices
+
+EndpointSlices split the larger monolithic Endpoints object into smaller consumable slices. Each slice holds a maximum of 100 endpoints. This leads to:
+
+- Less network traffic
+- Less compute requirements to process endpoint updates
+- Less impact on the control plane
+- Better performance and scale
+
+When applications create custom Endpoints resources, to ensure that the applications do not need to concurrently write to both Endpoints and EndpointSlices resources, the cluster's control plane mirrors most Endpoint resources to corresponding EndpointSlices.
 
 ### Services without selectors
 
 When a Service is used with a corresponding set of EndpointSlice objects and without a selector, the Service can **abstract other kinds of backends, including ones that run outside the cluster**.
 
 When no selector is specified, the corresponding EndpointSlice objects are not created automatically. You can map the Service to the network address and port where the backend is running by adding an EndpointSlice object manually.
+
+EndpointSlices may not work with Ingress controllers. Instead, use Endpoint objects. Mirroring of EndpointSlices is not required.
+
+```sh
+kubectl get endpoint # check if an endpoint is registered to a svc
+kubectl get endpointslice
+```
 
 ```yaml
 apiVersion: v1
@@ -76,6 +94,20 @@ endpoints:
       - "10.4.5.6"
   - addresses:
       - "10.1.2.3"
+
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: my-service # same name as service
+  labels:
+    endpointslice.kubernetes.io/skip-mirror: "true"
+subsets:
+  - addresses:
+      - ip: 139.59.205.180
+    ports:
+      - port: 80
+        name: web # can be omitted
 ```
 
 ### Communication between Containers

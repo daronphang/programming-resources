@@ -1,3 +1,7 @@
+## HTTPS
+
+Hyper Text Transfer Protocol secure. Appears in URL when a website is secured by an SSL/TLS certificate.
+
 ## SSL (Secure Sockets Layer)
 
 Standard technology for keeping an internet connection secure, safeguarding sensitive data that is being sent via packets between two systems, and preventing attackers from reading and modifying data that is transferred. Data exchange applies between client to client, client to server, and server to server. Browsers will only trust SSL certificates issued by authorized issuers (Certificate Authorities) such as DigiCert. For organizations that want to offer services encrypted by TLS, they have to prove to CAs of their legitimacy and that they control the domain.
@@ -57,10 +61,6 @@ During the course of a TLS handshake, the client and server together will perfor
 7. **Client is ready**: Client sends a "finished" message that is encrypted with a session key
 8. **Server is ready**: Server sends a "finished" message encrypted with a session key
 9. **Secure symmetric encryption achieved**: The handshake is completed, and subsequent communication uses the session keys
-
-## HTTPS
-
-Hyper Text Transfer Protocol secure. Appears in URL when a website is secured by an SSL/TLS certificate.
 
 ## Protocol versions
 
