@@ -2,9 +2,11 @@
 
 Keepalived is a routing software written in C. The main goal is provide simple and robust facilities for **load balancing (active/active)** and **high-availability (active/passive)** to Linux system and Linux based infrastructures.
 
-Load balancing framework relies on LVS module providing Layer 4 load balancing (TCP/UDP). Keepalived implements a set of checks to dynamically and adaptively maintain and manage load-balanced server pool according to their health. Keepalived provides a strong and robust health checking for LVS clusters.
+Load balancing framework relies on LVS module providing **Layer 4 load balancing (TCP/UDP)**. Keepalived implements a set of checks to dynamically and adaptively maintain and manage load-balanced server pool according to their health. Keepalived provides a strong and robust health checking for LVS clusters.
 
 Keepalived also provides high availability that is achieved using VRRP protocol. It implements a set of hooks to the VRRP finite state machine providing low-level and high-speed protocol interactions. In order to offer faster network failure detection, Keepalived implements **BFD protocol**.
+
+Keepalived is **primarily used to manage virtual IP (VIP) addresses** and ensure uninterrupted service availability in scenarios where system or application failures can occur. Keepalived is widely employed in network infrastructure and server clustering to maintain system reliability and minimize downtime.
 
 Accessing the virtual IP from the load balancers or one of the real servers is not supported. Likewise, configuring a load balancer on the same machines as a real server is not supported.
 
@@ -103,11 +105,11 @@ global_defs {
 ```
 
 ```conf
-// LB1 (active)
+# LB1 (active)
 vrrp_sync_group VG1 {
    group {
-      RH_EXT // external
-      RH_INT // internal
+      RH_EXT # external
+      RH_INT # internal
    }
 }
 
@@ -140,8 +142,10 @@ vrrp_instance RH_INT {
        192.168.1.1
    }
 }
+```
 
-// LB2 (passive)
+```conf
+# LB2 (passive)
 vrrp_sync_group VG1 {
    group {
       RH_EXT
@@ -182,8 +186,8 @@ vrrp_instance RH_INT {
 
 ```conf
 virtual_server 10.0.0.1 80 {
-    delay_loop 6 // time in seconds between health checks
-    lb_algo rr  // round-robin
+    delay_loop 6 # time in seconds between health checks
+    lb_algo rr  # round-robin
     lb_kind NAT
     protocol TCP
 
