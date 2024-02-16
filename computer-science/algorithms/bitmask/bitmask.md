@@ -63,6 +63,17 @@ Bit Operation of 12 and 25:
 = 00011101 = 29
 ```
 
+### XOR Operator ^
+
+XOR is known as Exclusive OR. It is a logical operator which outputs 1 when either of the operands is 1. If both are 1 or 0, it will output 0.
+
+```
+1 1 -> 0
+0 1 -> 1
+1 0 -> 1
+0 0 -> os
+```
+
 ### Left Shift Operator <<
 
 The left shift operator shifts **all the bits** of a particular number left by a specified number of bits. All the bits vacated by the left shift operation are filled with 0.

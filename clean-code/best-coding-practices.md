@@ -10,6 +10,8 @@
 
 ### Standards
 
+- Don't commit sensitive data to source code
+- Understand the domain
 - Domain encapsulation with bounded contexts
 - Abstract common functions as utilities (DRY)
 - Use ubiquitous language

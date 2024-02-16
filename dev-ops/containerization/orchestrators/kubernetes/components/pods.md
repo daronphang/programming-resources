@@ -97,10 +97,10 @@ The init container guarantees to start and complete before your main application
 
 ## Commands
 
-```bash
-$ kubectl get pod --name
-$ kubectl get pod <pod-name> -o yaml > pod-definition.yaml # extract to yaml
-$ kubectl edit pod <pod-name>
+```sh
+kubectl get pod --name
+kubectl get pod <pod-name> -o yaml > pod-definition.yaml # extract to yaml
+kubectl edit pod <pod-name>
 ```
 
 ## Example
