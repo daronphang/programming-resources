@@ -1,4 +1,4 @@
-## Modelling
+## Domain model
 
 In domain-driven design, the uses that determine the choice of a model are:
 
