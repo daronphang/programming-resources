@@ -1,6 +1,6 @@
 ## Domain-Driven Design (DDD)
 
-DDD is a collection of principles and patterns that help developers craft elegant object systems i.e. defines a **methodology for structuring business logic**.
+DDD is a collection of principles and patterns that help developers craft elegant object systems i.e. defines a **methodology for structuring business logic**. The approach is particularly suited to **complex domains**.
 
 DDD focuses on modeling software to match a domain’s complexity and nuances called **domain models**. It emphasizes a deep understanding and representation of the domain within the software. These models encapsulate complex business logic, closing the gap between business reality and code.
 

@@ -1,6 +1,6 @@
 ## Associations
 
-The interaction between modeling and implementation is particularly tricky with the associations between objects. In real life, here are lots of many-to-many associations, and many are naturally bi-directional. However, these associations complicate implementation and maintenance, uncommunicative and difficult to implement.
+The interaction between **modeling and implementation** is particularly tricky with the associations between objects. In real life, here are lots of many-to-many associations, and many are naturally bi-directional. However, these associations complicate implementation and maintenance, uncommunicative and difficult to implement.
 
 Three ways of making associations more tractable are:
 

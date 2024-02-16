@@ -16,7 +16,7 @@ Modeling aggregates and adding factories and repositories to the design gives us
 - Aggregates mark off the scope within which invariants have to be maintained at every stage of the lifecycle
 - Factories and repositories operate on aggregates, encapsulating the complexity of specific lifecycle transitions
 
-### Aggregates
+## Aggregates
 
 An aggregate is a cluster of associated objects that we **treat as a unit for the purpose of data changes**. Examples include:
 
@@ -33,7 +33,7 @@ Aggregates tighten up the model itself by defining clear ownership and boundarie
 
 Aggregates are the basic element of transfer of data storage which always need to be consistent - you request to load or save whole aggregates inside a transaction. **Transactions should not cross aggregate boundaries**.
 
-### Factories
+## Factories
 
 When creation of an object, or an entire aggregate becomes complicated or reveals too much of the internal structure, factories provide encapsulation.
 
@@ -47,7 +47,7 @@ A factory encapsulates the knowledge needed to create a complex object or aggreg
 
 Factories are used to create and reconstitute complex objects and aggregates, keeping their internal structure encapsulated i.e. a factory encapsulates the lifecycle transitions of creation and reconstitution.
 
-#### Designing the interface
+### Designing the interface
 
 When designing the interface, keep in mind these pointers:
 
@@ -55,7 +55,7 @@ When designing the interface, keep in mind these pointers:
 - Factory will be coupled to its arguments
 - Factory is responsible for ensuring all invariants are met for the object or aggregate it creates
 
-### Repositories
+## Repositories
 
 Repositories address the middle and end of the lifecycle, providing the means of finding and retrieving persistent objects while encapsulating the immense infrastructure involved.
 
@@ -76,14 +76,14 @@ Hence, **keep the client focused on the model, delegating all object storage and
 
 The easiest repository to build has hard-coded queries with specific parameters. However, for projects with a lot of querying, more supportive infrastructure such as a **repository framework** can be built to allow more flexible queries.
 
-#### Advantages
+### Advantages
 
 - Simple concept for obtaining persistent objects and managing their lifecycle
 - Decouples application and domain design from persistence technology, multiple database strategies, or even multiple data sources
 - Communicates design decisions about object access
 - Easy substitution of dummy implementation, for use in testing, using in-memory collection
 
-#### Designing objects for relational databases
+### Designing objects for relational databases
 
 The database is more intimately related to the object model than most other components as it is storing the persistent form of the data tha makes up the objects themselves.
 
