@@ -23,7 +23,7 @@ Hot streams are active before the subscription. The data is independent of an in
 
 ### Contrast with Event Driven
 
-In constrast with event-driven, reactive programming deals with **data**. You declare a reaction to a change. Hence, it might be considered as a pull or watch strategy.
+In contrast with event-driven, reactive programming deals with **data**. You declare a reaction to a change. Hence, it might be considered as a pull or watch strategy.
 
 ## Streams
 

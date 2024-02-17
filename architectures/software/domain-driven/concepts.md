@@ -24,7 +24,9 @@ Domain events are relevant **both within a bounded context and across bounded co
 
 ## Ubiquitous language
 
-The ubiquitous language is the channel for all information to flow between developers, domain experts and the software. Characteristics include:
+The ubiquitous language is the channel for all information to flow between developers, domain experts and the software. Doing so reduces the disconnect between business vocabulary and technological jargon.
+
+Characteristics include:
 
 - Expressed in the domain model
 - Unites the people of the project team

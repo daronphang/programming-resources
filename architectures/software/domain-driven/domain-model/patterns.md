@@ -65,6 +65,8 @@ Most objects should not be accessed by a global search. Yet, a subset of persist
 
 A repository represents all objects of a certain type as a conceptual set. It acts like a collection, except with **more elaborate querying capability**. Objects of the appropriate type are added and removed, and the machinery behind the repository inserts them or deletes them from the database. This definition gathers a cohesive set of responsibilities for providing access to the roots of aggregates from early-lifecycle through the end.
 
+A repository is a **gateway** to a conceptual (maybe actual) potentially large collection of durable objects. The interface should comprise **methods that make sense to goals of a user in a domain, not to a database**. If it just so happens that behind the repository sits a database, then the repository will deal with mapping from the requests that make sense to the domain into something that makes sense to the database.
+
 Clients request objects from the repository using query methods that select objects based on criteria specified by the client, typically specifying the value of certain attributes. The repository retrieves the requested object, encapsulating the machinery of database queries and metadata mapping.
 
 Hence, **keep the client focused on the model, delegating all object storage and access to the repositories**. For each type of object that needs global access:

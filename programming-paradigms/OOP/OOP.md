@@ -50,7 +50,7 @@ The most common relationships between classes are:
 
 Every operation declared by an object specifies the operation's name, the objects it takes as parameters, and the operation's return value; this is known as the operation's signature. The set of all signatures defined by an object's operations is called the interface. An object's interface characterizes the complete set of requests that can be sent to the object. A type is a name used to denote an interface. An object may have many types, and many objects can share a type.
 
-Objects are known only through their interfaces; there is no way to know anything about an object or to ask it to do anything without going through its interface. Different objects are free to implement requests differently i.e. two objects can have different implementations of identitcal interfaces.
+Objects are known only through their interfaces; there is no way to know anything about an object or to ask it to do anything without going through its interface. Different objects are free to implement requests differently i.e. two objects can have different implementations of identical interfaces.
 
 Run-time association of a request to an object and one of its operations is known as **dynamic binding** i.e. issuing a request doesn't commit to a particular implementation until run-time. Also allows to substitute objects that have identical interfaces for each other at run-time; substitutability is known as **polymorphism**. It lets a client object make few assumptions about other objects beyond supporting a particular interface.
 

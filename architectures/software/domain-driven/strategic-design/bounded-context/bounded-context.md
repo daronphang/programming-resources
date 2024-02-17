@@ -27,6 +27,8 @@ An individual bounded context leaves some problems in the absence of a global vi
 
 Code reuse between bounded contexts is a hazard to be avoided. Instead, integration of functionality and data **must go through a translation** that defines the relationship between different contexts.
 
-A context map is in the overlap between project management and software design. Both managers and team members need a clear view into of the ongoing conceptual subdivision of the software model and design.
+The context map is a **visual representation of the system’s bounded contexts and integrations between them**. It is in the overlap between project management and software design. Both managers and team members need a clear view into of the ongoing conceptual subdivision of the software model and design.
 
 Whatever form the context map takes (textual description, graphical representation, conceptual diagrams, etc.), it must be shared and understood by everyone on the project.
+
+Context map can provide valuable intelligence because you can start making informed business and architectural decisions such as packaging and deployment design; choice of technology used to marshal messages between models; and, perhaps most important, where you choose to set milestones and deploy effort, time, and talent.

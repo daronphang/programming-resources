@@ -1,12 +1,18 @@
-## Dependency Injection
+## Dependency Injection (DI)
 
-Main idea is to separate the construction and usage of objects i.e. building software that is modular and easy to extend. Popular with static languages like Go and Java. However, they are not popular with dynamically typed languages like Python.
+DI is a software design technique in which the **creation and binding of dependencies are done outside of the dependent class** e.g. assemblers like DI containers or IoC containers that auto-wires the dependency. DI was coined by Martin Fowler to have a more specific name for this style, as opposed to the overly generic term IoC.
 
-DI is a principle that helps to achieve an **inversion of control by decreasing coupling and increasing cohesion**. In DI, objects do not create each other but are injected. Most DI containers won't construct an object until needed.
+DI is about how one object acquires a dependency. When a dependency is provided externally, then the system is using DI.
 
 In the context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it should pass this responsibility to another "authoritative" mechanism, thereby inverting the control.
 
-Injection is the process of providing an instance of a type, to a method that uses that instance.
+DI is a principle that helps to achieve **IoC by decreasing coupling and increasing cohesion**. Most DI containers won't construct an object until needed.
+
+DI can be achieved in the following ways:
+
+- Constructor injection
+- Interface injection through class methods
+- Setter injection (via public property of the dependent class)
 
 ### Benefits
 

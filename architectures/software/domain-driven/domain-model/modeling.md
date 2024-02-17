@@ -35,7 +35,9 @@ A project needs a common language of which the **domain model can provide the ba
 
 If the design, or some central part of it, does not map to the conceptual domain model, that model is of little value, and the correctness of the software is suspect. At the same time, complex mappings between models and design functions are difficult to understand, and, in practice, impossible to maintain as the design changes. A deadly divide opens between analysis and design so that insight gained in each of those activities does not feed into the other.
 
-Model-driven design discards the dichotomy of analysis model versus design to search out a single model that serves both purposes. Each object in the design plays a conceptual role described in the model.
+The software you create is not the true model. It is only a manifestation (shadow) of the application form you set out to achieve. Even though it's an imitation of the perfect solution, you can seek to bring that code closer to the true form over time.
+
+Model-driven design discards the dichotomy of analysis model versus design to search out a single model that serves both purposes. Each object in the design plays a conceptual role described in the model. **Your understanding of the model is evolved in your code**.
 
 Design a portion of the software system to reflect the domain model in a very literal way, so that mapping is obvious. Revisit the model and modify it to be implemented more naturally in software. To do this usually requires software development tools and languages that support a modeling paradigm, such as **object-oriented programming**.
 
