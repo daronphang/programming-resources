@@ -1,6 +1,16 @@
-## Encoding Data
+## Serializing Data
 
 Programs working with data have at least two different representations: in-memory and bytes. Translation from in-memory to bytes is called encoding/marshalling/serialization, and bytes to in-memory is decoding/unmarshalling/deserialization.
+
+Serialization is the process of converting a data object into a series of bytes that saves the state of the object in an easily transmittable form.
+
+With serialization, we can transfer objects:
+
+- Over the wire for messaging use cases
+- Across applications via REST APIs
+- Through firewalls
+- Across domains
+- To other data stores
 
 ### In Memory
 

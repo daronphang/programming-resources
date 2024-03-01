@@ -1,4 +1,4 @@
-## Messages
+## Messages (records)
 
 The unit of data within Kafka. The data contained within it does not have a specific format or meaning to Kafka, and may have optional pieces of metadata which are referred to as keys.
 
@@ -17,6 +17,8 @@ Messages are categorized into topics. The closest analogies for a topic are a da
 A partition is a single log. Messages are written to it in an append-only fashion and are read in order from beginning to end. Partitions are the way that Kafka provides redundancy and scalability.
 
 Each partition can be hosted on a different server, which means that a single topic can be scaled horizontally across multiple servers to provide performance. Partitions can also be replicated, such that different servers will store a copy of the same partition in case one server fails.
+
+However, adding a new consumer in Kafka forces a rebalance across the partitions which seems to be a fairly expensive operation.
 
 ## Streams
 

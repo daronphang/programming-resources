@@ -1,4 +1,4 @@
-## Event Broker
+## Event broker
 
 A system that is the heart of an event-driven microservice platform, and that receives events, stores them in a queue or partitioned event stream, and provides them for consumption by other processes. Examples include Kafka, Spark, Flink or Beam.
 
@@ -6,7 +6,7 @@ A system that is the heart of an event-driven microservice platform, and that re
 
 Event streams can be partitioned into individual sub-streams. This partitioning mechanism allows for multiple instances of a consumer to process each sub-stream in parallel, allowing for greater throughput.
 
-### Strict Ordering
+### Strict ordering
 
 Data in an event stream partition is strictly ordered. Commonly, event brokers enable an immutable, append-only log of facts that preserves the state of event ordering.
 
@@ -20,7 +20,7 @@ Events are assigned an index when written to the event stream. This is used by c
 
 Consumer lag is the difference between the consumer's current index and the tail index. It can be used to scale up the number of consumers when it is high, and scale down when low.
 
-### Infinite Retention
+### Infinite retention
 
 Event streams must be able to retain events for an infinite period of time.
 

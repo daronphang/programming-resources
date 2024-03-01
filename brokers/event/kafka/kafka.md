@@ -1,10 +1,16 @@
 ## Kafka
 
-A distributed publish-subscribe messaging system. Instead of using data packets, it uses a data stream to deliver messages which are suitable for both offline and online message consumption. An open-source platform developed by Apache written in Scala and Java. Kafka aims to provide solutions for large scale event-driven systems.
+Kafka is a distributed publish-subscribe message bus developed for high-ingress data replay and streams. Kafka is a durable message broker that enables applications to process, persist, and re-process streamed data.
+
+Instead of using data packets, it uses a data stream to deliver messages which are suitable for both offline and online message consumption. An open-source platform developed by Apache written in Scala and Java. Kafka aims to provide solutions for large scale event-driven systems.
 
 ## Features
 
-### High-Volume
+### Real-time data processing
+
+Traditional batch processing systems suffer from latency as they only process data at fixed intervals. Kafka supports real-time data processing, reducing the latency to near zero.
+
+### High volume
 
 Kafka works with a considerable volume of data in the data streams.
 
@@ -12,7 +18,7 @@ Kafka works with a considerable volume of data in the data streams.
 
 Scales easily without downtime by handling scalability in all four dimensions i.e. event producers, event consumers, event connectors and event processors.
 
-### Fault Tolerance
+### Fault tolerance
 
 Kafka connector can handle failures with three strategies summarized as fast-fail, ignore and requeue.
 
@@ -22,6 +28,8 @@ Uses a distributed commit log which means no cascade failure and messages are pe
 
 ### Retention
 
+Kafka is log-based rather than queue-based. Messages stay in the log until they have reached the retention limit.
+
 Provides durable storage of messages for a certain period of time. Kafka brokers are configured with a default retention setting of 7 days or until the partition reaches a certain size. Once these limits are reached, messages are expired and deleted.
 
 ### Performance
@@ -30,9 +38,17 @@ Has high throughput for both publishing and subscribing to messages.
 
 ## Use Cases
 
+Use Kafka if you want to:
+
+- Ingest, store, and process event streams
+- Process millions of requests per second
+- Perform data analytics with native stream processing capabilities
+- Implement a pull-based consumption approach
+- Build event-driven, low-latency, trigger-based applications
+
 ### Activity tracking
 
-A website's users interact with frontend applications, which generate messages regarding actions the user is taking i.e. page views, click tracking, or more complex actions such as adding data to their profile. The messages are published to one or more topics, which are then consumed by applications on the backend. These applications may be generating reports, feeding machine learning systems, updating search results, or performing other operations that are necessary to provide a rich user experience.
+A website's users interact with frontend applications, which generate messages regarding actions the user is taking i.e. page views, click tracking, food delivery, ride-hailing, or more complex actions such as adding data to their profile. The messages are published to one or more topics, which are then consumed by applications on the backend. These applications may be generating reports, feeding machine learning systems, updating search results, or performing other operations that are necessary to provide a rich user experience.
 
 ### Messaging
 

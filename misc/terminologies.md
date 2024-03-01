@@ -28,3 +28,9 @@ For instance, a specification of a List may say that it is able to hold duplicat
 Type of bot that is typically operated by search engines like Google and Bing. Their purpose is to index the content of websites all across the internet so that those websites can appear in search engine results.
 
 Can also be a generic term for any program that is used to automatically discover and scan websites by following links from one webpage to another.
+
+## Sentinel
+
+A sentinel is a known fixed value in any dataset that tells the processing application to stop at this point. It has to be a value that can never occur in the dataset i.e. for height of person, a sentinel can be 0 or -1.
+
+A sentinel node is a leaf node in a linked list or tree structure which identifies the end of the list. It is an alternative to marking the end of the node with a NULL pointer or None reference.

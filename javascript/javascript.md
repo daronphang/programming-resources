@@ -2,7 +2,7 @@
 
 Lightweight, asynchronous, prototyped-based, interpreted language with first-class functions. First-class functions are treated like other variables i.e. functions can be assigned to variable or passed as an argument or can be returned by another function. Supports multi-paradigms including OO, procedural and FP.
 
-JS is a compiled langauge i.e. source code is parsed before executed, and we are informed of static errors before execution. The parsed code is then converted into a binary form, which is subsequently executed and does not switch back line-by-line execution.
+JS is a compiled language i.e. source code is parsed before executed, and we are informed of static errors before execution. The parsed code is then converted into a binary form, which is subsequently executed and does not switch back line-by-line execution.
 
 Flow for a JS source program:
 
@@ -18,31 +18,6 @@ Applies to entire scripts or to individual functions. Doesn't apply to block sta
 1. Eliminates JS silent errors by changing them to throw errors i.e. using undeclared variables.
 2. Fixes mistakes that make it difficult for JS engines to perform optimizations.
 3. Prohibits some syntax defined in future versions of ECMA.
-
-## Function Expressions/Declarations
-
-A declared function is "saved for later use" and will be executed later when invoked. A function expression can be stored in a variable which can be used as a function.
-
-Differences are as follows:
-
-- Function declarations are hoisted while expressions are not.
-- With function expressions, you can use it immediately after it is defined, but function declarations have to wait until the entire script has been parsed.
-- Function expressions can be used as an argument to another function.
-- Function expressions can be anonymous.
-
-```js
-// declaration
-function myFunction() {
-  // do something
-}
-
-// expression
-const getRectArea = function (width, height) {
-  return width * height;
-};
-
-console.log(getRectArea(3, 4));
-```
 
 ## Assigning to Multiple Variables
 
@@ -73,26 +48,14 @@ if (arr1.concat(arr2).length === 0) {
 - const can neither be updated or re-declared
 - all are hoisted to the top of their scope with var initialized as 'undefined'
 
-## Immediately Invoked Function Expressions
-
-Executing a function without having to save it to memory.
-
-```js
-(function () {
-  console.log('once');
-})();
-
-(() => console.log('once'))();
-```
-
 ## Shortcircuiting
 
 Returns first value if it's truthy value for || operator. For AND operator, returns falsy value if one of them is false, else the last value.
 
 ```javascript
-console.log(3 || 'Jonas'); // 3
-console.log(0 && 'Jonas'); // 0
-console.log(7 && 'Jonas'); // Jonas
+console.log(3 || "Jonas"); // 3
+console.log(0 && "Jonas"); // 0
+console.log(7 && "Jonas"); // Jonas
 ```
 
 ## Optional Chaining
@@ -124,8 +87,8 @@ Assigning a new variable (shallow copy) just creates a pointer (reference) to th
 
 ```js
 const person = {
-  firstName: 'John',
-  lastName: 'Doe',
+  firstName: "John",
+  lastName: "Doe",
 };
 
 // shallow/deep copy

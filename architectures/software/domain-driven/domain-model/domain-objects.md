@@ -10,7 +10,7 @@ Tracking the identity of entities is essential, but **attaching identity to othe
 
 A value object can be an assemblage of other objects, reference entities, and are often passed as parameters in messages between objects. They are frequently transient, created for an operation and then discarded. Value objects are used as **attributes of entities** i.e. an address (value object) which is part of a customer (entity) is made up of street, city, and state.
 
-When you care only about the attributes of an element of the model, classify it as a value object. Making it express the meaning of attributes it conveys and give it related functionality. Treat the value object as immutable.
+When you care only about the attributes of an element of the model, classify it as a value object. Making it express the meaning of attributes it conveys and give it related functionality. **Treat the value object as immutable**.
 
 ### When to allow mutability
 

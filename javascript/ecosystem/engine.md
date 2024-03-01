@@ -1,6 +1,6 @@
 ## JS Engine
 
-<img src="./assets/js_runtime.PNG">
+<img src="../assets/js_runtime.PNG">
 
 ## Call Stack
 

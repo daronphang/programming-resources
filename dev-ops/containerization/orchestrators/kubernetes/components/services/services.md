@@ -107,6 +107,7 @@ subsets:
       - ip: 139.59.205.180
     ports:
       - port: 80
+        protocol: TCP
         name: web # can be omitted
 ```
 

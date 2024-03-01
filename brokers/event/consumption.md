@@ -1,4 +1,4 @@
-## Consumption of Events
+## Consumption of events
 
 Commonly available event brokers use an append-only immutable log, and events are given an auto-incrementing index ID.
 
