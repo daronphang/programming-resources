@@ -10,7 +10,20 @@ Cohesion refers to what extent the parts of a module should be contained within 
 
 ### Coupling
 
-Graph theory can be used to analyze coupling in codebases, as the method calls and returns form a call graph. Two types of coupling can be measured:
+There are two types of coupling:
+
+- Static: Represents how static dependencies resolve within the architecture via contracts
+- Dynamic: Represents how quanta communicate at runtime, either synchronously or asynchronously
+
+An easy way to think about the difference is that static coupling describes how services are wired together, whereas dynamic coupling describes how services call one another at runtime.
+
+For example, in a microservices architecture, a service must contain dependent components such as a database, representing static coupling i.e. the service isn’t operational without the necessary data. That service may call other services during the course of a workflow, which represents dynamic coupling. Neither service requires the other to be present to function, except for this runtime workflow. Thus, **static coupling analyzes operational dependencies, and dynamic coupling analyzes communication dependencies**.
+
+#### Analysis
+
+Graph theory can be used to analyze coupling in codebases, as the method calls and returns form a call graph. Moreover, a **reliability analysis** can be performed to determine if something changes, what dependency might break.
+
+Two types of coupling can be measured:
 
 - Afferent coupling: Measures the number of incoming connections to a code artifact
 - Efferent coupling: Measures the outgoing connections to other code artifacts

@@ -1,8 +1,10 @@
-## Software Architecture
+## Software architecture
 
 Everything in software architecture is a trade-off. To understand this, developers must understand terminology concerning components, modularity, coupling, and connascence.
 
-## Architecture Characteristics
+When designing a system, don't try to find the best design; instead, strive for the **least worst** combination of trade-offs.
+
+### Characteristics
 
 The architecture characteristics define the success criteria of a system, which is generally orthogonal to the functionality of the system. They include:
 
@@ -12,7 +14,7 @@ The architecture characteristics define the success criteria of a system, which 
 - Testability
 - Security
 - Agility
-- Fault Tolerance
+- Fault tolerance
 - Elasticity
 - Recoverability
 - Performance
@@ -21,7 +23,21 @@ The architecture characteristics define the success criteria of a system, which 
 
 A common anti-pattern in architecture entails trying to design a generic architecture that supports all characteristics. Each architecture characteristic complicates the overall system design, and supporting too many will lead to greater complexity.
 
-### Translation of Domain Concerns
+## Importance of data
+
+Data is the most important asset in a company. Businesses want to extract value from the data that they have and are finding new ways to deploy data in decision making i.e. data driven decisions.
+
+One important distinction is the separation between operational and analytical data.
+
+### Operational data
+
+Data used for the operation of the business, including sales, transactional data, inventory, etc. This type of data is defined as Online Transactional Processing (OLTP), which typically involves CRUD operations.
+
+### Analytical data
+
+Data used by data scientists and other business analysts for predictions, trending and other business intelligence. This data is typically not transactional and often not relational i.e. graph database.
+
+## Translation of domain concerns
 
 | Domain Concern           | Architecture Characteristics                                                              |
 | ------------------------ | ----------------------------------------------------------------------------------------- |
@@ -31,24 +47,20 @@ A common anti-pattern in architecture entails trying to design a generic archite
 | Competitive advantage    | Agility, testability, deployability, scalability, availability, fault tolerance           |
 | Time and budget          | Simplicity, feasibility                                                                   |
 
-## Architecture Decisions
+## Architecture decisions
 
 Architecture decisions define the rules for how a system should be constructed i.e. business and service layers within a layered architecture can access the database, restricting the presentation layer from making direct database calls. They **form the constraints of the system and direct the development teams on what is and isn't allowed**.
 
 If a particular architecture decision cannot be implemented in one part of the system due to some condition or other constraint, that decision/rule can be broken through something called a **variance**. Most organizations have variance models that are used by an architecture review board (ARB) or chief architect. Those models formalize the process for seeking a variance to a particular standard or decision.
 
-## Design Principles
+## Design principles
 
 A design principle differs from an architecture decision in that a design principle is a **guideline** rather than a hard-and-fast rule. For instance, a design principle can be for development teams to leverage asynchronous messaging between services to increase performance.
 
-## Fitness Functions
+## Architecture quantum
 
-Fitness function was initially stated in Evolutionary computing and Genetic Algorithm to guide simulations towards optimal design solutions. Evolutionary computing is all about **guided incremental changes**, in which engineers access the current state and measure how close it is to the desired state.
+An architecture quantum is an independently deployable artifact with high functional cohesion, high static coupling, and synchronous dynamic coupling. A common example of an architecture quantum is a well-formed microservice within a workflow.
 
-Fitness function is an object function used to assess how close the output comes to achieving the aim. In other words, it takes a candidate solution to a problem as input and produces as output how 'fit' the solution is with respect to the problem.
+In other words, the architecture quantum defines a DDD bounded context in the scope of architecture characteristics e.g. performance, scale, elasticity, reliability, etc.
 
-Fitness function is any mechanism that provides an objective integrity assessment of some architecture characteristic or combination of architecture characteristics. They are not some new framework for architects to download, but rather a new perspective on many existing tools.
-
-Regardless of the application architecture (monolith, microservices), fitness function-driven development can introduce continuous feedback for architectural conformance and inform the development process as it happens, rather than after the fact.
-
-For example, when using a genetic algorithm to optimize wing design, the fitness function assesses wind resistance, weight, airflow, and other characteristics desirable to good wing design.
+It is obvious how static coupling can affect the quantum; for dynamic coupling, depending on the type of call that was made, you might **temporarily** couple two services together e.g. synchronous.

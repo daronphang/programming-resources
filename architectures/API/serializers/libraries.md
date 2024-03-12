@@ -6,6 +6,10 @@ JSON, XML and CSV can be written/read by many programming languages, and are wid
 - Integers greater than 2^53 cannot be represented and requires workaround i.e. Twitter's API returns tweet IDs twice, once as JSON number and another as decimal string
 - JSON and XML have good support for unicode character strings but not for binary strings; workaround is to encode the binary data as text using Base64
 
+### Storing decimals
+
+Should use string instead of number to eliminate loss of precision or ambiguity in transfer.
+
 ## CSV
 
 CSV output format is a text file with each record from the crawl per line, with columns separated by commas. Useful when data is strictly tabular, structure is known and both generation and consumption of data file is in your control.

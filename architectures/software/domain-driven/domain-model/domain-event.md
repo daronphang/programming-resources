@@ -12,6 +12,10 @@ It's important to ensure that, just like a database transaction, either all the 
 
 For synchronous messaging across disconnected aggregates, domain events are a great way to **ensure aggregate root consistency across the entire model**.
 
+### Fully encapsulated domain model
+
+To achieve a fully encapsulated domain model, domain events should be handled within the same transaction scope and in-memory. This prevents inconsistent data between local domain and published events, should the former fail during a transaction.
+
 ### Domain event vs messaging-style events
 
 Both are similar but with one important difference. With message brokers, a message is sent asynchronously and communicated across processes and machines. This is useful for integrating multiple Bounded Contexts, microservices, or even different applications.
@@ -20,9 +24,9 @@ However, with domain events, you want to raise an event from the domain operatio
 
 ### Domain event vs integration event
 
-Both are the same thing, but their implementations are different. Domain events can be asynchronous or synchronous. However, integration events should always be asynchronous.
+Both are the same thing, but their implementations are different. Domain events can be asynchronous or synchronous. Domain events are always scoped within a transaction.
 
-The purpose of integration events is to propagate committed transactions and updates to additional subsystems, whether they are other microservices, Bounded Contexts or even external applications. Hence, they should occur only if the entity is successfully persisted, otherwise it's as if the entire operation never happened.
+However, integration events should always be asynchronous. The purpose of integration events is to propagate committed transactions and updates to additional subsystems, whether they are other microservices, Bounded Contexts or even external applications. Hence, they should occur only if the entity is successfully persisted, otherwise it's as if the entire operation never happened.
 
 ### Domain event dispatcher
 

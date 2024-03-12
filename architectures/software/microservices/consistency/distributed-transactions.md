@@ -1,4 +1,4 @@
-## Distributed Transactions
+## Distributed transactions
 
 A distributed transaction is one that spans across two or more microservices. Each microservice is responsible for processing its portion of the transaction, as well as reversing that processing in the case that the transaction is aborted/reverted. **Both the fulfillment and reversal logic must reside within the same microservice i.e. retry policy, error handling, intermittent failure management, etc.**
 
