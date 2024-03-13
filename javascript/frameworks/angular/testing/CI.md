@@ -136,16 +136,19 @@ stage('Test Image Build') {
 }
 
 stage('Run Tests in Image') {
-    steps {
-        sh 'docker run --name test-$SERVICE_NAME $IMAGE_BUILD_TAG_LATEST npm run test:ci'
+  steps {
+    sh '''
+    docker run -d -v $WORKSPACE:/coverage:rw --name test-$SERVICE_NAME $IMAGE_BUILD_TAG_LATEST sleep 5m
+    docker exec test-$SERVICE_NAME sh -c "npm run test:ci && cp /orderapp/coverage/lcov.info /coverage/lcov.info"
+    '''
+  }
+  post {
+    always {
+      sh 'docker rm -f test-$SERVICE_NAME'
     }
-    post {
-        always {
-            sh 'docker rm test-$SERVICE_NAME'
-        }
-        failure {
-            sh 'docker rmi $IMAGE_BUILD_TAG_LATEST'
-        }
+    failure {
+      sh 'docker rmi $IMAGE_BUILD_TAG_LATEST'
     }
+  }
 }
 ```
