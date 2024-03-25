@@ -46,7 +46,7 @@ The easier way to manage one or more JDKs on your machine is by usign SDKMAN!. T
 
 https://sdkman.io/install
 
-```bash
+```sh
 $ sdk list java
 $ sdk install java <version>
 ```
@@ -56,7 +56,7 @@ $ sdk install java <version>
 1. Download OpenJDK i.e. Microsoft OpenJDK 17
 2. Uncompress the file
 
-```bash
+```sh
 $ tar xvf microsoft-jdk-17.0.7-linux-x64.tar.gz -C /usr/local/jdk-17.0.7+7/
 ```
 
@@ -75,7 +75,7 @@ public class Welcome {
 }
 ```
 
-```bash
+```sh
 $ javac Welcome.java # compiles the file into the file Welcome.class
 $ java Welcome  # launches JVM
 ```
@@ -90,7 +90,7 @@ The Java VM has support for monitoring and management of Java applications, allo
 
 This feature is important for large and long-running Java programs, such as application servers.
 
-```bash
+```sh
 $ ps aux | grep java
 $ jconsole processID
 ```
@@ -99,7 +99,7 @@ $ jconsole processID
 
 The jmap utility is used to get a heap dump that shows you every object on the heap. Point your browser to localhost:7000.
 
-```bash
+```sh
 $ jmap -dump:format=b,file=dumpFileName processID
 $ jhat dumpFileName
 ```

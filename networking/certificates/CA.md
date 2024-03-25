@@ -119,7 +119,7 @@ To successfully validate, can perform the following:
 
 To install a certificate in the trust store, it must be in PEM format i.e. BEGIN CERTIFICATE and END CERTIFICATE in human-readable format.
 
-```bash
+```sh
 $ sudo apt-get install -y ca-certificates
 $ sudo cp your-ca.crt /usr/local/share/ca-certificates
 $ sudo update-ca-certificates

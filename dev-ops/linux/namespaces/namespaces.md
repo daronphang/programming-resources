@@ -60,7 +60,7 @@ Limits the resource usage (CPU, memory, disk, etc.) for a particular group of pr
 
 ## Creating a Namespace
 
-```bash
+```sh
 $ unshare --user --pid --map-root-user --mount-proc --fork bash
 $ ps -ef
 $ lsns --output-all | head -1; lsns --output-all # see all namespaces

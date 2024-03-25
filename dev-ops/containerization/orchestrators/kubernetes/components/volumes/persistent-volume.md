@@ -21,7 +21,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
 ```
 
-```bash
+```sh
 $ kubectl get pv
 ```
 
@@ -60,7 +60,7 @@ spec:
       storage: 500Mi
 ```
 
-```bash
+```sh
 $ kubectl get pvc
 ```
 

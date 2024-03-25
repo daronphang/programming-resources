@@ -8,13 +8,13 @@ Most Kubernetes objects are deployed to a Namespace. These objects are said to b
 
 If you don’t explicitly define a target Namespace when deploying a namespaced object, it’ll be deployed to the default Namespace.
 
-```bash
+```sh
 $ kubectl get namespaces
 $ kubectl get pods --namespace=dev
 $ kubectl get pods --all-namespaces
 ```
 
-```bash
+```sh
 $ kubectl config set-context --current --namespace shield # auto use specific ns
 ```
 

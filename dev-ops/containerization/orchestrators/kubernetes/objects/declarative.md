@@ -17,7 +17,7 @@ flask-service.yaml
 
 Multiple yaml files can be applied.
 
-```bash
+```sh
 $ kubectl create -f your_yaml_file.yaml --dry-run --validate=true
 
 $ kubectl apply -f filename.yml           # Create/update resources in a file

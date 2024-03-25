@@ -20,7 +20,7 @@ Allows users to create independent and isolated environments (called containers)
 
 ### Global Commands
 
-```console
+```sh
 $ docker --help
 $ docker version
 $ docker info
@@ -37,7 +37,7 @@ $ docker run -e HTTP_PROXY="http://example.com:80" hello-world
 
 ### Running Bash in Docker Container
 
-```console
+```sh
 $ docker exec -it <container_name> /bin/bash
 ```
 
@@ -45,7 +45,7 @@ $ docker exec -it <container_name> /bin/bash
 
 Need to configure proxy for docker engine and container. For Windows, need to set HTTP_PROXY, HTTPS_PROXY and NO_PROXY in docker engine settings. To propagate proxy settings to containers, need to set using env variables.
 
-```console
+```sh
 $ docker run \
     --env http_proxy="http://my.proxy.com:3128" \
     --env https_proxy="http://my.proxy.com:3128" \
@@ -68,6 +68,6 @@ docker-machine env default
 
 Easiest OS to use Docker. Install Linux VM on Windows. Can either install with script, store or docker-machine. Can use Ubuntu or CentOS. Need to also install Docker Machine and Docker Compose.
 
-```console
+```sh
 $ curl -sSL https://get.docker.com/ | sh
 ```

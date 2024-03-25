@@ -31,33 +31,11 @@ c5n.xlarge
 
 Pending, running, rebooting, and stopping.
 
-## Instance families
+### EC2 instance placements
 
-### General Purpose
-
-Provides a balance of compute, memory and networking resources. You can use them for application servers, gaming servers, backend servers for enterprise applications, and small/medium databases.
-
-### Compute optimized
-
-Ideal for compute-bound applications that benefit from high-performance processors including high performance web servers, compute-intensive applications, and dedicated gaming servers. You can also use them for batch processing workloads.
-
-### Memory optimized
-
-Designed to deliver fast performance for workloads that process large datasets in memory. Can be useful for situations where you have a workload that requires large amounts of data to be preloaded before running an application.
-
-### Accelerated computing
-
-Instances that use hardware accelerators (coprocessors) to perform functions more efficiently than is possible in software running on CPUs. Examples include machine learning, computational fluid dynamics, autonomous vehicles, floating-point number calculations, graphics processing, game streaming, application streaming, and data pattern matching.
-
-### Storage optimized
-
-Designed for workloads that require high, sequential read and write access to large datasets on local storage. Example of workloads include distributed file systems, data warehousing applications, and high frequency OLTP (online transaction processing) systems.
-
-In computing IOPS (input/output operations per second) is a metric that measures the performance of a storage device. Storage optimized instances are designed to deliver tens of thousands of low-latency, random IOPS to applications.
-
-### HPC optimized (High Performance Computing)
-
-HPC instances are purpose built to offer the best price performance for running HPC workloads at scale on AWS. Ideal for applications that benefit from high-performance processors, such as large, complex simulations and deep learning workloads.
+- Cluster placement group: For applications that need low network latency and high network throughput such as big data and analytics workloads
+- Partition placement group: Instances do not share underlying hardware with instances in other partitions, for distributed, replicated workloads
+- Spread placement group: Instances have distinct underlying hardware to reduce correlated failures with its own network and power source
 
 ## Amazon Machine Image (AMI)
 
@@ -80,7 +58,7 @@ Each AMI in the AWS Management Console has an AMI ID, which is prefixed by `ami-
 
 The AMI is how you model and define your instance i.e. AMI is the class, EC2 is the instance.
 
-One advantage of using AMIs is that they are reusuable. If you can spin up another EC2 instance with the same configuration, you can simply create an AMI from your running instance and use it to start a new instance.
+One advantage of using AMIs is that they are reusable. If you can spin up another EC2 instance with the same configuration, you can simply create an AMI from your running instance and use it to start a new instance.
 
 ## EC2 Image Builder
 
@@ -94,6 +72,14 @@ EC2 Image Builder is used to automate the creation, maintenance, validation and 
 
 It is a **free** service and only pay for the underlying resources i.e. EC2, AMI storage, etc. It can be run on a schedule.
 
+### Features
+
+- Automated image creation
+- Golden image creation
+- Simpler to secure
+- Consistent workflow
+- Version management
+
 ## EC2 User Data
 
 It is possible to bootstrap our instances using an EC2 User Data script (runs with root user). Bootstrapping means launching commands when a machine starts.
@@ -104,14 +90,22 @@ The script is run once at the instance first start and is used to automate boot 
 - Installing software
 - Downloading common files from the internet
 
-```bash
+```sh
 #!bin/bash
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
+$ yum update -y
+$ yum install -y httpd
+$ systemctl start httpd
+$ systemctl enable httpd
 ```
 
 ## Connecting to EC2
 
 Can either use SSH (port 20), Putty or EC2 Instance Connect (uses temporary SSH keys).
+
+## Elastic Network Interface (ENI)
+
+A virtual network interface that can be attached to EC2 instances in a VPC. Separates and virtualizes the networking aspect of your EC2 instances. ENI can be detached and attached to different EC2 instances. Flow logs can be enabled to capture information about IP traffic going to and from the ENI.
+
+When you launch an EC2 instance, it will be configured with a **primary ENI** called 'ethernet zero' which is assigned a primary private IPv4 address. The primary ENI cannot be detached while the EC2 is running or stopped i.e. fixed to the EC2 instance.
+
+You can attach **secondary ENIs** to EC2. They are useful for scenarios including network appliances, management networks, or to create a low budget high availability solution. It can have one primary and multiple secondary private IP addresses. They can also be associated with different security groups than the primary ENI, allowing for varied network and security configurations. Secondary ENIs will persist even if the EC2 instances are stopped.

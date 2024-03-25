@@ -6,7 +6,7 @@ https://github.com/angular-eslint/angular-eslint
 
 1. Install Eslint in project
 
-```bash
+```sh
 $ ng add @angular-eslint/schematics
 
 $ ng lint --fix
@@ -22,7 +22,7 @@ https://github.com/prettier/eslint-config-prettier
 
 1. Install Prettier and eslint-compatible plugins to ensure there are no overlapping rules
 
-```bash
+```sh
 $ npm install prettier --save-dev
 $ npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier —-save-dev
 ```
@@ -122,7 +122,7 @@ https://github.com/lint-staged/lint-staged
 
 1. Install lint-staged for pre-commit hooks
 
-```bash
+```sh
 $ npm install --save-dev lint-staged
 ```
 
@@ -139,13 +139,13 @@ $ npm install --save-dev lint-staged
 
 1. Download husky
 
-```bash
+```sh
 $ npm install husky --save-dev
 ```
 
 2. Update package.json and install husky
 
-```bash
+```sh
 $ npm pkg set scripts.prepare="husky install"
 $ npm run prepare
 ```
@@ -161,13 +161,13 @@ $ npm run prepare
 
 3. Add pre-commit hooks
 
-```bash
+```sh
 $ npx husky add .husky/pre-commit "npm test"
 ```
 
 4. Modify pre-commit file as necessary in `.husky/pre-commit`
 
-```bash
+```sh
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx lint-staged

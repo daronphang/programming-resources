@@ -16,7 +16,7 @@ Examples of admission controllers are AlwaysPullImages, DefaultStorageClass, Eve
 1. kube-apiserver.service
 2. `/etc/kubernetes/manifests/kube-apiserver.yaml` with fields --enable-admission-plugins and --disable-admission-plugins
 
-```bash
+```sh
 # need to execute command in apiserver container
 # check for enabled plugins
 $ ps -ef | grep kube-apiserver | grep admission-plugins

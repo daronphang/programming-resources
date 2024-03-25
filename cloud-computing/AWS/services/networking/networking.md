@@ -1,12 +1,14 @@
-## Networking and Delivery of Content
+## Networking and delivery of content
 
 Offers a highly secure cloud platform and connects your physical network to VPN with a high transfer speed.
 
-## Elastic IP Addresses
+## Elastic IP addresses
 
 Elastic IP addresses are static/persistent public IPs that come with your account. If any software/instances fail, they can be remapped to another instance quickly i.e. not allocated to an instance.
 
-## AWS Network Firewall
+An elastic IP must be associated with an instance or network interface, and are specific to a Region.
+
+## AWS network firewall
 
 Protects your entire VPC from Layer 3 to Layer 7. You can inspect, in any direction:
 
@@ -23,9 +25,20 @@ You need to include **both the inbound and outbound ports** used for the protoco
 
 A network ACL contains a numbered list of rules and evaluates them in the increasing order while deciding whether to allow the traffic.
 
+Every subnet within a VPC must be associated with a network ACL. You can associate a network ACL with multiple subnets, but a subnet can only be associated with one network ACL at a time.
+
+Network ACLs do not filter traffic destined to and from the following:
+
+- Amazon Domain Name Services (DNS)
+- Amazon Dynamic Host Configuration Protocol (DHCP)
+- Amazon EC2 instance metadata
+- Amazon ECS task metadata endpoints
+- License activation for Windows instances
+- Amazon Time Sync Service
+
 ### Stateless packet filtering
 
-Network ACLs perform **stateless** packet filtering. They remember nothing and check packets that cross the subnet border each way i.e. inbound and outbound, double checking.
+Network ACLs perform **stateless** packet filtering. They remember nothing and check packets that cross the subnet border each way i.e. inbound and outbound, double checking. Stateless firewalls must be configured to allow **both inbound and outbound** traffic i.e. ingress and egress directions.
 
 After a packet has entered a subnet, it must have its permissions evaluated for resources within the subnet. The VPC component that checks packet permissions for an EC2 instance is a **Security Group**.
 
@@ -33,29 +46,41 @@ After a packet has entered a subnet, it must have its permissions evaluated for 
 
 A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance (only ALLOW). By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
 
-Security groups can be attached to multiple EC2 instances and are locked down to a Region/VPC combination.
+Security groups can be attached to multiple EC2 instances and are locked down to a Region/VPC combination. You can assign multiple security groups to a single resource i.e. rules for both groups get merged.
 
 ### Stateful packet filtering
 
-Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets.
+Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets. As it is stateful, **only the direction of the request needs to be permitted**.
 
-## Internet Gateway
+## Internet Gateway (IGW)
 
-An internet gateway is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet. Imposes no availability risks or bandwidth constraints on your network traffic.
+An IGW is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet i.e. region resilient, covers all Availability Zones within a Region. Imposes no availability risks or bandwidth constraints on your network traffic.
 
-Only one internet gateway can be attached per VPC.
+Only one IGW can be attached per VPC.
 
-## NAT Devices (Network Address Translation)
+### Exposing resources to the internet
 
-A NAT device can be used to enable instances in a private subnet to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet.
+1. Create an IGW
+2. Attach IGW to VPC
+3. Create custom route table
+4. Configure default route i.e. if a packet comes in does not match any route (0.0.0.0/0), it will automatically point to the IGW
+5. Associate subnet with route table
+
+## NAT (Network Address Translation) devices
+
+A NAT device can be used to enable instances in a private subnet to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet. Nonetheless, an **IGW is still required** for access to the internet.
 
 AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances.
 
-## NAT Gateway
+## NAT gateway
+
+Charged per hour and per GB of data processed. Supports 5Gbps of bandwidth and automatically scales up to 100Gbps.
 
 ### Public
 
-To provide instances in private subnets connectivity to the internet, but cannot receive unsolicited inbound connections. Must be created in a public subnet and associate an elastic IP address with the NAT gateway. You route traffic from the NAT gateway to the internet gateway for the VP.
+To provide instances in private subnets connectivity to the internet, but cannot receive unsolicited inbound connections. Must be created in a **public subnet** (to have public IP and internet access) and associate an elastic IP address with the NAT gateway.
+
+Route table for private subnets should point to NAT gateway i.e. you route traffic from the private instances to the NAT gateway to the internet gateway.
 
 ### Private
 
@@ -65,5 +90,5 @@ Instances in private subnets can connect to other VPCs or your on-premises netwo
 
 - IgW allows both inbound and outbound access to the internet whereas the NAT Gateway only allows outbound access
 - IgW allows instances with public IPs to access the internet whereas NAT Gateway allows instances with private IPs to access internet
-- You only need one Internet Gateway per VPC whereas you need one NAT Gateway per Availability Zone (AZ)
+- You only need one Internet Gateway per VPC whereas you need one NAT Gateway per Availability Zone as it is deployed to a subnet
 - There is no additional cost to use Internet Gateway whereas NAT Gateway incurs charges based on the creation and usage

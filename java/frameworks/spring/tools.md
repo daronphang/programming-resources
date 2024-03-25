@@ -24,7 +24,7 @@ https://start.spring.io/
 
 Th easiest way to install the CLI as with JDK, Kotlin utilities and more with SDKMAN!.
 
-```bash
+```sh
 $ sdk list
 $ sdk list springboot
 $ sdk install springboot
@@ -34,7 +34,7 @@ $ sdk install springboot
 
 The CLI leverages the Initialzr to provide its project building capabilities and hence, projects created via either mechanism are identical.
 
-```bash
+```sh
 $ spring init   # same as spring initialzr, with defaults
 $ spring init -a demo -l java --build maven demo
 $ unzip demo.zip -d demo

@@ -12,7 +12,7 @@ The loading order follows these rules:
 2. If $KUBECONFIG environment variable is set, then it is used as a list of paths and these paths are **merged**
 3. Otherwise, `${HOME}/.kube/config` is used and no merging takes place
 
-```bash
+```sh
 $ kubectl config view # uses default kubeconfig file
 $ kubectl config view --kubeconfig=my-custom-config
 $ kubectl config get-contexts

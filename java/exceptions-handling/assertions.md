@@ -43,6 +43,6 @@ public void someFn(Size s) {
 
 Assertions are disabled by default.
 
-```bash
+```sh
 $ java -enableassertions MyApp
 ```

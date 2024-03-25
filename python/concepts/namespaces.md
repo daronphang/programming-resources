@@ -55,7 +55,7 @@ Whenever you encounter an import error, print \_\_name\_\_ of the module to chec
 
 Occurs when you are using dot notation. Run script with -m flag. Do not append .py suffix as -m flag only requires module names.
 
-```bash
+```sh
 $ py -m src.main # instead of src/main    # declare path as module
 ```
 

@@ -2,7 +2,7 @@
 
 When you package your application, you want to give your users a single file, not a directory structure filled with class files. JAR files were designed for this purpose. Moreover, JAR files are compressed.
 
-```bash
+```sh
 $ jar cvf JARFileName File1 File2
 $ jar cvfe MyProgram.jar com.mycompany.mypkg.MainAppClass File1 File2
 ```
@@ -18,7 +18,7 @@ Manifest-Version: 1.0
 Name: Woozle.class
 ```
 
-```bash
+```sh
 $ jar cfm JARFileName ManifestFileName
 $ jar cfm MyArchive.jar manifest.mf com/mycompany/mypkg/*.class
 $ java -jar MyProgram.jar

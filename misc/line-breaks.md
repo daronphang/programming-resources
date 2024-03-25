@@ -8,6 +8,6 @@ Windows uses two characters in the CRLF sequence, while Unix uses only LF. In th
 
 When editing a bash script file on Windows and porting over to Linux, the editor may throw an error of bad interpreter. It can be resolved by converting CRLF to LF.
 
-```bash
+```sh
 sed -i -e 's/\r$//' scriptname.sh
 ```

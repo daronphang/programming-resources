@@ -62,6 +62,6 @@ management.endpoint.health.show-details=always
 
 Actuator allows developers to set a typical logging level for most or all components, and **change that level temporarily when a critical issue arises** in live, production Spring Boot applications. This can be done by sending a POST request with JSON value for configured level.
 
-```bash
+```sh
 $ echo '{"configuredLevel": "TRACE"}' | http :8080/actuator/loggers/org.springframework.data.web
 ```

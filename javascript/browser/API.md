@@ -1,6 +1,8 @@
 ## Broadcast Channel API
 
-The Broadcast Channel API allows communication between Tabs, Windows, Frames, Iframes, and Web Workers. One tab can create and post to a channel as follows:
+The Broadcast Channel API allows communication between Tabs, Windows, Frames, Iframes, and Web Workers. However, this does not work across different browsers; requires alternatives such as websocket.
+
+One tab can create and post to a channel as follows:
 
 ```js
 const channel = new BroadcastChannel("app-data");

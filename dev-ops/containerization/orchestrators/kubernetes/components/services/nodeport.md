@@ -22,7 +22,7 @@ spec:
     app: hello-world
 ```
 
-```bash
+```sh
 $ curl localhost:30050 # nodeport
 ```
 

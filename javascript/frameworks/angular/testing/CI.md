@@ -52,7 +52,8 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require("path").join(__dirname, "./coverage/orderapp"),
       subdir: ".",
-      reporters: [{ type: "html" }, { type: "text-summary" }],
+      // lcov for sonarqube
+      reporters: [{ type: "html" }, { type: "text-summary" }, { type: "lcov" }],
     },
     junitReporter: {
       outputDir: "build/test-results/karma",

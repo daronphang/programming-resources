@@ -2,7 +2,7 @@
 
 Helm is a tool that streamlines installing and managing Kubernetes applications i.e. lets us treat our Kubernetes apps as apps instead of just a collection of objects.
 
-```bash
+```sh
 $ helm --debug # verbose
 ```
 
@@ -10,7 +10,7 @@ $ helm --debug # verbose
 
 The add command is used to add a new chart repository to Helm and this allows us to browse and install charts from the new repository.
 
-```bash
+```sh
 $ helm repo add polar https://charts.bitnami.com/bitnami
 $ helm repo ls
 $ helm repo update
@@ -20,7 +20,7 @@ $ helm search repo nginx # find latest version
 
 ### install
 
-```bash
+```sh
 $ helm install bravo bitnami/drupal # release name is bravo
 
 $ helm show values bitnami/apache
@@ -30,7 +30,7 @@ $ helm install bravo bitnami/apache --set rpelicaCount=2 --set image.debug=true 
 
 ### list
 
-```bash
+```sh
 $ helm list -n mercury -a # will not show pending status, need list all
 ```
 
@@ -38,7 +38,7 @@ $ helm list -n mercury -a # will not show pending status, need list all
 
 Retrieves a package from a package repository, and download it locally.
 
-```bash
+```sh
 $ helm pull bitnami/apache
 ```
 
@@ -75,7 +75,7 @@ data:
 
 The flag --set has a higher precedence than the default values.yaml.
 
-```bash
+```sh
 $ helm install -f values.yaml mywebapp /root/apache-10.2.3.tgz
 
 $ helm install solid-vulture ./mychart --dry-run --debug --set favoriteDrink=slurm --set aws.subnets={subnet-123456,subnet-654321}

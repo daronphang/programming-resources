@@ -30,7 +30,7 @@ Kubernetes provides a well-known internal DNS service called 'cluster DNS'. Ever
 - Endpoints object is also called kube-dns
 - All objects are tagged with k8s-app=kube-dns label
 
-```bash
+```sh
 $ kubectl get pods -n kube-system -l k8s-app=kube-dns # lists the Pods running clusterDNS
 $ kubectl get deploy -n kube-system -l k8s-kube-dns # lists deployment
 $ kubectl get svc -n kube-system -l k8s-app=kube-dns
@@ -51,7 +51,7 @@ A default gateway is where devices send traffic when there is no known route. No
 
 Kubernetes automatically configures every container so it can find and **use the cluster DNS to convert Service names to ClusterIPs**. It does this by populating `/etc/resolv.conf` file with the IP address of cluster DNS Service, as well as any search domains that should be appended to unqualified names.
 
-```bash
+```sh
 $ cat /etc/resolv.conf
 # search svc.cluster.local cluster.local default.svc.cluster.local
 # nameserver 192.168.200.10
@@ -201,7 +201,7 @@ Service registration and discovery involves a lot of moving parts. If any of the
 
 Check that the Pods deployed by coredns are up and running.
 
-```bash
+```sh
 $ kubectl get deploy -n kube-system -l k8s-app=kube-dns
 $ kubectl get pods -n kube-system -l k8s-app=kube-dns
 $ kubectl logs coredns-5644d7b6d9-74pv7 -n kube-system
@@ -211,7 +211,7 @@ $ kubectl logs coredns-5644d7b6d9-74pv7 -n kube-system
 
 Deleting Pods will be restarted as they are managed by a Deployment object.
 
-```bash
+```sh
 $ kubectl delete pod -n kube-system -l k8s-app=kube-dns
 ```
 
@@ -219,13 +219,13 @@ $ kubectl delete pod -n kube-system -l k8s-app=kube-dns
 
 Start a troubleshooting Pod that have networking tools installed.
 
-```bash
+```sh
 $ kubectl run -it dnsutils \
 --image gcr.io/kubernetes-e2e-test-images/dnsutils:1.3
 ```
 
 Use nslookup to resolve kubernetes Service fronting the API server.
 
-```bash
+```sh
 $ nslookup kubernetes
 ```

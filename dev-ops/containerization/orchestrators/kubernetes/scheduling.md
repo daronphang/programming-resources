@@ -50,7 +50,7 @@ Taints and tolerations work together to ensure that Pods are not scheduled onto 
 
 However, taints and tolerations **do not tell the Pod to go to a particular Node** i.e. Pod with matching toleration may not be scheduled on node with matching taint. Instead, it tells the node to only accept Pods with matching tolerations.
 
-```bash
+```sh
 # no Pod can schedule onto node1 unless it has a matching toleration
 $ kubectl taint nodes node1 key1=value1:NoSchedule
 $ kubectl taint nodes node1 key1=value1:NoSchedule- # add - to remove taint
@@ -108,7 +108,7 @@ spec:
     size: large
 ```
 
-```bash
+```sh
 $ kubectl get nodes --show-labels
 $ kubectl label nodes <node-name> <key>=<value>
 $ kubectl label nodes node1 size=large

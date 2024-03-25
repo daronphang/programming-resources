@@ -62,7 +62,7 @@ $ sudo systemctl start nginx
 
 The edit command opens up a blank drop-in snippet file.
 
-```bash
+```sh
 $ sudo systemctl edit ssh
 ```
 
@@ -70,7 +70,7 @@ When the file is saved, systemctl will create a file called override.conf under 
 
 Second way is to use the edit command with the --full flag.
 
-```bash
+```sh
 $ sudo systemctl edit ssh --full
 ```
 
@@ -82,9 +82,8 @@ In general, any unit file in /etc/systemd/system will override the corresponding
 
 killall will look for the exact match of the process name whereas pkill will allow terminating the process either by full name or by partial process name.
 
-```console
+```sh
 $ kill {PID}
 $ killall {ProcessName}
-
 $ pkill python
 ```

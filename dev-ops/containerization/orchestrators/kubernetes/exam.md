@@ -1,6 +1,6 @@
 ## alias
 
-```bash
+```sh
 $ export ns=default
 $ export do="--dry-run=client -o yaml"
 $ export now="--grace-period 0 --force"
@@ -11,7 +11,7 @@ $ alias k='kubectl -n $ns'
 
 ## vim
 
-```bash
+```sh
 $ vim ~/.vimrc
 
 set sw=2 ts=2 sts=2 et
@@ -24,7 +24,7 @@ set shiftwidth=2
 
 If unsure what field to pass in the yaml file, create with imperative and use help command.
 
-```bash
+```sh
 $ kubectl create rolebinding -h
 ```
 

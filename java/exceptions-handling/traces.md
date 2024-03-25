@@ -29,7 +29,7 @@ String description = out.toString();
 
 ### Trapping Program Errors in File
 
-```bash
+```sh
 $ java MyProgram 2> errors.txt  # capture error stream
 $ java MyProgram 1> errors.txt 2>&1 # capture System.err and System.out in same file
 ```

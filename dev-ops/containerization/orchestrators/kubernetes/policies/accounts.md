@@ -14,7 +14,7 @@ spec:
   serviceAccountName: dashboard-sa
 ```
 
-```bash
+```sh
 $ kubectl create serviceaccount <name>
 $ kubectl get serviceaccount
 ```
@@ -35,7 +35,7 @@ metadata:
     kubernetes.io/service-account.name: dashboard-sa
 ```
 
-```bash
+```sh
 $ kubectl exec -it <pod> ls /var/run/secrets/kubernetes.io/serviceaccount
 ```
 
@@ -47,7 +47,7 @@ Since 1.22, this Secret is no longer used to mount credentials into Pods, and ob
 
 Tokens are more secure as they are audience bound, time bound and object bound. They are also not readable by other API clients.
 
-```bash
+```sh
 $ kubectl create token <service-account> # outputs a token
 ```
 

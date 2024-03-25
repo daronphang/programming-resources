@@ -91,6 +91,6 @@ Classes must be unique, and it will throw compile-time error if more than one cl
 
 It is a good idea to place the command in a shell script. It is not good to set the CLASSPATH environment variable permanently as there is also a global setting, and may result in your classes not loading properly.
 
-```bash
+```sh
 $ java -classpath /home/user/classdir:.:/home/user/archives/archive.jar MyProg
 ```

@@ -2,7 +2,7 @@
 
 ### CIFS
 
-```console
+```sh
 $ docker volume create \
 --driver local \
 --opt type=cifs \
@@ -13,7 +13,7 @@ $ docker volume create \
 
 ### Bind Mount
 
-```console
+```sh
 $ docker volume create \
 --driver local \
 --opt type=none \
