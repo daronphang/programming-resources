@@ -22,7 +22,7 @@ The cost of a bug grows almost exponentially the later it is caught in the code 
 
 #### Accessible and actionable feedback
 
-It is also important that feedback from CI be widely accessible. Visbility into test history empowers engineers to share and collaborate on feedback, an essential requirement for disparate teams to diagnose and learn from integration failures between their systems.
+It is also important that feedback from CI be widely accessible. Visibility into test history empowers engineers to share and collaborate on feedback, an essential requirement for disparate teams to diagnose and learn from integration failures between their systems.
 
 ### Automation
 
@@ -59,7 +59,7 @@ The same is true for test failures: if a test is known to be failing for irrelev
 Some challenges include:
 
 - Potential disruption to engineer productivity of unstable, slow, conflicting, or too many tests at presubmit
-- cuplrit finding and failure isolation (integrating upstream microservices is one approach)
+- culprit finding and failure isolation (integrating upstream microservices is one approach)
 - resource constraints whereby large tests can be very expensive
 - Flaky tests eroding confidence
 - Failure management (what to do when tests fail, can be resolved with Hermetic testing)

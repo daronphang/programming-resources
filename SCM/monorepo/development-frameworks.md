@@ -4,17 +4,15 @@ Trunk-based development is a source-control branching model, where developers co
 
 It is a practice where developers merge small, frequent updates to main branch. Since it streamlines merging and integration phases, it helps achieve CI/CD and increases software delivery and organizational performance.
 
-### Benefits
-
-#### Allows continuous code integration
+### Allows continuous code integration
 
 In this model, there is a steady stream of commits flowing into the main branch. Adding an automated test suite and code coverage monitoring for this stream of commits enables CI.
 
-#### Ensures continuous code review
+### Ensures continuous code review
 
 Small commits of trunk-based development make code review a more efficient process. This is far easier compared to a long-lived feature branch where a reviewer reads pages of code or manually inspects a large surface area of code changes.
 
-#### Enables consecutive production code releases
+### Enables consecutive production code releases
 
 Teams should make frequent, daily merges to the main branch. This development strives to keep the trunk branch "green", meaning it is ready to deploy at any commit. Automated tests, code coverage, and code reviews provides a trunk-based development project with the assurances it's ready to deploy to production at any time.
 
