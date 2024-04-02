@@ -1,6 +1,20 @@
 ## Consumer
 
-Applications that need to read data from Kafka use a KafkaConsumer to subscribe to Kafka topics and receive messages from these topics.
+Consumers are clients that read events from Kafka. The consumer subscribes to one or more topics and reads the messages in order in which they were produced to each partition. The consumer keeps track of the messages consumed by keeping track of the **offset**.
+
+Consumers work as part of a consumer group to consume a topic. The group ensures that each partition is only consumed by one member. The mapping of a consumer to a partition is often called **ownership** of the partition by the consumer.
+
+<img src="../../assets/consumers-topics-partitions.png">
+
+### Pull design
+
+Kafka follows a traditional messaging system design in that data is pushed by the producer to the broker and pulled from the broker by the consumer.
+
+Pull design is considered for the following reasons:
+
+- If a consumer falls behind production, they can catch up
+- Enables aggressive batching of data sent to the consumer
+- In contrast, push-based system must either send a request immediately or accumulate more data and then send it later without knowledge of whether the downstream consumer will be able to process it immediately
 
 ## Consumer groups
 

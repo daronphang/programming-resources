@@ -1,4 +1,8 @@
-## Event broker features
+## Event broker
+
+A system that is the heart of an event-driven microservice platform, and that receives events, stores them in a queue or partitioned event stream, and provides them for consumption by other processes. Examples include Kafka, Spark, Flink or Beam.
+
+## Features
 
 Event broker systems suitable for large-scale enterprises all generally follow the same model. Multiple, distributed event brokers work together in a cluster to provide a platform for the production and consumption of event streams.
 

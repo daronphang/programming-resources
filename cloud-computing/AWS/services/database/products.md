@@ -1,116 +1,91 @@
-## RDS (Relational Database Service)
-
-Amazon RDS is a service that enables you to run relational databases in the AWS Cloud. The service automates tasks such as hardware provisioning, database setup, patching, and backups. You can integrate RDS with other services to fulfill your business and operational needs, such as AWS Lambda to query your database from a serverless application.
-
-Amazon RDS provides a number of different security options. Many RDS database engines offer **encryption at rest** (protecting data while it is stored) and **in transit** (protecting data while it is being sent and received).
-
-Amazon RDS is available on on the following engines:
-
-- Amazon Aurora
-- PostgreSQL
-- MySQL
-- MariaDB
-- Oracle Database
-- Microsoft SQL Server
-
-### Database instances
-
-Amazon RDS is built from compute (EC2 instance) and storage. A DB instance can contain multiple databases with the same engine, and each DB can contain multiple tables.
-
-Underneath the DB instance is an EC2 instance. However, this instance is managed through the Amazon RDS console instead of the Amazon EC2 console.
-
-### Storage
-
-The storage portion of DB instances uses Amazon EBS volumes for database and log storage.
-
-### Replicas
-
-You can scale the read workload of your DB by creating replicas (maximum of 15 replicas). However, **write is only performed to the main DB**.
-
-For multiple Availability Zones, you can create a **failover DB** in case of an outage. It is only active if the failover is triggered.
-
 ## Amazon Aurora
 
 Amazon Aurora is an enterprise-class relational database. It is compatible with MySQL and PostgreSQL relational databases. It is up to **five times faster than standard MySQL databases** and up to **three times faster than standard PostgreSQL databases**.
 
-Amazon Aurora helps to reduce your database costs by reducing unncessary I/O operations, while ensuring that your database resources remain reliable and available.
+Amazon Aurora helps to reduce your database costs by reducing unnecessary I/O operations, while ensuring that your database resources remain reliable and available.
+
+The unit of measure is Aurora Capacity Unit (ACU), which equates to 2GB of memory, corresponding CPU, and networking.
 
 Consider Amazon Aurora if your workloads require **high availability**. It replicates **six copies of your data across three Availability Zones**, and continuously backs up your data to Amazon S3.
+
+### Features
+
+- Purpose-built log structured distributed storage
+- Storage volume is striped across storage nodes and multiple AZs
+- Storage nodes with locally attached SSDs
+- Continuous backup to Amazon S3
+- Automatic scaling of storage without any management overhead or downtime
+- Allows you to create up to 15 Aurora replicas across 3 AZs
+- Offers fast database cloning for staging/development purposes without impacting the performance of the production database
+
+### Provisioned vs Serverless
+
+Provisioned has fixed capacity, useful for planned capacity, and has access to Aurora Global.
+
+Serverless provides on-demand scaling, useful for variable/unpredictable workloads, and has access to Aurora Global.
+
+### Global cluster
+
+When you use Aurora Global database clusters, it acts as a container for several database clusters each located in different Regions.
+
+A global database cluster comprises of:
+
+- Primary database cluster that accepts read/writes
+- Secondary clusters as read only
 
 ## Amazon ElastiCache
 
 Amazon ElastiCache is a service that adds **caching layers** on top of your databases to help improve the read times of common requests. Supports two types of **in-memory** data stores: Redis and Memcached.
 
-## DynamoDB
+### Redis
 
-Amazon DynamoDB is a **key-value and flexible NoSQL** that offers fast and reliable performance with no scalability issues. It is **serverless**, which means that you do not have to provision, patch, and manage servers.
+- Read replicas
+- Data persistence
+- Encryption at rest
+- Pub/sub message system
 
-DynamoDB is a fully managed service that handles the operations work. You can offload the administrative burdens of operating and scaling distributed databases to AWS. Highly available with replication across **3 Availability Zones**.
+### Memcached
 
-DynamoDB provides **automatic scaling**. As the size grows/shrinks, it automatically scales to adjust for changes in capacity while maintaining consistent performance. This makes a suitable choice that require **high performance while scaling**.
+- Multi-AZ deployments
+- Auto discovery
+- Data partitioning and sharding
 
-### Core components
+## MemoryDB for Redis
 
-In DynamoDB, there are three core components.
+Instead of having to manage two separate databases (RDS and Redis), you can simplify into one using MemoryDB. Redis will be your primary database instead of just using it as a cache.
 
-#### Table
+### Features
 
-A collection of items, where each item is a collection of attributes.
-
-#### Primary Key
-
-DynamoDB uses the the partition key's value as input to an internal hash function. The output determines the partition (physical storage) in which the item will be stored.
-
-Supports two different kinds of primary keys:
-
-- Partition key: A single attribute that is unique
-- Partition key and sort key: Composite primary key consisting of two attributes that gives you additional flexibility when querying data
-
-#### Attribute
-
-A fundamental data element that does not need to be broken down any further i.e. fields (supports nested attributes up to 32 levels deep)
-
-```
-{
-    "PersonID": 101,
-    "LastName": "Smith",
-    "FirstName": "Fred",
-    "Phone": "555-4321"
-}
-
-{
-    "PersonID": 102,
-    "LastName": "Jones",
-    "FirstName": "Mary",
-    "Address": {
-                "Street": "123 Main",
-                "City": "Anytown",
-                "State": "OH",
-                "ZIPCode": 12345
-    }
-}
-
-{
-    "PersonID": 103,
-    "LastName": "Stephens",
-    "FirstName": "Howard",
-    "Address": {
-                "Street": "123 Main",
-                "City": "London",
-                "PostalCode": "ER3 5K8"
-    },
-    "FavoriteColor": "Blue"
-}
-
-```
-
-## Amazon DynamoDB Accelerator
-
-Amazon DAX is an in-memory cache for DynamoDB.
+- Designed for extremely high throughput and low latency workloads
+- Strong consistency for primary nodes and guaranteed eventual consistency for replica nodes
 
 ## RedShift
 
-Amazon Redshift is a data warehousing service that you can use for big data analytics. It offers the ability to collect data from many sources and helps you to understand relationships and trends across your data.
+Amazon Redshift is a fully managed **data warehousing** service that you can use for big data analytics (based on PostgreSQL). It offers the ability to collect data from many sources and helps you to understand relationships and trends across your data.
+
+Traditional databases handle structured data at a granular level, while data warehouses are designed to handle structured data at an aggregate level.
+
+RedShift has two node types:
+
+- Leader node: Manages query coordination, compilation and optimization
+- Compute nodes: Store data and execute queries and computations
+
+### Features
+
+- Columnar storage for high efficiency
+- Built on massively parallel processing (MPP)
+- Data compression
+- Scalability by adding nodes to the cluster
+- Integration with many data sources
+- Data ingestion
+- SQL compatibility
+- Provides encryption at rest
+
+### Serverless
+
+An on-demand data warehousing service that automatically manages the scaling and provisioning of resource, enabling you to run analytics without managing a cluster.
+
+With regular Redshift deployments (provisioned), you get a combination of CPU, RAM and storage. Hence, you will end up incurring cost even when you are not querying data from Redshift i.e. underutilized, over-provisioned.
 
 ## Amazon DocumentDB
 
@@ -149,3 +124,7 @@ Amazon QuickSight is a serverless machine learning-powered business intelligence
 ## AWS Glue
 
 AWS Glue is a serverless ETL service that is useful to prepare and transform data for analytics.
+
+## AWS OpenSearch
+
+Forked from Elasticsearch as it was changed from open-source to proprietary license. With OpenSearch ingestion pipelines, you don't need third party such as Logstash to help you push data to OpenSearch. Instead, you configure your producers to send data to OpenSearch ingestion.

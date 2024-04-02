@@ -2,7 +2,7 @@
 
 The move from a world of hand-managed lists of machines to the automated scheduling and rightsizing made management of the fleet took profound changes to the way we write and think about software.
 
-## Architecting for Failure
+## Architect for Failure
 
 ### Pet vs Cattle
 
@@ -20,7 +20,7 @@ Whenever a worker is finished with a chunk, it reports the results, and picks up
 
 ## Batch vs Serving
 
-Batch jobs are programs that are expected to complete some specific task (i.e. data processing) and that run to completion. Canonical examples include log analysis or machine learning. In constrast, serving jobs are programs that are expected to run indefinitely and serve incoming requests.
+Batch jobs are programs that are expected to complete some specific task (i.e. data processing) and that run to completion. Canonical examples include log analysis or machine learning. In contrast, serving jobs are programs that are expected to run indefinitely and serve incoming requests.
 
 Both jobs have typically different characteristics:
 
@@ -39,7 +39,7 @@ Another case of using local storage is **batching writes**. This is a common str
 
 In many cases, even if a particular calculation has to take a long time, it can be split into smaller time windows by **periodic checkpointing of state to persistent storage**.
 
-## Connecing to a Service
+## Connecting to a Service
 
 If anything in the system has the name of the host on which your program runs hardcoded or as a configuration parameter, your program replicas are not cattle. **Avoid hardcoding hostnames**.
 

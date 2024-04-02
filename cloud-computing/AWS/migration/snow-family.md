@@ -4,6 +4,8 @@ The AWS Snow Family is a collection of offline physical devices that help to **p
 
 These devices offer different capacity points, and most include built-in computing capabilities. AWS owns and manages the Snow Family devices and integrates with AWS security, monitoring, storage management, and computing capabilities.
 
+Both AWS Snowcone and Snowball Edge are ruggedized i.e. durable. They are portable and can provide compute power in locations with harsh conditions.
+
 Challenges faced during migration:
 
 - Limited connectivity/stability

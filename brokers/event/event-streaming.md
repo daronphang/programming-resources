@@ -1,6 +1,10 @@
-## Event broker
+## Events and event streaming
 
-A system that is the heart of an event-driven microservice platform, and that receives events, stores them in a queue or partitioned event stream, and provides them for consumption by other processes. Examples include Kafka, Spark, Flink or Beam.
+Event streaming is the practice of capturing events in real-time from sources including databases, sensors, mobile devices, cloud services, and software applications.
+
+An event streaming platform captures events in order and these streams of events are stored durably for processing, manipulation, and responding to in real time or to be retrieved later. In addition, event streams can be routed to different destination technologies as needed. Event streaming ensures a continuous flow and interpretation of data so that the right information is at the right place, at the right time.
+
+## Features
 
 ### Partitioning
 

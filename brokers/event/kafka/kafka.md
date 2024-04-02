@@ -2,6 +2,8 @@
 
 Kafka is a distributed publish-subscribe message bus developed for high-ingress data replay and streams. Kafka is a durable message broker that enables applications to process, persist, and re-process streamed data.
 
+Data is written to Kafka topics by producers and consumed from those topics by consumers. Kafka topics can be partitioned, enabling the parallel processing of data, and topics can be replicated across multiple brokers for fault tolerance.
+
 Instead of using data packets, it uses a data stream to deliver messages which are suitable for both offline and online message consumption. An open-source platform developed by Apache written in Scala and Java. Kafka aims to provide solutions for large scale event-driven systems.
 
 ## Features
