@@ -18,7 +18,7 @@ To gain more granular visibility, you can use high-resolution custom metrics, wh
 
 By default, no logs from your EC2 instance are pushed to CloudWatch. You need to run a CloudWatch agent on EC2 to push the log files you want.
 
-## Amazon EventBridge (CloudWatch Events)
+## Amazon idge (CloudWatch Events)
 
 Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
 

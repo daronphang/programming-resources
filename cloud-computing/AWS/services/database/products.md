@@ -87,19 +87,50 @@ An on-demand data warehousing service that automatically manages the scaling and
 
 With regular Redshift deployments (provisioned), you get a combination of CPU, RAM and storage. Hence, you will end up incurring cost even when you are not querying data from Redshift i.e. underutilized, over-provisioned.
 
+### Spectrum
+
+Using Amazon Redshift Spectrum, you can efficiently query and retrieve structured and semi-structured data from files in Amazon S3 without having to load the data into Amazon Redshift tables. Redshift Spectrum queries employ massive parallelism to run very fast against large datasets.
+
 ## Amazon DocumentDB
 
 Amazon DocumentDB is a document database service that supports MongoDB workloads i.e. has API compatibility with MongoDB.
+
+### Features
+
+- MongoDB compatible
+- Storage auto-repair
+- Cache warming
+- Crash recovery
+- Write durability
+- Read preferences e.g. primary, primary-preferred, secondary, nearest
 
 ## Amazon Neptune
 
 Amazon Neptune is a graph database service. You can use it to build and run applications that work with highly connected datasets i.e. recommendation engines, fraud detection, and knowledge graphs.
 
+### Features
+
+- Serverless
+- High throughput and low latency
+- Easy scaling with autoscaling storage
+- ML predictions using graph neural network
+
 ## Amazon Quantum Ledger Database (QLDB)
 
 Amazon QLDB is a financial transactions ledger database service that is fully managed and serverless. You can use it to review a complete history of all the changes that have been made to your application data.
 
+Data is stored in journals. Journal blocks are sequenced and chained together with cryptographic hashing techniques.
+
 Compared to Managed Blockchain, **QLDB does not have the concept of decentralization** i.e. it has a central authority DB component owned by Amazon.
+
+### Why traditional databases are not suitable?
+
+- Mutable
+- Lack of transparency
+- Centralized
+- Single point of failure
+- Lack of consensus mechanisms
+- Do not provide the level of privacy and confidentiality required
 
 ## Amazon Managed Blockchain
 
@@ -112,6 +143,14 @@ Blockchain is a distributed ledger system that lets multiple parties run transac
 Timestream is a fast, scalable and serverless time series database service for **IoT and operational applications**. It makes it easy to store and analyze trillions of events per day, up to 1,000 times faster and for as little as one-tenth of the cost of relational databases.
 
 Time series data is a sequence of data points recorded over a time interval. It is used for measuring events that change over time i.e. stock prices, temperature.
+
+### Features
+
+- Serverless
+- Storage tiering e.g. memory stores for recent, magnetic for historical
+- built-in analytics
+- Custom query engine
+- Flexible data model
 
 ## Amazon Athena
 
@@ -128,3 +167,16 @@ AWS Glue is a serverless ETL service that is useful to prepare and transform dat
 ## AWS OpenSearch
 
 Forked from Elasticsearch as it was changed from open-source to proprietary license. With OpenSearch ingestion pipelines, you don't need third party such as Logstash to help you push data to OpenSearch. Instead, you configure your producers to send data to OpenSearch ingestion.
+
+## Amazon Keyspaces
+
+Used for Apache Cassandra.
+
+### Features
+
+- Compatible with Cassandra Query Language (CQL)
+- Fully managed Time-to-Live (TTL)
+- Multi-region replication performed through asynchronous replication to propagate the writes across Regions
+- Active-active configuration i.e. each Region handles read/write
+- Consistency and conflict resolution
+- Offers on-demand capacity that requires no capacity planning and scales automatically with the workload's read/write throughput

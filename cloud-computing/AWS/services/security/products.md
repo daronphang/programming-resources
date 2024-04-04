@@ -49,7 +49,7 @@ Types of Customer Master Keys (CMK):
 
 ## AWS Web Application Firewall (WAF)
 
-AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications. Fucntions at Layer 7 (HTTP/HTTPS).
+AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications. Functions at Layer 7 (HTTP/HTTPS).
 
 AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, SQL injection, XSS, etc.
 
@@ -73,7 +73,7 @@ If an anomaly is detected, an event can be created in EventBridge to trigger aut
 
 ## Amazon Macie
 
-Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern maching to discover and protect your sensitive data in AWS. Macie helps identify and alert you to sensitive data, such as personally identifiable information (PII).
+Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS. Macie helps identify and alert you to sensitive data, such as personally identifiable information (PII).
 
 ## AWS Secrets Manager
 
@@ -81,7 +81,7 @@ AWS Secrets Manager helps you protect secrets needed to access your applications
 
 ## Penetration Testing
 
-You can perform pentration testing on your AWS infrastructure. However, prohibited activities include:
+You can perform penetration testing on your AWS infrastructure. However, prohibited activities include:
 
 - DNS zone walking
 - DoS, DDoS, Simulated DoS, Simulated DDoS

@@ -66,6 +66,6 @@ Kafka has a dumb broker/smart consumer model. The broker just sends messages to 
 
 ### Error handling
 
-Kafka handles message processing errors by delegating the responsibility to the consumer. If a message was processed a few times unsuccessfully (poison pill), the consumer application will need to keep track of the attempts and then produce a message to separate DLQ (dead letter queue) topic, where it can be examined/re-run later on. Hence, the consumer must provide and implement message retry mechanisms at application level.
+Kafka handles message processing errors by delegating the responsibility to the consumer. If a message was processed a few times unsuccessfully (poison pill), the consumer application will need to keep track of the attempts and then produce a message to a separate **dead letter queue** (DLQ) topic, where it can be examined/logged/re-run later on. Hence, the consumer must provide and implement message retry mechanisms at application level.
 
 RabbitMQ keeps track of failures in processing a message. After a message is considered a poison pill, it is routed to a DLQ exchange. Hence, it provides a **guarantee** that a message which was not processed successfully will not get lost.

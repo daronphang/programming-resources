@@ -18,6 +18,10 @@ ELB is a service that can distribute incoming application traffic across EC2 ins
 
 Monitoring is an important part of load balancers as they should route traffic to only healthy EC2 instances.
 
+### Cross-zone load balancing
+
+If enabled, allows you to send traffic to EC2 instances in other availability zones.
+
 ## Algorithms
 
 ### Round Robin Method
@@ -79,6 +83,8 @@ A NLB is ideal for load balancing **TCP, UDP and TLS traffic** if you require **
 - DNS failover with Amazon Route 53
 
 NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
+
+When you create NLB, a network interface is created for each AZ. Each load balancer will use the network interface to get a static IP address. You can also associate one elastic IP address per subnet.
 
 ### Gateway Load Balancer (GLB)
 

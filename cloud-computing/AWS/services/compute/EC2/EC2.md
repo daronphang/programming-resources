@@ -104,7 +104,18 @@ Can either use SSH (port 20), Putty or EC2 Instance Connect (uses temporary SSH 
 
 ## Elastic Network Interface (ENI)
 
-A virtual network interface that can be attached to EC2 instances in a VPC. Separates and virtualizes the networking aspect of your EC2 instances. ENI can be detached and attached to different EC2 instances. Flow logs can be enabled to capture information about IP traffic going to and from the ENI.
+An ENI is a logical networking component in a VPC that represents a virtual network card. It can include the following attributes:
+
+- A primary private IPv4 address
+- A primary IPv6 address
+- One or more secondary IPv4 addresses
+- One public IPv4 address
+- One or more security groups
+- A MAC address
+
+From a security perspective, ENIs play a crucial role in protecting your AWS infrastructure.
+
+You can create and configure network interfaces and attach them to instances in the same AZ. Separates and virtualizes the networking aspect of your EC2 instances. ENI can be detached and attached to different EC2 instances. Flow logs can be enabled to capture information about IP traffic going to and from the ENI.
 
 When you launch an EC2 instance, it will be configured with a **primary ENI** called 'ethernet zero' which is assigned a primary private IPv4 address. The primary ENI cannot be detached while the EC2 is running or stopped i.e. fixed to the EC2 instance.
 
