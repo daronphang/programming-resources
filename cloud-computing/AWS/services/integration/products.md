@@ -81,3 +81,9 @@ When migrating to the cloud, instead of re-engineering the application to use SQ
 ## AWS EventBridge
 
 AWS EventBridge is a serverless, fully-managed and scalable event bus that enables integrations between AWS services, software services, and your applications.
+
+### Features
+
+- Decoupling and scalability
+- Event processing at scale
+- Event routing and filtering capabilities
