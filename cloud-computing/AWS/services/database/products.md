@@ -152,18 +152,6 @@ Time series data is a sequence of data points recorded over a time interval. It 
 - Custom query engine
 - Flexible data model
 
-## Amazon Athena
-
-Amazon Athena is a **serverless query service** to perform analytics against **S3 objects**. Uses standard SQL language to query the files.
-
-## Amazon QuickSight
-
-Amazon QuickSight is a serverless machine learning-powered business intelligence service to create interactive dashboards.
-
-## AWS Glue
-
-AWS Glue is a serverless ETL service that is useful to prepare and transform data for analytics.
-
 ## AWS OpenSearch
 
 Forked from Elasticsearch as it was changed from open-source to proprietary license. With OpenSearch ingestion pipelines, you don't need third party such as Logstash to help you push data to OpenSearch. Instead, you configure your producers to send data to OpenSearch ingestion.

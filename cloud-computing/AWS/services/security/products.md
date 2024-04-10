@@ -69,7 +69,7 @@ Amazon GuardDuty is a service that provides intelligent threat detection for you
 - CloudTrail Events Logs
 - DNS Logs
 
-If an anomaly is detected, an event can be created in EventBridge to trigger automations including SNS or Lambda functions. GuardDuty can protect against cryptocurrency attacks (has a dedicated 'finding').
+If an anomaly is detected, an event can be created in EventBridge to trigger automation including SNS or Lambda functions. GuardDuty can protect against cryptocurrency attacks (has a dedicated 'finding').
 
 ## Amazon Macie
 

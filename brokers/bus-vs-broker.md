@@ -1,18 +1,16 @@
 ## Event/Message Bus
 
-A Bus is a decentralized system. It is a combination of a common data model, a common command set, and a messaging infrastructure to allow different systems to communicate through a shared set of interfaces. The message bus implies a common protocol spoken and understood by all participants.
-
-With a message bus implementation, the messaging infrastructure is cohesively coupled to a microservice instance itself, very much as a microservice’s database is. Thus a microservice’s application code will affectively communicate with a Bus instance in the same infrastructure environment as the microservice itself.
-
-Tailored for broadcasting events to numerous subscribers using a pub-sub model, fostering one-to-many communication. Notably, it provides high decoupling between publishers and subscribers, eliminating the need for them to be aware of each other. Messages are typically consumed as they're generated, rather than being stored, and there's no assurance of message delivery.
-
-Event Bus is suitable for situations involving real-time notifications across multiple subscribers and scenarios where numerous services must respond to specific events.
-
-A Message Bus is an architectural pattern that supports integrating apps using a shared (common) set of interfaces. It consists of the following key elements:
+A Bus is a **decentralized system**. It is a combination of a common data model, a common command set, and a messaging infrastructure to allow different systems to communicate through a shared set of interfaces. The message bus implies a common protocol spoken and understood by all participants. **There may be no guarantee of FIFO ordering**. It consists of the following key elements:
 
 - A shared infrastructure (network and messaging channels) for sending messages to recipients
 - A set of agreed-upon message schemas (message headers, and a common data-model in terms of resources and representations used in message payloads)
 - A set of common command messages (Used to support the messaging equivalent of RPC to invoke methods in other apps)
+
+With a message bus implementation, the messaging infrastructure is cohesively coupled to a microservice instance itself, very much as a microservice’s database is. Thus a microservice’s application code will affectively communicate with a Bus instance in the same infrastructure environment as the microservice itself.
+
+Tailored for broadcasting events to numerous subscribers using a pub-sub model, fostering one-to-many communication. Notably, it provides high decoupling between publishers and subscribers, eliminating the need for them to be aware of each other. **Messages are typically consumed as they're generated**, rather than being stored, and there's no assurance of message delivery.
+
+Event Bus is suitable for situations involving real-time notifications across multiple subscribers and scenarios where numerous services must respond to specific events.
 
 ## Event/Message Broker
 
