@@ -6,9 +6,29 @@ Each resource within the stack is tagged with an identifier so you can easily se
 
 AWS CloudFormation provisions your resources in a safe and **repeatable manner**, enabling you to frequently build your infrastructure and applications without having to perform manual actions ie. rebuilding architecture across different Regions, accounts, etc. It determines the right operations to perform when managing your stack and rolls back changes automatically if it detects errors.
 
+### Features
+
+- Infrastructure as Code (IAC)
+- Consistent and repeatable deployments
+- Version control
+- Resource tracking
+- Cost and efficiency
+
 ## AWS Cloud Development Kit (CDK)
 
 CDK allows you to define your cloud infrastructure using a programming language instead of YAML i.e. JS, Python, Java, etc. The code is compiled into a CloudFormation template (JSON/YAML).
+
+```
+CodeCommit -> Trigger CodePipeline -> Trigger CDK -> Generate CloudFormation Templates -> Deployment as stack
+```
+
+### Features
+
+- Declarative approach
+- Component reusability
+- AWS construct library
+- Automated synthesis
+- Environment agnosticism
 
 ## AWS Elastic Beanstalk (Platform-as-a-Service)
 
@@ -37,6 +57,45 @@ SSM helps you to manage your EC2 and on-premise systems at scale (hybrid). It al
 - Storing parameter configuration with the SSM Parameter Store
 
 The SSM agent needs to be installed on the systems we want to control.
+
+### Application management
+
+- Application Manager: Group applications and troubleshoot issues
+- Parameter Store: Store secrets and data for resources to access (ease for password rotation)
+
+### Change management
+
+- Change Manager
+- Automation
+- Change Calendar
+- Maintenance Windows
+
+### Node management
+
+- Compliance
+- Inventory
+- Session Manager
+- Run Command
+- State Manager
+- Patch Manager
+- Distributor
+
+### Operations management
+
+- Incident Manager
+- OpsCenter
+
+### Features
+
+- Centralized control
+- Resource grouping
+- Automate common and repetitive IT operations and management tasks
+- Patching management
+- Operational insights
+- Secret and configuration management
+- Remote management
+- Compliance enforcement
+- Hybrid capabilities
 
 ### SSM Session Manager
 
@@ -105,3 +164,108 @@ A complete solution for building web and mobile applications. Abstracts AWS serv
 - Amplify Studio is a visual development environment that integrates with Amplify CLI to manage backend services using graphical interface
 - Has pre-built React components for frontend usage
 - Support multiple platforms
+
+## AWS Launch Wizard
+
+A service that simplifies the process of deploying well-known third party applications e.g. SQL Server, AD, SAP.
+
+### How it works
+
+1. Choose an application to deploy
+2. Enter application specifications
+3. Resource recommendation and cost estimate
+4. Approval and resource provisioning
+5. Configuration and template creation
+6. Deployment and integration
+
+### Features
+
+- Simplified application deployment
+- AWS resource selection
+- Cost estimation
+- Time-saving with repeatable code templates
+- Cost-effectiveness
+
+## AWS Service Catalog
+
+Users that are new to AWS have too many options, and may create stacks that are not compliant with the rest of the organization. Service Catalog provides a quick self-service portal to launch a set of authorized products pre-defined by admins i.e. admins will curate and configure the services in the catalog. Users are given access to services based on their rules.
+
+CloudFormation templates are used to deploy all the resources i.e. each product in the catalog is a CloudFormation template. IAM policies are used to determine who has access to specific products within a catalog.
+
+You can group products together in portfolios, and give users access to portfolios.
+
+### Why use Service Catalog?
+
+- Consistent deployments
+- Governance and compliance
+- Controlled spending
+
+## AWS License Manager
+
+A service that helps you manage software licenses across verious vendors including Microsoft, SAP, Oracle, etc.
+
+### Features
+
+- Centralized license management
+- License tracking
+- Enforce licensing rules
+- Cross-account management
+- Discovery and reporting
+
+## AWS Proton
+
+AWS Proton is a deployment workflow tool for modern applications that helps platform and DevOps engineers achieve organizational agility. It helps to standardize the application stack and create a consistent environment across all deployments and services.
+
+### Platform
+
+1. Create Environment Templates that define shared resources using IaC
+2. Deploy the environments
+3. Create Service Templates that define the infrastructure, monitoring and CI/CD resources
+
+### Developers
+
+1. Choose a Service Template and link a source code package
+2. Deploy a service that consists of service instances running the source code package as defined in the Service Template
+
+### Benefits
+
+- Automated deployments with CI/CD pipeline
+- Flexible definitions
+- Proton service components
+- Multi-account support
+- Template management
+
+## AWS Resource Group and Tag Manager
+
+Resource groups allow you to group resources based off of a specific tag. You can create a custom console that organizes and consolidates resources based off of specific tags. you get a **single view** to manage all of your resources matching the tag i.e. dev/prod environments, applications, departments, etc.
+
+## AWS Resilience Hub
+
+Helps you to setup your disaster recovery process, particularly in the context of AWS cloud environments. It provides a centralized console to manage and automate resilient activities including backup schedules, setting recovery point objectives, etc.
+
+### Terms
+
+- Recovery Point Objective (RPO): Maximum tolerable period in which data might be lost due to a major incident
+- Recovery Time Objective (RTO): Targeted duration of time within which a business process must be restored in order to avoid unacceptable consequences
+
+### Features
+
+- Centralized resiliency planning
+- Continuous tracking
+- Alert during outage
+- Automated backups and recovery
+- Compliance and reporting
+
+## AWS Resource Explorer
+
+Simplifies the search and discovery of your AWS resources, across Regions using tags or other metadata.
+
+A collection of information about AWS resources in a specific Region is called an **index**. There are two types of indexes:
+
+- Local: Specific to a Region (replicate over to the Region with aggregate index)
+- Aggregate: Collected data across all Regions
+
+Responsibilities are as follows:
+
+- Admin: Turning on Resource Explorer, updating index types, creating views, granting search permissions
+- User: Search for resources

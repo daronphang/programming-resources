@@ -27,7 +27,7 @@ All flavors support multi-AZ deployments, but Lustre supports only single AZ.
 - Lustre is a fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**
 - Provides low-latency, high throughput access to data
 - Built on the Lustre file system
-- Usage includes for machine learning, scientific computing, analytics, video processing, financial modelling, etc.
+- Usage includes for machine learning, scientific computing, analytics, video processing, media and entertainment workloads, financial modelling, etc.
 - Integrates seamlessly with other AWS services e.g. S3, DataSync, AWS Batch
 - Can easily scale the file system's capacity and throughput
 - Single AZ deployment only

@@ -102,7 +102,7 @@ AWS DataSync facilitates fast and secure data transfers between on-premise/AWS s
 - Data integrity and verification
 - Automation and scheduling
 - Support for multiple protocols
-- Incremental transfers
+- Incremental transfers (transferring changed or new data since the last synchronization)
 - Security and encryption (at-rest and transit)
 - Monitoring and logging
 

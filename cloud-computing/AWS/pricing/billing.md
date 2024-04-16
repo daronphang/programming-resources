@@ -8,9 +8,11 @@ Use cost allocation tags to track your AWS costs on a detailed level. For each r
 
 ## AWS Organizations
 
-You can use AWS Organizations to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts. You can use it to share resources across your AWS accounts.
+You can use AWS Organizations (free service) to consolidate and manage multiple AWS accounts within a central location i.e. a company having multiple AWS accounts. You can use it to share resources across your AWS accounts.
 
-You can centrally control permissions for the accounts in your organization (individual member account, OUs) by using **service control policies** (SCPs). SCPs enable you to place restrictions on the AWS services, resources, and individual API actions that users and roles in each account can access.
+### Service Control Policies (SCPs)
+
+You can centrally control permissions for the accounts in your organization (individual member account, OUs) by using SCPs. SCPs enable you to place restrictions on the AWS services, resources, and individual API actions that users and roles in each account can access.
 
 ### Organization units (OUs)
 
@@ -24,7 +26,24 @@ Another benefit is the ability to share bulk discount pricing, Savings Plans, an
 
 ## AWS Control Tower
 
-An easy way to setup and govern a secure and compliant multi-account AWS environment based on best practices. Runs on top of AWS Organizations i.e. automatically sets up AWS Organizations to organize accounts and implement SCPs.
+An easy way to setup and govern a secure and compliant multi-account AWS environment based on best practices. Helps to automate/streamline the process of creating a new account with the necessary permissions and guardrails.
+
+Runs on top of AWS Organizations i.e. automatically sets up AWS Organizations to organize accounts and implement SCPs.
+
+### Guardrails
+
+When you spin up a new account, it is going to have all the necessary guardrails:
+
+- Preventive: Proactive measures to prevent issues; usually implemented through IAM policies, AWS Config
+- Detective: Reactive measures to detect and respond to issues
+
+### Features
+
+- Simplified multi-account environments
+- Reduce risk of human error when creating an account
+- Automated policy enforcement
+- Improve operational efficiency
+- Continuous monitoring for policy compliance
 
 ## AWS Budgets
 
@@ -46,9 +65,13 @@ The rightsizing recommendations features helps you to identify cost-saving oppor
 
 Share AWS resources that you own with other AWS accounts to avoid resource duplication.
 
-## AWS Service Catalog
+### Workflow
 
-Users that are new to AWS have too many options, and may create stacks that are not compliant with the rest of the organization. Service Catalog provides a quick self-service portal to launch a set of authorized products pre-defined by admins.
+1. Create a resource share
+2. Select resources to share
+3. Choose principals
+4. Accept the resource share request
+5. Monitor and manage resource share
 
 ## AWS Service Quotas
 

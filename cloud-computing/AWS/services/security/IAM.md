@@ -8,6 +8,13 @@ IAM gives you flexibility to configure access based on your company's specific o
 - IAM policies
 - Multi-factor authentication
 
+### Features
+
+- Enhanced security
+- Centralized management for authentication and authorization
+- Compliance and auditing
+- Least privilege principle
+
 ## Root user
 
 When you create an AWS account, you begin with an identity known as the root user. Should not be used for everyday tasks.
@@ -27,7 +34,7 @@ Individual IAM users should be created for each individual, even if they have si
 
 ## IAM policies
 
-An IAM policy is a JSON document that defines users, groups or roles' permissions to AWS services and resources (allow/deny). IAM policies enable you to customize users' levels of access to resources. Follow the security principle of **least privilege** when granting permissions i.e. don't give more permissions than the user needs.
+An IAM policy is a JSON document that defines users, groups or roles' permissions to AWS services and resources (allow/deny). IAM policies enable you to customize users' levels of access to resources. Follow the **security principle of least privilege** when granting permissions i.e. don't give more permissions than the user needs.
 
 ### Structure
 
@@ -35,7 +42,7 @@ An IAM policy is a JSON document that defines users, groups or roles' permission
 - Id: Identifier for the policy (optional)
 - Statement: One or more individual statements (required)
 
-#### Statement
+### Statement
 
 - Sid: Identifier for the statement (optional)
 - Effect: Whether the statement allows or denies access
@@ -73,7 +80,7 @@ When someone assumes an IAM role, they abandon all previous permissions they had
 
 **Never enter IAM access ID and access keys into EC2 instance**. Instead, use IAM roles to provide EC2 with credentials.
 
-## Mutli-factor authentication (MFA)
+## Multi-factor authentication (MFA)
 
 In IAM, MFA provides an extra layer of security for your AWS account. MFA device options include Google Authenticator, Authy, YubiKey Fob.
 

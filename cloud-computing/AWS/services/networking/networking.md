@@ -8,14 +8,33 @@ Elastic IP addresses are static/persistent public IPs that come with your accoun
 
 An elastic IP must be associated with an instance or network interface, and are specific to a Region.
 
-## AWS network firewall
+## AWS Network Firewall
 
-Protects your entire VPC from Layer 3 to Layer 7. You can inspect, in any direction:
+Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspection and intrusion detection. You can inspect, in any direction:
 
 - VPC to VPC traffic
 - Outbound to internet
 - Inbound from internet
 - To/from Direct Connect and Site-to-Site VPN
+
+### Firewall endpoints
+
+Firewall endpoint serves as the entry/exit points for traffic to be inspected. A subnet needs to be created specifically for the firewall. You can't deploy a firewall in a subnet with resources because it can't protect applications that run in the same subnet.
+
+### Rule engines
+
+- Stateless engine: Rule processing ordered by rule priority setting
+- Stateful engine: Rule processing ordered by action (pass, drop, alert)
+
+### Features
+
+- Simplified rule management
+- Granular control
+- Advanced threat protection
+
+## AWS Firewall Manager
+
+Firewall manager simplifies the process of managing all of your WAF rules, security groups, NACLs, and AWS Shield, across **multiple accounts**.
 
 ## Network Access control List (ACLs)
 
@@ -46,7 +65,7 @@ After a packet has entered a subnet, it must have its permissions evaluated for 
 
 A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance (only ALLOW). By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
 
-Security groups can be attached to multiple EC2 instances and are locked down to a Region/VPC combination. You can assign multiple security groups to a single resource i.e. rules for both groups get merged.
+Security groups can be attached to multiple EC2 instances and are locked down to a **Region/VPC combination**. You can assign multiple security groups to a single resource i.e. rules for both groups get merged.
 
 ### Stateful packet filtering
 
