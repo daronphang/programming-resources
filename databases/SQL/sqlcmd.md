@@ -4,7 +4,7 @@ Sqlcmd allows execution of transactional queries, stored procedures, and script 
 
 ### CLI
 
-```bash
+```sh
 $ /opt/mssql-tools18/bin/sqlcmd \
 -S "$HOST" \
 -U "$USER" \

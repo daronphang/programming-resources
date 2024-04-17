@@ -1,8 +1,8 @@
-## Grep (Global Regular Expression Print)
+## Global Regular Expression Print (GREP)
 
 Grep utilities are a family that includes grep, egrep, and fgrep for searching files.
 
-```console
+```sh
 $ grep 'word' filename
 $ grep -i 'bar' file1         # Perform case-insensitive search
 $ grep -R 'httpd'             # Look for all files in current directory and subdirectories

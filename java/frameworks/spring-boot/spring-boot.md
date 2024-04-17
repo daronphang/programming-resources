@@ -36,7 +36,7 @@ dependencies {
 }
 ```
 
-```bash
+```sh
 $ gradle dependencies
 $ mvn dependency:tree
 ```
@@ -54,7 +54,7 @@ Nesting JARs instead of sharding them alleviates many potential problems:
 
 The Spring Boot plugin ensures that all JARs are zipped into the output JAR.
 
-```bash
+```sh
 $ java -jar <Application.jar>
 $ Application.jar   # file is also executable
 ```

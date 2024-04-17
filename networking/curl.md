@@ -2,7 +2,7 @@
 
 Command line tool that allows transfer of data across network. Supports many protocols including HTTP, HTTPS, FTP, FTPS, POP3, etc. Supports on universal OS.
 
-```bash
+```sh
 $ curl --verbose https://example.com # inspect all details of request and response
 
 $ curl https://example.com # GET request (default), returns body of response

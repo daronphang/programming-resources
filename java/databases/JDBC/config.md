@@ -14,7 +14,7 @@ jdbc:postgresql:COREJAVA
 
 You need to obtain the JAR file in which the driver for your database is located.
 
-```bash
+```sh
 $ java -classpath driverPath:. ProgramName
 ```
 
@@ -30,7 +30,7 @@ Class.forName("org.postgresql.Driver"); // force loading of driver class
 
 2. Set the jdbc.drivers property by using command-line or in the java program
 
-```bash
+```sh
 $ java -Djdbc.drivers=org.postgresql.Driver ProgramName
 ```
 

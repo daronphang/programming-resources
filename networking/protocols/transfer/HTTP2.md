@@ -15,3 +15,5 @@ While HTTP/1.1 allows for processing just one request at a time, HTTP/2 supports
 ### Streaming
 
 Real-time communication with high performance is possible with HTTP/2 thanks to binary framing, whereby each stream is divided into frames that can be prioritized and run via a single TCP connection, reducing network utilization and processing load.
+
+### Multiplexing

@@ -4,7 +4,7 @@
 
 A counter is a cumulative metric that represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart.
 
-**The rate() should only be used with counters**. When combining rate() with an aggregation operator, always take the rate() first, followed by aggregate.
+**The rate() should only be used with counters**. When combining rate() with an aggregation operator, always take the rate() first, followed by aggregate. Moreover, rate automatically adjusts for resets.
 
 ### Gauge
 

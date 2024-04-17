@@ -11,7 +11,7 @@ bridge              Communication between containers running on same Docker host
 overlay             Communication between containers running on different Docker hosts
 ```
 
-```bash
+```sh
 $ docker container run -p 8080:80   # map TCP port 80 in container to port 8080 of host machine
 $ docker network ls
 ```
@@ -20,7 +20,7 @@ $ docker network ls
 
 By default, the container is assigned an IP address for every Docker network it connects to. When the container starts, it can only be connected to a single network using --network. However, you can connect a running container to multiple networks.
 
-```bash
+```sh
 $ docker container run --network --ip   # ip to specify the IP address
 
 $ docker network connect --ip   # to connect a running container to other networks

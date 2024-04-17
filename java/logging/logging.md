@@ -74,7 +74,7 @@ catch (IOException e) {
 
 Default config file is located at `jre/lib/logging.properties`. To use another file, set the java.util.logging.config.file property to the file location.
 
-```bash
+```sh
 $ java -Djava.util.logging.config.file=configFile MainClass
 ```
 

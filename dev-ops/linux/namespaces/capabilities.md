@@ -18,13 +18,13 @@ SYS_ADMIN
 SYS_CHROOT
 ```
 
-```bash
+```sh
 $ cat /proc/<PID>/status | grep Cap
 $ capsh --decode=<hex number>
 $ getpcaps <PID>
 ```
 
-```bash
+```sh
 $ sudo getcap /path/to/the/file
 $ sudo setcap cap_net_bind_service+ep /path/to/the/file
 $ sudo setcap cap_net_raw=ep ping

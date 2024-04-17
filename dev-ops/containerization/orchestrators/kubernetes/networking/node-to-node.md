@@ -7,7 +7,7 @@ Kubernetes support various networking models that determine how nodes communicat
 - Each Node has its own private network
 - Containers within a Node communicate over this private network
 - Containers across Nodes communicate over an overlay network
-- Overlay networks encapsulte packets and route them between nodes using an overlay network driver (VXLAN, Flannel)
+- Overlay networks encapsulate packets and route them between nodes using an overlay network driver (VXLAN, Flannel)
 
 ### Underlay
 

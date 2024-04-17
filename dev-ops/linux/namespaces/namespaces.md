@@ -1,6 +1,6 @@
-## Linux Namespaces
+## Namespaces
 
-Namespaces are a feature of the Linux kernel that allows us to isolate kernel resources for a set of processes.
+Namespaces are a feature of the Linux kernel that allows us to isolate kernel resources for a set of processes. On a server where you are running many different services, isolating each service and its associated processes from other services means that there is a smaller blast radius for changes, as well as a smaller footprint for security‑related concerns. Mostly though, isolating services meets the architectural style of microservices.
 
 ### Benefits
 
@@ -18,13 +18,13 @@ Namespaces are one of the technologies containers are built on (Docker, Podman, 
 
 Using containers gives the developer an isolated environment that looks and feels like a complete VM, but is actually another process running on the server.
 
-Cgroups naemspace is a key component of containers as there are often multiple processes running in a container that you need to control together.
+Cgroups namespace is a key component of containers as there are often multiple processes running in a container that you need to control together.
 
-## Types of Namespaces
+## Namespaces types
 
 ### User namespace
 
-Contains an independent set of user IDs and group IDs that can be assigned to processes. A process can have root privilege within its user namespace but not in other namespaces.
+Contains an independent set of user IDs and group IDs that can be assigned to processes. A process can have root privilege within its user namespace without having it in other namespaces.
 
 ### PID namespace
 
@@ -36,13 +36,13 @@ Processes in a new child namespace does not know the existence of other processe
 
 ### Mount namespace
 
-They allow the management of mount points in our system. Doing unmount in a new namespace won't have any effect on the main host, as every new mount will be private to the current namespace.
+A mount namespace has an independent list of mount points seen by the processes in the namespace. This means that you can mount and unmount filesystems in a mount namespace without affecting the host filesystem.
 
 ### Network namespace
 
-Virtualizes the network stack for the new namespace i.e. it will have its own virtual interface, private IPs, IP route table, sockets, firewalls, etc.
+A network namespace has an independent network stack: its own private routing table, set of IP addresses, socket listing, connection tracking table, firewall, and other network‑related resources.
 
-### IPC (Inter-Process Communication) namespace
+### Inter-Process Communication (IPC) namespace
 
 Allows defining shared memory segments between processes within a namespace for inter-process communications, not interfering with other namespaces.
 
@@ -50,9 +50,9 @@ Allows defining shared memory segments between processes within a namespace for 
 
 Allows our system to have different host names and domain names for each namespace.
 
-### Time namespace
+### Time-sharing namespace
 
-Allows having different system times within our system by specifying different time namespaces.
+Allows a single system to appear to have different system times, host and domain names to different processes.
 
 ### Cgroups (Control Groups) namespace
 
@@ -60,7 +60,7 @@ Limits the resource usage (CPU, memory, disk, etc.) for a particular group of pr
 
 ## Creating a Namespace
 
-```bash
+```sh
 $ unshare --user --pid --map-root-user --mount-proc --fork bash
 $ ps -ef
 $ lsns --output-all | head -1; lsns --output-all # see all namespaces

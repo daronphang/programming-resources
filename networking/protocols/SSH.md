@@ -22,7 +22,7 @@ Need to ensure both client and server components are installed on local and remo
 
 For Windows, need to install a version of OpenSSH such as MobaXTerm. To have a full Linux environment available, can setup WSL which has SSH by default.
 
-```bash
+```sh
 $ ssh   # check for ssh client
 $ sudo apt-get install openssh-client
 ```
@@ -31,7 +31,7 @@ $ sudo apt-get install openssh-client
 
 On most Linux environments, the ssh server 'sshd' should start automatically.
 
-```bash
+```sh
 $ sudo systemctl start ssh      # for ubuntu distro, to manually start ssh
 
 $ ssh localhost
@@ -67,14 +67,14 @@ PubkeyAuthentication yes
 ChallengeResponseAuthentication no
 ```
 
-```bash
+```sh
 $ sudo service ssh restart         # need to restart everytime a change is made
 $ sudo systemctl reload ssh        # alternative for restart
 ```
 
 ### Connecting via SSH
 
-```bash
+```sh
 $ ssh your_username@host_ip_address
 $ ssh your_username@host_ip_address -p 8080
 $ ssh our_username@host_ip_address command_to_run
@@ -109,7 +109,7 @@ Server will use public key to create a message for the client computer that can 
 
 Though you may be prompted to set a password on the key files themselves, it is an uncommon practice i.e. accepting defaults is sufficient.
 
-```bash
+```sh
 $ # keys are created at ~/.ssh/id_rsa.pub and ~/.ssh/id_rsa
 
 $ ls ~/.ssh/id_rsa*     # check for existing keys
@@ -134,12 +134,12 @@ $ ls -l
 
 Uploading public key to compute/server instance. To use public key authentication, the public key must be copied to a server and installed in an authorized_keys file.
 
-```bash
+```sh
 $ # from local Linux
 $ ssh-copy-id server_username@192.0.2.1
 ```
 
-```bash
+```sh
 $ # for windows
 
 $ # on windows local computer
@@ -149,14 +149,14 @@ $ # on linux server
 $ mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
 ```
 
-```bash
+```sh
 $ # setting permissions for public key directory in server
 $ sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 ```
 
 ### Logs
 
-```bash
+```sh
 $ sudo vim /var/log/auth.log
 $ sudo journalctl -t sshd
 ```

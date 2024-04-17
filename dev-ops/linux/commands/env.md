@@ -1,21 +1,21 @@
-### Environment Variables
+## Environment variables
 
-```bash
+```sh
 $ printenv
 $ printenv | less
 $ printenv HOME
 $ set | grep [VARIABLE_NAME]  # includes local and shell variables
 ```
 
-### Shell
+## Shell
 
-```bash
+```sh
 $ export [VARIABLE_NAME]=[variable_value]
 
 $ unset [VARIABLE_NAME]
 ```
 
-### Permanent
+## Permanent
 
 Need to consider the following situations:
 
@@ -24,7 +24,7 @@ Need to consider the following situations:
 - Interactive shell
 - Non-interactive shell
 
-#### Global
+### Global
 
 ```
 /etc/profile.d      if available
@@ -34,9 +34,9 @@ Need to consider the following situations:
 
 Createa a .sh file in one of the folders above. Syntax to add is the same for both global or user.
 
-### Proxies
+## Proxies
 
-When running apt/yum, it uses root and hence, setting proxies in ~/.bashrc will not reflect. Need to modify yum/apt.conf file.
+When running apt/yum, it uses root and hence, setting proxies in ~/.shrc will not reflect. Need to modify yum/apt.conf file.
 
 ```
 /etc/yum.conf                     # modify proxy globally

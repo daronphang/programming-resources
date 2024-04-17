@@ -5,7 +5,7 @@
 
 ## Drivers
 
-```bash
+```sh
 $ sudo ubuntu-drivers list
 $ sudo ubuntu-drivers devices
 $ sudo ubuntu-drivers autoinstall
@@ -14,14 +14,14 @@ $ dkms status
 
 ### Graphics card
 
-```bash
+```sh
 $ sudo apt install hwinfo
 $ hwinfo --gfxcard --short # sudo lshw -c display
 ```
 
 If display is UNCLAIMED, it means there was no driver loaded for the graphics card.
 
-```bash
+```sh
 $ sudo apt remove --purge nvidia*
 $ sudo ubuntu-drivers autoinstall
 $ reboot

@@ -6,7 +6,7 @@ All of these processes are tracked in a special file system called **procfs**. W
 
 https://www.redhat.com/sysadmin/pid-namespace
 
-## PID Namepsace
+## PID namespace
 
 One of the main reasons for the PID namespace is to allow for process isolation. PID namespaces isolate the PID number space, meaning that processes in different PID namespaces can have the same PID.
 

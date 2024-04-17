@@ -15,7 +15,7 @@ UDP 4789
 
 ### Create
 
-```bash
+```sh
 $ docker network create --driver=overlay my-overlay
 $ docker network create --driver=overlay --attachable my-overlay
 ```

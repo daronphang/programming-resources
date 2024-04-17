@@ -134,3 +134,30 @@ class Solution {
     }
 }
 ```
+
+## Problem 3
+
+Given a non-empty array of integers, every element appears twice except for one. Find that single one. Your algorithm should have a linear runtime complexity, without using extra memory.
+
+The solution is using XOR. If you XOR identical numbers, the result will be 0.
+
+```py
+def single_number(list):
+  result = 0
+    for num in list:
+      result ^= num
+  return result
+
+'''
+[4,1,2,1,2]
+4 = 100
+1 = 001
+2 = 010
+
+0 ^ 4 = 0 ^ 100 = 4
+4 ^ 1 = 100 ^ 001 = 101 = 5
+5 ^ 2 = 101 ^ 010 = 111 = 7
+7 ^ 1 = 111 ^ 001 = 110 = 6
+6 ^ 2 = 110 ^ 010 = 100 = 4
+'''
+```

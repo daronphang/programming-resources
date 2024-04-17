@@ -4,7 +4,7 @@
 
 Setup for environment variables whenever user opens an interactive login shell.
 
-```bash
+```sh
 $ sudo vim ~/.bashrc
 ```
 
@@ -12,7 +12,7 @@ $ sudo vim ~/.bashrc
 
 Proxy configuration is setup but disabled by default.
 
-```bash
+```sh
 $ vim /etc/profile.d/proxy.sh   # uncomment proxy_on fn
 ```
 
@@ -30,14 +30,14 @@ skip_if_unavailable=False
 proxy=http://proxy-web.micron.com:80/   # enable this!
 ```
 
-```bash
+```sh
 $ /etc/yum.conf     # modifying proxy globally
 $ /etc/yum.repos.d/some.repo
 ```
 
 To bypass local redhat repositories and enable curl to use proxy, need to temporarily disable checking for repos. Make sure proxy is enabled in /etc/yum.conf.
 
-```bash
+```sh
 $ sudo yum repolist
 $ sudo yum install <package> --disablerepo=ansible-2.9-for-rhel-8-x86_64-rpms --disablerepo=rhel-8-for-x86_64-appstream-rpms --disablerepo=rhel-8-for-x86_64-baseos-rpms --disablerepo=satellite-client-6-for-rhel-8-x86_64-rpms
 ```
@@ -61,7 +61,7 @@ Driver = /usr/lib64/libtdsodbc.so.0
 
 Disable proxies in git config.
 
-```bash
+```sh
 $ git config --global http.proxy ""
 $ git config --global https.proxy ""
 $ git config --global http.sslVerify false
@@ -71,7 +71,7 @@ $ git config --global http.sslVerify false
 
 Python3.6 is only available through yum repository. To install later versions, need to download manually.
 
-```bash
+```sh
 $ sudo dnf install gcc openssl-devel bzip2-devel libffi-devel
 $ cd download/path
 $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
@@ -99,7 +99,7 @@ supervisord.conf        /etc/supervisord
 supervisord.service     /lib/systemd/system
 ```
 
-```bash
+```sh
 $ sudo pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org --proxy http://proxy-web.micron.com:80 supervisor
 $ which supervisord
 $ sudo systemctl enable supervisord
@@ -236,7 +236,7 @@ https://docs.docker.com/engine/install/centos/
 
 2. Modify repo files to include proxy.
 
-```bash
+```sh
 $ vim /etc/yum.repos.d/docker-ce.repo
 ```
 
@@ -252,27 +252,27 @@ proxy=http://proxy-web.micron.com:80
 
 3. Install Docker Engine. If encounter dependencies error, check the error message and resolve.
 
-```bash
+```sh
 $ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 Might need to remove dependencies buildah and podman.
 
-```bash
+```sh
 $ sudo yum remove buildah podman
 $ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 If require dependencies i.e. container-selinux, need to update epel-release and install.
 
-```bash
+```sh
 $ sudo yum install epel-release
 $ sudo yum install container-selinux
 ```
 
 4. Configure Docker group.
 
-```bash
+```sh
 $ sudo groupadd docker
 $ sudo usermod -aG docker $USER jenkins
 $ grep /etc/group -e "docker"
@@ -280,7 +280,7 @@ $ grep /etc/group -e "docker"
 
 5. Configure Docker proxy.
 
-```bash
+```sh
 $ sudo mkdir -p /etc/systemd/system/docker.service.d
 $ sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf
 $ sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
@@ -297,14 +297,14 @@ Environment="NO_PROXY=localhost,127.0.0.1,.micron.com,addmmsi,*.micron.com,.snow
 
 6. Start Docker.
 
-```bash
+```sh
 $ sudo systemctl start docker
 $ sudo docker run hello-world
 ```
 
 ### Ports
 
-```bash
+```sh
 $ sudo firewall-cmd --list-ports
 $ sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 $ sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
@@ -317,7 +317,7 @@ https://confluence.micron.com/confluence/display/~LINLINK/How+to+Apply+SSL+Certi
 
 1. Generate private key.
 
-```bash
+```sh
 $ cd ~
 $ hostname
 $ openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key
@@ -374,7 +374,7 @@ Throws forbidden when accessing contents outside /usr/share/nginx/html.
 
 Change user in /etc/nginx/nginx.conf to your username.
 
-```bash
+```sh
 $ sudo setenforce 0
 ```
 

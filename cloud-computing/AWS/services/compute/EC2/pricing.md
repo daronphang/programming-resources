@@ -6,7 +6,7 @@ With EC2, you pay only for the compute time that you use.
 
 Ideal for short-term, irregular workloads that cannot be interrupted. No upfront costs or minimum contracts apply. The instances run continuously until you stop them.
 
-Sample use cases include developing and testing applications, and running applications that have unpredictabe usage patterns. **They are not recommended for workloads that last a year or longer** as they can experience greater cost savings using Reserved instances.
+Sample use cases include developing and testing applications, and running applications that have unpredictable usage patterns. **They are not recommended for workloads that last a year or longer** as they can experience greater cost savings using Reserved instances.
 
 On-demand charges by the second, but there is a one-minute minimum charge for Linux based EC2 instances.
 
@@ -63,7 +63,7 @@ You don't need to specify upfront what resource and instance type is required to
 
 ### Spot Instances
 
-Spot instances are ideal for workloads with flexible start and end times, or that can withstand interruptions i.e. **resilient to failture**. They use unused EC2 computing capacity and offer you cost savings at up to 90% off of On-Demand prices.
+Spot instances are ideal for workloads with flexible start and end times, or that can withstand interruptions i.e. **resilient to failure**. They use unused EC2 computing capacity and offer you cost savings at up to 90% off of On-Demand prices.
 
 If you make a Spot request and EC2 capacity is not available, the request will not be successful until capacity becomes available. The unavailable capacity might delay the launch of your job/task.
 
@@ -71,7 +71,7 @@ After you have launched a Spot instance, if capacity is no longer available or d
 
 ### Dedicated Hosts
 
-Physical servers with EC2 instance capacity that is fully dedicated to your use (most expensive). You have full control over instance placement.
+Physical servers with EC2 instance capacity that is fully dedicated to your use (most expensive). You have full control over instance placement. This will not change even if you restart EC2 instances.
 
 Allows you to address **compliance requirements** and use your **existing server-bound software licenses**. Useful for software that have complicated licensing model i.e. per-socket, per-core VM software licenses.
 
@@ -79,7 +79,7 @@ You can either purchase On-Demand or Reserved.
 
 ### Dedicated Instances
 
-No other customers will share your EC2 hardware. However, you may share hardware with other instances in the same account.
+No other customers will share your EC2 hardware. However, you may share hardware with other instances in the same account. However, if you reboot your EC2 instances, you may get a new physical server.
 
 ### Capacity Reservations
 

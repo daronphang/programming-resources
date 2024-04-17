@@ -2,14 +2,14 @@
 
 Generate PAT and update in git config to cache PAT. After updating git config, git will prompt for username and password (use PAT) for first time operation; subsequent authentications will be cached.
 
-```bash
+```sh
 $ git config --global user.email "daronphang@gmail.com"
 $ git config --global credential.helper store
 ```
 
 ## Pushing Files to New Repository
 
-```bash
+```sh
 $ git init <project directory>                #cd /d C:\users\daronphang
 
 $ git branch -m master main
@@ -22,7 +22,7 @@ $ git push -u origin master
 
 ## Revert Commit
 
-```bash
+```sh
 $ git revert <commit id>
 $ git add .
 $ git commit -m "your changes"
@@ -30,7 +30,7 @@ $ git commit -m "your changes"
 
 ## Reset Commit
 
-```bash
+```sh
 $ git reset
 $ git reset --hard HEAD # revert back to current head
 $ git reset --soft HEAD
@@ -45,7 +45,7 @@ $ git log src/myassistant/app/api/v1/endpoint.py   # View all changes made to fi
 
 ## Editing Existing Files
 
-```bash
+```sh
 $ git branch                                  # check if branch is master
 $ git checkout -b <new branch name>
 $ git add <--all or example.txt>
@@ -59,7 +59,7 @@ $ git remote set-url origin <new repo URL>
 
 ## Misc
 
-```bash
+```sh
 $ cd /d C:\users\daronphang         Cloning repo
 $ git clone <repo URL>
 
@@ -72,7 +72,7 @@ Pull command is used to fetch and download content from remote repository and im
 
 To pull other branches from remote repo, use git fetch followed by git pull origin <new_branch_name>.
 
-```bash
+```sh
 $ git pull <remote URL>
 $ git pull --no-commit <remote>
 $ git pull origin master --allow-unrelated-histories    # When encountered "refusing to merge unrelated histories"
@@ -86,7 +86,7 @@ $ git pull <repo> <remotebranchname>:<localbranchname>
 
 ## Viewing/Comparing Changes
 
-```bash
+```sh
 $ git branch -a # check all branches
 $ git fetch # update remote repo
 
@@ -95,7 +95,7 @@ $ git diff main origin/main
 $ git diff HEAD
 ```
 
-```bash
+```sh
 $ git pull origin master
 Updating 37b431a..b2615b4
 $ git diff 37b431a..b2615b4

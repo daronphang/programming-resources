@@ -19,7 +19,7 @@ crd     customresourcedefintions
 
 Kubernetes is not IaC (Infrastructure-as-Code), but designed to run in the cloud and integrates with providers including AWS, GCP and OpenShift. However, you can run it locally to ensure your application runs effectively in production. To setup the cluster environment locally, can use Minikube, MicroK8s, K3s and Kind.
 
-```bash
+```sh
 $ minikube start
 ```
 
@@ -31,14 +31,14 @@ Runs on any Linux distribution without additional external dependencies i.e. lig
 
 Use dry-run option if you want to test whether the resource can be created, and if your command is right.
 
-```bash
+```sh
 $ kubectl run nginx --image nginx:latest
 $ kubectl run nginx --image=nginx --dry-run=client -o yaml > nginx-pod.yaml
 ```
 
 ## Create a Deployment
 
-```bash
+```sh
 $ kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
 $ kubectl create deployment nginx --image nginx:latest --replicas 3
 
@@ -52,7 +52,7 @@ By default, the Pod is only accessible by its internal IP address within the Kub
 
 The type LoadBalancer flag indicates that you want to expose the Service outside of the cluster.
 
-```bash
+```sh
 $ kubectl expose deployment hello-node --type=LoadBalancer --port=8080
 $ kubectl get services
 ```
@@ -61,26 +61,26 @@ $ kubectl get services
 
 Proxy will forward communications into the clusterwide, private network and hence, creating a connection between host and cluster.
 
-```bash
+```sh
 $ kubectl proxy # to run in a separate terminal
 ```
 
 ## Output in YAML
 
-```bash
+```sh
 $ kubectl get deploy <deployment-name> -o yaml
 ```
 
 ## Clean Up
 
-```bash
+```sh
 $ kubectl delete service hello-node
 $ kubectl delete deployment hello-node
 ```
 
 ## Namespaces
 
-```bash
+```sh
 $ kubectl get pod -n <namespace>
 $ kubectl get deployment -n <namespace>
 $ kubectl get pod --all-namespaces
@@ -89,43 +89,43 @@ $ kubectl config get-contexts
 
 ## Commands
 
-```bash
+```sh
 $ kubectl run webapp-green --image kodekloud/webapp-color -- --color=green
 ```
 
 ## Create Configmaps
 
-```bash
+```sh
 $ k create configmap webapp-config-map --from-literal=APP_COLOR=darkblue --from-literal=APP_OTHER=disregard
 ```
 
 ## Create Secrets
 
-```bash
+```sh
 $ kubectl create secret generic <name> --from-literal=HELLO=WORLD
 ```
 
 ## Editing
 
-```bash
+```sh
 $ kubectl edit pod <pod-name> # opens up text editor
 ```
 
 ## Exposing
 
-```bash
+```sh
 $ k expose deployment redis --selector name=redis-pod --port 6379 --target-port 6379 --type ClusterIP --name messaging-service --namespace marketing
 ```
 
 ## Labeling
 
-```bash
+```sh
 $ k label pods -l type=worker protected=true -n sun
 ```
 
 ## Annotating
 
-```bash
+```sh
 $ k annotate pods -l type=worker -n sun protected="do not delete this pod"
 ```
 
@@ -133,26 +133,26 @@ $ k annotate pods -l type=worker -n sun protected="do not delete this pod"
 
 Can run a temporary pod and execute curl.
 
-```bash
+```sh
 $ k run temp --image nginx:alpine -n ns --restart=Never -i --rm -- echo hello world!
 $ k run temp --image nginx:alpine -n ns --restart=Never -i --rm -- curl some-svc:1234
 ```
 
 ## Finding information about objects
 
-```bash
+```sh
 $ kubetl describe pod pod1 -n default | grep -i status # ignore case
 ```
 
 ## Logs
 
-```bash
+```sh
 $ kubectl get <pod-name>
 $ kubectl get <pod-name> <container-name>
 ```
 
 ## Output
 
-```bash
+```sh
 $ k get pods -A -o custom-columns=NAME:.metadata.name,IP:.status.podIP --sort-by=.status.podIP
 ```

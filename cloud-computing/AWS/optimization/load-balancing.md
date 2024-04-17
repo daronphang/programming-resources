@@ -18,46 +18,50 @@ ELB is a service that can distribute incoming application traffic across EC2 ins
 
 Monitoring is an important part of load balancers as they should route traffic to only healthy EC2 instances.
 
-### Algorithms
+### Cross-zone load balancing
 
-#### Round Robin Method
+If enabled, allows you to send traffic to EC2 instances in other availability zones.
+
+## Algorithms
+
+### Round Robin Method
 
 Simple algorithm that is used to distribute client's request across a group of servers. Once a server has received a request, it will be moved to the bottom of the queue. Client request is sent to each server one by one, based on availability.
 
-#### Least Connection Method
+### Least Connection Method
 
 Directs network traffic to the server, and is specifically used when there is a large number of client requests unevenly distributed between the servers.
 
-#### Least Response Time Method
+### Least Response Time Method
 
 Directs client requests to the server with the lowest average response time, and ensures that the load is balanced adequately among servers.
 
-#### IP Hash
+### IP Hash
 
 Uses client's IP address to route network traffic to the available backend server.
 
-### Components
+## Components
 
-#### Rules
+### Rules
 
 To associate a target group to a listener, you must use a rule. Rules are made up of two conditions:
 
 - Source IP address of the client
 - Target group to send the traffic to
 
-#### Listener
+### Listener
 
 The client connects to the listener. To define a listener, a port must be provided in addition to the protocol i.e. HTTP at port 80, depending on the load balancer type. There can be many listeners for a single load balancer.
 
-#### Target group
+### Target group
 
 The backend servers are defined in one or more target groups i.e. EC2 instances, Lambda functions, or IP addresses. A health check must also be defined for each target group.
 
 ## Types of load balancers
 
-### Application Load Balancer
+### Application Load Balancer (ALB)
 
-An Application Load Balancer functions at **Layer 7** of the OSI and is ideal for load balancing **HTTP and HTTPS traffic**. After it receives a request, it evaluates the listener rules in priority order to determine which rule to apply. Primary features include:
+An ALB functions at **Layer 7** of the OSI and is ideal for load balancing **HTTP and HTTPS traffic**. After it receives a request, it evaluates the listener rules in priority order to determine which rule to apply. Primary features include:
 
 - Routes traffic based on request data
 - Sends responses directly to client
@@ -66,9 +70,11 @@ An Application Load Balancer functions at **Layer 7** of the OSI and is ideal fo
 - Secures traffic (prevents unapproved traffic)
 - Supports sticky sessions (stateful applications) by using HTTP cookie
 
-### Network Load Balancer
+HTTP/HTTPS is terminated on ALB and hence, SSL certificates reside on the ALB.
 
-A Network Load Balancer is ideal for load balancing **TCP, UDP and TLS traffic** if you require **ultra-high performance**. It functions at **Layer 4** of the OsI model, routing connections from a target in the target group based on IP protocol data. Primary features include:
+### Network Load Balancer (NLB)
+
+A NLB is ideal for load balancing **TCP, UDP and TLS traffic** if you require **ultra-high performance**. It functions at **Layer 4** of the OSI model, routing connections from a target in the target group based on IP protocol data. Primary features include:
 
 - Sticky sessions
 - Low latency
@@ -76,9 +82,13 @@ A Network Load Balancer is ideal for load balancing **TCP, UDP and TLS traffic**
 - Static/elastic IP support
 - DNS failover with Amazon Route 53
 
-### Gateway Load Balancer
+NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
 
-A Gateway Load Balancer helps you to deploy, scale, and manage your **third-party appliances** i.e. firewalls, intrusion detection and prevention systems, deep packet inspection systems. These appliances enable you to improve security, compliance, and policy controls.
+When you create NLB, a network interface is created for each AZ. Each load balancer will use the network interface to get a static IP address. You can also associate one elastic IP address per subnet.
+
+### Gateway Load Balancer (GLB)
+
+A GLB helps you to deploy, scale, and manage your **third-party appliances** i.e. firewalls, intrusion detection and prevention systems, deep packet inspection systems. These appliances enable you to improve security, compliance, and policy controls.
 
 It provides a gateway for distributing traffic across multiple virtual appliances while scaling them up and down based on demand. It functions at **Layer 3** of the OSI model. Primary features include:
 
@@ -88,3 +98,12 @@ It provides a gateway for distributing traffic across multiple virtual appliance
 - Private connectivity
 
 When GLB receives requests, it routes them to third-party appliances, which are then forwarded back to the GLB to perform a secondary routing to the EC2 instances (acts as a **middleware**). It can be used for **intrusion detection or deep packet inspection**.
+
+### Cross-zone load balancing
+
+Load balancer nodes can only route traffic to instances in the same AZ by default. Cross-zone load balancer can help to equally distribute traffic across all instances in all AZs.
+
+## Deployment modes
+
+- Public: Deployed on public subnets and accessible across the internet
+- Private: Deployed on private subnets and accessible by users within the AWS network

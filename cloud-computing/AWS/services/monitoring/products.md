@@ -14,11 +14,15 @@ Metrics are the fundamental concept in CloudWatch. A metric represents a time-or
 
 To gain more granular visibility, you can use high-resolution custom metrics, which makes it possible for you to collect custom metrics down to a 1-second resolution.
 
+### SDK
+
+Developers can integrate their custom applications with CloudWatch CDK to send custom logs and metrics.
+
 ### Logs
 
 By default, no logs from your EC2 instance are pushed to CloudWatch. You need to run a CloudWatch agent on EC2 to push the log files you want.
 
-## Amazon EventBridge (CloudWatch Events)
+## Amazon Bridge (CloudWatch Events)
 
 Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
 
@@ -31,28 +35,6 @@ You can send events to the following event buses:
 - Default Event Bus (AWS Services)
 - Partner Event Bus (external parties)
 - Custom Event Bus
-
-## AWS CloudTrail
-
-AWS CloudTrail provides **governance, compliance and audit** for your AWS account by recording API calls made within your AWS account i.e. trail of breadcrumbs or log of actions that someone has left behind them. **You can use API calls to provision, manage and configure your AWS resources**.
-
-The API calls made within your AWS accounts can come from:
-
-- Console
-- SDK
-- CLI
-
-The recorded information includes (non-exhaustive):
-
-- Identity of the API caller
-- Time of the API call
-- Source IP address
-
-Events are typically updated in CloudTrail within 15 minutes after an API call. You can also filter events by specifying your criteria. You can put logs from CloudTrail into CloudWatch Logs or S3 for longer term retention.
-
-### CloudTrail Insights
-
-This optional feature allows CloudTrail to automatically detect unusual API activities in your AWS account.
 
 ## AWS X-Ray
 
@@ -67,9 +49,37 @@ Allows you to get visual analysis of your applications by **tracing requests mad
 
 ## AWS Health Dashboard (Service, Account)
 
+AWS Health provides ongoing visibility into your resource performance and the availability of your AWS services and accounts.
+
 For service, shows the health for all Regions and services. For account, it provides alerts and remediation guidance when AWS is experiencing events that may impact you.
 
-While the Service Health Dashboard dispalys the general status of AWS services, Personal Health dashboard gives you a personalized view of the performance and availability of the AWS services underlying your AWS resources.
+While the Service Health Dashboard displays the general status of AWS services, Personal Health dashboard gives you a personalized view of the performance and availability of the AWS services underlying your AWS resources.
+
+### Features
+
+- Reduce downtime and improve reliability
+- Event visibility
+- Service and Personal Health Dashboard
+- Integration and automation
+
+## AWS Prometheus
+
+Open-source monitoring solution that stores data in a time-series database.
+
+### Features
+
+- Scalability
+- Integrated with AWS
+- Fully-managed
+- PromQL support
+- Cost efficient
+
+### AWS Grafana
+
+### Features
+
+- Can be used to query metrics from services including Prometheus, CloudWatch, TimeStream, X-Ray, etc.
+- Single sign-on (SSO) integration
 
 ## AWS Trusted Advisor
 
@@ -109,3 +119,15 @@ Inclusive of basic, with additional of:
 
 - Ability to set CloudWatch alarms when reaching limits
 - Programmatic access using AWS Support API
+
+## AWS Compute Optimizer
+
+A service that performs resource analysis for compute resources and identifies over-provisioned, under-provisioned, or already optimized.
+
+### Features
+
+- Performance and risk analysis
+- Cost-saving recommendations
+- EC2 instance type recommendations
+- EBS volume recommendations
+- Optimization for Fargate

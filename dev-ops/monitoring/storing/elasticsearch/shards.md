@@ -26,6 +26,6 @@ As data is written to a shard, it is periodically published into new immutable L
 
 ### Sizing
 
-Each index and shard has some overhead and if you divide your data across too many shards (oversharding), the overhead can become overwheling and the cluster will be less efficient at responding to searches.
+Each index and shard has some overhead and if you divide your data across too many shards (oversharding), the overhead can become overwhelming and the cluster will be less efficient at responding to searches.
 
 Larger shards take longer to recover after a failure. When a node fails, Elasticsearch rebalances the node's shards across the data tier's remaining nodes. This recovery process typically involves copying the shard contents across the network. Experience shows to aim for shard sizes between **10GB and 50GB**.

@@ -1,4 +1,4 @@
-### Error Object
+## Error Object
 
 ```js
 // Creates a new error object
@@ -10,7 +10,7 @@ console.log({ message: error.message, status: error.statusCode });
 error.stack;
 ```
 
-### Promise Reject
+## Promise Reject
 
 Inbuilt function that returns a Promise object which has been rejected.
 
@@ -23,7 +23,7 @@ p.catch((err) => {
 });
 ```
 
-### Throw
+## Throw
 
 Execution of current function will stop when throw() is used (statements after throw() won't be executed). Control will be passed in first catch block in callstack. If no catch block exists, program will terminate. Throw() can be used in try-catch block and not only with promises.
 
@@ -42,7 +42,7 @@ try {
 }
 ```
 
-### Reject vs Throw
+## Reject vs Throw
 
 1. Cannot use throw() if there is an async callback function inside the Promise (uncaught exception).
 

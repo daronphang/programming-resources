@@ -51,7 +51,7 @@ The 32 bits are grouped into groups of 8 bits, separated by a period.
 
 To express IP addresses between the range of 192.168.1.0 and 192.168.1.255. CIDR notation is a compressed way of representing a range of IP addresses.
 
-The number after the slash specifies how many bits of the IP address are **fixed**. The higher he number, the smaller the range of IP addresses you can work with.
+The number after the slash specifies how many bits of the IP address are **fixed**. The higher the number, the smaller the range of IP addresses you can work with.
 
 The smallest IP range you can have is `/28`, which provides 16 IP addresses. The largest range is `/16`, which provides 65,536 IP addresses.
 

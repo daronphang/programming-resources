@@ -6,13 +6,13 @@ https://crontab.guru/#____\*__\__
 
 ### Service
 
-```bash
+```sh
 $ sudo systemctl status crond.service
 ```
 
 ### Crontab
 
-```bash
+```sh
 $ crontab -e    # for user
 $ crontab –u other_username –e
 $ sudo vim /etc/crontab # for root
@@ -58,7 +58,7 @@ a b c d e /bin/bash hello-world.sh >> /tmp/cron.log 2>&1
 
 ### Logs
 
-```bash
+```sh
 tail /var/log/cron
 ```
 

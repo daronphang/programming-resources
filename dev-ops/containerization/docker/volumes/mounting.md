@@ -1,4 +1,4 @@
-## Declaring Volume from Dockerfile
+## Declaring volume from dockerfile
 
 Statement declares that a specific path of the container must be mounted to a Docker volume. When the container is run, Docker will create an anonymous volume (with unique id) and mount it to the specified path.
 
@@ -9,17 +9,17 @@ RUN echo "<h1>Hello from Volume</h1>" > /usr/share/nginx/html/index.html
 VOLUME /usr/share/nginx/html
 ```
 
-## Mounting Volume to Container
+## Mounting volume to container
 
 ```
 type                "volume" to indicate a volume mount
 src                 name of volume or source directory
-dst                 destionation mount point in the container
+dst                 destination mount point in the container
 volume-driver
 readonly            rw for read/write
 ```
 
-```bash
+```sh
 $ docker run --mount source=[volume_name],destination=[path_in_container] [docker_image]
 
 $ docker run -it --name=example --mount source=demo-volume,destination=/data ubuntu
@@ -28,10 +28,10 @@ $ docker run --mount \
   'type=volume,src=data-volume,\
   dst=/var/opt/project,volume-driver=local,\
   readonly' \
-  bash -c "ls /var/opt/project"
+  sh -c "ls /var/opt/project"
 ```
 
-## Using Docker Compose
+## Using Docker compose
 
 Multiple services can share the same volume; a named volumed MUST be declared in the top-level volumes key.
 
@@ -65,21 +65,21 @@ volumes:
   # implicit volume creation by Docker
 ```
 
-## Mounting Network Drives
+## Mounting network drives
 
-### Using Docker Volumes
+### Using Docker volumes
 
 Recommended approach is to use volumes (pointing to your CIFS shares) and mapping them into a folder inside the container, which the containerized app can then use to view/modify the contents.
 
-```bash
+```sh
 nslookup server_name
 ```
 
-#### Creating Volume
+#### Creating volume
 
 The addr option is required if using a hostname instead of an IP so Docker can perform the hostname lookup.
 
-```bash
+```sh
 $ docker volume create \
 --driver local \
 --opt type=cifs \
@@ -97,7 +97,7 @@ $ docker volume create \
 $ docker volume create --driver local --opt type=cifs --opt device=//fsf10peeuipathfs/F10_PEE_UIPATH/daronphang --opt o=user=daronphang,password=123 mydockervolume
 ```
 
-#### Docker Compose
+#### Docker compose
 
 ```yaml
 volumes:
@@ -108,11 +108,11 @@ volumes:
       device: //ip-address/some/folder # for Windows: \\ip-address\some\folder
 ```
 
-### Using Host Mounted Volume
+### Using host mounted volume
 
 If using this approach, make sure to specify user in docker compose so that the container has permissions for RW access.
 
-```bash
+```sh
 $ sudo mount -t cifs -o username=daronphang,password=password //10.195.111.11/F10_PEE_UIPATH/daronphang /mnt/uipath
 ```
 

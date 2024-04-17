@@ -1,6 +1,6 @@
-### Distro Version/Architecture
+## Distro version/architecture
 
-```console
+```sh
 $ cat /etc/os-release
 $ lsb_release -a
 
@@ -9,9 +9,9 @@ $ uname -m  # x86_64
 $ dpkg --print-architecture     # amd64
 ```
 
-### Drivers
+## Drivers
 
-```console
+```sh
 $ sudo ubuntu-drivers autoinstall
 
 $ sudo lspci -v      View all drivers installed
@@ -19,65 +19,47 @@ $ sudo lspci -v      View all drivers installed
 $sudo dkms status            Get drivers from dynamic kernel module support
 ```
 
-### Display
+## Display
 
 Xrandr is a utility for monitor management.
 
-```console
+```sh
 $ xrandr -q
 $ xrandr --output DVI-D-0 --mode 1920x1080      # Output targets monitor, mode tells which resolution
 $ xrandr --output DVI-D-0 --mode 1920x1080 --rate 60.00
 ```
 
-### Network
+## Checking disk space
 
-```console
-$ ifconfig -a       # private IP address
-$ curl ifconfig.me  # public IP address
-$ ip address show
-
-$ sudo apt install speedtest-cli
-$ speedtest
-```
-
-### Checking Disk Space
-
-```console
+```sh
 $ df -h /data     # h is short for human-readable
 $ df -h -total    # see total disk space available
 
 $ sudo du -h --max-depth=1 /var
 ```
 
-### Checking Path
+## Checking path
 
-```console
+```sh
 $ which python3
 
 $ realpath run_python.sh    # get absolute path
 ```
 
-### CPU
+## CPU
 
-```console
+```sh
 $ lscpu
 ```
 
-### Ports
+## Ports
 
-```console
+```sh
 $ sudo lsof -i -P -n | grep LISTEN
 $ sudo lsof -i:22   # see a specific port
 ```
 
-#### Kill Ports
-
-```console
-$ sudo netstat -tulpn
-$ sudo kill <PID>
-```
-
-### Mounting Directory
+## Mounting directory
 
 UID and GID only work for filesystems that don't support Linux permission schema i.e. FAT, NTFS.
 
@@ -89,13 +71,7 @@ $ sudo mount -t cifs -o username=daronphang,password=password //10.195.111.11/F1
 $ sudo mount -t cifs -o credentials=abs/path/to/.cifs //10.195.111.11/F10_PEE_UIPATH/daronphang /mnt/uipath
 ```
 
-### Checking Assigned CPU to Process
-
-```bash
-$ top -p <PID> -p <PID>  # add Last Used CPU by pressing f followed by space
-```
-
-### Checking Directory Size
+## Checking directory size
 
 ```bash
 $ df -h

@@ -51,19 +51,19 @@ $ kubectl delete pod/my-nginx-544232
 
 ### Shell
 
-```bash
+```sh
 $ kubectl exec --stdin --tty shell-demo -- /bin/bash
 ```
 
 ### Cluster
 
-```bash
+```sh
 $ kubectl cluster-info
 ```
 
 ### Deployment
 
-```bash
+```sh
 $ kubectl config view
 ```
 
@@ -71,7 +71,7 @@ $ kubectl config view
 
 Helper templates for Run, Create and Expose commands. Every resource has a specification. Shows the output generated with that command.
 
-```bash
+```sh
 $ kubectl create deployment sample --image nginx --dry-run -o yaml
 $ kubectl create job test --image nginx --dry-run -o yaml
 ```
@@ -80,7 +80,7 @@ $ kubectl create job test --image nginx --dry-run -o yaml
 
 The -o flag allows us to output details in different formats.
 
-```bash
+```sh
 $ kubectl create namespace test-123 --dry-run -o json
 $ kubectl create namespace test-123 --dry-run -o yaml
 $ kubectl get pods -o wide # with additional info
@@ -88,7 +88,7 @@ $ kubectl get pods -o wide # with additional info
 
 ### Logging
 
-```bash
+```sh
 $ kubectl logs -f <pod-name>
 $ kubectl logs -f <container-name> # for multiple containers
 
@@ -98,6 +98,6 @@ $ journalctl | grep apiserver
 
 ### Labels
 
-```bash
+```sh
 $ kubectl get all --selector key=value
 ```

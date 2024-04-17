@@ -77,13 +77,13 @@ Kubernetes know which Pods to terminate and replace via label selectors.
 .spec.strategy.type==RollingUpdate
 ```
 
-```bash
-$ kubectl set image deployments/<deployment-name> <container-name>=<image-name>:<version>
-$ kubectl set image deployments/nginx-deploy nginx=1.17
+```sh
+kubectl set image deployments/<deployment-name> <container-name>=<image-name>:<version>
+kubectl set image deployments/nginx-deploy nginx=1.17
 
-$ kubectl apply -f deployment-def.yml --record
-$ kubectl rollout status deployment/myapp-deployment
-$ kubectl rollout history deployment/myapp-deployment
+kubectl apply -f deployment-def.yml --record
+kubectl rollout status deployment/myapp-deployment
+kubectl rollout history deployment/myapp-deployment
 ```
 
 ### Rollbacks
@@ -92,16 +92,35 @@ When performing a rolling update, older ReplicaSets are wound down and no longer
 
 ### Scaling
 
-```bash
-$ kubectl scale deployment --replicas=5 my-app
+Accomplished by changing the number of replicas in a Deployment. Ensures new Pods are created and scheduled to Nodes with available resources.
+
+Services have an integrated load-balancer that will distribute network traffic to all Pods of an exposed Deployment. Services will monitor continuously the running Pods using endpoints, to ensure the traffic is sent only to available Pods.
+
+```sh
+kubectl scale deployments/my-nginx --replicas=2
+kubectl get deployments
+```
+
+### Updating
+
+When you have multiple instances of an application running, you can do rolling updates without downtime. Updates are versioned and any Deployment update can be reverted to a previous version.
+
+```sh
+kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
+kubectl set image deployments/kub-boot kub-boot=kub-boot:v2
+
+kubectl rollout status deployments/kub-boot
+kubectl describe services/kub-boot
+
+kubectl rollout undo deployments/kub-boot
 ```
 
 ### Deployment strategies
 
 To use blue green or canary, deploy a newer version of the application in a separate deployment (with the same labels), and traffic will be split between the old and new versions.
 
-```bash
-$ kubectl rollout undo deployment/myapp-deployment
+```sh
+kubectl rollout undo deployment/myapp-deployment
 ```
 
 ## Components
@@ -145,25 +164,25 @@ spec:
 
 ## Commands
 
-```bash
-$ kubectl apply -f deploy.yml
-$ kubectl get deploy hello-deploy
-$ kubectl describe deploy hello-deploy
-$ kubectl get rs # replicaset
-$ kubectl replace -f definition.yml
+```sh
+kubectl apply -f deploy.yml
+kubectl get deploy hello-deploy
+kubectl describe deploy hello-deploy
+kubectl get rs # replicaset
+kubectl replace -f definition.yml
 ```
 
 ### Rollouts and Rollback
 
-```bash
-$ kubectl apply -f deploy.yml --record=true
-$ kubectl rollout status deployment hello-deploy
-$ kubectl rollout pause deploy hello-deploy # pause rollouts
-$ kubectl rollout resume deploy hello-deploy
+```sh
+kubectl apply -f deploy.yml --record=true
+kubectl rollout status deployment hello-deploy
+kubectl rollout pause deploy hello-deploy # pause rollouts
+kubectl rollout resume deploy hello-deploy
 ```
 
-```bash
-$ kubectl rollout history deployment hello-deploy
-$ kubectl get rs
-$ kubectl rollout undo deployment hello-deploy --to-revision=1
+```sh
+kubectl rollout history deployment hello-deploy
+kubectl get rs
+kubectl rollout undo deployment hello-deploy --to-revision=1
 ```

@@ -40,7 +40,7 @@ for word in $words; do
 
 For iterating over arguments, can use @.
 
-```bash
+```sh
 VAR1=$1
 VAR2=$2
 for arg in $@; do

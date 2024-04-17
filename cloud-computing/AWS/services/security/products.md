@@ -1,3 +1,25 @@
+## AWS CloudTrail
+
+AWS CloudTrail provides **governance, compliance and audit** for your AWS account by recording API calls made within your AWS account i.e. trail of breadcrumbs or log of actions that someone has left behind them. **You can use API calls to provision, manage and configure your AWS resources**.
+
+The API calls made within your AWS accounts can come from:
+
+- Console
+- SDK
+- CLI
+
+The recorded information includes (non-exhaustive):
+
+- Identity of the API caller
+- Time of the API call
+- Source IP address
+
+Events are typically updated in CloudTrail within 15 minutes after an API call. You can also filter events by specifying your criteria. You can put logs from CloudTrail into CloudWatch Logs or S3 for longer term retention.
+
+### CloudTrail Insights
+
+This optional feature allows CloudTrail to automatically detect unusual API activities in your AWS account.
+
 ## AWS Artifact
 
 AWS Artifact is a service that provides on-demand access to AWS security and compliance reports and select online agreements for audit purposes.
@@ -38,28 +60,59 @@ You must ensure that your applications' data is secure while in storage (**encry
 
 Encryption is always enabled by default for AWS CloudTrail Logs, AWS Storage Gateway and S3. For other services (EBS, EFS, RDS), encryption is an optional feature that must be enabled by the user.
 
+KMS is a service that helps you manage your encryption keys for AWS services and applications. Handles the heavy lifting including creating, deleting, rotating keys, signing, encrypting.
+
 AWS KMS enables you to perform encryption operations through the use of cryptographic keys. You can use AWS KMS to create, manage and use cryptographic keys. Your keys never leave KMS, and you are always in control of them.
 
-Types of Customer Master Keys (CMK):
+Types of Master Keys:
 
-- Customer managed CMK: Created by the customer
-- AWS managed CMK: Used by AWS services
-- AWS owned CMK: Used to protect resources in your account
-- **CloudHSM** Keys: Keys generated from your own CloudHSM hardware device
+- **Customer managed CMK**: Created by the customer, have full control
+- **AWS managed CMK**: Used by AWS services, no costs associated
+- **AWS owned CMK**: Used to protect resources in your account
+- **CloudHSM Keys**: Keys generated from your own CloudHSM hardware device
+
+## AWS CloudHSM (Hardware Security Module)
+
+With CloudHSM, all your keys are stored on one device, and it will be responsible for encrypting and decrypting your files. All keys are securely stored on the HSM and they never leave the device.
+
+With HSM, you manage the keys and they are not available to AWS, although AWS manages the module.
+
+### Features
+
+- Dedicated hardware security with keys isolated and accessible by you only
+- Full control over keys
+- Scalability and resilience
+- Integrates with AWS services
+- Regulatory compliance
 
 ## AWS Web Application Firewall (WAF)
 
-AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications. Fucntions at Layer 7 (HTTP/HTTPS).
+AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications. Functions at Layer 7 (HTTP/HTTPS).
 
-AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, SQL injection, XSS, etc.
+### Web ACLs
+
+AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, HTTP body, HTTP headers, SQL injection, XSS, etc.
 
 Charges are based on the number of web ACLs you create, and the number of rules that you add per web ACL, and the number of web requests you receive.
+
+### Use cases
+
+- Protection against common web attacks
+- API security
+- Protection for serverless applications
+- Application layer firewall
 
 ## Amazon Inspector
 
 Amazon Inspector helps to improve the security and compliance of applications by running **automated security assessments**. It checks applications for security vulnerabilities and deviations from security best practices, such as open access to EC2 instances and installations of vulnerable software versions.
 
 After assessment, it provides you with a list of security findings with a risk score for prioritization. However, AWS does not guarantee that following provided recommendations resolves every potential security issue.
+
+### Vulnerabilities
+
+- Package
+- Code
+- Network
 
 ## Amazon GuardDuty
 
@@ -69,11 +122,11 @@ Amazon GuardDuty is a service that provides intelligent threat detection for you
 - CloudTrail Events Logs
 - DNS Logs
 
-If an anomaly is detected, an event can be created in EventBridge to trigger automations including SNS or Lambda functions. GuardDuty can protect against cryptocurrency attacks (has a dedicated 'finding').
+If an anomaly is detected, an event can be created in EventBridge to trigger automation including SNS or Lambda functions. GuardDuty can protect against cryptocurrency attacks (has a dedicated 'finding').
 
 ## Amazon Macie
 
-Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern maching to discover and protect your sensitive data in AWS. Macie helps identify and alert you to sensitive data, such as personally identifiable information (PII).
+Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in S3 buckets. Macie helps identify and alert you to sensitive data, such as **personally identifiable information (PII)** e.g. name, age, DOB, email, contact.
 
 ## AWS Secrets Manager
 
@@ -81,7 +134,7 @@ AWS Secrets Manager helps you protect secrets needed to access your applications
 
 ## Penetration Testing
 
-You can perform pentration testing on your AWS infrastructure. However, prohibited activities include:
+You can perform penetration testing on your AWS infrastructure. However, prohibited activities include:
 
 - DNS zone walking
 - DoS, DDoS, Simulated DoS, Simulated DDoS
@@ -93,9 +146,28 @@ You can perform pentration testing on your AWS infrastructure. However, prohibit
 
 Allows you to easily provision, manage and deploy SSL/TLS certificates. Supports both public (free) and private TLS certificates.
 
+### Features
+
+- Automated certificate provisioning
+- Auto-renewal
+- Seamless deployment
+- Central management
+
+## AWS Private Certificate Authority (PCA)
+
+Certificates generated from PCA can only be trusted and used from within the organization i.e. internal. Integrates with AWS ACM.
+
 ## AWS Config
 
-Helps with auditing and compliance of your AWS resources by recording configurations and changes over time.
+Helps with auditing and compliance of your AWS resources by recording configurations and changes over time. Logs are stored in S3 bucket.
+
+### Features
+
+- Keeps inventory of AWS resources
+- Continuously monitors and records AWS resource configurations
+- Detects and captures changes to AWS resources over time
+- Reports on non-compliant resources adn takes corrective actions
+- Sends notification when resource configuration changes
 
 ## AWS Security Hub
 
@@ -106,6 +178,8 @@ Central security tool to manage security across several AWS accounts and automat
 - Inspector
 - Macie
 - IAM Access Analyzer
+- CloudWatch
+- External security tools
 
 ## Amazon Detective
 
@@ -144,4 +218,54 @@ STS enables you to create temporary, limited-privileges credentials to access yo
 
 ## Amazon Cognito
 
-Provides identity for your web and mobile application users. Instead of creating an IAM user, you create a user in Cognito.
+Provides identity for your web and mobile application users. Instead of creating an IAM user, you create a user in Cognito i.e. authentication at the application level.
+
+### User pools
+
+<img src="../../assets/cognito-user-pools.png">
+
+### Identity pools
+
+Temporary AWS credentials.
+
+`<img src="../../assets/cognito-identity-pools.png">
+
+### Features
+
+- Complete solution for user authentication
+- Storage of usernames and passwords
+- Session management
+- Forgotten password functionality
+- Easy to implement social logins
+- Integration with Identity Providers
+
+## AWS Directory Service
+
+### Modes
+
+- **Simple**: Designed to run in isolation, does not integrate with others
+- **Managed Microsoft AD**: Allows trust relationship to be established between cloud and on-premise directories
+- **AD Connector**: Acts as a proxy to on-premise environment if have existing AD
+
+## AWS Verified Permissions
+
+A scalable service for managing permissions in custom applications. helps developers build secure applications quickly by centralizing policy management. Operates on **zero trust principle**.
+
+### Features
+
+- Utilizes Cedar policy language for detailed permissions
+- Pricing based on the number of authorization requests per month
+- Security and audit teams can better analyze and audit access within applications
+- Can be accessed using Management Console, CLI or SDK
+
+## AWS Security Lake
+
+Collects logs and events from multiple sources and manages them in a centralized location. Logs are stored in S3 bucket.
+
+### Features
+
+- Data aggregation
+- Variety of supported log and event sources
+- Data transformation and normalization
+- Multi-account and multi-region data management
+- Data lifecycle management and optimization

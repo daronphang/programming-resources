@@ -13,7 +13,7 @@ Processes that run inside host OS and are not mini-VMs. Though VMs provide full 
 5. Detach is to run server in background, gives unique container ID.
 6. To connect from host to container, use curl or through browser with host IP + :8080.
 
-```console
+```sh
 $ docker container run --publish 8080:80 --detach <specify_name> nginx
 $ docker container run -d --name nginx1 nginx
 $ docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
@@ -24,7 +24,7 @@ $ docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
 
 EXPOSE is for documentation purposes in docker build; doesn't actually map or open any ports. PUBLISH flag makes container port available to outside world and maps container port to host port.
 
-```console
+```sh
 $ docker container run -p 80:5000 -d nginx
 $ docker container run -p 8000-9000:5000 -d nginx      # Binds to randomly available port on host
 ```
@@ -53,7 +53,7 @@ $ docker container stats                        # Performance stats for all cont
 $ docker container update <OPTIONS> <name>      # Change resources for given container
 
 # get shell inside containers
-$ docker container run -it --name proxy nginx bash
+$ docker container run -it --name proxy nginx sh
 $ docker container run -it                     # Start new container with interactive shell
 $ docker container exec -it <container> sh     # Run additional process in existing container
 $ docker container start -ai
@@ -75,7 +75,7 @@ Alpine, Ubuntu.
 
 During Dockerfile build and running of containers, Docker will use root user by default. However, you cannot use usernames stored in the host machine as we cannot easily share usernames between a Docker host and its containers. Only usernames that exist on Docker container can be used i.e. nobody, root.
 
-```bash
+```sh
 $ docker run --user=$(whoami)   # fails!
 
 $ docker run --user $(id -u):$(id -g)
@@ -90,4 +90,12 @@ USER UID:GID
 
 RUN useradd -u 8877 john
 USER john
+```
+
+### Mounting host volume
+
+If the host directory contains spaces, wrap the volume argument with quotes to avoid throwing 'invalid reference error'.
+
+```sh
+$ docker run -v "$(pwd):/hello/world" --name orderapp orderapp:latest
 ```

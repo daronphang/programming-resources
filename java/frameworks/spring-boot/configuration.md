@@ -12,7 +12,7 @@ Spring Boot applications supply a variety of powerful mechanisms for developers 
 
 Spring Boot sets up the application with the beans it needs to fulfill the functionalities that are part and parcel to chosen capabilities, dependencies, and code. To see what beans are created/not created, you can produce the autoconfiguration report.
 
-```bash
+```sh
 $ java -jar bootapplication.jar --debug
 $ java -Ddebug=true -jar bootapplication.jar
 ```

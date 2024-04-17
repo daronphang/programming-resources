@@ -1,8 +1,18 @@
 ## Route 53
 
-AWS Route 53 is a DNS (Domain Name System) web service. It gives developers and businesses a reliable way to route end users to internet applications hosted in AWS. It connects user requests to infrastructure running in AWS (EC2, load balancers, etc). It can also route users to infrastructure outside of AWS.
+AWS Route 53 is a DNS (Domain Name System) **global** web service i.e. similar to GoDaddy. It gives developers and businesses a reliable way to route end users to internet applications hosted in AWS. It connects user requests to infrastructure running in AWS (EC2, load balancers, etc). It can also route users to infrastructure outside of AWS.
 
 Another feature of Route 53 is the ability to manage the DNS records for domain names. You can register new domain names directly in Route 53. You can also transfer DNS records for existing domain names by other domain registrars. This enables you to manage all of your domain names within a single location.
+
+### Hosted zones
+
+A hosted zone is where you define all the records and rules i.e. a collection of DNS records. AWS will automatically provision 4 DNS servers for your hosted zone.
+
+### Application recovery controller
+
+A service that continuously monitors application's ability to recover from failures and to control applications across multiple AWS Regions and AZ. It helps to automate the whole process of continuously checking if your backup location or site is up and running. It can also be used to manually redirect traffic from a deployment.
+
+A **cell** groups all resources required for an application to operate independently. A **recovery group** is a collection of cells that represent an application that you want to check for failover readiness. A **resource set** is a set of AWS resources that can span multiple cells.
 
 ### Records
 
@@ -19,6 +29,7 @@ In AWS the most common records are:
 - Weighted routing policy (using weight to route to resource)
 - Latency routing policy (minimizes latency)
 - Failover routing policy (disaster recovery)
+- Geolocation routing policy (different geographic locations)
 
 ### How CloudFront works with Route 53
 
@@ -29,7 +40,9 @@ In AWS the most common records are:
 
 ## AWS Global Accelerator
 
-Improves global application availability and performance by leveraging the AWS internal network (similar to S3 Transfer Acceleration). Provides static IP addresses that act as a fixed entry point to your applications.
+When a request traverses through the internet, it may not take the most efficient path.
+
+Improves global application availability and performance by leveraging the **AWS internal network** (similar to S3 Transfer Acceleration). Provides static IP addresses that act as a fixed entry point to your applications.
 
 Global Accelerator is a good fit for non-HTTP use cases i.e. useful for applications over TCP/UDP by proxying packets at the edge of the locations running in one or more AWS Regions.
 
