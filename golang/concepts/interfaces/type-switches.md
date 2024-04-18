@@ -1,4 +1,4 @@
-### Type Switches
+## Type switches
 
 ```go
 import "database/sql"

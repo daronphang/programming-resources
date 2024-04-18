@@ -1,6 +1,6 @@
-## Database/SQL
+## Database
 
-To access databases in Golang, use sql.DB. It is an abstraction of the interface and existence of a database, which might be varied as a local file, accessed through a network onnection, or in-memory and in-process.
+To access databases in Golang, use sql.DB. It is an abstraction of the interface and existence of a database, which might be varied as a local file, accessed through a network connection, or in-memory and in-process.
 
 The abstraction is designed to keep you from worrying about how to manage concurrent access to the underlying database. Once it is not in use anymore, it is returned to the available pool. One consequence is that **if you fail to release connections back to the pool, can cause sql.DB to open a lot of connections and limiting resources i.e. too many open connections, network ports, file handlers, etc.**
 
@@ -9,7 +9,7 @@ sql.DB performs the following:
 - Opens and closes connections to the actual underlying database, via the driver.
 - Manages a pool of connections as needed.
 
-### Database Driver
+### Database driver
 
 Requires both database/sql and a driver for the specific database. Shouldn't use driver packages directly to allow changing drivers with minimal code changes i.e. empty import.
 
@@ -30,9 +30,9 @@ func main() {
 }
 ```
 
-### Accessing the Database
+### Accessing the database
 
-sql.Open() does not establish any connections to the databaese, but simply prepares the DB abstraction for later use. Use db.Ping() to check if the DB is available and accessible.
+sql.Open() does not establish any connections to the database, but simply prepares the DB abstraction for later use. Use db.Ping() to check if the DB is available and accessible.
 
 For Golang, **the sql.DB object is designed to be long-lived**, and shouldn't open and closeDB frequently. Instead, create one DB object for each distinct database and keep it until the program is done i.e. make it available globally and keep it open.
 
@@ -55,7 +55,7 @@ func main() {
 }
 ```
 
-### Connection Pool
+### Connection pool
 
 ```
 db.SetMaxIdleConns(N)				Doesn't limit pool size

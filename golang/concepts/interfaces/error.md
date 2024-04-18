@@ -1,4 +1,4 @@
-### Error Interface
+## Error interface
 
 ```go
 type error interface {

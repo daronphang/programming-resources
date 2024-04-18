@@ -30,7 +30,7 @@ func main() {
 }
 ```
 
-### Fetching URLs Concurrently
+### Fetching URLs concurrently
 
 ```go
 package main

@@ -4,7 +4,7 @@ JSON is an encoding of JS values (strings, numbers, booleans, arrays and objects
 
 https://pkg.go.dev/encoding/json
 
-### Struct Tags
+### Struct tags
 
 GO uses convention to determine the attribute name for mapping JSON properties. Can use struct tags to assign a different attribute name i.e. control encoding/decoding. Struct tags are defined by backticks.
 
@@ -18,7 +18,7 @@ type Example struct {
 }
 ```
 
-### Marshaling (Encoding)
+### Marshaling (encoding)
 
 Converting a GO data structure to JSON is called marshaling. Marshal produces a byte slice containing a long string with no extraneous white space. For human readability, a variant called json.MarshalIndent produces neatly indented output.
 
@@ -54,7 +54,7 @@ if err != nil {
 }
 ```
 
-### Unmarshaling (Decoding)
+### Unmarshaling (decoding)
 
 By defining suitable GO struct, we can select which parts of the JSON input to decode and which to discard.
 

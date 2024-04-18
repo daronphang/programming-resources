@@ -36,7 +36,7 @@ if err != nil {
 }
 ```
 
-## Preparing Queries
+## Preparing queries
 
 Allows you to use placeholders to avoid SQL injection.
 
@@ -60,9 +60,9 @@ if err != nil {
 defer rows.Close()
 ```
 
-### Avoiding Prepared Statements
+### Avoiding prepared statements
 
-- The database doesn't support prepared statements.
-- Statements are not reused enough to make them worthwhile.
+- The database doesn't support prepared statements
+- Statements are not reused enough to make them worthwhile
 
 Use fmt.Sprintf() or similar to assemble the SQL, and pass to db.Query().

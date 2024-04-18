@@ -110,7 +110,7 @@ func (o order) String() string {
 }
 ```
 
-## Looping in Parallel
+## Looping in parallel
 
 Problems that consist of subproblems that are completely independent of each other are described as "embarassingly parallel". These problems are the easiest kind to implement concurrently and enjoy performance that scales linearly with the amount of parallelism.
 

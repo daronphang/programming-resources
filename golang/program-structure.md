@@ -62,40 +62,7 @@ freq := rand.Float64() * 3.0
 t := 0.0
 ```
 
-## Pointers
-
-A pointer value is the address of a variable to update the value indirectly without knowing the variable name. Each time the address of a variable is taken or copied, new aliases are created to identify the same variable. Pointer aliasing is useful as it allows access to a variable without using its name; however, to find all statements that access a variable, need to know all aliases.
-
-Pointers are key in flag package which uses a program's command-line arguments to set values of certain variables distributed throughout the program.
-
-```GO
-x := 1
-p := &x           // p, of type *int, points to x (contains the address of x)
-fmt.Println(*p)   // "1"
-*p = 2            // equivalent to x = 2, pointer variable
-fmt.Println(x)    // "2"
-
-// passing a pointer arg to function
-func incr(p *int) int {
-  *p++ // increments what p points to; does not change p
-  return *p
-}
-
-v := 1
-incr(&v)                // side effect: v is now 2
-fmt.Println(incr(&v))   // "3" (and v is 3)
-```
-
-## Function New()
-
-```GO
-p := new(int)     // p, of type *int, points to an unnamed int variable
-fmt.Println(*p)   // "0"
-*p = 2            // sets the unnamed int to 2
-fmt.Println(*p)   // "2"
-```
-
-## Variable Lifetimes
+## Variable lifetimes
 
 Lifetime of package-level variable is the entire execution of program. Local variables have dynamic lifetimes; new instance lives on until it becomes unreachable, at which point its storage may be recycled. Compiler may choose to allocate local variables on heap or stack depending on whether they are reachable after a function is called or not.
 
@@ -107,7 +74,7 @@ Allows both implicit and explicit assignments.
 mdeals := []string{"gold", "silver", "bronze"}
 ```
 
-## Type Declarations
+## Type declarations
 
 ```go
 type [name] [underlying-type]
@@ -126,7 +93,7 @@ fmt.Println(c == f) // compile error: type mismatch
 
 It is an error to import a package and then not refer to it. Best to use golang.org/x/tools/cmd/goimports tool which automatically inserts and removes packages from import declaration as necessary.
 
-## Package Initialization
+## Package initialization
 
 If package has multiple .go files, the are initialized in the order the files are given to the compiler. For variables such as tables that are difficult to set initial value, can use init().
 
@@ -138,7 +105,7 @@ var c = 1       // c initialized first to 1
 
 ## Scope
 
-Syntactic block is a sequence of statements enclosed in braces. The generic notion of blocks including declarations not surrounded by braces are called lexical blocks. A declaration's lexical block determines its scope. A program can contain multiple declarations of the same name so long as each declaration is in a different lexical block. At package level, oreder in which declarations appear has no effect on their scope.
+Syntactic block is a sequence of statements enclosed in braces. The generic notion of blocks including declarations not surrounded by braces are called lexical blocks. A declaration's lexical block determines its scope. A program can contain multiple declarations of the same name so long as each declaration is in a different lexical block. At package level, order in which declarations appear has no effect on their scope.
 
 ```GO
 func f() {}
@@ -163,7 +130,7 @@ func main() {
 }
 ```
 
-### Variable Scoping
+### Variable scoping
 
 ```go
 {

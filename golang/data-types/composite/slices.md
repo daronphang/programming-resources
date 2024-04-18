@@ -38,7 +38,7 @@ func updateSlice(s []string) {
 }
 ```
 
-## Slice Techniques
+## Slice techniques
 
 ### Rotate/Reverse
 

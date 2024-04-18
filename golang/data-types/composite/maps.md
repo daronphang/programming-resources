@@ -61,3 +61,11 @@ func main() {
   }
 }
 ```
+
+### Distinguishing missing entry
+
+Sometimes you need to distinguish a missing entry from a zero value.
+
+```go
+seconds, ok := timeZone[tz]
+```

@@ -1,4 +1,4 @@
-### Sorting with sort.Interface
+## Sorting
 
 In many languages, sorting algorithm is associated with sequence data type, while ordering function is associated with type of elements. GO's sort.Sort function assumes nothing about the representation of either sequence or its elements. Instead, it uses an interface, sort.Interface, to specify the contract between generic sort algorithm and each sequence type that may be sorted. Package sort provides StringSlice type and function called Strings() so the call can be simplified to sort.Strings().
 

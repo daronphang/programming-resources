@@ -1,4 +1,4 @@
-## Text and HTML Templates
+## Text and HTML templates
 
 GO offer text and HTML template packages for substituting values of variables into a text or HTML template.
 

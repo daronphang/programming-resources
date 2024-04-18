@@ -1,6 +1,30 @@
-## Type Assertions
+## Type assertions
 
-An operation applied to an interface value.
+A type assertion provides access to an interface value's underlying concrete value. Type assertions are used to assert that a variable is of some type, and can only take place on interfaces. If variable to be asserted is nil, will panic.
+
+To test whether an interface value holds a specific type (without panic), a type assertion can return two values: the underlying value and a boolean value that reports whether the assertion succeeded.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var i interface{} = "hello"
+
+	s := i.(string)
+	fmt.Println(s)
+
+	s, ok := i.(string)
+	fmt.Println(s, ok)
+
+	f, ok := i.(float64)
+	fmt.Println(f, ok)
+
+	f = i.(float64) // panic
+	fmt.Println(f)
+}
+```
 
 ```go
 // x.(T) where x is an expression of interface type and T is the asserted type (concrete/dynamic)
@@ -23,7 +47,7 @@ if f, ok := w.(*os.File); ok {
 }
 ```
 
-### Discriminating Errors with Type Assertions
+## Discriminating errors with type assertions
 
 For I/O operations, more reliable approach for error handling is to represent structured error values with type.
 
@@ -78,7 +102,7 @@ _, err := os.Open("/no/such/file")
 fmt.Println(os.IsNotExist(err))   // true
 ```
 
-### Checking Behaviors with Interface Type Assertions
+## Checking behaviors with interface type assertions
 
 Can use type assertion to test whether a dynamic type has a method by defining a new interface.
 

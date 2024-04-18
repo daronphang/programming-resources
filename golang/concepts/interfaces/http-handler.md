@@ -1,4 +1,4 @@
-### Http.Handler Interface
+## Http.Handler interface
 
 ```go
 package http

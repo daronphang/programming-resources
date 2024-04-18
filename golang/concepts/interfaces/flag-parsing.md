@@ -1,4 +1,4 @@
-### Parsing Flags with flag.Value
+## Parsing flags with flag.Value
 
 Standard interface flag.Value helps define new notations for command-line flags.
 

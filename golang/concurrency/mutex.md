@@ -1,4 +1,4 @@
-### Mutex
+## Mutex
 
 Go allows us to run code concurrently using goroutines. However, when concurrent processes access the same piece of data, it can lead to race conditions.
 

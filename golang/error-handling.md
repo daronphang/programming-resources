@@ -1,4 +1,4 @@
-## Creating Errors
+## Creating errors
 
 ```go
 // simple string-based error
@@ -8,7 +8,7 @@ err1 := errors.New("math: square root of negative number")
 err2 := fmt.Errorf("math: square root of negative number %g", x)
 ```
 
-### Custom Errors
+## Custom errors
 
 ```go
 type SyntaxError struct {

@@ -1,4 +1,4 @@
-## Floating-Point Numbers
+## Floating-Point numbers
 
 GO provides float32 and float64.
 

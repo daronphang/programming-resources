@@ -1,6 +1,8 @@
 ## Interfaces
 
-Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types. Interfaces are able to take different sources of input and provide a common output i.e. Reader interface takes any type of data as input and outputs as []byte for anyone to work with.
+Interfaces in Go provide a way to specify the behavior of an object: if something can do this, then it can be used here.
+
+Interface types express generalizations or abstractions about the behaviors of other types. Go's interfaces are distinctive from other OOP languages is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types. Interfaces are able to take different sources of input and provide a common output i.e. Reader interface takes any type of data as input and outputs as []byte for anyone to work with.
 
 Interface is an abstract custom type that is used to specify a set of one or more method signatures i.e. collection of methods. Necessary to implement all the methods declared in the interface for implementing the interface. They are implemented implicitly.
 
@@ -71,7 +73,11 @@ func shuffle(c Card) {
 }
 ```
 
-### Compile Errors
+### Naming
+
+By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier etc.
+
+### Compile errors
 
 Arises when you try to assign/pass a concrete type to an interface type and the concrete type does not implement the interface, or if you are passing a pointer to the type.
 
@@ -94,11 +100,11 @@ func main() {
 }
 ```
 
-### Concrete Type
+### Concrete type
 
 Concrete type specifies the exact representation of its values and exposes the intrinsic operations of that representation i.e. arithmetic for numbers, indexing/append/range for slices.
 
-### Contracts Type
+### Contracts type
 
 Abstract interface that reveals only some of the methods.
 
@@ -119,7 +125,7 @@ func Printf(format string, args ...interface{}) (int, error) {
 }
 ```
 
-### Interface Types
+### Interface types
 
 The io.Writer type is one of the most widely used interface as it provides an abstraction of all the types to which bytes can be written, which includes files, memory buffers, network connections, HTTP clients, archivers, etc. The io package defines many other useful interfaces.
 
@@ -172,9 +178,9 @@ func (logWriter) Write(bs []byte) (int, error) {
 }
 ```
 
-### Interface Satisfaction
+### Interface satisfaction
 
-Only depends on the methods of the two types involved; hence, do not need to declare the relationship between concrete type and the interface it satisfies. Nonetheless, it is useful to document and assert the relatiosnhip when it is intended.
+Only depends on the methods of the two types involved; hence, do not need to declare the relationship between concrete type and the interface it satisfies. Nonetheless, it is useful to document and assert the relationship when it is intended.
 
 ```go
 // declaration asserts at compile time that value of type *bytes.Buffer satisfies io.Writer
@@ -182,7 +188,9 @@ var w io.Writer = new(bytes.Buffer)
 var _ io.Writer = (*bytes.Buffer)(nil)  // another way without allocating a new variable
 ```
 
-### Caveat: Interface Containing Nil Pointer is Non-Nil
+## Caveats
+
+### Interface containing nil pointer is non-nil
 
 A nil interface value, which contains no value at all, is not the same as an interface value containing a pointer that happens to be nil.
 
@@ -206,6 +214,6 @@ func f(out io.Writer) {
 }
 ```
 
-### Advice
+## Advice
 
 Interfaces that has only a single implementation are unnecessary abstractions and have run-time cost. Interfaces are only needed when there are two or more concrete types that must be dealt with in a uniform way. An exception to this rule is when an interface is satisfied by a single concrete type but that type cannot live in the same package as interface because of its dependencies.

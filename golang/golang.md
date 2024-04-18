@@ -4,7 +4,7 @@ A compiled language. Organized into packages (similar to libraries/modules). Has
 
 Static type language as compared to Python/Javascript (dynamic type). Dynamic means you can declare a variable as a string and later assign it as number.
 
-### Setting up Environment
+### Setting up environment
 
 ```console
 // initialize module file
@@ -27,7 +27,7 @@ func main() {
 }
 ```
 
-## Naming Conventions
+## Naming conventions
 
 ### Packages
 
@@ -47,7 +47,7 @@ To prevent packages from being imported unnecessarily, can create an **internal/
 
 ### Helpers/Util
 
-These functions should exist in packages that are used most often i.e. put near where they are used. Moroever, a little copying is better than a little dependency. 
+These functions should exist in packages that are used most often i.e. put near where they are used. Moroever, a little copying is better than a little dependency.
 
 When deciding where to put helper/util functions, it will depend on the following:
 
@@ -84,11 +84,11 @@ $ ./test
 $ rm test
 ```
 
-## Garbage Collector
+## Garbage collector
 
 GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
 
-## Print Functions
+## Print functions
 
 ```go
 fmt.Println()     // Takes a string, prints and adds a new line after string
@@ -139,7 +139,7 @@ myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
 %p    for pointers, base 16 notation with leading 0x
 ```
 
-## Command Line Arguments
+## Command line arguments
 
 OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings.
 
@@ -176,7 +176,7 @@ func main() {
 }
 ```
 
-## Loop Statements
+## Loop statements
 
 For loop is only loop statement in GO.
 
@@ -218,7 +218,7 @@ func main() {
 
 ```
 
-## Variable Declarations
+## Variable declarations
 
 ```GO
 s := "Hello world"    // colon syntax used for assigning NEW variables only

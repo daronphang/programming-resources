@@ -24,7 +24,7 @@ x = <-ch    // a receive expression in an assignment statement
 <-ch    // a receive statement, reuslt is discarded
 ```
 
-## Unbuffered Channels (Synchronous)
+## Unbuffered Channels (synchronous)
 
 A send operation on an unbuffered channel blocks the sending goroutine until another goroutine executes a corresponding receive on the same channel, at which point the value is transmitted and both goroutines may continue. Conversely, if the receive operation is attempted first, the receiving goroutine is blocked until a send is transmitted.
 
@@ -46,7 +46,7 @@ func main() {
 }
 ```
 
-## Unidirectional Channel Types
+## Unidirectional channel types
 
 To document the intent exclusively and prevent misuse.
 
@@ -83,7 +83,7 @@ func main() {
 }
 ```
 
-## Buffered Channels
+## Buffered channels
 
 A buffered channel has a queue of elements. The queue's maximum size is determined when it is created, by the capacity argument to make.
 
@@ -100,7 +100,7 @@ ch <- "C"
 fmt.Println(<-ch) // receive "A", frees up one space
 ```
 
-## Buffered vs Unbuffered
+## Buffered vs unbuffered
 
 The choice between unbuffered and buffered channels may affect the correctness of a program. Unbuffered channels give stronger synchronization guarantees while in buffered channels, the operations are decoupled.
 

@@ -4,7 +4,7 @@ When developing production-grade systems serving web requests, it is helpful for
 
 For instance, a web server function handling an HTTP request for a client may only require a URL as a parameter, but knowing the client's connection status allows the server to stop processing the request/stop goroutines in the event the client disconnects. **This helps to reduce load and save valuable compute resources on a busy server, and frees them up to handle another client's request**. Examples include timeout, deadline or channel to indicate stop working and return. To enable ubiquitous access to this type of information, Go has included a context package.
 
-### Creating Context
+### Creating context
 
 Two ways to create context using Background() or TODO(). Latter can be used by static analysis tools to validate if the context is passed around properly.
 
@@ -27,7 +27,7 @@ func main() {
 }
 ```
 
-### Using Data Within Context
+### Using data within context
 
 Have the ability to access data stored inside a context. By adding data to a context, it can be passed from function to function. Data stored is immutable.
 
@@ -56,7 +56,7 @@ func doAnother(ctx context.Context) {
 }
 ```
 
-### Ending a Context
+### Ending a context
 
 Provides a signal to any functions using it that the context has ended and should be considered complete i.e. other functions know to stop processing any work related to the context that they may still be working on.
 
@@ -76,8 +76,6 @@ for {
 	}
 }
 ```
-
-### Ending a Context
 
 ```go
 func doSomething(ctx context.Context) {
@@ -120,7 +118,7 @@ doSomething: finished
 
 ```
 
-### Deadline/Timeout
+### Deadline or timeout
 
 Set a deadline on a context to automatically end when that deadline passes. For timeout, you provide a time for the context to end.
 
