@@ -42,7 +42,7 @@ A network ACL is a virtual firewall that controls inbound and outbound traffic a
 
 You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
 
-A network ACL contains a numbered list of rules and evaluates them in the increasing order while deciding whether to allow the traffic.
+A network ACL contains a numbered list of rules and evaluates them in the increasing order while deciding whether to allow the traffic i.e. once the first set of rules matches, it stops. You should DENY rules above ALLOW rules.
 
 Every subnet within a VPC must be associated with a network ACL. You can associate a network ACL with multiple subnets, but a subnet can only be associated with one network ACL at a time.
 
@@ -75,7 +75,7 @@ Security Groups perform **stateful** packet filtering. They remember previous de
 
 An IGW is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet i.e. region resilient, covers all Availability Zones within a Region. Imposes no availability risks or bandwidth constraints on your network traffic.
 
-Only one IGW can be attached per VPC.
+Only one IGW can be attached per VPC. Can also be configured for **egress-only**; you can configure route tables to direct all traffic from the application through it.
 
 ### Exposing resources to the internet
 

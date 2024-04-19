@@ -245,8 +245,8 @@ Helps you to setup your disaster recovery process, particularly in the context o
 
 ### Terms
 
-- Recovery Point Objective (RPO): Maximum tolerable period in which data might be lost due to a major incident
-- Recovery Time Objective (RTO): Targeted duration of time within which a business process must be restored in order to avoid unacceptable consequences
+- **Recovery Point Objective (RPO)**: Maximum tolerable period in which data might be lost due to a major incident
+- **Recovery Time Objective (RTO)**: Targeted duration of time within which a business process must be restored in order to avoid unacceptable consequences
 
 ### Features
 

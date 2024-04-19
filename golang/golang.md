@@ -111,6 +111,8 @@ fmt.Printf("%s is %d years old.\n", name, age)
 
 s := fmt.Sprint(name, " is ", age, " years old.\n")
 myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
+
+fmt.Printf("%+v\n", someStruct)
 ```
 
 ```

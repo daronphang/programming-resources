@@ -62,6 +62,14 @@ github.com/gocarina/gocsv
 gopkg.in/yaml.v2
 ```
 
+```go
+type Config struct {
+  // Separate multiple tags with space
+  Port int `yaml:"port" json:"portNumber"`
+}
+
+```
+
 ### Struct literals
 
 ```go
@@ -109,6 +117,8 @@ hits[address{"golang.org", 443}]++
 ```
 
 ### Struct embedding and anonymous fields
+
+Composition in Go is achieved through embedding, which allows a struct to inherit the fields and methods of another struct.
 
 Allows using named struct type as an anonymous field of another struct type. Provides convenient syntactic shortcut where x.f can stand for a chain of fields like x.d.e.f.
 

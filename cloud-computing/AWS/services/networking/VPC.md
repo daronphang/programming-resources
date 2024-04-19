@@ -49,7 +49,7 @@ Before a packet can enter into or exit from a subnet, the **network ACL** checks
 
 ### DNS
 
-Only private instances will automatically be assigned a DNS entry; for public, need to enableDnsHostName. To enable DNS resolution through AWS DNS server, need to enableDnsResolution.
+Only private instances will automatically be assigned a DNS entry; for public, need to enable DNS hostnames. To enable DNS resolution through AWS DNS server, need to enable DNS resolution (can be used for resolving local DNS queries).
 
 AWS DNS server can be accessed either via 169.254.169.253 or on the second IP of the VPC CIDR block.
 
