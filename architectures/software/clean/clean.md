@@ -38,14 +38,19 @@ Entities:
 
 The software in this layer contains **application specific business rules**. It encapsulates and implements all of the use cases of the system. These use cases orchestrate the flow of data to and from the entities, and direct those entities to use their enterprise wide business rules to achieve the goals of the use case.
 
+When you create use cases, you should be thinking about business transactions, not CRUD methods e.g. sell an item to a customer, print an invoice. Couple code that change together for one reason into use-cases.
+
 We expect that changes to the operation of the application will affect the use-cases and therefore the software in this layer.
 
 Use Cases:
 
+- Are often not reused more than once in an application; each use case addresses a very specific business scenario
 - Represent your business actions i.e. what you can do with the application
 - Pure business logic
 - Does not know who triggered it and how the results are going to be presented
-- Throws business exception
+- Must not throw exceptions as no component up the caller's stack has any means to deal with exceptions
+- May access any external services using any of output ports made available to it
+- Often loads one or several aggregates and invokes business logic on them
 
 ### Interfaces/Adapters
 
@@ -59,11 +64,30 @@ Interfaces/Adapters:
 
 - Implement the interfaces defined by the use case
 - Retrieve and store data from and to a number of sources
-- Trigger a use case and convert the result to the appropriate format for the delivery mechanism (controller)
+- Trigger a use case and convert the result to the appropriate format for the delivery mechanism
+- Controller that takes input from the user and create output for the user
+- Presenter accepts a response from use case and formats it in away that can be presented to the output device
 
 ### Frameworks and Drivers
 
 The outermost layer is generally composed of frameworks and tools such as database, web, devices, etc.
+
+## Control flow
+
+### Presenter and Use Case
+
+https://medium.com/unil-ci-software-engineering/clean-ddd-lessons-use-cases-e9d11f64a0e9
+
+Multiple approaches to the problem:
+
+- The presenter is called by the use case itself through some sort of output interface
+- The use case returns the response model and the controller (which originally called the use case) passes this model to the presenter
+
+### Presenter and Controller
+
+https://medium.com/unil-ci-software-engineering/clean-ddd-lessons-presenters-6f092308b75e#:~:text=As%20we%20have%20already%20discussed,finally%2C%20exits%20through%20a%20presenter.
+
+For REST APIs, it is difficult to implement a Controller and Presenter, as the Presenter depends on the Controller i.e. you can not completely separate Controller and Presenter because you need to send a response to the microservice using the same interface you've used to get the input from the microservice to the Controller. Moreover, there is no presenting in the API itself.
 
 ## Crossing boundaries
 

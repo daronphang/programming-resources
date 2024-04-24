@@ -1,4 +1,4 @@
-## Database
+## database/sql
 
 To access databases in Golang, use sql.DB. It is an abstraction of the interface and existence of a database, which might be varied as a local file, accessed through a network connection, or in-memory and in-process.
 
@@ -8,6 +8,12 @@ sql.DB performs the following:
 
 - Opens and closes connections to the actual underlying database, via the driver.
 - Manages a pool of connections as needed.
+
+### DSN/Connection string
+
+```
+username:password@protocol(address)/dbname?param=value
+```
 
 ### Database driver
 
@@ -63,5 +69,5 @@ db.SetMaxOpenConns(N)
 db.SetConnMaxLifetime(duration)		Max time a conn can be reused
 ```
 
-- Executing two consecutive statements on a single DB might open two connections and executed separately.
-- Connections are recycled fast and setting a high number of idle connections can reduce this churn, and helps keep connections around for reuse.
+- Executing two consecutive statements on a single DB might open two connections and executed separately
+- Connections are recycled fast and setting a high number of idle connections can reduce this churn, and helps keep connections around for reuse

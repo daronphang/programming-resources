@@ -55,6 +55,7 @@ An EBS snapshot is an incremental backup:
 
 - First backup copies all the data
 - Subsequent backups copy **blocks of data that have changed** since the most recent snapshot are saved
+- Snapshots will retain encryption property
 
 With EBS Snapshots, you can **replicate data across Availability Zones**.
 

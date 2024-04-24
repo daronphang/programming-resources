@@ -179,6 +179,8 @@ There are two kinds of endpoints:
 
 AWS Direct Connect is a service that lets you to establish a dedicated **physical** private connection between your **data center** and a VPC which allows for high speed. As a different traffic is used as compared to public users, it helps you to reduce network costs and increase the amount of bandwidth that can travel through your network. However, it takes at least a month to establish.
 
+For secure connection, you can implement a VPN over Direct Connect to add an additional layer of network security for data in transit.
+
 ### How it works
 
 Cross connect is a connection between a port on AWS router and customer router in the DX location.

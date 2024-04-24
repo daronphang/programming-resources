@@ -99,6 +99,8 @@ It provides a gateway for distributing traffic across multiple virtual appliance
 
 When GLB receives requests, it routes them to third-party appliances, which are then forwarded back to the GLB to perform a secondary routing to the EC2 instances (acts as a **middleware**). It can be used for **intrusion detection or deep packet inspection**.
 
+<img src="../assets/glb.png">
+
 ### Cross-zone load balancing
 
 Load balancer nodes can only route traffic to instances in the same AZ by default. Cross-zone load balancer can help to equally distribute traffic across all instances in all AZs.
