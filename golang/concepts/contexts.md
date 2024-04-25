@@ -4,9 +4,20 @@ When developing production-grade systems serving web requests, it is helpful for
 
 For instance, a web server function handling an HTTP request for a client may only require a URL as a parameter, but knowing the client's connection status allows the server to stop processing the request/stop goroutines in the event the client disconnects. **This helps to reduce load and save valuable compute resources on a busy server, and frees them up to handle another client's request**. Examples include timeout, deadline or channel to indicate stop working and return. To enable ubiquitous access to this type of information, Go has included a context package.
 
+Context in Go refers to the circumstances that form the setting for an event. In other words,the context package can be used to make the functions/goroutines to act according to certain events in the system.
+
+### Why need context?
+
+- Listen to cancellation: When the system is shutting down, it should cancel all background processes and tasks for graceful shutdown of services
+- Notifying timeouts and deadline: If a service times out, we need to cancel our goroutines and not waste compute resources
+- Passing miscellaneous key values: Context can be used to pass values from middleware
+
 ### Creating context
 
-Two ways to create context using Background() or TODO(). Latter can be used by static analysis tools to validate if the context is passed around properly.
+Two ways to create context:
+
+- context.Background(): Does nothing, an abstract
+- context.TODO(): Code should use context.TODO() when it is unclear which context to use or it is not yet available (because the surrounding function has not yet been extended to accept a Context parameter); for the purpose of code refactoring and code analysis
 
 ```go
 package main
@@ -146,4 +157,69 @@ func doSomething(ctx context.Context) {
 	fmt.Printf("doSomething: finished\n")
 }
 
+```
+
+## Example
+
+```go
+func main() {
+	// creating parent context
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// this is for graceful shutdown
+	exit := make(chan os.Signal, 1)
+	signal.Notify(exit, os.Interrupt, syscall.SIGTERM)
+
+	for {
+		select {
+		case <-exit:
+			cancel()
+			fmt.Println("shutting down gracefully.")
+		case <-ctx.Done():
+			// listens for parent context cancellation
+			fmt.Println("parent context is cancelled.")
+			os.Exit(0)
+		default:
+			// calls our service check every one second.
+			time.Sleep(1 * time.Second)
+			if serviceHealthCheck(ctx, "https://google.com") {
+				fmt.Println("Service OK")
+			} else {
+				fmt.Println("Service Fail")
+			}
+		}
+	}
+}
+
+// serviceHealthCheck is a very dumb healthcheck which
+// takes an url and return true if able to get the url
+// in the specified context timout duration else false.
+func serviceHealthCheck(ctx context.Context, url string) bool {
+	status := make(chan bool, 1)
+
+	// create a new context with parent ctx and provide timeout duration
+	// you can also use context.WithDeadline as follows.
+	//ctx, cancel := context.WithDeadline(ctx, time.Now().Add(700*time.Millisecond))
+	ctx, cancel := context.WithTimeout(ctx, 700*time.Millisecond)
+
+	defer cancel()
+
+	// dummy implementation of service health check
+	go func(url string) {
+		client := http.Client{}
+		if _, err := client.Get(url); err != nil {
+			status <- false
+		}
+		status <- true
+	}(url)
+
+	select {
+	case s := <-status:
+		return s
+	case <-ctx.Done():
+		fmt.Println("request timeout")
+		return false
+	}
+}
 ```

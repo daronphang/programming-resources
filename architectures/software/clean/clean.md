@@ -89,6 +89,14 @@ https://medium.com/unil-ci-software-engineering/clean-ddd-lessons-presenters-6f0
 
 For REST APIs, it is difficult to implement a Controller and Presenter, as the Presenter depends on the Controller i.e. you can not completely separate Controller and Presenter because you need to send a response to the microservice using the same interface you've used to get the input from the microservice to the Controller. Moreover, there is no presenting in the API itself.
 
+### Repository
+
+The Use Case should have a dependency to the repository interface and hence, the **interface** should be defined in the **domain layer** (or application core layer).
+
+The implementation of the repository interface will reside in the **infrastructure layer**.
+
+Both the Use Case and the repository implementation should depend only on the repository interface to achieve dependency inversion.
+
 ## Crossing boundaries
 
 If the use case needs to call the presenter, the call must not be direct as it would violate the Dependency Rule. This contradiction can be resolved using **Dependency Inversion Principle**. For example, we have the use case call an **interface** (shown here as Use Case Output Port) in the inner circle, and have the presenter in the outer circle implement it.
