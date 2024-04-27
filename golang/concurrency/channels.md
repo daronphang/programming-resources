@@ -6,25 +6,86 @@ When it comes to concurrency, many programming languages adopt the Shared Memory
 
 Channels are the connections between goroutines i.e. a communication mechanism that lets one goroutine send values to another goroutine. A channel has two principal operations, **send** and **receive**. Also supports a third operation, **close**, which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic. Receive operations on a close channel yield the values that have been sent until no more values are left.
 
-### Send, Receive, Close
+### Send and Receive
 
 A channel has two principal operations, "send" and "receive". A send statement transmits a value from one goroutine, through the channel, to another executing a corresponding receive expression. A receive expression whose result is not used is a valid statement.
 
 Channels support a third operation "close" which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic.
+
+By default, **sends and receives block until the other side is ready**:
+
+- If A is sending, but B is doing something else, A will wait until B is ready
+- If B is receiving, but A has not sent yet, B will wait until A sends
+
+This allows goroutines to synchronize without explicit locks or condition variables.
 
 ```go
 ch := make(chan int)    // ch has type 'chan int', unbuffered channel
 ch := make(chan int, 0)  // unbuffered channel
 ch := make(chan int, 3)  // buffered channel with capacity 3
 
-close(ch)
-
 ch <- x   // a send statement
-x = <-ch    // a receive expression in an assignment statement
+x := <-ch    // a receive expression in an assignment statement
 <-ch    // a receive statement, reuslt is discarded
 ```
 
-## Unbuffered Channels (synchronous)
+### Range and Close
+
+A sender can close a channel to indicate that no more values will be sent.
+
+```go
+v, ok := <-ch
+```
+
+You can loop the range to receive the values from the channel repeatedly until it is closed.
+
+Only the **sender should close a channel, never the receiver**. Sending on a closed channel will cause a panic. Also, you don't usually need to close channels like files.
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func fibonacci(n int, c chan int) {
+	x, y := 0, 1
+	for i := 0; i < n; i++ {
+		c <- x
+		x, y = y, x+y
+	}
+	close(c)
+}
+
+func main() {
+	c := make(chan int, 10)
+	go fibonacci(cap(c), c)
+	for i := range c {
+		fmt.Println(i)
+	}
+}
+```
+
+## Buffered channels
+
+Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
+
+A buffered channel has a queue of elements. The queue's maximum size is determined when it is created, by the capacity argument to make.
+
+A send operation inserts an element at the back of the queue, and a receive operation removes an element from the front. If the channel is full, the send operation blocks its goroutine until space is made available by another goroutine's receive.
+
+```go
+// can send up to 3 values on this channel without goroutine blocking
+ch = make(chan string, 3)
+
+ch <- "A"
+ch <- "B"
+ch <- "C"
+
+fmt.Println(<-ch) // receive "A", frees up one space
+```
+
+## Unbuffered Channels
 
 A send operation on an unbuffered channel blocks the sending goroutine until another goroutine executes a corresponding receive on the same channel, at which point the value is transmitted and both goroutines may continue. Conversely, if the receive operation is attempted first, the receiving goroutine is blocked until a send is transmitted.
 
@@ -81,23 +142,6 @@ func main() {
     go squarer(squares, naturals)
     printer(squares)
 }
-```
-
-## Buffered channels
-
-A buffered channel has a queue of elements. The queue's maximum size is determined when it is created, by the capacity argument to make.
-
-A send operation inserts an element at the back of the queue, and a receive operation removes an element from the front. If the channel is full, the send operation blocks its goroutine until space is made available by another goroutine's receive.
-
-```go
-// can send up to 3 values on this channel without goroutine blocking
-ch = make(chan string, 3)
-
-ch <- "A"
-ch <- "B"
-ch <- "C"
-
-fmt.Println(<-ch) // receive "A", frees up one space
 ```
 
 ## Buffered vs unbuffered

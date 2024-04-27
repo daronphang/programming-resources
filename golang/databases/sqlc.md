@@ -44,3 +44,16 @@ if err != nil {
 
 fmt.Printf("Author name: %s\n", author.Name)
 ```
+
+### Naming parameters
+
+When using named parameters, ensure that you renumber the params.
+
+```sql
+SELECT
+time_bucket(@time_bucket::text, created_at) AS bucket,
+AVG(metric1) AS metric1
+FROM machine_resource_usage
+WHERE machine = $1  -- Cannot be $2
+AND created_at > NOW() = INTERVAL @look_back_period::text
+```

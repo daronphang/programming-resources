@@ -2,6 +2,8 @@
 
 Amazon FSx provides native compatibility with **third-party file systems** (alternative to EFS). With Amazon FSx, you don't need to worry about managing file servers, storage, replicating data, patching file servers, etc. This is because Amazon FSx automates time consuming administration task such as hardware provisioning, software configuration, patching, and backups.
 
+Amazon FSx provides encryption for transit and at-rest by default using AWS-owned keys, with the option to use customer-managed keys in AWS KMS.
+
 ### Benefits
 
 - Provides storage
@@ -9,6 +11,7 @@ Amazon FSx provides native compatibility with **third-party file systems** (alte
 - Scalable
 - Shared access
 - Performs backup
+- Data deduplication and compression
 
 ## Flavors
 
@@ -34,7 +37,7 @@ All flavors support multi-AZ deployments, but Lustre supports only single AZ.
 
 ### NetAPP ONTAP
 
-- Offers high-performance storage that's accessible from Linux, Windows, and macOS via NFS, SMB and iSCSI protocols
+- Offers high-performance storage that's accessible from Linux, Windows, and macOS via NFS, SMB and iSCSI protocols (multi-protocol access)
 - Scales up or down in response to workload demands
 - Performs snapshots, clones, replications, etc.
 

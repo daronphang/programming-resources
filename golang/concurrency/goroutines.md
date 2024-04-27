@@ -44,7 +44,18 @@ func fib(x int) int {
 
 Select statement lets a goroutine wait on multiple communication operations i.e. used to choose from multiple send/receive channel operations. It allows a program to try reading from or writing to a number of channels at the same time.
 
-A select blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready i.e. only one channel operation happens per select statement.
+A select blocks until one of its cases can run, then it executes that case. It **chooses one at random if multiple are ready** i.e. only one channel operation happens per select statement.
+
+The default case in a select is run if no other case is ready.
+
+```go
+select {
+case i := <-c:
+    // use i
+default:
+    // receiving from c would block
+}
+```
 
 ```go
 package main
@@ -137,3 +148,83 @@ func main() {
     }
 }
 ```
+
+### Waiting for goroutines
+
+Use sync.WaitGroup.
+
+```go
+package main
+
+import (
+  "net/http"
+  "sync"
+)
+
+func main() {
+  var wg sync.WaitGroup
+  var urls = []string{
+    "http://www.golang.org/",
+    "http://www.google.com/",
+    "http://www.somestupidname.com/",
+  }
+  for _, url := range urls {
+    // Increment the WaitGroup counter.
+    wg.Add(1)
+    // Launch a goroutine to fetch the URL.
+    go func(url string) {
+      // Decrement the counter when the goroutine completes.
+      defer wg.Done()
+      // Fetch the URL.
+      http.Get(url)
+    }(url)
+  }
+  // Wait for all HTTP fetches to complete.
+  wg.Wait()
+}
+```
+
+## Goroutine vs Thread
+
+<table>
+<tr>
+<th>Gorutine</th>
+<th>Threads</th>
+</tr>
+
+<tr>
+<td>Managed by the go runtime</td>
+<td>Managed by kernel</td>
+</tr>
+
+<tr>
+<td>Not hardware dependent</td>
+<td>Dependent on OS system</td>
+</tr>
+
+<tr>
+<td>Have easy communication medium through channel with low latency; does not need explicit managed locks and mutexes for synchronization</td>
+<td>Does not have an easy communication medium with high latency</td>
+</tr>
+
+<tr>
+<td>Does not have a unique ID as it does not have Thread Local Storage</td>
+<td>Have their own unique ID</td>
+</tr>
+
+<tr>
+<td>Cheaper than threads, faster startup time</td>
+<td>More expensive than goroutine</td>
+</tr>
+
+<tr>
+<td>Are cooperatively scheduled</td>
+<td>Are preemptively scheduled</td>
+</tr>
+
+<tr>
+<td>Have growable segmented stacks; allows dynamic stack management to efficiently create goroutines without wasting memory</td>
+<td>Does not have growable segmented stacks i.e. fixed-size stacks which can be wasteful for small tasks</td>
+</tr>
+
+</table>

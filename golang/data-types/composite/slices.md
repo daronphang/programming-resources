@@ -28,7 +28,7 @@ for i, card := range x {
 ```
 
 ```go
-// slices gotcha that doesnt require pointers specifically
+// slices gotcha that doesn't require pointers specifically
 mySlice := []string{"hello", "world"}
 updateSlice(mySlice)
 fmt.Println(mySlice)	// [Bye World]
@@ -36,6 +36,15 @@ fmt.Println(mySlice)	// [Bye World]
 func updateSlice(s []string) {
   s[0] = "Bye"
 }
+```
+
+### Create empty slice
+
+```go
+type Payload struct {}
+
+s := make([]string, 0, 10)
+s := make([]Payload, 10) // this will create 10 empty Payload structs
 ```
 
 ## Slice techniques

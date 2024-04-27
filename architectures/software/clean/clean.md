@@ -97,6 +97,8 @@ The implementation of the repository interface will reside in the **infrastructu
 
 Both the Use Case and the repository implementation should depend only on the repository interface to achieve dependency inversion.
 
+Sometimes the repository **may have persistence models that differ from the domain models**. A little duplication is better than having your application depend entirely on persistence models which may change in the future.
+
 ## Crossing boundaries
 
 If the use case needs to call the presenter, the call must not be direct as it would violate the Dependency Rule. This contradiction can be resolved using **Dependency Inversion Principle**. For example, we have the use case call an **interface** (shown here as Use Case Output Port) in the inner circle, and have the presenter in the outer circle implement it.

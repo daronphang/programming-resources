@@ -69,3 +69,9 @@ Sometimes you need to distinguish a missing entry from a zero value.
 ```go
 seconds, ok := timeZone[tz]
 ```
+
+### Empty values
+
+```go
+var methodsWithPayload = map[string]struct{}{"POST": {}, "PUT": {}, "PATCH": {}}
+```

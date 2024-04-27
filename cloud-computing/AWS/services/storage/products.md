@@ -4,9 +4,9 @@ An Instance Store provides temporary **block-level storage** (behave like physic
 
 ## AWS Storage Gateway
 
-AWS Storage Gateway is a hybrid service that provides on-premises applications with access to virtually unlimited cloud storage. Behind the scenes, the Storage Gateway will be using Amazon EBS, S3 and Glacier. All data transferred between the gateway and AWS storage is encrypted using SSL.
+AWS Storage Gateway is a hybrid service that provides on-premises applications with access to virtually unlimited cloud storage. Behind the scenes, the Storage Gateway will be using Amazon EBS, S3 and Glacier. All data transferred between the gateway and AWS storage is **encrypted** using SSL.
 
-The storage gateway is either a VM or physical server installed in your on-premise environment, and acts as a bridge between your on-premise and AWS environment.
+The storage gateway is either a VM or physical server installed in your on-premise environment, and acts as a bridge between your on-premise and AWS environment. Can provide caching locally in on-premise environment.
 
 ### Benefits
 
@@ -19,9 +19,9 @@ The storage gateway is either a VM or physical server installed in your on-premi
 
 Depending on the protocols, there's a mode within AWS Storage Gateway that will make it compatible for your solution.
 
-- **Volume Storage Gateway** with Cached and Stored Mode, utilizes iSCI protocol
+- **Volume Storage Gateway** with Cached (frequently accessed data stored on-prem) and Stored Mode (entire dataset stored in AWS and on-prem), utilizes iSCSI protocol and use S3 as primary data storage
 - **File Storage Gateway** with data stored in S3, utilizes NFS/SMB protocol
-- **Tape Gateway** that emulates a tape library with data stored in S3 (Virtual Tape Library) or Glacier (Tape Shelf), utilizes iSCI protocol
+- **Tape Gateway** that emulates a tape library with data stored in S3 (Virtual Tape Library) or Glacier (Tape Shelf), utilizes iSCSI protocol
 
 #### Volume Storage Gateway
 

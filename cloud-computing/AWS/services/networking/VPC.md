@@ -156,16 +156,6 @@ VPC Peering:
 - Data transfer within an AV is free
 - Data transfer across AV incurs charges
 
-## AWS PrivateLink (VPC Endpoint Service)
-
-For an EC2 to connect to an S3 Bucket, need to create an IG and give EC2 full internet access which is not desirable.
-
-AWS PrivateLink is a technology that provides the most secure and scalable way to expose a public AWS service to other VPCs e.g. S3 Bucket. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
-
-- Third party VPC exposes an ENI (Elastic Network Interface)
-- Your VPC exposes a network load balancer
-- You establish a private link between both VPCs
-
 ## VPC Endpoints
 
 Endpoints allows customers to private connect their VPC to supported AWS services powered by PrivateLink using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
@@ -174,6 +164,18 @@ There are two kinds of endpoints:
 
 - VPC Endpoint Gateway: S3 and DynamoDB
 - VPC Endpoint Interface: Rest of AWS services
+
+## AWS PrivateLink (VPC Endpoint Service)
+
+For an EC2 to connect to an S3 Bucket, need to create an IG and give EC2 full internet access which is not desirable.
+
+AWS PrivateLink is a technology that provides the most secure and scalable way to expose a public AWS service to other VPCs e.g. S3 Bucket. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
+
+PrivateLink is a technology for **interface endpoints**, not for a gateway endpoint.
+
+- Third party VPC exposes an ENI (Elastic Network Interface)
+- Your VPC exposes a network load balancer
+- You establish a private link between both VPCs
 
 ## AWS Direct Connect (DX)
 

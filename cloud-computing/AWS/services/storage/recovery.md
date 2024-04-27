@@ -15,7 +15,16 @@ With AWS Backup:
 - Backup plan i.e. frequency
 - Recovery point e.g. checkpoint
 
+### Locks
+
+- Vault lock: Prevents deletion on data in a single vault (has compliance and governance mode)
+- Legal hold: Locks resources across all backups
+
 ## Elastic Diaster Recovery (DRS)
+
+<img src="../../assets/edr.png">
+
+### Features
 
 - Fully managed disaster recovery service for physical, virtual and cloud-based servers
 - Customers can use AWS as a recovery site instead of investing in on-premises disaster recovery infrastructure

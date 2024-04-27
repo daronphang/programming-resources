@@ -42,13 +42,17 @@ func panic(interface{})   // arg passed will be printed when the program termina
 
 ## Recover
 
-Recover is a built-in function that regains control of a panicking goroutine. Recover is only useful inside deferred functions. During normal execution, a call to recover will return nil and has no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
+Recover is a built-in function that regains control of a panicking goroutine. Recover is **only useful inside deferred functions**. During normal execution, a call to recover will return nil and has no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
 
 If built-in function is called within a deferred function and function containing the defer statement is panicking, recover ends the current state of panic and returns the panic value. The function panicking does not continue where it left off but returns normally.
 
 If recover is called at any other time, it has no effect and returns nil. For instance, web server encountering an unexpected problem could close the connection rather than leave client hanging, or update to data structure was not complete.
 
 ```go
+package main
+
+import "fmt"
+
 func main() {
     f()
     fmt.Println("Returned normally from f.")
@@ -64,6 +68,31 @@ func f() {
     g(0)
     fmt.Println("Returned normally from g.")
 }
+
+func g(i int) {
+    if i > 3 {
+        fmt.Println("Panicking!")
+        panic(fmt.Sprintf("%v", i))
+    }
+    defer fmt.Println("Defer in g", i)
+    fmt.Println("Printing in g", i)
+    g(i + 1)
+}
+
+/*
+Calling g.
+Printing in g 0
+Printing in g 1
+Printing in g 2
+Printing in g 3
+Panicking!
+Defer in g 3
+Defer in g 2
+Defer in g 1
+Defer in g 0
+Recovered in f 4
+Returned normally from f.
+*/
 ```
 
 ```go

@@ -40,7 +40,7 @@ func main() {
 
 ### Using data within context
 
-Have the ability to access data stored inside a context. By adding data to a context, it can be passed from function to function. Data stored is immutable.
+Have the ability to access data stored inside a context. By adding data to a context, it can be passed from function to function. Data stored is immutable and hence, it is **thread safe**.
 
 To override a context's value, need to wrap the parent context.
 
