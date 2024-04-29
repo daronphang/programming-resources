@@ -6,6 +6,23 @@ Data is written to Kafka topics by producers and consumed from those topics by c
 
 Instead of using data packets, it uses a data stream to deliver messages which are suitable for both offline and online message consumption. An open-source platform developed by Apache written in Scala and Java. Kafka aims to provide solutions for large scale event-driven systems.
 
+## How Kafka works
+
+Kafka is a distributed system consisting of **servers** and **clients** that communicate via a high-performance TCP network protocol. It can be deployed on bare-metal hardware, virtual machines, and containers in on-premise as well as cloud environments.
+
+### Servers
+
+Kafka is run as a cluster of one or more servers that can span multiple datacenters or cloud regions. The servers can run as:
+
+- Brokers: Servers that form the storage layer
+- Kafka Connect: Continuously import/export data as event streams to integrate Kafka with third-party systems such as databases
+
+A Kafka cluster is highly scalable and fault-tolerant: if any of its servers fails, the other servers will take over their work to ensure continuous operations without any data loss.
+
+### Clients
+
+They allow you to write distributed applications and microservices that read, write, and process streams of events in parallel, at scale, and in a fault-tolerant manner even in the case of network problems or machine failures.
+
 ## Features
 
 ### Real-time data processing

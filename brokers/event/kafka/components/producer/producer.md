@@ -6,11 +6,11 @@ By default, the producer will balance messages over all partitions of a topic ev
 
 ### How it works
 
-1. Messages are produced to Kafka by creating a ProducerRecord, which must include the **topic and a value**. Optionally, can also specify a **key, partition, timestamp, and/or a collection of headers**.
-2. If no partition is specified, the data will be sent to a partitioner (automatically chooses a partition based on the ProducerRecord key).
-3. Once a partition is selected, the producer will know which topic and partition the record will go to, and the record wil be sent to the Kafka broker.
-4. If messages were successfully written to Kafka, it will return a RecordMetadata object with the topic, partition, and the offset of record within the partition.
-5. If the broker failed to write messages, it will return an error.
+1. Messages are produced to Kafka by creating a ProducerRecord, which must include the **topic and a value**. Optionally, can also specify a **key, partition, timestamp, and/or a collection of headers**
+2. If no partition is specified, the data will be sent to a partitioner (automatically chooses a partition based on the ProducerRecord key)
+3. Once a partition is selected, the producer will know which topic and partition the record will go to, and the record wil be sent to the Kafka broker
+4. If messages were successfully written to Kafka, it will return a RecordMetadata object with the topic, partition, and the offset of record within the partition
+5. If the broker failed to write messages, it will return an error
 
 <img src="../../assets/producer.png">
 

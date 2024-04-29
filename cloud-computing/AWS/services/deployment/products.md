@@ -52,11 +52,13 @@ CodeDeploy allows you to upgrade your EC2 instances, applications, and your on-p
 
 SSM helps you to manage your EC2 and on-premise systems at scale (hybrid). It allows you to get operational insights about the state of your infrastructure. Most important features include:
 
-- Patching automation for enhanced compliance
+- Patching automation for enhanced compliance (OS and applications)
 - Running commands across an entire fleet of servers
 - Storing parameter configuration with the SSM Parameter Store
 
 The SSM agent needs to be installed on the systems we want to control.
+
+<img src="../../assets/ssm.png">
 
 ### Application management
 
@@ -155,7 +157,7 @@ Select from SAR -> Create CloudFormation templates from SAM templates -> Deploy 
 
 ## AWS Amplify
 
-A complete solution for building web and mobile applications. Abstracts AWS services to simplify the process of deploying the applications.
+A complete solution for building serverless web and mobile applications. Abstracts AWS services to simplify the process of deploying the applications. On the other hand, AppRunner runs containerized services.
 
 ### Features
 
@@ -164,6 +166,7 @@ A complete solution for building web and mobile applications. Abstracts AWS serv
 - Amplify Studio is a visual development environment that integrates with Amplify CLI to manage backend services using graphical interface
 - Has pre-built React components for frontend usage
 - Support multiple platforms
+- Encrypts all data at-rest and in-transit automatically
 
 ## AWS Launch Wizard
 

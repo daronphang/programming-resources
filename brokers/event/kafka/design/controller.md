@@ -17,7 +17,7 @@ In the existing architecture, ZooKeeper has two important functions:
 1. Elect a controller
 2. Store the cluster metadata (registered brokers, configuration, topics, partitions, replicas)
 
-### Raft Architecture
+### Raft architecture
 
 Core idea behind the new controller design is that Kafka itself has a log-based architecture, where users represent state as a stream of events. The log establishes clear ordering between events and ensures that consumers always move along a single timeline.
 

@@ -1,10 +1,16 @@
 ## Validation
 
-### Required for integer
+### Required for integer/bool
 
-If an integer is required but is provided as 0, or if you require boolean values, Go will recognize it as nil. Two alternatives:
+When memory is allocated to store a value, either through a declaration or a call of make() or new(), and no explicit initialization is provided, the memory is given a default initialization:
 
-1. Change field type to pointer
+- false for booleans
+- 0 for integers
+- 0.0 for floats
+- "" for strings
+- nil for pointers, functions, interfaces, slices, channels, maps
+
+To validate if a field has been set for integers and booleans, can use pointers and their nil value:
 
 ```go
 type Example struct {
@@ -13,7 +19,7 @@ type Example struct {
 }
 ```
 
-2. Create custom validator
+### Custom validator
 
 ```go
 type Example struct {

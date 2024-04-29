@@ -162,7 +162,7 @@ Endpoints allows customers to private connect their VPC to supported AWS service
 
 There are two kinds of endpoints:
 
-- VPC Endpoint Gateway: S3 and DynamoDB
+- VPC Endpoint Gateway: S3 and DynamoDB (or if IP address is not available as it does not take IP address off from your subnet)
 - VPC Endpoint Interface: Rest of AWS services
 
 ## AWS PrivateLink (VPC Endpoint Service)

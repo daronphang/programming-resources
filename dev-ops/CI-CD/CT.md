@@ -24,7 +24,7 @@ Several reasons why it is important to run a comprehensive, automated test suite
 
 ### Production testing
 
-We should run the same suite of tests against production that we did agains the RC earlier on to verify:
+We should run the same suite of tests against production that we did against the RC earlier on to verify:
 
 - The working state of production according to our tests
 - The relevance of our tests, according to production

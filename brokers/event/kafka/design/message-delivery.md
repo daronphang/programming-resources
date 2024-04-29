@@ -1,4 +1,4 @@
-## Message delivery guarantees
+## Message delivery semantics
 
 The semantic guarantee Kafka provides between the broker and producers/consumers refer to how they agree to share messages:
 

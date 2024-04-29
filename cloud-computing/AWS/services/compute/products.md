@@ -56,6 +56,8 @@ If you choose to have more control by running and managing your containers on a 
 
 AWS EKS is a fully managed service that you can use to run Kubernetes on AWS. AWS manages the control plane by provisioning/maintaining the master nodes.
 
+EKS dumps control plane logs into CloudWatch logs natively.
+
 ### Why EKS?
 
 - Running and scaling Kubernetes can be difficult
@@ -70,6 +72,19 @@ EKS does not manage worker nodes, we can setup the worker nodes with:
 - Managed node group i.e. automates the provisioning and lifecycle management of EC2 nodes
 - Fargate
 
+### IAM
+
+For accessing AWS services within the cluster, you need to create a trust relationship between IAM and Kubernetes cluster. IAM policies are associated with Service Accounts or directly with Pods.
+
+The IAM roles that you can create are:
+
+- Cluster role
+- Node role
+- Pod execution role
+- Connector role (bridge between Kubernetes RBAC and AWS IAM, allowing Kubernetes Service Accounts to be mapped to IAM roles)
+
+For EKS cluster IAM roles, you can create permissions to allow the EKS control plane to create and manage AWS resources such as EC2 instances and Elastic Load Balancers for the Kubernetes nodes.
+
 ### EKS vs ECS
 
 Both are conceptually similar but with the following differences:
@@ -80,13 +95,19 @@ Both are conceptually similar but with the following differences:
 - Amazon ECS runs on AWS native technology (difficult to migrate to other cloud platforms), while EKS runs on Kubernetes
 - ECS is a simpler alternative to EKS which is more complex
 
+For secure access, use IAM roles for tasks/pods and assign the necessary permissions to the role. **AWS encourages using roles over embedding credentials anywhere**.
+
 ## EKS/ECS Anywhere
 
 Deploys EKS/ECS on-premise. Users can still interact with the EKS/ECS cluster dashboard provided by AWS. Useful for maintaining data sovereignty e.g. legal requirements, compliance regulation.
 
 ## Fargate
 
-AWS Fargate is a serverless compute engine for container (serverless architecture). It works with both ECS and EKS. When using Fargate, you don't need to provision or manage servers; it manages your server infrastructure for you by deploying EC2 instances for you. You only pay for what you use.
+AWS Fargate is a serverless compute engine for container (serverless architecture). Fargate is not a container deployment service but relies on other orchestrators such as EKS and ECS.
+
+When using Fargate, you don't need to provision or manage servers; it manages your server infrastructure for you by deploying EC2 instances for you. You only pay for what you use.
+
+<img src="../../assets/fargate.png">
 
 ## Amazon Elastic Container Registry (ECR)
 
@@ -113,6 +134,7 @@ With serverless computing, you can focus more on innovating new products and fea
 - Language support e.g. Go, NodeJS, Python
 - Fault tolerance
 - Automatic scaling
+- Environment variables are encrypted by default (decrypted with KMS)
 
 ### How Lambda Works
 
@@ -126,7 +148,7 @@ With serverless computing, you can focus more on innovating new products and fea
 
 AWS Batch is fully managed service that performs batch processing at any scale. Batch will **dynamically launch EC2 instances or Spot Instances**, and will provision the right amount of compute and memory.
 
-Batch jobs are defined as **Docker images** and run on ECS. Support compute environments including EC2 on demand, EC2 spot, or Fargate.
+AWS Batch orchestrates on EC2, ECS, and EKS (with and without Fargate). Batch jobs are defined as **Docker images**.
 
 ### Features
 
@@ -152,3 +174,9 @@ Amazon EMR is the industry-leading cloud big data platform for processing vast a
 - Simplify disaster recovery solutions
 - Migrate and scale rapidly to the cloud
 - Build next-generation applications
+
+## AWS Nitro Enclaves
+
+AWS Nitro Enclaves enables customers to create **isolated compute environments** to further protect and securely process highly sensitive data such as personally identifiable information (PII), healthcare, financial, and intellectual property data **within their Amazon EC2 instances**. Nitro Enclaves uses the same Nitro Hypervisor technology that provides CPU and memory isolation for EC2 instances.
+
+Nitro Enclaves provide a virtualized environment separate from the main EC2 instance, ensuring data processed inside the enclave cannot be accessed from the outside, even by the EC2 instance itself.
