@@ -71,7 +71,7 @@ In most cases, users will set up their applications that consume from a Kafka to
 
 However, data can still be distributed unevenly to different partitions if there is a hotkey or poor partitioning strategy, and repartitioning may be necessary in these cases. This would result in a **data skew** where one or more consumers will be overloaded with a disproportionate amount of data to process.
 
-Another reason ou may want to repartition your Kafka data is to align your data according to its context i.e. changing the partition key.
+Another reason you may want to repartition your Kafka data is to align your data according to its context i.e. changing the partition key.
 
 ## Changing partitions in a topic
 
@@ -81,7 +81,7 @@ While it is possible to change the number of partitions, however, doing so requi
 
 Kafka does not support decreasing the number of partitions as it would result in data loss.
 
-## Adding
+### Adding
 
 When you increase the number of partitions, the existing messages will remain in the same partitions as before, and only new messages will be considered for new partitions.
 

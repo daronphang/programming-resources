@@ -63,7 +63,8 @@ Use Kafka if you want to:
 - Process millions of requests per second
 - Perform data analytics with native stream processing capabilities
 - Implement a pull-based consumption approach
-- Build event-driven, low-latency, trigger-based applications
+- Build event-driven, low-latency, trigger-based applications (decoupling of systems)
+- Buffering large volumes of data continuously emitted from various sources e.g. IoT
 
 ### Activity tracking
 

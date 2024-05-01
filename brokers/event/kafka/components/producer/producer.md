@@ -1,8 +1,21 @@
 ## Producer
 
-Producers are clients that write events to Kafka. The producer specifies the topics they will write to and the producer controls how events are assigned to partitions within a topic. This can be done in a round-robin fashion for load balancing or it can be done according to some semantic partition function such as by the event key.
+Producers are clients that write events to Kafka. **The producer specifies the topics they will write to and the producer controls how events are assigned to partitions within a topic**.
+
+To help a producer do this, all Kafka nodes provide metadata that specifies the brokers that are alive, and the brokers that are leaders for the partitions of a topic. This enables a producer to appropriately route its requests.
+
+Load balancing can be done in a round-robin fashion for load balancing or it can be done according to some semantic partition function such as by the event key.
 
 By default, the producer will balance messages over all partitions of a topic evenly. In some cases, the producer will direct messages to specific partitions. This is typically done using the message key and a partitioner will generate a hash of the key and map it to a specific partition.
+
+### Batching
+
+Batching enables efficiency, and to enable batching the Kafka producer tries to accumulate data in memory, and sends larger batches in a single request. The batching can be configured:
+
+- By batch size (batch.size)
+- By wait time (linger.ms)
+
+This batching enable the accumulation of more bytes to send, and a few larger I/O operations on the servers. It also provides a mechanism to trade a small amount of additional latency for better throughput.
 
 ### How it works
 
