@@ -66,9 +66,10 @@ An ALB functions at **Layer 7** of the OSI and is ideal for load balancing **HTT
 - Routes traffic based on request data
 - Sends responses directly to client
 - Uses TLS offloading
-- Authenticates users (OIDC, LDAP, Active Directory)
+- Authenticates users (OIDC, LDAP, Active Directory, Amazon Cognito)
 - Secures traffic (prevents unapproved traffic)
 - Supports sticky sessions (stateful applications) by using HTTP cookie
+- Supports integration with Security Groups
 
 HTTP/HTTPS is terminated on ALB and hence, SSL certificates reside on the ALB.
 
@@ -81,8 +82,9 @@ A NLB is ideal for load balancing **TCP, UDP and TLS traffic** if you require **
 - Preserves client-side source IP address
 - Static/elastic IP support
 - DNS failover with Amazon Route 53
+- Security Groups for target EC2 instances
 
-NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
+When configuring ALB and NLB, **place the ALB behind the NLB to handle all incoming traffic**. NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
 
 When you create NLB, a network interface is created for each AZ. Each load balancer will use the network interface to get a static IP address. You can also associate one elastic IP address per subnet.
 
@@ -99,7 +101,11 @@ It provides a gateway for distributing traffic across multiple virtual appliance
 
 When GLB receives requests, it routes them to third-party appliances, which are then forwarded back to the GLB to perform a secondary routing to the EC2 instances (acts as a **middleware**). It can be used for **intrusion detection or deep packet inspection**.
 
+GLB uses GENEVE protocol which encapsulates and forwards traffic to the virtual appliances for processing.
+
 <img src="../assets/glb.png">
+
+<img src="../assets/glb2.png">
 
 ### Cross-zone load balancing
 

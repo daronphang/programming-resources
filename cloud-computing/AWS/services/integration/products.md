@@ -1,6 +1,6 @@
 ## Amazon API Gateway
 
-The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda. It will proxy the request to AWS Lambda. Supports RESTful APIs and WebSocket APIs.
+The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda, EC2, other AWS services, and other publicly accessible endpoints. Supports RESTful APIs and WebSocket APIs.
 
 ### REST vs HTTP APIs
 
@@ -37,7 +37,7 @@ REST APIs have additional features including:
 
 ## AWS AppFlow
 
-AWS ApFlow is a fully managed integration service that enables you to securely exchange data between software as a service application e.g. Salesforce, S3, RedShift. Also allows you to perform data mappings between source and destination.
+AWS ApFlow is a fully managed integration service that enables you to securely exchange data between SaaS applications e.g. Salesforce, S3, RedShift. Also allows you to perform data mappings between source and destination.
 
 ### Components
 
@@ -57,6 +57,8 @@ SNS is a pub/sub service. In SNS, subscribers can be web servers, email addresse
 Subscribers from AWS include Email, Lambda, SQS, HTTP, and Mobile. There is no message retention.
 
 You can batch messages per API request (1-10) to save cost. Each message has a maximum size of 256KB; if you want to publish larger payload, can store the data in S3 and publish the S3 link to SNS.
+
+SNS provides **Message Data Protection** to audit, mask, or block sensitive information in the messages.
 
 ### Topics
 
@@ -155,7 +157,7 @@ Similar to Step Functions, and should be used in general. However, you can use S
 
 ## AWS Managed Apache Airflow (MWAA)
 
-A managed instance of Apache Airflow. MWAA coordinates ETL jobs, and can be used to prepare ML data.
+MWAA is a fully managed service that provides a web interface and allows users to visualize and monitor Airflow workflows without setting up any additional tools. MWAA coordinates ETL jobs, and can be used to prepare ML data.
 
 ### Features
 

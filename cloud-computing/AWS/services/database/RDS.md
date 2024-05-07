@@ -41,8 +41,32 @@ You can scale the read workload of your DB by creating replicas (maximum of 15 r
 
 For multiple Availability Zones, you can create a **failover DB** in case of an outage. It is only active if the failover is triggered.
 
-### RDS Proxy
+## Security
 
-RDS Proxy is a fully managed database proxy for RDS instances that make your application more scalable and resilient. It establishes a pool of database connections and reuses it if a query is performed. By offloading query caching from the database, RDS Proxy can reduce database load and improve query response times, contributing to more stable overall performance.
+RDS can be integrated with IAM and hence, it is recommended that applications get IAM roles, not DB credentials.
+
+Amazon RDS for PostgreSQL, Oracle and MSSQL support both native and Kerberos authentication.
+
+RDS can use Secrets Manager with auto-rotation for managing database passwords; however there are limits.
+
+As RDS is built on top of EC2, the security knobs that you can turn for RDS are similar to EC2 instances e.g. security groups, subnets isolation, VPC isolation, NACLs, etc.
+
+RDS for MSSQL and Oracle supports **Transparent Data Encryption (TDE)** for encryption at rest.
+
+### Monitoring
+
+RDS has RDS **Performance Insights** for more details into slow queries and query times for SQL systems.
+
+For logs, you can use the RDS console to view and download the database logs directly.
+
+For events, you can use RDS **Event Subscriptions** to subscribe to specific RDS events and send notifications to an SNS topic.
+
+## RDS Proxy
+
+RDS Proxy is a fully managed database proxy for RDS instances that make your application more scalable and resilient i.e. it proxies database connections in front of databases as needed. It establishes a pool of database connections and reuses it if a query is performed.
+
+By offloading query caching from the database, RDS Proxy can reduce database load and improve query response times, contributing to more stable overall performance.
 
 RDS Proxy avoids the problem of oversubscribing and creating too many connections leading to higher memory and CPU utilization. Failover times can be reduced because the proxy automatically reconnects to a new database instance in the case of a failure.
+
+RDS Proxy has **advanced logging**, but it can slow down performance and is automatically turned off after 24 hours.

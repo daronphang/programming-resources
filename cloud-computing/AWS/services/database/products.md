@@ -8,6 +8,8 @@ The unit of measure is Aurora Capacity Unit (ACU), which equates to 2GB of memor
 
 Consider Amazon Aurora if your workloads require **high availability**. It replicates **six copies of your data across three Availability Zones**, and continuously backs up your data to Amazon S3.
 
+<img src="../../assets/aurora.png">
+
 ### Features
 
 - Purpose-built log structured distributed storage
@@ -33,6 +35,10 @@ A global database cluster comprises of:
 - Primary database cluster that accepts read/writes
 - Secondary clusters as read only
 
+### Monitoring
+
+Aurora supports CloudWatch, CloudTrail, Enhanced Monitoring and Performance Insights similarly with RDS. However, it also supports **Database Activity Streams**, which provides real-time stream of all the actions in RDS for audit and compliance.
+
 ## Amazon ElastiCache
 
 Amazon ElastiCache is a service that adds **caching layers** on top of your databases to help improve the read times of common requests. Supports two types of **in-memory** data stores: Redis and Memcached.
@@ -49,6 +55,10 @@ Amazon ElastiCache is a service that adds **caching layers** on top of your data
 - Multi-AZ deployments
 - Auto discovery
 - Data partitioning and sharding
+
+### Security
+
+IAM policies can be used to define permissions for ElastiCache API actions but **not for data operations** within Redis and Memcached.
 
 ## MemoryDB for Redis
 
@@ -90,6 +100,10 @@ With regular Redshift deployments (provisioned), you get a combination of CPU, R
 ### Spectrum
 
 Using Amazon Redshift Spectrum, you can efficiently query and retrieve structured and semi-structured data from files in Amazon S3 without having to load the data into Amazon Redshift tables. Redshift Spectrum queries employ massive parallelism to run very fast against large datasets.
+
+### Tokenization
+
+If tokenization is required as a method to protect sensitive data, you need to integrate with a third-party tokenization solution before it is loaded into the data warehouse. Redshift does not have natively built-in tokenization feature.
 
 ## Amazon DocumentDB
 
@@ -156,9 +170,18 @@ Time series data is a sequence of data points recorded over a time interval. It 
 
 Forked from Elasticsearch as it was changed from open-source to proprietary license. With OpenSearch ingestion pipelines, you don't need third party such as Logstash to help you push data to OpenSearch. Instead, you configure your producers to send data to OpenSearch ingestion.
 
+### Security flow
+
+1. Client sends request with IAM credentials
+2. Client connects to VPC
+3. Security groups permit request to reach domain
+4. IAM credentials are valid
+5. Access policy allows user to reach URI
+6. Fine-grained access control lets user perform action at index and document level
+
 ## Amazon Keyspaces
 
-Used for Apache Cassandra.
+Used for Apache Cassandra. Supports encryption at rest without any additional configurations.
 
 ### Features
 

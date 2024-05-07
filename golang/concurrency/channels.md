@@ -34,6 +34,7 @@ x := <-ch    // a receive expression in an assignment statement
 A sender can close a channel to indicate that no more values will be sent.
 
 ```go
+ch <- data
 v, ok := <-ch
 ```
 

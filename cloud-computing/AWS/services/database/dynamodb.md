@@ -13,6 +13,14 @@ DynamoDB provides **automatic scaling**. As the size grows/shrinks, it automatic
 - handles high traffic
 - Automatic sharding
 
+### Security
+
+DynamoDB integrates with IAM but only uses it for table and row access.
+
+### Monitoring
+
+DynamoDB supports CloudWatch and CloudTrail; but it also supports DynamoDB Streams which tracks adn emits events based on table changes i.e. similar to Aurora Activity Streams.
+
 ## Components
 
 ### Table
@@ -75,4 +83,10 @@ Captures data modification events (add, delete, modify) in near real-time in Dyn
 
 ## Amazon DynamoDB Accelerator
 
-Amazon DAX is an in-memory cache for DynamoDB to improve read performance. It maintains a cluster of nodes for high availability, replicating data across multiple nodes to handle node failures and provide automatic failover. It can also integrate with EC2 and Lambda.
+Amazon DAX is a distributed in-memory cache for DynamoDB to improve read performance. It maintains a cluster of nodes for high availability, replicating data across multiple nodes to handle node failures and provide automatic failover. It can also integrate with EC2 and Lambda.
+
+DAX maintains its independent group of IAM policies than services using DAX to access the database and hence, you need to be mindful. For example:
+
+- EC2 does not have access to DynamoDB table called 'books'
+- DAX has access to 'books'
+- If an EC2 uses DAX, it will have access to 'books'

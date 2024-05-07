@@ -56,7 +56,12 @@ if err != nil {
 
 ### Unmarshaling (decoding)
 
-By defining suitable GO struct, we can select which parts of the JSON input to decode and which to discard.
+By defining a suitable GO struct, we can select which parts of the JSON input to decode and which to discard.
+
+Between json.Decoder and json.Unmarshal, it depends on your input. The rule of thumb is:
+
+- Use json.Decoder if your data is coming from an io.Reader stream (e.g. HTTP requests), of you need to decode multiple values from a stream of data
+- Use json.Unmarshal if you already have the JSON data in memory
 
 ```go
 var titles []struct { Title string }
@@ -67,4 +72,8 @@ if err := json.Unmarshal(data, &titles); err != nil {
 }
 
 fmt.Println(titles)   // "[{hello}]"
+```
+
+```go
+err := json.NewDecoder(resp.Body).Decode(value)
 ```

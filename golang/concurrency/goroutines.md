@@ -55,6 +55,11 @@ case i := <-c:
 default:
     // receiving from c would block
 }
+
+// if have a single channel, range will suffice.
+for _ = range ch {
+  // do something
+}
 ```
 
 ```go
@@ -151,7 +156,7 @@ func main() {
 
 ### Waiting for goroutines
 
-Use sync.WaitGroup.
+The application terminates when the main goroutine exits. If you want to wait for goroutines, use sync.WaitGroup.
 
 ```go
 package main

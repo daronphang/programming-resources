@@ -1,4 +1,4 @@
-## OpenAPI
+## Swagger
 
 Machine-readable API descriptions are ubiquitous nowadays and OpenAPI is the most broadly adopted industry standard for documenting, describing, producing, consuming and visualizing RESTful APIs.
 
