@@ -10,4 +10,4 @@ Generic subdomains are the place to **try to apply outside design expertise**, s
 
 ### Generic doesn't mean reusable
 
-you should specifically **not concern yourself with the reusability of that code**. This would go against the basic motivation of distillation – that you should be applying as much of your effort to the core domain as possible and investing only as necessary in supporting generic subdomains.
+You should specifically **not concern yourself with the reusability of that code**. This would go against the basic motivation of distillation – that you should be applying as much of your effort to the core domain as possible and investing only as necessary in supporting generic subdomains.
