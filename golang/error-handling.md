@@ -1,4 +1,6 @@
-## Creating errors
+## Errors
+
+### Creating
 
 ```go
 // simple string-based error
@@ -8,7 +10,7 @@ err1 := errors.New("math: square root of negative number")
 err2 := fmt.Errorf("math: square root of negative number %g", x)
 ```
 
-## Custom errors
+### Custom errors
 
 ```go
 type SyntaxError struct {
@@ -19,6 +21,71 @@ type SyntaxError struct {
 func (e *SyntaxError) Error() string {
     return fmt.Sprintf("%d:%d: syntax error", e.Line, e.Col)
 }
+```
+
+### Wrapping and unwrapping
+
+Wrapping errors means adding more contextual information to the error which has been returned. For example, the additional information could be the type of error, the cause of the error, or the name of the function where the error is raised.
+
+Wrapping is very useful for debugging since you can precisely and quickly locate the source of the problem.
+
+```go
+var ErrorCritical = errors.New("critical error")
+// ...
+wrapped := fmt.Errorf("[functionName] internal error: %w", ErrorCritical)
+
+fmt.Println(errors.Unwrap(wrapped) == ErrorCritical) // true
+```
+
+```go
+package main
+import (
+    "errors"
+    "fmt"
+)
+
+var (
+    errUhOh  = errors.New("oh critical error!!")
+)
+
+func check(num int) error {
+    if num == 1 {
+        return fmt.Errorf("it's odd")
+    } else if num == 2 {
+        return errUhOh
+    }
+    return nil
+}
+
+func validations(num int) error{
+    err := check(num)
+    if err != nil {
+        return fmt.Errorf("run error: %w", err)
+    }
+    return nil
+}
+
+func main() {
+    for num := 1; num <= 5; num++ {
+        fmt.Printf("validating %d... ", num)
+        err := validations(num)
+        if err == errUhOh || errors.Unwrap(err) == errUhOh {
+            fmt.Println("oh no something has happened!")
+        } else if err != nil {
+            fmt.Println("some error is present...", err)
+        } else {
+            fmt.Println("valid number only...!")
+        }
+    }
+}
+
+/*
+validating 1... some error is present... run error: it's odd
+validating 2... some error is present... run error: oh critical error!!
+validating 3... valid number only...!
+validating 4... valid number only...!
+validating 5... valid number only...!
+*/
 ```
 
 ## Panic
