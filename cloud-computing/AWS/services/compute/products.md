@@ -24,6 +24,8 @@ ECS supports Docker containers. You can use API calls to launch and stop Docker-
 
 To prepare your application to run on Amazon ECS, you create a **task definition**. It is a text file in JSON format that describes one or more containers. A task definition is similar to a blueprint that describes the resources that you need to run a container i.e. CPU, memory, ports, images, storage, and networking information.
 
+You can group related tasks using **task groups**.
+
 ```json
 {
   "family": "webserver",
@@ -42,15 +44,35 @@ To prepare your application to run on Amazon ECS, you create a **task definition
 }
 ```
 
+### Task placement
+
+For tasks that use the EC2 launch type, Amazon ECS must determine where to place the task based on the requirements specified in the task definition, such as CPU and memory.
+
+Similarly, when you scale down the task count, Amazon ECS must determine which tasks to terminate. You can apply task placement strategies and constraints to customize how Amazon ECS places and terminates tasks.
+
+- Spread: Tasks are placed evenly based on the specified value
+- Binpack: Tasks are placed on container instances so as to leave the least amount of unused CPU or memory i.e. minimizes the number of container instances in use
+- Random: Tasks are placed randomly
+
 ### Services
 
 - Ensures that a certain number of tasks are running at all times
 - Restarts containers that have exited/crashed
 - If an EC2 instance fails, the Service will restart task on a working EC2 instance
 
-### Running containers in EC2 instances
+### Running containers in EC2 instances (self-managed)
 
 If you choose to have more control by running and managing your containers on a cluster of EC2 instances, you will need to install ECS container agent on your EC2 instances. An EC2 instance with the container agent is often called a **container instance**. The container agent is responsible for communicating to Amazon ECS service about cluster management details.
+
+You do not have automatic replacement of unhealthy nodes if you are using self-managed.
+
+### Managed scaling
+
+You can use the managed scaling feature to have Amazon ECS manage the scale-in and scale-out actions of the Auto Scaling group.
+
+### Capacity providers
+
+ECS capacity providers are a built-in feature that helps you launch EC2 capacity on fly. When application containers need to run, the capacity provider provisions as many EC2 hosts as necessary.
 
 ## Amazon Elastic Kubernetes Service (EKS)
 
@@ -113,6 +135,8 @@ When using Fargate, you don't need to provision or manage servers; it manages yo
 
 ECR is a private Docker Registry on AWS that is used to store your Docker images so that they can be run by ECS, EKS or Fargate.
 
+You can enable cross-region replication for replicating images across Regions. For redundancy, you can deploy ECR in multiple Regions.
+
 ### Features
 
 - Fully managed
@@ -135,6 +159,7 @@ With serverless computing, you can focus more on innovating new products and fea
 - Fault tolerance
 - Automatic scaling
 - Environment variables are encrypted by default (decrypted with KMS)
+- Dead letter queue for retry
 
 ### How Lambda Works
 
@@ -143,6 +168,20 @@ With serverless computing, you can focus more on innovating new products and fea
 3. An event is a JSON-formatted document that contains data for a Lambda function to process
 4. Lambda runs your code only when triggered
 5. You pay only for the compute time you use (number of times invoked and time taken to run)
+
+### Cold starts and latency
+
+When the Lambda service receives a request to run a function via the Lambda API, the service first prepares an execution environment:
+
+- Service downloads code for the function stored in S3 or ECR
+- Creates environment with the memory, runtime and configuration specified
+
+After the execution completes, the execution environment is frozen. To improve resource management and performance, the Lambda service retains the execution environment for a non-deterministic period of time.
+
+You can minimize cold starts by provisioning Lambda concurrency to improve performance consistency:
+
+- Execution environment set-up happens during the provisioning process, rather during execution
+- By keeping functions initialized, which includes initialization actions and code dependencies, there is no unnecessary initialization in subsequent invocations
 
 ## AWS Batch
 

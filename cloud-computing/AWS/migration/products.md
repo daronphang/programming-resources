@@ -39,6 +39,8 @@ DMS migrates databases (relational, nonrelational) to AWS in a quick, secure, an
 
 With AWS DMS, you move data between a source database and a target database. They both can be of the **same type (homogenous) or different types (heterogeneous)**. During migration, your source database remains operational.
 
+DMS has an advanced logging feature called **time travel logs**, which enables users to store, encrypt and access logs in S3, offering flexibility and improved troubleshooting.
+
 ### Use cases
 
 - Enabling developers to test applications against production data without affecting production users
@@ -49,7 +51,7 @@ With AWS DMS, you move data between a source database and a target database. The
 
 - Full load: Migrates data from source to target, creating tables as necessary
 - Full load with CDC: Performs full load while simultaneously capturing changes on the source
-- CDC only
+- Change Data Capture (CDC) only to capture and replicate ongoing changes from the source database
 
 ### Features
 
@@ -59,6 +61,8 @@ With AWS DMS, you move data between a source database and a target database. The
 ## AWS Elastic Disaster Recovery (DRS)
 
 AWS DRS minimizes data loss with fast, reliable recovery of on-premises and cloud-based applications using affordable storage, minimal compute, and point-in-time recovery.
+
+**Failback** is the process of reverting systems back to the primary environment after a failover test.
 
 ### Components
 
@@ -72,6 +76,7 @@ AWS DRS minimizes data loss with fast, reliable recovery of on-premises and clou
 - Automated DR drills
 - Faster recovery
 - Fail back to source after recovery
+- Automatically applies security groups from source EC2 instances to replicated instances
 
 ## AWS Mainframe Modernization
 
@@ -110,6 +115,10 @@ AWS DataSync facilitates fast and secure data transfers between on-premise/AWS s
 
 AWS Transfer Family is a secure transfer service that enables you to transfer files in/out of AWS services. Supports S3 or EFS. It is a full-managed and highly-available FTP server.
 
+FTP protocol is **not supported** as it is too inherently insecure.
+
+You can configure a custom security policy that aligns with the company's specific security requirements and industry regulations.
+
 ### Features
 
-- Support protocols including SSH-SFTP, FTPS, FTP, AS2
+- Support protocols including SSH-SFTP, FTPS, AS2 (Applicability Statement 2)

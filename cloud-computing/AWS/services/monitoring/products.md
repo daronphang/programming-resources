@@ -22,6 +22,10 @@ Developers can integrate their custom applications with CloudWatch CDK to send c
 
 By default, no logs from your EC2 instance are pushed to CloudWatch. You need to run a CloudWatch agent on EC2 to push the log files you want.
 
+### Canaries
+
+You can use CloudWatch Canaries to create scripted interactions and simulate user behavior to ensure that the applications are responsive and functioning correctly around the clock.
+
 ## Amazon Bridge (CloudWatch Events)
 
 Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
@@ -74,7 +78,11 @@ Open-source monitoring solution that stores data in a time-series database.
 - PromQL support
 - Cost efficient
 
-### AWS Grafana
+## AWS Grafana
+
+AWS Grafana does not use IAM roles for authorization; instead, use Amazon Identity Center or 3rd party Identity Providers for user authentication and authorization to control access to Grafana dashboards.
+
+For permissions, implement customer-managed permissions to provide fine-grained access control tailored to specific user groups and roles within the organization.
 
 ### Features
 
@@ -122,7 +130,7 @@ Inclusive of basic, with additional of:
 
 ## AWS Compute Optimizer
 
-A service that performs resource analysis for compute resources and identifies over-provisioned, under-provisioned, or already optimized.
+A service that performs resource analysis for compute resources and identifies over-provisioned, under-provisioned, or already optimized. It offers recommendations on instance types and sizes based on usage patterns, but **does not directly address security concerns**.
 
 ### Features
 

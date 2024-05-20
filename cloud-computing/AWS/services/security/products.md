@@ -73,7 +73,7 @@ Types of Master Keys:
 
 ## AWS CloudHSM (Hardware Security Module)
 
-With CloudHSM, all your keys are stored on one device, and it will be responsible for encrypting and decrypting your files. All keys are securely stored on the HSM and they never leave the device.
+With CloudHSM, all your keys are stored on one hardware device, and it will be responsible for encrypting and decrypting your files. All keys are securely stored on the HSM and they never leave the device. It does a more secure, single-tenancy, hardware-based cryptography.
 
 With HSM, you manage the keys and they are not available to AWS, although AWS manages the module.
 
@@ -241,6 +241,8 @@ Temporary AWS credentials.
 
 ## AWS Directory Service
 
+Directory Service is used for AD integration.
+
 ### Modes
 
 - **Simple**: Designed to run in isolation, does not integrate with others
@@ -250,6 +252,8 @@ Temporary AWS credentials.
 ## AWS Verified Permissions
 
 A scalable service for managing permissions in custom applications. helps developers build secure applications quickly by centralizing policy management. Operates on **zero trust principle**.
+
+Verified Permissions is about creating policy validation, testing, and access via **Cedar**. Also integrates with AWS Cognito.
 
 ### Features
 

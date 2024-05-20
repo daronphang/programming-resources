@@ -108,54 +108,6 @@ If you associate a subnet with a custom route table, the subnet will use it **in
 
 To allow public traffic from the internet to access your VPC, you attach an **internet gateway** to the VPC. An internet gateway is **highly available and scalable**.
 
-## Virtual Private Network (VPN)
-
-A virtual private gateway enables you to establish a virtual private network (VPN) connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**. However, it goes over the public internet (encrypted) and may have limited bandwidth, but relatively fast to setup.
-
-There are two types of VPN:
-
-- Site-to-Site VPN: VPN over public internet between on-premises DC and AWS
-- ClientVPN: OpenVPN connection from your computer into your VPC
-
-### Virtual Private Gateway (VPG)
-
-A VPG connects your VPC to another private network i.e. it is the component that allows protected internet traffic to enter into the VPC. However, it still uses the same traffic as public users.
-
-### How it works
-
-- The VPG is attached to the VPC (terminates VPN on the AWS side)
-- A customer gateway to the other private network is required on the other side (terminates VPN on the customer side)
-- A customer gateway device is a physical device or software application
-- When you have both gateways, you can then establish an encrypted virtual private network (VPN)
-
-### Routing
-
-You can configure statically by defining routes in the routing table. Alternatively, you can configure a dynamic routing protocol to exchange routes between VPG and CG using BGP.
-
-### Pricing
-
-Charged for:
-
-- Each available VPN connection per hour
-- Data transfer out from EC2 to the internet
-
-## VPC Peering
-
-VPC Peering is used to connect two VPCs privately using AWS network. With VPC Peering, you can setup a connection between VPCs in different Regions and AWS accounts.
-
-To setup routing, need to configure routing table in each VPC to the VPC Peering target.
-
-VPC Peering:
-
-- **Must not have overlapping CIDR**
-- VPC Peering connection is **not transitive** (must be established for each VPC that needs to communicate with one another, does not inherit existing peerings)
-
-### Pricing
-
-- No cost for VPC peering connection creation
-- Data transfer within an AV is free
-- Data transfer across AV incurs charges
-
 ## VPC Endpoints
 
 Endpoints allows customers to private connect their VPC to supported AWS services powered by PrivateLink using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
@@ -177,27 +129,6 @@ PrivateLink is a technology for **interface endpoints**, not for a gateway endpo
 - Your VPC exposes a network load balancer
 - You establish a private link between both VPCs
 
-## AWS Direct Connect (DX)
+## VPC Lattice
 
-AWS Direct Connect is a service that lets you to establish a dedicated **physical** private connection between your **data center** and a VPC which allows for high speed. As a different traffic is used as compared to public users, it helps you to reduce network costs and increase the amount of bandwidth that can travel through your network. However, it takes at least a month to establish.
-
-For secure connection, you can implement a VPN over Direct Connect to add an additional layer of network security for data in transit.
-
-### How it works
-
-Cross connect is a connection between a port on AWS router and customer router in the DX location.
-
-```
-On-premise network -> Customer Gateway -> Customer Router (located in DX) -> AWS Router -> VPN Gateway -> VPC
-```
-
-### Pricing
-
-- Port hours
-- Outbound data transfer
-
-## Transit Gateway
-
-A single gateway to provide transitive peering between thousands of VPC and on-premises, through hub-and-spoke (star) connection.
-
-You need to specify **one subnet from each AZ** to be used by the Transit Gateway to route traffic. Transit Gateway can also establish peering with other Transit Gateways in different Regions and AWS accounts.
+VPC Lattice is an overlay network. Services can discover and communicate without peering.

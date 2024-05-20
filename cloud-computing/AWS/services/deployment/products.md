@@ -14,6 +14,10 @@ AWS CloudFormation provisions your resources in a safe and **repeatable manner**
 - Resource tracking
 - Cost and efficiency
 
+### StackSets
+
+AWS CloudFormation StackSets extends the capability of stacks by enabling you to create, update, or delete stacks across multiple accounts and AWS Regions with a single operation.
+
 ## AWS Cloud Development Kit (CDK)
 
 CDK allows you to define your cloud infrastructure using a programming language instead of YAML i.e. JS, Python, Java, etc. The code is compiled into a CloudFormation template (JSON/YAML).
@@ -42,6 +46,10 @@ With AWS Elastic Beanstalk, you **only provide code and configuration settings**
 - Load balancing and auto-scaling
 - Application health monitoring (health agent pushes metrics to CloudWatch)
 
+### X-Ray daemon
+
+You can enable X-Ray daemon on EC2 instances to get insights into application performance and errors occurring in the production environment.
+
 ## AWS CodeDeploy
 
 CodeDeploy is a hybrid service (EC2, on-premise) that deploys your application automatically. Servers must be provisioned and configured ahead of time with the CodeDeploy agent.
@@ -64,28 +72,29 @@ The SSM agent needs to be installed on the systems we want to control.
 
 - Application Manager: Group applications and troubleshoot issues
 - Parameter Store: Store secrets and data for resources to access (ease for password rotation)
+- AppConfig: Manage, validate and deploy application configurations
 
 ### Change management
 
-- Change Manager
-- Automation
+- Change Manager: A flow tool that automates and govern IT changes
+- Automation: Streamline and automate repetitive tasks such as patching, restarting servers
 - Change Calendar
 - Maintenance Windows
 
 ### Node management
 
-- Compliance
-- Inventory
+- Compliance: Access and report on node compliance
+- Inventory: Collect and view software inventory
 - Session Manager
-- Run Command
+- Run Command: Executing tasks across multiple instances e.g. running scripts, applying patches, updating applications
 - State Manager
 - Patch Manager
-- Distributor
+- Distributor: Distributing and installing software packages to fleet of servers
 
 ### Operations management
 
 - Incident Manager
-- OpsCenter
+- OpsCenter: Centralize operational issue tracking and resolution, providing a unified view of incidents across AWS and hybrid environments
 
 ### Features
 
@@ -141,7 +150,7 @@ SAM helps to simplify developer's experience in getting out the infrastructure a
 
 ## Serverless Application Repository (SAR)
 
-Other people can search and discover serverless applications in the repository.
+Other people can search and discover serverless applications in the repository. You can utilize the built-in semantic versioning during deployment for rollback.
 
 ```
 Select from SAR -> Create CloudFormation templates from SAM templates -> Deploy resources e.g. API Gateway, Lambda
@@ -163,10 +172,19 @@ A complete solution for building serverless web and mobile applications. Abstrac
 
 - Rapid deployment
 - Fullstack deployment e.g. authentication, API, storage, hosting, analytics
-- Amplify Studio is a visual development environment that integrates with Amplify CLI to manage backend services using graphical interface
 - Has pre-built React components for frontend usage
 - Support multiple platforms
 - Encrypts all data at-rest and in-transit automatically
+
+### Amplify Studio
+
+Amplify Studio is a visual development environment that integrates with Amplify CLI to manage backend services using graphical interface.
+
+### DataStore
+
+Amplify DataStore provides a persistent on-device storage repository for you to write, read, and observe changes to data if you are online or offline, and seamlessly sync to the cloud as well as across devices.
+
+You can use Amplify DataStore for synchronized offline and online data storage to provide a consistent API layer. This helps to ensure that Amplify-generated APIs remain loosely coupled with the frontend, facilitating independent scalability and updates.
 
 ## AWS Launch Wizard
 
@@ -205,7 +223,7 @@ You can group products together in portfolios, and give users access to portfoli
 
 ## AWS License Manager
 
-A service that helps you manage software licenses across verious vendors including Microsoft, SAP, Oracle, etc.
+A service that helps you manage software licenses across various vendors including Microsoft, SAP, Oracle, etc.
 
 ### Features
 
@@ -237,6 +255,7 @@ AWS Proton is a deployment workflow tool for modern applications that helps plat
 - Proton service components
 - Multi-account support
 - Template management
+- Built-in security controls for ensuring environment and service templates are configured securely
 
 ## AWS Resource Group and Tag Manager
 

@@ -1,44 +1,3 @@
-## Amazon Aurora
-
-Amazon Aurora is an enterprise-class relational database. It is compatible with MySQL and PostgreSQL relational databases. It is up to **five times faster than standard MySQL databases** and up to **three times faster than standard PostgreSQL databases**.
-
-Amazon Aurora helps to reduce your database costs by reducing unnecessary I/O operations, while ensuring that your database resources remain reliable and available.
-
-The unit of measure is Aurora Capacity Unit (ACU), which equates to 2GB of memory, corresponding CPU, and networking.
-
-Consider Amazon Aurora if your workloads require **high availability**. It replicates **six copies of your data across three Availability Zones**, and continuously backs up your data to Amazon S3.
-
-<img src="../../assets/aurora.png">
-
-### Features
-
-- Purpose-built log structured distributed storage
-- Storage volume is striped across storage nodes and multiple AZs
-- Storage nodes with locally attached SSDs
-- Continuous backup to Amazon S3
-- Automatic scaling of storage without any management overhead or downtime
-- Allows you to create up to 15 Aurora replicas across 3 AZs
-- Offers fast database cloning for staging/development purposes without impacting the performance of the production database
-
-### Provisioned vs Serverless
-
-Provisioned has fixed capacity, useful for planned capacity, and has access to Aurora Global.
-
-Serverless provides on-demand scaling, useful for variable/unpredictable workloads, and has access to Aurora Global.
-
-### Global cluster
-
-When you use Aurora Global database clusters, it acts as a container for several database clusters each located in different Regions.
-
-A global database cluster comprises of:
-
-- Primary database cluster that accepts read/writes
-- Secondary clusters as read only
-
-### Monitoring
-
-Aurora supports CloudWatch, CloudTrail, Enhanced Monitoring and Performance Insights similarly with RDS. However, it also supports **Database Activity Streams**, which provides real-time stream of all the actions in RDS for audit and compliance.
-
 ## Amazon ElastiCache
 
 Amazon ElastiCache is a service that adds **caching layers** on top of your databases to help improve the read times of common requests. Supports two types of **in-memory** data stores: Redis and Memcached.
@@ -74,6 +33,8 @@ Instead of having to manage two separate databases (RDS and Redis), you can simp
 Amazon Redshift is a fully managed **data warehousing** service that you can use for big data analytics (based on PostgreSQL). It offers the ability to collect data from many sources and helps you to understand relationships and trends across your data.
 
 Traditional databases handle structured data at a granular level, while data warehouses are designed to handle structured data at an aggregate level.
+
+RedShift's fault-tolerant design includes automatic and synchronous data replication to three-different nodes within a cluster and continuous backups to S3.
 
 RedShift has two node types:
 

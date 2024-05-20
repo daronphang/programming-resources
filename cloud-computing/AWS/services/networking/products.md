@@ -1,6 +1,6 @@
 ## Route 53
 
-AWS Route 53 is a DNS (Domain Name System) **global** web service i.e. similar to GoDaddy. It gives developers and businesses a reliable way to route end users to internet applications hosted in AWS. It connects user requests to infrastructure running in AWS (EC2, load balancers, etc). It can also route users to infrastructure outside of AWS.
+AWS Route 53 is a DNS (Domain Name System) **global** load-balancing service i.e. similar to GoDaddy. It gives developers and businesses a reliable way to route end users to internet applications hosted in AWS. It connects user requests to infrastructure running in AWS (EC2, load balancers, etc). It can also route users to infrastructure outside of AWS.
 
 Another feature of Route 53 is the ability to manage the DNS records for domain names. You can register new domain names directly in Route 53. You can also transfer DNS records for existing domain names by other domain registrars. This enables you to manage all of your domain names within a single location.
 
@@ -37,6 +37,16 @@ In AWS the most common records are:
 2. AWS Route 53 uses DNS resolution to identify the IP address, and is sent back to the customer
 3. Customer's request is sent to the nearest edge location through AWS CloudFront
 4. AWS CloudFront connects to the application's Load Balancer, which sends incoming packets to an EC2 instance
+
+### Route 53 vs ELBs
+
+- ELBs are intended to load balance across EC2 instances in a single Region
+- DNS load-balancing (Route 53) is intended to balance traffic across Regions
+- Both Route53 and ELB perform health check and route traffic to only healthy resources
+- Route 53 only change the address that your clients' requests resolve to
+- ELB actually reroutes traffic
+- Autoscaling can be configured automatically for ELB
+- Route 53 have to either manually replace the old failed instance with the new one in the route as DNS is cached; unhealthy targets will still be in the visitors cache for some time
 
 ## AWS Global Accelerator
 

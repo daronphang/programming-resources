@@ -19,26 +19,6 @@ With auto scaling, you define the **minimum capacity**, **desired capacity** (de
 - High reliability of resources
 - High flexibility of resources
 
-## Scaling plans
-
-- **Manual scaling**: Helps in managing the task of building or terminating EC2 instances on its own
-- **Scaling based on schedule**: Developers can predict future traffic and schedule the time for executing AWS autoscaling
-- **Scaling based on demand**: Scaling lets developers define required scaling in response to client demand
-- **Maintaining the current instance-level**: Developers configure an Auto Scaling group for managing running instances
-
-## Auto-scaling group
-
-- Target tracking scaling e.g. CPU utilization, network, etc.
-- Step scaling based on range e.g. add 2 instances if above 60%, 3 instances above 70%
-- Simple scaling by setting CloudWatch alarms of fixed value
-
-### Integration
-
-- Elastic load balancer
-- Amazon CloudWatch
-- SNS
-- EC2 instance
-
 ## Components
 
 - Launch template: configuration template for EC2 instances
@@ -57,3 +37,30 @@ Features include:
 - API support
 - Instance termination protection
 - Pass user data at runtime
+
+### Scaling policies
+
+- **Manual scaling**: Helps in managing the task of building or terminating EC2 instances on its own
+- **Schedule scaling**: Developers can predict future traffic and schedule the time for executing AWS autoscaling
+- **Dynamic scaling**: Scaling lets developers define required scaling in response to client demand
+- **Predictive scaling**: Uses machine learning algorithms and historical data to forecast future demand and proactively adjust the number of EC2 instances in your ASG
+- **Maintaining the current instance-level**: Developers configure an ASG for managing running instances
+
+### Dynamic scaling
+
+You can use scaling policies to increase or decrease the number of instances in your group dynamically to meet changing conditions. When the scaling policy is in effect, the Auto Scaling group adjusts the desired capacity of the group, between the minimum and maximum capacity values that you specify, and launches or terminates the instances as needed.
+
+- **Simple scaling** by setting CloudWatch alarms of fixed value
+- **Step scaling** based on range e.g. add 2 instances if above 60%, 3 instances above 70%
+- **Target tracking scaling (recommended)** e.g. CPU utilization, network, etc.
+
+## Auto-scaling group (ASG)
+
+An Auto Scaling group contains a collection of EC2 instances that are treated as a logical grouping for the purposes of automatic scaling and management.
+
+### Integration
+
+- Elastic load balancer
+- Amazon CloudWatch
+- SNS
+- EC2 instance

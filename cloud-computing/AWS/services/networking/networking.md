@@ -85,11 +85,15 @@ Only one IGW can be attached per VPC. Can also be configured for **egress-only**
 4. Configure default route i.e. if a packet comes in does not match any route (0.0.0.0/0), it will automatically point to the IGW
 5. Associate subnet with route table
 
+## Egress-Only Internet Gateway
+
+Similar to an IGW but for IPv6-enabled applications.
+
 ## NAT (Network Address Translation) devices
 
-A NAT device can be used to enable instances in a private subnet to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet. Nonetheless, an **IGW is still required** for access to the internet.
+A NAT device can be used to enable instances in a private subnet (or private IP networks) to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet. NAT translates private IP addresses in an internal network to a public IP address before packets are sent to an external network. An **IGW is still required** for access to the internet.
 
-AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances.
+AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances. A NAT instance is an EC2 instance that is converted into a NAT server.
 
 ## NAT gateway
 

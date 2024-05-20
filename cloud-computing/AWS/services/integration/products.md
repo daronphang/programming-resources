@@ -184,6 +184,8 @@ Have the ability to perform ETL before streaming the data to its output.
 
 ## AWS Managed service for Kafka (MSK)
 
+Broker logs can be exported to S3.
+
 ### Features
 
 - Server/Serverless
@@ -206,11 +208,11 @@ AWS Glue is a serverless ETL service that is useful to prepare and transform dat
 
 ## AWS Elastic MapReduce (EMR)
 
-EMR runs in managed cluster and can be used to process data at scale for analytics purposes.
+EMR is a data processing and analysis tool. EMR runs in managed cluster and can be used to process data at scale for analytics purposes. Relies on immutable infrastructure i.e. if you need to patch a server, shut down and restart with the patch.
 
 ### Cluster
 
-A cluster in a collection of EC2 instances/nodes with different responsibilities:
+EMR uses a cluster of EC2 instances with different responsibilities:
 
 - Primary: Manages the cluster and coordinates the distribution of data and tasks among other nodes
 - Core: Stores and crunches data

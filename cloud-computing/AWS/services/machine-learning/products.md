@@ -13,6 +13,8 @@ Amazon Sagemaker is a cloud-based machine-learning platform that allows users to
 - Labeling
 - Training
 
+To enable inter-container traffic encryption, set EnableInterContainerTrafficEncryption parameter to true when creating training jobs.
+
 ### Workflow
 
 1. Data ingestion

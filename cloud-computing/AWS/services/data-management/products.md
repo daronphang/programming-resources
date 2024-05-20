@@ -6,6 +6,8 @@ Lake Formation is an aggregator for disparate data sources into a standardized d
 
 Data can be stored in its original format (csv), Parquet or Orc (flat files optimized for data analytics).
 
+Lake Formation has built-in audit logging, and supports cell and row-level security through granular access policies. It also allows the use of resource tags to control access i.e. access policies are applied based on tags.
+
 ### Features
 
 - Simplified data lake creation
