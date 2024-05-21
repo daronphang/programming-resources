@@ -11,6 +11,8 @@ This feature enables you to automatically add or remove EC2 instances in respons
 
 With auto scaling, you define the **minimum capacity**, **desired capacity** (defaults to your minimum capacity), and **maximum capacity**.
 
+**Autoscaling usually crosses AZs by default**. However, if cross-zone LB is not enabled, you may see uneven connection numbers.
+
 ### Benefits
 
 - Better fault tolerance

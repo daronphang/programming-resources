@@ -75,7 +75,9 @@ Types of Master Keys:
 
 With CloudHSM, all your keys are stored on one hardware device, and it will be responsible for encrypting and decrypting your files. All keys are securely stored on the HSM and they never leave the device. It does a more secure, single-tenancy, hardware-based cryptography.
 
-With HSM, you manage the keys and they are not available to AWS, although AWS manages the module.
+With CloudHSM, you manage the keys and they are not available to AWS, although AWS manages the module.
+
+CloudHSM allows deploying HSM clusters across AZs with automatic failover to provide high availability and fault tolerance.
 
 ### Features
 
@@ -101,6 +103,10 @@ Charges are based on the number of web ACLs you create, and the number of rules 
 - API security
 - Protection for serverless applications
 - Application layer firewall
+
+## AWS Firewall Manager
+
+AWS Firewall Manager allows centrally defining and enforcing firewall rules across accounts and VPCs for consistency.
 
 ## Amazon Inspector
 

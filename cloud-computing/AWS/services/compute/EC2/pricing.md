@@ -20,12 +20,13 @@ For payment options, you can either pay with:
 - Partial upfront
 - All upfront (most discount )
 
-There are two types of Reserved instances:
+There are three types of Reserved instances:
 
-- Standard Reserved instances
-- Convertible Reserved instances
+- Standard reserved instances
+- Convertible reserved instances
+- Scheduled reserved instances
 
-Standard Reserved instance is a good fit if you know the EC2 instance type and size you need for your steady-state applications. You are required to provide:
+Standard reserved instance is a good fit if you know the EC2 instance type and size you need for your steady-state applications. You are required to provide:
 
 - Instance type and size i.e. m5.xlarge
 - Platform OS i.e. Windows, Linux

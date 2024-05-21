@@ -20,7 +20,11 @@ Monitoring is an important part of load balancers as they should route traffic t
 
 ### Cross-zone load balancing
 
-If enabled, allows you to send traffic to EC2 instances in other availability zones.
+Load balancer nodes can only route traffic to instances in the same AZ by default. Cross-zone load balancer can help to equally distribute traffic across all instances in all AZs.
+
+### Access logs
+
+You can use **access logs** to capture detailed information about requests sent to the ALB. They can then be stored in S3.
 
 ## Algorithms
 
@@ -106,10 +110,6 @@ GLB uses GENEVE protocol which encapsulates and forwards traffic to the virtual 
 <img src="../assets/glb.png">
 
 <img src="../assets/glb2.png">
-
-### Cross-zone load balancing
-
-Load balancer nodes can only route traffic to instances in the same AZ by default. Cross-zone load balancer can help to equally distribute traffic across all instances in all AZs.
 
 ## Deployment modes
 

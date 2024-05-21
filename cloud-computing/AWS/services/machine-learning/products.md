@@ -31,7 +31,7 @@ To enable inter-container traffic encryption, set EnableInterContainerTrafficEnc
 - Automatic model tuning
 - SageMaker Studio IDE
 
-## Amazon Augmented AI
+## Amazon Augmented AI (A2I)
 
 Amazon Augmented AI provides built-in human review workflows for common machine learning use cases, such as content moderation and text extraction from documents.
 

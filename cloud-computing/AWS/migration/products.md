@@ -39,6 +39,8 @@ DMS migrates databases (relational, nonrelational) to AWS in a quick, secure, an
 
 With AWS DMS, you move data between a source database and a target database. They both can be of the **same type (homogenous) or different types (heterogeneous)**. During migration, your source database remains operational.
 
+DMS has a single point of failure in the replication instance. Nonetheless, you can use multi-AZ replication instance for redundant replication servers. However, it does not have automatic failover i.e. you have to restart the instance if it fails.
+
 DMS has an advanced logging feature called **time travel logs**, which enables users to store, encrypt and access logs in S3, offering flexibility and improved troubleshooting.
 
 ### Use cases
@@ -58,9 +60,11 @@ DMS has an advanced logging feature called **time travel logs**, which enables u
 - Schema migration
 - Continuous data replication
 
-## AWS Elastic Disaster Recovery (DRS)
+## AWS Elastic Disaster Recovery (EDR)
 
-AWS DRS minimizes data loss with fast, reliable recovery of on-premises and cloud-based applications using affordable storage, minimal compute, and point-in-time recovery.
+AWS EDR minimizes data loss with fast, reliable recovery of on-premises and cloud-based applications using affordable storage, minimal compute, and point-in-time recovery.
+
+EDR uses block replication to replicate server volumes incrementally at the block level.
 
 **Failback** is the process of reverting systems back to the primary environment after a failover test.
 
@@ -111,11 +115,9 @@ AWS DataSync facilitates fast and secure data transfers between on-premise/AWS s
 - Security and encryption (at-rest and transit)
 - Monitoring and logging
 
-## AWS Transfer Family (FTP/AS2)
+## AWS Transfer Family
 
-AWS Transfer Family is a secure transfer service that enables you to transfer files in/out of AWS services. Supports S3 or EFS. It is a full-managed and highly-available FTP server.
-
-FTP protocol is **not supported** as it is too inherently insecure.
+AWS Transfer Family is a full-managed and highly-available FTP server that securely scales your recurring business-to-business file transfers to AWS Storage services using SFTP, FTPS, FTP, and AS2 protocols. Supports S3 or EFS.
 
 You can configure a custom security policy that aligns with the company's specific security requirements and industry regulations.
 

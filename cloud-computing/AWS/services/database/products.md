@@ -2,18 +2,25 @@
 
 Amazon ElastiCache is a service that adds **caching layers** on top of your databases to help improve the read times of common requests. Supports two types of **in-memory** data stores: Redis and Memcached.
 
+ElastiCache events provide notifications for cache cluster status changes, SNS topic modifications, and parameter group changes.
+
 ### Redis
 
 - Read replicas
 - Data persistence
 - Encryption at rest
 - Pub/sub message system
+- Multi-AZ deployments
+- Complex data objects e.g. hashes, lists, sets, etc.
 
 ### Memcached
 
-- Multi-AZ deployments
+- Purely a caching solution and does not provide persistence
+- Multi-AZ not supported
+- Simple key/value storage
 - Auto discovery
 - Data partitioning and sharding
+- Does not inherently provide redundancy i.e. replication; it is typically achieved at the application level by implementing a distributed caching strategy
 
 ### Security
 
@@ -21,11 +28,12 @@ IAM policies can be used to define permissions for ElastiCache API actions but *
 
 ## MemoryDB for Redis
 
-Instead of having to manage two separate databases (RDS and Redis), you can simplify into one using MemoryDB. Redis will be your primary database instead of just using it as a cache.
+Instead of having to manage two separate databases (RDS and Redis), you can simplify into one using MemoryDB i.e. an in-memory persistent data store. Redis will be your primary database instead of just using it as a cache.
 
 ### Features
 
 - Designed for extremely high throughput and low latency workloads
+- Synchronous replication across multiple AZ
 - Strong consistency for primary nodes and guaranteed eventual consistency for replica nodes
 
 ## RedShift
@@ -78,6 +86,8 @@ Amazon DocumentDB is a document database service that supports MongoDB workloads
 - Crash recovery
 - Write durability
 - Read preferences e.g. primary, primary-preferred, secondary, nearest
+- Data is stored on a distributed file system that spans across multiple AZs
+- Automatic replication of data 6 times across 3 AZs and continuous backup to S3
 
 ## Amazon Neptune
 
@@ -107,6 +117,10 @@ Compared to Managed Blockchain, **QLDB does not have the concept of decentraliza
 - Lack of consensus mechanisms
 - Do not provide the level of privacy and confidentiality required
 
+### Features
+
+- Automatic replication of data across three AZs
+
 ## Amazon Managed Blockchain
 
 Amazon Managed Blockchain is a service that you use to create and manage blockchain networks with open-source frameworks.
@@ -126,6 +140,7 @@ Time series data is a sequence of data points recorded over a time interval. It 
 - built-in analytics
 - Custom query engine
 - Flexible data model
+- Automatic replication of data across three AZs
 
 ## AWS OpenSearch
 
@@ -142,12 +157,14 @@ Forked from Elasticsearch as it was changed from open-source to proprietary lice
 
 ## Amazon Keyspaces
 
-Used for Apache Cassandra. Supports encryption at rest without any additional configurations.
+A highly-managed service used for Apache Cassandra. Supports encryption at rest without any additional configurations.
 
 ### Features
 
+- Leverages Cassandra architecture, which replicates data to multiple nodes according to the configured replication factor
 - Compatible with Cassandra Query Language (CQL)
 - Fully managed Time-to-Live (TTL)
+- Replicates writes synchronously to replica nodes before acknowledging the write
 - Multi-region replication performed through asynchronous replication to propagate the writes across Regions
 - Active-active configuration i.e. each Region handles read/write
 - Consistency and conflict resolution

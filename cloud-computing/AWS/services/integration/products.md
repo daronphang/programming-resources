@@ -1,6 +1,6 @@
 ## Amazon API Gateway
 
-The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda, EC2, other AWS services, and other publicly accessible endpoints. Supports RESTful APIs and WebSocket APIs.
+The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda, EC2, other AWS services, and other publicly accessible endpoints. Supports RESTful APIs (stateless) and WebSocket APIs (stateful).
 
 ### REST vs HTTP APIs
 
@@ -49,8 +49,9 @@ AWS ApFlow is a fully managed integration service that enables you to securely e
 - Speed and automation to integrate applications
 - Security and privacy
 - Scalability
+- Built-in redundancy with replication across AZs
 
-## SNS (Amazon Simple Notification Service)
+## Amazon Simple Notification Service (SNS)
 
 SNS is a pub/sub service. In SNS, subscribers can be web servers, email addresses, AWS Lambda functions, etc. Each subscriber to the topic will get **all the messages**.
 
@@ -65,9 +66,13 @@ SNS provides **Message Data Protection** to audit, mask, or block sensitive info
 - Standard: Best-effort ordering and may contain duplication (unlimited messages per second)
 - FIFO: Order is guaranteed (300 messages per second)
 
+### Features
+
+- Supports DLQ for items that were undeliverable
+
 ## SQS (Simple Queue Service)
 
-SQS is a message queuing service. Using SQS, you can send, store, and receive messages between software components, without losing messages or requiring other services to be available.
+SQS is a highly-managed message queuing service. Using SQS, you can send, store, and receive messages between software components, without losing messages or requiring other services to be available.
 
 In SQS, an application sends messages into the queue. A user or service retrieves a message from the queue, processes it, and then deletes it from the queue. Messages are kept up to 14 days.
 
@@ -81,12 +86,18 @@ In SQS, an application sends messages into the queue. A user or service retrieve
 - Message retention
 - Message prioritization
 - Dead Letter Queue (DLQ)
+- Locking mechanism with visibility timeout to prevent double-processing of messages
 
 ## Amazon MQ
 
 SQS and SNS are cloud-native services and are using proprietary protocols from AWS. However, traditional applications running from on-premises may use open-source protocols including MQTT, AMQP, STOMP, Openwire, WSS, etc.
 
 When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, you can use Amazon MQ. Amazon MQ is a managed **message broker service for RabbitMQ and ActiveMQ**. MQ has both queue feature (SQS) and topic features (SNS). However, SQS and SNS scales better and are more integrated with the cloud.
+
+### Features
+
+- Achieves reliability through Active/Passive setups for multiple machines called **mirror queues**
+- Message eviction strategies when storage is constrained i.e. FIFO, smallest first, largest first
 
 ## AWS EventBridge
 
@@ -123,10 +134,14 @@ Utilizes AWS infrastructure to reliably send out emails.
 - Email templates
 - Mailbox simulator
 - Dedicated IP pool allows the firm to manage its own email sending reputation i.e. ensure emails are not marked as spam
+- SES Virtual Deliverability Manager to simulate sending
+- SES mailbox simulator to view email renderings across email providers
 
 ## AWS Step Functions
 
 Step functions help to solve complex workflows using Saga Pattern. Step Function ensures seamless and reliable order fulfillment.
+
+Under the hood, Step Functions is a state machine, and its primary abstractions are called states. A Step Functions configuration constitutes a map of all possible steps and the transitions between them.
 
 ### Features
 
@@ -146,7 +161,9 @@ Step functions help to solve complex workflows using Saga Pattern. Step Function
 
 ## AWS Simple Workflow Service (SWS)
 
-Similar to Step Functions, and should be used in general. However, you can use SWS if you require external signals to intervene in your processes e.g. launch child processes from a parent and return a result.
+SWS works similar to Step Functions but isn't serverless/unmanaged; hence, AZs must be taken into account. Nonetheless, it should be used in general.
+
+You can use SWS if you require external signals to intervene in your processes e.g. launch child processes from a parent and return a result.
 
 ### Features
 
@@ -177,6 +194,7 @@ Kinesis is a real-time big data streaming service to collect, process and analyz
 - Scalability by using shards
 - Data durability and availability (replicated across AZ)
 - Custom application building
+- Data retention of up to 365 days
 
 ### Data Firehose
 
@@ -193,10 +211,13 @@ Broker logs can be exported to S3.
 - Scalability and performance
 - Security and compliance
 - Reliability and high availability
+- Cluster-to-cluster asynchronous replication across Regions
 
 ## AWS Glue
 
 AWS Glue is a serverless ETL service that is useful to prepare and transform data for analytics.
+
+For managing costs, you can allocate Data Processing Units (DPUs) for optimal scaling.
 
 ### Features
 
@@ -225,6 +246,7 @@ EMR uses a cluster of EC2 instances with different responsibilities:
 - Cost-effective processing e.g. spot pricing
 - Integrates with other AWS services
 - Security and compliance
+- EMRFS to reliably access S3 from EMR clusters
 
 ## AWS Glue Databrew
 
