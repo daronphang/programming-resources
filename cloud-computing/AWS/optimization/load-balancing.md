@@ -4,7 +4,7 @@ ELB is a service that can distribute incoming application traffic across EC2 ins
 
 - **Hybrid mode**: As ELB can load balance to IP addresses, it can work in hybrid mode i.e. load balances to on-premises servers
 - **High availability**: ELB is highly available
-- **Auto-scaling**: ELB automatically scales to meet the demand of the incoming traffic.
+- **Auto-scaling**: ELB automatically scales to meet the demand of the incoming traffic (by attaching an ASG)
 
 ### Benefits
 
@@ -69,13 +69,11 @@ An ALB functions at **Layer 7** of the OSI and is ideal for load balancing **HTT
 
 - Routes traffic based on request data
 - Sends responses directly to client
-- Uses TLS offloading
+- Uses TLS offloading (HTTP/HTTPS is terminated on ALB instead of EC2 and hence, SSL certificates reside on the ALB)
 - Authenticates users (OIDC, LDAP, Active Directory, Amazon Cognito)
 - Secures traffic (prevents unapproved traffic)
 - Supports sticky sessions (stateful applications) by using HTTP cookie
 - Supports integration with Security Groups
-
-HTTP/HTTPS is terminated on ALB and hence, SSL certificates reside on the ALB.
 
 ### Network Load Balancer (NLB)
 
@@ -88,9 +86,9 @@ A NLB is ideal for load balancing **TCP, UDP and TLS traffic** if you require **
 - DNS failover with Amazon Route 53
 - Security Groups for target EC2 instances
 
-When configuring ALB and NLB, **place the ALB behind the NLB to handle all incoming traffic**. NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
+When you create NLB, a network interface is created for each AZ. Each load balancer node will use the network interface to get a static IPv4 address. You can also associate one elastic IP address per subnet.
 
-When you create NLB, a network interface is created for each AZ. Each load balancer will use the network interface to get a static IP address. You can also associate one elastic IP address per subnet.
+AWS has launched ALB-type target groups for N:B. With this launch, you can register ALB as a target of NLB to forward traffic from NLB to ALB without needing to actively manage ALB IP address changes through Lambda. When configuring ALB and NLB, **place the ALB behind the NLB to handle all incoming traffic**. NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
 
 ### Gateway Load Balancer (GLB)
 

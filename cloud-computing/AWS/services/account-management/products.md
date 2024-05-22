@@ -21,3 +21,18 @@ Another benefit is the ability to share bulk discount pricing, Savings Plans, an
 An easy way to setup and govern a secure and compliant multi-account AWS environment based on best practices. Helps to automate/streamline the process of creating a new account with the necessary permissions and guardrails.
 
 Runs on top of AWS Organizations i.e. automatically sets up AWS Organizations to organize accounts and implement SCPs.
+
+### Guardrails
+
+When you spin up a new account, it is going to have all the necessary guardrails:
+
+- Preventive: Proactive measures to prevent issues; usually implemented through IAM policies, AWS Config
+- Detective: Reactive measures to detect and respond to issues
+
+### Features
+
+- Simplified multi-account environments
+- Reduce risk of human error when creating an account
+- Automated policy enforcement
+- Improve operational efficiency
+- Continuous monitoring for policy compliance

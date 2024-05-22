@@ -6,21 +6,6 @@ Use the AWS Billing & Cost Management dashboard to pay your AWS bill, monitor yo
 
 Use cost allocation tags to track your AWS costs on a detailed level. For each resource, each tag key must be unique, and each tag key can only have one value. You must also activate both AWS generated tags and user-defined tags separately before they can appear in Cost Explorer or on a cost allocation report.
 
-### Guardrails
-
-When you spin up a new account, it is going to have all the necessary guardrails:
-
-- Preventive: Proactive measures to prevent issues; usually implemented through IAM policies, AWS Config
-- Detective: Reactive measures to detect and respond to issues
-
-### Features
-
-- Simplified multi-account environments
-- Reduce risk of human error when creating an account
-- Automated policy enforcement
-- Improve operational efficiency
-- Continuous monitoring for policy compliance
-
 ## AWS Budgets
 
 AWS Budgets is about limiting and notifying and not for analysis. In AWS Budgets, you can create budgets to plan your service usage, service costs, and instance reservations.
