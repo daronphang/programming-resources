@@ -16,12 +16,6 @@ AWS Organizations provides the option for consolidated billing i.e. receive a si
 
 Another benefit is the ability to share bulk discount pricing, Savings Plans, and Reserved Instances across the accounts in your organization. For instance, one account may not have enough monthly usage to qualify for discount pricing. However, when multiple accounts are combined, their aggregated usage may qualify for this benefit.
 
-## AWS Control Tower
-
-An easy way to setup and govern a secure and compliant multi-account AWS environment based on best practices. Helps to automate/streamline the process of creating a new account with the necessary permissions and guardrails.
-
-Runs on top of AWS Organizations i.e. automatically sets up AWS Organizations to organize accounts and implement SCPs.
-
 ### Guardrails
 
 When you spin up a new account, it is going to have all the necessary guardrails:
@@ -36,3 +30,9 @@ When you spin up a new account, it is going to have all the necessary guardrails
 - Automated policy enforcement
 - Improve operational efficiency
 - Continuous monitoring for policy compliance
+
+## AWS Control Tower
+
+An easy way to setup and govern a secure and compliant multi-account AWS environment based on best practices. Helps to automate/streamline the process of creating a new account with the necessary permissions and guardrails.
+
+Runs on top of AWS Organizations i.e. automatically sets up AWS Organizations to organize accounts and implement SCPs.
