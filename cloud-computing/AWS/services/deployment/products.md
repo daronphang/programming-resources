@@ -56,68 +56,6 @@ CodeDeploy is a hybrid service (EC2, on-premise) that deploys your application a
 
 CodeDeploy allows you to upgrade your EC2 instances, applications, and your on-premise server applications from version 1 to version 2.
 
-## AWS Systems Manager (SSM)
-
-SSM helps you to manage your EC2 and on-premise systems at scale (hybrid). It allows you to get operational insights about the state of your infrastructure. Most important features include:
-
-- Patching automation for enhanced compliance (OS and applications)
-- Running commands across an entire fleet of servers
-- Storing parameter configuration with the SSM Parameter Store
-
-The SSM agent needs to be installed on the systems we want to control.
-
-<img src="../../assets/ssm.png">
-
-### Application management
-
-- Application Manager: Group applications and troubleshoot issues
-- Parameter Store: Store secrets and data for resources to access (ease for password rotation)
-- AppConfig: Manage, validate and deploy application configurations
-
-### Change management
-
-- Change Manager: A flow tool that automates and govern IT changes
-- Automation: Streamline and automate repetitive tasks such as patching, restarting servers
-- Change Calendar
-- Maintenance Windows
-
-### Node management
-
-- Compliance: Access and report on node compliance
-- Inventory: Collect and view software inventory
-- Session Manager
-- Run Command: Executing tasks across multiple instances e.g. running scripts, applying patches, updating applications
-- State Manager
-- Patch Manager
-- Distributor: Distributing and installing software packages to fleet of servers
-
-### Operations management
-
-- Incident Manager
-- OpsCenter: Centralize operational issue tracking and resolution, providing a unified view of incidents across AWS and hybrid environments
-
-### Features
-
-- Centralized control
-- Resource grouping
-- Automate common and repetitive IT operations and management tasks
-- Patching management
-- Operational insights
-- Secret and configuration management
-- Remote management
-- Compliance enforcement
-- Hybrid capabilities
-
-### SSM Session Manager
-
-Allows you to start a secure shell on your EC2 and on-premise servers. You do not need to provide SSH access, bastion hosts, or SSH keys for your compute instances (enhanced security). You need to attach an IAM role to the EC2 instance to allow it to talk to the SSM service.
-
-Sends session log data to S3 or CloudWatch logs.
-
-## AWS OpsWorks
-
-Chef and Puppet (external software) help you to perform server configuration automatically or repetitive actions. They integrate with EC2 and on-premise VM. OpsWorks was created to give you a managed Chef and Puppet in the cloud (alternative to SSM). However, it allows you to **only provision standard AWS resources**.
-
 ## AWS App Runner
 
 AWS App Runner is a fully managed application service that lets you build, deploy, and run web applications and API services without prior infrastructure or container experience.
@@ -146,7 +84,13 @@ To securely access AWS services in private VPCs, you can use a **VPC connector**
 
 ## Serverless Application Model (SAM)
 
-SAM helps to simplify developer's experience in getting out the infrastructure and deployed on AWS Lambda. SAM template is a configuration file that you need to define. Comes with CLI tool.
+SAM is a toolkit that improves the developer experience of building and running serverless applications on AWS.
+
+AWS SAM consists of three primary parts:
+
+- SAM template specification: An open-source framework that you can use to define your serverless application infrastructure on AWS
+- SAM template: An extension of CloudFormation templates
+- SAM CLI: A command line tool that you can use with AWS SAM templates and supported third-party integrations to build and run your serverless applications
 
 ## Serverless Application Repository (SAR)
 
@@ -211,7 +155,7 @@ A service that simplifies the process of deploying well-known third party applic
 
 Users that are new to AWS have too many options, and may create stacks that are not compliant with the rest of the organization. Service Catalog provides a quick self-service portal to launch a set of authorized products pre-defined by admins i.e. admins will curate and configure the services in the catalog. Users are given access to services based on their rules.
 
-CloudFormation templates are used to deploy all the resources i.e. each product in the catalog is a CloudFormation template. IAM policies are used to determine who has access to specific products within a catalog.
+Service Catalog is a catalog of AWS resources that enables customers to store, share, and govern IaC templates and create individual stacks. **CloudFormation templates are used to deploy all the resources** i.e. each service in the catalog is a CloudFormation template. IAM policies are used to determine who has access to specific products within a catalog.
 
 You can group products together in portfolios, and give users access to portfolios.
 
@@ -235,7 +179,7 @@ A service that helps you manage software licenses across various vendors includi
 
 ## AWS Proton
 
-AWS Proton is a deployment workflow tool for modern applications that helps platform and DevOps engineers achieve organizational agility. It helps to standardize the application stack and create a consistent environment across all deployments and services.
+AWS Proton is a deployment workflow tool for modern applications that helps platform and DevOps engineers achieve organizational agility. It can be used to manage Infrastructure as Code (IaC) templates build using tools like CloudFormation or Terraform. It helps to standardize the application stack and create a consistent environment across all deployments and services.
 
 ### Platform
 
@@ -256,38 +200,3 @@ AWS Proton is a deployment workflow tool for modern applications that helps plat
 - Multi-account support
 - Template management
 - Built-in security controls for ensuring environment and service templates are configured securely
-
-## AWS Resource Group and Tag Manager
-
-Resource groups allow you to group resources based off of a specific tag. You can create a custom console that organizes and consolidates resources based off of specific tags. you get a **single view** to manage all of your resources matching the tag i.e. dev/prod environments, applications, departments, etc.
-
-## AWS Resilience Hub
-
-Helps you to setup your disaster recovery process, particularly in the context of AWS cloud environments. It provides a centralized console to manage and automate resilient activities including backup schedules, setting recovery point objectives, etc.
-
-### Terms
-
-- **Recovery Point Objective (RPO)**: Maximum tolerable period in which data might be lost due to a major incident
-- **Recovery Time Objective (RTO)**: Targeted duration of time within which a business process must be restored in order to avoid unacceptable consequences
-
-### Features
-
-- Centralized resiliency planning
-- Continuous tracking
-- Alert during outage
-- Automated backups and recovery
-- Compliance and reporting
-
-## AWS Resource Explorer
-
-Simplifies the search and discovery of your AWS resources, across Regions using tags or other metadata.
-
-A collection of information about AWS resources in a specific Region is called an **index**. There are two types of indexes:
-
-- Local: Specific to a Region (replicate over to the Region with aggregate index)
-- Aggregate: Collected data across all Regions
-
-Responsibilities are as follows:
-
-- Admin: Turning on Resource Explorer, updating index types, creating views, granting search permissions
-- User: Search for resources

@@ -27,7 +27,3 @@ Three types of offers:
 ## AWS Pricing Calculator
 
 The AWS Pricing Calculator lets you explore AWS services and create an estimate for the cost of your use cases on AWS. You can provide details such as OS, memory requirements, location, etc.
-
-## AWS Compute Optimizer
-
-Reduce costs and improve performance by recommending optimal AWS resources for your workloads using ML to analyze your resources' configurations and their utilization CloudWatch metrics. Helps you choose optimal configurations and right-size your workloads (over/under provisioned). Resources include EC2 instance types, EBS volume configurations and Lambda function memory sizes.

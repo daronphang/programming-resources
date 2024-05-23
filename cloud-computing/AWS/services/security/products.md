@@ -136,7 +136,9 @@ Amazon Macie is a fully managed data security and data privacy service that uses
 
 ## AWS Secrets Manager
 
-AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. Secrets are encrypted using KMS.
+AWS Secrets Manager helps you manage, retrieve, and automatically rotate database credentials, API keys, and other secrets throughout their lifecycles. Secrets are encrypted using KMS.
+
+Secrets Manager helps you improve your security posture, because you no longer need hard-coded credentials in application source code. Storing the credentials in Secrets Manager helps avoid possible compromise by anyone who can inspect your application or the components. You replace hard-coded credentials with a runtime call to the Secrets Manager service to retrieve credentials dynamically when you need them.
 
 ## Penetration Testing
 
@@ -257,9 +259,20 @@ Directory Service is used for AD integration.
 
 ## AWS Verified Permissions
 
-A scalable service for managing permissions in custom applications. helps developers build secure applications quickly by centralizing policy management. Operates on **zero trust principle**.
+Amazon Verified Permissions is a scalable, fine-grained permissions management and authorization service for custom applications built by you. Helps developers build secure applications quickly by centralizing policy management. Operates on **zero trust principle**.
 
-Verified Permissions is about creating policy validation, testing, and access via **Cedar**. Also integrates with AWS Cognito.
+Verified Permissions helps you implement and enforce fine-grained authorization on resources within the applications that you build and deploy, such as HR systems and banking applications. With Verified Permissions, you can perform the following tasks:
+
+1. Define a policy-based access model that describes the resources managed by your application and the actions (such as view, update, and share) that users can perform on those resources
+2. Provide application users with the ability to manage access to those resources
+3. Enforce those permissions
+
+Verified Permissions is about creating policy validation, testing, and access via **Cedar policy language**.
+
+Use Verified Permissions along with your identity provider, such as Amazon Cognito, for a more dynamic, policy-based access management solution for your applications:
+
+- Application developers can use Amazon Cognito to manage user identities and authenticate users at sign-in
+- Verified Permissions can then determine which application resources an authenticated user is permitted to access (authorization)
 
 ### Features
 

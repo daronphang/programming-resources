@@ -10,7 +10,9 @@ An elastic IP must be associated with an instance or network interface, and are 
 
 ## AWS Network Firewall
 
-Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspection and intrusion detection. You can inspect, in any direction:
+Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspection and intrusion detection. An alternative to using GLB with third party appliances.
+
+You can inspect, in any direction:
 
 - VPC to VPC traffic
 - Outbound to internet
@@ -19,7 +21,7 @@ Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspectio
 
 ### Firewall endpoints
 
-Firewall endpoint serves as the entry/exit points for traffic to be inspected. A subnet needs to be created specifically for the firewall. You can't deploy a firewall in a subnet with resources because it can't protect applications that run in the same subnet.
+Firewall endpoint serves as the entry/exit points for traffic to be inspected. **A separate subnet needs to be created specifically for the firewall**. You can't deploy a firewall in a subnet with resources because it can't protect applications that run in the same subnet.
 
 ### Rule engines
 
@@ -75,7 +77,7 @@ Security Groups perform **stateful** packet filtering. They remember previous de
 
 An IGW is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet i.e. region resilient, covers all Availability Zones within a Region. Imposes no availability risks or bandwidth constraints on your network traffic.
 
-Only one IGW can be attached per VPC. Can also be configured for **egress-only**; you can configure route tables to direct all traffic from the application through it.
+Only one IGW can be attached per VPC.
 
 ### Exposing resources to the internet
 
@@ -87,7 +89,7 @@ Only one IGW can be attached per VPC. Can also be configured for **egress-only**
 
 ## Egress-Only Internet Gateway
 
-Similar to an IGW but for IPv6-enabled applications.
+Similar to an IGW but for IPv6-enabled applications. You can configure route tables to direct all traffic from the application through it.
 
 ## NAT (Network Address Translation) devices
 
@@ -96,6 +98,10 @@ A NAT device can be used to enable instances in a private subnet (or private IP 
 AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances. A NAT instance is an EC2 instance that is converted into a NAT server.
 
 ## NAT gateway
+
+Each NAT gateway is created in a specific AZ and implemented with redundancy in that zone. There is also a quota with the number of NAT gateways you can create in each AZ.
+
+To improve resiliency, create a NAT gateway in each AZ, and configure your routing to ensure that resources use the NAT gateway in the same AZ.
 
 Charged per hour and per GB of data processed. Supports 5Gbps of bandwidth and automatically scales up to 100Gbps.
 
@@ -108,6 +114,14 @@ Route table for private subnets should point to NAT gateway i.e. you route traff
 ### Private
 
 Instances in private subnets can connect to other VPCs or your on-premises network through a private NAT gateway. You can route traffic from the NAT gateway through a **transit gateway or a virtual private gateway**. You cannot associate an elastic IP address with a private NAT gateway.
+
+### Connecting to transit gateway or virtual private gateways
+
+You can use either a public or private NAT gateway to route traffic to transit gateways and virtual private gateways:
+
+- Private NAT gateway: Private IP address of private NAT gateway is used
+- Public NAT gateway: Private IP address of public NAT gateway is used
+- Public NAT gateway with IGW: Public IP address of public NAT gateway is used
 
 ### NAT vs IGW
 

@@ -101,9 +101,19 @@ When migrating to the cloud, instead of re-engineering the application to use SQ
 
 ## AWS EventBridge
 
-AWS EventBridge is a serverless, fully-managed and scalable event bus that enables integrations between AWS services, software services, and your applications.
+AWS EventBridge is a serverless, fully-managed and scalable event bus that enables integrations between AWS services, software services, and your applications e.g. IAM root user signing in, CRON jobs, etc.
+
+### Event Bus
+
+An event bus is a router that receives events and delivers them to zero or more destinations (targets). Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.
 
 By default, you will have a default event bus. You can also create custom event bus or partner event bus. You also need to define rules to forward the events to the necessary locations e.g. Lambda, SNS, etc.
+
+You can send events to the following event buses:
+
+- Default Event Bus (AWS Services)
+- Partner Event Bus (external parties)
+- Custom Event Bus
 
 ### Pipes
 
@@ -139,6 +149,8 @@ Utilizes AWS infrastructure to reliably send out emails.
 
 ## AWS Step Functions
 
+Step Functions is a fully managed service that makes it easier to coordinate the components of distributed applications and microservices using visual workflows.
+
 Step functions help to solve complex workflows using Saga Pattern. Step Function ensures seamless and reliable order fulfillment.
 
 Under the hood, Step Functions is a state machine, and its primary abstractions are called states. A Step Functions configuration constitutes a map of all possible steps and the transitions between them.
@@ -159,11 +171,13 @@ Under the hood, Step Functions is a state machine, and its primary abstractions 
 - analytics services
 - API gateway
 
-## AWS Simple Workflow Service (SWS)
+## AWS Simple Workflow Service (SWF)
 
-SWS works similar to Step Functions but isn't serverless/unmanaged; hence, AZs must be taken into account. Nonetheless, it should be used in general.
+You should consider using Step Functions for all your new applications, since it provides a more productive and agile approach to coordinating application components using visual workflows.
 
-You can use SWS if you require external signals to intervene in your processes e.g. launch child processes from a parent and return a result.
+If you require external signals to intervene in your processes or you would like to launch child processes that return a result to a parent, you should consider SWF.
+
+SWF is not serverless and hence, AZs must be taken into account.
 
 ### Features
 
@@ -229,7 +243,9 @@ For managing costs, you can allocate Data Processing Units (DPUs) for optimal sc
 
 ## AWS Elastic MapReduce (EMR)
 
-EMR is a data processing and analysis tool. EMR runs in managed cluster and can be used to process data at scale for analytics purposes. Relies on immutable infrastructure i.e. if you need to patch a server, shut down and restart with the patch.
+EMR is a managed cluster platform that simplifies running **big data frameworks**, such as Apache Hadoop and Apache Spark, on AWS to process and analyze vast amounts of data.
+
+EMR runs in managed cluster and can be used to process data at scale for analytics purposes. Relies on immutable infrastructure i.e. if you need to patch a server, shut down and restart with the patch.
 
 ### Cluster
 

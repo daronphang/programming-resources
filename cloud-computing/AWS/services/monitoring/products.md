@@ -26,20 +26,6 @@ By default, no logs from your EC2 instance are pushed to CloudWatch. You need to
 
 You can use CloudWatch Canaries to create scripted interactions and simulate user behavior to ensure that the applications are responsive and functioning correctly around the clock.
 
-## Amazon Bridge (CloudWatch Events)
-
-Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
-
-### Event Bus
-
-An event bus is a router that receives events and delivers them to zero or more destinations (targets). Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.
-
-You can send events to the following event buses:
-
-- Default Event Bus (AWS Services)
-- Partner Event Bus (external parties)
-- Custom Event Bus
-
 ## AWS X-Ray
 
 Allows you to get visual analysis of your applications by **tracing requests made through your distributed applications**. Can be used for the following:
@@ -131,6 +117,8 @@ Inclusive of basic, with additional of:
 ## AWS Compute Optimizer
 
 A service that performs resource analysis for compute resources and identifies over-provisioned, under-provisioned, or already optimized. It offers recommendations on instance types and sizes based on usage patterns, but **does not directly address security concerns**.
+
+Reduce costs and improve performance by recommending optimal AWS resources for your workloads using ML to analyze your resources' configurations and their utilization CloudWatch metrics. Helps you choose optimal configurations and right-size your workloads (over/under provisioned). Resources include EC2 instance types, EBS volume configurations and Lambda function memory sizes.
 
 ### Features
 

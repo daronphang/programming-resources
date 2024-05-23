@@ -110,14 +110,21 @@ To allow public traffic from the internet to access your VPC, you attach an **in
 
 ## VPC Endpoints
 
-Endpoints allows customers to private connect their VPC to supported AWS services powered by PrivateLink using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
+Endpoints allows customers to private connect their VPC to supported AWS services using AWS network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services. Traffic between a VPC and a service does not leave the Amazon network.
 
-There are two kinds of endpoints:
+### VPC Gateway Endpoint
 
-- VPC Endpoint Gateway: S3 and DynamoDB (or if IP address is not available as it does not take IP address off from your subnet)
-- VPC Endpoint Interface: Rest of AWS services
+A gateway endpoint targets specific IP routes in an Amazon VPC route table, in the form of a prefix-list, used for traffic destined to DynamoDB or S3. **Gateway endpoints do not enable AWS PrivateLink**.
 
-## AWS PrivateLink (VPC Endpoint Service)
+A gateway endpoint is also used if an IP address for a service is not available as it does not take IP address off from your subnet.
+
+### VPC Interface Endpoint
+
+Interface endpoints enable connectivity to services over AWS PrivateLink. All other AWS services use interface endpoints.
+
+An interface endpoint is a collection of one or more elastic network interfaces with a private IP address that serves as an entry point for traffic destined to a supported service.
+
+### AWS PrivateLink
 
 For an EC2 to connect to an S3 Bucket, need to create an IG and give EC2 full internet access which is not desirable.
 

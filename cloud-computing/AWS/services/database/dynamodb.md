@@ -23,7 +23,11 @@ DynamoDB integrates with IAM but only uses it for table and row access.
 
 ### Monitoring
 
-DynamoDB supports CloudWatch and CloudTrail; but it also supports DynamoDB Streams which tracks adn emits events based on table changes i.e. similar to Aurora Activity Streams.
+DynamoDB supports CloudWatch and CloudTrail; but it also supports **DynamoDB Streams** which tracks and emits events based on table changes i.e. similar to Aurora Activity Streams.
+
+### Streams
+
+Captures data modification events (add, delete, modify) in near real-time in DynamoDB table. Stream records have a lifetime of 24h. You can combine it with AWS Lambda to create a trigger.
 
 ## Components
 
@@ -80,10 +84,6 @@ A fundamental data element that does not need to be broken down any further i.e.
     "FavoriteColor": "Blue"
 }
 ```
-
-### Streams
-
-Captures data modification events (add, delete, modify) in near real-time in DynamoDB table. Stream records have a lifetime of 24h. You can combine it with AWS Lambda to create a trigger.
 
 ## Amazon DynamoDB Accelerator (DAX)
 

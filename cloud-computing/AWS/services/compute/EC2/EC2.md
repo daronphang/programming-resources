@@ -33,7 +33,7 @@ Pending, running, rebooting, and stopping.
 
 ### EC2 instance placements
 
-- **Cluster placement group**: For applications that need low network latency and high network throughput such as big data and analytics workloads (poor reliability)
+- **Cluster placement group**: For applications that need low network latency and high network throughput such as big data and analytics workloads (poor reliability, single point of failure)
 - **Partition placement group**: Instances do not share underlying hardware with instances in other partitions, for distributed, replicated workloads
 - **Spread placement group**: Instances have distinct underlying hardware to reduce correlated failures with its own network and power source (most resilient)
 

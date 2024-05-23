@@ -2,16 +2,26 @@
 
 By default, instances that you launch into an Amazon VPC can't communicate with your own (remote) network. You can enable access to your remote network from your VPC by creating an AWS Site-to-Site VPN connection, and configuring routing to pass traffic through the connection.
 
-A virtual private gateway enables you to establish a virtual private network (VPN) connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**. However, it goes over the public internet (encrypted) and may have limited bandwidth, but relatively fast to setup.
-
 There are two types of VPN:
 
 - Site-to-Site VPN: VPN over public internet between on-premises DC and AWS
 - ClientVPN: OpenVPN connection from your computer into your VPC
 
-### Virtual Private Gateway (VPG)
+## Site-to-Site VPN
 
-A VPG connects your VPC to another private network i.e. it is the component that allows protected internet traffic to enter into the VPC. However, it still uses the same traffic as public users.
+### Tunnel options
+
+Each Site-to-Site VPN connection has two tunnels, with each tunnel using a unique public IP address. It is important to **configure both tunnels for redundancy**. When one tunnel becomes unavailable (for example, down for maintenance), network traffic is automatically routed to the available tunnel for that specific Site-to-Site VPN connection.
+
+### Virtual private gateway (VPG)
+
+A virtual private gateway is a logical, fully redundant distributed edge routing function that sits at the edge of your VPC. It is the VPN endpoint on the Amazon side of your Site-to-Site VPN connection that can be attached to a single VPC.
+
+A VPG enables you to establish a VPN connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**. However, it goes over the public internet (encrypted) and may have limited bandwidth, but relatively fast to setup.
+
+### Customer gateway (CG)
+
+An AWS resource which provides information to AWS about your customer gateway device.
 
 ### VPN tunnel
 
@@ -35,15 +45,13 @@ Charged for:
 - Each available VPN connection per hour
 - Data transfer out from EC2 to the internet
 
-## Site-to-Site VPN
-
-### Tunnel options
-
-Each Site-to-Site VPN connection has two tunnels, with each tunnel using a unique public IP address. It is important to **configure both tunnels for redundancy**. When one tunnel becomes unavailable (for example, down for maintenance), network traffic is automatically routed to the available tunnel for that specific Site-to-Site VPN connection.
-
 ## AWS VPN CloudHub
 
-You can securely communicate from one site to another using the AWS VPN CloudHub. The AWS VPN CloudHub operates on a simple hub-and-spoke model that you can use with or without a VPC. Use this approach if you have multiple branch offices and existing internet connections and would like to implement a convenient, potentially low-cost hub-and-spoke model for primary or backup connectivity between these remote offices.
+If you have multiple AWS Site-to-Site VPN connections, you can provide secure communication between sites using the AWS VPN CloudHub. The AWS VPN CloudHub operates on a simple **hub-and-spoke model** that you can use with or without a VPC.
+
+Use this approach if you have multiple branch offices and existing internet connections and would like to implement a convenient, potentially low-cost hub-and-spoke model for primary or backup connectivity between these remote offices.
+
+AWS VPN CloudHub uses a **VPG with multiple CGs**, each using unique BGP autonomous system numbers (ASNs). The remote sites must not have overlapping IP ranges.
 
 ## VPC Peering
 
@@ -62,9 +70,11 @@ VPC Peering:
 - Data transfer within an AV is free
 - Data transfer across AV incurs charges
 
-## Transit Gateway
+## AWS Transit Gateway
 
-A single gateway to provide transitive peering between thousands of VPC and on-premises, through hub-and-spoke (star) connection.
+Transit Gateway is a Regional resource and can connect on-premises and thousands of VPCs within the same AWS Region through hub-and-spoke (star) connection i.e. provides transitive peering.
+
+Transit Gateway controls how traffic is routed among all the connected spoke networks using route tables. This hub-and-spoke model simplifies management and reduces operational costs because VPCs only connect to the Transit Gateway instance to gain access to the connected networks.
 
 You need to specify **one subnet from each AZ** to be used by the Transit Gateway to route traffic. Transit Gateway can also establish peering with other Transit Gateways in different Regions and AWS accounts.
 

@@ -66,13 +66,11 @@ If you choose to have more control by running and managing your containers on a 
 
 You do not have automatic replacement of unhealthy nodes if you are using self-managed.
 
-### Managed scaling
+### ASG capacity providers
 
-You can use the managed scaling feature to have Amazon ECS manage the scale-in and scale-out actions of the Auto Scaling group.
+When you use EC2 instances for your capacity, you use ASGs to manage the EC2 instances registered to their clusters. Auto Scaling helps ensure that you have the correct number of EC2 instances available to handle the application load.
 
-### Capacity providers
-
-ECS capacity providers are a built-in feature that helps you launch EC2 capacity on fly. When application containers need to run, the capacity provider provisions as many EC2 hosts as necessary.
+You can use the managed scaling feature to have Amazon ECS manage the scale-in and scale-out actions of the ASG.
 
 ## Amazon Elastic Kubernetes Service (EKS)
 
@@ -202,10 +200,6 @@ AWS Batch orchestrates on EC2, ECS, and EKS (with and without Fargate). Batch jo
 AWS Lambda has time limit (15 minutes), limited runtimes, and limited temporary disk space, and is serverless.
 
 AWS Batch has no time limit with any runtime, relies on EBS/Instance Store for disk space and relies on EC2.
-
-## Amazon EMR
-
-Amazon EMR is the industry-leading cloud big data platform for processing vast amounts of data using open source tools such as Hadoop, Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi, and Presto.
 
 ## VMware Cloud
 
