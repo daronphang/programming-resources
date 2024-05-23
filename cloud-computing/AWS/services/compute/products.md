@@ -129,6 +129,12 @@ When using Fargate, you don't need to provision or manage servers; it manages yo
 
 <img src="../../assets/fargate.png">
 
+### EC2 launch type vs Fargate
+
+The ECS EC2 launch type allows for more granular control over the underlying EC2 instances, enabling the use of **reserved instances and savings plans**. These options can provide significant cost savings, especially for predictable, long-term workloads.
+
+Fargate, while offering simplicity and ease of use, might be more expensive for certain workloads, especially those that can benefit from reserved pricing or spot instances.
+
 ## Amazon Elastic Container Registry (ECR)
 
 ECR is a private Docker Registry on AWS that is used to store your Docker images so that they can be run by ECS, EKS or Fargate.

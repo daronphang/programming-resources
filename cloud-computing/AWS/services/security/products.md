@@ -249,7 +249,7 @@ Temporary AWS credentials.
 
 ## AWS Directory Service
 
-Directory Service is used for AD integration.
+Directory Service is used for AD integration. You can create a trust relationship between Directory Service and IAM to allow Directory users assume an IAM role.
 
 ### Modes
 
