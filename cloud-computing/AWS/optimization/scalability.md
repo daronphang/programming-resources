@@ -21,6 +21,16 @@ With auto scaling, you define the **minimum capacity**, **desired capacity** (de
 - High reliability of resources
 - High flexibility of resources
 
+### Termination policies
+
+- Default
+- AllocationStrategy
+- OldestLaunchTemplate
+- OldestLaunchConfiguration
+- ClosestToNextInstanceHour: Terminate instance closest to the billing cycle
+- NewestInstance
+- OldestInstance
+
 ## Components
 
 - Launch template: configuration template for EC2 instances
@@ -60,10 +70,10 @@ You can use scaling policies to increase or decrease the number of instances in 
 
 An Auto Scaling group contains a collection of EC2 instances that are treated as a logical grouping for the purposes of automatic scaling and management.
 
-### Changing configuration
+### Troubleshooting/software upgrades
 
-- ASG should be deleted and recreated
-- A new launch configuration should be created and attached to the ASG
+- Put the instance in Standby mode to prevent ASG from terminating as part of health check
+- Move instance back to InService mode
 
 ### Integration
 

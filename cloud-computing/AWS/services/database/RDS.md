@@ -63,6 +63,17 @@ You can use the **RDS console** to view and download the database logs directly.
 
 For events, you can use RDS **Event Subscriptions** to subscribe to specific **RDS events** and send notifications to an SNS topic.
 
+### Events
+
+RDS generates events that you can subscribe to:
+
+- DB cluster events
+- DB instance events
+- DB snapshot events
+- DB security group events
+
+To capture data-modifying events (INSERT, DELETE, UPDATE), it can be achieved through native functions or **stored procedures**.
+
 ## RDS Proxy
 
 RDS Proxy is a fully managed database proxy for RDS instances that make your application more scalable and resilient i.e. it proxies database connections in front of databases as needed. It establishes a pool of database connections and reuses it if a query is performed.
@@ -106,7 +117,7 @@ You can configure **Aurora Capacity Units (ACUs)** to define the scaling range t
 
 ### Global cluster
 
-When you use Aurora Global database clusters, it acts as a container for several database clusters each located in different Regions.
+When you use Aurora Global database clusters, it acts as a container for several database clusters each located in different Regions. With global database, the secondary region can be used as a failover for service degradation in the primary region.
 
 A global database cluster comprises of:
 

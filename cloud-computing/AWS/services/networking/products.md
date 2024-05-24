@@ -6,9 +6,23 @@ Route 53 gives developers and businesses a reliable way to route end users to in
 
 Another feature of Route 53 is the ability to manage the DNS records for domain names. You can register new domain names directly in Route 53. You can also transfer DNS records for existing domain names by other domain registrars. This enables you to manage all of your domain names within a single location.
 
+### Alias records
+
+Alias records let you route traffic to selected AWS resources, including but not limited to, CloudFront distributions and Amazon S3 buckets. They also let you route traffic from one record in a hosted zone to another record.
+
+When you use an alias record to route traffic to an AWS resource, Route 53 automatically recognizes changes in the resource. For example, suppose an alias record for example.com points to an Elastic Load Balancing load balancer at lb1-1234.us-east-2.elb.amazonaws.com. If the IP address of the load balancer changes, Route 53 automatically starts to respond to DNS queries using the new IP address.
+
 ### Hosted zones
 
 A hosted zone is where you define all the records and rules i.e. a collection of DNS records. AWS will automatically provision 4 DNS servers for your hosted zone.
+
+### Failover configurations
+
+For active-passive:
+
+- For primary resources, create an alias record with 'evaluate health check' as yes
+- For secondary resources, create health checks for servers
+- Create two failover alias records
 
 ### Application recovery controller
 

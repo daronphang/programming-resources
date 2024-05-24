@@ -97,6 +97,12 @@ AWS WAF works together with Amazon CloudFront and an Application Load Balancer. 
 
 Charges are based on the number of web ACLs you create, and the number of rules that you add per web ACL, and the number of web requests you receive.
 
+### Rate-based rules
+
+- Blanket: Prevents source IP address from making excessive requests to entire application
+- URI-specific
+- IP reputation
+
 ### Use cases
 
 - Protection against common web attacks
@@ -139,6 +145,11 @@ Amazon Macie is a fully managed data security and data privacy service that uses
 AWS Secrets Manager helps you manage, retrieve, and automatically rotate database credentials, API keys, and other secrets throughout their lifecycles. Secrets are encrypted using KMS.
 
 Secrets Manager helps you improve your security posture, because you no longer need hard-coded credentials in application source code. Storing the credentials in Secrets Manager helps avoid possible compromise by anyone who can inspect your application or the components. You replace hard-coded credentials with a runtime call to the Secrets Manager service to retrieve credentials dynamically when you need them.
+
+### Secret rotation
+
+- Managed: Updating credentials in the database
+- Lambda: For other types of secrets e.g. API keys
 
 ## Penetration Testing
 

@@ -10,9 +10,34 @@ For instance, you can create an alarm that automatically stops an EC2 instance w
 
 Metrics are the fundamental concept in CloudWatch. A metric represents a time-ordered set of data points that are published to CloudWatch. AWS resources send metrics to CloudWatch for free at a rate of 1 data point per metric per 5-minute interval.
 
+Built-in metrics available include:
+
+- CPU utilization
+- Network utilization
+- Disk reads
+
 ### Custom Metrics
 
-To gain more granular visibility, you can use high-resolution custom metrics, which makes it possible for you to collect custom metrics down to a 1-second resolution.
+Metrics that require scripts include:
+
+- Memory utilization
+- Disk swap utilization
+- Disk space utilization
+- Page file utilization
+- Log collection
+
+Options for custom metrics include:
+
+- High-resolution: Data at a granularity of one second (similar to detailed monitoring)
+- Statistic sets: For data aggregation
+
+### Unified CloudWatch agent
+
+The unified CloudWatch agent enables you to do the following:
+
+- Collect internal system-level metrics from Amazon EC2 instances and on-premise servers
+- Retrieve custom metrics from your applications or services using the StatsD and collectd protocols
+- Collect logs from Amazon EC2 instances and on-premises servers
 
 ### SDK
 

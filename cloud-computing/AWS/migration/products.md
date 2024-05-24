@@ -29,9 +29,12 @@ MGN minimizes time-intensive and error-prone manual processes by automating the 
 
 ## AWS Application Discovery Service (ADS)
 
-AWS Application Discovery Service collects information about the usage and configuration of on-premises servers to help plan a migration to AWS. Application Discovery Service does not actually perform migration operations.
+AWS Application Discovery Service collects information about the usage and configuration of on-premises servers to help plan a migration to AWS e.g. CPU, disk, memory, network. Data collected is encrypted at-rest and in-transit. Application Discovery Service does not actually perform migration operations.
 
-Offers both agent or agentless discovery.
+The parameters can be discovered in one of the following ways:
+
+- Agentless discovery: Suited for VMware hosts
+- Agent-based discovery: Suited for hosts other than VMware e.g. Windows, Linux
 
 ## Database Migration Service (DMS)
 
@@ -74,6 +77,8 @@ AWS Mainframe Modernization helps to modernize and migrate your mainframe applic
 ## AWS DataSync
 
 AWS DataSync facilitates fast and secure data transfers between on-premise/AWS storage systems and AWS storage services. It is designed to simplify, automate and accelerate the process of moving large amounts of data.
+
+When you use DataSync with a private VPC endpoint, the DataSync agent can communicate directly with AWS without the need to cross the public internet.
 
 ### Components
 
