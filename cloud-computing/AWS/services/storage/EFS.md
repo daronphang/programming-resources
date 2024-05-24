@@ -4,7 +4,7 @@ Amazon EFS is a **network file system (NFS) that works only on Linux** (not Wind
 
 As you add and remove files, EFS grows and shrinks automatically. It **can scale on demand to petabytes without disrupting applications**. It is the only cloud-native shared file system with fully automatic lifecycle management. There is no need for provisioning or managing storage capacity and performance.
 
-Amazon EFS is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access **data concurrently across multiple Availability Zones, Regions and VPCs**. Additionally, on-premises servers can access EFS using AWS Direct Connect.
+Amazon EFS is a **regional** service and stores data in and across **multiple Availability Zones**. The duplicate storage enables you to access **data concurrently across multiple Availability Zones, Regions and VPCs**. Additionally, on-premises servers can access EFS using AWS Direct Connect or VPN.
 
 EFS deploys mount targets in VPCs with specific IP addresses, and EC2 instances can connect to EFS by mounting the IP address.
 

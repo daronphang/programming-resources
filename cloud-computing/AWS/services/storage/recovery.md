@@ -20,9 +20,23 @@ With AWS Backup:
 - Vault lock: Prevents deletion on data in a single vault (has compliance and governance mode)
 - Legal hold: Locks resources across all backups
 
-## Elastic Diaster Recovery (DRS)
+## AWS Elastic Disaster Recovery (EDR)
+
+AWS EDR minimizes data loss with fast, reliable recovery of on-premises and cloud-based applications using affordable storage, minimal compute, and point-in-time recovery.
+
+EDR uses block replication to replicate server volumes incrementally at the block level.
+
+**Failback** is the process of reverting systems back to the primary environment after a failover test.
 
 <img src="../../assets/edr.png">
+
+### Components
+
+- Source servers: Represent the servers/data that you want to replicate
+- Replication Agent: Installed on source servers
+- Launch template: Used to configure the specifications of the recovery servers e.g. size, region/subnet, security group, etc.
+- Staging Subnet: Spinning up of EC2 instances to handle the replication with data from Replication Agent and stored in EBS
+- Recovery Subnet: EC2 instances launched with point-in-time snapshots
 
 ### Features
 
@@ -31,10 +45,8 @@ With AWS Backup:
 - Keeps things in a continual replication state
 - Easy to access with a diaster recovery infrastructure
 - Failover from on-premise/other cloud platforms/AWS Regions to AWS
-
-### Components
-
-- Source servers: Represent the servers/data that you want to replicate (AWS Replication Agent is installed on the source servers)
-- Staging area: Location AWS will receive the replicated data
-- Launch template: Used to configure the specifications of the recovery servers e.g. size, region/subnet, security group, etc.
-- Recovery servers: Servers that you failover to during disasters
+- Real-time sync and point-in-time recovery
+- Automated DR drills
+- Faster recovery
+- Fail back to source after recovery
+- Automatically applies security groups from source EC2 instances to replicated instances

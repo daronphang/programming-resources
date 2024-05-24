@@ -34,6 +34,7 @@ All flavors support multi-AZ deployments, but Lustre supports only single AZ.
 - Integrates seamlessly with other AWS services e.g. S3, DataSync, AWS Batch
 - Can easily scale the file system's capacity and throughput
 - Single AZ deployment only
+- Scratch (temporary) and persistent (automatic replication within an AZ) deployment options
 
 ### NetAPP ONTAP
 

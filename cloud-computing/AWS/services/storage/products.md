@@ -15,15 +15,19 @@ The storage gateway is either a VM or physical server installed in your on-premi
 - Perform backups
 - Disaster recovery tool
 
-### Modes
+### S3 File Gateway
 
-Depending on the protocols, there's a mode within AWS Storage Gateway that will make it compatible for your solution.
+Enables you to store your files in Amazon S3 while providing access to your users by using traditional SMB or NFS shares (commonly used for Windows).
 
-- **Volume Storage Gateway** with Cached (frequently accessed data stored on-prem) and Stored Mode (entire dataset stored in AWS and on-prem), utilizes iSCSI protocol and use S3 as primary data storage
-- **File Storage Gateway** with data stored in S3, utilizes NFS/SMB protocol
-- **Tape Gateway** that emulates a tape library with data stored in S3 (Virtual Tape Library) or Glacier (Tape Shelf), utilizes iSCSI protocol
+### Tape Gateway
+
+Emulates a tape library with data stored in S3 (Virtual Tape Library) or Glacier (Tape Shelf), utilizes iSCSI protocol.
 
 #### Volume Storage Gateway
+
+Volume Gateway presents iSCSI block storage volumes to your on-premises applications that you can store in Amazon S3 or migrate to Amazon EBS.
+
+Provides Cached (frequently accessed data stored on-prem) and Stored Mode (entire dataset stored in AWS and on-prem).
 
 In **Stored Mode**, data is stored locally on-premise i.e. data is stored in physical disks. Data is then replicated asynchronously to S3 as EBS Snapshots by Storage Gateway. It does not increase datacenter storage capacity i.e. limited by the physical disks size.
 

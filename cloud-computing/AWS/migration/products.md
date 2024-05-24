@@ -60,28 +60,6 @@ DMS has an advanced logging feature called **time travel logs**, which enables u
 - Schema migration
 - Continuous data replication
 
-## AWS Elastic Disaster Recovery (EDR)
-
-AWS EDR minimizes data loss with fast, reliable recovery of on-premises and cloud-based applications using affordable storage, minimal compute, and point-in-time recovery.
-
-EDR uses block replication to replicate server volumes incrementally at the block level.
-
-**Failback** is the process of reverting systems back to the primary environment after a failover test.
-
-### Components
-
-- Replication Agent: Installed on source servers
-- Staging Subnet: Spinning up of EC2 instances to handle the replication with data from Replication Agent and stored in EBS
-- Recovery Subnet: EC2 instances launched with point-in-time snapshots
-
-### Features
-
-- Real-time sync and point-in-time recovery
-- Automated DR drills
-- Faster recovery
-- Fail back to source after recovery
-- Automatically applies security groups from source EC2 instances to replicated instances
-
 ## AWS Mainframe Modernization
 
 AWS Mainframe Modernization helps to modernize and migrate your mainframe application to AWS managed runtime environments.
