@@ -33,6 +33,11 @@ If you want to cache an object, you need to configure a **distribution** which i
 
 A domain name will also be provided from the distribution, and the distribution will be pushed to the edge locations.
 
+### Cache skipping
+
+- Dynamic content with specific headers
+- Proxy methods PUT/POST/PATCH/OPTIONS/DELETE
+
 ### Time to Live (TTL)
 
 Cached content at an edge locations remains for a set time. TTL value decides the content validity before an edge location requests the origin (default is 24 hours).

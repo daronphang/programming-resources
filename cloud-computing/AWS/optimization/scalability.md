@@ -60,6 +60,11 @@ You can use scaling policies to increase or decrease the number of instances in 
 
 An Auto Scaling group contains a collection of EC2 instances that are treated as a logical grouping for the purposes of automatic scaling and management.
 
+### Changing configuration
+
+- ASG should be deleted and recreated
+- A new launch configuration should be created and attached to the ASG
+
 ### Integration
 
 - Elastic load balancer

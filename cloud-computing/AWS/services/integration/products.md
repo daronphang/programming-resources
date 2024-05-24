@@ -212,7 +212,11 @@ Kinesis is a real-time big data streaming service to collect, process and analyz
 
 ### Data Firehose
 
-Have the ability to perform ETL before streaming the data to its output.
+Firehose handles loading data streams directly into specific AWS products or HTTP endpoints owned by supported third-party service providers for processing e.g. S3, RedShift, Splunk, Datadog, MongoDB, etc. It has the ability to perform ETL before streaming the data to its output.
+
+### Data Streams
+
+Kinesis data streams is highly customizable and best suited for developers building custom applications or streaming data for specialized needs.
 
 ## AWS Managed service for Kafka (MSK)
 

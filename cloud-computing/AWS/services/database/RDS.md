@@ -23,7 +23,7 @@ Amazon RDS is available on the following engines:
 - Monitoring, audit and performance
 - Security
 - Blue/green deployment
-- Multi-AZ deployments
+- Multi-AZ deployments that spans across two AZs with synchronous replication
 
 ### Database instances
 
@@ -37,7 +37,7 @@ The storage portion of DB instances uses Amazon EBS volumes for database and log
 
 ### Read replicas
 
-You can scale the read workload of your DB by creating replicas (maximum of 15 replicas). However, **write is only performed to the main DB**.
+Replication is performed asynchronously for read replicas. You can scale the read workload of your DB by creating replicas (maximum of 15 replicas). However, **write is only performed to the main DB**.
 
 For multiple Availability Zones, you can create a **failover DB** in case of an outage. It is only active if the failover is triggered.
 

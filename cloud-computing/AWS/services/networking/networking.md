@@ -77,7 +77,7 @@ Security Groups perform **stateful** packet filtering. They remember previous de
 
 An IGW is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet i.e. region resilient, covers all Availability Zones within a Region. Imposes no availability risks or bandwidth constraints on your network traffic.
 
-Only one IGW can be attached per VPC.
+Only one IGW can be attached per VPC. To allow internet access, destination in route table must be set to `0.0.0.0/0` targeting the IGW.
 
 ### Exposing resources to the internet
 
@@ -104,6 +104,12 @@ Each NAT gateway is created in a specific AZ and implemented with redundancy in 
 To improve resiliency, create a NAT gateway in each AZ, and configure your routing to ensure that resources use the NAT gateway in the same AZ.
 
 Charged per hour and per GB of data processed. Supports 5Gbps of bandwidth and automatically scales up to 100Gbps.
+
+### NAT instance
+
+The NAT instance must have internet access, so it must be in a **public subnet** (a subnet that has a route table with a route to the internet gateway), and it must have a public IP address or an Elastic IP address.
+
+Each instance performs source/destination checks by default. This means that the instance must be the source or destination of any traffic it sends or receives. However, a NAT instance must be able to send and receive traffic when the source or destination is not itself. Therefore, you must disable source/ destination checks on the NAT instance.
 
 ### Public
 
