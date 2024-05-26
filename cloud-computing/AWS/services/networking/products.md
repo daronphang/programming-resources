@@ -41,11 +41,12 @@ In AWS the most common records are:
 
 ### Routing policies
 
-- Simple routing policy (no health checks)
-- Weighted routing policy (using weight to route to resource)
-- Latency routing policy (minimizes latency)
-- Failover routing policy (disaster recovery)
-- Geolocation routing policy (different geographic locations)
+- Simple routing policy: No health checks
+- Weighted routing policy: Using weight to route to resource
+- Latency routing policy: Serves user requests from the AWS Region that provides the lowest latency
+- Failover routing policy: Disaster recovery
+- Geolocation routing policy: Serve traffic based on geographic location of users
+- Geoproximity routing policy: Routes traffic based on the geographic location of users and resources
 
 ### How CloudFront works with Route 53
 

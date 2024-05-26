@@ -82,13 +82,13 @@ A NLB is ideal for load balancing **TCP, UDP and TLS traffic** if you require **
 - Sticky sessions
 - Low latency
 - Preserves client-side source IP address
-- Static/elastic IP support
+- Static/elastic IP support (an ALB cannot be assigned an EIP)
 - DNS failover with Amazon Route 53
 - Security Groups for target EC2 instances
 
 When you create NLB, a network interface is created for each AZ. Each load balancer node will use the network interface to get a static IPv4 address. You can also associate one elastic IP address per subnet.
 
-AWS has launched ALB-type target groups for N:B. With this launch, you can register ALB as a target of NLB to forward traffic from NLB to ALB without needing to actively manage ALB IP address changes through Lambda. When configuring ALB and NLB, **place the ALB behind the NLB to handle all incoming traffic**. NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
+AWS has launched ALB-type target groups for NLB. With this launch, you can register ALB as a target of NLB to forward traffic from NLB to ALB without needing to actively manage ALB IP address changes through Lambda. This is useful in scenarios whereby client-side has firewall whitelist as you cannot assign an EIP to an NLB, but you can assign an EIP to an NLB. When configuring ALB and NLB, **place the ALB behind the NLB to handle all incoming traffic**. NLB forwards TCP connections to instances, unlike ALB which terminates HTTP/HTTPS.
 
 ### Gateway Load Balancer (GLB)
 

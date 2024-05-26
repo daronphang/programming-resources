@@ -107,3 +107,7 @@ Can either use SSH (port 20), Putty or EC2 Instance Connect (uses temporary SSH 
 Amazon EC2 announces automatic recovery by default, a new feature that makes it even easier for customers to recover their instance when it becomes unreachable. Automatic recovery improves instance availability by recovering the instance if it becomes impaired due to an underlying hardware issue. Automatic recovery migrates the instance to another hardware during an instance reboot while retaining its instance ID, private IP addresses, Elastic IP addresses, and all instance metadata.
 
 The new feature further simplifies the configuration process for automatic recovery as supported instance types are configured to recover by default. Customers can choose to disable automatic recovery for their instance.
+
+## Bastion host
+
+A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. If you have a bastion host in AWS, it is basically just an EC2 instance. It should be in a public subnet with either a public or Elastic IP address with sufficient RDP or SSH access defined in the security group. Users log on to the bastion host via SSH or RDP and then use that session to manage other hosts in the private subnets.

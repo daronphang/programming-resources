@@ -53,9 +53,9 @@ AWS ApFlow is a fully managed integration service that enables you to securely e
 
 ## Amazon Simple Notification Service (SNS)
 
-SNS is a pub/sub service. In SNS, subscribers can be web servers, email addresses, AWS Lambda functions, etc. Each subscriber to the topic will get **all the messages**.
+SNS is a pub/sub service. In SNS, subscribers can be web servers, email addresses, AWS Lambda functions, etc. There is no message retention.
 
-Subscribers from AWS include Email, Lambda, SQS, HTTP, and Mobile. There is no message retention.
+By default, an SNS topic subscriber receives **every message** published to the topic. You can use Amazon SNS **message filtering** to assign a filter policy to the topic subscription, and the subscriber will only receive a message that they are interested in.
 
 You can batch messages per API request (1-10) to save cost. Each message has a maximum size of 256KB; if you want to publish larger payload, can store the data in S3 and publish the S3 link to SNS.
 
@@ -83,7 +83,7 @@ In SQS, an application sends messages into the queue. A user or service retrieve
 
 ### Features
 
-- Message retention
+- Message retention up to 14 days
 - Message prioritization
 - Dead Letter Queue (DLQ)
 - Locking mechanism with visibility timeout to prevent double-processing of messages
@@ -244,6 +244,10 @@ For managing costs, you can allocate Data Processing Units (DPUs) for optimal sc
 - Automatic schema discovery
 - Visual ETL job authoring
 - Built-in transformation libraries e.g. PySpark to run natively
+
+### Crawler
+
+The Crawler creates the metadata that allows Glue and services such as Athena to view the S3 information as a database with tables i.e. check schema. That is, it allows you to create the Glue Catalog.
 
 ## AWS Elastic MapReduce (EMR)
 

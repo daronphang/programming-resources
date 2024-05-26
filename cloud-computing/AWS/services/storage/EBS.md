@@ -15,6 +15,10 @@ EBS volumes act similarly to external drives:
 - Size-limited: Volume has a max limitation of how much content you can store on it
 - 1-to-1 connection: Most EBS volumes can only be connected with one computer at a time (one computer can be connected to multiple EBS volumes)
 
+### Features
+
+- Supports live configuration changes i.e. you can modify the volume type, size, IOPS capacity without service disruptions
+
 ### Pricing
 
 Pay for what you are provisioned. Charged per GB per month.
@@ -51,7 +55,7 @@ Previous generation of volumes that are backed by magnetic drives. Used when per
 
 ## EBS Snapshots
 
-An EBS snapshot is an incremental backup:
+An EBS snapshot is an incremental backup that stores data in S3:
 
 - First backup copies all the data
 - Subsequent backups copy **blocks of data that have changed** since the most recent snapshot are saved
@@ -62,6 +66,10 @@ With EBS Snapshots, you can **replicate data across Availability Zones**.
 ### EBS Snapshot Archive
 
 You can move a Snapshot to an archive tier that is cheaper to store, but takes between 24-72h for restoring the archive.
+
+## Amazon Data Lifecycle Manager
+
+You can use Amazon Data Lifecycle Manager to automate the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs
 
 ### Recycle Bin
 
