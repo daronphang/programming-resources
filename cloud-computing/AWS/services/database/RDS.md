@@ -127,3 +127,9 @@ A global database cluster comprises of:
 ### Monitoring
 
 Aurora supports CloudWatch, CloudTrail, Enhanced Monitoring and Performance Insights similarly with RDS. However, it also supports **Database Activity Streams**, which provides real-time stream of all the actions in RDS for audit and compliance.
+
+### Endpoints
+
+A **cluster endpoint** (writer endpoint) simply connects to the current primary DB instance for that DB cluster. This endpoint can perform write operations in the database such as DDL statements.
+
+A **reader endpoint** for an Aurora DB cluster provides load-balancing support for read-only connections to the DB cluster. If the cluster contains one or more Aurora Replicas, the reader endpoint load balances each connection request among the Aurora Replicas.

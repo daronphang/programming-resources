@@ -42,10 +42,6 @@ Firewall manager simplifies the process of managing all of your WAF rules, secur
 
 A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level** (ALLOW/DENY). Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
 
-You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
-
-A network ACL contains a numbered list of rules and evaluates them in the increasing order while deciding whether to allow the traffic i.e. once the first set of rules matches, it stops. You should DENY rules above ALLOW rules.
-
 Every subnet within a VPC must be associated with a network ACL. You can associate a network ACL with multiple subnets, but a subnet can only be associated with one network ACL at a time.
 
 Network ACLs do not filter traffic destined to and from the following:
@@ -56,6 +52,22 @@ Network ACLs do not filter traffic destined to and from the following:
 - Amazon ECS task metadata endpoints
 - License activation for Windows instances
 - Amazon Time Sync Service
+
+### Inbound and outbound ports
+
+You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
+
+When a client connects to a server, a random port is generated (like 1024-65535) from the ephemeral port range with this becoming the client's source port. The port range varies depending on the OS:
+
+- Linux: 32768-61000
+- ELB: 1024-65535
+- Windows: 1025-5000
+- NAT gateway: 1024-65535
+- Lambda: 1024-65535
+
+### Rule evaluation
+
+A network ACL contains a numbered list of rules and **evaluates them in the increasing order** while deciding whether to allow the traffic i.e. once the first set of rules matches, it stops. You should DENY rules above ALLOW rules.
 
 ### Stateless packet filtering
 

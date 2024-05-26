@@ -180,6 +180,8 @@ Certificates generated from PCA can only be trusted and used from within the org
 
 Helps with auditing and compliance of your AWS resources by recording configurations and changes over time. Logs are stored in S3 bucket.
 
+You can use an AWS Config rule to detect non-compliant tags i.e.g require-tags set to true. This rule checks if a resource contains the tags that you specify.
+
 ### Features
 
 - Keeps inventory of AWS resources

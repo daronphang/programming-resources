@@ -6,6 +6,8 @@ You can use AWS Organizations (free service) to consolidate and manage multiple 
 
 You can centrally control permissions for the accounts in your organization (individual member account, OUs) by using SCPs. SCPs enable you to place restrictions on the AWS services, resources, and individual API actions that users and roles in each account can access.
 
+SCPs are similar to IAM policies but **never grant permissions**.
+
 ### Organization units (OUs)
 
 You can group accounts into OUs to make it easier to manage accounts with similar business or security requirements i.e. HR, Prod, Finance, etc.

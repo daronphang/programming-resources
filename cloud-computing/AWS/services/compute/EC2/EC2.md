@@ -29,7 +29,10 @@ c5n.xlarge
 
 ### Lifecycle
 
-Pending, running, rebooting, and stopping.
+- Pending
+- Running (billed)
+- Stopping
+- Terminated (reserved instances will still be billed)
 
 ### EC2 instance placements
 
@@ -110,4 +113,11 @@ The new feature further simplifies the configuration process for automatic recov
 
 ## Bastion host
 
-A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. If you have a bastion host in AWS, it is basically just an EC2 instance. It should be in a public subnet with either a public or Elastic IP address with sufficient RDP or SSH access defined in the security group. Users log on to the bastion host via SSH or RDP and then use that session to manage other hosts in the private subnets.
+A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. If you have a bastion host in AWS, it is basically just an EC2 instance.
+
+To setup a bastion host:
+
+- It should be in a public subnet with either a public or Elastic IP address with sufficient RDP or SSH access defined in the security group
+- Update the application servers security group to allow SSH access from the bastion host's private IP
+
+Users log on to the bastion host via SSH or RDP and then use that session to manage other hosts in the private subnets.
