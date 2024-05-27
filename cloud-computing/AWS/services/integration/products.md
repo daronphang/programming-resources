@@ -76,6 +76,11 @@ SQS is a highly-managed message queuing service. Using SQS, you can send, store,
 
 In SQS, an application sends messages into the queue. A user or service retrieves a message from the queue, processes it, and then deletes it from the queue. Messages are kept up to 14 days.
 
+The ReceiveMessageWaitTimeSeconds is the queue attribute that determines whether you are using Short or Long polling:
+
+- 0: Short polling
+- Greater than 0: Long polling
+
 ### Queues
 
 - Standard

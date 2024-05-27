@@ -39,6 +39,8 @@ With auto scaling, you define the **minimum capacity**, **desired capacity** (de
 
 ### Launch template
 
+Once you have created a launch template, it can't be modified. However, you can create a new version of the launch template that includes the changes you need.
+
 Features include:
 
 - Instance configuration

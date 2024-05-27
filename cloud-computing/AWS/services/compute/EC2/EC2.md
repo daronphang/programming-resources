@@ -4,6 +4,10 @@ Provides compute capacity in the cloud that is secure and resizable based on the
 
 Offers various instance types so that developers can choose required resources including CPU, memory, storage and networking capacity.
 
+```sh
+$ curl http://169.254.169.254/latest/meta-data/ # get access to metadata
+```
+
 ### Components
 
 When launching an EC2 instance, the following are required/optional:
