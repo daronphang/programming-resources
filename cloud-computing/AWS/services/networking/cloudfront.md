@@ -33,10 +33,25 @@ If you want to cache an object, you need to configure a **distribution** which i
 
 A domain name will also be provided from the distribution, and the distribution will be pushed to the edge locations.
 
+### Distributions
+
+When you create a distribution, you specify the origin where CloudFront sends requests for the files:
+
+- EC2
+- S3 Bucket
+- Load balancer
+- AWS Lambda function URL
+
 ### Cache skipping
 
 - Dynamic content with specific headers
 - Proxy methods PUT/POST/PATCH/OPTIONS/DELETE
+
+### Origin failover
+
+You can also set up CloudFront with origin failover for scenarios that require high availability. An origin group may contain **two origins: a primary and a secondary**. If the primary origin is unavailable or returns specific HTTP response status codes that indicate a failure, CloudFront automatically switches to the secondary origin. To set up origin failover, you must have a distribution with at least two origins.
+
+CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is GET, HEAD, or OPTIONS. CloudFront **does not fail over when the viewer sends a different HTTP method** e.g. POST, PUT, etc.
 
 ### Time to Live (TTL)
 

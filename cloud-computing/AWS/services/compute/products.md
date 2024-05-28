@@ -187,6 +187,14 @@ You can minimize cold starts by provisioning Lambda concurrency to improve perfo
 - Execution environment set-up happens during the provisioning process, rather during execution
 - By keeping functions initialized, which includes initialization actions and code dependencies, there is no unnecessary initialization in subsequent invocations
 
+### Lambda function URLs
+
+A function URL is a dedicated HTTP(S) endpoint for your Lambda function.
+
+```
+https://<url-id>.lambda-url.<region>.on.aws
+```
+
 ## AWS Batch
 
 AWS Batch is fully managed service that performs batch processing at any scale. Batch will **dynamically launch EC2 instances or Spot Instances**, and will provision the right amount of compute and memory.

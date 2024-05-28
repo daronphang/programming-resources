@@ -2,7 +2,7 @@
 
 A service command typically needs to create/update/delete aggregates in the database and send messages/events to a message broker. For example, a service that participates in a saga needs to update business entities and send messages/events. Similarly, a service that publishes a domain event must update an aggregate and publish an event.
 
-The command must **atomically** update the database and send messages in order to ensure data consistency and reliability. However, it is not viable to use a traditional distributed transaction (2PC) that spans the database and the message broker The database and/or the message broker might not support 2PC. And even if they do, it’s often undesirable to couple the service to both the database and the message broker.
+The command must **atomically** update the database and send messages in order to ensure data consistency and reliability (**dual writes** to keep a consistent state). However, it is not viable to use a traditional distributed transaction (2PC) that spans the database and the message broker The database and/or the message broker might not support 2PC. And even if they do, it’s often undesirable to couple the service to both the database and the message broker.
 
 However, without 2PC:
 

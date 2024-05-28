@@ -20,7 +20,8 @@ ElastiCache events provide notifications for cache cluster status changes, SNS t
 - Simple key/value storage
 - Auto discovery
 - Data partitioning and sharding
-- Does not inherently provide redundancy i.e. replication; it is typically achieved at the application level by implementing a distributed caching strategy
+- Does not inherently provide redundancy i.e. replication is typically achieved at the application level by implementing a distributed caching strategy
+- Multi-threaded
 
 ### Security
 

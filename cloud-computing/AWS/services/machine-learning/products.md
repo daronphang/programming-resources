@@ -72,7 +72,7 @@ Automatically converts speech to text using a deep learning process called autom
 
 ## Amazon Lex
 
-Provides ASR to convert speech to text (using same technology that powers Alexa). Helps build chatbots and call center bots.
+Provides ASR to convert speech to text (using same technology that powers Alexa). Helps build conversational chatbots and call center bots.
 
 ### Features
 

@@ -93,6 +93,11 @@ The following rules apply to the main route table:
 
 **Each subnet has to be linked to a route table, and a subnet can only be linked to one route table**. Every VPC has a default route table, and is good practice to leave it in the original state, and create a new table to customize network traffic associated with your VPC.
 
+Each route consists of:
+
+- Destination: The packet's **final** destination
+- Target: Where the packet should go next, to get it one step closer to the intended destination
+
 ```
 Destination             Target
 172.31.0.0/16           local (default)

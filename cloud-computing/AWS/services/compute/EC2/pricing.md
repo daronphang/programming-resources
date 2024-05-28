@@ -88,6 +88,8 @@ No other customers will share your EC2 hardware. However, you may share hardware
 
 ## Capacity Reservations
 
-You can reserve On-Demand instances capacity in a specify Availability Zone for any duration. You will **always have access to EC2 capacity** when you need it.
+You can reserve On-Demand instances capacity in a specific AZ for any duration. You will **always have access to EC2 capacity** when you need it.
 
 There is no time commitment (create/cancel anytime) but is not qualified for any discounts. You are charged at **On-Demand** rate whether you run the instances or not. Suitable for short-term.
+
+You can also implement automation to procure and cancel capacity, as well as terminate instances once they are no longer needed.
