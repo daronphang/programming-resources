@@ -50,7 +50,3 @@ EDR uses block replication to replicate server volumes incrementally at the bloc
 - Faster recovery
 - Fail back to source after recovery
 - Automatically applies security groups from source EC2 instances to replicated instances
-
-## AWS Recycle Bin
-
-Recycle Bin is a data recovery feature that enables you to restore accidentally deleted Amazon EBS snapshots and EBS-backed AMIs. When using Recycle Bin, if your resources are deleted, they are retained in the Recycle Bin for a time period that you specify before being permanently deleted.

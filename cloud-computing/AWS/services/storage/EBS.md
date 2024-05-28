@@ -69,8 +69,8 @@ You can move a Snapshot to an archive tier that is cheaper to store, but takes b
 
 ## Amazon Data Lifecycle Manager
 
-You can use Amazon Data Lifecycle Manager to automate the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs
+You can use Amazon Data Lifecycle Manager to automate the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs.
 
-### Recycle Bin
+## AWS Recycle Bin
 
-You can setup rules to retain deleted snapshots so you can recover them after an accidental deletion by specifying the retention period (1-365 days).
+Recycle Bin is a data recovery feature that enables you to restore accidentally deleted Amazon EBS snapshots and EBS-backed AMIs. When using Recycle Bin, if your resources are deleted, they are retained in the Recycle Bin for a time period that you specify before being permanently deleted.

@@ -1,6 +1,6 @@
 ## AWS Lake Formation
 
-Managing and scaling data access is complex and time consuming. Lake Formation helps to centrally govern, secure and share data for analytics and machine learning, for both across your organization and externally.
+Managing and scaling data access is complex and time consuming. Lake Formation helps to centrally govern, secure and share data for analytics and machine learning, for both across your organization and externally. It is a **centralized repository** for storing large volumes of structured, semi-structured, and unstructured data.
 
 Lake Formation is an aggregator for disparate data sources into a standardized data format that you can use Glue or other transformation services on top of i.e. ingestion -> storage (S3) -> processing (AWS Glue).
 
@@ -8,12 +8,38 @@ Data can be stored in its original format (csv), Parquet or Orc (flat files opti
 
 Lake Formation has built-in audit logging, and supports cell and row-level security through granular access policies. It also allows the use of resource tags to control access i.e. access policies are applied based on tags.
 
+### Architecture
+
+- Storage: S3
+- Data catalog: Glue
+- Analysis: Athena, RedShift
+
 ### Features
 
 - Simplified data lake creation
 - Centralized data access control
 - Data cleaning with built-in ML algorithms to deduplicate data
 - Cross-region data replication
+
+### How it works
+
+1. Ingest data from various data sources including S3, databases
+2. Crawl data to understand schema using AWS Glue Crawlers
+3. Clean data using ETL such as AWS Glue
+4. Analyze data using integrated analytical engines such as Athena, Glue, RedShift
+
+### Permissions
+
+AWS Lake Formation provides a RDBMS permissions model to grant or revoke access to Data Catalog resources such as databases, tables, and columns with underlying data in Amazon S3. The easy to manage Lake Formation permissions replace the complex Amazon S3 bucket policies and corresponding IAM policies.
+
+1. A user submits query or an ETL script to an **integrated analytical engine** such as Athena, Glue, RedShift
+2. The Data Catalog checks user's permissions with Lake Formation
+3. If the user is authorized to access the table, Lake Formation provides temporary access to the integrated analytical engine
+
+### Data lake vs warehousing
+
+- A data warehouse is a database optimized to analyze relational data
+- A data lake stores both relational and non-relational data
 
 ## Amazon Athena
 

@@ -23,7 +23,7 @@ Enables you to store your files in Amazon S3 while providing access to your user
 
 Emulates a tape library with data stored in S3 (Virtual Tape Library) or Glacier (Tape Shelf), utilizes iSCSI protocol.
 
-#### Volume Gateway
+### Volume Gateway
 
 Volume Gateway presents iSCSI block storage volumes to your on-premises applications that you can store in Amazon S3 or migrate to Amazon EBS.
 

@@ -16,7 +16,7 @@ It has high availability but no auto-scaling, and limited AWS integrations with 
 
 Containers provide you a standard way to package your application's code and dependencies into a single object. You can use containers for processes and workflows in which there are essential requirements for security, reliability and scalability.
 
-AWS ECS is a highly scalable, high-performance container management system that enables you to run and scale containerized applications on AWS. However, you still need to manage the underlying infrastructure. - A load balancer can be assigned to route external traffic to your service.
+AWS ECS is a highly scalable, high-performance container management system that enables you to run and scale containerized applications on AWS. However, you still need to manage the underlying infrastructure. A load balancer can be assigned to route external traffic to your service.
 
 ECS supports Docker containers. You can use API calls to launch and stop Docker-enabled applications.
 
@@ -180,7 +180,13 @@ When the Lambda service receives a request to run a function via the Lambda API,
 - Service downloads code for the function stored in S3 or ECR
 - Creates environment with the memory, runtime and configuration specified
 
-After the execution completes, the execution environment is frozen. To improve resource management and performance, the Lambda service retains the execution environment for a non-deterministic period of time.
+After the execution completes:
+
+- Execution environment is frozen for a period of time to improve resource management and performance
+- If another request arrives, the environment is reused to handle the subsequent request
+- If requests arrive simultaneously, the Lambda service scales up the Lambda function to provide multiple execution environments (**each invocation experiences cold start**)
+
+<img src="../../assets/lambda-invocation-pattern.png">
 
 You can minimize cold starts by provisioning Lambda concurrency to improve performance consistency:
 
@@ -189,7 +195,7 @@ You can minimize cold starts by provisioning Lambda concurrency to improve perfo
 
 ### Lambda function URLs
 
-A function URL is a dedicated HTTP(S) endpoint for your Lambda function.
+A function URL is a dedicated HTTP(S) endpoint for your Lambda function. After you configure a function URL for your function, you can invoke your function through its HTTP(S) endpoint via a web browser, curl, Postman, or any HTTP client
 
 ```
 https://<url-id>.lambda-url.<region>.on.aws

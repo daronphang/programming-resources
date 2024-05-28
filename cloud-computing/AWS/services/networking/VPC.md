@@ -69,7 +69,6 @@ A subnet within a VPC:
 - Applications deployed in the subnet will have an IP address within the subnet CIDR block
 - Always mapped to a single Availability zone
 - Cannot overlap with other subnets in the VPC
-- IPv4 CIDR is required as it is the default IP addressing system for VPC and EC2
 - Allows for an optional IPv6 CIDR
 - Can be configured to be IPv6 only i.e. no IPv4 addresses
 - Can communicate with other subnets in the VPC
