@@ -62,7 +62,7 @@ Allows you to get visual analysis of your applications by **tracing requests mad
 - Find errors and exception
 - Meeting SLA (service level agreements)
 
-## AWS Health Dashboard (Service, Account)
+## AWS Health Dashboard (Service, Personal)
 
 AWS Health provides ongoing visibility into your resource performance and the availability of your AWS services and accounts.
 

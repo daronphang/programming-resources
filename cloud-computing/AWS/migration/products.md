@@ -55,8 +55,8 @@ DMS has an advanced logging feature called **time travel logs**, which enables u
 ### Migration types
 
 - Full load: Migrates data from source to target, creating tables as necessary
-- Full load with CDC: Performs full load while simultaneously capturing changes on the source
-- Change Data Capture (CDC) only to capture and replicate ongoing changes from the source database
+- Full load with Change Data Capture (CDC): Performs full load while simultaneously capturing changes on the source
+- CDC only to capture and replicate ongoing changes from the source database
 
 ### Features
 

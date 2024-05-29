@@ -23,7 +23,7 @@ Amazon RDS is available on the following engines:
 - Monitoring, audit and performance
 - Security
 - Blue/green deployment
-- Multi-AZ deployments that spans across two AZs with synchronous replication
+- Multi-AZ deployments that spans across two AZs with synchronous replication (CNAME switch from primary to standby)
 
 ### Database instances
 
@@ -37,9 +37,17 @@ The storage portion of DB instances uses Amazon EBS volumes for database and log
 
 ### Read replicas
 
+RDS read replicas enable you to create one or more read-only copies of your database instance within the same AWS Region or in a different AWS Region to increase the scalability.
+
 Replication is performed asynchronously for read replicas. You can scale the read workload of your DB by creating replicas (maximum of 15 replicas). However, **write is only performed to the main DB**.
 
 For multiple Availability Zones, you can create a **failover DB** in case of an outage. It is only active if the failover is triggered.
+
+Read replicas differ from multi-AZ as follows:
+
+- Multi-AZ has a master and standby database (cannot be accessed) in another AZ; if master fails, secondary takes over
+- Read replica can be used in a different AZ or Region
+- Multi-AZ has higher availability than read replica
 
 ### Security
 

@@ -117,6 +117,8 @@ To allow public traffic from the internet to access your VPC, you attach an **in
 
 Endpoints allows customers to private connect their VPC to supported AWS services using AWS network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services. Traffic between a VPC and a service does not leave the Amazon network.
 
+You can attach **endpoint policies** to the VPC endpoints. An endpoint policy is a resource-based policy that you attach to a VPC endpoint to control which AWS principals can use the endpoint to access an AWS service. An endpoint policy does not override or replace identity-based policies or resource-based policies.
+
 ### VPC Gateway Endpoint
 
 A gateway endpoint targets specific IP routes in an Amazon VPC route table, in the form of a prefix-list, used for traffic destined to DynamoDB or S3. **Gateway endpoints do not enable AWS PrivateLink**.

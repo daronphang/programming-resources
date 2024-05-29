@@ -36,3 +36,5 @@ With EFA, High Performance Computing (HPC) applications using the Message Passin
 EFA is suitable for applications that require extremely low network latency and high throughout for communication between multiple EC2 instances.
 
 EFA is available as an optional EC2 networking feature that you can enable on any supported EC2 instance at no additional cost.
+
+The OS-bypass capabilities of EFAs are **not supported on Windows instances**. If you attach an EFA to a Windows instance, the instance functions as an Elastic Network Adapter without the added EFA capabilities.

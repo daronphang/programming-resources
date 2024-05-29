@@ -37,7 +37,7 @@ In AWS the most common records are:
 - www.google.com -> 12.34.56.78 == A record (IPv4)
 - www.google.com -> 2001:0db8:85a3:0000 == AAAA record (IPv6)
 - search.google.com -> www.google.com == CNAME:hostname to hostname
-- example.com -> AWS resource == Alias (ELB, CloudFront, S3, RDS, etc)
+- example.com -> AWS resource DNS name == Alias (ELB, CloudFront, S3, RDS, etc)
 
 ### Routing policies
 

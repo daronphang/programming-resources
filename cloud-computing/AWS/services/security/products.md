@@ -93,7 +93,7 @@ AWS WAF is a web application firewall that lets you monitor network requests tha
 
 ### Web ACLs
 
-AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, HTTP body, HTTP headers, SQL injection, XSS, etc.
+AWS WAF works together with Amazon CloudFront and ALB. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, HTTP body, HTTP headers, SQL injection, XSS, etc.
 
 Charges are based on the number of web ACLs you create, and the number of rules that you add per web ACL, and the number of web requests you receive.
 
@@ -184,6 +184,7 @@ You can setup **Config Rules** to confirm that resources are configured in compl
 
 - Checking for approved AMI images
 - Required-Tag to check if a resource contains the tags that you specify
+- Evaluate whether your AWS resources comply with common best practices e.g. check if EBS is encrypted, password is compliant with company policy, etc.
 
 ### Features
 

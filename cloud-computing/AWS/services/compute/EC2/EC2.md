@@ -38,6 +38,12 @@ c5n.xlarge
 - Stopping
 - Terminated (reserved instances will still be billed)
 
+### Monitoring
+
+For basic monitoring, Only status check metrics are available in 1-minute periods. All other metrics are available in 5-minute periods.
+
+For detailed monitoring, all metrics, including status check metrics, are available in 1-minute periods.
+
 ### EC2 instance placements
 
 - **Cluster placement group**: For applications that need low network latency and high network throughput such as big data and analytics workloads (poor reliability, single point of failure)

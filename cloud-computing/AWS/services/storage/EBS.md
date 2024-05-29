@@ -61,7 +61,7 @@ An EBS snapshot is an incremental backup that stores data in S3:
 - Subsequent backups copy **blocks of data that have changed** since the most recent snapshot are saved
 - Snapshots will retain encryption property
 
-With EBS Snapshots, you can **replicate data across Availability Zones**.
+With EBS Snapshots, you can **replicate data across Availability Zones**. When a snapshot is taking place, the EBS can still be used as it occurs **asynchronously**.
 
 ### EBS Snapshot Archive
 
