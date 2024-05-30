@@ -195,7 +195,7 @@ You can minimize cold starts by provisioning Lambda concurrency to improve perfo
 
 ### Lambda function URLs
 
-A function URL is a dedicated HTTP(S) endpoint for your Lambda function. After you configure a function URL for your function, you can invoke your function through its HTTP(S) endpoint via a web browser, curl, Postman, or any HTTP client
+A function URL is a dedicated HTTP(S) endpoint for your Lambda function. After you configure a function URL for your function, you can invoke your function through its HTTP(S) endpoint via a web browser, curl, Postman, or any HTTP client.
 
 ```
 https://<url-id>.lambda-url.<region>.on.aws

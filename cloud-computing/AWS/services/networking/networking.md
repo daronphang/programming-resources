@@ -34,10 +34,6 @@ Firewall endpoint serves as the entry/exit points for traffic to be inspected. *
 - Granular control
 - Advanced threat protection
 
-## AWS Firewall Manager
-
-Firewall manager simplifies the process of managing all of your WAF rules, security groups, NACLs, and AWS Shield, across **multiple accounts**.
-
 ## Network Access control List (ACLs)
 
 A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level** (ALLOW/DENY). Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.

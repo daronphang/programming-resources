@@ -41,7 +41,7 @@ RDS read replicas enable you to create one or more read-only copies of your data
 
 Replication is performed asynchronously for read replicas. You can scale the read workload of your DB by creating replicas (maximum of 15 replicas). However, **write is only performed to the main DB**.
 
-For multiple Availability Zones, you can create a **failover DB** in case of an outage. It is only active if the failover is triggered.
+You can **promote a read replica to a standalone instance and make it writable** as a disaster recovery solution if the primary DB instance fails.
 
 Read replicas differ from multi-AZ as follows:
 

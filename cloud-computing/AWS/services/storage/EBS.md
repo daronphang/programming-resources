@@ -19,6 +19,12 @@ EBS volumes act similarly to external drives:
 
 - Supports live configuration changes i.e. you can modify the volume type, size, IOPS capacity without service disruptions
 
+### Encryption
+
+EBS encryption uses AWS KMS keys when creating encrypted volumes and snapshots.
+
+Encryption operations occur on the servers that host EC2 instances, ensuring the security of both data-at-rest and data-in-transit between an instance and its attached EBS storage.
+
 ### Pricing
 
 Pay for what you are provisioned. Charged per GB per month.

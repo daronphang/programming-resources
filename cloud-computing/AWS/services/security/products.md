@@ -112,7 +112,7 @@ Charges are based on the number of web ACLs you create, and the number of rules 
 
 ## AWS Firewall Manager
 
-AWS Firewall Manager allows centrally defining and enforcing firewall rules across accounts and VPCs for consistency.
+Firewall manager simplifies the process of managing all of your WAF rules, security groups, NACLs, and AWS Shield, across **multiple accounts** for consistency.
 
 ## Amazon Inspector
 
