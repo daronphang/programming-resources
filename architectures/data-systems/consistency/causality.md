@@ -1,4 +1,4 @@
-## Causal Consistency
+## Causal consistency
 
 Causality imposes an ordering on events: cause comes before effect, a message is sent before received, etc. These chains of causally dependent operations define the causal order in the system i.e. what happened before what.
 

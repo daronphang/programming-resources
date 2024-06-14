@@ -31,19 +31,35 @@ While fault-tolerance issues can usually be mitigated through multiple instances
 <th>Advantages</th>
 <th>Disadvantages</th>
 </tr>
+
 <tr>
-<td>
-• Good for high code volatility </br>
-• No code duplication in heterogeneous codebases </br>
-• Preserves the bounded context </br>
-• No static code sharing
-</td>
-<td>
-• Versioning changes can be difficult </br>
-• Performance is impacted due to latency </br>
-• Fault tolerance and availability issues due to service dependency </br>
-• Scalability and throughput issues due to service dependency </br>
-• Increased risk due to runtime changes
-</td>
+<td>Good for high code volatility</td>
+<td>Versioning changes can be difficult</td>
 </tr>
+
+<tr>
+<td>No code duplication in heterogeneous codebases</td>
+<td>Performance is impacted due to latency</td>
+</tr>
+
+<tr>
+<td>Preserves the bounded context</td>
+<td></td>
+</tr>
+
+<tr>
+<td>No static code sharing</td>
+<td>Fault tolerance and availability issues due to service dependency</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Scalability and throughput issues due to service dependency</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Increased risk due to runtime changes</td>
+</tr>
+
 </table>

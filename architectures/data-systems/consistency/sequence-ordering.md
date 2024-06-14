@@ -1,8 +1,8 @@
-## Sequence Number Ordering
+## Sequence number ordering
 
 We can use sequence numbers or timestamps to order events. A timestamp need not come from a time-of-day clock (which has many problems) but from a logical clock (an algorithm to generate a sequence of numbers to identify operations, typically incremented for every operation).
 
-## Lamport Timestamps
+## Lamport timestamps
 
 A simple method for generating sequence numbers that is consistent with causality. Each node has a unique identifier and keeps a counter of the number of operations it has processed. Every client also keeps track of the maximum counter value it has seen so far.
 

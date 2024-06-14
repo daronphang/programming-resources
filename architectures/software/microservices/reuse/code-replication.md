@@ -10,14 +10,17 @@ At times, however, this technique can prove useful, particularly for highly stat
 <th>Disadvantages</th>
 </tr>
 <tr>
-<td>
-• Preserves the bounded context </br>
-• No code sharing</br>
-</td>
-<td>
-• Difficult to apply code changes </br>
-• Code inconsistency across services </br>
-• No versioning capabilities across services </br>
-</td>
+<td>Preserves the bounded context</td>
+<td>Difficult to apply code changes</td>
+</tr>
+
+<tr>
+<td>No code sharing</td>
+<td>Code inconsistency across services</td>
+</tr>
+
+<tr>
+<td></td>
+<td>No versioning capabilities across services</td>
 </tr>
 </table>

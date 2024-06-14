@@ -23,17 +23,25 @@ Always use versioning for shared libraries. However, there are trade-offs and hi
 <th>Advantages</th>
 <th>Disadvantages</th>
 </tr>
+
 <tr>
-<td>
-• Ability to version changes </br>
-• Shared code is compiled, reducing runtime errors </br>
-• Good agility for code shared code changes
-</td>
-<td>
-• Dependencies can be difficult to manage </br>
-• Code duplication in heterogenous codebases </br>
-• Version deprecation can be difficult </br>
-• Version communication can be difficult
-</td>
+<td>Ability to version changes</td>
+<td>Dependencies can be difficult to manage</td>
 </tr>
+
+<tr>
+<td>Shared code is compiled, reducing runtime errors</td>
+<td>Code duplication in heterogenous codebases</td>
+</tr>
+
+<tr>
+<td>Good agility for code shared code changes</td>
+<td>Version deprecation can be difficult</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Version communication can be difficult</td>
+</tr>
+
 </table>
