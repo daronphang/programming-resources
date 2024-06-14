@@ -98,6 +98,12 @@ print(binary_search([1,4,6,8,9,10,12,15,25,30,45,50], 45))
 
 ## Pigeonhole principle with Binary Search
 
+Problem:
+
+- Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive
+- There is only one repeated number in nums, return this repeated number
+- You must solve the problem without modifying the array nums and uses only constant extra space
+
 Can combine pigeonhole principle with binary search i.e. counting the number of elements less than or equal to a number.
 
 https://leetcode.com/problems/find-the-duplicate-number/solutions/?envType=daily-question&envId=2023-09-19

@@ -135,7 +135,7 @@ An interface endpoint is a collection of one or more elastic network interfaces 
 
 For an EC2 to connect to an S3 Bucket, need to create an IG and give EC2 full internet access which is not desirable.
 
-AWS PrivateLink is a technology that provides the most secure and scalable way to expose a public AWS service to other VPCs e.g. S3 Bucket. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
+AWS PrivateLink is a highly available, scalable technology that you can use to privately connect your VPC to services as if they were in your VPC. AWS PrivateLink is a technology that provides the most secure and scalable way to expose a public AWS service to other VPCs e.g. S3 Bucket. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
 
 PrivateLink is a technology for **interface endpoints**, not for a gateway endpoint.
 

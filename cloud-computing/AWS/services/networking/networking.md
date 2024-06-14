@@ -79,7 +79,7 @@ Security groups can be attached to multiple EC2 instances and are locked down to
 
 ### Stateful packet filtering
 
-Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets. As it is stateful, **only the direction of the request needs to be permitted**.
+Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets. As it is stateful, **only the direction of the request needs to be permitted (INBOUND)**.
 
 ## Internet Gateway (IGW)
 

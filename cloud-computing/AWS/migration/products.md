@@ -100,7 +100,7 @@ When you use DataSync with a private VPC endpoint, the DataSync agent can commun
 
 ## AWS Transfer Family
 
-AWS Transfer Family is a full-managed and highly-available FTP server that securely scales your recurring business-to-business file transfers to AWS Storage services using SFTP, FTPS, FTP, and AS2 protocols. Supports S3 or EFS.
+AWS Transfer Family is a fully-managed and highly-available FTP server that securely scales your recurring business-to-business file transfers to AWS Storage services using SFTP, FTPS, FTP, and AS2 protocols. Supports S3 or EFS.
 
 You can configure a custom security policy that aligns with the company's specific security requirements and industry regulations.
 
