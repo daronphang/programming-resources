@@ -1,4 +1,4 @@
-## Serializing Data
+## Serializing data
 
 Programs working with data have at least two different representations: in-memory and bytes. Translation from in-memory to bytes is called encoding/marshalling/serialization, and bytes to in-memory is decoding/unmarshalling/deserialization.
 

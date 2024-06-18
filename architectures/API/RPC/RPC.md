@@ -20,7 +20,7 @@ As the application software does not contain any communication code, it is indep
 - OS and programming language used
 - Calling sequence needed to use the underlying communications software
 
-## RPC Procedure
+## RPC procedure
 
 1. Client invokes a client stub procedure with parameters that resides within the client's address space
 2. Client stub marshalls (packs) the parameters into a message; marshalling includes converting the representation of the parameters into a standard format
@@ -33,7 +33,7 @@ As the application software does not contain any communication code, it is indep
 
 ## Terminologies
 
-### RPC Runtime
+### RPC runtime
 
 RPC run-time system is a library of subroutines and a set of services that handle the network communications in the underlying RPC mechanism. In an RPC call, both the client and server-side run-time systems' code handle binding, establishing communications over an appropriate protocol, passing call data between each other, and handling communication errors.
 

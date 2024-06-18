@@ -48,12 +48,12 @@ Loose contracts offer the least coupled integration points.
 </tr>
 
 <tr>
-<th>Highly decoupled</th>
-<th>Contract management</th>
+<td>Highly decoupled</td>
+<td>Contract management</td>
 </tr>
 
 <tr>
-<th>Easier to evolve</th>
-<th>Requires fitness functions</th>
+<td>Easier to evolve</td>
+<td>Requires fitness functions</td>
 </tr>
 </table>

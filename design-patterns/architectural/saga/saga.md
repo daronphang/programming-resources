@@ -95,7 +95,7 @@ However, this greatly increases network overhead in terms of chatter between ser
 </tr>
 </table>
 
-## Stamp coupling
+### Stamp coupling
 
 A third solution utilizes stamp coupling storing extra workflow state in the message contract sent between services. Each domain service updates its part of the overall state and passes that to the next in the chain of responsibility. Thus, any consumer of that contract can check on the status of the workflow without querying each service.
 
@@ -125,73 +125,6 @@ Nonetheless, this is a partial solution, as it still does not provide a single p
 In the choreographed solution, removing the mediator forces higher levels of communication between services. This might be a perfectly suitable trade-off. For example, if an architect has a workflow that needs higher scale, responsiveness and typically has few error conditions, it might be worth trading the higher scale of choreography with the complexity of error handling.
 
 However, as workflow complexity goes up, the need for an orchestrator rises proportionally. Also, the more semantic complexity contained in a workflow, the more utilitarian an orchestrator is.
-
-## Transactional saga patterns
-
-<table>
-<tr>
-<th>Pattern</th>
-<th>Communication</th>
-<th>Consistency</th>
-<th>Coordination</th>
-</tr>
-
-<tr>
-<td>Epic Saga</td>
-<td>Synchronous</td>
-<td>Atomic</td>
-<td>Orchestrated</td>
-</tr>
-
-<tr>
-<td>Phone Tag Saga</td>
-<td>Synchronous</td>
-<td>Atomic</td>
-<td>Choreographed</td>
-</tr>
-
-<tr>
-<td>Fairy Tale Saga</td>
-<td>Synchronous</td>
-<td>Eventual</td>
-<td>Orchestrated</td>
-</tr>
-
-<tr>
-<td>Time Travel Saga</td>
-<td>Synchronous</td>
-<td>Eventual</td>
-<td>Choreographed</td>
-</tr>
-
-<tr>
-<td>Fantasy Fiction Saga</td>
-<td>Asynchronous</td>
-<td>Atomic</td>
-<td>Orchestrated</td>
-</tr>
-
-<tr>
-<td>Horror Story</td>
-<td>Asynchronous</td>
-<td>Atomic</td>
-<td>Choreographed</td>
-</tr>
-
-<tr>
-<td>Parallel Saga</td>
-<td>Asynchronous</td>
-<td>Eventual</td>
-<td>Orchestrated</td>
-</tr>
-
-<tr>
-<td>Anthology Saga</td>
-<td>Asynchronous</td>
-<td>Eventual</td>
-<td>Choreographed</td>
-</tr>
-</table>
 
 ## Saga state machines
 

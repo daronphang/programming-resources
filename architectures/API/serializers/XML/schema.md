@@ -1,4 +1,4 @@
-## XML Schema
+## XML schema
 
 To specify the document structure, you can supply a DTD or an XML Schema definition.
 
