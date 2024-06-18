@@ -1,4 +1,4 @@
-## Standard Library
+## Standard library
 
 Go standard library has a built-in log package that provides most basic logging features. Does not have log levels (INFO, DEBUG, WARNING, ERROR).
 
@@ -21,7 +21,7 @@ func main() {
 }
 ```
 
-## Structured Loggers
+## Structured loggers
 
 Zap, Zerolog, Logrus.
 
@@ -33,7 +33,7 @@ Supports cutting archive log files.
 $ go get -u github.com/natefinch/lumberjack
 ```
 
-### Adding to Zap
+## Zap
 
 ```go
 func getLogWriter() zapcore.WriteSyncer {

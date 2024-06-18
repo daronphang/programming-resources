@@ -24,7 +24,7 @@ Within a double-quoted string literal, escape sequences that begin with \ can be
 \\    backslash
 ```
 
-### Looping Strings (Decoding UTF-8)
+### Looping strings (decoding UTF-8)
 
 In Golang, string literal is represented as a sequence of bytes. If iterating through string, using len(str) is not accurate as it prints the number of bytes.
 
@@ -64,7 +64,7 @@ for i, r := range "Hello, 世界" {
 }
 ```
 
-### Strings and Byte Slices
+### Byte slices
 
 ```go
 // basename function removes prefix with components separated by /, and suffix that looks like file type
@@ -72,7 +72,7 @@ fmt.Println(basename("a/b/c.go")) // "c"
 fmt.Println(basename("c.d.go"))   // "c.d"
 ```
 
-### String and Byte Functions
+### Byte functions
 
 ```go
 func Contains(s, substr string) bool
@@ -83,7 +83,7 @@ func Index(s, sep string) int
 func Join(a []string, sep string) string
 ```
 
-### Strings and Numbers Conversion
+### Numbers conversion
 
 ```go
 x := 123

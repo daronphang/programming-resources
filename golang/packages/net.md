@@ -1,6 +1,6 @@
 ## Net
 
-Provides the components for building networked client and server programs that commmunicate over TCP, UDP or Unix domain sockets.
+Provides the components for building networked client and server programs that communicate over TCP, UDP or Unix domain sockets.
 
 ```go
 package main

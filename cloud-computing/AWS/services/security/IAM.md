@@ -122,3 +122,4 @@ For Identity Providers, can either use:
 
 - Built-in identity store in IAM Identity Center
 - Third parties (AD, OneLogin, Okta)
+- For AD, can use AWS Directory Service

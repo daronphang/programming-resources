@@ -1,5 +1,7 @@
 ## CI Paradigm
 
+CI is the continuous assembling and testing of our entire com‐ plex and rapidly evolving ecosystem.
+
 From a testing perspective, CI is a paradigm to inform the following:
 
 - Which tests to run when in the development/release workflow
@@ -31,6 +33,8 @@ Automated development-related tasks saves engineering resources in the long run.
 #### Continuous Build
 
 The Continuous Build integrates the latest code changes at head and runs an automated build and test. Breaking the build or failing the build includes breaking tests as well as breaking compilation.
+
+After a change is submitted, the CB should run all relevant tests. If a change passes all tests, the CB marks it passing or “green,” as it is often displayed in user interfaces (UIs). This process effectively introduces two different versions of head in the repository: true head, or the latest change that was committed, and green head, or the latest change the CB has verified.
 
 ### Failure Management
 

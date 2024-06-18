@@ -4,6 +4,10 @@ Provides compute capacity in the cloud that is secure and resizable based on the
 
 Offers various instance types so that developers can choose required resources including CPU, memory, storage and networking capacity.
 
+```sh
+$ curl http://169.254.169.254/latest/meta-data/ # get access to metadata
+```
+
 ### Components
 
 When launching an EC2 instance, the following are required/optional:
@@ -29,13 +33,22 @@ c5n.xlarge
 
 ### Lifecycle
 
-Pending, running, rebooting, and stopping.
+- Pending
+- Running (billed)
+- Stopping
+- Terminated (reserved instances will still be billed)
+
+### Monitoring
+
+For basic monitoring, Only status check metrics are available in 1-minute periods. All other metrics are available in 5-minute periods.
+
+For detailed monitoring, all metrics, including status check metrics, are available in 1-minute periods.
 
 ### EC2 instance placements
 
-- Cluster placement group: For applications that need low network latency and high network throughput such as big data and analytics workloads
-- Partition placement group: Instances do not share underlying hardware with instances in other partitions, for distributed, replicated workloads
-- Spread placement group: Instances have distinct underlying hardware to reduce correlated failures with its own network and power source
+- **Cluster placement group**: For applications that need low network latency and high network throughput such as big data and analytics workloads (poor reliability, single point of failure)
+- **Partition placement group**: Instances do not share underlying hardware with instances in other partitions, for distributed, replicated workloads
+- **Spread placement group**: Instances have distinct underlying hardware to reduce correlated failures with its own network and power source (most resilient)
 
 ## Amazon Machine Image (AMI)
 
@@ -102,21 +115,19 @@ $ systemctl enable httpd
 
 Can either use SSH (port 20), Putty or EC2 Instance Connect (uses temporary SSH keys).
 
-## Elastic Network Interface (ENI)
+## EC2 Auto Recovery
 
-An ENI is a logical networking component in a VPC that represents a virtual network card. It can include the following attributes:
+Amazon EC2 announces automatic recovery by default, a new feature that makes it even easier for customers to recover their instance when it becomes unreachable. Automatic recovery improves instance availability by recovering the instance if it becomes impaired due to an underlying hardware issue. Automatic recovery migrates the instance to another hardware during an instance reboot while retaining its instance ID, private IP addresses, Elastic IP addresses, and all instance metadata.
 
-- A primary private IPv4 address
-- A primary IPv6 address
-- One or more secondary IPv4 addresses
-- One public IPv4 address
-- One or more security groups
-- A MAC address
+The new feature further simplifies the configuration process for automatic recovery as supported instance types are configured to recover by default. Customers can choose to disable automatic recovery for their instance.
 
-From a security perspective, ENIs play a crucial role in protecting your AWS infrastructure.
+## Bastion host
 
-You can create and configure network interfaces and attach them to instances in the same AZ. Separates and virtualizes the networking aspect of your EC2 instances. ENI can be detached and attached to different EC2 instances. Flow logs can be enabled to capture information about IP traffic going to and from the ENI.
+A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. If you have a bastion host in AWS, it is basically just an EC2 instance.
 
-When you launch an EC2 instance, it will be configured with a **primary ENI** called 'ethernet zero' which is assigned a primary private IPv4 address. The primary ENI cannot be detached while the EC2 is running or stopped i.e. fixed to the EC2 instance.
+To setup a bastion host:
 
-You can attach **secondary ENIs** to EC2. They are useful for scenarios including network appliances, management networks, or to create a low budget high availability solution. It can have one primary and multiple secondary private IP addresses. They can also be associated with different security groups than the primary ENI, allowing for varied network and security configurations. Secondary ENIs will persist even if the EC2 instances are stopped.
+- It should be in a public subnet with either a public or Elastic IP address with sufficient RDP or SSH access defined in the security group
+- Update the application servers security group to allow SSH access from the bastion host's private IP
+
+Users log on to the bastion host via SSH or RDP and then use that session to manage other hosts in the private subnets.

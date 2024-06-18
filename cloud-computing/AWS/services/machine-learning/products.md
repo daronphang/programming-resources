@@ -13,6 +13,8 @@ Amazon Sagemaker is a cloud-based machine-learning platform that allows users to
 - Labeling
 - Training
 
+To enable inter-container traffic encryption, set EnableInterContainerTrafficEncryption parameter to true when creating training jobs.
+
 ### Workflow
 
 1. Data ingestion
@@ -29,7 +31,7 @@ Amazon Sagemaker is a cloud-based machine-learning platform that allows users to
 - Automatic model tuning
 - SageMaker Studio IDE
 
-## Amazon Augmented AI
+## Amazon Augmented AI (A2I)
 
 Amazon Augmented AI provides built-in human review workflows for common machine learning use cases, such as content moderation and text extraction from documents.
 
@@ -70,7 +72,7 @@ Automatically converts speech to text using a deep learning process called autom
 
 ## Amazon Lex
 
-Provides ASR to convert speech to text (using same technology that powers Alexa). Helps build chatbots and call center bots.
+Provides ASR to convert speech to text (using same technology that powers Alexa). Helps build conversational chatbots and call center bots.
 
 ### Features
 

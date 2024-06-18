@@ -1,14 +1,14 @@
-## Distributed Transactions and Consensus
+## Distributed transactions and consensus
 
 Consensus is one of the most fundamental problems in distributed computing. The goal is to get several nodes to agree on something.
 
-## Example Situations
+## Example situations
 
-### Leader Election
+### Leader election
 
 In a database with single-leader replication, all nodes need to agree on which node is the leader. The position might become contested if some nodes can't communicate with others due to a network fault, and may result in a **split brain situation** in which two nodes both believe themselves to be the leader. **This would cause data to diverge, leading to inconsistency and data loss.**
 
-### Atomic Commit
+### Atomic commit
 
 In a database that supports transactions spanning several nodes/partitions, we have the problem that a transaction may fail but succeed on others. To maintain atomicity, need to get all nodes to agree on the outcome of the transaction: either all abort or commit (if succeeds).
 
@@ -26,7 +26,7 @@ Similar to a traditional marriage ceremony whereby the minister asks the bride a
 2. **Phase 1:** Coordinator sends a prepare request to each of the nodes, asking if they are able to commit
 3. **Phase 2:** Coordinator sends a commit request to all nodes if all reply 'yes', else an abort request if any replies 'no'
 
-### Why it Works
+### Why it works
 
 Although the prepare and commit requests can just as easily be lost, 2PC ensures atomicity:
 
@@ -37,6 +37,6 @@ Although the prepare and commit requests can just as easily be lost, 2PC ensures
 5. When the coordinator has received all responses, it makes a definitive decision to commit or abort the transaction. It must write that decision to its transaction log on disk (known as the commit point or 'point of no return')
 6. Coordinator sends commit request to all participants. If request fails, the coordinator must retry forever until it succeeds and there is no more going back
 
-## Distributed Transactions in Practice
+## Distributed transactions in practice
 
 Although 2PC helps to provide an important safety guarantee, distributed transactions are often criticized for causing operational problems, killing performance, and promising more than they can deliver. Hence, many cloud services choose not to implement distributed transactions.

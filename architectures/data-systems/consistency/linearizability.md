@@ -1,4 +1,4 @@
-## Linearizability (Atomic Consistency)
+## Linearizability (atomic consistency)
 
 A data storage system depicts linearizability when two conditions are satisfied: there is a notion of operations executed in sequential order (aligned with real time), and all operations on it are atomic.
 
@@ -16,16 +16,16 @@ A database may provide both serializability and linearizability, and this combin
 
 ## Applications
 
-### Unique Constraints
+### Unique constraints
 
 Unique constraints in databases require linearizability if it needs to be enforced. Other examples include ensuring bank account balance never goes negative, selling more items than you have in stock in the warehouse, or booking the same seat on flights.
 
 ## Implementation
 
-### Single-Leader Replication
+### Single-leader replication
 
 The leader has the primary copy of the data that is used for writes. If you make reads from the leader, that have the potential to be linearizable. However, not every single-leader database is linearizable, either by design (using SSI) or due to concurrency bugs.
 
-### Consensus Algorithms
+### Consensus algorithms
 
 Consensus protocols contain measures to prevent split brain and stale replicas. These algorithms can implement linearizable storage safely, and is used in Zookeeper and etcd.

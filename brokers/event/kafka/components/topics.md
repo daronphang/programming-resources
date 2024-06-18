@@ -12,3 +12,9 @@ The Kafka cluster organizes and durably stores streams of events in categories c
 Topics cannot be queried, however, events in a topic can be read as often as needed, and unlike other messaging systems, events are not deleted after they are consumed. Instead, topics can be configured to expire data after it has reached a certain age or when the topic has reached a certain size.
 
 **Kafka’s performance is effectively constant with respect to data size**, so storing data for a long time should have a nominal effect on performance.
+
+## Publisher/Consumer per topic
+
+Depending on the programming language, the arguments required for the publisher/consumer object at time of construction may be different. Some languages allow one publisher/consumer for many topics.
+
+However, should follow KISS approach (Keep It Stupid Simple): one producer/consumer per topic.

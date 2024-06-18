@@ -12,8 +12,8 @@ Kafka follows a traditional messaging system design in that data is pushed by th
 
 Pull design is considered for the following reasons:
 
-- If a consumer falls behind production, they can catch up
-- Enables aggressive batching of data sent to the consumer
+- If a consumer falls behind production (rate of consumption falls below rate of production), they can catch up instead of being overwhelmed
+- Enables aggressive batching of data sent to the consumer instead of sending a single message at a time which ends up being buffered anyway
 - In contrast, push-based system must either send a request immediately or accumulate more data and then send it later without knowledge of whether the downstream consumer will be able to process it immediately
 
 ## Consumer groups
@@ -32,7 +32,7 @@ In summary, Kafka message/record is processed by only **one consumer process per
 
 Consumers in a consumer group share ownership of the partitions in the topics they subscribed to. When we add a new consumer to the group, it starts consuming messages from partitions previously consumed by another consumer. The same thing happens when a consumer shuts down or crashes.
 
-Consumers maintain membership by sending heartbeats to the Kafka broker. If it stops sending heartbeats long enough, the group coordinator will consider it dead and trigger a rebalance.
+Consumers maintain membership by sending heartbeats to the Kafka broker. If it stops sending heartbeats long enough, the group coordinator will consider it dead and **trigger a rebalance**.
 
 Rebalances are important as they provide the group with high availability and scalability. There are two types of rebalances, depending on the partition assignment strategy that the group uses.
 

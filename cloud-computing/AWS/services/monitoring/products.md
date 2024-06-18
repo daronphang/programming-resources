@@ -1,6 +1,6 @@
 ## Amazon CloudWatch
 
-Amazon CloudWatch is a web service that enables you to monitor and manage various metrics and configure alarm actions based on data from those metrics. AWS resources send metrics and logs to CloudWatch, which uses them to create graphs automatically and show how performance has changed over time.
+Amazon CloudWatch **collects and visualizes real-time logs, metrics, and event data** in automated dashboards to streamline your infrastructure and application maintenance. You can also configure alarm actions based on data from those metrics. AWS resources send metrics and logs to CloudWatch, which uses them to create graphs automatically and show how performance has changed over time.
 
 CloudWatch is built for DevOps engineers, developers, site reliability engineers (SREs) and IT managers. It provides data and actionable insights to monitor applications, respond to system-wide performance changes, optimize resource utilization, and get a unified view of operational health.
 
@@ -10,9 +10,34 @@ For instance, you can create an alarm that automatically stops an EC2 instance w
 
 Metrics are the fundamental concept in CloudWatch. A metric represents a time-ordered set of data points that are published to CloudWatch. AWS resources send metrics to CloudWatch for free at a rate of 1 data point per metric per 5-minute interval.
 
+Built-in metrics available include:
+
+- CPU utilization
+- Network utilization
+- Disk reads
+
 ### Custom Metrics
 
-To gain more granular visibility, you can use high-resolution custom metrics, which makes it possible for you to collect custom metrics down to a 1-second resolution.
+Metrics that require scripts include:
+
+- Memory utilization
+- Disk swap utilization
+- Disk space utilization
+- Page file utilization
+- Log collection
+
+Options for custom metrics include:
+
+- High-resolution: Data at a granularity of one second (similar to detailed monitoring)
+- Statistic sets: For data aggregation
+
+### Unified CloudWatch agent
+
+The unified CloudWatch agent enables you to do the following:
+
+- Collect internal system-level metrics from Amazon EC2 instances and on-premise servers
+- Retrieve custom metrics from your applications or services using the StatsD and collectd protocols
+- Collect logs from Amazon EC2 instances and on-premises servers
 
 ### SDK
 
@@ -22,19 +47,9 @@ Developers can integrate their custom applications with CloudWatch CDK to send c
 
 By default, no logs from your EC2 instance are pushed to CloudWatch. You need to run a CloudWatch agent on EC2 to push the log files you want.
 
-## Amazon Bridge (CloudWatch Events)
+### Canaries
 
-Used to react to events in AWS i.e. IAM root user signing in, or trigger a rule on a schedule i.e. CRON jobs.
-
-### Event Bus
-
-An event bus is a router that receives events and delivers them to zero or more destinations (targets). Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.
-
-You can send events to the following event buses:
-
-- Default Event Bus (AWS Services)
-- Partner Event Bus (external parties)
-- Custom Event Bus
+You can use CloudWatch Canaries to create scripted interactions and simulate user behavior to ensure that the applications are responsive and functioning correctly around the clock.
 
 ## AWS X-Ray
 
@@ -47,7 +62,7 @@ Allows you to get visual analysis of your applications by **tracing requests mad
 - Find errors and exception
 - Meeting SLA (service level agreements)
 
-## AWS Health Dashboard (Service, Account)
+## AWS Health Dashboard (Service, Personal)
 
 AWS Health provides ongoing visibility into your resource performance and the availability of your AWS services and accounts.
 
@@ -74,7 +89,11 @@ Open-source monitoring solution that stores data in a time-series database.
 - PromQL support
 - Cost efficient
 
-### AWS Grafana
+## AWS Grafana
+
+AWS Grafana does not use IAM roles for authorization; instead, use Amazon Identity Center or 3rd party Identity Providers for user authentication and authorization to control access to Grafana dashboards.
+
+For permissions, implement customer-managed permissions to provide fine-grained access control tailored to specific user groups and roles within the organization.
 
 ### Features
 
@@ -122,7 +141,9 @@ Inclusive of basic, with additional of:
 
 ## AWS Compute Optimizer
 
-A service that performs resource analysis for compute resources and identifies over-provisioned, under-provisioned, or already optimized.
+A service that performs resource analysis for compute resources and identifies over-provisioned, under-provisioned, or already optimized. It offers recommendations on instance types and sizes based on usage patterns, but **does not directly address security concerns**.
+
+Reduce costs and improve performance by recommending optimal AWS resources for your workloads using ML to analyze your resources' configurations and their utilization CloudWatch metrics. Helps you choose optimal configurations and right-size your workloads (over/under provisioned). Resources include EC2 instance types, EBS volume configurations and Lambda function memory sizes.
 
 ### Features
 

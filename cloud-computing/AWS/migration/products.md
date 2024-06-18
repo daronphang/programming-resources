@@ -29,15 +29,22 @@ MGN minimizes time-intensive and error-prone manual processes by automating the 
 
 ## AWS Application Discovery Service (ADS)
 
-AWS Application Discovery Service collects information about the usage and configuration of on-premises servers to help plan a migration to AWS. Application Discovery Service does not actually perform migration operations.
+AWS Application Discovery Service collects information about the usage and configuration of on-premises servers to help plan a migration to AWS e.g. CPU, disk, memory, network. Data collected is encrypted at-rest and in-transit. Application Discovery Service does not actually perform migration operations.
 
-Offers both agent or agentless discovery.
+The parameters can be discovered in one of the following ways:
+
+- Agentless discovery: Suited for VMware hosts
+- Agent-based discovery: Suited for hosts other than VMware e.g. Windows, Linux
 
 ## Database Migration Service (DMS)
 
 DMS migrates databases (relational, nonrelational) to AWS in a quick, secure, and resilient manner.
 
 With AWS DMS, you move data between a source database and a target database. They both can be of the **same type (homogenous) or different types (heterogeneous)**. During migration, your source database remains operational.
+
+DMS has a single point of failure in the replication instance. Nonetheless, you can use multi-AZ replication instance for redundant replication servers. However, it does not have automatic failover i.e. you have to restart the instance if it fails.
+
+DMS has an advanced logging feature called **time travel logs**, which enables users to store, encrypt and access logs in S3, offering flexibility and improved troubleshooting.
 
 ### Use cases
 
@@ -48,30 +55,13 @@ With AWS DMS, you move data between a source database and a target database. The
 ### Migration types
 
 - Full load: Migrates data from source to target, creating tables as necessary
-- Full load with CDC: Performs full load while simultaneously capturing changes on the source
-- CDC only
+- Full load with Change Data Capture (CDC): Performs full load while simultaneously capturing changes on the source
+- CDC only to capture and replicate ongoing changes from the source database
 
 ### Features
 
 - Schema migration
 - Continuous data replication
-
-## AWS Elastic Disaster Recovery (DRS)
-
-AWS DRS minimizes data loss with fast, reliable recovery of on-premises and cloud-based applications using affordable storage, minimal compute, and point-in-time recovery.
-
-### Components
-
-- Replication Agent: Installed on source servers
-- Staging Subnet: Spinning up of EC2 instances to handle the replication with data from Replication Agent and stored in EBS
-- Recovery Subnet: EC2 instances launched with point-in-time snapshots
-
-### Features
-
-- Real-time sync and point-in-time recovery
-- Automated DR drills
-- Faster recovery
-- Fail back to source after recovery
 
 ## AWS Mainframe Modernization
 
@@ -87,6 +77,8 @@ AWS Mainframe Modernization helps to modernize and migrate your mainframe applic
 ## AWS DataSync
 
 AWS DataSync facilitates fast and secure data transfers between on-premise/AWS storage systems and AWS storage services. It is designed to simplify, automate and accelerate the process of moving large amounts of data.
+
+When you use DataSync with a private VPC endpoint, the DataSync agent can communicate directly with AWS without the need to cross the public internet.
 
 ### Components
 
@@ -106,10 +98,12 @@ AWS DataSync facilitates fast and secure data transfers between on-premise/AWS s
 - Security and encryption (at-rest and transit)
 - Monitoring and logging
 
-## AWS Transfer Family (FTP/AS2)
+## AWS Transfer Family
 
-AWS Transfer Family is a secure transfer service that enables you to transfer files in/out of AWS services. Supports S3 or EFS. It is a full-managed and highly-available FTP server.
+AWS Transfer Family is a fully-managed and highly-available FTP server that securely scales your recurring business-to-business file transfers to AWS Storage services using SFTP, FTPS, FTP, and AS2 protocols. Supports S3 or EFS.
+
+You can configure a custom security policy that aligns with the company's specific security requirements and industry regulations.
 
 ### Features
 
-- Support protocols including SSH-SFTP, FTPS, FTP, AS2
+- Support protocols including SSH-SFTP, FTPS, AS2 (Applicability Statement 2)

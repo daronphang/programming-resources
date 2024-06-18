@@ -1,4 +1,4 @@
-## Identifying Specific DB Errors
+## Identifying specific database errors
 
 Should identify based on error code instead of its string format. Mechanism varies between drivers and not part of database/sql itself.
 

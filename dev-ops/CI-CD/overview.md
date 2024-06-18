@@ -33,27 +33,27 @@ Jenkins, TeamCity, Travis CI, Bamboo and CircleCI.
 
 Build automation is an approach to handling builds within a CI/CD pipeline that has several steps:
 
-#### 1. Developer commits source code to a repository
+### 1. Developer commits source code to a repository
 
 Developer commits to a VCS (version control system).
 
-#### 2. CI server detects the change
+### 2. CI server detects the change
 
 CI server is a system that orchestrates a CI pipeline, allowing teams to commit code multiple times per day, and build automatically outside of the developer's IDE (on a dedicated cloud or VM). A CI server regularly polls a repository to check for new commits and save changes in a separate database.
 
-#### 3. Build configuration recognizes changes and triggers a build agent
+### 3. Build configuration recognizes changes and triggers a build agent
 
 A build configuration is a set of rules determining how the build is supposed to happen. You can also define which operations and tools you need to complete the build, adjust steps, or configure VCS settings.
 
-#### 4. Build agent activates build tools
+### 4. Build agent activates build tools
 
 A build agent is a program deployed on a build server that takes orders from the CI server and starts a build. The agent doesn't compile code, but listens to what a server with its configuration has to say and orders build tools to do their job in the way a developer configured.
 
-#### 5. Build tools compile, compress, run unit tests, etc.
+### 5. Build tools compile, compress, run unit tests, etc.
 
 Build tools do the low-level work. A build tool is a script, framework or software created specifically for a given programming language to compile code, run tests, or do other operations needed for a build.
 
-#### 6. Build artifacts are sent back to the server
+### 6. Build artifacts are sent back to the server
 
 If the code passes all build stages including testing, it is normally sent back to the CI server, at which point it can go to production, further testing, or storage.
 

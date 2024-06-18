@@ -14,7 +14,7 @@ PANIC       Logs a message, then panics
 FATAL       Logs a message, then calls os.Exit(1)
 ```
 
-### Preset Loggers
+### Preset loggers
 
 For larger projects or unusual configurations (splitting output between files, sending logs to a message queue, etc.) are possible, but require direct use of go.uber.org/zap/zapcore.
 
@@ -53,7 +53,7 @@ func main() {
 }
 ```
 
-### Custom Logger
+### Custom logger
 
 Can define logger config in JSON or YAML file.
 
@@ -83,7 +83,7 @@ func main() {
 }
 ```
 
-### Writing to Different IO
+### Writing to different IO
 
 ```go
 cfg := zap.NewProductionConfig()

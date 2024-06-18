@@ -49,7 +49,7 @@ Before a packet can enter into or exit from a subnet, the **network ACL** checks
 
 ### DNS
 
-Only private instances will automatically be assigned a DNS entry; for public, need to enableDnsHostName. To enable DNS resolution through AWS DNS server, need to enableDnsResolution.
+Only private instances will automatically be assigned a DNS entry; for public, need to enable DNS hostnames. To enable DNS resolution through AWS DNS server, need to enable DNS resolution (can be used for resolving local DNS queries).
 
 AWS DNS server can be accessed either via 169.254.169.253 or on the second IP of the VPC CIDR block.
 
@@ -92,6 +92,11 @@ The following rules apply to the main route table:
 
 **Each subnet has to be linked to a route table, and a subnet can only be linked to one route table**. Every VPC has a default route table, and is good practice to leave it in the original state, and create a new table to customize network traffic associated with your VPC.
 
+Each route consists of:
+
+- Destination: The packet's **final** destination
+- Target: Where the packet should go next, to get it one step closer to the intended destination
+
 ```
 Destination             Target
 172.31.0.0/16           local (default)
@@ -108,92 +113,36 @@ If you associate a subnet with a custom route table, the subnet will use it **in
 
 To allow public traffic from the internet to access your VPC, you attach an **internet gateway** to the VPC. An internet gateway is **highly available and scalable**.
 
-## Virtual Private Network (VPN)
+## VPC Endpoints
 
-A virtual private gateway enables you to establish a virtual private network (VPN) connection between your VPC and a private network, such as an on-premise data center or internal corporate network. **It allows traffic into the VPC only if it is coming from an approved network**. However, it goes over the public internet (encrypted) and may have limited bandwidth, but relatively fast to setup.
+Endpoints allows customers to private connect their VPC to supported AWS services using AWS network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services. Traffic between a VPC and a service does not leave the Amazon network.
 
-There are two types of VPN:
+You can attach **endpoint policies** to the VPC endpoints. An endpoint policy is a resource-based policy that you attach to a VPC endpoint to control which AWS principals can use the endpoint to access an AWS service. An endpoint policy does not override or replace identity-based policies or resource-based policies.
 
-- Site-to-Site VPN: VPN over public internet between on-premises DC and AWS
-- ClientVPN: OpenVPN connection from your computer into your VPC
+### VPC Gateway Endpoint
 
-### Virtual Private Gateway (VPG)
+A gateway endpoint targets specific IP routes in an Amazon VPC route table, in the form of a prefix-list, used for traffic destined to DynamoDB or S3. **Gateway endpoints do not enable AWS PrivateLink**.
 
-A VPG connects your VPC to another private network i.e. it is the component that allows protected internet traffic to enter into the VPC. However, it still uses the same traffic as public users.
+A gateway endpoint is also used if an IP address for a service is not available as it does not take IP address off from your subnet.
 
-### How it works
+### VPC Interface Endpoint
 
-- The VPG is attached to the VPC (terminates VPN on the AWS side)
-- A customer gateway to the other private network is required on the other side (terminates VPN on the customer side)
-- A customer gateway device is a physical device or software application
-- When you have both gateways, you can then establish an encrypted virtual private network (VPN)
+Interface endpoints enable connectivity to services over AWS PrivateLink. All other AWS services use interface endpoints.
 
-### Routing
+An interface endpoint is a collection of one or more elastic network interfaces with a private IP address that serves as an entry point for traffic destined to a supported service.
 
-You can configure statically by defining routes in the routing table. Alternatively, you can configure a dynamic routing protocol to exchange routes between VPG and CG using BGP.
-
-### Pricing
-
-Charged for:
-
-- Each available VPN connection per hour
-- Data transfer out from EC2 to the internet
-
-## VPC Peering
-
-VPC Peering is used to connect two VPCs privately using AWS network. With VPC Peering, you can setup a connection between VPCs in different Regions and AWS accounts.
-
-To setup routing, need to configure routing table in each VPC to the VPC Peering target.
-
-VPC Peering:
-
-- **Must not have overlapping CIDR**
-- VPC Peering connection is **not transitive** (must be established for each VPC that needs to communicate with one another, does not inherit existing peerings)
-
-### Pricing
-
-- No cost for VPC peering connection creation
-- Data transfer within an AV is free
-- Data transfer across AV incurs charges
-
-## AWS PrivateLink (VPC Endpoint Service)
+### AWS PrivateLink
 
 For an EC2 to connect to an S3 Bucket, need to create an IG and give EC2 full internet access which is not desirable.
 
-AWS PrivateLink is a technology that provides the most secure and scalable way to expose a public AWS service to other VPCs e.g. S3 Bucket. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
+AWS PrivateLink is a highly available, scalable technology that you can use to privately connect your VPC to services as if they were in your VPC. AWS PrivateLink is a technology that provides the most secure and scalable way to expose a public AWS service to other VPCs e.g. S3 Bucket. Does not require VPC peering, internet gateway, NAT, route tables, etc. Allows 2 VPCs to connect that have **overlapping CIDR ranges**.
+
+PrivateLink is a technology for **interface endpoints**, not for a gateway endpoint.
 
 - Third party VPC exposes an ENI (Elastic Network Interface)
 - Your VPC exposes a network load balancer
 - You establish a private link between both VPCs
 
-## VPC Endpoints
+## VPC Lattice
 
-Endpoints allows customers to private connect their VPC to supported AWS services powered by PrivateLink using a private network instead of the public network (www). This gives you enhanced security and lower latency to access AWS services.
-
-There are two kinds of endpoints:
-
-- VPC Endpoint Gateway: S3 and DynamoDB
-- VPC Endpoint Interface: Rest of AWS services
-
-## AWS Direct Connect (DX)
-
-AWS Direct Connect is a service that lets you to establish a dedicated **physical** private connection between your **data center** and a VPC which allows for high speed. As a different traffic is used as compared to public users, it helps you to reduce network costs and increase the amount of bandwidth that can travel through your network. However, it takes at least a month to establish.
-
-### How it works
-
-Cross connect is a connection between a port on AWS router and customer router in the DX location.
-
-```
-On-premise network -> Customer Gateway -> Customer Router (located in DX) -> AWS Router -> VPN Gateway -> VPC
-```
-
-### Pricing
-
-- Port hours
-- Outbound data transfer
-
-## Transit Gateway
-
-A single gateway to provide transitive peering between thousands of VPC and on-premises, through hub-and-spoke (star) connection.
-
-You need to specify **one subnet from each AZ** to be used by the Transit Gateway to route traffic. Transit Gateway can also establish peering with other Transit Gateways in different Regions and AWS accounts.
+VPC Lattice is an overlay network. Services can discover and communicate without peering.

@@ -1,4 +1,4 @@
-## Eventual Consistency (Convergence)
+## Eventual consistency (convergence)
 
 In replicated database, nodes are likely to have different data if looked at the same time as write requests arrive on different nodes at different times. These inconsistencies occur no matter what replication method the database uses (single-leader, multi-leader, or leaderless).
 

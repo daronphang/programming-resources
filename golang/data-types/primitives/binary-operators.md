@@ -1,4 +1,4 @@
-## Binary Operators
+## Binary operators
 
 ```
 &     bitwise AND

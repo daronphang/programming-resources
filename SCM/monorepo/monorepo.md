@@ -32,8 +32,20 @@ A developer never has to decide where the repository boundaries lie, and there i
 
 There is more accountability as many projects are visible to many people, and monorepos lend themselves to security features. The layout of the codebase is more easily understood, and it is easier to browse the codebase and understand the bigger picture.
 
-### Tradeoffs
+## Challenges
 
 - Tooling investments for both development and execution
 - Codebase complexity, including unnecessary dependencies and difficulties with code discovery
 - Effort invested in code health
+
+### CI
+
+The biggest thing that gets complicated is your CI. You can either:
+
+- Build and test everything in each CI run; however, this is resource intensive
+- Optimize the CI to trigger build and tests based on what code was changed
+
+For the latter, you run the risk that some changes are not tested. To overcome this:
+
+- Run limited CI for merge requests
+- Complete CI for main branch

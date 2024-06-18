@@ -73,9 +73,11 @@ Types of Master Keys:
 
 ## AWS CloudHSM (Hardware Security Module)
 
-With CloudHSM, all your keys are stored on one device, and it will be responsible for encrypting and decrypting your files. All keys are securely stored on the HSM and they never leave the device.
+With CloudHSM, all your keys are stored on one hardware device, and it will be responsible for encrypting and decrypting your files. All keys are securely stored on the HSM and they never leave the device. It does a more secure, single-tenancy, hardware-based cryptography.
 
-With HSM, you manage the keys and they are not available to AWS, although AWS manages the module.
+With CloudHSM, you manage the keys and they are not available to AWS, although AWS manages the module.
+
+CloudHSM allows deploying HSM clusters across AZs with automatic failover to provide high availability and fault tolerance.
 
 ### Features
 
@@ -91,9 +93,15 @@ AWS WAF is a web application firewall that lets you monitor network requests tha
 
 ### Web ACLs
 
-AWS WAF works together with Amazon CloudFront and an Application Load Balancer. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, HTTP body, HTTP headers, SQL injection, XSS, etc.
+AWS WAF works together with Amazon CloudFront and ALB. It works in a similar way as network ACLs by using a **web ACL** to protect your AWS resources i.e. by restricting IP addresses, HTTP body, HTTP headers, SQL injection, XSS, etc.
 
 Charges are based on the number of web ACLs you create, and the number of rules that you add per web ACL, and the number of web requests you receive.
+
+### Rate-based rules
+
+- Blanket: Prevents source IP address from making excessive requests to entire application
+- URI-specific
+- IP reputation
 
 ### Use cases
 
@@ -101,6 +109,10 @@ Charges are based on the number of web ACLs you create, and the number of rules 
 - API security
 - Protection for serverless applications
 - Application layer firewall
+
+## AWS Firewall Manager
+
+Firewall manager simplifies the process of managing all of your WAF rules, security groups, NACLs, and AWS Shield, across **multiple accounts** for consistency.
 
 ## Amazon Inspector
 
@@ -130,7 +142,14 @@ Amazon Macie is a fully managed data security and data privacy service that uses
 
 ## AWS Secrets Manager
 
-AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. Secrets are encrypted using KMS.
+AWS Secrets Manager helps you manage, retrieve, and automatically rotate database credentials, API keys, and other secrets throughout their lifecycles. Secrets are encrypted using KMS.
+
+Secrets Manager helps you improve your security posture, because you no longer need hard-coded credentials in application source code. Storing the credentials in Secrets Manager helps avoid possible compromise by anyone who can inspect your application or the components. You replace hard-coded credentials with a runtime call to the Secrets Manager service to retrieve credentials dynamically when you need them.
+
+### Secret rotation
+
+- Managed: Updating credentials in the database
+- Lambda: For other types of secrets e.g. API keys
 
 ## Penetration Testing
 
@@ -160,6 +179,12 @@ Certificates generated from PCA can only be trusted and used from within the org
 ## AWS Config
 
 Helps with auditing and compliance of your AWS resources by recording configurations and changes over time. Logs are stored in S3 bucket.
+
+You can setup **Config Rules** to confirm that resources are configured in compliance with policies that you define. When AWS Config detects that a resource violates the conditions in one of your rules, AWS Config flags the resource as non-compliant and sends a notification. For instance:
+
+- Checking for approved AMI images
+- Required-Tag to check if a resource contains the tags that you specify
+- Evaluate whether your AWS resources comply with common best practices e.g. check if EBS is encrypted, password is compliant with company policy, etc.
 
 ### Features
 
@@ -241,6 +266,8 @@ Temporary AWS credentials.
 
 ## AWS Directory Service
 
+Directory Service is used for AD integration. You can create a trust relationship between Directory Service and IAM to allow Directory users assume an IAM role.
+
 ### Modes
 
 - **Simple**: Designed to run in isolation, does not integrate with others
@@ -249,7 +276,20 @@ Temporary AWS credentials.
 
 ## AWS Verified Permissions
 
-A scalable service for managing permissions in custom applications. helps developers build secure applications quickly by centralizing policy management. Operates on **zero trust principle**.
+Amazon Verified Permissions is a scalable, fine-grained permissions management and authorization service for custom applications built by you. Helps developers build secure applications quickly by centralizing policy management. Operates on **zero trust principle**.
+
+Verified Permissions helps you implement and enforce fine-grained authorization on resources within the applications that you build and deploy, such as HR systems and banking applications. With Verified Permissions, you can perform the following tasks:
+
+1. Define a policy-based access model that describes the resources managed by your application and the actions (such as view, update, and share) that users can perform on those resources
+2. Provide application users with the ability to manage access to those resources
+3. Enforce those permissions
+
+Verified Permissions is about creating policy validation, testing, and access via **Cedar policy language**.
+
+Use Verified Permissions along with your identity provider, such as Amazon Cognito, for a more dynamic, policy-based access management solution for your applications:
+
+- Application developers can use Amazon Cognito to manage user identities and authenticate users at sign-in
+- Verified Permissions can then determine which application resources an authenticated user is permitted to access (authorization)
 
 ### Features
 

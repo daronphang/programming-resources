@@ -15,6 +15,16 @@ EBS volumes act similarly to external drives:
 - Size-limited: Volume has a max limitation of how much content you can store on it
 - 1-to-1 connection: Most EBS volumes can only be connected with one computer at a time (one computer can be connected to multiple EBS volumes)
 
+### Features
+
+- Supports live configuration changes i.e. you can modify the volume type, size, IOPS capacity without service disruptions
+
+### Encryption
+
+EBS encryption uses AWS KMS keys when creating encrypted volumes and snapshots.
+
+Encryption operations occur on the servers that host EC2 instances, ensuring the security of both data-at-rest and data-in-transit between an instance and its attached EBS storage.
+
 ### Pricing
 
 Pay for what you are provisioned. Charged per GB per month.
@@ -51,17 +61,22 @@ Previous generation of volumes that are backed by magnetic drives. Used when per
 
 ## EBS Snapshots
 
-An EBS snapshot is an incremental backup:
+An EBS snapshot is an incremental backup that stores data in S3:
 
 - First backup copies all the data
 - Subsequent backups copy **blocks of data that have changed** since the most recent snapshot are saved
+- Snapshots will retain encryption property
 
-With EBS Snapshots, you can **replicate data across Availability Zones**.
+With EBS Snapshots, you can **replicate data across Availability Zones**. When a snapshot is taking place, the EBS can still be used as it occurs **asynchronously**.
 
 ### EBS Snapshot Archive
 
 You can move a Snapshot to an archive tier that is cheaper to store, but takes between 24-72h for restoring the archive.
 
-### Recycle Bin
+## Amazon Data Lifecycle Manager
 
-You can setup rules to retain deleted snapshots so you can recover them after an accidental deletion by specifying the retention period (1-365 days).
+You can use Amazon Data Lifecycle Manager to automate the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs.
+
+## AWS Recycle Bin
+
+Recycle Bin is a data recovery feature that enables you to restore accidentally deleted Amazon EBS snapshots and EBS-backed AMIs. When using Recycle Bin, if your resources are deleted, they are retained in the Recycle Bin for a time period that you specify before being permanently deleted.

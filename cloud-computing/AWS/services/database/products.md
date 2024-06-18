@@ -1,41 +1,8 @@
-## Amazon Aurora
-
-Amazon Aurora is an enterprise-class relational database. It is compatible with MySQL and PostgreSQL relational databases. It is up to **five times faster than standard MySQL databases** and up to **three times faster than standard PostgreSQL databases**.
-
-Amazon Aurora helps to reduce your database costs by reducing unnecessary I/O operations, while ensuring that your database resources remain reliable and available.
-
-The unit of measure is Aurora Capacity Unit (ACU), which equates to 2GB of memory, corresponding CPU, and networking.
-
-Consider Amazon Aurora if your workloads require **high availability**. It replicates **six copies of your data across three Availability Zones**, and continuously backs up your data to Amazon S3.
-
-### Features
-
-- Purpose-built log structured distributed storage
-- Storage volume is striped across storage nodes and multiple AZs
-- Storage nodes with locally attached SSDs
-- Continuous backup to Amazon S3
-- Automatic scaling of storage without any management overhead or downtime
-- Allows you to create up to 15 Aurora replicas across 3 AZs
-- Offers fast database cloning for staging/development purposes without impacting the performance of the production database
-
-### Provisioned vs Serverless
-
-Provisioned has fixed capacity, useful for planned capacity, and has access to Aurora Global.
-
-Serverless provides on-demand scaling, useful for variable/unpredictable workloads, and has access to Aurora Global.
-
-### Global cluster
-
-When you use Aurora Global database clusters, it acts as a container for several database clusters each located in different Regions.
-
-A global database cluster comprises of:
-
-- Primary database cluster that accepts read/writes
-- Secondary clusters as read only
-
 ## Amazon ElastiCache
 
 Amazon ElastiCache is a service that adds **caching layers** on top of your databases to help improve the read times of common requests. Supports two types of **in-memory** data stores: Redis and Memcached.
+
+ElastiCache events provide notifications for cache cluster status changes, SNS topic modifications, and parameter group changes.
 
 ### Redis
 
@@ -43,20 +10,31 @@ Amazon ElastiCache is a service that adds **caching layers** on top of your data
 - Data persistence
 - Encryption at rest
 - Pub/sub message system
+- Multi-AZ deployments
+- Complex data objects e.g. hashes, lists, sets, etc.
 
 ### Memcached
 
-- Multi-AZ deployments
+- Purely a caching solution and does not provide persistence
+- Multi-AZ not supported
+- Simple key/value storage
 - Auto discovery
 - Data partitioning and sharding
+- Does not inherently provide redundancy i.e. replication is typically achieved at the application level by implementing a distributed caching strategy
+- Multi-threaded
+
+### Security
+
+IAM policies can be used to define permissions for ElastiCache API actions but **not for data operations** within Redis and Memcached.
 
 ## MemoryDB for Redis
 
-Instead of having to manage two separate databases (RDS and Redis), you can simplify into one using MemoryDB. Redis will be your primary database instead of just using it as a cache.
+Instead of having to manage two separate databases (RDS and Redis), you can simplify into one using MemoryDB i.e. an in-memory persistent data store. Redis will be your primary database instead of just using it as a cache.
 
 ### Features
 
 - Designed for extremely high throughput and low latency workloads
+- Synchronous replication across multiple AZ
 - Strong consistency for primary nodes and guaranteed eventual consistency for replica nodes
 
 ## RedShift
@@ -64,6 +42,8 @@ Instead of having to manage two separate databases (RDS and Redis), you can simp
 Amazon Redshift is a fully managed **data warehousing** service that you can use for big data analytics (based on PostgreSQL). It offers the ability to collect data from many sources and helps you to understand relationships and trends across your data.
 
 Traditional databases handle structured data at a granular level, while data warehouses are designed to handle structured data at an aggregate level.
+
+RedShift's fault-tolerant design includes automatic and synchronous data replication to three-different nodes within a cluster and continuous backups to S3.
 
 RedShift has two node types:
 
@@ -91,6 +71,10 @@ With regular Redshift deployments (provisioned), you get a combination of CPU, R
 
 Using Amazon Redshift Spectrum, you can efficiently query and retrieve structured and semi-structured data from files in Amazon S3 without having to load the data into Amazon Redshift tables. Redshift Spectrum queries employ massive parallelism to run very fast against large datasets.
 
+### Tokenization
+
+If tokenization is required as a method to protect sensitive data, you need to integrate with a third-party tokenization solution before it is loaded into the data warehouse. Redshift does not have natively built-in tokenization feature.
+
 ## Amazon DocumentDB
 
 Amazon DocumentDB is a document database service that supports MongoDB workloads i.e. has API compatibility with MongoDB.
@@ -103,6 +87,8 @@ Amazon DocumentDB is a document database service that supports MongoDB workloads
 - Crash recovery
 - Write durability
 - Read preferences e.g. primary, primary-preferred, secondary, nearest
+- Data is stored on a distributed file system that spans across multiple AZs
+- Automatic replication of data 6 times across 3 AZs and continuous backup to S3
 
 ## Amazon Neptune
 
@@ -132,6 +118,10 @@ Compared to Managed Blockchain, **QLDB does not have the concept of decentraliza
 - Lack of consensus mechanisms
 - Do not provide the level of privacy and confidentiality required
 
+### Features
+
+- Automatic replication of data across three AZs
+
 ## Amazon Managed Blockchain
 
 Amazon Managed Blockchain is a service that you use to create and manage blockchain networks with open-source frameworks.
@@ -151,19 +141,31 @@ Time series data is a sequence of data points recorded over a time interval. It 
 - built-in analytics
 - Custom query engine
 - Flexible data model
+- Automatic replication of data across three AZs
 
 ## AWS OpenSearch
 
 Forked from Elasticsearch as it was changed from open-source to proprietary license. With OpenSearch ingestion pipelines, you don't need third party such as Logstash to help you push data to OpenSearch. Instead, you configure your producers to send data to OpenSearch ingestion.
 
+### Security flow
+
+1. Client sends request with IAM credentials
+2. Client connects to VPC
+3. Security groups permit request to reach domain
+4. IAM credentials are valid
+5. Access policy allows user to reach URI
+6. Fine-grained access control lets user perform action at index and document level
+
 ## Amazon Keyspaces
 
-Used for Apache Cassandra.
+A highly-managed service used for Apache Cassandra. Supports encryption at rest without any additional configurations.
 
 ### Features
 
+- Leverages Cassandra architecture, which replicates data to multiple nodes according to the configured replication factor
 - Compatible with Cassandra Query Language (CQL)
 - Fully managed Time-to-Live (TTL)
+- Replicates writes synchronously to replica nodes before acknowledging the write
 - Multi-region replication performed through asynchronous replication to propagate the writes across Regions
 - Active-active configuration i.e. each Region handles read/write
 - Consistency and conflict resolution

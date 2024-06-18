@@ -49,7 +49,28 @@ if _, ok := seen[s]; !ok {
 }
 ```
 
-### Struct Literals
+### Tags
+
+A struct tag is additional meta information inserted into struct fields. The meta data can be acquired through reflection. They usually provide information on how a struct field is encoded or decoded from a format.
+
+```
+encoding/json
+encoding/xml
+gopkg.in/mgo.v2/bson
+gorm.io/gorm
+github.com/gocarina/gocsv
+gopkg.in/yaml.v2
+```
+
+```go
+type Config struct {
+  // Separate multiple tags with space
+  Port int `yaml:"port" json:"portNumber"`
+}
+
+```
+
+### Struct literals
 
 ```go
 type Point struct{X, Y int}
@@ -74,7 +95,7 @@ pp := new(Point)
 *pp = Point{1, 2} // Can be shorted to pp := &Point{1, 2}
 ```
 
-### Comparing Structs
+### Comparing structs
 
 ```go
 type Point struct {X, Y int}
@@ -95,7 +116,9 @@ hits := make(map[address]int)
 hits[address{"golang.org", 443}]++
 ```
 
-### Struct Embedding and Anonymous Fields
+### Struct embedding and anonymous fields
+
+Composition in Go is achieved through embedding, which allows a struct to inherit the fields and methods of another struct.
 
 Allows using named struct type as an anonymous field of another struct type. Provides convenient syntactic shortcut where x.f can stand for a chain of fields like x.d.e.f.
 
@@ -161,4 +184,15 @@ w.Radius = 5
 
 // however, does not have shorthand for struct literal syntax
 w = Wheel{X: 8, Y: 8, Radius: 5, Spokes: 20}  // compile error: unknown fields
+```
+
+### Getters and setters
+
+Go doesn't provide automatic support for getters and setters. You can provide yourself, but it's neither idiomatic nor necessary to put Get into the getter's name. If you have a field called owner (lower case, unexported), the getter method should be called Owner (upper case, exported), not GetOwner. The use of upper-case names for export provides the hook to discriminate the field from the method. A setter function, if needed, will likely be called SetOwner.
+
+```go
+owner := obj.Owner()
+if owner != user {
+    obj.SetOwner(user)
+}
 ```

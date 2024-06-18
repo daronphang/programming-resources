@@ -1,6 +1,6 @@
 ## Amazon API Gateway
 
-The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda. It will proxy the request to AWS Lambda. Supports RESTful APIs and WebSocket APIs.
+The Amazon API Gateway is a serverless and scalable service used for building a serverless API service with AWS Lambda, EC2, other AWS services, and other publicly accessible endpoints. Supports RESTful APIs (stateless) and WebSocket APIs (stateful).
 
 ### REST vs HTTP APIs
 
@@ -37,7 +37,7 @@ REST APIs have additional features including:
 
 ## AWS AppFlow
 
-AWS ApFlow is a fully managed integration service that enables you to securely exchange data between software as a service application e.g. Salesforce, S3, RedShift. Also allows you to perform data mappings between source and destination.
+AWS ApFlow is a fully managed integration service that enables you to securely exchange data between SaaS applications e.g. Salesforce, S3, RedShift. Also allows you to perform data mappings between source and destination.
 
 ### Components
 
@@ -49,25 +49,37 @@ AWS ApFlow is a fully managed integration service that enables you to securely e
 - Speed and automation to integrate applications
 - Security and privacy
 - Scalability
+- Built-in redundancy with replication across AZs
 
-## SNS (Amazon Simple Notification Service)
+## Amazon Simple Notification Service (SNS)
 
-SNS is a pub/sub service. In SNS, subscribers can be web servers, email addresses, AWS Lambda functions, etc. Each subscriber to the topic will get **all the messages**.
+SNS is a pub/sub service. In SNS, subscribers can be web servers, email addresses, AWS Lambda functions, etc. There is no message retention.
 
-Subscribers from AWS include Email, Lambda, SQS, HTTP, and Mobile. There is no message retention.
+By default, an SNS topic subscriber receives **every message** published to the topic. You can use Amazon SNS **message filtering** to assign a filter policy to the topic subscription, and the subscriber will only receive a message that they are interested in.
 
 You can batch messages per API request (1-10) to save cost. Each message has a maximum size of 256KB; if you want to publish larger payload, can store the data in S3 and publish the S3 link to SNS.
+
+SNS provides **Message Data Protection** to audit, mask, or block sensitive information in the messages.
 
 ### Topics
 
 - Standard: Best-effort ordering and may contain duplication (unlimited messages per second)
 - FIFO: Order is guaranteed (300 messages per second)
 
+### Features
+
+- Supports DLQ for items that were undeliverable
+
 ## SQS (Simple Queue Service)
 
-SQS is a message queuing service. Using SQS, you can send, store, and receive messages between software components, without losing messages or requiring other services to be available.
+SQS is a highly-managed message queuing service. Using SQS, you can send, store, and receive messages between software components, without losing messages or requiring other services to be available.
 
 In SQS, an application sends messages into the queue. A user or service retrieves a message from the queue, processes it, and then deletes it from the queue. Messages are kept up to 14 days.
+
+The ReceiveMessageWaitTimeSeconds is the queue attribute that determines whether you are using Short or Long polling:
+
+- 0: Short polling
+- Greater than 0: Long polling
 
 ### Queues
 
@@ -76,9 +88,10 @@ In SQS, an application sends messages into the queue. A user or service retrieve
 
 ### Features
 
-- Message retention
+- Message retention up to 14 days
 - Message prioritization
 - Dead Letter Queue (DLQ)
+- Locking mechanism with visibility timeout to prevent double-processing of messages
 
 ## Amazon MQ
 
@@ -86,11 +99,26 @@ SQS and SNS are cloud-native services and are using proprietary protocols from A
 
 When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, you can use Amazon MQ. Amazon MQ is a managed **message broker service for RabbitMQ and ActiveMQ**. MQ has both queue feature (SQS) and topic features (SNS). However, SQS and SNS scales better and are more integrated with the cloud.
 
+### Features
+
+- Achieves reliability through Active/Passive setups for multiple machines called **mirror queues**
+- Message eviction strategies when storage is constrained i.e. FIFO, smallest first, largest first
+
 ## AWS EventBridge
 
-AWS EventBridge is a serverless, fully-managed and scalable event bus that enables integrations between AWS services, software services, and your applications.
+AWS EventBridge is a serverless, fully-managed and scalable event bus that enables integrations between AWS services, software services, and your applications e.g. IAM root user signing in, CRON jobs, etc.
+
+### Event Bus
+
+An event bus is a router that receives events and delivers them to zero or more destinations (targets). Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.
 
 By default, you will have a default event bus. You can also create custom event bus or partner event bus. You also need to define rules to forward the events to the necessary locations e.g. Lambda, SNS, etc.
+
+You can send events to the following event buses:
+
+- Default Event Bus (AWS Services)
+- Partner Event Bus (external parties)
+- Custom Event Bus
 
 ### Pipes
 
@@ -121,10 +149,16 @@ Utilizes AWS infrastructure to reliably send out emails.
 - Email templates
 - Mailbox simulator
 - Dedicated IP pool allows the firm to manage its own email sending reputation i.e. ensure emails are not marked as spam
+- SES Virtual Deliverability Manager to simulate sending
+- SES mailbox simulator to view email renderings across email providers
 
 ## AWS Step Functions
 
+Step Functions is a fully managed service that makes it easier to coordinate the components of distributed applications and microservices using visual workflows.
+
 Step functions help to solve complex workflows using Saga Pattern. Step Function ensures seamless and reliable order fulfillment.
+
+Under the hood, Step Functions is a state machine, and its primary abstractions are called states. A Step Functions configuration constitutes a map of all possible steps and the transitions between them.
 
 ### Features
 
@@ -142,9 +176,13 @@ Step functions help to solve complex workflows using Saga Pattern. Step Function
 - analytics services
 - API gateway
 
-## AWS Simple Workflow Service (SWS)
+## AWS Simple Workflow Service (SWF)
 
-Similar to Step Functions, and should be used in general. However, you can use SWS if you require external signals to intervene in your processes e.g. launch child processes from a parent and return a result.
+You should consider using Step Functions for all your new applications, since it provides a more productive and agile approach to coordinating application components using visual workflows.
+
+If you require external signals to intervene in your processes or you would like to launch child processes that return a result to a parent, you should consider SWF.
+
+SWF is not serverless and hence, AZs must be taken into account.
 
 ### Features
 
@@ -155,7 +193,7 @@ Similar to Step Functions, and should be used in general. However, you can use S
 
 ## AWS Managed Apache Airflow (MWAA)
 
-A managed instance of Apache Airflow. MWAA coordinates ETL jobs, and can be used to prepare ML data.
+MWAA is a fully managed service that provides a web interface and allows users to visualize and monitor Airflow workflows without setting up any additional tools. MWAA coordinates ETL jobs, and can be used to prepare ML data.
 
 ### Features
 
@@ -175,12 +213,19 @@ Kinesis is a real-time big data streaming service to collect, process and analyz
 - Scalability by using shards
 - Data durability and availability (replicated across AZ)
 - Custom application building
+- Data retention of up to 365 days
 
 ### Data Firehose
 
-Have the ability to perform ETL before streaming the data to its output.
+Firehose handles loading data streams directly into specific AWS products or HTTP endpoints owned by supported third-party service providers for processing e.g. S3, RedShift, Splunk, Datadog, MongoDB, etc. It has the ability to perform ETL before streaming the data to its output.
+
+### Data Streams
+
+Kinesis data streams is highly customizable and best suited for developers building custom applications or streaming data for specialized needs.
 
 ## AWS Managed service for Kafka (MSK)
+
+Broker logs can be exported to S3.
 
 ### Features
 
@@ -189,10 +234,13 @@ Have the ability to perform ETL before streaming the data to its output.
 - Scalability and performance
 - Security and compliance
 - Reliability and high availability
+- Cluster-to-cluster asynchronous replication across Regions
 
 ## AWS Glue
 
 AWS Glue is a serverless ETL service that is useful to prepare and transform data for analytics.
+
+For managing costs, you can allocate Data Processing Units (DPUs) for optimal scaling.
 
 ### Features
 
@@ -202,13 +250,19 @@ AWS Glue is a serverless ETL service that is useful to prepare and transform dat
 - Visual ETL job authoring
 - Built-in transformation libraries e.g. PySpark to run natively
 
+### Crawler
+
+The Crawler creates the metadata that allows Glue and services such as Athena to view the S3 information as a database with tables i.e. check schema. That is, it allows you to create the Glue Catalog.
+
 ## AWS Elastic MapReduce (EMR)
 
-EMR runs in managed cluster and can be used to process data at scale for analytics purposes.
+EMR is a managed cluster platform that simplifies running **big data frameworks**, such as Apache Hadoop and Apache Spark, on AWS to process and analyze vast amounts of data.
+
+EMR runs in managed cluster and can be used to process data at scale for analytics purposes. Relies on immutable infrastructure i.e. if you need to patch a server, shut down and restart with the patch.
 
 ### Cluster
 
-A cluster in a collection of EC2 instances/nodes with different responsibilities:
+EMR uses a cluster of EC2 instances with different responsibilities:
 
 - Primary: Manages the cluster and coordinates the distribution of data and tasks among other nodes
 - Core: Stores and crunches data
@@ -221,6 +275,7 @@ A cluster in a collection of EC2 instances/nodes with different responsibilities
 - Cost-effective processing e.g. spot pricing
 - Integrates with other AWS services
 - Security and compliance
+- EMRFS to reliably access S3 from EMR clusters
 
 ## AWS Glue Databrew
 

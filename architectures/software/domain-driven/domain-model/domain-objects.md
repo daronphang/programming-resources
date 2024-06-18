@@ -38,3 +38,16 @@ A good service has three characteristics:
 ### Location
 
 Most services belong in the infrastructure layer, but they can also be used and reside in the domain layer. It is important to distinguish services that belong to the domain layer from those of other layers.
+
+## Data Transfer Objects (DTO)
+
+A DTO is an object that contains data that will be transferred between different layers, in some specific format. Sometimes you want to transfer data that is not exactly a Domain Model, or a Value Object. DTO has no behavior, and just contains data.
+
+```go
+type AccountBalanceResponse struct {
+    Account
+    Balance float64
+    Timestamp time.Time
+    RequestID string
+}
+```

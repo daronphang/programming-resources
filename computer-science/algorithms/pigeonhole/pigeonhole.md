@@ -11,6 +11,8 @@ Given m items and n containers, if m > n:
 
 For a given problem, the key is to **reverse engineer, compute the edge case, and find such that the ceiling of m/n is 2**.
 
+If more than `k*n` objects are placed into n boxes, then at least one box must contain more than k objects.
+
 ### Formula
 
 ```

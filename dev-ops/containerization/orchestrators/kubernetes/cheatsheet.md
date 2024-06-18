@@ -101,3 +101,14 @@ $ journalctl | grep apiserver
 ```sh
 $ kubectl get all --selector key=value
 ```
+
+### Debugging network
+
+```sh
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
+$ # ctrl + z to stop the process
+$ bg # resume process in background
+$ fg # bring process back to foreground later
+
+$ curl localhost:8080 # to access the application
+```

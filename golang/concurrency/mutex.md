@@ -1,6 +1,6 @@
-### Mutex
+## Mutex (mutual exclusion)
 
-Go allows us to run code concurrently using goroutines. However, when concurrent processes access the same piece of data, it can lead to race conditions.
+Go allows us to run code concurrently using goroutines, which can be used to communicate for synchronization. However, when we don't need communication, and when concurrent processes access the same piece of data, it can lead to race conditions.
 
 Mutexes are data structures provided by the sync package. They can help to place a lock on different sections of data so that only one goroutine can access it at a time.
 

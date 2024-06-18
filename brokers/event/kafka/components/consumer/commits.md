@@ -6,25 +6,25 @@ The action of updating the current position in the partition is called an **offs
 
 If a consumer crashes or a new consumer joins the group, a rebalance is triggered, and each consumer may be assigned to a new set of partitions than the one it processed before. In order to know where to pick up the work, the consumer will read the latest committed offset of each partition and continue from there.
 
-### Offset Management
+## Offset Management
 
 If the committed offset is smaller than the offset of the last message the client processed, messages between the last processed offset and committed offset will be processed twice. Vice versa, messages may also be missed by the group.
 
 When committing offsets either automatically or without specifying the intended offsets, the default behavior is to commit the offset after the last offset that was returned by poll().
 
-### Automatic Commit
+## Automatic Commit
 
 Configured by setting enable.auto.commit to be true. By default, automatic commits occur every five seconds. If the consumer crashes within the five seconds, **events that arrived in that period will be processed twice**.
 
 With autocommit enabled, when it is time to commit offsets, the next poll will commit the last offset returned by the previous poll. As it doesn't know which events were actually processed, it is critical to always process all the events returned by poll() before calling poll() again.
 
-### Explicit Commit
+## Explicit Commit
 
 The simplest and most reliable of the commit API is commitSync(). This API will commit the latest offset returned by poll() and return once the offset is committed.
 
 Similarly, if commitSync() is called before processing all records in the collection, you risk missing the messages that were committed but not processed, in the event the application crashes. When there is an error committing, commitSync() will continue to retry.
 
-### Asynchronous Commit
+## Asynchronous Commit
 
 Instead of waiting for the broker to respond to a commit, we just send the request and continue on with commitAsync(). Drawback is that it will not retry in the event the commit encounters an error:
 
@@ -37,7 +37,7 @@ There is an option to pass a callback that will be triggered when the broker res
 
 A simple pattern to get the commit order right for asynchronous retries is to use a monotonically increasing sequence number. Every time a commit is made, the sequence number is increased and added to the commitAsync callback.
 
-### Combining Sync and Async Commits
+## Combining Sync and Async Commits
 
 A common pattern is to combine both commitSync() and commitAsync() before shutdown.
 
@@ -62,11 +62,11 @@ try {
 }
 ```
 
-### Committing a Specified Offset
+## Committing a Specified Offset
 
 Useful if the poll() returns a huge batch and you want to commit offsets in the middle to avoid having to reprocess all rows in the event a rebalance occurs. Not able to call either commitSync() and commitAsync() as they will only commit the last offset returned.
 
-### Consuming Records with Specific Offsets
+## Consuming Records with Specific Offsets
 
 Sometimes you want to start reading at a different offset. You can also start reading from the start or at the end of the partition.
 

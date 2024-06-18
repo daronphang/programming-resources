@@ -10,7 +10,9 @@ An elastic IP must be associated with an instance or network interface, and are 
 
 ## AWS Network Firewall
 
-Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspection and intrusion detection. You can inspect, in any direction:
+Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspection and intrusion detection. An alternative to using GLB with third party appliances.
+
+You can inspect, in any direction:
 
 - VPC to VPC traffic
 - Outbound to internet
@@ -19,7 +21,7 @@ Protects your entire VPC from Layer 3 to Layer 7. Provides deep packet inspectio
 
 ### Firewall endpoints
 
-Firewall endpoint serves as the entry/exit points for traffic to be inspected. A subnet needs to be created specifically for the firewall. You can't deploy a firewall in a subnet with resources because it can't protect applications that run in the same subnet.
+Firewall endpoint serves as the entry/exit points for traffic to be inspected. **A separate subnet needs to be created specifically for the firewall**. You can't deploy a firewall in a subnet with resources because it can't protect applications that run in the same subnet.
 
 ### Rule engines
 
@@ -32,17 +34,9 @@ Firewall endpoint serves as the entry/exit points for traffic to be inspected. A
 - Granular control
 - Advanced threat protection
 
-## AWS Firewall Manager
-
-Firewall manager simplifies the process of managing all of your WAF rules, security groups, NACLs, and AWS Shield, across **multiple accounts**.
-
 ## Network Access control List (ACLs)
 
 A network ACL is a virtual firewall that controls inbound and outbound traffic at the **subnet level** (ALLOW/DENY). Each AWS account includes a default network ACL. By default, your account's default network ACL allows all inbound and outbound traffic.
-
-You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
-
-A network ACL contains a numbered list of rules and evaluates them in the increasing order while deciding whether to allow the traffic.
 
 Every subnet within a VPC must be associated with a network ACL. You can associate a network ACL with multiple subnets, but a subnet can only be associated with one network ACL at a time.
 
@@ -54,6 +48,22 @@ Network ACLs do not filter traffic destined to and from the following:
 - Amazon ECS task metadata endpoints
 - License activation for Windows instances
 - Amazon Time Sync Service
+
+### Inbound and outbound ports
+
+You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
+
+When a client connects to a server, a random port is generated from the ephemeral port range with this becoming the **client's source port**, which becomes the destination port for return traffic. The port range varies depending on the OS:
+
+- Linux: 32768-61000
+- ELB: 1024-65535
+- Windows: 1025-5000
+- NAT gateway: 1024-65535
+- Lambda: 1024-65535
+
+### Rule evaluation
+
+A network ACL contains a numbered list of rules and **evaluates them in the increasing order** while deciding whether to allow the traffic i.e. once the first set of rules matches, it stops. You should DENY rules above ALLOW rules.
 
 ### Stateless packet filtering
 
@@ -69,13 +79,13 @@ Security groups can be attached to multiple EC2 instances and are locked down to
 
 ### Stateful packet filtering
 
-Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets. As it is stateful, **only the direction of the request needs to be permitted**.
+Security Groups perform **stateful** packet filtering. They remember previous decisions made for incoming packets. As it is stateful, **only the direction of the request needs to be permitted (INBOUND)**.
 
 ## Internet Gateway (IGW)
 
 An IGW is a redundant, horizontally scaled, and highly available VPC component that enables communication between instances in the VPC and the internet i.e. region resilient, covers all Availability Zones within a Region. Imposes no availability risks or bandwidth constraints on your network traffic.
 
-Only one IGW can be attached per VPC.
+Only one IGW can be attached per VPC. To allow internet access, destination in route table must be set to `0.0.0.0/0` targeting the IGW.
 
 ### Exposing resources to the internet
 
@@ -85,15 +95,29 @@ Only one IGW can be attached per VPC.
 4. Configure default route i.e. if a packet comes in does not match any route (0.0.0.0/0), it will automatically point to the IGW
 5. Associate subnet with route table
 
+## Egress-Only Internet Gateway
+
+Similar to an IGW but for IPv6-enabled applications. You can configure route tables to direct all traffic from the application through it.
+
 ## NAT (Network Address Translation) devices
 
-A NAT device can be used to enable instances in a private subnet to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet. Nonetheless, an **IGW is still required** for access to the internet.
+A NAT device can be used to enable instances in a private subnet (or private IP networks) to connect to the internet or AWS services, but this prevents the internet from initiating connections with the instances in a private subnet. NAT translates private IP addresses in an internal network to a public IP address before packets are sent to an external network. An **IGW is still required** for access to the internet.
 
-AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances.
+AWS provides two kinds of NAT devices: NAT gateway and NAT instance. NAT gateway is recommended as it is a managed service that provides better bandwidth and availability compared to NAT instances. A NAT instance is an EC2 instance that is converted into a NAT server.
 
 ## NAT gateway
 
+Each NAT gateway is created in a specific AZ and implemented with redundancy in that zone. There is also a quota with the number of NAT gateways you can create in each AZ.
+
+To improve resiliency, create a NAT gateway in each AZ, and configure your routing to ensure that resources use the NAT gateway in the same AZ.
+
 Charged per hour and per GB of data processed. Supports 5Gbps of bandwidth and automatically scales up to 100Gbps.
+
+### NAT instance
+
+The NAT instance must have internet access, so it must be in a **public subnet** (a subnet that has a route table with a route to the internet gateway), and it must have a public IP address or an Elastic IP address.
+
+Each instance performs source/destination checks by default. This means that the instance must be the source or destination of any traffic it sends or receives. However, a NAT instance must be able to send and receive traffic when the source or destination is not itself. Therefore, you must disable source/ destination checks on the NAT instance.
 
 ### Public
 
@@ -104,6 +128,14 @@ Route table for private subnets should point to NAT gateway i.e. you route traff
 ### Private
 
 Instances in private subnets can connect to other VPCs or your on-premises network through a private NAT gateway. You can route traffic from the NAT gateway through a **transit gateway or a virtual private gateway**. You cannot associate an elastic IP address with a private NAT gateway.
+
+### Connecting to transit gateway or virtual private gateways
+
+You can use either a public or private NAT gateway to route traffic to transit gateways and virtual private gateways:
+
+- Private NAT gateway: Private IP address of private NAT gateway is used
+- Public NAT gateway: Private IP address of public NAT gateway is used
+- Public NAT gateway with IGW: Public IP address of public NAT gateway is used
 
 ### NAT vs IGW
 

@@ -1,6 +1,6 @@
 ## Cardinality
 
-Cardinality is a mathematical term that refers to the number of elements in a given set. When applied to databases, database cardinality can be defined as the set of elements arranged in tables and rows. It also refers to the counting done to recognize the elements in a set, identify relationships among different tables, and identify the number of values in the tables. These relationships can be one-to-one, many-to-many, and one-to-many.
+Cardinality is a mathematical term that refers to the number of elements in a given set (unique elements). When applied to databases, database cardinality can be defined as the set of elements arranged in tables and rows. It also refers to the counting done to recognize the elements in a set, identify relationships among different tables, and identify the number of values in the tables. These relationships can be one-to-one, many-to-many, and one-to-many.
 
 Cardinality has a big impact on database performance because it influences the query execution plan. The planner will examine column statistics and use them to figure out how many values a query is likely to match, among other things.
 
@@ -8,7 +8,7 @@ Cardinality has a big impact on database performance because it influences the q
 
 Cardinality helps simplify the query execution plan. A query execution plan is a sequence of steps used to search data stored in a database. Cardinality plays a crucial role, as it provides a structured format and correlates entities in different tables. Having a well-structured database and a query execution plan helps users find specific information within a database.
 
-The cardinality of a column is very important to database designers and the database query optimizer. For the designer or DBA, knowing a column is mainly repeating values tells them that it is a poor candidate for an index as it will not be very selective.
+The cardinality of a column is very important to database designers and the database query optimizer. For the designer or DBA, knowing a column is mainly repeating values (low cardinality) tells them that it is a poor candidate for an index as it will not be very selective.
 
 For a cost-based query optimizer, the selectivity of a potential index dictates whether it will be used or ignored. Creating and maintaining indexes is expensive in terms of CPU and IO resource usage, so designers and developers need to ensure they create ones that will get used.
 

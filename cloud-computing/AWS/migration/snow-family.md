@@ -47,10 +47,6 @@ Provides powerful computing resources for use cases such as machine learning, fu
 
 AWS Snowmobile is an exabyte-scale data transfer service used to move large amounts of data to AWS. You can transfer up to **100PB** of data per Snowmobile, a 45-loot long ruggedized shipping container, pulled by a semi trailer truck. It is used for moving exabytes of data (1EB = 1000PB).
 
-## AWS DataSync
-
-Alternative to sending the device back to AWS. You can connect the device to the internet and use AWS DataSync to send back the data.
-
 ## AWS OpsHub
 
 Historically, to use Snow Family devices, you needed a CLI which was difficult. Instead, you can use AWS OpsHub which is a software installed on your computer to manage your Snow Family devices.
