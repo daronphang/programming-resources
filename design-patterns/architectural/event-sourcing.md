@@ -24,7 +24,7 @@ This can simplify tasks in complex domains, by avoiding the need to synchronize 
 
 This strategy **should not be exposed beyond the boundaries of aggregates**. The events from event sourcing should therefore only be used **internally** in the corresponding aggregate or in the context of CQRS to build related read models.
 
-<img src="./assets/event-sourcing.png">
+<img src="../assets/event-sourcing.png">
 
 ### Benefits
 

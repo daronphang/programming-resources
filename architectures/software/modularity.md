@@ -12,8 +12,8 @@ Cohesion refers to what extent the parts of a module should be contained within 
 
 There are two types of coupling:
 
-- Static: Represents how static dependencies resolve within the architecture via contracts
-- Dynamic: Represents how quanta communicate at runtime, either synchronously or asynchronously
+- **Static**: Represents how static dependencies resolve within the architecture via contracts
+- **Dynamic**: Represents how quanta communicate at runtime, either synchronously or asynchronously
 
 An easy way to think about the difference is that static coupling describes how services are wired together, whereas dynamic coupling describes how services call one another at runtime.
 

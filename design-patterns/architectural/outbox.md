@@ -25,7 +25,7 @@ The Outbox pattern provides to publish events reliably. Domain events are not wr
 
 However, the critical point here is that the transaction performed before the event and the event written to the outbox table are part of the same transaction.
 
-<img src="./assets/outbox.png">
+<img src="../assets/outbox.png">
 
 ### Why use this pattern?
 

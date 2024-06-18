@@ -4,7 +4,7 @@ Create separate backend services to be consumed by specific frontend application
 
 ### Context and Problem
 
-An application may initially be targeted at desktop web UI where typicall the backend is created in parallel to provide the features needed for that UI. As the application's user base grows, a mobile application is developed that must interact with the same backend.
+An application may initially be targeted at desktop web UI where typically the backend is created in parallel to provide the features needed for that UI. As the application's user base grows, a mobile application is developed that must interact with the same backend.
 
 However, the capabilities of a mobile device differ significantly from a desktop browser i.e. screen size, performance, display limitations, etc. These differences result in competing requirements for the backend, and require regular and significant changes to serve both UI interfaces. Conflicting update requirements, the need to keep the service working for both frontends, can result in spending a lot of effort on a single deployable resource.
 
