@@ -1,10 +1,10 @@
-## Integration (Inter-Communication)
+## Integration (inter-communication)
 
 Getting integration right is the most important aspect of the technology associated with microservices.
 
 ### Avoid database integration at all costs
 
-Database intergration is a form whereby services simply reach into the database to retrieve or change resource. However, this is fraught with difficulties as we are allowing external parties to view and bind to internal implementation details. The data structures stored in DB is shared across all parties, and if schema changes, it will break consumers. Also, it is tied to a specific technology choice, and makes it difficult to switch i.e. from relational to non-relational. Moreover, all logic associated with manipulating the DB is spread across all consumers, and changes to that behavior requires changing all consumers.
+Database integration is a form whereby services simply reach into the database to retrieve or change resource. However, this is fraught with difficulties as we are allowing external parties to view and bind to internal implementation details. The data structures stored in DB is shared across all parties, and if schema changes, it will break consumers. Also, it is tied to a specific technology choice, and makes it difficult to switch i.e. from relational to non-relational. Moreover, all logic associated with manipulating the DB is spread across all consumers, and changes to that behavior requires changing all consumers.
 
 ### Avoid breaking changes
 

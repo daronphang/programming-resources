@@ -42,8 +42,8 @@ Microservices allow for functionality to be consumed in different ways for diffe
 
 ## Drawbacks
 
-- Centralized logging and monitoring is needed with distributed systems.
-- Partitioned database architecture requires updates in multiple databases by different services.
-- Difficult to implement changes that span across multiple services.
-- Extra complexity for choosing and setting up connections between dependencies.
-- A Multitude of independently deployable components makes testing more difficult.
+- Centralized logging and monitoring is needed with distributed systems
+- Partitioned database architecture requires updates in multiple databases by different services
+- Difficult to implement changes that span across multiple services
+- Extra complexity for choosing and setting up connections between dependencies
+- A multitude of independently deployable components makes testing more difficult

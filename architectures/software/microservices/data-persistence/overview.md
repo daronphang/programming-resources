@@ -1,4 +1,4 @@
-## Monolithic Database
+## Monolithic database
 
 Legacy applications typically use a centralized monolithic database but pose the following challenges:
 
@@ -7,7 +7,7 @@ Legacy applications typically use a centralized monolithic database but pose the
 - Imposes a single point of failure
 - Prevents you from building decentralized and independent components required for microservices
 
-## Decentralizing Data Stores
+## Decentralizing data stores
 
 By choosing to decentralize your data stores, you promote **polyglot persistence** among your microservices, and identify your data storage technology based on the data access patterns.
 

@@ -1,4 +1,4 @@
-## Database-per-service Pattern
+## Database-per-service pattern
 
 By deploying this pattern, you choose the most appropriate data stores (i.e. relational or non-relational) for your application and business requirements. This means that:
 
@@ -9,7 +9,7 @@ By deploying this pattern, you choose the most appropriate data stores (i.e. rel
 
 For example, 'Sales' uses Amazon Aurora, 'Customer' uses Amazon DynamoDB, and 'Compliance' uses SQL Server.
 
-### Considerations
+## Considerations
 
 - Loose coupling is required between microservices
 - Microservices have different compliance or security requirements for their databases
@@ -17,7 +17,7 @@ For example, 'Sales' uses Amazon Aurora, 'Customer' uses Amazon DynamoDB, and 'C
 - If pattern is used, need to deploy **API composition pattern** or **CQRS pattern** to implement/aggregate queries that span multiple microservices
 - 2PC (two-phase commit) protocol does not support this model
 
-### Drawbacks
+## Drawbacks
 
 - Challenging to implement complex transactions and queries that span multiple microservices or data stores
 - Data stores must meet two of the CAP theorem: consistency, availability or partition tolerance

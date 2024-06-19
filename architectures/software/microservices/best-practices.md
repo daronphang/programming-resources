@@ -1,14 +1,14 @@
-## Services as State Machines
+## Services as state machines
 
 When services are fashioned around bounded contexts, they should own all logic associated with the behavior in that context. Having the lifecycle of key domain concepts explicitly modeled is quite powerful. We would have one place to deal with collisions of state (updating a resource that has been deleted) and also a place to attach behavior based on those state changes.
 
-## DRY and Perils of Code Reuse
+## DRY and perils of code reuse
 
 One thing we want to avoid is overly coupling a microservice and consumers such that any small change to the microservice itself can cause unnecessary changes to the consumer. Sometimes, the use of shared code can create this very coupling.
 
 General rule of thumb is don't violate DRY within a microservice, but be relaxed about violating DRY across all services.
 
-## Access by Reference
+## Access by reference
 
 When a microservice encompasses the lifecycle of core domain entities, sometimes when we retrieve the resource, it is possible that something else has changed it and we would be looking at the old and not the fresh state. This can be resolved by passing a reference to the original resource so that the new state can be retrieved when the logic is executed.
 
@@ -34,11 +34,11 @@ Semantic versioning is a specification that comes in the form of MAJOR.MINOR.PAT
 
 To limit impact of breaking changes, we can coexist both the new and old endpoints in the same running service. This allows us to get the new microservice out ASAP, along with the new interface, but give time for consumers to move over. Once all of the consumers are no longer using the old endpoint, you can remove it along with any associated code.
 
-## Data Retrieval via Service Calls
+## Data retrieval via service calls
 
 For reporting systems that require data across databases and systems, multiple calls are required to assemble the data which can become a slow operation with higher loading when large volumes of data are involved. For instance, pulling an entire list of customers, and making separate API calls for each customer.
 
-### Data Pump
+### Data pump
 
 Rather than having the reporting system pull the data, we could instead have the data pushed to the reporting system. As retrieving the data by standard HTTP calls can have high overhead, an alternative option is to have a standalone program like CRON that directly accesses the source database of the service, and pumps it into a separate reporting database. To minimize coupling, the service schema would not be open to outside, but it is between service and pump itself.
 
@@ -46,6 +46,6 @@ Another option is to make use of materialized views (virtual tables) provided by
 
 <img src="./assets/data-pump.PNG">
 
-### Event Data Pump
+### Event data pump
 
 For microservices emitting events based on state change, we have the option of writing our own event subscriber that pumps data into the reporting database. We can send data to the reporting system as we see an event, allowing data to flow faster to our reporting system, rather than relying on a scheduler with the data pump. The coupling on the underlying database of the source microservice is now avoided.

@@ -1,4 +1,4 @@
-## API Composition Pattern
+## API composition pattern
 
 This pattern uses an API composer/aggregator to implement a query by invoking individual microservices that own the data i.e. function composition. It then combines the results by performing an in-memory join.
 

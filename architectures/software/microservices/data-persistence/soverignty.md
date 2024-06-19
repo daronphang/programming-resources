@@ -1,6 +1,6 @@
-## Data Soverignty
+## Data sovereignty
 
-An important rule for microservices architecture is that each microservice must own its domain data and logic under an autonomous lifecycle, with independent deployment per microservice. The data owned by each microservice is prviate to it and should only be accessed either synchronously through its API end points (REST, gRPC, SOAP) or asynchronously via messaging queues.
+An important rule for microservices architecture is that each microservice must own its domain data and logic under an autonomous lifecycle, with independent deployment per microservice. The data owned by each microservice is private to it and should only be accessed either synchronously through its API end points (REST, gRPC, SOAP) or asynchronously via messaging queues.
 
 This approach naturally leads to **polyglot persistence**, which is the use of multiple data storage technologies within a single application.
 
@@ -9,7 +9,7 @@ It is fine for services to share the same physical database server. However, **t
 ## Challenges
 
 - Redundancy across data stores as the same item of data can appear in multiple places i.e. analytics, reporting, archiving
-- Need to consider how updates are propagated across services and to maange eventual consistency
+- Need to consider how updates are propagated across services and to manage eventual consistency
 
 ## Approaches
 

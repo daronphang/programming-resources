@@ -24,17 +24,17 @@ Most popular protocol is AMQP whereby the client sends the message to message br
 
 It is important to distinguish between asynchronous I/O and asynchronous protocol. Asynchronous I/O means the calling thread is not blocked while the I/O completes (for performance reasons) which is an implementation detail. An asynchronous protocol means the sender doesn't wait for a response.
 
-### Event-Based (Pub-Sub)
+### Event-based (pub-sub)
 
 Instead of a client initiating requests asking for things to be done, it instead says "this thing happened" and expects other parties to know what to do. Business logic is not centralized but instead pushed out more evenly to the various collaborators. Highly decoupled as the client that emits an event doesn't have any way of knowing who or what will react to it (subscribers).
 
-## Implementation Styles
+## Implementation styles
 
 When considering between request/response and event-based, need to consider how well they are suited for solving a complex problem of handling processes that span across service boundaries and may be long running.
 
 Two approaches are choreography (event-driven) and orchestration (request/response). In reality, most architects would use the amalgamation of both approaches to create a resilient system.
 
-## Best Practices
+## Best practices
 
 When building a microservices-based application, should minimize communication between them. **If possible, never depend on synchronous communication (request/response) between multiple microservices**, not even for queries. Your services should be designed such that each is able to execute its main function without relying on others.
 

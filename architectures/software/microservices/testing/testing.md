@@ -1,4 +1,4 @@
-## Implementing Service Tests
+## Implementing service tests
 
 Service test suite needs to launch stub services for any downstream collaborators (or ensure they are running), and configure the service under test to connect to the stub services. After, need to configure the stubs to send responses back to mimic the real-world services.
 
@@ -16,7 +16,7 @@ The easiest way to tell we are dealing with a stub is to notice that a stub can 
 
 Mocks can be useful to ensure that the expected side effects happen. In general, stubs are used far more than mocks for service tests.
 
-## Downsides to E2E Testing
+## Downsides to E2E testing
 
 ### Flaky and brittle tests
 
@@ -32,16 +32,16 @@ If multiple teams are involved and E2E is shared between them, it is difficult t
 
 With a long test suite and feedback cycles, any breaks take a while to fix which can eventually lead to a pile up. The larger the scope of deployment, the higher the risk of a release, and the more likely we are to break something. A key driver to ensuring we can release our software frequently is based on the idea that we release small changes as soon as they are ready.
 
-### The metaversion
+### The meta-version
 
 The approach of accepting multiple services being deployed together drifts into a situation where services become coupled and increasingly tangled with others. This would cede one of the main advantages of microservices: the ability to deploy a service independently.
 
 ### Test journeys, not stories
 
-Despite the disadvantages outlined, we should focus on a small number of core journeys (high value interactions) to test for the whole system. any functionality not convered in these core journeys needs to be covered in tests that analyze services in isolation from each other.
+Despite the disadvantages outlined, we should focus on a small number of core journeys (high value interactions) to test for the whole system. any functionality not covered in these core journeys needs to be covered in tests that analyze services in isolation from each other.
 
-## Consumer-Driven Tests
+## Consumer-driven tests
 
-When using intergration tests, we want to ensure that deploying a new service doesn't break consumers. One way to do this without requiring test against the real consumer is by using consumer-drivne contract (CDC).
+When using integration tests, we want to ensure that deploying a new service doesn't break consumers. One way to do this without requiring test against the real consumer is by using consumer-driven contract (CDC).
 
 With CDCs, we are defining the expectations of a consumer on a service/producer. They should be run as part of CI build of the producer, ensuring that it never gets deployed if it breaks one of these contracts. Should only be run against a single producer in isolation so that it can be more reliable than E2E tests.
