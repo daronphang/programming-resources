@@ -75,6 +75,36 @@ go.sum is a generated file you don’t have to edit or modify this file.
 
 ## Commands
 
+```
+go build      Compiles code but does not execute
+go run        Compiles and execute one or two files
+go fmt        Formats all code in each file in current directory
+go install    Compiles and installs a package
+go get        Downloads raw source code of someone else's package
+go test       Runs any tests associated with current project
+```
+
+```sh
+$ go build test.go
+$ ls
+$ ./test
+$ rm test
+```
+
+### go get
+
+The go get command is primarily used for retrieving remote packages from version control repositories and making them available for use in your projects. When you run `go get`:
+
+- Go downloads the source code of the package and its dependencies within your **workspace's bin and pkg directories**
+- Updates packages to their latest versions if you have already installed them
+
+### go install
+
+The go install command operates on the local codebase residing in your development environment:
+
+- Fetches remote packages and their dependencies
+- Compiles and installs the package present in your local code repository (GOPATH) and makes them **executable**
+
 ### Installing packages
 
 **go install** (with or without a version suffix) is now the **recommended** way to build and install packages in module mode.
