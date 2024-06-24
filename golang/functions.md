@@ -15,7 +15,9 @@ fmt.Println(hypot(3,4)) // 5
 
 ## Function values
 
-Functions are first-class values in Go. Function values have types, and may be assigned to variables or passed to or returned from functions.
+Functions are first-class values in Go and are treated like any other variables. This means a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
+
+Function values have types, and may be assigned to variables or passed to or returned from functions.
 
 ```go
 func square(n int) int { return n * n }

@@ -44,7 +44,7 @@ func fib(x int) int {
 
 Select statement lets a goroutine wait on multiple communication operations i.e. used to choose from multiple send/receive channel operations. It allows a program to try reading from or writing to a number of channels at the same time.
 
-A select blocks until one of its cases can run, then it executes that case. It **chooses one at random if multiple are ready** i.e. only one channel operation happens per select statement.
+A select blocks until one of its cases can run, then it executes that case. It **chooses one at random if multiple cases are ready** i.e. only one channel operation happens per select statement.
 
 The default case in a select is run if no other case is ready.
 

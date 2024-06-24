@@ -1,8 +1,10 @@
 ## Golang
 
-A compiled language. Organized into packages (similar to libraries/modules). Has a cultural agenda of radical simplicity with garbage collection, package system, first-class functions (treated like any other variable), lexical scope, system call interface and immutable strings encoded in UTF-8 (can process in all languages). Language is mature, stable and guarantees backwards compatibility. Well suited for building infrastructure like network servers, tools and systems for programmers.
-
-Static type language as compared to Python/Javascript (dynamic type). Dynamic means you can declare a variable as a string and later assign it as number.
+- A compiled language
+- Organized into packages (similar to libraries/modules)
+- Has a cultural agenda of radical simplicity with garbage collection, package system, first-class functions (treated like any other variable), lexical scope, system call interface and immutable strings encoded in UTF-8 (can process in all languages)
+- Language is mature, stable and guarantees backwards compatibility
+- Well suited for building infrastructure like network servers, tools and systems for programmers
 
 ### Hello World
 
