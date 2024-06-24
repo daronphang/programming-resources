@@ -1,4 +1,4 @@
-## Function Composition
+## Function composition
 
 Functools module is for higher-order functions.
 

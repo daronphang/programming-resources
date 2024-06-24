@@ -75,15 +75,3 @@ The eventual consistency time for this pattern is usually short because of the p
 The choreographed saga pattern is suitable for simple distributed transactions. However, monitoring the progress of a choreographed transaction can be difficult, as it requires a full materialization of each participating event stream.
 
 This requires consumer to listen to streams from the first and last service, in the event of a rollback or success without violating the Single Writer Principle.
-
-## Saga pattern compensation workflows
-
-Not all workflows need to be perfectly reversible and constrained by transactions. Ticketing and inventory-based systems often use this approach. For instance, a website selling products may not have sufficient inventory at the time of purchase due to concurrent transactions.
-
-### Strict
-
-Strict transaction-based approach would require that recent transactions be rolled back i.e. money returned to payment provider, customer alerted that order has been cancelled, etc. However, this could lead to a poor customer experience and a lack of trust between the customer and retailer.
-
-### Compensation
-
-As a form of compensation, the business could order new stock, notify the customer that there has been a delay, and offer a discount code for the next purchase as an apology.

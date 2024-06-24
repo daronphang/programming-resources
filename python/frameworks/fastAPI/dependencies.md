@@ -35,7 +35,7 @@ async def read_users(commons: dict = Depends(common_parameters)):
 
 ### Callables via Classes
 
-FastAPI checks if the object provided in Depends is callable (functions, classes). If you pass a 'callable' as a dependency, FastAPI will analyze the parameters and process them in the same way as the parmeters for a path operation function.
+FastAPI checks if the object provided in Depends is callable (functions, classes). If you pass a 'callable' as a dependency, FastAPI will analyze the parameters and process them in the same way as the parameters for a path operation function.
 
 ```py
 from typing import Union

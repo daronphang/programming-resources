@@ -1,4 +1,4 @@
-## Mocking Functions
+## Mocking functions
 
 If mocking a method or class in a module that imports directly, need to mock that module.
 
@@ -12,7 +12,7 @@ def test_mock_function(mock_func):
     assert package.module.Class.function is mock_func
 ```
 
-## Mocking Libraries
+## Mocking libraries
 
 If you import a class directly, mocking will not work.
 

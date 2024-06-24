@@ -2,7 +2,7 @@
 
 Pytest fixtures are functions that can be used to manage our apps states and dependencies. Can also use mock data that fixtures create across multiple tests.
 
-Pytest fixtures allow writing pieces of code that are reusuable across tests. A simple fixture returns a value, but can also do setup, yield a value, and teardown i.e. provides a fixed baseline so that tests execute reliably and produce consistent, repeatable results.
+Pytest fixtures allow writing pieces of code that are reusable across tests. A simple fixture returns a value, but can also do setup, yield a value, and teardown i.e. provides a fixed baseline so that tests execute reliably and produce consistent, repeatable results.
 
 ```py
 import pytest
@@ -139,7 +139,7 @@ def test_get_response_success(monkeypatch):
     assert http_get() == (200, 'http://www.testurl.com')
 ```
 
-## Async Support
+## Async support
 
 Can use plugins such as pytest-asyncio, aioresponses.
 

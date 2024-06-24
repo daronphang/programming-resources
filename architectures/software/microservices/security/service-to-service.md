@@ -38,4 +38,4 @@ Having a principal authenticate with a given microservice is simple, but it is q
 
 You could make use of certificates, API keys, etc., but the extend to which we have to go in validating trust between deputy services is tough. Depending on the sensitivity, you might have to choose between adopting a stance of implicit trust (accepting any calls that come from within your perimeter) and verifying the identity of the caller.
 
-<img src="../../../_snapshots/security-architecture.PNG">
+<img src="../assets/security-architecture.PNG">

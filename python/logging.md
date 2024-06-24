@@ -1,6 +1,6 @@
-### Setup
+## Setup
 
-Both logger and handlers have levels, need to set them to INFO. To configure logging across different modules, need to remove '__name__' in logger object as this will configure logger at module and not root.
+Both logger and handlers have levels, need to set them to INFO. To configure logging across different modules, need to remove '**name**' in logger object as this will configure logger at module and not root.
 
 ```py
 if __name__ == '__main__':
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     )
     fh.setFormatter(formatter)
     logger.addHandler(fh)
-    
+
     logger.info('starting SPC comparison script...')
     logger.info('script completed')
 ```
@@ -36,6 +36,7 @@ Filter        Used to filter log records based on some parameters other than log
 ### Configuration
 
 Logging can be configured in three ways:
+
 1. Creating loggers, handlers and formatters explicitly in Python that calls the config methods.
 2. Creating a logging config file and reading it using fileConfig().
 3. Creating a dictionary of configuration information and passing it to dictConfig().
@@ -103,7 +104,7 @@ LOGGING_CONFIG = {
             'level': 'NOTSET',
             'handlers': ['debug_console_handler', 'info_rotating_file_handler', 'error_file_handler', 'critical_mail_handler'],
         },
-        'my.package': { 
+        'my.package': {
             'level': 'WARNING',
             'propagate': False,
             'handlers': ['info_rotating_file_handler', 'error_file_handler' ],

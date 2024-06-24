@@ -36,7 +36,7 @@ print(user.dict())
 """
 ```
 
-## Strict Types
+## Strict types
 
 By default, strings are accepted as-is, and Pydantic will coerce conversion using str(v). To enforce strict types, define in the class.
 
@@ -47,7 +47,7 @@ class Test(BaseModel):
     name: StrictStr
 ```
 
-## Reading Request Body
+## Reading request body
 
 Access attributes by dot notation. Else, can explicitly convert to dict using .dict() after parsing the class.
 
@@ -66,7 +66,7 @@ c = c.dict()
 print(c['hello'])
 ```
 
-## Passing Models to Mdoels
+## Passing nested models
 
 ```py
 from pydantic import BaseModel
@@ -88,7 +88,7 @@ s = Student(**w.dict())
 s = Student(w)  # if init is modified
 ```
 
-## Validating and Parsing
+## Validating and parsing
 
 ```py
 from enum import Enum
@@ -108,7 +108,7 @@ v = Test(**p)
 print(v.color)  # Colors.RED of type Enum
 ```
 
-## Arbitrary Field
+## Arbitrary field
 
 ```py
 from pydantic import (
@@ -152,7 +152,7 @@ payload = {
 print(Test(**payload).EQUAL)
 ```
 
-## Validating Multiple Fields
+## Validating multiple fields
 
 ```py
 class UserModel(BaseModel):
@@ -171,7 +171,7 @@ class UserModel(BaseModel):
         return v
 ```
 
-## Root Validator
+## Root validator
 
 Can be used to validate on the entire model's data. To skip validation if prior validators fail, set skip_on_failure to be True.
 
@@ -197,7 +197,7 @@ class UserModel(BaseModel):
         return values
 ```
 
-## Creating Models Without Validation
+## Creating models without validation
 
 https://docs.pydantic.dev/latest/usage/models/#creating-models-without-validation
 

@@ -1,4 +1,4 @@
-## Trigger-Based Replication
+## Trigger-based replication
 
 Sometimes may need more flexibility in terms of replication i.e. replicating a subset of data, and requires moving replication up from the database system to the application layer. This can be done through **triggers and stored procedures**.
 

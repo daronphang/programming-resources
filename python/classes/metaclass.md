@@ -1,8 +1,12 @@
-## Type and Class
+## Metaclass
 
-Classes are objects in Python, and hence, a class also has a type. 
+Classes are objects in Python. This object is itself capable of creating objects (instances). Hence, you can assign it to a variable, attach attributes, or pass it as a function parameter.
 
-The type of any new-style class is type. Type is a metaclass, of which classes are instances of i.e. type is the metaclass from which all new-style classes are derived.
+A Metaclass is the class of a class. A class defines how an instance of the class (i.e. an object) behaves while a metaclass defines how a class behaves. **A class is an instance of a metaclass**.
+
+### type
+
+The type of any class is type. **Type is a metaclass**, of which classes are instances of i.e. type is the metaclass from which all classes are derived.
 
 ```py
 class Foo:
@@ -22,14 +26,21 @@ print(type(dict))   # class 'type'
 print(type(type))   # class 'type'
 ```
 
-## Custom Metaclasses
+### Why would you use metaclasses?
 
-When a class is instantianted i.e. Foo(), the following occurs:
-1. the __call__() of Foo's parent class (type metaclass) is invoked
-2. Foo.__new__() is called to create
-3. Foo.__init__() is called to instantiate 
+Metaclasses are deeper magic that 99% of users should never worry about it. If you wonder whether you need them, you don't (the people who actually need them know with certainty that they need them, and don't need an explanation about why).
 
-If Foo does not define __new__() and __init__(), the default methods are inherited from type metaclass. If defined, they override, which allows for customized behavior when instantiating Foo.
+A metaclass is most commonly used as a class-factory. When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass. Combined with the normal **init** and **new** methods, metaclasses therefore allow you to do 'extra things' when creating a class, like registering the new class with some registry or replace the class with something else entirely.
+
+## Custom metaclasses
+
+When a class is instantiated i.e. Foo(), the following occurs:
+
+1. the **call**() of Foo's parent class (type metaclass) is invoked
+2. Foo.**new**() is called to create
+3. Foo.**init**() is called to instantiate
+
+If Foo does not define **new**() and **init**(), the default methods are inherited from type metaclass. If defined, they override, which allows for customized behavior when instantiating Foo.
 
 ```py
 class Foo:
@@ -58,7 +69,7 @@ class Meta(type):
 class Foo(metaclass=Meta):
     pass
 
-print(Foo.attr) # 100 
+print(Foo.attr) # 100
 ```
 
 ### Singleton
@@ -66,12 +77,13 @@ print(Foo.attr) # 100
 ```py
 class Singleton(type):
     _instances = {}
-    
+
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 ```
+
 ```py
 import threading
 

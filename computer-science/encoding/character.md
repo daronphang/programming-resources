@@ -1,6 +1,6 @@
-## Character Encodings
+## Character encodings
 
-Character encodings used to turn bits into characters that are human-readable output.Character encodings are stored on disk.
+Character encodings used to turn bits into characters that are human-readable output. Character encodings are stored on disk.
 
 ## ASCII
 
@@ -77,7 +77,7 @@ UTF-8       Each symbol represented by 1-to-4 bytes code. Standard encoding on w
 UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
 ```
 
-### UTF-8 Encoding (8 bits)
+### UTF-8 encoding (8 bits)
 
 World Wide Web's most common character encoding. It can translate any Unicode character to a matching unique binary string. Each character is represented by one to four bytes (saving memory) and has backwards compatibility with ASCII.
 
@@ -104,6 +104,6 @@ Encodes a Unicode character into a string of either two or four bytes. **UTF-16 
 
 ## Unicode vs ASCII
 
-ASCII is deisgned to represent basic English characters (128 characters). Uses one byte to represent each character.
+ASCII is designed to represent basic English characters (128 characters). Uses one byte to represent each character.
 
 Unicode designed to support characters from all languages across the world (1,000,000 characters). Supports up to four bytes per character.

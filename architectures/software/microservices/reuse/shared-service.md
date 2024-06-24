@@ -44,7 +44,7 @@ While fault-tolerance issues can usually be mitigated through multiple instances
 
 <tr>
 <td>Preserves the bounded context</td>
-<td></td>
+<td>Increased risk due to runtime changes</td>
 </tr>
 
 <tr>
@@ -56,10 +56,4 @@ While fault-tolerance issues can usually be mitigated through multiple instances
 <td></td>
 <td>Scalability and throughput issues due to service dependency</td>
 </tr>
-
-<tr>
-<td></td>
-<td>Increased risk due to runtime changes</td>
-</tr>
-
 </table>

@@ -1,4 +1,4 @@
-## Binary-to-text Encoding
+## Binary-to-text encoding
 
 Binary-to-text encodings are designed to turn bits into human-printable ouput.
 
@@ -15,7 +15,7 @@ Base64 is a subset of ASCII, containing 64 of the 128 ASCII characters:
 - 10 numbers
 - `-` and `/` for new lines
 
-### Why use Base64 Encoding
+### Why use Base64 encoding
 
 All data of different types are transmitted as 1s and 0s; however, some communication channels and applications are not able to understand if the data has to be processed differently i.e. images, emails.
 
@@ -26,7 +26,7 @@ To work around this limitation, you can encode your data to text, improving the 
 <img src="data:image/png;base64,aVRBOw0AKg1mL9..." />
 ```
 
-### Encoding String to Base64
+### Encoding string to Base64
 
 1. Take the ASCII value of each character in the string
 2. Calculate the 8-bit binary equivalent of the ASCII values

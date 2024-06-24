@@ -132,6 +132,18 @@ A state machine is a pattern that describes all of the possible paths that can e
 
 The choice between using compensating updates or state management for distributed transaction workflows depends on the situation as well as trade-off analysis between responsiveness and consistency. Regardless of the technique used to manage errors within a distributed transaction, the state of the distributed transaction should be known and also managed.
 
+## Saga pattern compensation workflows
+
+Not all workflows need to be perfectly reversible and constrained by transactions. Ticketing and inventory-based systems often use this approach. For instance, a website selling products may not have sufficient inventory at the time of purchase due to concurrent transactions.
+
+### Strict
+
+Strict transaction-based approach would require that recent transactions be rolled back i.e. money returned to payment provider, customer alerted that order has been cancelled, etc. However, this could lead to a poor customer experience and a lack of trust between the customer and retailer.
+
+### Compensation
+
+As a form of compensation, the business could order new stock, notify the customer that there has been a delay, and offer a discount code for the next purchase as an apology.
+
 ## Atomic transactions and compensating updates
 
 The issue with atomic distributed transactions is that the end user is unnecessary semantically coupled to the business process.

@@ -67,7 +67,11 @@ print(hard_book)    # <Book Harry Potter, hardcover, 200>
 print(soft_book)    # <Book Lord of the Rings, paperback, 50>
 ```
 
-## Repr and Str
+## Dunder methods
+
+Dunder methods are special predefined methods in Python, derived from double underscore.
+
+### repr, str
 
 Special method used to represent class' objects as a string; Pythonic way to control how objects are converted to strings.
 

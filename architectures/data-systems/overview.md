@@ -1,4 +1,4 @@
-## Data Systems
+## Data systems
 
 Many applications today are data-intensive as opposed to compute-intensive that provide commonly needed functionality:
 
@@ -8,7 +8,7 @@ Many applications today are data-intensive as opposed to compute-intensive that 
 - Sending a message to another process, to be handled asynchronously (stream processing)
 - Periodically crunch a large amount of accumulated data (batch processing)
 
-Increasingly, many applications have such demanding or wide-ranging requirements that a single tool can no longer meet all of its data processing and storage needs. When you combine several tools in order to provide a service, the API usually hides those implementation details from clients. However, designing such data-systems are tricky, and many factors influencing the design including legacy system dependencies, timescale for delivery, risk tolerance, regulatory constraints, etc. Nonetheless, three concerns that are important are reliability, scalability and maintainability.
+Increasingly, many applications have such demanding or wide-ranging requirements that a single tool can no longer meet all of its data processing and storage needs. When you combine several tools in order to provide a service, the API usually hides those implementation details from clients. However, designing such data-systems are tricky, and many factors influencing the design including legacy system dependencies, timescale for delivery, risk tolerance, regulatory constraints, etc. Nonetheless, three concerns that are important are **reliability, scalability and maintainability**.
 
 ## Reliability
 

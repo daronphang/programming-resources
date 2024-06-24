@@ -1,4 +1,4 @@
-## CAP Theorem in DBMS
+## CAP theorem in DBMS
 
 A distributed system with data replication can deliver only two of three desired characteristics: consistency, availability, and partition tolerance.
 
@@ -14,7 +14,7 @@ Availability means that any client making a request for data gets a response, ev
 
 Each read or write request for a data item will either be processed successfully or receive a message that the operation cannot be completed. However, the data returned might not be the most recent.
 
-### Partition Tolerance (of nodes due to network fault)
+### Partition tolerance (of nodes due to network fault)
 
 Partition tolerance means that the system can continue operating even if the network connecting the nodes has a fault that results in two or more partitions, where the **nodes in each partition can only communicate with each other**. The system can continue to uphold its consistency guarantees in spite of network partitions. Distributed systems guaranteeing partition tolerance can gracefully recover from partitions once the partition heals.
 

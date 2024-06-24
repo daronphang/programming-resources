@@ -1,6 +1,6 @@
 ## Marshmallow
 
-Marshmallow is an object-relational mapping library which is used to convert objects to and from Python data types. Often used alongside with SQLAlchemy, an ORM that maps database schemas to Python objects. Used primarily in commmunication between backend and frontend to:
+Marshmallow is an object-relational mapping library which is used to convert objects to and from Python data types. Often used alongside with SQLAlchemy, an ORM that maps database schemas to Python objects. Used primarily in communication between backend and frontend to:
 
 - Validate input data.
 - Deserialize input data to app-level objects.
@@ -20,7 +20,7 @@ class Person(self, name, age):
 class PersonSchema(Schema):
     name = fields.Str()
     age = fields.Int()
-    
+
     field4 = fields.Mapping(required=True)
     userinfo = fields.Nested(UserInfoSchema, required=True)
     lookbackWeekCount = fields.Integer(required=True)
@@ -29,7 +29,7 @@ class PersonSchema(Schema):
 
 ```
 
-### Validating Inputs (Deserialization)
+### Validating inputs (deserialization)
 
 ```python
 # Converting payload data to app-level data structure
@@ -44,7 +44,7 @@ person = PersonSchema().load(data)
 # {'name': 'bill', 'age': 19}
 ```
 
-### Serializing Objects
+### Serializing objects
 
 ```python
 # Converting app-level data to Python primitive data
@@ -58,7 +58,7 @@ serialized_value = PersonSchema().dump(person)      # dumps() for returning JSON
 # Result is dictionary which can be converted easily into text for database storage.
 ```
 
-### Schema Field Arguments
+### Schema field arguments
 
 ```
 many                Boolean, whether resulting schema is an array of the instantiated schema
@@ -69,7 +69,7 @@ data_key            String, specify the alternative field key in input data
 allow_none          Boolean, whether None is allowed for field's value
 validate            Validator, used as function for value validation
 default             Value used in serialization (dump) when the value is missing
-missing:            Value used in deserialization (load) when value is missing
+missing            Value used in deserialization (load) when value is missing
 error_messages      Dictionary, error messages to override default messages on errors
 ```
 
@@ -88,7 +88,7 @@ class EmployeeSchema(Schema):
     home_address = fields.Str(data_key='address', default='Hanoi')
 ```
 
-### Nest Schemas
+### Nesting schemas
 
 To nest a schema inside another so that the new schema inherits attributes of the one being nested.
 
@@ -105,7 +105,7 @@ class FamilySchema(HouseSchema):
 # FamilySchema inherits HouseSchema and hance, has field 'address'
 ```
 
-### Template Schema
+### Template schema
 
 Fields.Mapping() refers to an abstract class for objects with key-value pairs. Use class Meta for defining options.
 
@@ -131,7 +131,7 @@ class BeforeRequestSchema(BaseSchema):
         unknown = INCLUDE
 ```
 
-### Performing Transformation Before/After
+### Performing transformation before/after
 
 Allows to perform transformation before or after serialization and deserialization by using hooks.
 

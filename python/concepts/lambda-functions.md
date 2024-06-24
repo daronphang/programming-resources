@@ -1,4 +1,4 @@
-### Lambda function
+## Lambda function
 
 Anonymous function that can take any number of arguments, but with one expression. Contrast to normal functions defined with def().
 

@@ -1,7 +1,9 @@
 ## Decorators
 
 Structural pattern that allows adding new behaviors to objects dynamically by placing them inside special wrapper objects.
+
 Python decorators allow functions to be wrapped with another function i.e. a function that is passed a function, and returns a callable object.
+
 In most cases, the decorator should return an object to mimic the decorated function, which is performed through wrapper function.
 
 https://medium.com/@vadimpushtaev/decorator-inside-python-class-1e74d23107f6
@@ -32,7 +34,46 @@ def cities(city_one, city_two):
     print("Cities I love are {0} and {1}".format(city_one, city_two))
 ```
 
-### Nested
+### wraps
+
+```py
+from functools import wraps
+
+# 1. Basic Decorator
+def my_decorator(func):
+    @wraps(func)  # Ensures the original function's metadata is preserved
+    def wrapper(*args, **kwargs):
+        print('Something is happening before the function is called.')
+        result = func(*args, **kwargs)
+        print('Something is happening after the function is called.')
+        return result
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print('Hello!')
+
+say_hello()
+
+# 2. Decorators with Arguments
+def decorator_with_args(arg1, arg2):
+    def actual_decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            print(f'Arguments passed to decorator: {arg1}, {arg2}')
+            result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return actual_decorator
+
+@decorator_with_args('arg1', 'arg2')
+def my_function():
+    print('I am decorated!')
+
+my_function()
+```
+
+### Nested decorators
 
 Top decorator is passed the object from the former.
 
@@ -46,7 +87,7 @@ def hello():
 hello = a(b(c(hello)))
 ```
 
-### Decorators with Arguments
+### Decorators with arguments
 
 ```py
 @decorator
