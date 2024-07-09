@@ -6,6 +6,8 @@ In most monolithic systems, developers don't give a second thought to reading da
 
 This is the most common pattern for accessing data in a distributed system.
 
+<img src="../assets/interservice.png">
+
 <table>
 <tr>
 <th>Advantages</th>
@@ -32,6 +34,8 @@ This is the most common pattern for accessing data in a distributed system.
 ## Column schema replication pattern
 
 With this pattern, columns are replicated across tables, therefore replicating the data and making it available to other bounded contexts.
+
+<img src="../assets/column-schema-replication.png">
 
 Data synchronization and consistency are the two biggest issues associated with this pattern. This is usually done through asynchronous communications using queues, topics, or event streaming.
 

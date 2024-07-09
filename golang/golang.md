@@ -56,3 +56,15 @@ s := "Hello world"    // colon syntax used for assigning NEW variables only
 var s string = "Hello world"
 s = "Awesome!"    // equal syntax for reassigning variables
 ```
+
+## Building binary
+
+```sh
+$ go build -o /rest ./cmd/rest
+```
+
+### File paths
+
+In binary, when using runtime.Caller(0) to get the path of the calling file, it refers to the path of where the binary was built.
+
+As a workaround, you can copy the source code into the same working path in the image.

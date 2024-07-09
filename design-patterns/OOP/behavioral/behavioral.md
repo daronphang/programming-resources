@@ -16,7 +16,7 @@ Encapsulating variation is a theme of many behavioral patterns. When an aspect o
 - A Strategy object encapsulates an algorithm
 - A State object encapsulates a state-dependent behavior
 - A Mediator object encapsulates the protocol between objects
-- An Iterator object encapsulates the way you acess and traverse the components of an aggregate object
+- An Iterator object encapsulates the way you access and traverse the components of an aggregate object
 
 Most patterns have two kinds of objects: the new object that encapsulate the aspect, and the existing object that use the new ones. Functionality of new objects would be an integral part of the existing objects.
 

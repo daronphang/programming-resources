@@ -5,6 +5,16 @@
 - Horizontal scaling by splitting your database into multiple partitions is a promising approach; however, it gets more operationally complex and doesn't eliminate issues such as **hot partitions**
 - Both horizontal and vertical scaling are costly in the long term
 
+## Cache replicas
+
+For your cache, you want as few replicas as possible with lots of resources for each replica e.g. instead of 10 replicas with 1GB of RAM, you would want 2 replicas with 5GB of RAM.
+
+This is preferable because having more replicas would result in the following:
+
+- Same set of data will be stored across all replicas, reducing the overall cache data that you can keep in memory
+- Reduces hit rate (fraction of time that a request can be served out of cache)
+- Decreases utility of cache
+
 ## Cache invalidation
 
 Cache invalidation is one of the two hard things in Computer Science.

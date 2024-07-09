@@ -6,7 +6,7 @@ Intent is to define the skeleton of an algorithm in an operation, deferring some
 
 A template method defines an algorithm in terms of abstract operations that subclasses override to provide concrete behavior.
 
-An example incldues a Chatbot application that uses data mining techinques to analyze data of corporate documents, which may come in format of XML, CSV, or PDF. Analyzing and processing parts are identical in almost all cases whereas they differ in dealing with the data.
+An example includes a Chatbot application that uses data mining techniques to analyze data of corporate documents, which may come in format of XML, CSV, or PDF. Analyzing and processing parts are identical in almost all cases whereas they differ in dealing with the data.
 
 Pattern allows us to create a base class that contains some number of steps needed to complete a process. When steps are defined, it becomes possible to create one or more concrete classes and overwrite the template steps, without overwriting the entire process.
 
@@ -31,7 +31,7 @@ ConcreteClass relies on AbstractClass to implement the invariant steps of the al
 
 ### ConcreteClass
 
-- Implements primitive operations to carry out subclass-psecific steps of the algorithm
+- Implements primitive operations to carry out subclass-specific steps of the algorithm
 
 ## Consequences
 

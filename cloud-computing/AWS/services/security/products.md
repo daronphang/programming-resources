@@ -165,6 +165,8 @@ You can perform penetration testing on your AWS infrastructure. However, prohibi
 
 Allows you to easily provision, manage and deploy SSL/TLS certificates. Supports both public (free) and private TLS certificates.
 
+You can only use ACM SSL certificates with ALB, CloudFront and API Gateway.
+
 ### Features
 
 - Automated certificate provisioning

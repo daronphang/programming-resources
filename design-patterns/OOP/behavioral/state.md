@@ -43,7 +43,7 @@ State pattern puts all behavior associated with a particular state into one obje
 
 ### Makes state transitions explicit
 
-When an object defines its current state solely in terms of internal values, its state transitions have no explicit representation; introducing separate objects for different states mkaes the transitions more explicit.
+When an object defines its current state solely in terms of internal values, its state transitions have no explicit representation; introducing separate objects for different states makes the transitions more explicit.
 
 ### State objects can be shared
 
