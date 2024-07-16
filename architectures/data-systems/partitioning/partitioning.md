@@ -1,75 +1,70 @@
-## Partitioning/sharding
+## Partitioning
 
-For very large datasets, or very high query throughput, need to break data up into **partitions/sharding to achieve scalability**. Different partitions can be placed on different nodes in a shared-nothing cluster. Hence, a large dataset can be distributed across many disks, and the query load can be distributed across many processors.
+While partitioning is just a general term referring to splitting up the database, it is commonly used to mean **vertical partitioning**, which is the process of dividing tables in a database instance into smaller sub-tables or partitions. This division occurs within a single database system, eliminating the need for distribution across multiple servers.
 
-Each shard contains a subset of the data and is responsible for handling a portion of the data workload. Sharding is done to improve data distribution, scalability, and performance.
+By splitting a large table into smaller, individual tables, queries that access only a fraction of the data can run faster because there is **less data to scan**. These partitions can be accessed and managed separately to enhance performance, maintainability, and availability of the database.
 
-Sharding is entirely transparent to the application which is able to connect to any node in the cluster and have queries automatically access the correct shards. Instead of relying on automatic coordination, applications determine where data is located and route queries accordingly.
+```sql
+-- vertical partitioning
 
-For queries that operate on a single partition, each node can independently execute the queries for its own partition, and query throughput can be scaled by adding more nodes.
+create table data (
+    id integer primary key,
+    status char(1) not null,
+    data1 varchar2(10) not null,
+    data2 varchar2(10) not null
+);
 
-### How sharding works
+create table data_main (
+    id integer primary key,
+    status char(1) not null,
+    data1 varchar2(10) not null
+);
 
-1. Data is partitioned based on specific criteria e.g. user ID
-2. Each partition (shard) resides on a dedicated server
-3. Applications determine the correct shard for a given query
-4. Data within a shard can be replicated for high availability
+create table data_rarely_used (
+    id integer primary key,
+    data2 varchar2(10) not null,
+    foreign key (id) references data_main (id)
+);
+```
+
+```sql
+-- horizontal partitioning
+CREATE TABLE sales (
+    sale_id INT NOT NULL,
+    product_name VARCHAR(255) NOT NULL,
+    sale_date DATE NOT NULL,
+    amount DECIMAL(10,2) NOT NULL
+) PARTITION BY RANGE (YEAR(sale_date)) (
+    PARTITION p2018 VALUES LESS THAN (2019),
+    PARTITION p2019 VALUES LESS THAN (2020),
+    PARTITION p2020 VALUES LESS THAN (2021),
+    PARTITION p2021 VALUES LESS THAN (2022)
+);
+```
 
 ## Benefits
 
-### Simpler architecture
+### Improved query performance
 
-Sharding eliminates the complexities of inter-node communication and automatic data distribution, resulting in a simpler system to understand and manage.
+By segregating data into partitions, databases can achieve enhanced query performance. Partitioning allows for more efficient data access and manipulation, ensuring that operations are executed on relevant subsets of data, thereby reducing processing time and improving overall system responsiveness.
 
-### Independent scaling
+### Ease of maintenance
 
-Individual shards can be scaled independently, offering more granular control over resource allocation.
-
-### Clear data ownership
-
-Each shard has a well-defined responsibility for a specific subset of data, eliminating the ambiguity of ownership that can arise in clusters.
-
-### Simplified algorithm
-
-The logic for data placement is significantly simpler than complex cluster management algorithms, reducing the likelihood of catastrophic failures.
+Partitioning simplifies maintenance tasks by allowing operations such as backups, data purges, or schema changes to be performed more efficiently and with less impact on the overall database availability. This segmentation means that maintenance can be limited to only the relevant partitions without affecting the rest of the database.
 
 ## Drawbacks
 
-### No database-level joins
+### Complexity in data management
 
-Since data is spread across multiple shards, performing joins across different shards becomes challenging. This is because the data has to be compiled from multiple servers, which can add significant overhead and negatively impact performance.
+While partitioning simplifies maintenance in certain aspects, it can introduce complexity in data management. Designing and implementing a partitioning scheme requires upfront planning and a deep understanding of the data’s access patterns. Incorrect partitioning strategies can lead to data skew, where one partition is significantly larger than others, negatively impacting performance.
 
-However, there are ways to mitigate this issue. Utilizing caching and fast networks can help to speed up the process and ensure that page load times remain fast. Additionally, de-normalizing the database by merging related data into a single table can also be a viable solution, as it allows for the execution of previously complex join queries on a single table.
+### Query performance overhead
 
-### Referential integrity
+If queries are not well-aligned with the partitioning key, there could be a performance penalty. Specifically, queries that need to access multiple partitions or that do not make use of the partition key in their predicates might perform worse than those running on a non-partitioned dataset.
 
-Maintaining data integrity, such as using foreign keys, can be a challenge when using a sharded database. Most relational database management systems don’t support foreign keys across different servers, making it difficult to enforce referential integrity.
+## Hot partition/shard
 
-Applications that rely on this feature may need to implement it in their code and run regular SQL jobs to keep the data consistent. This can add extra complexity and maintenance to the application.
-
-### No database-level transactions
-
-Transactions spanning multiple shards are not possible, requiring application-level logic to maintain data consistency and integrity.
-
-### Increased application complexity
-
-Applications must handle shard routing and manage data consistency across shards, adding complexity to the development process.
-
-### Schema changes are more involved
-
-Modifying database schemas requires applying changes to all individual shards.
-
-### Reporting complexity
-
-Generating reports that span multiple shards requires retrieving data from each shard and aggregating the results manually.
-
-### Rebalancing
-
-As data grows or shrinks, shards may need to be rebalanced, which can be a complex and resource-intensive process.
-
-## Hot shard
-
-A “hot shard” refers to a specific shard or partition within a distributed data storage system or database that is experiencing a disproportionately high level of data traffic or activity compared to other shards or partitions i.e. a bottleneck. This imbalance can lead to performance degradation for the entire system.
+A “hot partition or shard refers to a specific partition within a distributed data storage system or database that is experiencing a disproportionately high level of data traffic or activity compared to other shards or partitions i.e. a bottleneck. This imbalance can lead to performance degradation for the entire system.
 
 Causes include:
 

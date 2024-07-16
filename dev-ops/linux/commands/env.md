@@ -32,7 +32,7 @@ Need to consider the following situations:
 /etc/environment
 ```
 
-Createa a .sh file in one of the folders above. Syntax to add is the same for both global or user.
+Creates a .sh file in one of the folders above. Syntax to add is the same for both global or user.
 
 ## Proxies
 

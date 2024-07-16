@@ -32,7 +32,7 @@ Use when:
 ### ConcreteVisitor
 
 - Implements each operation declared by Visitor
-- Each operation implements a fragment of algorithm deinfed for the corresponding class of object in structure
+- Each operation implements a fragment of algorithm defined for the corresponding class of object in structure
 
 ### Element
 
@@ -60,7 +60,7 @@ Related behavior isn't spread over the classes defining the object structure; it
 
 ### Adding new ConcreteElement classes is hard
 
-Each ConcreteElement gives rise to a new abstract operation on Visitor and a corresponding implementation in every ConcreteVisitor class. Key consideration in applying this pattern is whethere you are most likely to change the algorithm applied over an object structure or the classes of objects that make up the structure.
+Each ConcreteElement gives rise to a new abstract operation on Visitor and a corresponding implementation in every ConcreteVisitor class. Key consideration in applying this pattern is whether you are most likely to change the algorithm applied over an object structure or the classes of objects that make up the structure.
 
 ### Visiting across class hierarchies
 

@@ -4,7 +4,7 @@ The 'init' daemon is the first process executed by the Linux kernel ad its PID i
 
 To create a service, you will need to write a script and store it in /etc/init.d directory.
 
-```console
+```sh
 $ sudo sservice <command> <service-name>
 $ sudo /etc/init.d/<service-name> <command>     # same
 ```
@@ -78,7 +78,7 @@ This command opens a full copy of whatever unit file you chose to edit in a text
 
 In general, any unit file in /etc/systemd/system will override the corresponding file in /lib/systemd/system.
 
-## Service Commands
+## Service commands
 
 killall will look for the exact match of the process name whereas pkill will allow terminating the process either by full name or by partial process name.
 

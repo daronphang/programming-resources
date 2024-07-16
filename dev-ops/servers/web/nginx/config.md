@@ -108,7 +108,7 @@ Nginx on Ubuntu has one server block enabled by default that is configured to se
 
 ### Creating index.html
 
-```console
+```sh
 $ sudo mkdir -p /var/www/your_domain/html
 $ sudo chown -R $USER:$USER /var/www/your_domain/html   # $USER is an env variable
 $ sudo chmod -R 755 /var/www/your_domain
@@ -129,7 +129,7 @@ $ sudo vi /var/www/your_domain/html/index.html
 
 ### Setting Up Directives
 
-```console
+```sh
 $ sudo vi /etc/nginx/sites-available/your_domain
 ```
 
@@ -162,7 +162,7 @@ your_domain     Responds to requests for your_domain and www.your_domain
 default         Responds to any requests on port 80 that do not match any blocks
 ```
 
-```console
+```sh
 $ sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
 ```
 
@@ -170,7 +170,7 @@ $ sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
 
 To avoid possible hash bucket memory problem that can arise from adding additional server names, can configure bucket size.
 
-```console
+```sh
 $ sudo vi /etc/nginx/nginx.conf
 ```
 
@@ -186,7 +186,7 @@ http {
 
 If your new domain name isn't registered or public, the /etc/hosts file may need to be configured. After configuration, navigate to 'http://test_new_domain.com'.
 
-```console
+```sh
 $ hostname -i           # should be 127.0.1.1
 $ sudo vi /etc/hosts
 ```
@@ -194,4 +194,15 @@ $ sudo vi /etc/hosts
 ```
 # add this line at end
 127.0.1.1 test_new_domain www.test_new_domain.com
+```
+
+## gRPC proxy pass
+
+```conf
+{
+    location /some-api {
+        grpc_pass grpc://api;
+        grpc_pass grpcs://api; // for SSL
+    }
+}
 ```

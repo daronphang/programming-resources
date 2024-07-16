@@ -189,6 +189,73 @@ func main() {
 }
 ```
 
+## Stopping goroutines
+
+### Use channels to signal termination
+
+```go
+func myProcess(stopChannel chan bool) {
+  for {
+    select {
+    case <-stopChannel:
+      fmt.Println("Hey! Shantanu. Thanks for stopping my goroutine :) ")
+      return
+    default:
+      fmt.Println("My Goroutine is running :( ")
+      time.Sleep(time.Second)
+    }
+  }
+}
+```
+
+### Use context to manage goroutine lifecycle
+
+```go
+func myProcess(ctx context.Context) {
+  for {
+    select {
+    case <-ctx.Done():
+      fmt.Println("Hey! Shantanu. Thanks for stopping my goroutine :)")
+      return
+    default:
+      fmt.Println("My Goroutine is running :(")
+      time.Sleep(time.Second)
+    }
+  }
+}
+
+func main() {
+  ctx, cancel := context.WithCancel(context.Background())
+  go myProcess(ctx)
+  time.Sleep(3 * time.Second)
+  cancel()
+  time.Sleep(time.Second)
+  fmt.Println("Main Goroutine exited")
+}
+```
+
+### Breaking when all channels are closed
+
+A nil channel is never ready for communication. Each time you run into a closed channel, you can nil that channel ensuring it is never selected again.
+
+```go
+for {
+  select {
+    case x, ok := <- ch:
+    if !ok {
+      ch = nil
+    }
+    case x, ok := <- ch2:
+    if !ok {
+      ch2 = nil
+    }
+  }
+  if ch == nil && ch2 == nil {
+    break
+  }
+}
+```
+
 ## Goroutine vs Thread
 
 <table>

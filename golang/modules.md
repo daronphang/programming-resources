@@ -137,3 +137,22 @@ This will add all the transitive dependencies required in order to run the vendo
 ```sh
 $ go mod vendor
 ```
+
+## Importing local packages
+
+If you want a package to point to a local version rather than over the web, use the **replace** keyword.
+
+```sh
+$ go mod edit -replace protobuf=../protobuf
+$ go get protobuf
+```
+
+```
+module github.com/pselle/foo
+
+replace protobuf => ../protobuf
+
+require (
+    protobuf v1.0.0
+)
+```
