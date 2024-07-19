@@ -1,3 +1,16 @@
+## Naming
+
+Error types end in "Error" and error variables start with "err".
+
+```go
+type ParseError struct {}
+func (e ParseError) Error() string {
+    return "hello world"
+}
+
+const errBadAction = errors.New("hello world")
+```
+
 ## Creating errors
 
 ```go
