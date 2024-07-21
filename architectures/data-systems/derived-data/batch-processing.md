@@ -1,4 +1,4 @@
-## Batch Processing
+## Batch processing
 
 As an example, we have a web server that appends a line to a log file every time it serves a request, and you want to find the five most popular pages on your website.
 
@@ -9,7 +9,7 @@ As an example, we have a web server that appends a line to a log file every time
 Safari/537.36"
 ```
 
-### With Unix Tools
+### With unix tools
 
 Each command all treat their input file as a list of records separated by the \n character.
 
@@ -17,7 +17,7 @@ Each command all treat their input file as a list of records separated by the \n
 $ cat /var/log/nginx/access.log | awk '{print $7}' | sort | uniq -c | sort -r -n | head -n 5
 ```
 
-### With Custom Program
+### With custom program
 
 Uses in-memory hashmap.
 
@@ -40,6 +40,6 @@ for _ in range(5):
     print(heappop(h))
 ```
 
-### Sorting vs In-Memory Aggregation
+### Sorting vs in-memory aggregation
 
 The sort utility in GNU Coreutils (Linux) automatically handles larger-than-memory datasets by spilling to disk, and automatically parallelizes sorting across multiple CPU cores. However, sorting implementations in most programming languages do not spill to disk and do not use multiple threads.

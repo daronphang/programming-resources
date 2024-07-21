@@ -12,7 +12,7 @@ There is no programmatic way for one goroutine to stop another other than by ret
 
 ```go
 f()
-go f()  // creates new goroutine that calls f(); doesnt wait for f() to finish
+go f()  // creates new goroutine that calls f(); doesn't wait for f() to finish
 ```
 
 ```go
@@ -154,7 +154,19 @@ func main() {
 }
 ```
 
-### Waiting for goroutines
+### Limiting goroutines
+
+```go
+maxGoroutines := 10
+guard := make(chan bool, maxGoroutines)
+guard <- true
+go func() {
+  h.handleSenderMsg(ctx, msg)
+  <- guard
+}()
+```
+
+## Waiting for goroutines
 
 The application terminates when the main goroutine exits. If you want to wait for goroutines, use sync.WaitGroup.
 

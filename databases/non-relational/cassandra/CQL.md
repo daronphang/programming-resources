@@ -102,6 +102,17 @@ SELECT * FROM users WHERE birth_year = 1981 AND country = 'FR' ALLOW FILTERING;
 
 The ALLOW FILTERING option explicitly executes a full scan. Thus, the performance of the query can be unpredictable. Without ALLOW FILTERING, the query would not be executed to prevent harm to the cluster by accidentally running expensive queries.
 
+### Datetime of write
+
+A table contains a timestamp representing the date/time that a write occurred to a column. Use WRITETIME in a SELECT statement to return the date/time in microseconds.
+
+```sql
+SELECT WRITETIME (name) FROM excelsior.clicks
+  WHERE url = 'http://apache.org' ALLOW FILTERING;
+```
+
+Otherwise, can use toTimestamp(now()).
+
 ## Insert
 
 Unlike in SQL, INSERT does not check the prior existence of the row by default. The row is created if none existed before, and updated otherwise. Furthermore, there is no means of knowing which action occurred.
