@@ -20,7 +20,7 @@ $ sudo unlink /etc/nginx/sites-enabled/default  # disable default config file
 
 ## Adjusting Firewall
 
-Nginx registers itself as a serice with ufw upon installation, making it straightforward to allow Nginx access.
+Nginx registers itself as a service with ufw upon installation, making it straightforward to allow Nginx access.
 
 ```sh
 $ sudo ufw app list

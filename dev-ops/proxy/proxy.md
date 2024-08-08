@@ -1,4 +1,4 @@
-## Reverse Proxy
+## Reverse proxy
 
 Reverse proxy is used by the server such as web server to achieve load balancing and high availability. Reverse proxies are used to protect servers. Takes requests from the browser and forwards them to one of the backend web servers. Nginx, Apache and HAProxy can act both as a web server and reverse proxy. Client only communicates directly with the reverse proxy server and does not know that other servers actually processed its request.
 
@@ -7,7 +7,7 @@ Reverse proxy is used by the server such as web server to achieve load balancing
 - Increases scalability and flexibility as clients see only reverse proxy's IP address i.e. can change configuration of backend infrastructure
 - Reduces time taken to generate response with compression (reducing bandwidth required for transmitting responses), SSL termination (decrypts incoming requests and encrypts server responses) and caching (stores copy of response locally)
 
-## Forward Proxy
+## Forward proxy
 
 Forward proxy is used by the client such as web browser. Can reside in the same internal network as the client, or it can be on the internet. Can be used to bypass firewall restrictions in order to visit websites that are blocked by school, government, etc. For instance, forward proxy can be used to hide the real IP of the client. Forward proxies are used to protect clients.
 
@@ -17,6 +17,6 @@ Forward proxy is used by the client such as web browser. Can reside in the same 
 - Easier to enforce authentication, SSL encryption or other security policies; used in tandem with firewall
 - Can act as a cache server in an internal network i.e. downloading of same resource
 
-## Reverse Proxy vs Load Balancer
+## Reverse proxy vs load balancer
 
 Reverse proxy servers and load balancers are components in client-server computing architecture whereby both act as intermediaries in communication between clients and servers, performing functions that improve efficiency.
