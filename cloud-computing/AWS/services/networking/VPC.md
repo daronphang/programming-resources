@@ -98,9 +98,14 @@ Each route consists of:
 - Target: Where the packet should go next, to get it one step closer to the intended destination
 
 ```
+# public
 Destination             Target
 172.31.0.0/16           local (default)
 0.0.0.0/0               igw-12345 (internet gateway)
+
+# private
+172.31.0.0/16           local (default)
+0.0.0.0/0               nat-12345 (NAT gateway)
 ```
 
 ### Custom route table

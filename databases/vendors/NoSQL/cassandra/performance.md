@@ -44,3 +44,5 @@ CREATE TABLE learn_cassandra.users_by_country_with_leveled_compaction (
 There are index-like features in Cassandra that can reduce the number of tables you need to maintain on your own. One feature is called secondary indexes.
 
 Secondary indexes only operate locally to a node. Using it means talking to all nodes because the coordinator doesn’t know which nodes contain the data if you use other columns to query data than the actual partition key.
+
+As secondary indexes pull data from multiple partitions, using ORDER BY is not allowed. Also, even with secondary indexes, the WHERE clause is required to have at least one EQ due to performance issue.

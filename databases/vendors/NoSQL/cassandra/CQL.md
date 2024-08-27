@@ -29,6 +29,8 @@ The **partition key** is the first component of the primary key definition. It c
 
 The most important property of partition is that all the rows belonging to the same partition are guaranteed to be stored on the same set of replica nodes. The localization of data is important to the efficient retrieval of data, requiring the Cassandra coordinator to contact as few nodes as possible. However, this may create a **hotspot** for both reading and writing.
 
+the partition key must be specified in all queries of the table.
+
 ### Clustering key
 
 **Clustering columns** are columns that follow the partition key in the primary key definition. All rows are ordered by that clustering order.
@@ -124,6 +126,10 @@ INSERT INTO NerdMovies (movie, director, main_actor, year)
 
 INSERT INTO NerdMovies JSON '{"movie": "Serenity", "director": "Joss Whedon", "year": 2005}';
 ```
+
+## Update
+
+You can expect Cassandra performance to degrade over time if your model requires you to update the same row over and over. This is due to the fact that the same row spans over dozen of SSTables.
 
 ## Tombstones
 

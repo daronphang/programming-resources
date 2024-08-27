@@ -195,3 +195,11 @@ kubectl get secret my-user-pass \
   --export -o yaml | \
   kubectl apply --namespace=namespace1 -f -
 ```
+
+### Creating from files
+
+```sh
+$ kubectl create secret generic some-secret --from-file=config.yaml=/path/to/file -n default
+
+$ kubectl create secret generic some-secret --from-env-file=path/to/file -n default
+```
