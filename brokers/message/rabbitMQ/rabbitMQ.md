@@ -4,12 +4,6 @@ Most widely deployed open source message broker/queue manager. Lightweight and e
 
 RabbitMQ can deal with high-throughput use cases such as online transactions or payment processing. It is generally used to handle background and CRON jobs (scheduler) or as a message broker between microservices.
 
-### Acknowledgements
-
-If a consumer dies (channel closed, TCP connection lost), RabbitMQ will re-queue if it didn't receive an acknowledgement from the consumer. Timeout is 30minutes by default.
-
-This can be turned off by setting auto_ack to True. However, any message delivered to the consumer will be marked for deletion, and if it terminates during processing, the message will be lost.
-
 ## Architecture
 
 Messages are not published directly to a queue; instead, producer sends messages to an exchange. The exchange is responsible for routing the messages to different queues with the help of bindings and routing keys. A binding is a link between a queue and an exchange.
@@ -18,10 +12,10 @@ Messages are not published directly to a queue; instead, producer sends messages
 
 ## Exchanges
 
-- Direct: Message is routed to the queues whose binding key matches exactly with each other.
-- Fanout: Routes messages to all of the queues bound to it.
-- Topic: Performs wildcard match between routing key and routing pattern specified in the binding.
-- Headers: Use the message header attributes for routing.
+- Direct: Message is routed to the queues whose binding key matches exactly with each other
+- Fanout: Routes messages to all of the queues bound to it
+- Topic: Performs wildcard match between routing key and routing pattern specified in the binding
+- Headers: Use the message header attributes for routing
 
 ## Features
 

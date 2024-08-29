@@ -10,7 +10,7 @@ For example, searching for strings that match a pattern is a common problem; rat
 
 ### Applicability
 
-Use the Interpreter pattern when there is a language to interpret, and you can represent statements in the langauge as abstract syntax trees. Works best when:
+Use the Interpreter pattern when there is a language to interpret, and you can represent statements in the language as abstract syntax trees. Works best when:
 
 - Grammar is simple; for complex grammars, class hierarchy becomes large and unmanageable.
 - Efficiency is not a critical concern.

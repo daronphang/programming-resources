@@ -17,23 +17,23 @@ A common anti-pattern that some architects fall victim to is to assume that the 
 </tr>
 
 <tr>
-<th>Guaranteed contract fidelity</th>
-<th>Tight coupling</th>
+<td>Guaranteed contract fidelity</td>
+<td>Tight coupling</td>
 </tr>
 
 <tr>
-<th>Versioned</th>
-<th>Versioned</th>
+<td>Versioned</td>
+<td>Versioned</td>
 </tr>
 
 <tr>
-<th>Easier to verify at build time</th>
-<th></th>
+<td>Easier to verify at build time</td>
+<td></td>
 </tr>
 
 <tr>
-<th>Better documentation</th>
-<th></th>
+<td>Better documentation</td>
+<td></td>
 </tr>
 </table>
 
@@ -48,12 +48,12 @@ Loose contracts offer the least coupled integration points.
 </tr>
 
 <tr>
-<th>Highly decoupled</th>
-<th>Contract management</th>
+<td>Highly decoupled</td>
+<td>Contract management</td>
 </tr>
 
 <tr>
-<th>Easier to evolve</th>
-<th>Requires fitness functions</th>
+<td>Easier to evolve</td>
+<td>Requires fitness functions</td>
 </tr>
 </table>

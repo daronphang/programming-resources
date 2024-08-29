@@ -4,13 +4,13 @@ When it comes to concurrency, many programming languages adopt the Shared Memory
 
 ## Channels
 
-Channels are the connections between goroutines i.e. a communication mechanism that lets one goroutine send values to another goroutine. A channel has two principal operations, **send** and **receive**. Also supports a third operation, **close**, which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic. Receive operations on a close channel yield the values that have been sent until no more values are left.
+Channels are the connections between goroutines i.e. a communication mechanism that lets one goroutine send values to another goroutine.
 
 ### Send and Receive
 
 A channel has two principal operations, "send" and "receive". A send statement transmits a value from one goroutine, through the channel, to another executing a corresponding receive expression. A receive expression whose result is not used is a valid statement.
 
-Channels support a third operation "close" which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic.
+Channels support a third operation "close" which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic. Receive operations on a close channel yield the values that have been sent until no more values are left.
 
 By default, **sends and receives block until the other side is ready**:
 
@@ -26,7 +26,7 @@ ch := make(chan int, 3)  // buffered channel with capacity 3
 
 ch <- x   // a send statement
 x := <-ch    // a receive expression in an assignment statement
-<-ch    // a receive statement, reuslt is discarded
+<-ch    // a receive statement, result is discarded
 ```
 
 ### Range and Close
@@ -86,6 +86,61 @@ ch <- "C"
 fmt.Println(<-ch) // receive "A", frees up one space
 ```
 
+### Broadcasting
+
+Channels are a point-to-point communication method, and hence, broadcasting is not supported. If you want to have multiple goroutines to fetch a value from the same channel:
+
+- Write to the source channel several times, making sure that every listener has received the message
+- Write to the source channel only once, read the data and then replicate it, writing it to each listener individually
+
+```go
+type Hub struct {
+	// Registered clients.
+	clients map[*Client]bool
+
+	// Inbound messages from the clients.
+	broadcast chan []byte
+
+	// Register requests from the clients.
+	register chan *Client
+
+	// Unregister requests from clients.
+	unregister chan *Client
+}
+
+func newHub() *Hub {
+	return &Hub{
+		broadcast:  make(chan []byte),
+		register:   make(chan *Client),
+		unregister: make(chan *Client),
+		clients:    make(map[*Client]bool),
+	}
+}
+
+func (h *Hub) run() {
+	for {
+		select {
+		case client := <-h.register:
+			h.clients[client] = true
+		case client := <-h.unregister:
+			if _, ok := h.clients[client]; ok {
+				delete(h.clients, client)
+				close(client.send)
+			}
+		case message := <-h.broadcast:
+			for client := range h.clients {
+				select {
+				case client.send <- message:
+				default:
+					close(client.send)
+					delete(h.clients, client)
+				}
+			}
+		}
+	}
+}
+```
+
 ## Unbuffered Channels
 
 A send operation on an unbuffered channel blocks the sending goroutine until another goroutine executes a corresponding receive on the same channel, at which point the value is transmitted and both goroutines may continue. Conversely, if the receive operation is attempted first, the receiving goroutine is blocked until a send is transmitted.
@@ -107,6 +162,10 @@ func main() {
     <-done // wait for background goroutine to finish
 }
 ```
+
+## Buffered vs unbuffered
+
+The choice between unbuffered and buffered channels may affect the correctness of a program. Unbuffered channels give stronger synchronization guarantees while in buffered channels, the operations are decoupled.
 
 ## Unidirectional channel types
 
@@ -145,17 +204,13 @@ func main() {
 }
 ```
 
-## Buffered vs unbuffered
-
-The choice between unbuffered and buffered channels may affect the correctness of a program. Unbuffered channels give stronger synchronization guarantees while in buffered channels, the operations are decoupled.
-
 ## Cancellation
 
 Sometimes may need to instruct goroutine to stop what it is doing i.e. web server performing computation on behalf of a client that has disconnected.
 
 There is no way for one goroutine to terminate another directly as it would leave all its shared variables in undefined states. Hence, need a reliable mechanism to broadcast an event over a channel so that many goroutines can see it as it occurs and can later see that it has occurred.
 
-After a channel has been closed and drained of all sent values, subsequent receive operations proceed immediately and yield zero values. Can exploit this to create a broadcast mechanism i.e. don't send a value on the channel, close it.
+After a channel has been closed and drained of all sent values, subsequent receive operations proceed immediately and yield zero values. Can exploit this to create a broadcast mechanism i.e. **don't send a value on the channel, close it**.
 
 ```go
 var done = make(chan struct{})

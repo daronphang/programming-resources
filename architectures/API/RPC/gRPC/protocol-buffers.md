@@ -20,7 +20,7 @@ message Person {
 }
 ```
 
-## Field Types
+## Field types
 
 Can be scalar (integer, string) or composite.
 
@@ -77,7 +77,7 @@ message SearchRequest {
 }
 ```
 
-## Field Numbers
+## Field numbers
 
 ```
 1-15            One byte encoding
@@ -85,9 +85,18 @@ message SearchRequest {
 19000-19999     Reserved for Protocol Buffers implementation
 ```
 
-Each field has a unique number. These field numbers are used to identify your fields in the message binary format, and should not be changed once the message type is in use.
+Each field has a unique number. These field numbers are used to identify your fields in the message binary format. This number **cannot be changed once your message type is in use** because it identifies the field in the message wire format.
 
-## Field Rules
+For most-frequently-set fields, use field numbers 1-15 as they take less space in the wire format.
+
+Field numbers **should never be reused**. Reusing a field number makes decoding wire-format messages ambiguous. Encoding a field using one definition and then decoding that same field with a different definition can lead to:
+
+- Developer time lost to debugging
+- A parse/merge error (best case scenario)
+- Leaked PII/SPII
+- Data corruption
+
+## Field rules
 
 ```
 singular    Zero or one of this field (default for proto3)
@@ -98,7 +107,7 @@ map         Paired key/value
 
 For optional fields, if the field is unset, it will not be serialized to the wire.
 
-## Reserved Fields
+## Reserved fields
 
 If you update a message type by removing a field, future users can reuse the field number which can cause severe issues for backwards compatibility. To prevent this, can mark fields as reserved.
 
@@ -112,7 +121,7 @@ message Foo {
 }
 ```
 
-## Importing Definitions
+## Importing definitions
 
 ```
 import "myproject/test.proto";

@@ -19,7 +19,7 @@ If ~/.bash_profile cannot be found, it will look for the following in the order:
 - ~/.bash_login
 - ~/.profile
 
-```console
+```sh
 $ sudo vi ~/.bashrc
 $ export [VARIABLE_NAME]=[variable_value]
 $ source ~/.bashrc
@@ -37,14 +37,14 @@ Bash loads configuration from the following:
 
 This is extremely rare, and unlikely to encounter it.
 
-```console
+```sh
 $ echo 'echo $-; shopt login_shell' | ssh localhost
 Pseudo-terminal will not be allocated because stdin is not a terminal.
 hBs
 login_shell    	on
 ```
 
-```console
+```sh
 $ if tty -s; then echo 'This is interactive shell.'; else echo 'This is non-interactive shell.'; fi
 ```
 
@@ -56,7 +56,7 @@ Loads configuration in the following:
 
 - $BASH_ENV
 
-```console
+```sh
 $ bash script.sh
 ```
 
@@ -64,13 +64,13 @@ $ bash script.sh
 
 To check if you are on the login shell, it has a hyphen as a prefix.
 
-```console
+```sh
 $ echo $0   # -bash
 $ shopt login_shell
 ```
 
 To check if shell is interactive, check the contents of $- variable (will include 'i').
 
-```console
+```sh
 $ echo $-   # himBHs
 ```

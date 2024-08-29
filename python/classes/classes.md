@@ -13,14 +13,14 @@ getattr(class_name, 'attr')   # returns value, else None
 
 ### Self Attributes
 
-```
-self.__class__                  Get class of current instance
-self.__class__.__base__         Get parent class
+```py
+self.__class__  # Get class of current instance
+self.__class__.__base__ #Get parent class
 self.__class__.__name__
-self.__dict__                   Get instance attributes and values in dict format
+self.__dict__  # Get instance attributes and values in dict format
 ```
 
-### Class Attribute vs Instance Attribute
+### Class vs instance attribute
 
 An instance attribute is a Python variable belonging to one object. Variable is only accessible in scope of object and defined inside constructor.
 
@@ -34,7 +34,7 @@ class ExampleClass(object):
     self.instance_attr = instance_attr
 ```
 
-## Comparing Classes
+## Comparing classes
 
 ```py
 class Test:
@@ -144,7 +144,7 @@ Printing from class A: 3
 '''
 ```
 
-## Abstract Classes
+## Abstract classes
 
 A class is an Abstract class if it contains one or more abstract methods (declared but no implementation). A subclass that doesn't implement the abstract methods will throw an error.
 
@@ -165,7 +165,7 @@ class Animal(ABC):
         return 'hello world!'
 ```
 
-## Getters and Setters
+## Getters and setters
 
 Pythonic way to use getters and setters in OOP. Without property, all programs that make use of class have to be refactored if properties of class change i.e. making attributes private/public.
 

@@ -4,15 +4,15 @@ Intent is to capture and externalize an object's internal state so that the obje
 
 ### Motivation
 
-Sometimes it is necessary to record the internal state of an object such as when implementing checkpoints and undo mechanisms that users back out of tentative operations or recover from errors. You must save state information somewhere so taht you can restore objects to their previous states. However, objects normally encapsulate some/all of their state and hence, making it inaccessible to other objects and impossible to save externally. Exposing this state would violate encapsulation, which can compromise the application's reliability and extensibility.
+Sometimes it is necessary to record the internal state of an object such as when implementing checkpoints and undo mechanisms that users back out of tentative operations or recover from errors. You must save state information somewhere so that you can restore objects to their previous states. However, objects normally encapsulate some/all of their state and hence, making it inaccessible to other objects and impossible to save externally. Exposing this state would violate encapsulation, which can compromise the application's reliability and extensibility.
 
-A Memento is an object that stores a snapshot of the internal state of another object (Memento's originator). The undo mechanism will request a memento from the orginator when it needs to checkpoint the originator's state. Only the originator can store and retrieve information from the memento.
+A Memento is an object that stores a snapshot of the internal state of another object (Memento's originator). The undo mechanism will request a memento from the originator when it needs to checkpoint the originator's state. Only the originator can store and retrieve information from the memento.
 
 ### Applicability
 
 Use the Memento pattern when:
 
-- A snapshot of an object's state must be saved so taht it can be restored to that state later.
+- A snapshot of an object's state must be saved so that it can be restored to that state later.
 - A direct interface to obtaining the state would expose implementation details and break the object's encapsulation.
 
 ## Participants

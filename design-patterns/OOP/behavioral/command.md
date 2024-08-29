@@ -4,7 +4,7 @@ Intent is to encapsulate a request as an object and hence, letting you parameter
 
 ### Motivation
 
-Turns a request into an action. Command serves as links between various GUI and business logic objects i.e. breaking an app into GUI layer and business logic layer. Command pattern suggests that GUI objects shouldn't send requests directly to business logic layer; instead, request details such as the object being called, name of method and list of arguments are extracted into a command class with a single method that triggers the request. Command usually has a single execution method that takes no parameters. Commands will also implement the same interface.
+Turns a request into an action. Command serves as links between various GUI and business logic objects i.e. breaking an app into GUI layer and business logic layer. Command pattern suggests that GUI objects shouldn't send requests directly to business logic layer; instead, request details such as the object being called, name of method and list of arguments are extracted into a command class with a single method that triggers the request. Command usually has a **single execution method that takes no parameters**. Commands will also implement the same interface.
 
 Sometimes it is necessary to issue requests to objects without knowing anything about the operation being requested or the receiver of the request i.e. toolkits have objects like buttons and menus that carry out a request in response to user input, but it can't implement explicitly as applications that use the toolkit know what should be done on which object.
 
@@ -15,7 +15,7 @@ Command pattern turns requests into an object that can be passed/stored around l
 Use when you want to:
 
 - Parameterize objects by an action to perform; can express parameterization with a callback function.
-- Specify, queue, and execute requests at different types; Command object can have lifetime indepedent of the original request.
+- Specify, queue, and execute requests at different types; Command object can have lifetime independent of the original request.
 - Support undo as the Command's execute operation can store state for reversing its effects in the command itself.
 - Support logging changes so that they can be reapplied in case of system crash.
 - Structure a system around high-level operations built on primitives operations.

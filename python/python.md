@@ -1,3 +1,7 @@
+## Python
+
+A dynamic language; you can declare a variable as a string and later assign it as number.
+
 ## Args/Kwargs
 
 Both allow to pass a varying number of positional arguments. Both asterisks refer to the unpacking operator. The iterable object returned using unpacking operator is a tuple and not a list.
@@ -23,36 +27,6 @@ print(my_sum(1, 2, 3))
 print(concantenate(name='john', first=1, second=2, third=3))
 ```
 
-## Memory Management
-
-Values of objects are stored in memory for quick access. In early programming languages, developers were responsible for managing memory in their programs i.e. to allocate memory for a variable before creating an object, and deallocating it to free that memory for other objects. However, this leads to memory leaks and freeing up of memory too soon.
-
-With automatic memory management, runtime handles this for programmers. Python uses two strategies for memory allocation: reference counting and garbage collection.
-
-### Reference Counting
-
-Reference counting works by counting the number of times an object is referenced by other objects. When the count becomes zero, it is unusable by program code and is deallocated.
-
-An object's reference count changes as the number of aliases that point to it changes. It decreases when it is deleted with del, reference is reassigned, or its reference goes out of scope.
-
-### Garbage Collection
-
-However, automatic memory management comes at a cost, whereby it requires to use additional memory and computation to track all of its references. Moreover, reference counting does not work for cyclic references i.e. a situation when an object refers to itself.
-
-As reference cycles take computational work to discover, garbage collection must be a **scheduled activity**. Python schedules garbage collection based upon a threshold of object allocations and deallocations. When the number of allocations is greater than the number of deallocations, garbage collector is executed.
-
-Can be invoked manually during the execution of a program. Never disable garbage collector unless you have a good reason to do so.
-
-```py
-import gc
-
-print("Garbage collection thresholds:", gc.get_threshold())
-
-# invoking manually
-collected = gc.collect()
-print "Garbage collector: collected %d objects." % (collected)
-```
-
 ## Copying
 
 Python never implicitly copies objects.
@@ -62,7 +36,7 @@ dict2 = dict1 # both points to the same dictionary
 dict2 = dict1.copy()
 ```
 
-## Sequence Types & Destructuring
+## Sequence types and destructuring
 
 An ordered list of items. String, list, tuple, range, bytes and bytearray. Dictionaries are ordered from 3.6 onwards.
 
@@ -80,7 +54,7 @@ numbers = [3, 5]
 print(multiply(*numbers))
 ```
 
-## Type Conversions
+## Type conversions
 
 Can use type() or isinstance()
 
@@ -175,7 +149,7 @@ print(getattr(test, 'name'))
 print(dir(test))
 ```
 
-## Python Path
+## Python path
 
 ```python
 import sys
@@ -186,7 +160,7 @@ print(sys.executable)
 $where python
 ```
 
-### Retrieve Path of Root Project Structure
+### Retrieve path of root project structure
 
 ```python
 import os
@@ -214,7 +188,7 @@ The -m flag makes sure that you are using the module that is tied to the active 
 $ python3 -m pip install <some package>
 ```
 
-### is Comparator
+### is comparator
 
 Can be used to compare two variables pointing to the same memory address.
 

@@ -1,40 +1,40 @@
-## Built-in Functions
+## Built-in functions
 
 https://docs.python.org/3/library/functions.html
 
-```
+```py
 abs()
 any()
 ascii()
 bin()
 bool()
 bytes()
-callable()        Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
+callable() #Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
 dict()
-dir()             Without args, return list of names in current local scope; with args, return list of valid attributes for object
-enmuerate()       Adds counter to an iterable and returns the object
-filter()          Takes in a function and iterable
+dir() #Without args, return list of names in current local scope; with args, return list of valid attributes for object
+enmuerate() # Adds counter to an iterable and returns the object
+filter() # Takes in a function and iterable
 float()
-getattr()         Returns value of named attribute of object
+getattr() # Returns value of named attribute of object
 len()
 list()
-map()             Executes a specified function for each item in an iterable
+map() # Executes a specified function for each item in an iterable
 max()
 min()
 object()
-property()        Can be used as decorator in Classes; has getter, setter and deleter methods
+property() # Can be used as decorator in Classes; has getter, setter and deleter methods
 range()
 round()
-reduce()          Useful if need apply a function to an iterable and reduce it to a single cumulative value i.e. sum
+reduce() # Useful if need apply a function to an iterable and reduce it to a single cumulative value i.e. sum
 set()
-setattr()         Args are an object, a string and value
+setattr() # Args are an object, a string and value
 slice()
 sorted()
 sum()
 super()
 tuple()
 type()
-zip()             Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
+zip() # Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
 ```
 
 ### Dir
@@ -108,7 +108,7 @@ def highcharts_formatter(KVtuple):
       "name": KVtuple[0],
       "data": KVtuple[1]
   }
- 
+
 partition_data = list(map(ToolHealthTask.highcharts_formatter, partitions_hash.items()))
 ```
 
@@ -146,7 +146,7 @@ for count, item in egrocery:
     print(item)
 ```
 
-### Nested Arguments
+## Nested arguments
 
 ```python
 first = ['a', 'b', 'c']
@@ -161,7 +161,7 @@ for count, (one,two,three) in enumerate(zip(first,second,third)):
 # 2 c f i
 ```
 
-### Functional Programming
+## Functional programming
 
 Important concepts:
 

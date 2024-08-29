@@ -1,6 +1,6 @@
-## Namespaces and Scope
+## Namespaces and scope
 
-A namespace is a collection of currently defined names along with information about the object that each name references. It is a system that has a unique name for each and every object in Python. Python maintains a namespace in the form a Python dictionary in which keys are the object names and values are objects themselves.
+A namespace is a system that has a unique name for each and every object in Python. An object might be a variable or a method. Python itself maintains a namespace in the form of a Python dictionary in which keys are the object names and values are objects themselves.
 
 A lifetime of a namespace depends upon the scope of objects; if the scope of an object ends, the lifetime of that namespace ends. Not possible to access inner namespace's objects from an outer namespace.
 
@@ -45,7 +45,7 @@ File2 is being run directly
 '''
 ```
 
-### Troubleshooting Namespaces
+## Troubleshooting namespaces
 
 1. ModuleNotFoundError: No module named testing
 
@@ -59,7 +59,7 @@ Occurs when you are using dot notation. Run script with -m flag. Do not append .
 $ py -m src.main # instead of src/main    # declare path as module
 ```
 
-## Enclosing and Local
+## Enclosing and local
 
 Interpreter creates a new namespace whenever a function executes. That namespace is local to the function and remains in existence until the function terminates.
 

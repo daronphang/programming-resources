@@ -5,7 +5,7 @@ Pickle is used for serializing and de-serializing Python object structures (list
 Pickling: conversion of an object from one representation (data in RAM) to another (text on disk)  
 Compression: process of encoding data with fewer bits in order to save space
 
-### Data Storage
+### Data storage
 
 Can pickle objects with following data types. Generators, inner classes, lambda functions (require additional package called dill) and defaultdicts cannot be pickled easily.
 
@@ -21,15 +21,17 @@ Sets
 Dictionaries
 ```
 
-### When to Use Pickle
+### When to use pickle
 
 Useful for applications where you need some degree of persistency in data. Data can be saved to disk or sent over a TCP or socket connection.
 
-### When Not to Use Pickle
+### When not to use pickle
 
 If data needs to be used across different programming languages, Pickle is not recommended as its protocol is specific to Python.
 
-### Pickling Files
+## Operations
+
+### Pickling files
 
 ```py
 pickle.dump(obj, file, protocol=None, *, fix_imports=True, buffer_callback=None)
@@ -50,7 +52,7 @@ with open('filename.txt', 'wb') as pickle_file:
   pickle.dump(dogs_dict, pickle_file)
 ```
 
-### Compressing Pickle Files
+### Compressing pickle files
 
 Can be done using bzip2 or gzip (faster but produces files twice as large as bzip2).
 

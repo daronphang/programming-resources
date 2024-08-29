@@ -1,4 +1,4 @@
-## Key Constraints
+## Key constraints
 
 If a service violates any constraint, it cannot strictly be referred to as RESTful.
 
@@ -18,7 +18,7 @@ As a stateless API can increase request overhead, a REST API should be designed 
 
 Many cache implementations use query string parameters from the resource identifier as the key to cached data.
 
-### Uniform Interface
+### Uniform interface
 
 The key to the decoupling client from server is having a uniform interface that allows independent evolution of the application without having the application's services, models or actions tightly coupled to the API layer itself.
 
@@ -31,12 +31,12 @@ Four guideline principles of uniform interface are:
 - Messages are self-descriptive and sufficient for the server to process the request
 - Includes HATEOAS for each response so that clients can discover other resources easily
 
-### Layered System
+### Layered system
 
 A layered system is one comprised of layers, with each layer having a specific functionality and responsibility i.e. caches, gateways, proxy servers. It lets you encapsulate legacy systems and move less commonly accessed functionality to a shared intermediary, while also shielding more modern and commonly used components from them. Each layer does not know anything about other layers.
 
 There are substantial security benefits of having a layered system as it allows you to stop attacks at the proxy layer, or within other layers, preventing them from getting to your actual server architecture.
 
-### Code on Demand (Optional)
+### Code on demand
 
-Servers can also provide executable code to the client i.e. Java servlets, server-side scripts.Code-on-demand allows for code or applets to be transmitted via the API for use within the application. In essence, it creates a smart application that is no longer solely dependent on its own code structure.
+Servers can also provide executable code to the client i.e. Java servlets, server-side scripts. Code-on-demand allows for code or applets to be transmitted via the API for use within the application. In essence, it creates a smart application that is no longer solely dependent on its own code structure.

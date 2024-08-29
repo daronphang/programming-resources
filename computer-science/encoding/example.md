@@ -1,4 +1,4 @@
-## Unicode Encoding and Decoding
+## Unicode encoding and decoding
 
 ```
 encode('utf-8')     convert str into bytes
@@ -23,14 +23,14 @@ stringobject = '\u0061\u006E\u0074'   # Unicode codepoints, a hexadecimal number
 
 ## Hexadecimals
 
-Hexadecimal has base 16 and is represented with prefix 0x. 
+Hexadecimal has base 16 and is represented with prefix 0x.
 
 ```
 1 digit = 4 bits
 binary(8) = 8 bytes = 64 bits = 16 digits
 ```
 
-### Bytes to String
+### Bytes to string
 
 ```py
 string = "DARONPHANG_B16A"
@@ -52,7 +52,7 @@ byte_arr = bytearray(numbers)
 byte_arr = bytearray(str, 'utf-8')
 ```
 
-### String to Bytes
+### String to bytes
 
 ```py
 # when removing 0x, function also remooves leading 0s, need to add back

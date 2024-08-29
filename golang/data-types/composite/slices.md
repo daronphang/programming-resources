@@ -47,6 +47,43 @@ s := make([]string, 0, 10)
 s := make([]Payload, 10) // this will create 10 empty Payload structs
 ```
 
+### Re-slicing a slice
+
+Re-slicing a slice doesn’t make a copy of the underlying array. It creates a new slice value that points to the original array. The full array will be kept in memory until it is no longer referenced.
+
+```go
+d := []byte{'r', 'o', 'a', 'd'}
+e := d[2:]
+// e == []byte{'a', 'd'}
+e[1] = 'm'
+// e == []byte{'a', 'm'}
+// d == []byte{'r', 'o', 'a', 'm'}
+```
+
+```go
+x := make([]string, 0, 5)
+x = append(x, "a", "b", "c", "d")
+y := x[:2] // ['a', 'b']
+y = append(y, "i")  // x == ['a','b','i','d']
+y = append(y, "j", "k")
+// y == ['a','b','i','j','k']
+// x == ['a','b','i','j']
+```
+
+### Growing slices
+
+A slice cannot be grown beyond its capacity. Attempting to do so will cause a runtime panic, just as when indexing outside the bounds of a slice or array. Similarly, slices cannot be re-sliced below zero to access earlier elements in the array.
+
+To increase the capacity of a slice one must create a new, larger slice and copy the contents of the original slice into it. This technique is how dynamic array implementations from other languages work behind the scenes.
+
+```go
+t := make([]byte, len(s), (cap(s)+1)*2) // +1 in case cap(s) == 0
+for i := range s {
+  t[i] = s[i]
+}
+s = t
+```
+
 ## Slice techniques
 
 ### Rotate/Reverse

@@ -12,7 +12,7 @@ There is no programmatic way for one goroutine to stop another other than by ret
 
 ```go
 f()
-go f()  // creates new goroutine that calls f(); doesnt wait for f() to finish
+go f()  // creates new goroutine that calls f(); doesn't wait for f() to finish
 ```
 
 ```go
@@ -44,7 +44,7 @@ func fib(x int) int {
 
 Select statement lets a goroutine wait on multiple communication operations i.e. used to choose from multiple send/receive channel operations. It allows a program to try reading from or writing to a number of channels at the same time.
 
-A select blocks until one of its cases can run, then it executes that case. It **chooses one at random if multiple are ready** i.e. only one channel operation happens per select statement.
+A select blocks until one of its cases can run, then it executes that case. It **chooses one at random if multiple cases are ready** i.e. only one channel operation happens per select statement.
 
 The default case in a select is run if no other case is ready.
 
@@ -154,7 +154,19 @@ func main() {
 }
 ```
 
-### Waiting for goroutines
+### Limiting goroutines
+
+```go
+maxGoroutines := 10
+guard := make(chan bool, maxGoroutines)
+guard <- true
+go func() {
+  h.handleSenderMsg(ctx, msg)
+  <- guard
+}()
+```
+
+## Waiting for goroutines
 
 The application terminates when the main goroutine exits. If you want to wait for goroutines, use sync.WaitGroup.
 
@@ -186,6 +198,73 @@ func main() {
   }
   // Wait for all HTTP fetches to complete.
   wg.Wait()
+}
+```
+
+## Stopping goroutines
+
+### Use channels to signal termination
+
+```go
+func myProcess(stopChannel chan bool) {
+  for {
+    select {
+    case <-stopChannel:
+      fmt.Println("Hey! Shantanu. Thanks for stopping my goroutine :) ")
+      return
+    default:
+      fmt.Println("My Goroutine is running :( ")
+      time.Sleep(time.Second)
+    }
+  }
+}
+```
+
+### Use context to manage goroutine lifecycle
+
+```go
+func myProcess(ctx context.Context) {
+  for {
+    select {
+    case <-ctx.Done():
+      fmt.Println("Hey! Shantanu. Thanks for stopping my goroutine :)")
+      return
+    default:
+      fmt.Println("My Goroutine is running :(")
+      time.Sleep(time.Second)
+    }
+  }
+}
+
+func main() {
+  ctx, cancel := context.WithCancel(context.Background())
+  go myProcess(ctx)
+  time.Sleep(3 * time.Second)
+  cancel()
+  time.Sleep(time.Second)
+  fmt.Println("Main Goroutine exited")
+}
+```
+
+### Breaking when all channels are closed
+
+A nil channel is never ready for communication. Each time you run into a closed channel, you can nil that channel ensuring it is never selected again.
+
+```go
+for {
+  select {
+    case x, ok := <- ch:
+    if !ok {
+      ch = nil
+    }
+    case x, ok := <- ch2:
+    if !ok {
+      ch2 = nil
+    }
+  }
+  if ch == nil && ch2 == nil {
+    break
+  }
 }
 ```
 

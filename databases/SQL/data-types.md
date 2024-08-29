@@ -34,3 +34,7 @@ SELECT CAST (0x48656C6C6F20776F726C6421 AS VARCHAR(MAX)) -- 'Hello World!'
 -- 2 style tells SQL to skip "0x"
 SELECT CONVERT (BINARY(8), '0x48656C6C6F20776F726C6421', 1);  -- 0x48656C6C6F20776F726C6421
 ```
+
+## Timestamp
+
+PostgreSQL stores timestamp with TZ in UTC by default.

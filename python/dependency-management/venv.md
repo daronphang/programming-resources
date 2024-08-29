@@ -1,4 +1,4 @@
-## Virtual Environment
+## Virtual environment
 
 Developers often deal with Python projects where they have to use module/packages that are not part of Python standard library i.e. version is 3.6 but requires 2.6 for a particular application.
 
@@ -29,6 +29,6 @@ $ pip freeze --all > requirements.txt
 $ pip list
 ```
 
-### Common Mistakes
+### Common mistakes
 
 If need to rename directory folder, best is to create requirements.txt file and recreating virtualenv folder as the venv path will be broken.

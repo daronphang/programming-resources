@@ -4,19 +4,19 @@ PATH is an environmental variable that tells the shell which directories to sear
 
 When you type a command in Linux shell, it doesn't look in every directory to see if there's a program by that name; instead, it looks to the ones you specify.
 
-```console
+```sh
 $ echo $PATH
 ```
 
 ### Setting PATH (temp)
 
-```console
+```sh
 $ export PATH=$PATH:/place/with/the/file
 ```
 
 ### Setting PATH (persistent)
 
-```console
+```sh
 $ vim $HOME/.profile
 $ vim /etc/profile      # system-wide setting
 

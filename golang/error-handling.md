@@ -1,6 +1,17 @@
-## Errors
+## Naming
 
-### Creating
+Error types end in "Error" and error variables start with "err".
+
+```go
+type ParseError struct {}
+func (e ParseError) Error() string {
+    return "hello world"
+}
+
+const errBadAction = errors.New("hello world")
+```
+
+## Creating errors
 
 ```go
 // simple string-based error
@@ -10,7 +21,7 @@ err1 := errors.New("math: square root of negative number")
 err2 := fmt.Errorf("math: square root of negative number %g", x)
 ```
 
-### Custom errors
+## Custom errors
 
 ```go
 type SyntaxError struct {
@@ -23,11 +34,19 @@ func (e *SyntaxError) Error() string {
 }
 ```
 
-### Wrapping and unwrapping
+## Wrapping and unwrapping
 
 Wrapping errors means adding more contextual information to the error which has been returned. For example, the additional information could be the type of error, the cause of the error, or the name of the function where the error is raised.
 
 Wrapping is very useful for debugging since you can precisely and quickly locate the source of the problem.
+
+### Whether to wrap
+
+When adding additional context to an error, either with fmt.Errorf or by implementing a custom type, you need to decide whether the new error should wrap the original. There is no single answer to this question; it depends on the context in which the new error is created. Wrap an error to expose it to callers. Do not wrap an error when doing so would expose implementation details.
+
+### Syntax
+
+First we need to create a new error using errors.New(), followed by fmt.Errorf() with the %w verb to wrap the error.
 
 ```go
 var ErrorCritical = errors.New("critical error")
@@ -86,6 +105,32 @@ validating 3... valid number only...!
 validating 4... valid number only...!
 validating 5... valid number only...!
 */
+```
+
+## Examining errors with Is and As
+
+The Go 1.13 errors package includes two new functions for examining errors: Is and As.
+
+The errors.Is function compares an error to a value.
+
+```go
+// Similar to:
+//   if err == ErrNotFound { … }
+if errors.Is(err, ErrNotFound) {
+    // something wasn't found
+}
+```
+
+The As function tests whether an error is a specific type.
+
+```go
+// Similar to:
+//   if e, ok := err.(*QueryError); ok { … }
+var e *QueryError
+// Note: *QueryError is the type of the error.
+if errors.As(err, &e) {
+    // err is a *QueryError, and e is set to the error's value
+}
 ```
 
 ## Panic
@@ -164,7 +209,7 @@ Returned normally from f.
 
 ```go
 func RequestCancelRecover() gin.HandlerFunc {
-	return func(c *gin.Context) {
+    return func(c *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
 				log.Println("client canceled the request")

@@ -28,7 +28,7 @@ Dec     Hex     Binary
 
 ### The need for hexadecimals
 
-In computing systems, the binary string equivalents of large decimal numbers can become quite long. This problem can be overcomed by arranging the binary numbers into groups of 4 bits. Hence, it can be used to represent large numbers with fewer digits.
+In computing systems, the binary string equivalents of large decimal numbers can become quite long. This problem can be overcome by arranging the binary numbers into groups of 4 bits. Hence, it can be used to represent large numbers with fewer digits.
 
 The reason programmers like to use hexadecimal notation is because it is convenient. As each hexadecimal digit corresponds to 4 bits, it fits nicely into 8-bit bytes i.e. two hex digits can represent every value of a byte.
 

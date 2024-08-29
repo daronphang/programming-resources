@@ -49,9 +49,21 @@ Network ACLs do not filter traffic destined to and from the following:
 - License activation for Windows instances
 - Amazon Time Sync Service
 
+```
+# public inbound
+Type            Protocol    Port range      Source      Allow/Deny
+All traffic     All         All             0.0.0.0/0   Allow
+
+# public outbound
+Type            Protocol    Port range      Source      Allow/Deny
+Custom TCP      TCP         1024-65535      0.0.0.0/0   Allow
+HTTP (80)       TCP         80              0.0.0.0/0   Allow
+HTTP (443)      TCP         80              0.0.0.0/0   Allow
+```
+
 ### Inbound and outbound ports
 
-You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1025-65535 TCP outbound.
+You need to include **both the inbound and outbound ports** used for the protocol, else your server would respond but traffic would never leave the subnet i.e. 443 inbound, 1024-65535 TCP outbound.
 
 When a client connects to a server, a random port is generated from the ephemeral port range with this becoming the **client's source port**, which becomes the destination port for return traffic. The port range varies depending on the OS:
 
@@ -75,7 +87,30 @@ After a packet has entered a subnet, it must have its permissions evaluated for 
 
 A Security Group is a virtual firewall that controls inbound and outbound traffic for an EC2 instance (only ALLOW). By default, it denies all inbound traffic and allows all outbound traffic. You can add custom rules to configure which traffic should be allowed.
 
-Security groups can be attached to multiple EC2 instances and are locked down to a **Region/VPC combination**. You can assign multiple security groups to a single resource i.e. rules for both groups get merged.
+Security groups can be attached to multiple EC2 instances and are locked down to a **Region/VPC combination**. You can assign multiple security groups to a single resource; rules from each group are aggregated to form a single set of rules that are used to determine whether to allow access i.e. permissive.
+
+A good practice is to create a security group for a particular strategy/role i.e. internet-access, ssh, web-server, database, etc.
+
+```
+# public inbound
+Type    Protocol    Port range      Source
+HTTPS   TCP         443             0.0.0.0
+HTTPS   TCP         80              0.0.0.0
+HTTPS   TCP         22              CIDR of EC2 Instance Connect (EIC)
+
+# public outbound
+Type    Protocol    Port range      Source
+All   All         All               0.0.0.0
+
+# private inbound
+Type    Protocol    Port range      Source
+HTTPS   TCP         22              Security group of EIC Endpoint
+All     All         All             CIDR of same/different subnet
+
+# private outbound
+Type    Protocol    Port range      Source
+All   All         All               0.0.0.0
+```
 
 ### Stateful packet filtering
 

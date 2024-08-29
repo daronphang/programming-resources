@@ -4,7 +4,7 @@ An algorithm that takes a directed graph and returns an array of nodes where eac
 
 ## Kahn's Algorithm
 
-A directed acyclic graph (DAG) has at least one vertex with the indegree zero (no nodes connected to it) and one vertex with the out-degree zero (not connected to other nodes).
+A directed acyclic graph (DAG) has **at least one vertex with the indegree zero** (no nodes connected to it) and **one vertex with the out-degree zero (not connected to other nodes)**.
 
 Algorithm works by keeping track of the number of incoming edges into each node (indegree). It repeatedly:
 
@@ -26,6 +26,40 @@ If the result of topological sorting contains the same initial number of element
 
 4. Repeat step 3 until the queue/stack is empty
 5. Check the count of visited nodes with the number of nodes in the graph
+
+```py
+# https://leetcode.com/problems/course-schedule/
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # topological sort
+        indegrees = [0] * numCourses
+        courses = {}
+        queue = deque()
+        visited = 0
+
+        for x in prerequisites:
+            indegrees[x[1]] += 1
+            if x[0] in courses: courses[x[0]].add(x[1])
+            else: courses[x[0]] = set([x[1]])
+
+        # for DAG, there must be at least 1 node with indegree of 0
+        for i in range(numCourses):
+            if indegrees[i] == 0: queue.append(i)
+
+        while len(queue) > 0:
+            visited += 1
+            course = queue.popleft()
+            # there must be at least 1 node with outdegree of 0
+            if course not in courses: continue
+
+            for x in courses[course]:
+                indegrees[x] -= 1
+                if indegrees[x] == 0:
+                    queue.append(x)
+
+        if visited != numCourses: return False
+        return True
+```
 
 ```py
 from collections import defaultdict

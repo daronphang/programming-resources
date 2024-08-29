@@ -1,4 +1,4 @@
-## URL Encoding
+## URL encoding
 
 URL encoding converts characters into a format that can be transmitted over the internet. URLs can only be sent over using ASCII character-set. However, since URLs contain characters outside of ASCII set, they have to be converted into a valid ASCII format.
 

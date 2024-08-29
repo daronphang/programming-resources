@@ -1,4 +1,4 @@
-## Look-aside
+## Look-aside pattern
 
 ### Read
 
@@ -10,7 +10,7 @@
 
 After a particular key is updated in the database, the system doesn’t directly update the corresponding value in the cache. Instead, it removes the data for that key from the cache entirely. This process is known as cache invalidation.
 
-## Inline
+## Inline pattern
 
 ### Read
 

@@ -1,3 +1,15 @@
+## Angular animations
+
+Animations will only work on block level i.e. when animation is placed in a div.
+
+### :enter, :leave
+
+Use ngIf and ngFor with :enter and :leave. The transitions run when elements are added or removed from the DOM by Angular. Take note the animation linked to the component must be placed at the same level as directive.
+
+```html
+<div *ngIf="isOpen" @fadeInOut></div>
+```
+
 ### Animation States
 
 ```
