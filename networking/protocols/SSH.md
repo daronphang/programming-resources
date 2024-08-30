@@ -1,5 +1,7 @@
 ## SSH (Secure Socket Shell)
 
+Network protocol that gives users a secure way to access a computer over an unsecured network. Provides strong password authentication and public key authentication, including encrypted data communications between computers connecting over an open network. Standard for strong authentication.
+
 Protocol which allows you to connect securely to a remote Linux computer or server by using a text-based interface. When a secure SSH connection is established, a shell session will be started, and you will be able to manipulate the server by typing commands within the client on your local computer.
 
 Two most commonly used protocols for accessing remote machines are:
