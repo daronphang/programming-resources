@@ -20,7 +20,11 @@ Internet Assigned Numbers Authority (IANA) assigns ASNs to Regional Internet Reg
 
 ## How does BGP work?
 
+When you have a network router that connects to other networks, it does not know which network is the best one to send its data to. BGP takes into consideration all the different peering options a router has and chooses the one closest to where the router is. Each potential peer communicates the routing information it has and that gets stored within a routing information base (RIB). BGP can access this information and use it to choose the best peering option.
+
 BGP works using a mechanism called **peering**. Administrators assign certain routers as BGP peer or BGP speaker routers. You can think peers as devices on the edge or boundary of an autonomous system. BGP performs three main functions. BGP enables peering to send packets between ASes.
+
+<img src="../assets/BGP-hopping.png">
 
 ### Route discovery
 

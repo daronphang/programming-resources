@@ -17,3 +17,9 @@ While HTTP/1.1 allows for processing just one request at a time, HTTP/2 supports
 Real-time communication with high performance is possible with HTTP/2 thanks to binary framing, whereby each stream is divided into frames that can be prioritized and run via a single TCP connection, reducing network utilization and processing load.
 
 ### Multiplexing
+
+Multiplexing HTTP requests allows the usage of a single connection per client, meaning that a single connection between the client and the webserver can be used to serve all requests asynchronously, enabling the webserver to use less resources, thus support more users at the same time.
+
+HTTP multiplexing saves resources by sharing the connection. However, as the connection is still a single TCP, it only makes sense to use if the connection can fully utilize the channel capacity i.e. make use of the full bandwidth.
+
+<img src="../../assets/multiplexing.png">
