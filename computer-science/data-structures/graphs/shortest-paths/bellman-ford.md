@@ -2,7 +2,7 @@
 
 Solves single-source shortest-paths problem in the general case in which edges can have negative weight. Is simple and has the further benefit of detecting whether a negative-weight cycle is reachable from the source by returning a boolean value. If there is such cycle, the algorithm indicates that no solution exists. Has time complexity of O(VE).
 
-Uses dynamic programming to solve the problem in bottom-up manner i.e. first calculcates the shortest distances which have at-most one edge in the path, then it calculcates the shortest path with at-most two edges, and etc.
+Uses dynamic programming to solve the problem in bottom-up manner i.e. first calculates the shortest distances which have at-most one edge in the path, then it calculates the shortest path with at-most two edges, and etc.
 
 ## Algorithm
 

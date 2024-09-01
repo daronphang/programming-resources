@@ -4,6 +4,8 @@ A PoP is a physical location that houses data center compute, storage and networ
 
 A PoP refers to a location, facility or access point that connects to and helps other devices establish connections to the internet. It houses servers, routers, network, switches, multiplexers and other network interface equipment. PoPs are located at co-location centers and Internet exchange points.
 
+In the context of CDN, A PoP is a physical location where CDN servers are deployed, typically in data centers distributed across various geographical locations. PoPs are strategically placed close to end-users to minimize latency and improve content delivery performance.
+
 ### Benefits
 
 The main function of a PoP is to enable users to access the internet securely, at high performance, or other similar networks that are maintained by a specific service or enterprise application.

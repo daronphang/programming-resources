@@ -6,7 +6,7 @@ HTTPDNS is a domain name resolution service for apps on multiple types of platfo
 
 Under such architecture, a user's request is directly transmitted to HTTPDNS servers, which will then allocate a specific edge server for this request. With a server scoring module, the proposed HTTPDNS architecture can finally ensure user requests be guided to the optimal edge server.
 
-<img src="../assets/HTTPDNS.png">
+<img src="../../assets/HTTPDNS.png">
 
 ## Benefits
 
@@ -18,7 +18,7 @@ DNS requests are sent directly to the HTTPDNS server, bypassing the ISP's local 
 
 Due to the diverse policies of ISPs, clients may be unable to access the nearest or optimal points of presence (POPs) based on the resolution results of local DNS servers.
 
-In contrast, HTTPDNS can obtain the real IP address of a client and then provide the most accurate resolution result based on the IP address. This allows the client to access the nearest POP. If any exceptions occur, DNS requests can still be sent to the ISP's local DNS over the DNS protocol.
+In contrast, HTTPDNS can obtain the real IP address of a client and then provide the most accurate resolution result based on the IP address. This allows the client to access the nearest PoP. If any exceptions occur, DNS requests can still be sent to the ISP's local DNS over the DNS protocol.
 
 ### Low latency
 

@@ -1,0 +1,25 @@
+## CDN network topologies
+
+CDN network topologies describe the structure and organization of the CDN’s distributed network. Different topologies can be employed to optimize content delivery based on factors such as performance, reliability, and cost.
+
+### Flat Topology
+
+In a flat topology, all edge servers in the CDN are directly connected to the origin server. This approach can be effective for smaller CDNs, but may not scale well as the network grows.
+
+### Hierarchical Topology
+
+In a hierarchical topology, edge servers are organized into multiple tiers, with each tier being responsible for serving content to the tier below it. This approach can improve scalability by distributing the load among multiple levels of servers and reducing the number of direct connections to the origin server.
+
+```
+Origin server
+Intermediate/regional server    Intermediate/regional server
+Edge server Edge server Edge server Edge server
+```
+
+### Mesh Topology
+
+In a mesh topology, edge servers are interconnected, allowing them to share content and load with each other. This approach can enhance the redundancy and fault tolerance of the CDN, as well as improve content delivery performance by reducing the need to fetch content from the origin server.
+
+### Hybrid Topology
+
+A hybrid topology combines elements from various topologies to create an optimized CDN architecture tailored to specific needs. For example, a CDN could use a hierarchical structure for serving static content, while employing a mesh topology for dynamic content delivery.

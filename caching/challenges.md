@@ -1,4 +1,4 @@
-## Issues
+## Challenges
 
 ### Stale set
 
