@@ -28,10 +28,6 @@ Leaderless Replication eradicates the need of having a leader accepting the writ
 
 Every record in the database has a monotonically increasing version number. Every successful write updates this version number allowing us and the system to identify the latest value of the record upon conflict.
 
-### Gossip
-
-The nodes gossip internally to propagate the writes to other nodes.
-
 ## Reading
 
 Given that there could be a significant delay in the updates to propagate across all N nodes, the Read strategy in Leaderless Replication needs to be robust enough.

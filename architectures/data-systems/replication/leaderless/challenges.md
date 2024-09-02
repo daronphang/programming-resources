@@ -37,7 +37,7 @@ In SimpleStrategy, a node is anointed as the location of the first replica by us
 
 In NetworkTopologyStrategy, for each datacenter, the same steps are performed with a difference when choosing subsequent replicas: subsequent replicas are placed on the next node clockwise on the ring which belongs to a different rack than the location of the previous replica.
 
-## Dealing with permanent failures with anti-entropy using Merkle trees
+## Handling permanent failures with anti-entropy using Merkle trees
 
 The distributed nature of data means data in a replica can become inconsistent with other replicas over time.
 

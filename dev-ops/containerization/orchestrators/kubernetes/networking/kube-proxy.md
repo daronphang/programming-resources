@@ -20,12 +20,18 @@ The process is as follows:
 
 <img src="../assets/kube-proxy.png">
 
-## Modes
+## Load balancing
 
 ### IPtables
 
 This is the default and widely used mode. Kube-Proxy relies on IPtables, a Linux feature for packet processing and filtering. In this mode, Kube-Proxy inserts Service-to-Pod NAT rules (provided by CNI plugins) into IPtables, redirecting traffic from Service IP to Pod IP.
 
+In this mode, kube-proxy **watches for changes in the API Server**. For each new Service, or when Pods get created or destroyed, it installs iptables rules, which capture traffic to the Service's clusterIP and port, then redirects traffic to the backend Pod for the Service. The Pod is selected randomly. This mode is reliable and has a lower system overhead because Linux Netfilter handles traffic without the need to switch between userspace and kernel space.
+
 When we send packets from a Pod to the Service IP, they get filtered through the iptables rules, where the destination IP (Service IP) gets changed to one of the backing Pod IPs.
 
 On the way back (from the destination Pod to the source Pod), the destination Pod IP gets changed back to the Service IP, so the source Pod thinks it's receiving the response from the Service IP.
+
+### IPVS
+
+IPVS is built on top of Netfilter and implements transport-layer load balancing. IPVS uses the Netfilter hook function, using the hash table as the underlying data structure, and works in the kernel space. This means that kube-proxy in IPVS mode redirects traffic with lower latency, higher throughput, and better performance than kube-proxy in iptables mode.

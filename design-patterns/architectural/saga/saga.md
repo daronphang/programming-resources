@@ -30,13 +30,13 @@ Two approaches are choreography and orchestration.
 
 ### Orchestration
 
-<img src="../assets/orchestration.png">
+<img src="../../assets/orchestration.png">
 
 ### Choreography
 
 When an error occurs, each service must issue compensating messages to other services. Each error scenario forces domain services to interact with each other, adding communication links that weren’t necessary for the happy path.
 
-<img src="../assets/choreography.png">
+<img src="../../assets/choreography.png">
 
 ## Workflow state management
 
@@ -48,7 +48,7 @@ This pattern places the responsibility for state on the first called service in 
 
 While this simplifies the workflow, it increases communication overhead.
 
-<img src="../assets/front-controller-pattern.png">
+<img src="../../assets/front-controller-pattern.png">
 
 <table>
 <tr>
