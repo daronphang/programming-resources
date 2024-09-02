@@ -21,7 +21,7 @@ For example, in a microservices architecture, a service must contain dependent c
 
 ### Afferent and efferent
 
-Afferent coupling measures the number of incoming connections to a code artifact. Efferent coupling measures the outgoing connections to other code artifacts. jennifer
+Afferent coupling measures the number of incoming connections to a code artifact. Efferent coupling measures the outgoing connections to other code artifacts.
 
 ### Analysis
 

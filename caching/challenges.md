@@ -20,4 +20,4 @@ The cache can also regulate the rate of issuing the lease tokens. For example, i
 
 For any requests for the key within 5 seconds of the lease token being issued, Memcache sends a special response requesting the client to wait and retry so that these requests don’t hit the database needlessly. This is because there’s a high probability that the client holding the lease token will soon update the cache and the waiting clients will get a cache hit when they retry.
 
-<img src="../assets/leasing.png">
+<img src="./assets/leasing.png">

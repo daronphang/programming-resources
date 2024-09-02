@@ -23,7 +23,7 @@ In 2PL, writers block other writers and readers, and vice versa. Used in MySQL a
 - As many locks are in use, deadlock situations may arise
 - However, the database will automatically detect it and aborts one of them so that others can make progress
 
-## Predicate Locking
+## Predicate locking
 
 Predicate lock is similar to shared/exclusive lock, but rather than belonging to a particular object (one row in a table), it belongs to all objects that match some search condition.
 
@@ -34,7 +34,7 @@ end_time > '2018-01-01 12:00' AND
 start_time < '2018-01-01 13:00';
 ```
 
-## Index-Range Locks
+## Index-range locks
 
 To prevent phantoms causing write skew, most databases with 2PL implement index-range locking (next-key locking), which is a simplified approximation of **predicate locking**.
 

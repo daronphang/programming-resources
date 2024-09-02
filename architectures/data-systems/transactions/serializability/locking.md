@@ -1,4 +1,4 @@
-## Locking Mechanisms
+## Locking mechanisms
 
 Concurrent data access requires mechanisms to prevent adverse effects when multiple users try to modify resources simultaneously. Side effects include **lost updates, dirty reads (uncommitted dependency), inconsistent analysis, and phantom reads.** Locking is designed to ensure data integrity and consistency while enabling concurrent data access.
 
@@ -6,11 +6,11 @@ Concurrent data access requires mechanisms to prevent adverse effects when multi
 
 Each transaction would request locks of different types on the resources (rows, tables, pages). The locks block other transactions from modifying the resources, and is released once the transaction no longer has a dependency on the locked resources.
 
-### Row Versioning
+### Row versioning
 
 Database engine maintains versions of each row that is modified. Applications can specify that a transaction use the row versions to view data as it existed at the start of the transaction. The chance that a read operation would block others is greatly reduced.
 
-## Concurrency Controls
+## Concurrency controls
 
 ### Pessimistic
 
@@ -20,7 +20,7 @@ A system of locks prevents users from modifying data in a way that affects other
 
 Users do not lock data when they read it. Instead, the system checks if another user changed the data after it was read; an error is raised and rollback performed if true. Used in environments where there is low contention for data.
 
-## Lock Locations (Resources)
+## Lock locations (resources)
 
 ```
 RID         Row identifier, lock a single row within a heap
@@ -31,7 +31,7 @@ FILE        Database file
 DATABASE    Entire database
 ```
 
-## Lock Modes
+## Lock modes
 
 ```
 Shared (S)      Used for read operations that do not change data

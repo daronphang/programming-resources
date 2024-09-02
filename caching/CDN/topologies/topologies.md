@@ -16,6 +16,12 @@ Intermediate/regional server    Intermediate/regional server
 Edge server Edge server Edge server Edge server
 ```
 
+### Anycast Topology
+
+Uses Anycast IP addressing to route requests to the nearest (or best) instance of a service based on network routing protocols.
+
+Multiple edge servers are assigned the same IP address. Network routers direct traffic to the closest or most responsive server.
+
 ### Mesh Topology
 
 In a mesh topology, edge servers are interconnected, allowing them to share content and load with each other. This approach can enhance the redundancy and fault tolerance of the CDN, as well as improve content delivery performance by reducing the need to fetch content from the origin server.

@@ -1,4 +1,4 @@
-### Continuous Integration (CI)
+## Continuous Integration (CI)
 
 Core goal is to keep everyone in sync with each other, which we achieve by making sure that newly checked-in code properly integrates with existing code. To do this, a CI server detects that the code has been committed, checks it out, and carries out some verification such as making sure the code compiles and that tests pass.
 

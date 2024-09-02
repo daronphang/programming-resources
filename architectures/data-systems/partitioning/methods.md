@@ -8,6 +8,8 @@ This approach is relatively simple to implement and has minimal impact on the ov
 
 Goal is to spread the data and query load evenly across nodes. If it is skewed, partitioning will be less effective and may result in hotspots (a partition having a disproportionately high load).
 
+### Random
+
 Simplest approach is to assign records to nodes randomly. However, as you do not know which node the data is stored on, need to query all nodes.
 
 ### By key range (range-based partitioning)
@@ -24,9 +26,9 @@ However, we lose the ability to do efficient range queries, as adjacent keys are
 
 ## Partitioning secondary indexes
 
-A secondary index doesn't identify a record uniquely but rather is a way of searching for occurrences of a particular value i.e. all cars whose color is read.
+A secondary index doesn't identify a record uniquely but rather is a way of searching for occurrences of a particular value i.e. all cars whose color is red.
 
-Secondary indexes are teh bread and butter of relational databases, and common in document databases. However, they don't map neatly to partitions.
+Secondary indexes are the bread and butter of relational databases, and common in document databases. However, they don't map neatly to partitions.
 
 ### By document
 

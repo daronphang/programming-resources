@@ -12,6 +12,8 @@ hash(Req) % 11
 
 To resolve these kinds of problems, many sharding functions use **consistent hashing functions**. They are special hash functions that are guaranteed to only remap # keys / # shards, when being resized to # shards. Consistent hashing minimizes the number of keys to be remapped when the total number of nodes changes.
 
+The principle advantage of consistent hashing is incremental stability; the departure or arrival of a node into the cluster only affects its immediate neighbours and other nodes remain unaffected.
+
 Consistent Hashing is a distributed hashing scheme that operates independently of the number of servers or objects in a distributed hash table. It powers many high-traffic dynamic websites and web applications.
 
 ### How it works
@@ -22,7 +24,7 @@ Consistent Hashing is a distributed hashing scheme that operates independently o
 4. The hash ring is traversed in the clockwise direction starting from the position of the key until a node is found
 5. The data object is stored or retrieved from the node that was found
 
-<img src="../assets/consistent-hashing.png">
+<img src="../../assets/consistent-hashing.png">
 
 ### Deletion of node
 
@@ -31,3 +33,11 @@ The failure (crash) of a node results in the movement of data objects from the f
 ### Addition of node
 
 When a new node is provisioned and added to the hash ring, the keys (data objects) that fall within the range of the new node are moved out from the immediate neighboring node in the clockwise direction.
+
+## vnodes
+
+Each node in the system is assigned multiple random value within this space. Each random value is called a vnode position; a single node is associated to multiple vnodes and consequently multiple positions on the ring.
+
+Each data item identified by a key is assigned to a node by hashing the data item’s key to yield its position on the ring, and then walking the ring clockwise to find the first vnode with a position larger than the item’s position. The node associated with the vnode is the location of the data item.
+
+<img src="../../assets/consistent-hashing-vnode.png">

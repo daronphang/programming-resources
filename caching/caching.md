@@ -9,6 +9,8 @@
 
 Caching is a technique used to improve the performance and efficiency of a system. It involves storing a copy of certain data in a temporary storage area (the cache) so that future requests for that data can be served faster.
 
+Scope of caching typically applies to local storage or a specific system.
+
 ## Performance indicators
 
 ### Cache ratio

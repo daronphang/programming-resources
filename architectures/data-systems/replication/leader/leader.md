@@ -36,7 +36,7 @@ Some operation teams prefer to do failover manually due to the following issues:
 
 ## Replication lag
 
-For asynchronous replications involving distributed databases, if the follower has fallen behind the leader, will lead to inconsistencies as all writes have been reflected in the follower. However, this is just a temporary state, and this effect is known as **eventual consistency**. If the lag is large, the inconsistencies can become a problem for applications.
+For asynchronous replications involving distributed databases, if the follower has fallen behind the leader, will lead to inconsistencies as all writes have been reflected in the leader. However, this is just a temporary state, and this effect is known as **eventual consistency**. If the lag is large, the inconsistencies can become a problem for applications.
 
 Hence, need to design systems that provides a stronger guarantee for read-after-write.
 
