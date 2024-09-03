@@ -31,8 +31,6 @@ Usually the last filter in the filter chain is a proxy filter or HTTP manager fi
 
 Each listener can have multiple filter chains. When the traffic begins, the listener verifies the criteria for each filter chain and decides which one matches the given traffic. The listener chooses the first match which applies, so the most common matches should be described at the bottom of the list.
 
-Usually the last filter in the filter chain is a proxy filter or HTTP manager filter (as it contains routing options). An important thing to remember is that the response received from UPSTREAM will be processed in reverse order. Filters can be configured to work in only one direction.
-
 ```yaml
 # TCP
 filter_chains:

@@ -30,4 +30,4 @@ To efficiently manage cached content, edge servers maintain indexes or metadata 
 
 ### Eviction policies
 
-CDNs employ eviction policies (like LRU—Least Recently Used) to decide which content to remove when cache space is needed. This helps manage storage and ensures that the most relevant content is kept readily accessible.
+CDNs employ eviction policies (LRU, MRU, etc.) to decide which content to remove when cache space is needed. This helps manage storage and ensures that the most relevant content is kept readily accessible.

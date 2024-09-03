@@ -18,11 +18,11 @@ Anycast is an IP network addressing scheme that allows multiple servers to share
 
 When requests come into a single IP address associated with the Anycast network, the network distributes the data based on some prioritization methodology i.e. location, number of hops, etc. The selection process behind choosing a particular data center will typically be optimized to reduce latency by selecting the data center with the shortest distance from the requester.
 
-The Anycast approach does not use the resolver IP, but rather uses the client IP for Anycast routing. In contrast, DNS load balancing uses the address of the resolver. This provides a better picture as to where users are located, enabling performance metrics to be run to the user's IP, not the resolver IP.
+Anycast IP addresses are distributed across various geographic locations. Network routers direct user requests to the nearest edge server using the same IP address.
 
 Anycast is characterized by a 1-to-1 of many association, and is one of the 5 main network protocol methods used in the Internet protocol.
 
-### IPv4 vs IPv6
+### IPv4 and IPv6
 
 Anycast is not officially supported in IPv4. However, this can be worked around through using BGP. Essentially, multiple hosts are given the same unicast IP and routes are announced through BGP. Therefore, routers interpret this as multiple routes to the same destination whereas in fact, they are routed to different destinations with the same address.
 

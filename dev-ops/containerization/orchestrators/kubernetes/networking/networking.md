@@ -2,9 +2,11 @@
 
 Kubernetes was created to run distributed systems with a network plane spread across a cluster of machines. In addition to providing inter-connectivity between components, Kubernetes cluster networking creates a seamless environment where data can move freely and efficiently through software-defined networking.
 
-Kubernetes provides networking for containerized applications with a **flat network structure**. This eliminates the need to map host ports to container ports, enabling the operation of a distributed system without dynamic port allocation.
+Kubernetes provides networking for containerized applications with a **flat network structure**, and each Pod is fully routable on an internal Kubernetes network called **pod network**.. This eliminates the need to map host ports to container ports, enabling the operation of a distributed system without dynamic port allocation.
 
 Requires the network implementation to treat pods as 'real' IP addresses, available from the host network. Every application can then listen on any port they want without fear of conflicts.
+
+As a default configuration, the Pod network is wide open and you should use **Network Policies** to lock down access.
 
 ### Networking model
 

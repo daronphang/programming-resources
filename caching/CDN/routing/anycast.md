@@ -4,6 +4,8 @@ CDN service providers use Anycast to efficiently distribute content for faster n
 
 Using Anycast means the network can be extremely resilient. Because traffic will find the best path, an entire data center can be taken offline and traffic will automatically flow to a proximal data center.
 
+The Anycast approach does not use the resolver IP, but rather uses the **client IP** for Anycast routing. In contrast, DNS load balancing uses the address of the resolver. This provides a better picture as to where users are located, enabling performance metrics to be run to the user's IP, not the resolver IP.
+
 Another CDN anycast methodology used is where anycast-based CDN load balancing provides access to replicated media content. In conjunction with routing protocols, Anycast can optimally route content requests to any one of the replicated content server nodes to maintain service scalability.
 
 ### Key features

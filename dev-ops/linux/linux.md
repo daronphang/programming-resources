@@ -1,11 +1,11 @@
 ## Linux
 
-- Linux is an open-source OS using UNIX core which sites underneath of all other software on a computer.
-- OS is a software that manages connection between software and hardware resources associated with desktop i.e. car engine.
-- User has access to alter source code of kernel and code unlike Windows.
-- Files are stored in tree structure starting with root directory.
+- Linux is an open-source OS using UNIX core which sites underneath of all other software on a computer
+- OS is a software that manages connection between software and hardware resources associated with desktop i.e. car engine
+- User has access to alter source code of kernel and code unlike Windows
+- Files are stored in tree structure starting with root directory
 - Used in smartphones (android), cars, home appliances, servers (most used), etc.
-- Reliable and secure as it is easy to detect bugs and fix.
+- Reliable and secure as it is easy to detect bugs and fix
 
 ### Linux OS
 
