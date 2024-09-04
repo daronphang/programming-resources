@@ -38,4 +38,12 @@ Anycast also helps keep DNS resolving services highly available. If one DNS reso
 
 ### BGP
 
-Anycast is tightly coupled with the BGP protocol, which ensures that the anycast route is advertised among autonomous systems (ASes) on the Internet. Packets to the anycast IP are routed through the shortest path to the server, reducing latency and improving service resiliency. If the server fails, the anycast route is withdrawn from the routing table, and a router forwards the client’s request through an alternate path to another server that is listening on the same anycast IP address.
+Anycast and BGP work together to optimize the delivery of network services by using BGP to route traffic efficiently to the nearest or best-performing Anycast node, thereby enhancing performance, reliability, and scalability.
+
+Each Anycast node advertises its presence using BGP. This involves sending BGP route announcements that include the shared IP address. These advertisements are propagated across the Internet to other BGP routers (autonomous systems).
+
+When a router receives a packet destined for the Anycast IP address, it uses BGP's routing information to determine the best path to reach one of the advertised Anycast nodes. BGP routers use metrics such as network distance, AS path length, and other attributes to select the optimal route.
+
+If the server fails, the anycast route is withdrawn from the routing table, and a router forwards the client’s request through an alternate path to another server that is listening on the same anycast IP address.
+
+BGP continuously updates routing tables based on network changes. If one Anycast node becomes unreachable or less optimal, BGP will automatically reroute traffic to the next best Anycast node.

@@ -12,6 +12,8 @@ The internet is a network of networks, and broken up into hundreds of thousands 
 
 The structure of the internet is constantly changing, and every AS must be kept up to date with information regarding new routes as well as obsolete routes. This is done through **peering sessions** where each AS connects to neighboring ASes with a TCP/IP connection for the purpose of sharing routing information.
 
+BGP is the standard routing protocol used to exchange routing information between different networks AS on the Internet. BGP makes decisions based on network policies and path attributes to determine the best routes for data packets.
+
 ### Who operates BGP autonomous systems?
 
 ASes typically belong to Internet Service Providers (ISPs) or other large organizations such as tech companies, universities, and government agencies i.e. Singtel, M1. Each AS wishing to exchange routing information must have a registered autonomous system number (ASN).
