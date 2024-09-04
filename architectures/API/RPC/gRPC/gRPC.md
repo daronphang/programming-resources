@@ -98,7 +98,7 @@ gRPC is more complex and has less library and tooling support than HTTP.
 
 ## When to use gRPC
 
-- Real-time communication services where you deal with streaming calls.
-- Efficient communication is needed.
-- In multi-language environments.
-- For internal APIs where you don't have to force technology choices on clients.
+- Real-time communication services where you deal with streaming calls
+- Efficient communication is needed
+- In multi-language environments
+- For internal APIs where you don't have to force technology choices on clients

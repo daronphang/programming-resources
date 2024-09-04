@@ -42,13 +42,13 @@ May not be suitable when:
 
 Autonomy is perhaps the biggest value addition in using a BFF. Separate APIs per client type means that we can optimize the API for whatever is most convenient for a particular client type.
 
-## Resilience and lower risk
+### Resilience and lower risk
 
 BFFs also reduce the overall risk of the application going down.
 
 While a bad deployment might bring down an entire BFF in an availability zone, it doesn’t bring down the entire platform, which was a possibility with the monolithic API approach.
 
-## High development speed
+### High development speed
 
 Autonomy and resilience work together to improve confidence, resulting in a higher development speed for new features.
 

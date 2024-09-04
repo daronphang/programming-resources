@@ -203,6 +203,10 @@ func main() {
 
 ## Stopping goroutines
 
+### Program termination
+
+If the main function (or the main goroutine) ends and the program exits, any remaining goroutines are terminated abruptly. The Go runtime will stop all goroutines when the main function completes and the program is about to exit. This is because the entire process ends, so all goroutines are stopped.
+
 ### Use channels to signal termination
 
 ```go

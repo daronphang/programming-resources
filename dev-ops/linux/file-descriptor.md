@@ -4,9 +4,9 @@ A unique non-negative number that identifies an open file in a computer's OS. It
 
 When a program asks to open a file or data resource like sockets, the kernel:
 
-1. Grants access.
-2. Creates an entry in the global file table.
-3. Provides the software with the location of that entry (file descriptor).
+1. Grants access
+2. Creates an entry in the global file table
+3. Provides the software with the location of that entry (file descriptor)
 
 ### Defaults
 

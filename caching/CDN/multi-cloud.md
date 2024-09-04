@@ -1,44 +1,36 @@
 ## Multi-cloud CDN
 
-A CDN is a distributed network of servers that are designed to deliver content to users quickly and efficiently. The main purpose of a CDN is to reduce latency and improve the performance of websites and applications by caching and serving content from a location that is closer to the end user.
+A multi-cloud CDN is a strategy that leverages multiple cloud service providers to deliver content across various locations and platforms. This approach combines the capabilities of different CDN providers to enhance performance, reliability, and scalability.
 
-There are two ways you can distribute the load:
-
-- Vertical stacking
-- Horizontal stacking
-
-Vertical stacking is not built to ensure availability but rather to dissipate the load on the origin server. It is also critical to ensure the uptime of all the vendors in play as the whole chain will collapse if one goes down.
-
-Horizontal scaling is purported to ensure availability by distributing the load across many vendors.
-
-## Routing
-
-- Static DNS: Involves setting up fixed DNS entries for each CDN; straightforward but lacks automatic failover capabilities and does not consider additional factors such as cost or performance
-- Managed DNS: Adding an intelligence layer to static DNS configuration by introducing smart routing to minimize manual interventions and enhance fault tolerance
-- Round-robin: Directs incoming requests to different CDNs sequentially
-- Geolocation: Chooses CDN located closest to the user's geographical location
+A typical multi-cloud CDN setup might involve using a combination of CDNs from providers like Cloudflare, AWS CloudFront, and Akamai. Traffic could be distributed based on factors such as geographic location, load balancing policies, and performance metrics.
 
 ## Benefits
 
-### Improved reliability
+### Performance improvement
 
-Multi CDN helps to ensure that content is delivered even if one of the CDN providers experiences an outage or slowdown. By using multiple CDN providers, content delivery is balanced across different networks, reducing the risk of congestion or failure in a single network.
+Different CDNs might have stronger presence in different regions. By using multiple CDNs, you can ensure that your content is delivered from the closest and most optimized location for your users.
 
-### Better performance
+### Increased reliability
 
-By selecting the best CDN provider for a particular location or user, Multi CDN enables organizations to optimize content delivery and improve performance. This can lead to lower latency, faster page load times, and a better overall user experience.
+If one CDN provider experiences an outage or performance degradation, the other CDNs can continue to serve content, ensuring higher availability and reliability.
 
-### Increased resilience
+### Flexibility and vendor diversification
 
-Multi CDN provides a fallback solution in the event of an outage or slowdown with one CDN provider, ensuring that content delivery continues without disruption. This helps to ensure that users can always access the content they need, even in the face of technical issues.
+Using multiple CDN providers reduces dependency on a single vendor and allows organizations to choose specific providers based on their performance and cost-effectiveness.
 
 ### Improved security
 
 Multi CDN provides an additional layer of security, as multiple CDN providers can be used to distribute content, reducing the risk of a security breach. This is particularly important for organizations that handle sensitive information, as it helps to ensure that data is protected and secure.
 
-### Enhanced flexibility
+## Implementation
 
-Multi CDN provides organizations with the ability to switch between CDN providers on the fly, ensuring that they can always use the best solution for their needs. This enables organizations to respond quickly to changes in their content delivery requirements, and to take advantage of new opportunities as they arise.
+### DNS-based load balancing
+
+DNS-based load balancing directs users to different CDN providers based on DNS resolution. This can be configured to route traffic to different CDNs based on user location or other factors.
+
+### HTTP/HTTPS load balancing
+
+Application-level load balancers or reverse proxies can distribute traffic among multiple CDNs based on various criteria such as response time, health checks, or load metrics.
 
 ## Practices
 
