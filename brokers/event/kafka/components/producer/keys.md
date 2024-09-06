@@ -1,4 +1,4 @@
-## Keys and Partitions
+## Keys and partitions
 
 Keys serve two goals:
 

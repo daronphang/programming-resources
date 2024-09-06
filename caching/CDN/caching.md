@@ -26,7 +26,7 @@ Contrary to the Push CDN, this requires less maintenance because cache updates o
 
 ### Indexes
 
-To efficiently manage cached content, edge servers maintain indexes or metadata about the cached items. This information helps quickly locate and serve requested files.
+To efficiently manage cached content, edge servers maintain indexes or metadata about the cached items. This information helps quickly locate and serve requested files. Binary search can then be employed to find the data.
 
 ### Eviction policies
 

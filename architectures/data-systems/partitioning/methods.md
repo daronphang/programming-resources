@@ -1,9 +1,3 @@
-## Vertical partitioning
-
-One easy way to segment your application’s database is to move tables related to specific features to their own servers. For instance, you could place user profile information on one server, friend lists on another, and a third for user-generated content like photos.
-
-This approach is relatively simple to implement and has minimal impact on the overall application. However, if the site continues to grow, further sharding of the feature-specific databases across multiple servers may be necessary.
-
 ## Partitioning of key-value data (primary)
 
 Goal is to spread the data and query load evenly across nodes. If it is skewed, partitioning will be less effective and may result in hotspots (a partition having a disproportionately high load).

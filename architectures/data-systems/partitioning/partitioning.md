@@ -1,12 +1,14 @@
 ## Partitioning
 
-While partitioning is just a general term referring to splitting up the database, it is commonly used to mean **vertical partitioning**, which is the process of dividing tables in a database instance into smaller sub-tables or partitions. This division occurs within a single database system, eliminating the need for distribution across multiple servers.
+Partitioning refers to the process of dividing a single database table into smaller, more manageable pieces. These pieces are called partitions, and they are created within the **same database system** i.e. not distributed. In contrast, sharding divides data across distributed systems.
 
 By splitting a large table into smaller, individual tables, queries that access only a fraction of the data can run faster because there is **less data to scan**. These partitions can be accessed and managed separately to enhance performance, maintainability, and availability of the database.
 
-```sql
--- vertical partitioning
+### Vertical
 
+Vertical partitioning is the process of dividing tables into columns, with each partition containing a subset of columns i.e. separating frequently used columns from less frequently accessed.
+
+```sql
 create table data (
     id integer primary key,
     status char(1) not null,
@@ -27,8 +29,11 @@ create table data_rarely_used (
 );
 ```
 
+### Horizontal
+
+Horizontal partitioning divides a table into rows, with each partition containing a subset of rows based on some criteria i.e. date ranges.
+
 ```sql
--- horizontal partitioning
 CREATE TABLE sales (
     sale_id INT NOT NULL,
     product_name VARCHAR(255) NOT NULL,

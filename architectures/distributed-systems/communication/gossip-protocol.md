@@ -4,6 +4,11 @@ The peer-to-peer state management approach is inclined towards high availability
 
 The gossip protocol is a **decentralized peer-to-peer communication** technique to transmit messages in a large distributed system.
 
+Gossip protocol can be used to keep nodes consistent only if:
+
+- Operations are commutative
+- Serializability is not needed
+
 Use cases include:
 
 - Failure detection

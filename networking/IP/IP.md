@@ -1,4 +1,4 @@
-## IP Address
+## IPv4
 
 IP addresses not reachable over the internet are private and enable communication between instances in the same network. IP address uses a combination of bits (32 bit, 32 digits) that is converted into decimal format.
 
@@ -14,7 +14,7 @@ The 32 bits are grouped into groups of 8 bits, separated by a period.
 127.0.0.1:<host port>         localhost
 ```
 
-## CIDR notation
+### CIDR notation
 
 To express IP addresses between the range of 192.168.1.0 and 192.168.1.255. CIDR notation is a compressed way of representing a range of IP addresses.
 
@@ -26,6 +26,14 @@ The smallest IP range you can have is `/28`, which provides 16 IP addresses. The
 192.168.1.0/24  # the 0 is flexible, range of 256
 192.168.1.0/16  # range of 65,536 (256*256, 8bits, 8bits)
 192.168.1.0/22  # range of 1024 (2*2*256)
+```
+
+## IPv6
+
+Introduced in 1998, having an address length of 128 bits using hexadecimal notation. NAT is not typically used as there is no address shortage.
+
+```
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
 ```
 
 ## Loopback address
