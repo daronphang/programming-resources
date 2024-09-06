@@ -12,7 +12,7 @@ Serves as the middleman between a client and the other DNS servers, following a 
 
 Receives the first request from the DNS recursor and sends back the appropriate top level domain (TLD) server, based on the queried host’s domain extension.
 
-### 3. TLD server
+### 3. Top-level-domain (TLD) server
 
 Maintains information for all domain names with the same domain extension. A TLD server receives the next request from the DNS recursor and responds with the appropriate authoritative nameserver.
 

@@ -16,7 +16,7 @@ QUIC combines both transport and cryptographic handshakes in its connection esta
 
 QUIC enables 0-RTT (round trip time) connection establishment in certain situations, which can significantly reduce latency when connecting to a previously visited server.
 
-<img src="../../assets/QUIC-handshake.png">
+<img src="../../../assets/QUIC-handshake.png">
 
 ### Built-in encryption
 
@@ -34,10 +34,10 @@ QUIC is designed to better support connection migration, allowing clients to cha
 
 QUIC offers more advanced congestion control mechanisms, allowing it to better adapt to varying network conditions and improve overall performance.
 
-### Stream Multiplexing
+### Stream multiplexing
 
 Both HTTP/2 and HTTP/3 support multiplexing, allowing multiple requests and responses to be sent simultaneously over a single connection. But TCP, employed by HTTP/2, considers every request (including multiplexed ones) as a single byte stream. This approach employed by TCP is usually the cause of **head-of-line blocking issues** during multiplexed streaming in HTTP/2.
 
 In HTTP/3, the issue is addressed via implementation of UDP’s **out-of-order delivery**, where each byte stream is transported independently over the network. If a packet is lost, only the affected stream waits for retransmission, while others continue unaffected.
 
-<img src="../../assets/QUIC-streaming.png">
+<img src="../../../assets/QUIC-streaming.png">
