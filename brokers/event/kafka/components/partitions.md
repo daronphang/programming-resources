@@ -35,6 +35,10 @@ For example, to improve performance, we can divide the topic into two different 
 
 ## Partitioning strategies
 
+### Round-robin
+
+A simple approach would be for the client to just round robin requests over all brokers.
+
 ### Semantic partitioning
 
 To improve the ordering of events, we can **set an event key** to the event object. With that, **events with the same key are assigned to the same partition**, which is ordered. Thus, events with the same key arrive at the consumer side in the same order they were produced.
@@ -42,6 +46,8 @@ To improve the ordering of events, we can **set an event key** to the event obje
 ### Random partitioning
 
 Random partitioning results in the evenest spread of load for consumers, and thus makes scaling the consumers easier. It is particularly suited for stateless or “embarrassingly parallel” services. Records will get added to a batch and pushed to a random topic partition.
+
+This strategy will result in far fewer TCP connections.
 
 ## How Kafka determines which partition to send data to
 

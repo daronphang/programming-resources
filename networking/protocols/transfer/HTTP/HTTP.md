@@ -1,10 +1,34 @@
 ## Hypertext Transfer Protocol Secure (HTTP)
 
-HTTP is an application layer protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the World Wide Web and it is a client-server protocol i.e. requests are initiated by the recipient, usually the web browser. HTTP defines how messages are formatted and transmitted across the web, with instructions for browsers and servers on how to respond to various requests and commands. HTTP is usually through port 443 with unsecured protocol being through port 80.
+HTTP is an application layer protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the World Wide Web and it **follows a client-server model** i.e. requests are initiated by the recipient, usually the web browser.
+
+HTTP defines how messages are formatted and transmitted across the web, with instructions for browsers and servers on how to respond to various requests and commands. HTTP is through port 80 while HTTPS is through port 443.
 
 Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). Each request is sent to a web server, which handles it and provides a response. Between the client and server there are numerous entities called proxies, which perform different operations and acts as gateways or caches.
 
-### Media Types (MIME)
+## What is in an HTTP Request?
+
+Each HTTP request made across the Internet carries with it a series of encoded data that carries different types of information. A typical HTTP request contains:
+
+1. HTTP version type
+2. URL
+3. HTTP method
+4. HTTP request headers
+5. Optional HTTP body
+
+### Request methods
+
+- GET: Obtain a resource
+- POST: Create a new resource
+- PUT: Modify an existing resource
+- HEAD
+- DELETE
+- PATCH: Replace an existing resource
+- CONNECT
+- TRACE
+- OPTIONS
+
+### Media types (MIME)
 
 Formats of resource representations are specified through the use of media types in the Content-Type header.
 
@@ -13,33 +37,26 @@ Content-Type: application/json; charset=utf-8
 Content-Type: application/xml
 ```
 
-### Request Methods
-
-```
-GET         Obtain the resource
-POST        Create a new resource or add it to the collection
-PUT         Modify an existing resource
-HEAD
-DELETE
-PATCH       Replace an existing resource
-CONNECT
-TRACE
-OPTIONS
-```
-
 ### Headers
 
 Headers contain important identifier information as to the request's metadata, including authorization, URI, caching, cookies, etc.
 
-```
-Authorization       Base64(username:password)
-WWWW-Authenticate   Sent by server
-Accept-Charset
-Content-Type        application/json (response type sent to client by server)
-Cache-Control
-```
+- Host: Specifies the host and port number of server to which the request is being sent
+- Cache-control
+- Authorization
+- WWWW-Authenticate
+- Accept-Charset
+- Content-Type
 
-## Basic Aspects
+## What can be controlled by HTTP
+
+- Caching
+- Relaxing origin constraint
+- Authentication
+- Proxy and tunneling
+- Sessions through HTTP cookies
+
+## Features
 
 ### HTTP is simple
 
@@ -49,11 +66,11 @@ HTTP is generally designed to be simple and human readable, even with the added 
 
 Introduced in HTTP/1.0, HTTP headers make this protocol easy to extend and experiment with. New functionality can even be introduced by a simple agreement between client and server about a new header's semantics.
 
-### HTTP is stateless, but not sessionless
+### HTTP is stateless, but not session-less
 
 There is no link between two requests sent successively on the same connection. Nonetheless, HTTP cookies allow the use of stateful sessions.
 
-## HTTP Flow
+## HTTP flow
 
 When a client wants to communicate with a server or an intermediate proxy, it performs the following steps:
 
@@ -107,5 +124,5 @@ Serves the document as requested by the client. A server may be collection of se
 
 Computers/machines located between the web browser and server that relay the HTTP messages. They may perform caching, filtering, load balancing, authentication, and logging. Proxies operate at the Application layer and can be:
 
-- Transparent: Forwarding on the requests they receive without altering them in any way.
-- Non-Transparent: Change the request in some way before passing it along to the server.
+- Transparent: Forwarding on the requests they receive without altering them in any way
+- Non-Transparent: Change the request in some way before passing it along to the server

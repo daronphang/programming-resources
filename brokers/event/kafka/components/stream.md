@@ -1,8 +1,8 @@
-## Kafka Stream
+## Event streaming
 
-In Kafka, a stream processor is anything that takes continual streams of data from input topics, performs some processing on this input, and produces continual streams of data to output topics.
+In Kafka, a stream processor is anything that takes continual streams of data from input topics, performs some processing on this input, and produces continual streams of data to output topics i.e. store and process events as they occur.
 
-You can do simple processing directly using the producer and consumer APIs. However for more complex transformations, Kafka provides Kafka Streams.
+You can do simple processing directly using the producer and consumer APIs. However for more complex transformations, Kafka provides **Kafka Streams**.
 
 For example, a ride-share application might take in input streams of drivers and customers, and output a stream of rides currently taking place.
 

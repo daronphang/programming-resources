@@ -8,11 +8,15 @@ In last-write-wins, the latest change to a data-point alone is retained. However
 
 ## Temporary failures
 
-Temporary failures occur when a replica is unavailable for read and/or write operations for a small duration of time. This could arise because of GC stalls, network and hardware outages, or maintenance shutdowns.
+Temporary failures occur when a replica is unavailable for read and/or write operations for a small duration of time. This could arise because of GC stalls, network and hardware outages, memory exhaustion, or maintenance shutdowns.
 
 ### Hinted handoff
 
-In Hinted Handoff, when a write is performed and a replica node for the row is either known to be down ahead of time, or does not respond to the write request, the coordinator will store a hint locally. This hint is basically a wrapper around the mutation indicating that it needs to be replayed to the unavailable node(s).
+In Hinted Handoff, when a write is performed and a replica node for the row is either known to be down ahead of time, or does not respond to the write request, the coordinator (backup node) will store a hint locally. This hint is basically a wrapper around the mutation indicating that it needs to be replayed to the unavailable node(s).
+
+Eventual consistency is attained through the relay of the hints by the backup node when the target node is healthy again. The technique of transmitting the data mutation post-failure resolution is known as hinted handoff In other words, hinted handoff is a distributed system pattern to perform repairs in the write path.
+
+The hinted handoff pattern offers **eventual consistency and improved availability** on temporary node failures. The high availability of nodes is also a requirement to maintain the replication factor (RF) across the system. The hinted handoff pattern allows the system to manage the same amount of write operations despite operating at a reduced capacity.
 
 Once a node discovers via gossip that a node for which it holds hints has recovered, it will send the data row corresponding to each hint to the target.
 
@@ -24,6 +28,8 @@ Hinted Handoff serves two purposes:
 ### Strict vs sloppy quorum
 
 Quorum is the number of replicas which should acknowledge a particular read or write operation; it is closely associated with the replication factor. The use of hinted writes to meet consistency requirements in read paths decides whether a quorum is strict or sloppy.
+
+The sloppy quorum is a variant of the quorum-based approach that leverages hinted handoff pattern to reach quorum when multiple target nodes become unavailable.
 
 For strict quorum, hinted writes do not count towards read or write consistency requirements.
 

@@ -6,17 +6,26 @@ The design of Kafka’s networking architecture follows the same principles. Eve
 
 ## Kafka network
 
-Kafka is a distributed system. Data is read from & written to the Leader for a given partition, which could be on any of the brokers in a cluster.
+Kafka uses a binary protocol over TCP. The protocol defines all APIs as request-response message pairs. All messages are size delimited and are made up of the following primitive types.
 
-When a client (producer/consumer) starts, it will **request metadata about which broker is the leader for a partition**; it can do this from **any broker**. This is also known as the **bootstrap call** (configured via bootstrap.servers).
+The client initiates a socket connection and then writes a sequence of request messages and reads back the corresponding response message. No handshake is required on connection or disconnection.
 
-The metadata returned will include the endpoints available for the Leader broker for that partition, and the client will then use those endpoints to connect to the broker to read/write data as required. The exact broker to send messages to depends on which is the leader for the concrete partition.
+The client will likely need to **maintain a connection to multiple brokers, as data is partitioned** and the clients will need to talk to the broker that has their data. To recap, a partition will be owned by a single Broker (called the Leader) in the cluster.
 
-The key thing is that when you run a client, the broker you pass to it is just where it’s going to go and get the metadata about brokers in the cluster from. The actual host and IP that it will connect to for reading/writing data is based on the data that the broker passes back in that initial connection; even if it’s just a single node and the broker returned is the same as the one connected to.
+The server guarantees that on a single TCP connection, requests will be processed in the order they are sent and responses will return in that order as well. The broker's request processing allows only a single in-flight request per connection in order to guarantee this ordering. Note that clients can (and ideally should) use non-blocking IO to implement request pipelining and achieve higher throughput. i.e., clients can send requests even while awaiting responses for preceding requests since the outstanding requests will be buffered in the underlying OS socket buffer. All requests are initiated by the client, and result in a corresponding response message from the server except where noted.
 
-If you want to use SSL, need to include SSL in your listener name e.g. LISTENER_EXTERNAL_SSL.
+The server has a configurable maximum limit on request size and any request that exceeds this limit will result in the socket being disconnected.
 
-https://rmoff.net/2018/08/02/kafka-listeners-explained/
+## Inter-broker communication
+
+Kafka brokers communicate with each other typically on the internal network. In order to configure how a broker should be reached by other brokers, you need to configure two things:
+
+1. LISTENER: A listener entry
+2. Reference this listener in the KAFKA_INTER_BROKER_LISTENER_NAME config item
+
+**This config is required even if we have a single broker**. Bear in mind that in a production environment, you’ll always have multiple brokers for redundancy and availability, usually starting from three.
+
+## Components
 
 ### bootstrap.servers
 
@@ -28,27 +37,22 @@ https://rmoff.net/2018/08/02/kafka-listeners-explained/
 
 ### listeners
 
-- Listeners are what interfaces Kafka binds to on which to listen
-- Tells the Kafka process which network adapter and port number to use to initialize a listening socket
+- A listener is a combination of host/IP, port, and protocol
+- Listeners tell the Kafka process what network interface it should open a listening socket to
+- Listeners tell the Kafka process which network adapter and port number to use to initialize a listening socket
+- The host on which Kafka is running may have multiple network interfaces
 - The default is 0.0.0.0, which means listening on all interfaces
 
 ### advertised_listeners
 
+- Kafka clients may well not be local to the broker’s network, and this is where the additional listeners come in
+- This is the address clients should use to connect to the Kafka broker
 - Entries returned to the clients as part of the metadata response
 - Actual address clients would use to send messages to the broker
 - Addresses could be some combination of ip addresses or dns addresses
-- **At least one of them must be specified in the client application in the bootstrap.servers**; otherwise, the client would try to connect to the internal host address
+- **At least one of them must be specified in the client application in the bootstrap.servers**; otherwise, the client would try to connect to the internal host address as it would default to the listeners
 
 If advertised.listeners is not specified, then listeners will be used in its place.
-
-## Inter-broker communication
-
-Kafka brokers communicate with each other typically on some internal network. In order to configure how a broker should be reached by other brokers, you need to configure two things:
-
-1. LISTENER: A listener entry
-2. Reference this listener in the KAFKA_INTER_BROKER_LISTENER_NAME config item
-
-**This config is required even if we have a single broker**. Bear in mind that in a production environment, you’ll always have multiple brokers for redundancy and availability, usually starting from three.
 
 ## Docker compose example
 

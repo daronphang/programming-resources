@@ -6,11 +6,11 @@ CORS is an **extension of SOP**. You need CORS when you want to pull data from e
 
 However, provides potential for cross-domain based attacks such as cross-site request forgery (CSRF).
 
-### Simple requests
+## Simple requests
 
 Simple requests don't trigger a CORS preflight. Hence, even if Access-Control-Allow-Origin header is invalidated, the **request can still be made to the server**, but CORS will **block the browser from reading the response body**.
 
-### Preflight requests
+## Preflight requests (pre-approval)
 
 Some HTTP requests are considered complex and requires server confirmation before the actual request is sent. This is because they **may have implications for user data**. The pre-approval process is called preflight request.
 
@@ -20,7 +20,7 @@ Cross-origin requests are complex if they meet any of the following:
 - Headers other than Accept-Language, Accept, or Content-Language
 - Content-Type headers other than multipart/form-data, application/x-www-form-urlencoded, or text/plain
 
-#### How preflight requests work
+### How preflight requests work
 
 The browser sends the preflight request before the actual request message:
 
@@ -66,7 +66,7 @@ Connection: Keep-Alive
 3. Client sends actual request to the server
 4. Server sends actual response back to client
 
-### Credentialed requests
+## Credentialed requests
 
 The most interesting capability exposed by fetch() or XMLHttpRequest and CORS is the ability to make 'credentialed' requests that are aware of HTTP cookies and HTTP authentication information. By default, cross-origin fetch() or XMLHttpRequest calls **will not send credentials or cookies**.
 
@@ -80,7 +80,7 @@ When a server is responding to a credentialed request during preflight, the brow
 
 Also, if the response has **Set-Cookie** header, it will be prohibited if Access-Control-Allow-Origin contains '\*' wildcard.
 
-### CORS and CSRF
+## CORS and CSRF
 
 CORS does prevent a specific type of CSRF attack, but not all scenarios. CORS is only implemented in browsers and prevent third-party websites from masquerading as a user in order to **read private data** from another site, but it does not prevent modifying of data through POST request.
 
