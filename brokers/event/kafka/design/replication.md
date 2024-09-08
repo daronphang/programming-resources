@@ -16,6 +16,8 @@ How will a producer know which broker to publish data to for a particular partit
 
 **A partition is owned by a single broker in the cluster**, and that broker is called the **leader** of the partition. A replicated partition is assigned to additional brokers called **followers**. Replication provides redundancy, such that one of the followers can take over leadership if there is a broker failure.
 
+<img src="../assets/brokers-clusters.png">
+
 ### Leader replica
 
 Each partition has a single replica designated as the leader. **All produce requests (writes) must go through the leader to guarantee consistency**. Clients can consume from **either the lead replica or its followers**.
@@ -41,5 +43,3 @@ The leader for every partition tracks this ISR list by computing the lag of ever
 ### Availability over consistency
 
 if all the replicas in the in-sync replicas (ISRs) die at once, Kafka may lose data or choose an unclean leader. An unclean leader is a replica that does not have all the committed messages, but is elected as the leader anyway. This can happen if all the replicas for a partition are down, and **Kafka decides to favor availability over consistency** as the default behavior. Therefore, Kafka’s guarantee about data loss only holds if at least one replica in the ISR is alive.
-
-<img src="../assets/brokers-clusters.png">

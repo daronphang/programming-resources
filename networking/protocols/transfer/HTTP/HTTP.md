@@ -47,6 +47,7 @@ Headers contain important identifier information as to the request's metadata, i
 - WWWW-Authenticate
 - Accept-Charset
 - Content-Type
+- Location: URL for the browser to redirect to when it receives a 301
 
 ## What can be controlled by HTTP
 

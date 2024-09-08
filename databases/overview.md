@@ -6,7 +6,7 @@ Two types, SQL-based (relational) and NoSQL-based (non-relational).
 
 Uses SQL language that offers a highly organized and structured approach to information management. Schema is explicit and database ensures all written data conforms to it i.e. schema-on-write.
 
-### Core Characteristics
+### Core characteristics
 
 - Data Schema: All data has to fit in a table.
 - Data Relations: One-to-One, One-to-Many, Many-to-Many.
@@ -22,7 +22,7 @@ Uses SQL language that offers a highly organized and structured approach to info
 - **Scalability and sharding challenges**: Difficult to scale up and dividing large database into smaller parts for easier management.
 - **Less efficient**: Slower performance than NoSQL.
 
-### Popular SQL Database Engines
+### Popular SQL database engines
 
 - Oracle, MySQL, Postgres, Microsoft SQL Server.
 
@@ -43,7 +43,7 @@ Allows you to organize information in looser fashion such as email texts, custom
 - **Lack of tools**: Have lesser third-party tools compared to SQL-based.
 - **Compatibility and standardization challenges**: Lack high degree of compatibility and standardization.
 
-### Database Types
+### Database types
 
 1. **Graph Stores**: Neo4j and JanusGraph.
 2. **Column Stores**: Schema-agnostic that can handle querying of non-sequential data in real-time. Apache Cassandra and Hbase.
@@ -52,7 +52,7 @@ Allows you to organize information in looser fashion such as email texts, custom
 
 Schema-agnostic means users don't have to understand schema of database before they can store data or query.
 
-## Choosing Database
+## Choosing a database
 
 Historically, data started out being represented as one big tree (hierarchical), but it wasn't good for representing many-to-many relationships, and so the relational model was invented to solve that problem. However, some applications don't fit well in the relational model and NoSQL datastores are invented.
 

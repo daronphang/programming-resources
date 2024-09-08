@@ -1,6 +1,12 @@
+## Background
+
+If we have a large set of structured data (identified by record IDs) stored in a set of data files, what is the most efficient way to know which file might contain our required data? We don't want to read each file, as that would be slow, and we have to read a lot of data from the disk.
+
+One solution can be to build an index on each data file and store it in a separate index file. This index can map each record ID to its offset in the data file. Each index file will be sorted on the record ID. Now, if we want to search an ID in this index, the best we can do is a Binary Search. Can we do better than that?
+
 ## Bloom filter
 
-A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an item is a member of a set. The bloom filter will always say yes if an item is a set member. However, the bloom filter might still say yes although an item is not a member of the set i.e. **false positive**. The items can be added to the bloom filter but the items cannot be removed.
+A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an element **may be in a set, or definitely is not**. The bloom filter will always say yes if an item is a set member. However, the bloom filter might still say yes although an item is not a member of the set i.e. **false positive**. The items can be added to the bloom filter but the items cannot be removed.
 
 The bloom filter supports the following operations:
 

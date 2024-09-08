@@ -9,6 +9,8 @@
 
 Caching is a technique used to improve the performance and efficiency of a system. It involves storing a copy of certain data in a temporary storage area (the cache) so that future requests for that data can be served faster.
 
+Caches can exist at all levels in architecture, but are often found at the level nearest to the front end, where they are implemented to return data quickly without taxing downstream levels.
+
 Scope of caching typically applies to local storage or a specific system.
 
 ## Performance indicators
@@ -31,9 +33,9 @@ This is preferable because having more replicas would result in the following:
 
 ## Caching strategies
 
-### Browser caching
+### Client caching
 
-Browser caching involves storing website resources on a user’s local computer. When a user revisits a site, the browser can load the site from the local cache rather than fetching everything from the server again.
+Client-side caching stores data on the client’s device e.g. browser, mobile app. When a user revisits a site, the browser can load the site from the local cache rather than fetching everything from the server again.
 
 The cache-control header directive tells the browser the duration to cache the file e.g. 1h.
 

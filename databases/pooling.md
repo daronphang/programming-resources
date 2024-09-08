@@ -1,4 +1,4 @@
-## Connection Pooling
+## Connection pooling
 
 Pooling ensures that a client does not constantly connect/disconnect from DB server by caching database connections.
 
