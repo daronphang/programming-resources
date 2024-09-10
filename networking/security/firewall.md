@@ -10,9 +10,9 @@ Router is assigned with single public IP address that is visible; devices connec
 
 ### NAT Protection
 
-1. Protects the identity of network and doesn't show internal IP addresses to the internet.
-2. Requires every incoming packet of information to have been asked for by a device.
-3. Can use whitelisting to block unauthorized outgoing traffic i.e. if have malware, can prevent from communicating with device.
+1. Protects the identity of network and doesn't show internal IP addresses to the internet
+2. Requires every incoming packet of information to have been asked for by a device
+3. Can use whitelisting to block unauthorized outgoing traffic i.e. if have malware, can prevent from communicating with device
 
 ### How NAT firewall works
 

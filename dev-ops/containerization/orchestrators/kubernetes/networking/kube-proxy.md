@@ -20,7 +20,7 @@ The process is as follows:
 
 <img src="../assets/kube-proxy.png">
 
-## Load balancing
+## Proxy/Load balancing
 
 ### IPtables
 

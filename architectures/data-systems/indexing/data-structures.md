@@ -1,4 +1,4 @@
-## Hash Indexes (Log-Structured)
+## Hash indexes (log-structured)
 
 Similar to dictionary which is implemented as a hash map. Every append to the storage file will update the hash map to reflect the offset of the data you wrote. When updating a key, it will append to files and delete obsolete files but never modify them in place.
 

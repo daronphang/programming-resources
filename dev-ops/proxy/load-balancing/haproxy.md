@@ -72,7 +72,7 @@ The Keepalived daemon is installed on all load balancer servers. The Keepalived 
 
 ### Example for Kubernetes cluster
 
-<img src="../assets/haproxy-keepalived.png">
+<img src="../../assets/haproxy-keepalived.png">
 
 ### Keepalived setup
 

@@ -4,7 +4,7 @@ Designing systems for read-heavy versus write-heavy workloads involves different
 
 ## Designing read-heavy systems
 
-- Caching at different levels (application, database)
+- Caching at different levels (application, database), materialized views
 - Database replication to create read replicas
 - Using CDNs to cache static and dynamic content
 - Load balancing to distribute incoming read requests evenly across multiple servers or replicas
