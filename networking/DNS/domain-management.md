@@ -2,6 +2,8 @@
 
 Domain management is the practice of keeping a portfolio of web domains active, registered, stable, and secured from a broad range of threats. Effective domain management includes renewing domain name registrations for all the domains within an organization’s portfolio, determining nameservers and hosting providers, and making adjustments to domain names and DNS settings when required.
 
+Domain is the most critical component of online presence. It controls who can get to your website, your email, portfolio or blog, and any other online properties you own. Domain name is one of the first lines of trust when it comes to interacting with the company.
+
 Domain management teams may also monitor web searches for the domain, track similar domain names that may cause harm to the reputation or authority of a brand, and deploy and manage security solutions that protect the domain and DNS records.
 
 ### Why is domain management important?

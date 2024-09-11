@@ -34,3 +34,4 @@ Throughput is a critical measure in systems where the volume of data processing 
 - **Optimize database performance**: Ensure efficient data storage and retrieval such as partitioning and sharding
 - **Asynchronous processing**: Use asynchronous processes for tasks that don’t need to be completed immediately
 - **Network bandwidth**: Increase the network bandwidth to accommodate higher data transfer rates
+- **Data compression**: Perform data compression to reduce size during transfer
