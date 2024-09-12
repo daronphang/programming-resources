@@ -10,6 +10,10 @@ HTTP messages defined in HTTP/1.1 and earlier are human-readable. In HTTP/2, the
 
 HTTP/2 communication is divided into smaller messages and framed in binary format. Elements such as headers, methods, and verbs are encoded in the binary format during transmission.
 
+### Header compression
+
+HTTP2 uses a special compression algorithm called HPACK to make the headers smaller for multiple requests, thereby saving bandwidth.
+
 ### Multiplexing (parallel requests)
 
 Multiplexing HTTP requests allows the usage of a single connection per client, meaning that a single connection between the client and the webserver can be used to serve **multiple requests asynchronously**, enabling the webserver to use less resources, thus support more users at the same time. Communication is **bidirectional** i.e. a single connection can send both requests and responses at the same time.

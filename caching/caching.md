@@ -21,16 +21,6 @@ Scope of caching typically applies to local storage or a specific system.
 cache hits / (cache hits + cache miss)
 ```
 
-## Cache replicas
-
-For your cache, you want as few replicas as possible with lots of resources for each replica e.g. instead of 10 replicas with 1GB of RAM, you would want 2 replicas with 5GB of RAM.
-
-This is preferable because having more replicas would result in the following:
-
-- Same set of data will be stored across all replicas, reducing the overall cache data that you can keep in memory
-- Reduces hit rate (fraction of time that a request can be served out of cache)
-- Decreases utility of cache
-
 ## Caching strategies
 
 ### Client caching

@@ -1,6 +1,14 @@
-## SQL vs NoSQL
+## SQL
 
-- A record in SQL conforms to a fixed schema, while schemas are dynamic in NoSQL
-- SQL databases are vertically scalable, NoSQL databases are horizontally scalable
-- NoSQL databases are optimized for read-heavy and write-heavy operations
-- SQL support ACID transactions (data integrity) while NoSQL sacrifice ACID compliance for performance and scalability
+- Relational databases store data in rows and columns
+- Each record conforms to a fixed schema
+- Powerful for complex queries and joining data from multiple tables
+- Vertically scalable
+- ACID compliant (data integrity)
+
+## NoSQL
+
+- NoSQL databases have different data storage models: key-value, document, graph, and columnar
+- Schemas in NoSQL are dynamic
+- Horizontally scalable
+- Sacrifices ACID compliance for performance and scalability

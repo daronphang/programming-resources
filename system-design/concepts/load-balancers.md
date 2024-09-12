@@ -6,7 +6,31 @@ Load balancers helps to spread the traffic across a cluster of servers to improv
 
 - Performance: Users experience faster, uninterrupted service
 - Scalability: Service providers experience less downtime and higher throughput
-- Balanced workload: Workload is distributed across nodes, instead of a single node performing a lot of work
+- Workload distribution: Workload is distributed/balanced across nodes, instead of a single node performing a lot of work
+- Redundancy: A failure in one node will route the request to another healthy node
+
+## Types
+
+### Layer 4
+
+Operate at the transport layer (OSI Layer 4) and make forwarding decisions based on IP address and TCP/UDP ports.
+
+### Layer 7
+
+Operate at the application layer (OSI Layer 7).
+
+### Global Server Load Balancing (GSLB)
+
+Distributes traffic across multiple geographical locations to improve redundancy and performance on a global scale.
+
+## Scaling
+
+- DNS round robin
+- Clustered LB configuration
+- GSLB
+- Active-passive load balancing
+- Anycast load balancing
+- Elastic load balancing
 
 ## Algorithms
 

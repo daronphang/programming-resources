@@ -1,6 +1,6 @@
 ## Quorum
 
-Quorum is a consensus algorithm commonly used in distributed systems to ensure that the nodes can agree on a value or decision. The reason why Quorum requires an odd number of nodes is to prevent situations known as "split-brain" scenarios or "deadlock" situations. For a cluster with n members, quorum is (n/2)+1.
+Quorum is a consensus concept commonly used in distributed systems to ensure that the nodes can agree on a value or decision. The reason why Quorum requires an odd number of nodes is to prevent situations known as "**split-brain**" scenarios or "deadlock" situations. For a cluster with n members, quorum is (n/2)+1.
 
 In a split-brain scenario, an even number of nodes can result in a tie vote, where half the nodes vote one way and the other half vote the other way. This can lead to a lack of consensus and potentially conflicting decisions, leading to system instability.
 

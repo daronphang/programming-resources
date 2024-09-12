@@ -26,17 +26,6 @@ One of the simplest cache invalidation strategies is configuring an **expiration
 
 While this can work for many cases, most users expect changes to be reflected faster than the TTL. However, lowering the default TTL to a very small value can sink the cache hit rate and reduce its effectiveness.
 
-### Data capture and streaming
-
-You can tail the database's binlog events and publish the events to a list of consumers.
-
-For cache invalidation, a new consumer was created that subscribes to the data events and invalidates/upserts the new rows in Redis.
-
-Key advantages of this approach include:
-
-- They could make the cache consistent with the database within seconds of the database change as opposed to minutes (depending on TTL)
-- Using binlogs made sure that uncommitted transactions couldn’t pollute the cache
-
 ### Cache control headers
 
 Cache control headers are used by the origin server to provide instructions to the CDN regarding caching behavior. These headers can dictate the cacheability of content, its TTL, and other caching-related settings.
@@ -49,18 +38,18 @@ The purge method removes cached content for a specific object. When a purge requ
 
 This method is used in web browsers and CDNs to serve stale content from the cache while the content is being updated in the background. When a request is received for a piece of content, the cached version is immediately served to the user, and an asynchronous request is made to the origin server to fetch the latest version of the content. Once the latest version is available, the cached version is updated. This method ensures that the user is always served content quickly, even if the cached version is slightly outdated.
 
-### Observability through monitoring and tracing
+### Data capture and streaming through invalidation daemon
 
-Observability can be used to improve cache inconsistency by finding when to invalidate cache. This can be done by creating a service to monitor cache inconsistency:
+A web server that modifies its data must also send invalidations to its own cluster to provide read-after-write semantics, and reduce the amount of time stale data is present in its local cache.
 
-- Acts like a cache server to find data inconsistency by querying cache servers
-- Queues inconsistent cache servers and checks again later
-- Checks data correctness during writes, so finding cache inconsistency is faster
+Invalidation daemons can be deployed on every database that **tail the database's binlog events** and broadcast them to every cluster. Key advantages of this approach include:
 
-<img src="./assets/observability.png">
+- They could make the cache consistent with the database within seconds of the database change as opposed to minutes (depending on TTL)
+- Using binlogs made sure that uncommitted transactions couldn’t pollute the cache
 
-Debugging a distributed cache without logs is hard. However, logging every data change isn't scalable as it is write-heavy. This can be resolved by using a tracing library and embedding it on each cache server:
+Though web servers can broadcast invalidations directly to cache servers, this approach suffers from two problems:
 
-- Logs only data changes that occur during the race condition time window
-- Keeps an index of recently modified data to determine if the next data change must be logged
-- Observability service will read the logs and check if cache inconsistency is found
+- It incurs more packet overhead as web servers are less effective at batching invalidations
+- A systemic invalidation problem arises in the event of misrouting of deletes due to a configuration error
+
+<img src="./assets/invalidation-daemon.png">

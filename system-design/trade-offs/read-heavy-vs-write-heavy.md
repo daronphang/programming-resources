@@ -12,7 +12,7 @@ Designing systems for read-heavy versus write-heavy workloads involves different
 - Data partitioning
 - Asynchronous processing
 
-## Designing write-heavy system
+## Designing write-heavy systems
 
 - Choosing database optimized for write-heavy such as Cassandra, MongoDB, etc.
 - Batch/buffer multiple write operations together
