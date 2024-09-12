@@ -37,15 +37,3 @@ The key insight is that even brief retry delays of 100ms can cause cascading fai
 A cold cache (empty) can retrieve data from a warm cache with normal hit rate caches instead of hitting the persistent storage. This will reduce the turnup time.
 
 However, there can be race conditions here with cache consistency, which can be solved by adding a two second hold-off to deletes in the cold cache. This is turned off once the cold cache server's cache hit rate diminishes.
-
-## Reducing replication with regional pools
-
-Each cache cluster independently caches data depending on the mix of user requests that are sent to it. Replicating data allows us to take a cluster offline for maintenance without suffering from reduced hit rates. However, **for large, rarely accessed items, over-replicating the data can be memory inefficient**. The number of replicas can be reduced by having multiple frontend clusters **share the same set of cache servers**. This is called regional pool.
-
-Crossing cluster boundaries incurs more latency. On the other hand, replication trades more cache servers for less inter-cluster bandwidth, lower latency, and better fault tolerance. Nonetheless, for some data, it is more cost efficient to forgo the advantages of replicating data and have a single copy per region.
-
-One of the main challenges of scaling cache within a region is deciding whether a key needs to be replicated across all frontend clusters or have a single replica per region. Manual heuristics can be used to determine this including:
-
-- Access rates
-- Data set size
-- Number of unique users accessing particular items

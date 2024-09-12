@@ -13,6 +13,8 @@ Caches can exist at all levels in architecture, but are often found at the level
 
 Scope of caching typically applies to local storage or a specific system.
 
+<img src="./assets/caching.png">
+
 ## Performance indicators
 
 ### Cache ratio
@@ -20,6 +22,10 @@ Scope of caching typically applies to local storage or a specific system.
 ```
 cache hits / (cache hits + cache miss)
 ```
+
+### Cache evictions
+
+Monitor the number of evictions occurring in the cache. Frequent evictions might suggest the cache is too small or the eviction policy is not optimal for your use case.
 
 ## Caching strategies
 

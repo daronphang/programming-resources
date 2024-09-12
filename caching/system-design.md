@@ -82,8 +82,6 @@ A fully synchronized secondary cache pool that receives all writes and can immed
 
 A small, empty cache pool that temporarily caches values with a short TTL when the primary pool fails, reducing the load on the backend until the primary recovers. Gutters limits the load on the backend services at the cost of slightly stale data.
 
-This design differs from an approach in which a client rehashes keys among the remaining cache servers. Such an approach **risks cascading failures due to non-uniform key access frequency**. For example, a single key can account for 20% of a server's requests. The server that becomes responsible for this hot key might also become overloaded. By shunting load to idle servers, that risk is limited.
-
 <img src="./assets/gutter-pools.png">
 
 ### Smaller vs bigger servers

@@ -42,15 +42,20 @@ The failure (crash) of a node results in the movement of data objects from the f
 
 Adding and removing nodes in any distributed system is quite common. Existing nodes can die and may need to be decommissioned. Similarly, new nodes may be added to an existing cluster to meet growing demands. However, there are potential issues associated with a manual and fixed division of ranges:
 
-- **Adding or removing nodes**: Results in recomputing the tokens causing a significant administrative overhead for a large cluster
+- **Adding or removing nodes**: Recomputing of tokens results in rebalancing and distributing of data to all other nodes (moving a lot of data); this causes a significant administrative overhead for a large cluster
 - **Hotspots**: Since each node is assigned one large range, if the data is not evenly distributed, some nodes can become hotspots
 - **Node rebuilding**: Since each node's data might be replicated (for fault-tolerance) on a fixed number of other nodes, when we need to rebuild a node, only its replica nodes can provide the data; this puts a lot of pressure on the replica nodes and can lead to service degradation
 
 To handle these issues, Consistent Hashing introduces a new scheme of distributing the tokens to physical nodes. Instead of assigning a single token to a node, the hash range is divided into multiple smaller ranges, and **each physical node is assigned several of these smaller ranges**. Each of these subranges is considered a vnode.
 
-Each node in the system is assigned multiple random value within this space. Each random value is called a vnode position; a single node is associated to multiple vnodes and consequently multiple positions on the ring.
+Vnodes are **randomly distributed** across the cluster and are generally **non-contiguous** so that no two neighbouring vnodes are assigned to the same physical node or rack.
 
-Each data item identified by a key is assigned to a node by hashing the data item’s key to yield its position on the ring, and then walking the ring clockwise to find the first vnode with a position larger than the item’s position. The node associated with the vnode is the location of the data item.
+Benefits of vnodes are as follows:
+
+- Vnodes help spread the load more evenly across the cluster; this speeds up the rebalancing process after adding or deleting nodes
+- When a node needs to be rebuilt, instead of getting data from a fixed number of replicas, many nodes participate in the rebuild process
+- Vnodes make it easier to maintain a cluster containing **heterogeneous machines** i.e. assign a higher number of sub-ranges to a more powerful server
+- Having smaller ranges decreases the probability of hotspots
 
 <img src="../../assets/consistent-hashing-vnode.png">
 
