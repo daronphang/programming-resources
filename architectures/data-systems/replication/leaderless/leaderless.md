@@ -2,7 +2,7 @@
 
 Leader-centric replication is not fault-tolerant by design because we lose the write operation when the Master node is down. Leaderless replication addresses this concern and ensures our system can handle Write operations even when a subset of nodes are having an outage.
 
-In some implementations, client directly sends its writes to several replicas, while others make use of a coordinator node to do this on behalf of the client. Unlike a leader database, the coordinator does not enforce a particular ordering of writes.
+In some implementations, client directly sends its writes to several replicas, while others make use of a coordinator node to do this on behalf of the client. Unlike a leader database, the coordinator does not enforce a particular ordering of writes. Leaderless systems utilize quorum for reads and writes.
 
 However, concurrency issues arise for leaderless and multi-leader replication as they allow multiple writes to happen concurrently, and conflicts may occur.
 
