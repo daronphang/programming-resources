@@ -68,7 +68,7 @@ If an entire cluster has to be taken offline, user requests are diverted to othe
 
 ### Automated remediation for small outages
 
-An automated remediation system that automatically detects adn responds to host-level issues can be used to bring up new instances to replace affected ones. However, this process is not instantaneous and can take some time. During this window, the backend services my experience a surge of requests as clients attempt to fetch data from unavailable cache hosts.
+An automated remediation system that automatically detects and responds to host-level issues can be used to bring up new instances to replace affected ones. However, this process is not instantaneous and can take some time. During this window, the backend services my experience a surge of requests as clients attempt to fetch data from unavailable cache hosts.
 
 A common approach is to rehash keys and distribute them among the remaining cache servers. However, such an approach **risks cascading failures due to non-uniform key access frequency**. For example, a single key can account for 20% of a server's requests. Moving high-traffic keys to another server during a failure scenario could result in overload and further instability.
 
@@ -94,5 +94,5 @@ Having smaller servers provides benefits including:
 On the other hand, having larger servers provide the following benefits:
 
 - **Simplified management**: Fewer servers are easier to manage and maintain, with less moving parts and complexity in the overall system
-- **Improved resource utilization**: Larger servers can more effectively utilize CPU, memory adn network resources
+- **Improved resource utilization**: Larger servers can more effectively utilize CPU, memory and network resources
 - **Fewer connections**: With fewer cache servers, the total number of connections from clients is reduced, minimizing connection overhead

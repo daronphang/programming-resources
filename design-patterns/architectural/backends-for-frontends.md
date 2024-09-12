@@ -13,7 +13,7 @@ BFFs can also handle multiple functionalities including:
 
 <img src="../assets/BFF2.png">
 
-### Context and Problem
+### Context and problem
 
 An application may initially be targeted at desktop web UI where typically the backend is created in parallel to provide the features needed for that UI. As the application's user base grows, a mobile application is developed that must interact with the same backend.
 
