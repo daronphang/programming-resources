@@ -10,9 +10,15 @@ To deal with replication lag, can enforce tight consistency. This means all repl
 
 ### Reading your own writes
 
-To implement read-after-write consistency, can either read data that is editable by the user from the leader i.e. social media profile, and others from followers.
+To implement read-after-write consistency:
 
-Alternative is to track the time of the last update, and make all reads from the leader before a certain duration has passed i.e. one minute.
+- Retrieve a user's editable data from the leader consistently
+- Read only from leader for a certain duration (e.g. one minute) following an update
+- Client to keep track of the latest timestamp for an update, and make sure the follower has all updates at least till the timestamp
+
+### Increasing bandwidth
+
+Increasing the network bandwidth between primary and standby databases to minimize replication lag.
 
 ### Monotonic reads
 

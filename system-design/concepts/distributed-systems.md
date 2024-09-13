@@ -10,10 +10,29 @@ A system may have to scale because of many reasons like increased data volume or
 
 Generally, the performance of a system declines with the system size due to the management or environment cost. For instance, network speed may become slower because machines tend to be far apart from one another. More generally, some tasks may not be distributed, either because of their inherent atomic nature or because of some flaw in the system design. At some point, such tasks would limit the speed-up obtained by distribution. A scalable architecture avoids this situation and attempts to balance the load on all the participating nodes evenly.
 
+### Principles
+
+Key principles of building a scalable architecture:
+
+- Statelessness
+- Loose coupling
+- High cohesion
+- Asynchronous processing
+- Modularity
+- Avoiding centralized resources
+
+### Strategies
+
 Scaling can achieved by:
 
 - Vertical: Adding more power (CPU, RAM, storage) to existing server
 - Horizontal: Adding more servers into your pool of resources
+
+### Techniques:
+
+- Load balancing
+- Caching
+- Sharding
 
 ## Reliability
 
@@ -48,3 +67,31 @@ However, it is quite difficult to develop a precise cost model that would accura
 Another important consideration while designing a distributed system is how easy it is to operate and maintain. Serviceability or manageability is the simplicity and speed with which a system can be repaired or maintained.
 
 Early detection of faults can decrease or avoid system downtime.
+
+## Challenges
+
+### Communication
+
+In a distributed system, nodes need to communicate and coordinate with each other over a network to function as a cohesive unit. However, this communication is challenging due to the unreliable nature of the underlying network infrastructure.
+
+Key techniques to handle such issues include:
+
+- Reliable communication with TCP
+- Service discovery with DNS
+- Gossip protocol
+
+### Coordination
+
+Coordination between nodes is a critical challenge while building distributed systems:
+
+- Potential for failures leading to data inconsistencies
+- Unreliable networks
+- Lack of global clock to establish a consistent notion of time across all components
+- Keeping replicated data in-sync across multiple nodes
+
+Key techniques to handle such issues include:
+
+- Using a quorum
+- Logical clocks and vector clocks
+- Heartbeat mechanism
+- Strong consistency and eventual consistency

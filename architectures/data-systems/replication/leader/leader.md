@@ -7,7 +7,7 @@ To ensure every write to the database ends up on all replicas, a solution would 
 
 This mode of replication is a built-in feature across many relational and non-relational databases, including MySQL, PostgreSQL, Oracle, SQL Server, MongoDB, Kafka and RabbitMQ.
 
-### Types of leader-based replications
+## Types of leader-based replications
 
 Single-leader or multi-leader.
 
