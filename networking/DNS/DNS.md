@@ -35,6 +35,10 @@ $ hostname --fqdn
 $ hostnamectl
 ```
 
+## Dynamic DNS
+
+An essential extension of DNS is the Dynamic DNS (DDNS). This service allows users to automatically update the mapping between domain names and IP addresses whenever the IP address changes. The primary use-case for Dynamic DNS is to support hosts that have dynamic IP addresses, like those assigned by many residential ISPs. DDNS is invaluable for individuals and small businesses wanting to host services, websites, or devices on networks with dynamic IP addresses. It ensures consistent remote access by providing a stable domain name that always points to the current IP address, even if that address changes frequently.
+
 ## Registering DNS
 
 ### DNS Manager

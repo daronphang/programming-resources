@@ -11,6 +11,7 @@ Latency is particularly important in scenarios where real-time or near-real-time
 ### How to improve latency
 
 - **Optimize network routes**: Use CDNs to serve content from locations geographically closer to the user
+- **Implement caching**: Cache frequently accessed data in memory to reduce the need for repeated data processing (follow 80-20 rule)
 - **Upgrade hardware**: Faster processors, more memory, quicker storage (SSDs) can reduce processing time
 - **Use faster communication protocols**: HTTP/2
 - **Database optimization**: Use indexing, optimized queries, and in-memory databases to reduce data access and processing time
@@ -18,6 +19,8 @@ Latency is particularly important in scenarios where real-time or near-real-time
 - **Code optimization**: Optimize algorithms and remove unnecessary computations to speed up execution
 - **Minimize external calls**: Reduce the number of API calls or external dependencies in your application
 - **Parallel processing**: Use parallel computing techniques where tasks are divided and processed simultaneously
+- **Async processing**: Execute long running tasks in the background
+- **Data compression**: Compress data before sending over the network
 
 ## Throughput
 
