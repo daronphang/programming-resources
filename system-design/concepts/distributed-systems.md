@@ -95,3 +95,4 @@ Key techniques to handle such issues include:
 - Logical clocks and vector clocks
 - Heartbeat mechanism
 - Strong consistency and eventual consistency
+- Saga pattern

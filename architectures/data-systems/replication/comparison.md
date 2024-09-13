@@ -23,7 +23,7 @@
 </tr>
 
 <tr>
-<td>Complexity</td>
+<td>Leaderless</td>
 <td>Low</td>
 <td>High</td>
 <td>Moderate</td>
