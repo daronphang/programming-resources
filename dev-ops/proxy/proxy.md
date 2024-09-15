@@ -7,6 +7,16 @@ Reverse proxy is used by the server such as web server to achieve load balancing
 - Increases scalability and flexibility as clients see only reverse proxy's IP address i.e. can change configuration of backend infrastructure
 - Reduces time taken to generate response with compression (reducing bandwidth required for transmitting responses), SSL termination (decrypts incoming requests and encrypts server responses) and caching (stores copy of response locally)
 
+### Benefits
+
+- Server anonymity (security)
+- Caching
+- Load balancing
+- Offloading TLS encryption
+- DDoS protection
+- Canary experimentation
+- URL/content rewriting
+
 ## Forward proxy
 
 Forward proxy is used by the client such as web browser. Can reside in the same internal network as the client, or it can be on the internet. Can be used to bypass firewall restrictions in order to visit websites that are blocked by school, government, etc. For instance, forward proxy can be used to hide the real IP of the client. Forward proxies are used to protect clients.
@@ -16,6 +26,15 @@ Forward proxy is used by the client such as web browser. Can reside in the same 
 - Different clients can send out various requests to different servers through forward proxy
 - Easier to enforce authentication, SSL encryption or other security policies; used in tandem with firewall
 - Can act as a cache server in an internal network i.e. downloading of same resource
+
+### Benefits
+
+- Client anonymity
+- Caching
+- Traffic control
+- Logging
+- Request/response transformation (adding/removing headers, encrypting/decrypting, compressing)
+- Collapsed forwarding by combining same data access requests into one request
 
 ## Reverse proxy vs load balancer
 

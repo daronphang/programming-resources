@@ -4,7 +4,7 @@ Websocket is a bidirectional, full-duplex protocol that is used in client-server
 
 ### Security
 
-The biggest disadvantage of Websocket as a protocol is security. It is not restricted by same-origin policy, which may mke CSRF-like attacks a lot easier.
+The biggest disadvantage of Websocket as a protocol is security. It is not restricted by same-origin policy, which may make CSRF-like attacks a lot easier.
 
 ## Applications
 

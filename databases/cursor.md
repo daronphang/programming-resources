@@ -1,4 +1,4 @@
-## Database Cursor
+## Database cursor
 
 A database cursor is an identifier associated with a group of rows. It is a pointer to the current row in a buffer.
 

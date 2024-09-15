@@ -1,4 +1,4 @@
-### Linux
+## Linux
 
 Both /media and /mnt should not contain any data but serve as temporary mount points.
 

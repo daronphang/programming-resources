@@ -71,7 +71,7 @@ $ cat /etc/resolv.conf
 
 Every cluster has an address space, and that Namespaces partition it. Cluster address spaces are based on a DNS domain called the **cluster domain**. Object names have to be unique within a Namespace but not across Namespaces.
 
-Objects can connect to Services in the local Namespace using short names (ent) but requires FQDN i.e. env.dev.svc.cluster.local.
+If a Pod wants to access a Service in its local namespace, you can use its short name i.e. ent. However, for Pods to reach a Service in another namespace, you need to use the **FQDN** i.e. ent.dev.svc.cluster.local.
 
 ```
 // fully qualified domain name (FQDN)

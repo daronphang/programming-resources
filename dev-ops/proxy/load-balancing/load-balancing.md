@@ -1,4 +1,4 @@
-## Load Balancer
+## Load balancer
 
 - Distributes incoming client requests among a group of servers and returning the response from selected server to appropriate client
 - Most commonly deployed when site needs multiple servers as the volume of requests is too much for a single server to handle efficiently
@@ -6,7 +6,7 @@
 - Distribute workload in a way that makes the best use of each server's capacity, prevents overload on any server, and results in fastest possible resposne to client
 - Enhance user experience by reducing number of error responses the client sees (diverts requests away from servers that are down)
 
-## Sticky Session (Session Persistence)
+## Sticky session (session persistence)
 
 Session stickiness is a process in which a load balancer creates an affinity between a client and specific network server for the duration of the session (i.e. the time a specific IP spends on a website). **Consecutive requests are routed to the same server during session**. Using sticky sessions can help improve user experience and optimize network resource usage.
 

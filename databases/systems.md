@@ -1,10 +1,10 @@
-## OLTP (Online Transaction Processing)
+## Online Transaction Processing (OLTP)
 
 OLTP is a technique used for detailed day-to-day transactions of data which continuously chain on an everyday-basis. Main features include controlled insertion and updating of data with effective access to data manipulation and viewing mechanisms.
 
 OLTP is used for interactive applications that are expected to be highly available, with read and write operations processing with low latency i.e. **makes data management simple and efficient, and serves real-time transactions**. Hence, OLTP databases are often closely guarded and administrators are reluctant to run adhoc queries as they are often expensive and can harm performance of concurrently executing transactions.
 
-## Data Warehousing
+## Data warehousing
 
 A data warehouse is a separate database that analysts can query to their hearts' content, without affecting OLTP operations. The warehouse maintains a read-only copy of the data in all the various OLTP systems in the company.
 

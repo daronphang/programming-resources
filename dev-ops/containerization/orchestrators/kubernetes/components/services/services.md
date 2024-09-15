@@ -1,6 +1,6 @@
 ## Services
 
-Used to expose Pods to the network. Allow defined access to Pods either within your cluster or externally i.e. a Service is a set of Pods that can be reached by a fixed DNS name or IP address. Services use labels and selectors to dynamically select the Pods to send traffic to.
+Used to expose Pods to the network. Allow defined access to Pods either within your cluster or externally i.e. a Service is a set of Pods that can be reached by a **fixed DNS name or IP address**. Services use labels and selectors to dynamically select the Pods to send traffic to.
 
 Although each Pod has a unique IP address, they are not exposed outside the cluster, and a Service is required to route traffic across the Pods. Can be exposed in different ways by specifying a type.
 

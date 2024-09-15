@@ -16,7 +16,9 @@ Each read or write request for a data item will either be processed successfully
 
 ### Partition tolerance (of nodes due to network fault)
 
-Partition tolerance means that the system can continue operating even if the network connecting the nodes has a fault that results in two or more partitions, where the **nodes in each partition can only communicate with each other**. The system can continue to uphold its consistency guarantees in spite of network partitions. Distributed systems guaranteeing partition tolerance can gracefully recover from partitions once the partition heals.
+Partition tolerance means that the system can continue operating even when network partitions occur. Network partitions can cause nodes to lose contact with one another, making communication and synchronization difficult i.e. replication.
+
+Distributed systems guaranteeing partition tolerance can gracefully recover from partitions once the partition heals.
 
 Partition tolerance is a way of life, and **must be provided**.
 

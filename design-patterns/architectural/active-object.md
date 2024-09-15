@@ -1,6 +1,6 @@
 ## Active Object Pattern
 
-The Active Object pattern is a concurrency design pattern that decouples method execution from method invocation in multi-threaded applications. When a thread in a multithreaded program waits for an event, it usually invokes some operating system call that blocks the thread until the event has occurred. It is particularly useful for managing concurrency in systems that use asynchronous method calls and require a high level of responsiveness.
+The Active Object pattern is a concurrency design pattern that **decouples method execution from method invocation** in multi-threaded applications. When a thread in a multithreaded program waits for an event, it usually invokes some operating system call that blocks the thread until the event has occurred. It is particularly useful for managing concurrency in systems that use asynchronous method calls and require a high level of responsiveness.
 
 The pattern allows objects to process requests concurrently, with each request being encapsulated in a separate command object and executed by a dedicated thread. Each object has its own thread of control, and interactions between objects are managed through a scheduler.
 

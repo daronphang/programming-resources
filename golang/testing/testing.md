@@ -60,6 +60,10 @@ func TestFooer2(t *testing.T) {
 }
 ```
 
+### Run()
+
+Used to define a subtest.
+
 ### Parallel()
 
 All tests calling this function will be executed in parallel. go test handles parallel tests by pausing each test that calls t.Parallel(), and then resuming them in parallel when all non-parallel tests have been completed.

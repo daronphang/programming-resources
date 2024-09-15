@@ -1,16 +1,16 @@
-## Dirty Reads
+## Dirty reads
 
 One client reads another client's writes before they have been committed. The read committed isolation level and stronger levels prevent dirty reads.
 
-## Dirty Writes
+## Dirty writes
 
 One client overwrites data that another client has written, but not yet committed. Almost all transaction implementations prevent dirty writes.
 
-## Lost Updates
+## Lost updates
 
 Two clients concurrently perform a read-modify-write cycle. One overwrites the other's write without incorporating its changes i.e. counter increments. Some implementations of SSI prevent this anomaly automatically, while others require a manual lock.
 
-### Atomic Write Operations
+### Atomic write operations
 
 Many databases provide atomic update operations, which remove the need to implement read-modify-write cycles in application code.
 
@@ -21,7 +21,7 @@ Implemented by taking an exclusive lock on the object when it is read so that no
 UPDATE counters SET value = value + 1 WHERE key = 'foo';
 ```
 
-### Explicit Locking
+### Explicit locking
 
 If the database does not provide built-in atomic operations, the application can perform an explicit lock on objects that are going to be updated. However, need to be careful so as not to introduce a race condition as adding locks can be missed.
 
@@ -34,11 +34,11 @@ UPDATE wiki_pages SET content = 'new content'
     WHERE id = 1234 and content = 'old content'
 ```
 
-## Phantom Reads
+## Phantom reads
 
 A transaction reads objects that match some search condition. Another client makes a write that affects the results of that search. SSI prevents straightforward phantom reads, but phantoms in the context of write skew require special treatment, such as index-range locks.
 
-## Write Skew and Phantom
+## Write skew and phantom
 
 Write skew is neither a dirty nor a lost update, but can occur if two transactions read the same objects and then update some of those objects (different transactions may update different objects). This requires **serializable isolation**, particularly SSI which is implemented with MVCC.
 

@@ -6,11 +6,11 @@ A Pod is the smallest unit or the **atomic unit of scheduling** that can be depl
 
 Pods that are running inside Kubernetes are running on a private, isolated network. By default, they are visible from other pods and services within the same cluster, but not outside of the network. When we use kubectl, we are interacting through an API endpoint to communicate with our application.
 
-### Motivation
+## Motivation
 
 Having an additional layer of abstraction by the Pod instead of deploying a single container directly is needed as Kubernetes requires additional information including restart policy or live probe to manage a container. Instead of overloading the existing container, using a new entity, Pod, that logically wraps one or more containers and managed as a single entity.
 
-#### Pods augment containers
+### Pods augment containers
 
 Pods augment containers in the following ways:
 
@@ -22,13 +22,13 @@ Pods augment containers in the following ways:
 - Security policies
 - Resource requests and limits
 
-#### Pods assist in scheduling
+### Pods assist in scheduling
 
 On the scheduling front, every container in a Pod is guaranteed to be scheduled to the same cluster node, known as **co-scheduling or co-locating**. This guarantees they will be in the same region and zone in your cloud or datacenter.
 
 Labels, affinity and anti-affinity rules, and resource requests and limits give you granular control over which nodes Pods can run on.
 
-#### Pods enable resource sharing
+### Pods enable resource sharing
 
 Pods provide a shared execution environment for one or more containers that includes:
 
@@ -37,7 +37,7 @@ Pods provide a shared execution environment for one or more containers that incl
 - Shared memory
 - Shared volumes
 
-### Networking
+## Networking
 
 Each Pod creates its own network namespace i.e. it has its own IP address, a single range of TCP/UDP ports, and a single routing table.
 
@@ -45,19 +45,19 @@ Each Pod is fully routable on an internal Kubernetes network called **pod networ
 
 As a default configuration, the Pod network is wide open and you should use **Network Policies** to lock down access.
 
-### Pods Assignment
+## Pods Assignment
 
 The selection of appropriate nodes onto which to schedule Pods is handled by Kubernetes scheduler. Ensures that the right node is selected by checking its capacity for CPU and RAM, and comparing it to the Pod's resource requests.
 
-### Pods Distribution
+## Pods Distribution
 
 To avoid assignment of multiple replicas of a Pod on a single worker Node, can configure PodAntiAffinity.
 
-### Service Mesh
+## Service Mesh
 
 It is recommended to put each container in one Pod and loosely couple them over the network. However, this creates a lot of potentially un-encrypted network traffic. Should consider using a service mesh to secure traffic between Pods and application services.
 
-### Pods Deployment
+## Pods Deployment
 
 The deployment of a Pod is an atomic operation i.e. it is only ready for service when all its containers are up and running.
 

@@ -2,16 +2,6 @@
 
 Namespaces are a feature of the Linux kernel that allows us to isolate kernel resources for a set of processes. On a server where you are running many different services, isolating each service and its associated processes from other services means that there is a smaller blast radius for changes, as well as a smaller footprint for security‑related concerns. Mostly though, isolating services meets the architectural style of microservices.
 
-### Benefits
-
-#### Isolation of resources
-
-One troublesome process won't be taking down the whole host, but only affects those processes belonging to a particular namespace.
-
-#### Security
-
-A security flaw in the process running under a given namespace won't give the attacker access to the whole system. Hence, it is important to avoid running processes using privileged users whenever possible.
-
 ### Containers
 
 Namespaces are one of the technologies containers are built on (Docker, Podman, etc.), used to enforce segregation of resources. When using a container runtime, it creates a set of namespaces and control groups behind the scenes for you.
@@ -20,7 +10,17 @@ Using containers gives the developer an isolated environment that looks and feel
 
 Cgroups namespace is a key component of containers as there are often multiple processes running in a container that you need to control together.
 
-## Namespaces types
+## Benefits
+
+### Isolation of resources
+
+One troublesome process won't be taking down the whole host, but only affects those processes belonging to a particular namespace.
+
+### Security
+
+A security flaw in the process running under a given namespace won't give the attacker access to the whole system. Hence, it is important to avoid running processes using privileged users whenever possible.
+
+## Types
 
 ### User namespace
 

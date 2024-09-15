@@ -10,14 +10,14 @@ Router is assigned with single public IP address that is visible; devices connec
 
 ### NAT Protection
 
-1. Protects the identity of network and doesn't show internal IP addresses to the internet.
-2. Requires every incoming packet of information to have been asked for by a device.
-3. Can use whitelisting to block unauthorized outgoing traffic i.e. if have malware, can prevent from communicating with device.
+1. Protects the identity of network and doesn't show internal IP addresses to the internet
+2. Requires every incoming packet of information to have been asked for by a device
+3. Can use whitelisting to block unauthorized outgoing traffic i.e. if have malware, can prevent from communicating with device
 
 ### How NAT firewall works
 
 1. Device sends a request to web server by sending data packets (includes sender/receiver IPs, port numbers, etc)
 2. Traffic goes through router with NAT firewall that changes data packet's private IP to router's public IP
-3. Data packets reach web server and get necessary information.
+3. Data packets reach web server and get necessary information
 4. Information travels back to router which uses its NAT forwarding table to determine which device requested it
 5. NAT changes the data packet's public IP to its previous private IP and information is sent to requested device

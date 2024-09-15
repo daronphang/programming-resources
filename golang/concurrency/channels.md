@@ -245,3 +245,37 @@ for {
     }
 }
 ```
+
+```go
+func main() {
+	ch := make(chan int, 0)
+
+	go func() {
+		for {
+			select {
+				case i, ok := <- ch:
+				if !ok {
+					fmt.Println("channel closed")
+					return
+				}
+				fmt.Printf("received: %v \n", i)
+			}
+		}
+	}()
+
+	for i := range 10 {
+		ch <- i
+		if i == 3 {
+			close(ch)
+			break
+		}
+	}
+	time.Sleep(1)
+}
+
+// received: 0
+// received: 1
+// received: 2
+// received: 3
+// channel closed
+```

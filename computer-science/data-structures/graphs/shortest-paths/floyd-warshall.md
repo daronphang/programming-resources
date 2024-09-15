@@ -12,32 +12,18 @@ Floyd-Warshall has several advantages: it solves the all-pairs shortest path pro
 
 ### Algorithm
 
-1. Define INF as a large constant value to represent an infinite distance for initial comparisons
-2. Create a 2D array distanceMatrix with dimensions n x n to store shortest path distances between all pairs of cities
-3. For each city i:
+This algorithm considers all vertices as an intermediate vertex. For every vertex pair (i,j):
 
-   - Set all distances in distanceMatrix[i] to INF
-   - Set the distance from city i to itself (distanceMatrix[i][i]) to 0
+- k is not an intermediate in shortest path from i to j
+- k is an intermediate; d(i,j) is updated if > d(i,k) + d(k,j)
 
-4. Iterate through each edge in edges
-   - Extract start, end, and weight from each edge
-   - Update distanceMatrix[start][end] and distanceMatrix[end][start] with weight
-5. Call floyd(n, distanceMatrix) to compute shortest paths between all pairs of cities
+Time complexity is O(n^3) as it involves three nested for loops. Thought it has same time complexity as Dijkstra's, it will be faster as it performs fewer instructions per loop.
 
-Function as follows:
+<img src="../../../assets/shortest-paths-floyd-intermediate.PNG">
 
-1. Use three nested loops to update the distanceMatrix:
-   - Outer Loop: Iterate over each intermediate city k
-   - Middle Loop: Iterate over each source city i
-   - Inner Loop: Iterate over each destination city j
+<img src="../../../assets/shortest-paths-floyd-matrix.PNG">
 
-<img src="../../../assets/floyd-warshall-1.png">
-
-<img src="../../../assets/floyd-warshall-2.png">
-
-<img src="../../../assets/floyd-warshall-3.png">
-
-<img src="../../../assets/floyd-warshall-4.png">
+<img src="../../../assets/shortest-paths-floyd-algo.PNG">
 
 ### Example
 

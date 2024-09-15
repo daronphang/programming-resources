@@ -9,6 +9,7 @@ Interacts directly with software applications to provide communication functions
 - Domain Name System (DNS)
 - File Transfer Protocol (FTP)
 - Hypertext Transfer Protocol (HTTP)
+- Websockets
 - Internet Massage Access Protocol (IMAP)
 - Post Office Protocol (POP)
 - Simple Mail Transfer Protocol (SMTP)

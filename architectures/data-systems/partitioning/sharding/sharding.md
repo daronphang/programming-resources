@@ -10,6 +10,30 @@ For queries that operate on a single shard, each node can independently execute 
 
 Sharding the database is a common solution in **scale-up scenarios**. Splitting data can help reduce index growth and reduce write locking on a single instance. Sharding is also, however, **the only way to achieve a writeable scale-out database for the vast majority of SQL users** e.g. PostgreSQL.
 
+### Vertical
+
+Vertical sharding is the technique of moving a table to a separate server. Vertical sharding allows to keep different tables with different database leaders. This approach improves the write scalability.
+
+Another approach is to divide data based on columns, with each shard holding a subset of columns.
+
+### Horizontal
+
+Horizontal sharding divides data based on rows, with each shard holding a subset of rows.
+
+There are two levels to horizontally sharding a database:
+
+- Logical database level: Each shard contains the same set of tables
+- Table level: Only large tables are sharded
+
+If secondary indexes are heavily used, sharding at table level would be preferred. This is because secondary indexes are stored within a shard, and querying on secondary indexes may have to query all the shards of the table which may be expensive i.e. scatter and gather.
+
+### How sharding works
+
+1. Data is partitioned based on specific criteria e.g. user ID
+2. Each partition (shard) resides on a dedicated server
+3. Applications determine the correct shard for a given query
+4. Data within a shard can be replicated for high availability
+
 ### Client vs server sharding
 
 Client-side sharding is entirely transparent to the application which is able to connect to any node in the cluster and have queries automatically access the correct shards. Instead of relying on automatic coordination, applications determine where data is located and route queries accordingly.
@@ -21,13 +45,6 @@ Similarly, Etsy took this approach when moving to a sharded database system but 
 From experiences like these, there is an increasing need to separate sharding logic from the application as it introduces a plethora of complexity, making the application and your database harder to manage, which, in turn, drains developer capacity and pulls your team away from building and improving on great products for your customer base. Examples include shardingsphere and Vitess.
 
 In contrast, server-side database sharding is a method of distributing data across multiple databases on the server side, meaning that the server infrastructure is responsible for directing queries to the appropriate database. Examples include Dynamo, Cassandra, CockroachDB.
-
-### How sharding works
-
-1. Data is partitioned based on specific criteria e.g. user ID
-2. Each partition (shard) resides on a dedicated server
-3. Applications determine the correct shard for a given query
-4. Data within a shard can be replicated for high availability
 
 ## Benefits
 
