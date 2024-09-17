@@ -26,6 +26,8 @@ As a final step in the DNS resolution process, the DNS recursor sends the IP add
 
 Most hosts on a network (internal or external) have both a unique IP address and a hostname. When a client searches for a hostname, their network’s DNS provider executes a multi-step resolution process via the following four servers in order to find and return the appropriate IP address.
 
+DNS requests from clients use UDP header at port 53. UDP is used because the client will retry an operation if the DNS resolution fails.
+
 There are two methods of query resolution in DNS:
 
 - Iterative query resolution

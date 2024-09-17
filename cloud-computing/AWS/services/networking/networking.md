@@ -92,24 +92,26 @@ Security groups can be attached to multiple EC2 instances and are locked down to
 A good practice is to create a security group for a particular strategy/role i.e. internet-access, ssh, web-server, database, etc.
 
 ```
-# public inbound
-Type    Protocol    Port range      Source
-HTTPS   TCP         443             0.0.0.0
-HTTPS   TCP         80              0.0.0.0
-HTTPS   TCP         22              CIDR of EC2 Instance Connect (EIC)
+# internet access, outbound
+Protocol    Port range      Source
+TCP         443             0.0.0.0
+TCP         80              0.0.0.0
 
-# public outbound
-Type    Protocol    Port range      Source
-All   All         All               0.0.0.0
+# ssh, inbound
+Protocol    Port range      Source
+TCP         22              CIDR of EC2 Instance Connect (EIC)
 
-# private inbound
-Type    Protocol    Port range      Source
-HTTPS   TCP         22              Security group of EIC Endpoint
-All     All         All             CIDR of same/different subnet
+# web server, inbound
+Protocol    Port range      Source
+TCP         443             0.0.0.0
+TCP         80              0.0.0.0
 
-# private outbound
-Type    Protocol    Port range      Source
-All   All         All               0.0.0.0
+# docker swarm, inbound and outbound
+Protocol    Port range      Source
+TCP         7946            CIDR of subnet
+TCP         2377            CIDR of subnet
+UDP         4789            CIDR of subnet
+UDP         7946            CIDR of subnet
 ```
 
 ### Stateful packet filtering

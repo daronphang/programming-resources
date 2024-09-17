@@ -28,6 +28,13 @@ The smallest IP range you can have is `/28`, which provides 16 IP addresses. The
 192.168.1.0/22  # range of 1024 (2*2*256)
 ```
 
+### Access Control Lists (ACLs)
+
+IPv4 ACLs give network engineers a way to identify different types of packets. ACLs can be used for the following:
+
+- Packet filter
+- Match packets for applying Quality of Service (QoS) features
+
 ## IPv6
 
 Introduced in 1998, having an address length of 128 bits using hexadecimal notation. NAT is not typically used as there is no address shortage.

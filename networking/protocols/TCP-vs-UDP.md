@@ -22,6 +22,14 @@ UDP enables continuous data transmission without acknowledging or confirming the
 
 However, UDP has a drawback: it doesn’t guarantee the delivery of packets. If a packet is lost during transmission, UDP doesn’t have a built-in mechanism to retransmit it.
 
+## Multiplexing
+
+Multiplexing relies on a concept called a **socket**, which consists of three things:
+
+- An IP address
+- Transport protocol
+- Port number
+
 ## Differences
 
 <table>
@@ -52,7 +60,7 @@ However, UDP has a drawback: it doesn’t guarantee the delivery of packets. If 
 </tr>
 <tr>
 <td>Error checking</td>
-<td>Thorough error-checking guarantees data arrives in its intended state</td>
+<td>Thorough error-checking guarantees data arrives in its intended state, but consumes more bandwidth and processing cycles</td>
 <td>Minimal error-checking</td>
 </tr>
 <tr>
@@ -64,5 +72,15 @@ However, UDP has a drawback: it doesn’t guarantee the delivery of packets. If 
 <td>Speed</td>
 <td>Slow</td>
 <td>Fast</td>
+</tr>
+<tr>
+<td>Multiplexing using ports</td>
+<td>Not supported</td>
+<td>Allows receiving hosts to choose the correct application for which the data is destined, based on port number</td>
+</tr>
+<tr>
+<td>Flow control using windowing (sliding window)</td>
+<td>Window concept lets the receiving host tell the sender how much data it can receive, to slow down or speed up</td>
+<td>Not supported</td>
 </tr>
 </table>
