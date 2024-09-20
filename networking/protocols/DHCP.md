@@ -2,6 +2,12 @@
 
 Dynamic Host Configuration Protocol (DHCP) provides one of the most commonly used services in a TCP/IP network. The vast majority of hosts in a TCP/IP network are **user devices**, and the vast majority of user devices learn their IPv4 settings using DHCP.
 
+### Why use DHCP?
+
+Every device on a TCP/IP-based network must have a **unique unicast IP address** to access the network and its resources. Without DHCP, IP addresses for new computers or computers that are moved from one subnet to another must be configured manually; IP addresses for computers that are removed from the network must be manually reclaimed.
+
+With DHCP, this entire process is automated and managed centrally. The DHCP server maintains a pool of IP addresses and leases an address to any DHCP-enabled client when it starts up on the network. Because the IP addresses are dynamic (leased) rather than static (permanently assigned), addresses no longer in use are automatically returned to the pool for reallocation.
+
 ### Benefits over manual configuration of IPv4 settings
 
 Configuration of host IP settings sits in a DHCP server, with each client learning these settings using DHCP messages. Hence, host IP configuration is controlled by IT staff, rather than on local configuration on each host, resulting in fewer errors.
@@ -34,3 +40,9 @@ As DHCP clients do not have an IP address initially, it makes use of two special
 All hosts in the subnet receive the Offer message. However, the original Discover message lists a number called the client ID, which includes the host’s MAC address, that identifies the original host.
 
 <img src="../assets/DHCP.png">
+
+## DHCP and NAT in router
+
+DHCP and NAT can both be used at the time. DHCP is strictly concerned with IP address assignment (can also be used for private IP addresses) and the communication of things such as DNS, default gateway,etc. Using DHCP, it reduces client configuration tasks and you have a centralized management.
+
+The router provides private IP addresses to all of your host in the network via DHCP. When one of this hosts want to send packets to the internet, this same router will translate the private IP address (previously assigned via DHCP) into a public address using NAT.

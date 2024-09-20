@@ -1,13 +1,13 @@
 ## Domain Name Server (DNS)
 
-https://www.linode.com/docs/guides/dns-records-an-introduction/
+DNS is a crucial component of the internet that translates human-readable domain names (www.example.com) into machine-readable IP addresses (192.0.2.1). This process allows users to access websites and services using familiar names instead of having to remember numerical addresses.
 
-### DNS records
+### Resource records
 
-- A: Maps your domain/subdomain to one or more IP addresses e.g. example.com
-- AAAA: For mapping IPv6
-- CNAME: Maps a name to another name; should only be used when there are no other records on that name
-- ALIAS: Maps a name to another name, but can coexist with other records on that name e.g. www.example.com
+- **A**: Maps your domain/subdomain to one or more IP addresses e.g. example.com
+- **AAAA**: For mapping IPv6
+- **CNAME**: Maps a name to another name; should only be used when there are no other records on that name
+- **ALIAS**: Maps a name to another name, but can coexist with other records on that name e.g. www.example.com
 
 ```
 example.com     A       12.34.56.78
@@ -39,52 +39,9 @@ $ hostnamectl
 
 An essential extension of DNS is the Dynamic DNS (DDNS). This service allows users to automatically update the mapping between domain names and IP addresses whenever the IP address changes. The primary use-case for Dynamic DNS is to support hosts that have dynamic IP addresses, like those assigned by many residential ISPs. DDNS is invaluable for individuals and small businesses wanting to host services, websites, or devices on networks with dynamic IP addresses. It ensures consistent remote access by providing a stable domain name that always points to the current IP address, even if that address changes frequently.
 
-## Registering DNS
+## DNS Security Extensions (DNSSEC)
 
-### DNS Manager
-
-DNS manager provides an interface that allows you to add DNS records for all of your domain names. DNS setup are as follows:
-
-1. Register/purchase a domain name from a domain registrar
-2. Register nameservers on domain registrar's website
-3. Use DNS Manager to add domain and basic DNS records
-4. Set reverse DNS
-
-https://www.linode.com/docs/guides/dns-manager/
-
-### Domain Registrars
-
-Need to purchase domain name from Domain Registrars. After purchasing, need to register the personal name servers for your domain name. Should specify at least two name servers so that the other can continue to serve your DNS information if one of them is down.
-
-https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/
-
-```
-NameCheap
-Google Domains
-Domain.com
-goDaddy
-```
-
-```
-ns1.linode.com
-ns2.linode.com
-ns3.linode.com
-```
-
-### Name Servers
-
-Specifying name servers is an essential part of domain ownership. Else, clients won't know where to find your DNS information and your domain won't resolve. Name servers host a domain's DNS information in 'zone' text file or SOA (Start of Authority) records.
-
-Can host your DNS information on name servers as follows:
-
-- Linode
-- Your domain registrar
-- Your own DNS server
-- Third-party DNS hosting
-
-### Reverse DNS
-
-Reverse DNS lookup resolves an IP address to a designated domain name. Should always set reverse DNS.
+All top-level domains support DNSSEC. DNSSEC is a straight-forward system by which resource records are signed by the organization owning a zone.
 
 ## Updating hosts file
 

@@ -106,7 +106,7 @@ func main() {
 }
 ```
 
-### for-select loop
+### For-select loop
 
 There are a couple of scenarios this pattern can be used:
 
@@ -134,7 +134,7 @@ for {
 }
 ```
 
-## or-channel
+## Or-channel
 
 At times you may find yourself wanting to combine one or more done channels into a single done channel that closes if any of its component channels close. You can create a one-liner by combining channels together through recursion and goroutines.
 

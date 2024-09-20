@@ -19,9 +19,61 @@ When a user tries to access a resource, a request is sent to the LDAP authentica
 User must have an LDAP client installed on their device.
 
 1. Client establishes a secure connection with the LDAP directory
-2. Client send a search query to the directory for a specific request i.e. user's acccess group
+2. Client send a search query to the directory for a specific request i.e. user's access group
 3. LDAP directory authenticates the user
 4. Search operation is performed within the directory, and the result of the request is returned
+
+### Directory entry
+
+Implementing an LDAP directory service proceeds in much the same way as implementing a naming service e.g. DNS.
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Abbreviation</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Country</td>
+<td>C</td>
+<td>NL</td>
+</tr>
+<tr>
+<td>Locality</td>
+<td>L</td>
+<td>O</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>O</td>
+<td>VU University</td>
+</tr>
+<tr>
+<td>OrganizationalUnit</td>
+<td>OU</td>
+<td>Computer Science</td>
+</tr>
+<tr>
+<td>CommonName</td>
+<td>CN</td>
+<td>Main Server</td>
+</tr>
+<tr>
+<td>FTP_Server</td>
+<td>-</td>
+<td>137.37.20.3, 130.37.24.6</td>
+</tr>
+</table>
+
+### Searching
+
+LDAP allows users to search for a directory entry given a set of criteria that attributes of the searched entries should meet.
+
+```
+search(“(C=NL)(O=VU University)(OU=*)(CN=Main server)”)
+```
+
+Searching in a directory service is generally an expensive operation. We will generally need to access several leaf nodes in a directory information tree (DIT). However, by allowing several trees to co-exist, we can create a forest of LDAP domains.
 
 ## LDAP vs AD
 

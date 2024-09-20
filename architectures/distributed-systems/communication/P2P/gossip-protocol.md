@@ -2,7 +2,7 @@
 
 The peer-to-peer state management approach is inclined towards high availability and **eventual consistency**. The gossip protocol algorithms can be used to implement peer-to-peer state management services with high scalability and improved resilience.
 
-The gossip protocol is a **decentralized peer-to-peer communication** technique to transmit messages in a large distributed system.
+The gossip protocol is a **decentralized peer-to-peer communication** technique to transmit messages in a large distributed system. It relies on epidemic behavior i.e. based on theory of infectious diseases.
 
 Gossip protocol can be used to keep nodes consistent only if:
 
@@ -18,6 +18,18 @@ Use cases include:
 - Leader election
 
 https://highscalability.com/gossip-protocol-explained/
+
+### Anti-entropy
+
+A popular propagation model is that of anti-entropy. In this model, a node P picks another node Q at random, and subsequently exchanges updates with Q. There are three approaches to exchanging updates:
+
+1. P only pulls in new updates from Q
+2. P only pushes its own updates to Q
+3. P and Q send updates to each other i.e. a push-pull approach (**most effective**)
+
+When it comes to rapidly spreading updates, a pure push-based approach is the worst choice. This is because updates can be propagated only by infected nodes. However, if many nodes are infected, the probability of each one selecting a susceptible node is relatively small.
+
+In contrast, pull-based approach works much better as spreading updates is essentially triggered by susceptible nodes. Chances are big that such a node will contact an infected one to subsequently pull in the updates and become infected as well.
 
 ### How it works
 

@@ -1,6 +1,8 @@
 ## RPC (Remote Procedure Call)
 
-RPC is a powerful technique for constructing distributed, client-server based applications. RPC is an architectural style for distributed systems. It allows a program on one machine to call a procedure (subroutine/service) on another machine in a different address space than its own. The procedure may be on the same system or a different system connected on a network. Supports both XML-RPC and JSON-RPC.
+RPC is a powerful technique for constructing distributed, client-server based applications. RPC is an **architectural style for distributed systems**. It allows a program on one machine to call a procedure (subroutine/service) on another machine in a different address space than its own. The procedure may be on the same system or a different system connected on a network. Supports both XML-RPC and JSON-RPC.
+
+In a nutshell, RPC allow programs to call procedures located on other machines. When a process on a machine A calls a procedure on a machine B, the calling process on A is suspended, and execution of the called procedure takes place on B. Information can be transported from the caller to the callee in the parameters and can come back in the procedure result. No message passing at all is visible to the programmer.
 
 Idea behind RPC is that a program can call and execute a subroutine just like it would call a local subroutine, but the network communication details are hidden from the user. RPC calls are defined through routines contained in the RPC protocol. It is not a transport protocol but a method of using existing communication features in a transparent way.
 
@@ -20,7 +22,7 @@ As the application software does not contain any communication code, it is indep
 - OS and programming language used
 - Calling sequence needed to use the underlying communications software
 
-## RPC procedure
+### How it works
 
 1. Client invokes a client stub procedure with parameters that resides within the client's address space
 2. Client stub marshalls (packs) the parameters into a message; marshalling includes converting the representation of the parameters into a standard format

@@ -1,6 +1,8 @@
-## Functions as a Service
+## Functions as a Service (FaaS)
 
 There is a class of applications that might only need to temporarily come into existence to handle a single request, or simply need to respond to a specific event. This style of request or event-driven application design has flourished recently as large-scale public cloud providers have developed FaaS products.
+
+FaaS allows a client to execute code without bothering even with starting a server to handle the code.
 
 ### FaaS vs serverless computing
 
