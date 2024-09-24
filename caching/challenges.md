@@ -116,3 +116,7 @@ One of the main challenges of scaling cache within a region is deciding whether 
 - Access rates
 - Data set size
 - Number of unique users accessing particular items
+
+## Dynamic content
+
+Particularly challenging is caching content when databases are involved, as much of what the server returns dynamically generated. However, even in those cases, by carefully administrating what has already been cached at the edge, it is possible to invent highly efficient and effective caching schemes.

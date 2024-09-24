@@ -2,6 +2,10 @@
 
 Cache invalidation is one of the two hard things in Computer Science. If the data is modified in the database, it should be invalidated in the cache. Otherwise, this can cause inconsistent application behavior.
 
+Propagating a notification is what invalidation protocols do. The notification can also specify which part of the data store has been updated. The main advantage of this is that they use **little network bandwidth**.
+
+Transferring the modified data among replicas is the second alternative, and is useful when the read-to-write ratio is relatively high. Instead of propagating modified data, it is also possible to log the changes and transfer only those logs to save bandwidth. In addition, transfers are often aggregated in the sense that multiple modifications are packed into a single message, thus saving communication overhead.
+
 ### Time-to-Live (TTL)
 
 One of the simplest cache invalidation strategies is configuring an **expiration strategy** like a TTL and letting the cache entries expire once they cross the TTL.

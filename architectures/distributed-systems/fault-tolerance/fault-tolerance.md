@@ -5,8 +5,28 @@ A wide range of problems can occur in distributed systems, including:
 - Packets sent over the network may be lost or arbitrarily delayed
 - Node's clock may be significantly out of sync with other nodes (despite best efforts to set up NTP)
 - Process may pause for a substantial amount of time at any point in its execution (stop-the-world garbage collector), be declared dead by other nodes, and then come back to life again without realizing it was paused
+- Program crashing due to programming error
+
+## Fault tolerance
+
+Being fault tolerant is strongly related to what are called **dependable systems**. Dependability is a term that covers a number of useful requirements for distributed systems:
+
+- **Availability**: Property that a system is ready to be used immediately
+- **Reliability**: Property that a system can run continuously without failure
+- **Safety**: When a system temporarily fails, no catastrophic event happens
+- **Maintainability**: How easily a failed system can be repaired
+
+### Metrics
+
+Traditionally, fault-tolerance has been related to the following three metrics:
+
+- **Mean Time to Failure (MTTF)**: The average time until a component fails
+- **Mean Time to Repair (MTTR)**: The average time needed to repair a component
+- **Mean Time Between Failures (MTBF)**: MTTF + MTTR
 
 ## Dealing with faults
+
+Faults are generally classified as transient, intermittent, or permanent.
 
 ### Detecting
 
@@ -20,10 +40,12 @@ Partial failures preclude **relying on the successful execution of a remote serv
 
 According to this principle, data can be accessed only after they have been transferred to the machine of the process wanting that data. Moreover, modifying a data item should not be done. Instead, it can only be updated to a new version.
 
-## Metrics
+## Halting failures
 
-Traditionally, fault-tolerance has been related to the following three metrics:
+Process P can conclude that process Q has come to a halt as follows:
 
-- **Mean Time to Failure (MTTF)**: Average time until a component fails
-- **Mean Time to Repair (MTTR)**: Average time needed to repair a component
-- **Mean Time Between Failures (MTBF)**: MTTF + MTTR
+- **Fail-stop failures** refer to crash failures that can be reliably detected
+- **Fail-noisy failures** are similar to fail-stop failures, but that P will eventually come to the correct conclusion that Q has failed
+- **Fail-silent failures** happens when P cannot distinguish crash failures from omission failures
+- **Fail-safe failures** involves dealing with arbitrary failures that are benign
+- **Fail-arbitrary failures** involves dealing with failures that may be unobservable, in addition to being harmful

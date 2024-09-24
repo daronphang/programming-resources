@@ -357,3 +357,37 @@ location /hello {
 location /world {
 }
 ```
+
+## Websocket
+
+```conf
+location /chat/websocket {
+    rewrite /chat/websocket /api/v1/ws break;
+    proxy_pass http://$arg_server:8080;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400;
+}
+```
+
+## SSE
+
+```conf
+location /api/v1/sse {
+    proxy_pass http://msd_backend:8000;
+    proxy_set_header Connection '';
+    proxy_http_version 1.1;
+    chunked_transfer_encoding off;
+}
+```
+
+```go
+func SSEHandler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Cache-Control", "no-cache")
+	w.Header().Set("Connection", "keep-alive")
+	w.Header().Set("Content-Type", "text/event-stream")
+	w.Header().Set("X-Accel-Buffering", "no")
+}
+```

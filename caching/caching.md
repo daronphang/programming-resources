@@ -27,7 +27,7 @@ cache hits / (cache hits + cache miss)
 
 Monitor the number of evictions occurring in the cache. Frequent evictions might suggest the cache is too small or the eviction policy is not optimal for your use case.
 
-## Caching strategies
+## Caching methods
 
 ### Client caching
 

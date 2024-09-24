@@ -37,3 +37,7 @@ The key insight is that even brief retry delays of 100ms can cause cascading fai
 A cold cache (empty) can retrieve data from a warm cache with normal hit rate caches instead of hitting the persistent storage. This will reduce the turnup time.
 
 However, there can be race conditions here with cache consistency, which can be solved by adding a two second hold-off to deletes in the cold cache. This is turned off once the cold cache server's cache hit rate diminishes.
+
+## Indexing
+
+To efficiently manage cached content, edge servers maintain indexes or metadata about the cached items. This information helps quickly locate and serve requested files. Binary search can then be employed to find the data.

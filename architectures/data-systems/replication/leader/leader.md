@@ -1,15 +1,17 @@
-## Leaders and followers (master/slave)
+## Leader replication (primary-based)
 
-To ensure every write to the database ends up on all replicas, a solution would be to use **leader-based replication**:
+In the case of sequential consistency, it turns out that primary-based protocols prevail. In these protocols, each data item x in the data store has an associated primary, which is responsible for coordinating write operations on x.
+
+This mode of replication is a built-in feature across many relational and non-relational databases, including MySQL, PostgreSQL, Oracle, SQL Server, MongoDB, Kafka and RabbitMQ.
+
+### How it works
 
 1. One of the replicas is designated the leader. All write requests are sent to the leader, which first writes the new data to its local storage
 2. Other replicas are notified of the data change through replication log or change stream. Each follower takes the log from the leader and updates its local copy of the database
 
-This mode of replication is a built-in feature across many relational and non-relational databases, including MySQL, PostgreSQL, Oracle, SQL Server, MongoDB, Kafka and RabbitMQ.
+### Types
 
-## Types of leader-based replications
-
-Single-leader or multi-leader.
+There are two types: single-leader and multi-leader.
 
 ## Setting up new followers
 
@@ -26,7 +28,7 @@ One of the followers need to be promoted to be the new leader, clients need to b
 
 As there are many things that can wrong i.e. crashes, power outages, network issues, there is no foolproof way of detecting what has gone wrong. Instead, nodes frequently bounce messages off between each other, and assumed to be dead after a certain timeout.
 
-### Failover issues
+### Manual failover
 
 Some operation teams prefer to do failover manually due to the following issues:
 

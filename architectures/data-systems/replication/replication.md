@@ -5,7 +5,7 @@ There are two primary reasons for replicating data:
 1. To increase the reliability of a system from failures, corrupted data, etc.
 2. To improve performance by dividing the workload among the processes accessing the data (scaling)
 
-Unfortunately, there is a price to be paid when data are replicated. The problem with replication is that having multiple copies may lead to consistency problems. Whenever a copy is modified, that copy becomes different from the rest. Consequently, modifications have to be carried out on all copies to ensure consistency. Exactly when and how those modifications need to be carried out determines the price of replication.
+Unfortunately, there is a price to be paid when data are replicated. The problem with replication is that having multiple copies may lead to **consistency problems**. Whenever a copy is modified, that copy becomes different from the rest. Consequently, modifications have to be carried out on all copies to ensure consistency. Exactly when and how those modifications need to be carried out determines the price of replication.
 
 ### Synchronous replication
 
