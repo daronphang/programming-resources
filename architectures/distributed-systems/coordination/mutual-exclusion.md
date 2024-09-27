@@ -29,7 +29,7 @@ However, there are a couple of drawbacks:
 
 In this case, a process wanting to access the resource first requires the permission from other processes. There are many ways toward granting such permission.
 
-Virtually all algorithms suffer badly in the event of crashes. Special measures and additional complexity must be introduced to avoid having a crash bring down the entire system. It is somewhat ironic that distributed algorithms are generally more sensitive to crashes than centralized ones. In this sense, **centralized mutual exclusion is widely applied**: it is simple to understand the behavior, and relatively easy to increase the fault tolerance of the centralized server.
+Virtually all algorithms suffer badly in the event of crashes. Special measures and additional complexity must be introduced to avoid having a crash bring down the entire system. It is somewhat ironic that distributed algorithms are generally more sensitive to crashes than centralized ones. In this sense, **centralized mutual exclusion with fencing token is widely applied**: it is simple to understand the behavior, and relatively easy to increase the fault tolerance of the centralized server.
 
 ### Centralized algorithm
 
@@ -40,6 +40,21 @@ Whenever a process wants to access a shared resource, it sends a request message
 However, this approach has shortcomings. The coordinator is a single point of failure, so if it crashes, the entire system may go down. If processes normally block after making a request, they cannot distinguish a dead coordinator from “permission denied” since in both cases no message comes back. Also, in a large system, a single coordinator can become a performance bottleneck.
 
 <img src="../assets/centralized-algorithm.png">
+
+### Fencing token
+
+Having distributed locks is not sufficient to guarantee that there can’t be more than one leader in your application writing to a shared database. This is demonstrated as follows:
+
+- Client 1 acquires lock but encounters GC pause i.e. reading an address not loaded into memory, reading from congested network, SIGSTOP signal to process, etc.
+- The lock timeouts from lease expiry
+- Client 2 acquires lock and writes to the database
+- Client 1 wakes up and makes an unsafe write to the database
+
+You cannot fix this problem by inserting a check on the lock expiry just before writing back to storage as it does not eliminate the race condition, but makes it less likely.
+
+The fix for this problem is to include a **fencing token** with every write request to the storage service. A fencing token is simply a number that increases every time distributed lock is acquired i.e. a logical clock. When the leader writes to the store, it passes down the fencing token to it. The store remembers the value of the last token and accepts only writes with a greater value.
+
+<img src="../assets/fencing-token.png">
 
 ### Distributed algorithm
 

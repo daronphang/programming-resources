@@ -24,6 +24,39 @@ Traditionally, fault-tolerance has been related to the following three metrics:
 - **Mean Time to Repair (MTTR)**: The average time needed to repair a component
 - **Mean Time Between Failures (MTBF)**: MTTF + MTTR
 
+### Classifications
+
+- **Transient fault**: Occurs once and then disappears i.e. not repeatable
+- **Intermittent fault**: Occurs, vanishes, and then reappears
+- **Permanent fault**: Continues to exist until the faulty component is replaced
+
+## Failure models
+
+### Crash failure
+
+A crash failure occurs when a server prematurely halts, but was working correctly until it stopped. An important aspect of crash failures is that once the server has halted, nothing is heard from it anymore.
+
+### Omission failure
+
+An omission failure occurs when a server fails to respond to a request. It will generally not affect the current state of the server. Possible reasons include:
+
+- The server never got the request in the first place
+- No thread was listening for incoming requests
+- Send buffer overflows
+- Improper memory management
+
+### Timing failure
+
+Timing failures occur when the response lies outside a specified real-time interval.
+
+### Response failure
+
+Response failure is when the server's response is incorrect e.g. value or state-transition failure.
+
+### Arbitrary failure
+
+The most serious are arbitrary failures or **byzantine failures**. When arbitrary failures occur, clients should be prepared for the worst. In particular, a server may be producing output it should never have produced, but which cannot be detected as being incorrect. Also, it could mean that the node deviated from its algorithm in arbitrary ways, leading to crashes or unexpected behavior due to bugs or malicious activity.
+
 ## Dealing with faults
 
 Faults are generally classified as transient, intermittent, or permanent.

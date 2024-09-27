@@ -105,6 +105,7 @@ TCP         22              CIDR of EC2 Instance Connect (EIC)
 Protocol    Port range      Source
 TCP         443             0.0.0.0
 TCP         80              0.0.0.0
+ICMP        All             0.0.0.0
 
 # docker swarm, inbound and outbound
 Protocol    Port range      Source

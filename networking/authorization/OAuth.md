@@ -1,4 +1,4 @@
-## OAuth
+## Open Authorization (OAuth)
 
 Oauth is an authorization framework and not an authentication protocol. It is an open standard for authorization that grants secure delegated access to applications, devices, APIs and servers via access tokens. OAuth authorizes an application to access your data without giving it access to your credentials. Can be used with either SAML or OIDC.
 

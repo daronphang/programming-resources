@@ -1,20 +1,30 @@
+## Strict serializability
+
+To add a real-time requirement on the order of transactions, strict serializability is required. This level combines serializability with the real-time guarantees that linearizability provides so that when a transaction completes, its side effects become immediately visible to all future transactions.
+
+Strict serializability is slow as it requires coordination, which creates contention in the system. s a result, there are many different isolation levels that are simpler to implement and also perform better.
+
 ## 2PL (Two-Phase Locking)
 
-Only widely used algorithm for serializability in databases (pessimistic concurrency control mechanism).
+Only widely used algorithm for serializability in databases (**pessimistic** concurrency control mechanism).
 
 Locks are often used to prevent dirty writes, and this algorithm makes lock requirements much stronger: several transactions are allowed to concurrently read the same object as long as nobody is writing to it.
 
-In 2PL, writers block other writers and readers, and vice versa. Used in MySQL and SQL Server. As 2PL provides serializability, it protects against all the race conditions including lost updates and write skew.
+2PL is used in MySQL and SQL Server. As 2PL provides serializability, it protects against all the race conditions including lost updates and write skew.
+
+### Locks
+
+2PL has two types of locks:
+
+- **Read lock (shared lock)**: Can be shared by multiple transactions, but blocks transactions trying to acquire a write lock
+- **Write lock (exclusive lock)**: Can be acquired by a single transaction, and blocks any transaction trying to acquire either a read or write lock on the data item
 
 ### Phases
 
 1. **Growing Phase**: New locks on data items may be acquired but none can be released
 2. **Shrinking Phase**: Existing locks may be released but no new locks can be acquired
 
-### Locks
-
-- **Shared Lock**: Data can only be read when a shared lock is applied
-- **Exclusive Lock**: Data can be read/written
+If these rules are obeyed, it can be formally proven that the protocol guarantees serializability.
 
 ### Implementation
 

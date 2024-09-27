@@ -1,4 +1,4 @@
-## Linearizability (atomic consistency)
+## Linearizability (atomic/strong consistency)
 
 A data storage system depicts linearizability when two conditions are satisfied: there is a notion of operations executed in sequential order (aligned with real time), and all operations on it are atomic.
 
@@ -6,7 +6,7 @@ Basic idea is to make a system appear as if there was only one copy of the data.
 
 In a linearizable system, after a write has occurred (effect is instantaneous) and one client reads the new value, all subsequent reads must also return the new value, even if the write operation has not yet completed. **Total order of operations is preserved** i.e. all operations are put in a single, totally ordered timeline.
 
-## Linearizability vs Serializability
+## Linearizability vs serializability
 
 Serializability is an isolation property of transactions, where every transaction may read and write multiple objects. It guarantees that transactions behave the same as if they had executed in some serial order.
 
@@ -24,7 +24,7 @@ Unique constraints in databases require linearizability if it needs to be enforc
 
 ### Single-leader replication
 
-The leader has the primary copy of the data that is used for writes. If you make reads from the leader, that have the potential to be linearizable. However, not every single-leader database is linearizable, either by design (using SSI) or due to concurrency bugs.
+The leader has the primary copy of the data that is used for writes. If you make reads from the leader, that have the potential to be linearizable i.e. **client sends reads and writes exclusively to the leader**. However, not every single-leader database is linearizable, either by design (using SSI) or due to concurrency bugs. Also, read throughput would be limited by a single thread.
 
 ### Consensus algorithms
 

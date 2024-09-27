@@ -4,20 +4,30 @@ The distributed commit problem involves having an operation being performed by e
 
 ## 2PC (Two-Phase Commit)
 
-2PC is an algorithm used in distributed databases for achieving atomic transaction commit across multiple nodes i.e. ensures all nodes commit or abort.
+2PC is an algorithm used in distributed databases for achieving **atomic transaction commit** across multiple nodes i.e. ensures all nodes commit or abort.
 
 The coordinator is often implemented as a library within the same application process that is requesting the transaction, but can be a separate process or service. Examples include Narayana, JOTM, BTM or MSDTC.
 
 ### How it works
 
-The protocol consists of two phases, voting phase and decision phase:
+The protocol is split into two phases, prepare (voting) and commit (decision). It assumes a process acts as coordinator and orchestrates the actions of the other processes, called participants. Generally, the client application that initiates the transaction acts as the coordinator for the protocol.
+
+Voting phase:
 
 1. Coordinator sends a VOTE-REQUEST message to all participants
 2. When a participant receives a VOTE-REQUEST message, it returns either a VOTE-COMMIT or VOTE-ABORT message back to the coordinator
+
+Decision phase:
+
 3. The coordinator collects all votes from the participants and if all have voted to commit, so will the coordinator. If one participant aborts, the coordinator will abort the transaction and multicasts a GLOBAL-ABORT message
 4. Each participant that voted for a commit waits for the final reaction by the coordinator
 
-<img src="../assets/2PC.png">
+There are two points of non-return:
+
+1. If a participant replies to a prepare message that it’s ready to commit, it will have to do so later, no matter what i.e. it can't make progress until it receives a message from the coordinator to commit or abort
+2. When the coordinator makes a decision to commit or abort the transaction, it cannot change its mind after. If a participant is down, it will keep retrying until the request eventually succeeds
+
+<img src="../../assets/2PC.png">
 
 ### Why it works
 

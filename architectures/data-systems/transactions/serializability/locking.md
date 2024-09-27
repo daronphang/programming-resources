@@ -16,9 +16,13 @@ Database engine maintains versions of each row that is modified. Applications ca
 
 A system of locks prevents users from modifying data in a way that affects other users. After a user performs an action that causes a lock to be applied, other users cannot perform actions until the owner releases it. Used in environments where there is high contention for data.
 
+For write-heavy loads, a pessimistic protocol is more efficient as it avoids retrying the same transactions repeatedly.
+
 ### Optimistic
 
 Users do not lock data when they read it. Instead, the system checks if another user changed the data after it was read; an error is raised and rollback performed if true. Used in environments where there is low contention for data.
+
+Optimistic concurrency makes sense when you have read-heavy workloads that only occasionally perform writes, as reads don’t need to take any locks.
 
 ## Lock locations (resources)
 

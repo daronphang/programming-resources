@@ -47,7 +47,7 @@ $ sudo service ssh status       # check if SSH server is running
 
 Config file is located at '/etc/ssh/sshd_config' whereby you can change the settings.
 
-```config
+```conf
 Port 22
 
 HostKey /etc/ssh/ssh_host_rsa_key
@@ -111,11 +111,13 @@ Server will use public key to create a message for the client computer that can 
 
 Though you may be prompted to set a password on the key files themselves, it is an uncommon practice i.e. accepting defaults is sufficient.
 
+### How to generate
+
+- Two keys are generated: public (`~/.ssh/id_rsa.pub`) and private (`~/.ssh/id_rsa`)
+- Existing private keys are located at `~/.ssh/`
+- Public keys are stored in server at `~/.ssh/authorized_keys`
+
 ```sh
-$ # keys are created at ~/.ssh/id_rsa.pub and ~/.ssh/id_rsa
-
-$ ls ~/.ssh/id_rsa*     # check for existing keys
-
 $ ssh-keygen -t rsa     # -t flag to specify type
 $ ssh-keygen -b 4096    # -b flag to specify the length of key
 
@@ -130,6 +132,10 @@ $ # default is ~/.ssh/id_rsa
 
 $ cd ~/.ssh
 $ ls -l
+```
+
+```
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAA....0g1bMv+p11K8MDH sanjaydev
 ```
 
 ### Transferring Public Key to Server
