@@ -8,62 +8,63 @@ Most implementations of currying are advanced and keeps the original function ca
 
 ### Why use currying?
 
--   Checking method to ensure everything you need is present before proceeding.
--   Helps to avoid passing the same variable again and again.
--   Makes function pure and less prone to errors and side effects.
--   Used in functional programming to create a higher-order function (accepts fn as arg or returns fn).
+- Checking method to ensure everything you need is present before proceeding.
+- Helps to avoid passing the same variable again and again.
+- Makes function pure and less prone to errors and side effects.
+- Used in functional programming to create a higher-order function (accepts fn as arg or returns fn).
 
-### Use Cases
+### Use cases
 
--   Can be used to manipulate DOM.
--   Can be used to trigger event listeners.
--   Can be used to when you want to create a function that receives single arg.
+- Can be used to manipulate DOM.
+- Can be used to trigger event listeners.
+- Can be used to when you want to create a function that receives single arg.
 
-### Basic Implementation
+### Basic implementation
 
 ```js
 // non curried version
 const sum = (a, b, c) => {
-    return a + b + c;
+  return a + b + c;
 };
 
 // curried
 // if it doesn't receive 3 args, it will not be complete
 const addCurry = (a) => {
-    return function (b) {
-        return function (c) {
-            return a + b + c;
-        };
+  return function (b) {
+    return function (c) {
+      return a + b + c;
     };
+  };
 };
 console.log(addCurry(2)(3)(5)); // 10
 
 // curried alternative
 const addCurryAlt = (f) => {
-    return function (a) {
-        return function (b) {
-            return function (c) {
-                return f(a, b, c);
-            };
-        };
+  return function (a) {
+    return function (b) {
+      return function (c) {
+        return f(a, b, c);
+      };
     };
+  };
 };
 let curriedSum = addCurryAlt(sum);
 console.log(curriedSum(2)(3)(5));
 ```
 
 ```js
-const sendRequest = (greet) => (name) => (message) => `${greet} ${name}, ${message}`;
+const sendRequest = (greet) => (name) => (message) =>
+  `${greet} ${name}, ${message}`;
 sendRequest("Hello")("John")("Please can you add me to your Linkedin network?");
 ```
 
-### Real Life Example
+### Example
 
 Instead of always passing date, we can curry it and avoid repeating.
 
 ```js
 function log(date, importance, message) {
-    alert(`[${date.getHours()}:${date.getMinutes()}] [${importance}] ${message}`);
+  alert(`[${date.getHours()}:${date.getMinutes()}] [${importance}] ${message}`);
 }
 
 log = _.curry(log); // lodash library
@@ -75,7 +76,7 @@ let logNow = log(new Date());
 logNow("INFO", "message"); // [HH:mm] INFO message
 ```
 
-### Advanced Implementation
+### Advanced implementation
 
 Currying creates nesting functions according to the number of arguments of the function. If there is no argument, there is no currying.
 
@@ -83,16 +84,16 @@ If passed args count is the same or more than the original function has in its d
 
 ```js
 const curry = (fn) => {
-    return (curried = (...args) => {
-        if (fn.length !== args.length) {
-            return curried.bind(null, ...args); // bind creates a new function
-        }
-        return fn(...args);
-    });
+  return (curried = (...args) => {
+    if (fn.length !== args.length) {
+      return curried.bind(null, ...args); // bind creates a new function
+    }
+    return fn(...args);
+  });
 };
 
 const totalNum = (x, y, z) => {
-    return x + y + z;
+  return x + y + z;
 };
 
 const curriedTotal = curry(totalNum);
@@ -101,23 +102,23 @@ console.log(curriedTotal(10)(20)(30));
 
 ```js
 function curry(func) {
-    return function curried(...args) {
-        if (args.length >= func.length) {
-            // pass the call to it using func.apply, no currying
-            // 1 argument left in curried()
-            return func.apply(this, args);
-        } else {
-            return function (...args2) {
-                // do not call func yet, pass another wrapper, partial currying
-                // muliple args left in curried() i.e. curried(a)(b)
-                return curried.apply(this, args.concat(args2));
-            };
-        }
-    };
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      // pass the call to it using func.apply, no currying
+      // 1 argument left in curried()
+      return func.apply(this, args);
+    } else {
+      return function (...args2) {
+        // do not call func yet, pass another wrapper, partial currying
+        // muliple args left in curried() i.e. curried(a)(b)
+        return curried.apply(this, args.concat(args2));
+      };
+    }
+  };
 }
 
 function sum(a, b, c) {
-    return a + b + c;
+  return a + b + c;
 }
 
 let curriedSum = curry(sum);
@@ -127,16 +128,16 @@ alert(curriedSum(1)(2, 3)); // 6, currying of 1st arg
 alert(curriedSum(1)(2)(3)); // 6, full currying
 ```
 
-### Currying vs Partial Application
+### Currying vs partial application
 
 Partial application transforms a function into another function with smaller arity (number of arguments a function takes). Currying transforms a function into a sequence of unary functions, each taking a single argument.
 
 ```js
 // partial application
 function volume(l) {
-    return (w, h) => {
-        return l * w * h;
-    };
+  return (w, h) => {
+    return l * w * h;
+  };
 }
 
 const hCy = volume(70);

@@ -1,6 +1,6 @@
 ## Reliable group communication (multicasting)
 
-Reliable multicast services guarantee that messages are delivered to all members in a process group.
+Reliable multicast services guarantee that messages are delivered to all members in a process group. Unfortunately, reliable multicasting turns out to be surprisingly tricky.
 
 Most transport layers offer reliable point-to-point channels; however, they rarely offer reliable communication to a group of processes.
 
@@ -68,4 +68,4 @@ If the sender of the message crashes during the multicast, the message is either
 
 Virtually synchronous reliable multicasting offering totally ordered delivery of messages is called atomic multicasting.
 
-Group membership changes are an example where each process needs to agree on the same list of members. Such agreement can be reached through a commit protocol, of which the 2PC protocol is the most widely applied.
+Group membership changes are an example where each process needs to agree on the same list of members. Such agreement can be reached through a commit protocol, of which the **2PC** protocol is the most widely applied.

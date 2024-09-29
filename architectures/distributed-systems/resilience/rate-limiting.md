@@ -46,11 +46,25 @@ Shaping allows requests that surpass the limit, but those requests are assigned 
 
 ### Fixed window counter
 
-The Fixed Window Counter algorithm divides the timeline into fixed-size time windows and assigns a counter for each window. Each request increments the counter by some value based on the relative cost of the request. Once the counter reaches the threshold, subsequent requests are blocked until the new time window begins.
+The Fixed Window Counter algorithm divides the timeline into fixed-size time windows (or buckets) and assigns a counter for each window. Each request increments the counter by some value based on the relative cost of the request. Once the counter reaches the threshold, subsequent requests are blocked until the new time window begins. This algorithm is memory efficient as it only needs to count requests.
+
+For example, when a new request comes in, its timestamp is used to determine the window it belongs to i.e. the counter of window for minute 12:00 is incremented by one for 12:00:18 request. To clear previous entries, you can add a logic to clear the next window for every request in the current window.
+
+<img src="../assets/fixed-window-counter.png">
 
 ### Sliding window counter
 
-The Sliding Window Counter algorithm is a more efficient variation of the Sliding Window Log algorithm. It is a hybrid that combines the fixed window counter and sliding window log. Instead of maintaining a log of request timestamps, it calculates the weighted counter for the previous time window. When a new request arrives, the counter is adjusted based on the weight, and the request is allowed if the total is below the limit.
+The Sliding Window Counter algorithm is a more efficient variation of the Sliding Window Log algorithm. It is a hybrid that combines the fixed window counter and sliding window log.
+
+Fixed Window Counter is not a robust rate-limiting solution because it can’t correctly handle burst requests, but it is a memory-efficient solution. Sliding Window Log is a powerful solution since it enforces a hard limit on every time window. However, It isn’t memory efficient solution. Sliding Window Counter tries to achieve efficient memory usage and a robust rate-limiting solution.
+
+The sliding window represents the interval of time used to decide whether to rate-limit or not. The window’s length depends on the time unit used to define the quota e.g. 1 minute. However, there is a caveat: a sliding window can **overlap with multiple buckets**. To derive the number of requests under the sliding window, we have to compute a weighted sum for the previous time window.
+
+Although this is an approximation, it is a reasonably good one for our purposes. Moreover, it can be made more accurate by increasing the granularity of the buckets.
+
+We only have to store as many buckets as the sliding window can overlap with at any given time.
+
+<img src="../assets/sliding-window-counter.png">
 
 ### Token bucket
 
@@ -74,3 +88,19 @@ This algorithm is memory efficient given the limited queue size. Requests are pr
 However, a burst of requests would fill up the queue with old requests, and if they are not processed in time, recent requests will be rate limit. It may result in longer waiting times for requests during high-traffic periods.
 
 <img src="../assets/leaky-bucket.png">
+
+## Single-process implementation
+
+The Sliding Window Counter can be used for single-process implementation.
+
+## Distributed implementation
+
+When more than one process accepts requests, the local state no longer cuts it, and a shared data store is required to keep track of the number of requests seen.
+
+When a new request comes in, the process receiving it could fetch the bucket, update it and write it back to the data store. To avoid any race conditions, fetch, update and write operations need to be packaged into a single transaction. However, this approach is costly as transactions are slow, and we also need to deal with failures.
+
+Instead, we can use a **single atomic get-and-increment** operation that most data stores provide (**compare-and-swap**). Atomic operations have much better performance than transactions. Also, rather than updating the database on each request,
+
+Also, rather than updating the database on each request, the process can batch updates in memory for some time, and flush them asynchronously to the database at the end of it. This reduces the shared state’s accuracy, but it’s a good trade-off as it reduces the load on the database and the number of requests sent to it.
+
+<img src="../assets/distributed-rate-limiting.png">

@@ -4,25 +4,25 @@ A module is a function or similar functions grouped together within a file and c
 
 Modules are created to better organize and structure your codebase. Can break down large programs into smaller, more manageable, and more independent chunks of code which carry out a single or couple of related tasks.
 
-### Namespaces (Stateless Grouping)
+### Namespaces (stateless grouping)
 
 Groups a set of related functions but without data (stateless).
 
 ```js
 // utils namespace, not module
 var Utils = {
-    cancelEvt(evt) {
-        evt.preventDefault();
-        evt.stopPropagation();
-        evt.stopImmediatePropagation();
-    },
-    wait(ms) {
-        return new Promise(function c(res) {
-            setTimeout(res, ms);
-        });
-    },
-    isValidEmail(email) {
-        return /[^@]+@[^@.]+\.[^@.]+/.test(email);
-    },
+  cancelEvt(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    evt.stopImmediatePropagation();
+  },
+  wait(ms) {
+    return new Promise(function c(res) {
+      setTimeout(res, ms);
+    });
+  },
+  isValidEmail(email) {
+    return /[^@]+@[^@.]+\.[^@.]+/.test(email);
+  },
 };
 ```

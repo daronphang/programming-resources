@@ -44,4 +44,4 @@ If an AppendEntries request can’t be delivered to one or more followers, the l
 
 When a follower that was temporarily unavailable comes back online, it will eventually receive the latest AppendEntries request. However, if the last log entry does not immediately precede the one to be appended, it will reject the request.
 
-When the request is rejected, the leader retries and sends a message including the last two log entries. This process is repeated until the follower finally accepts a list of log entries that can be appended to its log **without creating a hole**.
+When the request is rejected, the leader retries and sends a message including the last two log entries. This process is repeated until the follower finally accepts a list of log entries that can be appended to its log **without creating a hole**. Alteratively, the reject message can contain the last index the follower has caught up with.

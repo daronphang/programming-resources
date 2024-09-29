@@ -1,4 +1,4 @@
-## Clean Code
+## Clean code
 
 - Code to be elegant and efficient
 - Meaningful names
@@ -19,7 +19,7 @@ For creating well-designed software, four rules from Kent Beck are of significan
 3. Expresses the intent of the programmer
 4. Minimizes the number of classes and methods
 
-### Runs All the Tests
+### Runs all the tests
 
 A system that is comprehensively tested and passes all of its tests all of the time is a testable system. Systems that aren't testable aren't verifiable and should never be deployed.
 

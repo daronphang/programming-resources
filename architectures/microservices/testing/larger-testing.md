@@ -1,4 +1,4 @@
-## Larger Tests
+## Larger tests
 
 Larger tests do not have the same restrictions as smaller tests i.e. can be multithreaded or multiprocess, across multiple machines, etc. They also typically involve several real dependencies and fewer test doubles.
 
@@ -23,7 +23,7 @@ Unit tests can give you confidence about individual functions, objects, and modu
 - Disaster recovery and chaos engineering
 - User evaluation
 
-## Gaps in Unit Tests
+## Gaps in unit tests
 
 Larger tests might be necessary where smaller tests fail.
 
@@ -43,6 +43,26 @@ Unit tests are limited by the imagination of the engineer writing them i.e. they
 
 Unit tests are limited to the scope that they cover, and if behavior changes in areas outside of the scope, it cannot be detected. Also, as unit tests are designed to be fast and reliable, they deliberately eliminate the chaos of real dependencies, network and data.
 
+## Downsides to E2E testing
+
+### Flaky and brittle tests
+
+As test scope increases, so do the number of moving parts. These moving parts can introduce test failures that do not show that the functionality under test is broken, but that some other problem has occurred.
+
+More moving parts means more brittle tests, and if you simply re-run them as they might pass again later, then you have flaky tests. When flaky tests are detected, it is essential that we do our best to remove them.
+
+### Writing tests
+
+If multiple teams are involved and E2E is shared between them, it is difficult to assign the person who writes and looks after these tests. If tests become free-for-all, it is likely that teams will add tests without any understanding of the health of the whole suite.
+
+### Great pile-up
+
+With a long test suite and feedback cycles, any breaks take a while to fix which can eventually lead to a pile up. The larger the scope of deployment, the higher the risk of a release, and the more likely we are to break something. A key driver to ensuring we can release our software frequently is based on the idea that we release small changes as soon as they are ready.
+
+### The meta-version
+
+The approach of accepting multiple services being deployed together drifts into a situation where services become coupled and increasingly tangled with others. This would cede one of the main advantages of microservices: the ability to deploy a service independently.
+
 ## SUT Factors (System Under Test)
 
 ### Hermeticity
@@ -53,7 +73,7 @@ This is the SUT's isolation from usages and interactions from other components t
 
 SUT's accuracy in reflecting the production system being tested. An SUT with high fidelity will consist of binaries that resemble the production versions.
 
-## Best Practices
+## Best practices
 
 ### Record/replay proxies
 

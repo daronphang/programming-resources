@@ -1,4 +1,4 @@
-## Types of Changes
+## Types of changes
 
 When writing tests, one question we need to ask is how often should we expect to need to change a test after writing it. Hence, we need to think about the kinds of changes that engineers make to production code and how we should expect tests to respond to those changes.
 

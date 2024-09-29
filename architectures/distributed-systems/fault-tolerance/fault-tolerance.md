@@ -2,12 +2,18 @@
 
 A wide range of problems can occur in distributed systems, including:
 
-- Packets sent over the network may be lost or arbitrarily delayed
+- Single point of failure
+- Packets sent over the unreliable network may be lost or arbitrarily delayed
 - Node's clock may be significantly out of sync with other nodes (despite best efforts to set up NTP)
 - Process may pause for a substantial amount of time at any point in its execution (stop-the-world garbage collector), be declared dead by other nodes, and then come back to life again without realizing it was paused
 - Program crashing due to programming error
+- Slow processes due to memory leaks or unavailable resources (threads)
+- Cascading failures
+- Unexpected load
 
 ## Fault tolerance
+
+Fault tolerance is the ability of a software system to maintain its functionality and performance **in the presence of faults**. Faults are any deviations from the expected or desired behavior of the system, such as errors, exceptions, or anomalies. A fault-tolerant system can detect, isolate, and correct faults, or at least tolerate them without compromising the system's integrity or availability.
 
 Being fault tolerant is strongly related to what are called **dependable systems**. Dependability is a term that covers a number of useful requirements for distributed systems:
 
@@ -30,36 +36,7 @@ Traditionally, fault-tolerance has been related to the following three metrics:
 - **Intermittent fault**: Occurs, vanishes, and then reappears
 - **Permanent fault**: Continues to exist until the faulty component is replaced
 
-## Failure models
-
-### Crash failure
-
-A crash failure occurs when a server prematurely halts, but was working correctly until it stopped. An important aspect of crash failures is that once the server has halted, nothing is heard from it anymore.
-
-### Omission failure
-
-An omission failure occurs when a server fails to respond to a request. It will generally not affect the current state of the server. Possible reasons include:
-
-- The server never got the request in the first place
-- No thread was listening for incoming requests
-- Send buffer overflows
-- Improper memory management
-
-### Timing failure
-
-Timing failures occur when the response lies outside a specified real-time interval.
-
-### Response failure
-
-Response failure is when the server's response is incorrect e.g. value or state-transition failure.
-
-### Arbitrary failure
-
-The most serious are arbitrary failures or **byzantine failures**. When arbitrary failures occur, clients should be prepared for the worst. In particular, a server may be producing output it should never have produced, but which cannot be detected as being incorrect. Also, it could mean that the node deviated from its algorithm in arbitrary ways, leading to crashes or unexpected behavior due to bugs or malicious activity.
-
 ## Dealing with faults
-
-Faults are generally classified as transient, intermittent, or permanent.
 
 ### Detecting
 
@@ -72,13 +49,3 @@ Once a fault is detected, making a system tolerate is not easy as there is no gl
 Partial failures preclude **relying on the successful execution of a remote service**. If such reliability cannot be guaranteed, it is then best to always perform only local executions, leading to the **copy-before-use** principle.
 
 According to this principle, data can be accessed only after they have been transferred to the machine of the process wanting that data. Moreover, modifying a data item should not be done. Instead, it can only be updated to a new version.
-
-## Halting failures
-
-Process P can conclude that process Q has come to a halt as follows:
-
-- **Fail-stop failures** refer to crash failures that can be reliably detected
-- **Fail-noisy failures** are similar to fail-stop failures, but that P will eventually come to the correct conclusion that Q has failed
-- **Fail-silent failures** happens when P cannot distinguish crash failures from omission failures
-- **Fail-safe failures** involves dealing with arbitrary failures that are benign
-- **Fail-arbitrary failures** involves dealing with failures that may be unobservable, in addition to being harmful

@@ -1,4 +1,4 @@
-## Test Double
+## Test doubles
 
 A test double is an object or function that cna stand in for a real implementation in a test.
 
@@ -18,11 +18,11 @@ Using fake is often the ideal technique when you need to use a test double, but 
 
 Stubbing is the process of giving behavior to a function that otherwise has no behavior on its own i.e. you specify to the function exactly what values to return by stubbing the return values.
 
-Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test i.e. querying a user123's bank balance should return 10,000. Can be classified as **state testing with predetermined behavior and hardcoded values**. A stub doesn't care whether it is called 0, 1, or 100 times.
+Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test i.e. querying a user123's bank balance should return 10,000. Can be classified as **state testing with predetermined behavior and hardcoded values**. A stub doesn't care whether it is called 0, 1, or 100 times; it always return the same value.
 
 However, overuse of stubbing can result in major losses in productivity for engineers who need to maintain these tests. **Stubbing also leaks implementation details**; if they change, you need to update your tests to reflect those changes.
 
-### Interaction Testing
+### Interaction testing
 
 Interaction testing is a way to validate how a function is called without actually calling the implementation of the function. A test should fail if a function isn't called the correct way i.e. assert_called_once, assert_call_count, checking call arguments, etc.
 
@@ -31,7 +31,7 @@ This **should be avoided when possible** because overuse can easily result in br
 - You cannot perform state testing as you are unable to use a real implementation or fake
 - Differences in the number or order of calls to a function would cause undesired behavior
 
-### Classical Testing
+### Classical testing
 
 The act of using real implementations instead of test doubles. Tests have higher **fidelity** when they execute code as it will be executed in production, and using real implementations helps accomplish this. Fidelity is the property by which a test is effective of the real behavior of the system under test.
 
@@ -47,11 +47,11 @@ Spies are stubs that also record some information based on how they were called 
 
 Objects pre-programmed with expectations which form a specification of the calls they are expected to receive. When mocking, it is to ensure that the call was made. If the expected call is not made, the test fails. Can be classified as **behavioral testing**. Implementing this approach requires more smarts in the fake collaborators that we create, and if overused can cause tests to become brittle.
 
-## Stubbing vs Mocking
+## Stubbing vs mocking
 
 The easiest way to tell we are dealing with a stub is to notice that a stub can never fail the test. The assert the test uses are always against the class under test. On the other hand, the test will use a mock object to verify whether the test has failed or not. Mocks can be useful to ensure that the expected side effects happen.
 
-## Impact of Test Doubles on Software Development
+## Impact of test doubles on software development
 
 ### Testability
 

@@ -1,4 +1,4 @@
-### Nullish Coalescing Operator (??)
+## Nullish coalescing operator (??)
 
 A logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined. Can be seen as a special case of logical OR (||) operator as you may encounter unexpected behaviors if you consider falsy values as usable i.e. 0, ''.
 

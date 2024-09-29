@@ -1,6 +1,6 @@
 ## Distributed commit
 
-The distributed commit problem involves having an operation being performed by each member of a process group, or none at all. Distributed commit is often established by a coordinator.
+The atomic multicasting problem is an example of a more general problem, known as distributed commit. This problem involves having an operation being performed by each member of a process group, or none at all. In the case of reliable multicasting, the operation is the delivery of a message. Distributed commit is often established by a coordinator.
 
 ## 2PC (Two-Phase Commit)
 
