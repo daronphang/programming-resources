@@ -28,6 +28,10 @@ Rate-limiting is also used to enforce pricing tiers; if a user wants to use more
 
 Rate-limiting only partially protects a service against DDoS. This is because the service still has to pay the price of opening a TLS connection, and downloading the request to read the API key. **Economies of scale** are the only true protection against DDoS attacks.
 
+#### Sample-hold algorithm
+
+Sometimes it may not be practical to keep track of all requests coming into the server. Instead, you can employ sample-hold algorithm to track the request rate history of the top N busiest requests by a certain key.
+
 ### Bulkhead
 
 The goal of the bulkhead pattern is to isolate a fault in one part of a service from taking the entire service down with it. The pattern is named after the partitions of a ship’s hull. If one partition is damaged and fills up with water, the leak is isolated to that partition and doesn’t spread to the rest of the ship.

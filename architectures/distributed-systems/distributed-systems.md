@@ -85,3 +85,17 @@ Scalability of a system can be measured along at least three different dimension
 - **Size**: We can easily add more users and resources to the system without any noticeable loss of performance
 - **Geographical**: Users and resources may lie far apart, but communication delays is hardly noticed
 - **Administrative**: Can be easily managed even if it spans many independent administrative domains
+
+## Implementation
+
+### Monolithic
+
+Faced with performance constraints, the application designer may be driven to mix the relevant logic of the abstraction with the application logic. The rationale is usually that such a solution should perform better than a solution obtained by the modular approach.
+
+However, this method is prone to errors. Also, there is **no single solution** for a given distributed computing problem, and understanding the different trade-offs is important.
+
+### Modular
+
+In this approach, the abstraction is implemented as an independent service that can be accessed through a **well-defined interface**.
+
+Relying on a modular approach allows the most suitable implementation to be selected when the application is deployed, or even allows choosing at runtime among different implementations in response to changes in the environment.
