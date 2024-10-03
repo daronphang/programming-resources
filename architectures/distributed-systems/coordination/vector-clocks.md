@@ -45,6 +45,17 @@ V[j] = max(V[j], Vmsg[j]) for j != i
 
 This simple algorithm maintains consistency among the peers since the sending of a message is always set to “happen before” the receipt of the message.
 
+### Vector size truncation
+
+A possible issue with vector clocks is that the size of vector clocks may grow if many servers coordinate the writes to an object.
+
+To limit the size of vector clock, a clock truncation scheme can be employed:
+
+1. A timestamp is stored along with each (node, counter) pair
+2. When the number of pairs reaches a threshold (e.g. 10), the oldest pair is removed from the clock
+
+Clearly, this truncation scheme can lead to inefficiencies in reconciliation as the descendant relationships cannot be derived accurately. However, in Dynamo, this problem has not surfaced in production.
+
 ### Example
 
 <img src="../assets/vector-clocks.png">
@@ -52,13 +63,23 @@ This simple algorithm maintains consistency among the peers since the sending of
 For the following events:
 
 ```
+a: [1,0,0]
+Increment local clock of P1: [2,0,0]
 a -> m
-Increment local clock: [0,2,0]
-Take max(1, 2): [2,2,0]
+Increment local clock of P2: 2
+Take max(2,2,0) and update P2: [2,2,0]
 
+w: [0,0,2]
+Increment local clock of P3: [0,0,3]
 w -> n
-Increment local clock: [2,3,0]
-Take max(3, 2): [2,3,3]
+Increment local clock of P2: 3
+Take max(2,3,3) and update P2: [2,3,3]
+
+c: [3,0,0]
+Increment local clock of P1: [4,0,0]
+c -> p
+Increment local clock of P2: 5
+Take max(4,5,3) and update P2: [4,5,3]
 ```
 
 For events in the same process:

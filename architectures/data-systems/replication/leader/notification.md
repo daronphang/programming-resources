@@ -23,6 +23,6 @@ The log is an append-only sequence of bytes containing all writes to the databas
 
 This method is used in PostgreSQL and Oracle. However, as the log describes data on a very low level, it makes replication closely coupled to the storage engine. Hence, it is not possible to perform zero-downtime upgrade if the follower uses a newer software version than its leader.
 
-### Logical log (Row-Based)
+### Logical log (row-based)
 
 Logical log helps to decouple replication log from storage engine, which involves a sequence of records describing writes to database tables at the granularity of a row.

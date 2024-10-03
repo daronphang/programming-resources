@@ -9,11 +9,16 @@ Unfortunately, there is a price to be paid when data are replicated. The problem
 
 ### Synchronous replication
 
-Synchronous replication ensures tight consistency between replicas. The key idea is that an update is performed at all copies as a single atomic operation, or transaction. Unfortunately, implementing atomicity involving many replicas that may be widely dispersed across a large-scale network is inherently difficult when operations are also required to complete quickly.
+Synchronous replication ensures tight consistency between replicas. The key idea is that an update is performed at all copies as a single atomic operation, or transaction. Unfortunately, implementing atomicity involving many replicas that may be widely dispersed across a large-scale network is inherently difficult when operations are also required to complete quickly. Moreover, data is made unavailable until the process is completed.
 
 ### Asynchronous replication
 
 To avoid global synchronizations, a method is to relax the consistency constraints in order to gain performance. The price paid is that copies may not always be the same everywhere.
+
+This is also known as **optimistic replication**, where changes are allowed to propagate to replicas in the background, and concurrent, disconnected work is tolerated. The challenge with this approach is that it can lead to conflicting changes which must be detected and resolved. This process of conflict resolution introduces two problems:
+
+- When to resolve them
+- Who resolves them
 
 ## Choosing a replication strategy
 

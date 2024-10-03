@@ -16,6 +16,7 @@ Use cases include:
 - Information dissemination
 - Generating aggregations
 - Leader election
+- Membership management
 
 https://highscalability.com/gossip-protocol-explained/
 

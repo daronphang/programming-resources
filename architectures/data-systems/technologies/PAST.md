@@ -35,7 +35,7 @@ The tables required in each PAST node have only `(2^b −1)*⌈log2bN⌉+2l` ent
 
 Each node maintains IP addresses for the nodes in its leaf set, neighborhood set, and routing table.
 
-<img src="../../assets/pastry-routing.png">
+<img src="../assets/pastry-routing.png">
 
 #### Routing table
 
