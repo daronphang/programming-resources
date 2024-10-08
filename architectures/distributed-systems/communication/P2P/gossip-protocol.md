@@ -40,7 +40,7 @@ The key concepts are:
 
 - Every node periodically sends out a message to a subset of other random nodes
 - Data can include timestamp of data, health, etc.
-- Application-level data can be piggybacked in gossip messages as key-value pairs
+- Application-level data can be **piggybacked** in gossip messages as key-value pairs
 - If it receives data about the same node, it will trust the most recent data by either deleting it or using a tombstone as an entry to invalidate it
 
 The gossip protocol is reliable because a node failure can be overcome by the retransmission of a message by another node. First-in-first-out (FIFO) broadcast, causality broadcast, and **total-order broadcast** can be implemented with gossip protocol.

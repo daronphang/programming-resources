@@ -29,8 +29,6 @@ However, there are a couple of drawbacks:
 
 In this case, a process wanting to access the resource first requires the permission from other processes. There are many ways toward granting such permission.
 
-Virtually all algorithms suffer badly in the event of crashes. Special measures and additional complexity must be introduced to avoid having a crash bring down the entire system. It is somewhat ironic that distributed algorithms are generally more sensitive to crashes than centralized ones. In this sense, **centralized mutual exclusion with fencing token is widely applied**: it is simple to understand the behavior, and relatively easy to increase the fault tolerance of the centralized server.
-
 ### Centralized algorithm
 
 A straightforward way to achieve mutual exclusion in a distributed system is to simulate how it is done in a one-processor system. One process is elected as the coordinator e.g. Zookeeper.
@@ -50,9 +48,9 @@ Having distributed locks is not sufficient to guarantee that there can’t be mo
 - Client 2 acquires lock and writes to the database
 - Client 1 wakes up and makes an unsafe write to the database
 
-You cannot fix this problem by inserting a check on the lock expiry just before writing back to storage as it does not eliminate the race condition, but makes it less likely.
+You cannot fix this problem by inserting a check on the lock expiry just before writing back to storage as it does not eliminate the race condition, but makes it less likely. Instead, the solution is to include a **fencing token** with every write request to the storage service.
 
-The fix for this problem is to include a **fencing token** with every write request to the storage service. A fencing token is simply a number that increases every time distributed lock is acquired i.e. a logical clock. When the leader writes to the store, it passes down the fencing token to it. The store remembers the value of the last token and accepts only writes with a greater value.
+A fencing token is a number that increases every time distributed lock is acquired i.e. a **logical clock**. When the leader writes to the store, it passes down the fencing token to it. The store remembers the value of the last token and accepts only writes with a greater value.
 
 <img src="../assets/fencing-token.png">
 
@@ -84,3 +82,17 @@ This solution proposes to use a voting algorithm. ach resource is assumed to be 
 Whenever a process wants to access the resource, it will simply need to get a majority vote from m > N/2 coordinators.
 
 If permission to access the resource is denied, it is assumed that it will back off for some randomly chosen time, and make a next attempt later. The problem with this scheme is that if many nodes want to access the same resource, it turns out that the utilization rapidly drops. In that case, there are so many nodes competing to get access that eventually no one can get enough votes, leaving the resource unused.
+
+## Application
+
+Virtually all algorithms suffer badly in the event of crashes. Special measures and additional complexity must be introduced to avoid having a crash bring down the entire system. It is somewhat ironic that distributed algorithms are generally more sensitive to crashes than centralized ones.
+
+In this sense, **centralized mutual exclusion with fencing token is widely applied**: it is simple to understand the behavior, and relatively easy to increase the fault tolerance of the centralized server.
+
+## Record append
+
+In a traditional write, clients specify the location/offset at which a mutation is performed. However, this requires additional complicated and expensive lock synchronization for concurrent operations e.g. distributed lock manager.
+
+Instead, a record append can be employed, whereby the client specifies only the data to append. Concurrent writes can be reconciliated by the primary replica using logical clocks and last-write-wins method. All secondary replicas will then follow the record append from the primary.
+
+To improve performance, record appends can be buffered before writing to disk.

@@ -1,8 +1,13 @@
-## Linearizability (atomic/strong consistency)
+## Linearizability
 
-A data storage system depicts linearizability when two conditions are satisfied: there is a notion of operations executed in sequential order (aligned with real time), and all operations on it are atomic.
+A data storage system depicts linearizability when two conditions are satisfied:
 
-Basic idea is to make a system appear as if there was only one copy of the data. With the above guarantees, even though there may be multiple replicas, the application does not need to worry about them. Appealing as it is easy to understand by making a database behave like a variable in a single-threaded program.
+- There is a notion of operations executed in sequential order (aligned with real time)
+- All operations on it are atomic
+
+A linearizable system provides atomic/strong consistency i.e. **total order**. Totally ordered communication ensures that messages are delivered in the same order to all participants.
+
+Basic idea is to make a system appear as if there was only one copy of the data. With the above guarantees, even though there may be multiple replicas, the application does not need to worry about them. This approach is appealing as it is easy to understand by making a database behave like a variable in a single-threaded program.
 
 In a linearizable system, after a write has occurred (effect is instantaneous) and one client reads the new value, all subsequent reads must also return the new value, even if the write operation has not yet completed. **Total order of operations is preserved** i.e. all operations are put in a single, totally ordered timeline.
 

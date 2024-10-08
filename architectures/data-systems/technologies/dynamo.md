@@ -12,6 +12,14 @@ Dynamo uses a synthesis of well known techniques to achieve scalability and avai
 
 Dynamo does not focus on the problem of data integrity and security and is built for a trusted environment i.e. it is built for an infrastructure within a single administrative domain where all nodes are assumed to be trusted.
 
+### SLA
+
+A common approach in the industry for forming a performance oriented SLA is to describe it using average, median and expected variance. However, these metrics are not good enough if the goal is to build a system where **all customers** have a good experience, not just the majority.
+
+To address this issue, at Amazon, SLAs are expressed and measured at the **99.9th percentile** of the distribution.
+
+A typical SLA required of internal services that use Dynamo is that 99.9% of the read and write requests execute within 300ms.
+
 ## Architecture
 
 <table>

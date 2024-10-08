@@ -41,3 +41,9 @@ However, there can be race conditions here with cache consistency, which can be 
 ## Indexing
 
 To efficiently manage cached content, edge servers maintain indexes or metadata about the cached items. This information helps quickly locate and serve requested files. Binary search can then be employed to find the data.
+
+## Kernel system memory
+
+n general cache management systems, the kernel will use swap memory or reclaim memory when the memory pressure is high, even when the page cache still has free memory. This may lead to problems such as additional CPU overhead, while the file system metadata will also incur I/O overhead.
+
+To overcome this, solutions that support direct reads/writes on the disk while bypassing the file system to bring the disk I/O performance into full play can be employed, such as Tencent DiskTank3. Moreover, the **async I/O** feature provided by the kernel can be used during reads/writes to unleash the full power of CPU and further improve the processing capabilities of the server.

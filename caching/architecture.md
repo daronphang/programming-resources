@@ -96,3 +96,9 @@ On the other hand, having larger servers provide the following benefits:
 - **Simplified management**: Fewer servers are easier to manage and maintain, with less moving parts and complexity in the overall system
 - **Improved resource utilization**: Larger servers can more effectively utilize CPU, memory and network resources
 - **Fewer connections**: With fewer cache servers, the total number of connections from clients is reduced, minimizing connection overhead
+
+## Sharded file storage
+
+Common file systems use contiguous storage. When the file system size reaches the threshold, an old file may need to be deleted before a new file can be received. However, this is an issue if an old 1GB file needs to be deleted to store a 4KB file.
+
+Instead, all large files can be divided into smaller data shards for storage. As such, only data shards need to be deleted if needed. When the original large file is requested, only the deleted shards need to be obtained again. This solves the problem where the cache file system generates high origin-pull traffic when deleting large files.

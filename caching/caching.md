@@ -19,6 +19,8 @@ Scope of caching typically applies to local storage or a specific system.
 
 ### Cache ratio
 
+Another term is byte miss ratio, which is the portion of user-requested bytes missed in the CDN cache.
+
 ```
 cache hits / (cache hits + cache miss)
 ```
