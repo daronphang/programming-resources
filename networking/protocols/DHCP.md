@@ -16,7 +16,7 @@ DHCP allows both the permanent assignment and temporary lease of host IP address
 
 DHCP enables mobility. For example, every time a user moves to a new location with a tablet computer, the user’s device can connect to another wireless LAN, use DHCP to lease a new IP address in that LAN, and begin working on the new network. Without DHCP, the user would have to ask for information about the local network and configure settings manually, with more than a few users making mistakes.
 
-## Concepts
+## How DHCP works
 
 As a DHCP client, the host begins with no IPv4 settings i.e. no IPv4 address, no mask, no default router, no DNS server IP addresses. However, a DHCP client does have knowledge of the DHCP protocol, so the client can use that protocol to:
 
@@ -43,6 +43,6 @@ All hosts in the subnet receive the Offer message. However, the original Discove
 
 ## DHCP and NAT in router
 
-DHCP and NAT can both be used at the time. DHCP is strictly concerned with IP address assignment (can also be used for private IP addresses) and the communication of things such as DNS, default gateway,etc. Using DHCP, it reduces client configuration tasks and you have a centralized management.
+DHCP is strictly concerned with IP address assignment (can also be used for private IP addresses) and the communication of things such as DNS, default gateway,etc. Using DHCP, it reduces client configuration tasks and you have a centralized management. NAT is about translating private IP addresses to a public IP address for internet access.
 
-The router provides private IP addresses to all of your host in the network via DHCP. When one of this hosts want to send packets to the internet, this same router will translate the private IP address (previously assigned via DHCP) into a public address using NAT.
+DHCP and NAT can both be used at the time in a router. The router provides private IP addresses to all of your host in the network via DHCP. When one of this hosts want to send packets to the internet, this same router will translate the private IP address (previously assigned via DHCP) into a public address using NAT.

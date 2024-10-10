@@ -37,7 +37,17 @@ TCP not only guards against overwhelming the receiver, but also against flooding
 
 The sender estimates the available bandwidth of the underlying network empirically through measurements. The sender maintains a **congestion window**, which represents the total number of outstanding segments that can be sent without an acknowledgement from the receiver.
 
-When a new connection is established, the size of the congestion window is set to a system default. Then, for every segment acknowledged, the window increases its size exponentially until reaching an upper limit. This means that we can’t use the network’s full capacity right after a connection is established. **The lower the round trip time (RTT) is, the quicker the sender can start utilizing the underlying network’s bandwidth**.
+When a new connection is established, the size of the congestion window is set to a system default. Then, for every segment acknowledged, the window increases its size exponentially until reaching an upper limit. When the congestion window size reaches the limit, it will start an additive increase. This means that we can’t use the network’s full capacity right after a connection is established. **The lower the round trip time (RTT) is, the quicker the sender can start utilizing the underlying network’s bandwidth**.
+
+When packet loss occurs, however, the congestion window size decreases significantly and enters the exponential increase phase again.
+
+This method avoids network transfer problems caused by packet loss but compromises transfer efficiency, which is not suitable for dynamic content transfer.
+
+<img src="../../assets/TCP-congestion-control.png">
+
+### Retransmission
+
+when packet loss occurs, data on and after the lost packet will all be retransmitted.
 
 ### Pipelining
 

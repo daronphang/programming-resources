@@ -8,9 +8,13 @@ Sites with a small amount of traffic or sites with content that isn't often upda
 
 Edge servers fetch content from origin servers in real-time when requested by users, reducing storage requirements and ensuring freshness of content. This approach is efficient when **read-to-update ratio is relatively low** i.e. dynamic content.
 
-Contrary to the Push protocol, this requires less maintenance because updates on cache nodes are performed based on requests from the client to the origin server. Sites with heavy traffic work well with pull protocol, as traffic is spread out more evenly with only recently-requested content remaining on the cache server.
+Contrary to the Push protocol, this requires less maintenance because updates on cache nodes are performed based on requests from the client to the origin server. Sites with heavy traffic work well with pull protocol, as traffic is spread out more evenly with only recently-requested content remaining on the cache server. However, this increases pressure on origin servers.
 
-## Leases
+## Pre-fetching
+
+Pre-fetching is a technique used to load data or resources into cache before they are actually requested by the user. The idea is to anticipate what the user will need next and fetch that content in advance to reduce latency and improve performance.
+
+## Leases (hybrid)
 
 A lease is a promise by the server that it will push updates to the client for a specified time. When the lease expires, the client is forced to poll the server for updates and pull in the modified data if necessary.
 

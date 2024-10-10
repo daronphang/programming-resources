@@ -15,6 +15,24 @@ Scope of caching typically applies to local storage or a specific system.
 
 <img src="./assets/caching.png">
 
+## Cache use cases
+
+### Caching for storage
+
+Using cache to facilitate reading from storage is the most common use case i.e. read-heavy workloads. Backend storage such as databases usually has a longer latency and a lower bandwidth than in-memory cache. Therefore, caching these objects reduce access latency, increases throughput, and shelters the backend from excessive read traffic.
+
+Object popularity is an important characteristic of a caching workload. Popularity distribution is often used to describe the cachebility of a workload. Popularity distributions for read-heavy in-memory caching workloads typically follow Zipfian distribution with a large skew.
+
+### Caching for computation
+
+As real-time stream processing and machine learning (ML) become increasingly popular, an increasing number of cache clusters are devoted to caching computation related data such as features, intermediate and final results of ML prediction, and hydration.
+
+Caches under this category serve both read-heavy and write-heavy traffic depending on the workloads.
+
+### Transient data with no backing store
+
+Another typical usage evolves around objects that only live in the cache, often for short periods of time. Examples include rate limiters, deduplication caches, and negative result caches.
+
 ## Performance indicators
 
 ### Cache ratio

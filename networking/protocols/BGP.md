@@ -1,18 +1,16 @@
 ## Border Gateway Protocol (BGP)
 
-BGP is a set of rules that determine the best network routes for data transmission on the internet. The internet consists of thousands of private, public, corporate, and government networks linked together through standardized protocols, devices, and communication technologies. When you browse the internet, data travels across multiple networks before reaching its destination. **BGP's responsibility is to look at all the available paths that data could travel and select the best route**, which means hopping between autonomous systems.
+BGP is the protocol that makes the internet work by enabling data routing. BGP manages how packets are routed across the Internet, directing packets between networks managed by enterprises or service providers. When a user in Singapore loads a website with origin servers in Argentina, BGP is the protocol that enables that communication to happen quickly and efficiently.
 
-BGP is the protocol that makes the internet work by enabling data routing. When a user in Singapore loads a website with origin servers in Argentina, BGP is the protocol that enables that communication to happen quickly and efficiently.
+BGP is a set of rules that determine the best network routes for data transmission on the Internet. The Internet consists of thousands of private, public, corporate, and government networks linked together through standardized protocols, devices, and communication technologies. When you browse the Internet, data travels across multiple networks before reaching its destination. **BGP's responsibility is to look at all the available paths that data could travel and select the best route**, which means hopping between autonomous systems.
 
 BGP creates network stability by guaranteeing that routers can adapt to route failures. When one path goes down, BGP quickly finds a new path. BGP makes routing decisions based on paths, defined by rules or network policies set by network administrators.
 
-### Autonomous systems
+### Autonomous systems (AS)
 
-The internet is a network of networks, and broken up into hundreds of thousands of smaller networks known as **autonomous systems (AS)**. Each of these networks is essentially a large pool of routers run by a single organization.
+The Internet is a network of networks, and broken up into hundreds of thousands of smaller networks known as **autonomous systems (AS)**. Each of these network is essentially a large pool of routers run by a single organization e.g. ISP. An AS may have many subnetworks, but they all share the same routing policy.
 
-The structure of the internet is constantly changing, and every AS must be kept up to date with information regarding new routes as well as obsolete routes. This is done through **peering sessions** where each AS connects to neighboring ASes with a TCP/IP connection for the purpose of sharing routing information.
-
-BGP is the standard routing protocol used to exchange routing information between different networks AS on the Internet. BGP makes decisions based on network policies and path attributes to determine the best routes for data packets.
+The structure of the Internet is constantly changing, and every AS must be kept up to date with information regarding new routes as well as obsolete routes. This is done through **peering sessions** where each AS connects to neighboring ASes with a TCP/IP connection for the purpose of sharing routing information.
 
 ### Who operates BGP autonomous systems?
 
@@ -22,9 +20,13 @@ Internet Assigned Numbers Authority (IANA) assigns ASNs to Regional Internet Reg
 
 ## How does BGP work?
 
-When you have a network router that connects to other networks, it does not know which network is the best one to send its data to. BGP takes into consideration all the different peering options a router has and chooses the one closest to where the router is. Each potential peer communicates the routing information it has and that gets stored within a routing information base (RIB). BGP can access this information and use it to choose the best peering option.
+BGP is the standard routing protocol used to exchange routing information between different networks ASes on the Internet. BGP makes decisions based on network policies and path attributes to determine the best routes for data packets.
 
-BGP works using a mechanism called **peering**. Administrators assign certain routers as BGP peer or BGP speaker routers. You can think peers as devices on the edge or boundary of an autonomous system. BGP performs three main functions. BGP enables peering to send packets between ASes.
+When you have a network router that connects to other networks, it does not know which network is the best one to send its data to. BGP takes into consideration **all the different peering options a router has and chooses the one closest to where the router is**. Each potential peer communicates the routing information it has and that gets stored within a routing information base (RIB). BGP can access this information and use it to choose the best peering option.
+
+BGP works using a mechanism called **peering**. Administrators assign certain routers as BGP peer or BGP speaker routers. You can think peers as devices on the edge or boundary of an autonomous system. BGP enables peering to send packets between ASes.
+
+BGP performs three main functions: route discovery, route storage, and path selection.
 
 <img src="../assets/BGP-hopping.png">
 
@@ -53,9 +55,26 @@ When a destination is reachable from multiple paths, BGP selects the best one by
 - Local preference
 - Oldest path
 
+### Authentication
+
+The problem is that the BGP protocol doesn’t have an authentication mechanism to verify routes. Any BGP router can announce any prefix as if it owns it. Network operators can explicitly configure BGP routers to establish peering relationships with other ASs to exchange routing information. Hence, this may lead to BGP hijacking.
+
 ## External vs internal BGP
 
 Internal BGP refers to a mechanism that gives information about the internal routers in a system. This is done using a mesh topology, which involves routes being received from internal BGP neighbors without them being advertised to other internal BGP neighbors. In this way, an internal BGP system avoids loops. Routing loops are more common in external BGP systems because they do not use a similar mesh topology.
+
+## BGP/traffic hijacking
+
+BGP hijacking is when attackers maliciously reroute Internet traffic. Attackers accomplish this by falsely announcing ownership of groups of IP addresses, called IP prefixes, that they do not actually own, control, or route to.
+
+As BGP is built on the assumption that interconnected networks are telling the truth about which IP addresses they own i.e. **based on trust**, BGP hijacking is nearly impossible to stop. However, for a hijack to occur, attackers need to control or compromise a BGP-enabled router that bridges between one AS and another.
+
+When an AS announces a route to IP prefixes that it does not actually control, this announcement, if not filtered, can spread and be added to routing tables in BGP routers across the Internet. In order for the BGP hijack to be successful, the route announcement must either:
+
+- Offer a more specific route by announcing a smaller range of IP addresses than other ASes had previously announced
+- Offer a shorter route to certain blocks of IP addresses
+
+<img src="../assets/BGP-hijacking.png">
 
 ## BGP flaws and hijacking
 

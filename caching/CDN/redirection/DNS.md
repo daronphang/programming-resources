@@ -2,6 +2,15 @@
 
 DNS redirection is a transparent mechanism by which the client can be kept completely unaware of where documents are located. DNS redirection directs user requests for content to the nearest or most appropriate CDN edge server.
 
+With DNS redirection, a client’s DNS request is redirected to an **authoritative DNS name server that is controlled by the CDN**, which then resolves the CDN server name to the IP address of one or more content servers.
+
+For close proximity, a minimum of two edge servers can be returned for redundancy. For clients that are further away, more servers can be returned.
+
+DNS redirection can be used to deliver full or partial site content:
+
+- Full: All DNS requests for the origin server are redirected to the CDN
+- Partial: The origin site modifies certain embedded URLs so that requests for only those URLs are redirected to the CDN
+
 ### Advantages
 
 The main advantage of DNS-based selection is **full control over where to place users**. It's not an organic placement method, and users are explicitly directed, leaving nothing to chance. If a data centre is overloaded you simply don't send users there.

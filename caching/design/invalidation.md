@@ -12,6 +12,16 @@ One of the simplest cache invalidation strategies is configuring an **expiration
 
 While this can work for many cases, most users expect changes to be reflected faster than the TTL. However, lowering the default TTL to a very small value can sink the cache hit rate and reduce its effectiveness.
 
+To prevent multiple objects from expiring at the same time, TTLs can be intentionally scattered. This technique is called **TTL jitter**.
+
+### Purposes
+
+TTL is used to serve three main purposes:
+
+- **Bounding inconsistency**: It is possible that objects stored are stale
+- **Implicit deletion**: Reflects the intrinsic lifespan of stored objects
+- **Periodic refresh**: Promote data freshness
+
 ## Cache control headers
 
 Cache control headers are used by the origin server to provide instructions to the CDN regarding caching behavior. These headers can dictate the cacheability of content, its TTL, and other caching-related settings.
@@ -20,7 +30,7 @@ Cache control headers are used by the origin server to provide instructions to t
 
 The purge method removes cached content for a specific object. When a purge request is received, the cached content is immediately removed, and the next request for the content will be served directly from the origin server.
 
-## Stale-while-revalidate
+## Stale-while-revalidate (soft TTL)
 
 This method is used in web browsers and CDNs to serve stale content from the cache while the content is being updated in the background. When a request is received for a piece of content, the cached version is immediately served to the user, and an asynchronous request is made to the origin server to fetch the latest version of the content. Once the latest version is available, the cached version is updated. This method ensures that the user is always served content quickly, even if the cached version is slightly outdated.
 
