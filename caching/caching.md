@@ -21,7 +21,7 @@ Scope of caching typically applies to local storage or a specific system.
 
 Using cache to facilitate reading from storage is the most common use case i.e. read-heavy workloads. Backend storage such as databases usually has a longer latency and a lower bandwidth than in-memory cache. Therefore, caching these objects reduce access latency, increases throughput, and shelters the backend from excessive read traffic.
 
-Object popularity is an important characteristic of a caching workload. Popularity distribution is often used to describe the cachebility of a workload. Popularity distributions for read-heavy in-memory caching workloads typically follow Zipfian distribution with a large skew.
+Object popularity is an important characteristic of a caching workload. Popularity distribution is often used to describe the cachebility of a workload. Popularity distributions for read-heavy in-memory caching workloads typically follow **Power-law (Zipfian) distribution** with a large skew i.e. a small subset of objects account for a large proportion of requests.
 
 ### Caching for computation
 
@@ -32,20 +32,6 @@ Caches under this category serve both read-heavy and write-heavy traffic dependi
 ### Transient data with no backing store
 
 Another typical usage evolves around objects that only live in the cache, often for short periods of time. Examples include rate limiters, deduplication caches, and negative result caches.
-
-## Performance indicators
-
-### Cache ratio
-
-Another term is byte miss ratio, which is the portion of user-requested bytes missed in the CDN cache.
-
-```
-cache hits / (cache hits + cache miss)
-```
-
-### Cache evictions
-
-Monitor the number of evictions occurring in the cache. Frequent evictions might suggest the cache is too small or the eviction policy is not optimal for your use case.
 
 ## Caching methods
 

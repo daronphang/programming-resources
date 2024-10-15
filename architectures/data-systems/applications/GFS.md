@@ -243,7 +243,7 @@ For reads, the chunkserver verifies the checksum of data blocks that overlap the
 
 Checksumming has little effect on read performance:
 
-- As most reads span at least a few blocks, we need to read and checkum only a small amount of extra data for verification
+- As most reads span at least a few blocks, we need to read and checksum only a small amount of extra data for verification
 - Overhead can be reduced by aligning reads at checksum block boundaries
 - Checksum lookups and comparison on the chunkserver are done without any I/O, and calculation can be overlapped with I/O
 

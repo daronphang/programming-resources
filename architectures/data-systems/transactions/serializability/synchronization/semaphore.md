@@ -2,7 +2,9 @@
 
 Semaphore is an integer variable that is shared between threads, and is never allowed to go negative. Attempting to decrement will block the running thread until another thread increments the count.
 
-Semaphores are used to implement critical sections, which are regions of code that must be executed by only one process at a time. By using semaphores, processes can coordinate access to shared resources i.e. shared memory or I/O devices.
+**Semaphores are used to implement critical sections**, which are regions of code that must be executed by only one process at a time. By using semaphores, processes can coordinate access to shared resources i.e. shared memory or I/O devices.
+
+A semaphore restricts the number of simultaneous users of a shared resource up to a maximum number i.e. **limits access to multiple processes**. Multiple threads can get the access to the resource (decrementing the semaphore), and can signal that they have finished the usage of the resource (incrementing the semaphore).
 
 Semaphores support the following interfaces:
 
@@ -18,7 +20,6 @@ Binary Semaphore is also known as a mutex lock. It can only have two values: 0 a
 - OS has to keep track of all calls to wait and signal the semaphore (busy waiting)
 
 ```py
-
 from enum import Enum
 from queue import Queue
 

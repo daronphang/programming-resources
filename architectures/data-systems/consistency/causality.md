@@ -7,7 +7,7 @@ For a data store to be considered causally consistent, it is necessary that the 
 - Writes that are potentially causally related must be seen by all processes in the same order
 - Concurrent writes may be seen in a different order on different machines (**partial-ordering**)
 
-### FIFO order
+### FIFO ordering
 
 FIFO order ensures that messages broadcast by the same sender process are delivered in the order in which they were sent. Causal order is a generalization of FIFO order that additionally preserves the potential causality among messages from multiple senders. These orderings are orthogonal to the reliability guarantees.
 

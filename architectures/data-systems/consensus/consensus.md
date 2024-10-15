@@ -2,7 +2,63 @@
 
 Consensus is one of the most fundamental problems in distributed computing. The goal is to get several nodes to agree on something.
 
-## Example situations
+Multiple nodes work together to maintain data consistency and provide fault tolerance. However, nodes can experience failures, network delays, and partitions, which can lead to data inconsistencies. Consensus algorithms are designed to address these challenges and enable a group of nodes to agree on a single value or sequence of operations.
+
+## Features
+
+### Agreement
+
+Consensus algorithms aim to achieve agreement among a group of nodes regarding a single value or a sequence of operations. All nodes in the system should eventually agree on the same decision.
+
+### Mutual exclusion
+
+A group of servers ensuring mutually exclusive access to a critical resource.
+
+### Fault tolerance
+
+Consensus algorithms are designed to handle node failures, communication delays, and network partitions. They ensure that the system can continue to make progress even in the presence of failures.
+
+### Safety
+
+Consensus algorithms ensure safety by guaranteeing that only one value or decision is agreed upon. Conflicting decisions are prevented to maintain data consistency.
+
+### Liveness
+
+Liveness ensures that the system can make progress and continue to agree on new values or decisions even in the absence of failures.
+
+### Quorum
+
+Many consensus algorithms require a quorum, which is a majority of nodes, to agree on a value before it is accepted or committed.
+
+### Two-phase approach
+
+Most consensus algorithms follow a two-phase approach, where proposals are first prepared and then accepted. This reduces the likelihood of conflicts and ensures safety.
+
+### Leader-based or leaderless
+
+Some consensus algorithms use a leader-based approach, where a designated leader coordinates the consensus process. Others are leaderless, where nodes work collaboratively to achieve consensus.
+
+### Message exchange
+
+Nodes communicate with each other by exchanging messages to propose values, vote, and inform each other about their states.
+
+### Reliable multicasting
+
+A group of servers attempting to receive the same updates in the same order as each other.
+
+### Log replication
+
+Many consensus algorithms include log replication mechanisms to ensure that all nodes have a consistent view of the data.
+
+### Consistency and replication
+
+Consensus algorithms ensure data consistency across replicas by replicating data and ensuring that all replicas agree on the same data.
+
+### Membership changes
+
+Some consensus algorithms support dynamic changes in the membership of the cluster, allowing nodes to join or leave the system gracefully.
+
+## Use cases
 
 ### Leader election
 
