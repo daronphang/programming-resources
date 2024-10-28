@@ -12,7 +12,7 @@ Context in Go refers to the circumstances that form the setting for an event. In
 - Notifying timeouts and deadline: If a service times out, we need to cancel our goroutines and not waste compute resources
 - Passing miscellaneous key values: Context can be used to pass values from middleware
 
-### Creating context
+## Creating context
 
 Two ways to create context:
 
@@ -38,11 +38,19 @@ func main() {
 }
 ```
 
-### Using data within context
+## Using data within context
 
 Have the ability to access data stored inside a context. By adding data to a context, it can be passed from function to function. Data stored is immutable and hence, it is **thread safe**.
 
 To override a context's value, need to wrap the parent context.
+
+However, storing data in Context can introduce bugs by storing incorrect types. Following are heuristics for storing data in Context:
+
+1. Data should transit process or API boundaries
+2. Data should be immutable
+3. Data should trend toward simple types
+4. Data should be data, not types with methods
+5. Data should help decorate operations, not drive them
 
 ```go
 func main() {
@@ -54,12 +62,14 @@ func main() {
 
 ```go
 func doSomething(ctx context.Context) {
-	fmt.Printf("doSomething: myKey's value is %s\n", ctx.Value("myKey"))    // myKey
+	fmt.Printf("doSomething: myKey's value is %s\n", ctx.Value("myKey"))
 
+	// Wrapping parent context in a new instance
 	anotherCtx := context.WithValue(ctx, "myKey", "anotherValue")
-	doAnother(anotherCtx)   // wrapped parent context in another
+	doAnother(anotherCtx)
 
-	fmt.Printf("doSomething: myKey's value is %s\n", ctx.Value("myKey"))    // referring to parent context: myKey
+	// referring to parent context: myKey
+	fmt.Printf("doSomething: myKey's value is %s\n", ctx.Value("myKey"))
 }
 
 func doAnother(ctx context.Context) {
@@ -67,11 +77,25 @@ func doAnother(ctx context.Context) {
 }
 ```
 
+## Modifying behavior
+
+There are no methods of Context interface that can mutate the state of the underlying structure. This protects functions up the call stack from children canceling the context i.e. ensure parent's Context is not affected.
+
+In order to change the behavior, Context provides functions that take in a Context and return new instances.
+
+```go
+func WithCancel(parent Context) (ctx Context, cancel CancelFunc)
+func WithDeadline(parent Context, deadline time.Time) (Context, CancelFunc)
+func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
+```
+
 ### Ending a context
 
 Provides a signal to any functions using it that the context has ended and should be considered complete i.e. other functions know to stop processing any work related to the context that they may still be working on.
 
 Done() can be checked to see whether a context has ended or not. Method returns a channel that is closed when the context is done i.e. returns nil for every read attempt on the channel.
+
+When cancel() is called, the signal will be propagated down your program's call graph i.e. all goroutines of the children will receive a signal from ctx.Done().
 
 ```go
 ctx := context.Background()
@@ -126,12 +150,13 @@ doAnother err: context canceled
 doAnother: finished
 doSomething: finished
 */
-
 ```
 
 ### Deadline or timeout
 
 Set a deadline on a context to automatically end when that deadline passes. For timeout, you provide a time for the context to end.
+
+In large distributed systems, it can be difficult to understand the way in which data flows, or what edge cases might turn up. It is not unreasonable, and even recommended, to **place timeouts on all of your concurrent operations to guarantee your system won't deadlock**.
 
 ```go
 func doSomething(ctx context.Context) {

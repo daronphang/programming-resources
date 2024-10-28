@@ -28,7 +28,7 @@ For cache avalanche prevention, use staggered expiration by combining a base tim
 
 Cache penetration occurs when an application attempts to access non-existent data, bypassing the cache and leading to potential performance issues. When an application requests a non-existent key, it results in a cache miss, followed by a request to the storage system, which also returns an empty result.
 
-### Placeholder
+### Placeholder (negative caching)
 
 To mitigate this, store a placeholder value in the cache to represent non-existent data. Subsequent requests for the same non-existent data will hit the cache instead of the data store. Set an appropriate TTL for these placeholder entries to prevent them from occupying cache space indefinitely.
 
@@ -116,3 +116,7 @@ One of the main challenges of scaling cache within a region is deciding whether 
 - Access rates
 - Data set size
 - Number of unique users accessing particular items
+
+## Dynamic content
+
+Particularly challenging is caching content when databases are involved, as much of what the server returns dynamically generated. However, even in those cases, by carefully administrating what has already been cached at the edge, it is possible to invent highly efficient and effective caching schemes.

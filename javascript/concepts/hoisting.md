@@ -1,4 +1,4 @@
-### Hoisting
+## Hoisting
 
 Behavior in Javascript in which variable and function declarations are moved to the top of their scope i.e. variable can be used before it has been declared. Variables defined with LET and CONST are hoisted but not initialized i.e. cannot be used until it has been declared. However, assigning value to undeclared variable implicitly creates it as a global variable.
 
@@ -39,7 +39,7 @@ carName = "Volvo";
 const carName;  // code will not run, syntax error
 ```
 
-### Hoisting Functions
+### Hoisting functions
 
 Function declarations are hoisted, while function expressions are not.
 

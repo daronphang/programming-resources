@@ -4,13 +4,21 @@ DNS operates as distributed hierarchical database.
 
 <img src="../assets/DNS-hierarchy.png">
 
-### DNS recursor
+### DNS recursor/resolver
+
+Resolvers are the clients that access nameservers. The resolver handles:
+
+- Querying a nameserver
+- Interpreting responses
+- Returning the information to the programs that requested it
 
 Serves as the middleman between a client and the other DNS servers, following a chain of referrals from each one until it locates the requested host’s IP address. The recursor will also cache information in order to respond faster to subsequent client requests.
 
 ### Root nameserver
 
 Receives the first request from the DNS recursor and sends back the appropriate top level domain (TLD) server, based on the queried host’s domain extension.
+
+There are 13 root servers deployed across the world, and each of these nodes is highly distributed and replicated for performance and availability.
 
 ### Top-level-domain (TLD) server
 
@@ -26,6 +34,8 @@ As a final step in the DNS resolution process, the DNS recursor sends the IP add
 
 Most hosts on a network (internal or external) have both a unique IP address and a hostname. When a client searches for a hostname, their network’s DNS provider executes a multi-step resolution process via the following four servers in order to find and return the appropriate IP address.
 
+DNS requests from clients use UDP header at port 53. UDP is used because the client will retry an operation if the DNS resolution fails.
+
 There are two methods of query resolution in DNS:
 
 - Iterative query resolution
@@ -35,7 +45,7 @@ There are two methods of query resolution in DNS:
 
 In iterative query resolution, the DNS server receiving the query provides referrals to the querying server, guiding it through the DNS hierarchy. The querying server actively participates in the process by sending subsequent queries based on the referrals received.
 
-<img src="../assets/DNS-iterative-resolution.png">
+<img src="../assets/DNS-resolution.png">
 
 ### Recursive query resolution
 

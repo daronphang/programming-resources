@@ -2,17 +2,19 @@
 
 A Content Delivery Network (CDN) is a geographically distributed network of servers and data centers designed to deliver web content to users more efficiently and reliably. It caches content such as images, videos, and other static assets.
 
-The primary purpose of a CDN is to reduce latency and improve the overall performance of web applications by serving content from the server nearest to the user. CDNs can also help improve reliability, availability, and security of web applications.
+The primary purpose of a CDN is to reduce latency and high WAN bandwidth cost, and improve the overall performance of web applications by serving content from the server nearest to the user. CDNs can also help improve reliability, availability, and security of web applications.
 
 <img src="../assets/CDN.png">
 
 ## Benefits
 
-### Reduced latency
+### Reduced latency and improved customer experience
 
 By serving content from geographically distributed edge servers, CDNs reduce the time it takes for content to travel from the server to the user, resulting in faster page load times and improved user experience.
 
-### Improved performance
+### Improved performance and reduced origin server costs
+
+As website content keeps diversifying, the load on origin server also increases. Scaling up the origin server or implementing distributed deployment for user access often result in higher costs.
 
 CDNs can offload static content delivery from the origin server, freeing up resources for dynamic content generation and reducing server load. This can lead to improved overall performance for web applications.
 

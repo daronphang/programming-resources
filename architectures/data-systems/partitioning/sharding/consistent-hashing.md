@@ -50,11 +50,11 @@ To handle these issues, Consistent Hashing introduces a new scheme of distributi
 
 Vnodes are **randomly distributed** across the cluster and are generally **non-contiguous** so that no two neighbouring vnodes are assigned to the same physical node or rack.
 
-Benefits of vnodes are as follows:
+### Benefits
 
-- Vnodes help spread the load more evenly across the cluster; this speeds up the rebalancing process after adding or deleting nodes
-- When a node needs to be rebuilt, instead of getting data from a fixed number of replicas, many nodes participate in the rebuild process
-- Vnodes make it easier to maintain a cluster containing **heterogeneous machines** i.e. assign a higher number of sub-ranges to a more powerful server
+- If a node becomes unavailable, the load handled by this node is evenly dispersed across the remaining available nodes; speeds up rebalancing process
+- When a node becomes available again, or a new node is added to the system, the newly available node accepts a roughly equivalent amount of load from each of the other available nodes i.e. many nodes participate in the rebuild process
+- The number of virtual nodes that a node is responsible can decided based on its capacity, accounting for heterogeneity in the physical infrastructure
 - Having smaller ranges decreases the probability of hotspots
 
 <img src="../../assets/consistent-hashing-vnode.png">
@@ -63,4 +63,37 @@ Benefits of vnodes are as follows:
 
 Each key is assigned to a coordinator node (generally the first node that falls in the hash range), which first stores the data locally and then replicates it to clockwise successor nodes on the ring. This results in each node owning the region on the ring between it and its predecessor. In an eventually consistent system, this replication is done asynchronously.
 
+The list of nodes that is responsible for storing a particular key is called the **preference list**. To account for node failures, preference list contains more than N nodes.
+
 <img src="../../assets/consistent-hashing-replication.png">
+
+## Partitioning schemes
+
+### T random tokens per node and partition by token value
+
+In this strategy, each node is assigned T tokens that are chosen uniformly at random from the hash space i.e. key ranges are generated at random. The tokens of all nodes are ordered according to their values in the hash space. Every two consecutive tokens define a range. As nodes join and leave the system, the token set changes and consequently the ranges change.
+
+However, this strategy posed a few problems:
+
+- When a new node joins the system, it needs to "steal" key ranges from other nodes. This is a resource intensive operation as existing nodes have to scan their local persistence store to retrieve the appropriate set of data items. As such, they need to be executed in the background with the lowest priority
+- When a node joins/leaves the system, the key ranges handled by many nodes change and the Merkle trees for the new ranges need to be recalculated, which is a non-trivial operation to perform on a production system
+- There is no easy way to take a snapshot of the entire key space due to the randomness in key ranges
+
+The fundamental issue with this strategy is that the schemes for **data partitioning and data placement are intertwined** i.e. it is not possible to add nodes without affecting data partitioning.
+
+### T random tokens per node and equal-sized partitions
+
+In this strategy, the hash space is divided into Q equally sized partitions/ranges and each node is assigned T random tokens. Q is usually set such that Q >> N and Q >> `S*T`, where S is the number of nodes in the system.
+
+The tokens are only used to build the function that maps values in the hash space to the ordered lists of nodes and not to decide the partitioning.
+
+### Q/S tokens per node and equal-sized partitions
+
+This strategy divides the hash space into Q equally sized partitions and the placement of partition is decoupled from the partitioning scheme. Moreover, each node is assigned Q/S tokens where S is the number of nodes in the system.
+
+When a node leaves the system, its tokens are randomly distributed to the remaining nodes such that these properties are preserved. Similarly, when a node joins the system it "steals" tokens from nodes in the system in a way that preserves these properties.
+
+This strategy achieves the **best load balancing efficiency** and reduces the size of membership information maintained at each node by three orders of magnitude. Other benefits include:
+
+- Faster bootstrapping and recovery as a partition can be relocated by transferring without random accesses needed to locate specific items
+- Ease of archival

@@ -1,6 +1,6 @@
 ## MVCC (Multi-Version Concurrency Control)
 
-MVCC is a database optimization technique that creates duplicate copies of records so that data can be safely read and updated at the same time (optimistic approach). This means that when querying a database, each transaction sees a snapshot of data as it was some time ago, regardless of the current state of the underlying data, providing transaction isolation for each database session.
+MVCC is a database optimization technique that creates duplicate copies of records so that data can be safely read and updated at the same time (**optimistic approach**). This means that when querying a database, each transaction sees a snapshot of data as it was some time ago, regardless of the current state of the underlying data, providing transaction isolation for each database session.
 
 The main difference between MVCC and lock models is that in MVCC, locks acquired for querying don't conflict with locks acquired for writing i.e. with MVCC, DBMS' reads and writes don't block each other.
 

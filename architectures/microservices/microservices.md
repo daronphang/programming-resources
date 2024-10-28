@@ -10,13 +10,13 @@ This approach values granularity, being lightweight and ability to share similar
 - All communication between services themselves are via network calls, to enforce separation between services and avoid the perils of tight coupling.
 - Services need to be able to change independently of each other, and be deployed themselves without requiring consumers to change.
 - Need to think about what the services should expose and hide; too much sharing would increase coupling to internal representations and decreases autonomy.
-- API exposed by services that facilitate communication between each other should use techonlogy that doesn't couple consumers i.e. picking technology agnostic APIs.
+- API exposed by services that facilitate communication between each other should use technology that doesn't couple consumers i.e. picking technology agnostic APIs.
 
 ## Benefits
 
 ### Technology heterogeneity
 
-You can decide to use different technologies inside each service and hence, allowing us to pick the right tool for each job, rather than having a standardized, one-size-fits-all approach. Taking social network as an example, we might store users' interactions in a graph-oriented database to reflect the highly interconnected nature of a social graph, but posts may be stored in a document-orinted data store.
+You can decide to use different technologies inside each service and hence, allowing us to pick the right tool for each job, rather than having a standardized, one-size-fits-all approach. Taking social network as an example, we might store users' interactions in a graph-oriented database to reflect the highly interconnected nature of a social graph, but posts may be stored in a document-oriented data store.
 
 Able to adopt new technology more quickly (reduces technology barrier) with minimized risks (deploying on services with lowest risk) as compared to deploying it on a monolithic application.
 

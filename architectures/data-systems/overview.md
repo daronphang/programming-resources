@@ -10,6 +10,14 @@ Many applications today are data-intensive as opposed to compute-intensive that 
 
 Increasingly, many applications have such demanding or wide-ranging requirements that a single tool can no longer meet all of its data processing and storage needs. When you combine several tools in order to provide a service, the API usually hides those implementation details from clients. However, designing such data-systems are tricky, and many factors influencing the design including legacy system dependencies, timescale for delivery, risk tolerance, regulatory constraints, etc. Nonetheless, three concerns that are important are **reliability, scalability and maintainability**.
 
+### Decoupling compute from storage
+
+Instance lifetime does not correlate well with storage lifetime. Instances fail. Customers shut them down. They resize them up and down based on load.
+
+In modern cloud services, resilience and scalability are increasingly achieved by **decoupling compute tier from storage tier**, and by replicating storage across multiple nodes e.g. Aurora. Doing so lets us handle operations such as replacing misbehaving or unreachable hosts, adding replicas, failing over from a writer to a replica, scaling the size of a database instance up or down, etc.
+
+As a result, the central constraint in high throughput data processing has moved from compute and storage to the **network**.
+
 ## Reliability
 
 Reliability means making systems work correctly, even when faults occur. Expectations include:
@@ -39,7 +47,7 @@ Term used to describe a system's ability to cope with increased load, where we n
 
 ### Performance
 
-Should use percentiles (median is 50th) instead of mean. To figure out how bad outliers are, should look at higher percentiles i.e. if 95th percentile response time is 1.5s, 95/100 requests took less than 1.5s.
+Should use **percentiles** (median is 50th) instead of mean. To figure out how bad outliers are, should look at higher percentiles i.e. if 95th percentile response time is 1.5s, 95/100 requests took less than 1.5s.
 
 Optimizing the 99.99th percentile (tail latencies) are important as they are usually the customers who have the most data on their accounts i.e. most valuable customers. However, it can be too expensive and not yielding enough benefit as reducing response times at very high percentiles is difficult and they are easily affected by random events outside of your control.
 

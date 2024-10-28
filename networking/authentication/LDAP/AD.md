@@ -15,7 +15,7 @@ Structure of LDAP directory:
 - ROOT
 - Domain Component
 - Organization Unit User/Group
-- Common Name John
+- Common Name
 
 ```
 Root (Domain Component)

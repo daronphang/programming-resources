@@ -1,38 +1,10 @@
-## Leaderless replication
+## Leaderless replication (replicated-write)
 
-Leader-centric replication is not fault-tolerant by design because we lose the write operation when the Master node is down. Leaderless replication addresses this concern and ensures our system can handle Write operations even when a subset of nodes are having an outage.
-
-In some implementations, client directly sends its writes to several replicas, while others make use of a coordinator node to do this on behalf of the client. Unlike a leader database, the coordinator does not enforce a particular ordering of writes. Leaderless systems utilize quorum for reads and writes.
+Leader-centric replication is not fault-tolerant by design because we lose the write operation when the master node is down. Leaderless replication addresses this concern and ensures our system can handle write operations even when a subset of nodes are having an outage. In replicated-write protocols, write operations can be carried out at **multiple replicas instead of only one**, as in the case of primary-based replicas.
 
 However, concurrency issues arise for leaderless and multi-leader replication as they allow multiple writes to happen concurrently, and conflicts may occur.
 
 This architecture is used in databases including Amazon Dynamo, Riak, Cassandra and Voldemort.
-
-### Constraint for strong consistency
-
-The constraint for leaderless replication is as follows:
-
-- w: Number of nodes that confirm the writes with an ACK
-- r: Number of nodes queried for the read
-- n: Total number of nodes
-
-For strong consistency:
-
-```
-w + r > n
-```
-
-## Writing
-
-Leaderless Replication eradicates the need of having a leader accepting the writes; instead, it **leverages quorum to ensure strong consistency across multiple nodes** and good tolerance to failures i.e. for write operation to 5 master nodes, it waits for ACK from at least 3 nodes.
-
-Every record in the database has a monotonically increasing version number. Every successful write updates this version number allowing us and the system to identify the latest value of the record upon conflict.
-
-## Reading
-
-Given that there could be a significant delay in the updates to propagate across all N nodes, the Read strategy in Leaderless Replication needs to be robust enough.
-
-Like how the client fanned out the write operation to all the nodes, it also fans out the Read operation to all N nodes. The client waits to get responses from at least N/2 + 1 nodes. Upon receiving the responses from a majority of the nodes, it returns the value having the **largest version number**.
 
 ## Catching-up mechanisms
 

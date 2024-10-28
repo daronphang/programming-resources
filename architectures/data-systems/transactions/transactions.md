@@ -10,6 +10,12 @@ Many things can wrong in data systems, including:
 
 For decades, transactions have been the mechanism of choice for simplifying these issues. A transaction is a way for an application to group several reads and writes together into a logical unit. Either the transaction succeeds (commit) or fails (rollback). Handling of errors become much simpler as we don't have to worry about partial failure.
 
+### Nested transactions
+
+In distributed systems, transactions are often constructed as a number of sub-transactions, jointly forming a **nested transaction**.
+
+When any transaction or sub-transaction starts, it is conceptually given a private copy of all data in the entire system for it to manipulate as it wishes. If it aborts, its private universe just vanishes, as if it had never existed. If it commits, its private universe replaces the parent’s universe.
+
 ## Handling errors
 
 A key feature of a transaction is that it can be aborted and safely retried if an error occurred, and ACID databases are based on this philosophy: if the database is in danger of violating its guarantee of ACID, it would rather abandon the transaction entirely than allow it to remain half-finished.

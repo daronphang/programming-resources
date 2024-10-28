@@ -17,3 +17,7 @@ Cache warming is the process of preloading content into the edge server’s cach
 ## Content optimization tools
 
 These tools pre-process and optimize content before caching and delivery, enhancing performance and reducing bandwidth usage.
+
+## COS-hosted origin server (cloud object storage)
+
+COS is a highly available, stable, and secure cloud storage service for enterprises and individual users. The origin server can put unstructured data in any amount and form into COS for easy management and processing. Data content can be stored on origin server hosted by COS both actively and passively. This helps significantly reduce the pressure on origin servers.

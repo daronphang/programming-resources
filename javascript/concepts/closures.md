@@ -19,8 +19,8 @@ function greeting(msg) {
   };
 }
 
-var hello = greeting('Hello');
-var howdy = greeting('Howdy');
+var hello = greeting("Hello");
+var howdy = greeting("Howdy");
 
 /* 
 When greeting() finishes, we expect all its variables to be garbage collected
@@ -28,21 +28,21 @@ However, they don't because of closure as the inner function instances are still
 Their closures are still preserving the 'msg' variables from outer function 
 */
 
-hello('Kyle');
+hello("Kyle");
 // Hello, Kyle!
 
-hello('Sarah');
+hello("Sarah");
 // Hello, Sarah!
 
-howdy('Grant');
+howdy("Grant");
 // Howdy, Grant!
 ```
 
-### Performance Issues
+### Performance issues
 
 While closures can be useful, they can also lead to memory issues as they are stored in memory. If unnecessary closures are created, it can cause memory leak. Hence, need to make sure we are actually using the variables that are stored.
 
-## Lexical Scoping
+## Lexical scoping
 
 Lexical (static) scope is the ability for a function to access variables from the parent scope i.e. the child function is lexically bound by that of the parent function. No scope may access any variables from the functions defined inside it.
 
@@ -50,10 +50,10 @@ An item's lexical scope is the place in which the item got created. Only code wi
 
 ```js
 // lexical scope for myName is global scope
-const myName = 'hello world';
+const myName = "hello world";
 
 function init() {
-  var name = 'Mozilla'; // name is a local variable created by init
+  var name = "Mozilla"; // name is a local variable created by init
   function displayName() {
     // displayName() is the inner function, a closure
     alert(name); // use variable declared in the parent function
@@ -63,7 +63,7 @@ function init() {
 init();
 ```
 
-## Sequence of Events from Closure
+## Sequence of events from closure
 
 ```js
 function outer() {
@@ -71,7 +71,7 @@ function outer() {
   var c = 100;
   function inner() {
     var a = 20;
-    console.log('a= ' + a + ' b= ' + b);
+    console.log("a= " + a + " b= " + b);
     a++;
     b++;
   }

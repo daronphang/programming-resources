@@ -56,7 +56,7 @@ Allows a single system to appear to have different system times, host and domain
 
 ### Cgroups (Control Groups) namespace
 
-Limits the resource usage (CPU, memory, disk, etc.) for a particular group of processes.
+Cgroups impose resource restrictions (CPU, memory, disk, etc.) upon a collection of processes. In this way, the hosting OS can prevent a single container from using too much of its resources, which in turn may prevent other containers from doing their work.
 
 ## Creating a Namespace
 
