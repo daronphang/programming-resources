@@ -24,7 +24,7 @@ However, a challenge arises during a second degree cache miss. To construct a me
 
 To maximize such merging, we want to find the optimal set of GraphDB nodes that can serve such second degree queries to reduce merging within NCS. This can be mitigated using a **greedy set cover algorithm**.
 
-<img src="../assets/linkedin-graph.png">
+<img src="./assets/linkedin-graph.png">
 
 ## Graph partitioning and replication
 
@@ -79,7 +79,7 @@ An example is as follows:
 5. A random partition is picked e.g. partition 1
 6. Nodes = {R11, R21}; R11 is selected, C = {R12, R23, R11}
 
-<img src="../assets/set-cover.png">
+<img src="./assets/set-cover.png">
 
 ### Pseudo
 

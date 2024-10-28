@@ -4,7 +4,7 @@ The webpage acceleration platform of Tencent Cloud CDN is optimized for webpage 
 
 ### Platform architecture
 
-<img src="../../assets/tencent-WAP.png">
+<img src="./assets/tencent-WAP.png">
 
 ### Global node scheduling system (GSLB)
 
@@ -28,7 +28,7 @@ For large files, the bandwidth will surge during passive origin-pull, leading to
 
 ### Platform architecture
 
-<img src="../../assets/tencent-DAP.png">
+<img src="./assets/tencent-DAP.png">
 
 ### Dedicated DNS
 

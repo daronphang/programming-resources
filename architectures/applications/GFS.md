@@ -24,7 +24,7 @@ Additional operations for GFS include:
 
 A GFS cluster consists of a single master and multiple chunkservers and is accessed by multiple clients.
 
-<img src="../assets/GFS-architecture.png">
+<img src="./assets/GFS-architecture.png">
 
 ### Reading
 
@@ -137,7 +137,7 @@ The process of applying a mutation is as follows:
 
 If a write by the application is large or straddles a chunk boundary, GFS client code breaks it down into multiple write operations.
 
-<img src="../assets/GFS-write.png">
+<img src="./assets/GFS-write.png">
 
 ### Leases
 

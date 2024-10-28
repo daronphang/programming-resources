@@ -16,7 +16,7 @@ To reduce storage cost, many customers are served from the same shared storage i
 
 ## Architecture
 
-<img src="../assets/WAS.png">
+<img src="./assets/WAS.png">
 
 ### Storage stamp
 
@@ -77,4 +77,4 @@ e.g. E1, E2, E3, E4.
 
 Only the last extent in the stream can be appended to. All of the prior extents in the stream are immutable.
 
-<img src="../assets/WAS-stream.png">
+<img src="./assets/WAS-stream.png">

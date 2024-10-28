@@ -50,6 +50,8 @@ Moreover, both the coordinator as well as the participants have states in which 
 
 Consequently, the protocol can easily fail when a process crashes, as other processes may be indefinitely waiting for a message from that process. For this reason, timeout mechanisms are used.
 
+Moreover, 2PC is chatty and intolerant of failures.
+
 ## 3PC
 
 A problem with the 2PC protocol is that when the coordinator has crashed, participants may not be able to reach a final decision. Consequently, participants may need to remain blocked until the coordinator recovers.

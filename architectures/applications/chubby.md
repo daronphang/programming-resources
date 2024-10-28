@@ -84,7 +84,7 @@ Replica failure is managed as follows:
 4. Master updates the list of the cell’s members in the cell’s database; this list is kept consistent across all the members via the normal replication protocol
 5. Once the new replica has processed a request that the current master is waiting to commit, the replica is permitted to vote in the elections for new master
 
-<img src="../assets/chubby-structure.png">
+<img src="./assets/chubby-structure.png">
 
 ### Files, directories, handles
 
@@ -214,7 +214,7 @@ If the client lease expires, it becomes unsure whether its lease has expired at 
 
 When a master fails or otherwise loses mastership, it discards its in-memory state about sessions, handles, and locks. If a master election occurs quickly, clients can contact the new master before their local lease timers expire. If election takes a long time, clients flush their caches and wait for the grace period while trying to find a new master. This allows sessions to be maintained across failovers that exceed the normal lease timeout.
 
-<img src="../assets/chubby-keepalives.png">
+<img src="./assets/chubby-keepalives.png">
 
 ## Scaling mechanisms
 

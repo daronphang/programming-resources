@@ -28,7 +28,7 @@ There are two types of znodes that a client can create:
 
 Unlike files in file systems, znodes are not designed for general data storage. Instead, they can be used to store metadata used for coordination purposes.
 
-<img src="../assets/zookeeper-znode.png">
+<img src="./assets/zookeeper-znode.png">
 
 ### Watches
 
@@ -98,7 +98,7 @@ By only watching the znode that precedes the client’s znode, we avoid the herd
 
 ## Implementation
 
-<img src="../assets/zookeeper-components.png">
+<img src="./assets/zookeeper-components.png">
 
 ### Read/write requests
 

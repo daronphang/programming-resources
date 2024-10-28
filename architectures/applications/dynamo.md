@@ -79,7 +79,7 @@ An example of the use of vector clocks is as follows:
 10. Client updates object
 11. Node Sx handles request and updates its sequence number in the object's vector clock `D5([Sx,3],[Sy,1],[Sz,1])`
 
-<img src="../assets/dynamo-vector-clock.png">
+<img src="./assets/dynamo-vector-clock.png">
 
 ### Membership and failure detection
 

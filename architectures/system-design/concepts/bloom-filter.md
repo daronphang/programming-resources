@@ -41,7 +41,7 @@ The following operations are executed to add an item to the bloom filter:
 
 There is a probability that some bits on the array are set to one multiple times due to **hash collisions**.
 
-<img src="../../assets/bloom-filter.png">
+<img src="../assets/bloom-filter.png">
 
 ### Checking membership of an item
 
