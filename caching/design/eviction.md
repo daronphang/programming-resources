@@ -8,11 +8,11 @@ Multiple problems come with increasing complexity:
 
 - Complex cache eviction algorithms are **difficult to debug** due to their intricate logic
 - Complexity may **affect efficiency** in surprising ways
-- Complexity often negatively correlates with throughput performance. A more intricate algorithm performs more computation with potentially longer critical sections, reducing both throughput and scalability.
+- Complexity often negatively correlates with throughput performance. A more intricate algorithm performs more computation with potentially longer critical sections, reducing both throughput and scalability
 - More per-object metadata needs to be stored, which reduces the effective cache size that can be used for caching data e.g. CACHEUS is 3.3x larger than LRU
 - Complex algorithms often have parameters that can be difficult to tune
 
-### Simplicity
+### Simplicity wins
 
 **Simplicity** is a key appealing feature for an algorithm to be deployed in production since it commonly correlates with effectiveness, maintainability, scalability, and low overhead. Most caching systems such as ATS, Varnish, Nginx, Redis, groupcache use only FIFO and LRU policies.
 

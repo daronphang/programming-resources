@@ -18,7 +18,7 @@ You are not limited to the top level internal directory; you can have more than 
 
 ### /pkg
 
-Library code that is ok to be used by external applications. Other projects will import these libraries expecting them to work. It is a good way tto explicitly communicate that the code in this directory is safe for use by others.
+Library code that is ok to be used by external applications. Other projects will import these libraries expecting them to work. It is a good way to explicitly communicate that the code in this directory is safe for use by others.
 
 ### Helpers/Util
 

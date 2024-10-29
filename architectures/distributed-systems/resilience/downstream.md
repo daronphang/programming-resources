@@ -10,7 +10,7 @@ Ideally, you should set your timeouts based on the desired false timeout rate. F
 
 ### Retries
 
-If the failure or timeout was caused by a short-lived connectivity issue (transient), then retrying after some backoff time has a high probability of succeeding. However, if the downstream service is overwhelmed, retrying immediately will only make matters worse.Delays between retries can be performed using **exponential backoff**.
+If the failure or timeout was caused by a short-lived connectivity issue (transient), then retrying after some backoff time has a high probability of succeeding. However, if the downstream service is overwhelmed, retrying immediately will only make matters worse. Delays between retries can be performed using **exponential backoff**.
 
 However, one must be aware of **retry amplification**. This happens when there are intermediate requests between services, and retries are performed at multiple levels of the dependency chain. This behavior can easily **bring down the whole system**. Hence, when you have long dependency chains, you should only retry at a single level of the chain, and fail fast in the other ones.
 

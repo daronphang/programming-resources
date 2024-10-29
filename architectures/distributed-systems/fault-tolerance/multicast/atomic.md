@@ -36,19 +36,17 @@ Group members may receive any of three types of events:
 - **View change**: Informs the process of a group membership change
 - **Checkpoint request**: If a process joins a group, it needs to bring its state up-to-date. To do this, a process may send a checkpoint request message to any other process in the group
 
-### Ensuring message delivery
+### Ensuring message delivery (stable messages)
 
 **TCP** is used as the point-to-point protocol to send a message to each member reliably. Although each transmission is guaranteed to succeed, this by no means guarantees that all group members receive m because the sender may fail before having transmitted m to each member.
 
-A message that has been received by all group members is considered to be **stable**. If a sending process died partway through a multicast, any messages that it has sent are **unstable**. Stable messages can be delivered to applications; unstable messages cannot be delivered.
+A message that has been received by all group members is considered to be **stable**. If a sending process died partway through a multicast, any messages that it has sent are **unstable**. Stable messages can be delivered to applications; **unstable messages cannot be delivered**.
 
-If a process died either partway through multicasting a message or before it was able to inform the group members that the message was successfully received by every group member, we may have unstable messages sitting in the holdback queue at some processes in the group.
+### View changes
 
-During a view change, each process sends unstable messages to all group members (prior to the new group) and waits for acknowledgements. Effectively, each process takes over the delivery from the original, failed, sender. Note that we may have a flurry of activity with several processes sending identical messages to all group members. **Logical clock** such as a sequence number can be used to uniquely identify duplicate messages. Any messages that a process receives that are not duplicates are considered stable and are delivered to the application.
+During a view change, each process sends unstable messages to all group members (prior to the new group) and waits for acknowledgements. Effectively, each process takes over the delivery from the original, failed, and sender. Note that we may have a flurry of activity with several processes sending identical messages to all group members. **Logical clock** such as a sequence number can be used to uniquely identify duplicate messages. Any messages that a process receives that are not duplicates are considered stable and are delivered to the application.
 
-Finally, each process sends a **flush message** to the group. A group member acknowledges the flush when it has delivered all messages to the application. When all flushes are acknowledged, the view change is complete. At this time we know that there are no undelivered messages that were sent during the previous group view. Any messages sent from this point on will be sent to the new group.
-
-When each process is done transmitting its unstable messages, it sends a flush message to each group member and waits for an acknowledgement. An acknowledgement means that the receiver has delivered all messages to the application. The view change is complete when the flush message from each group member has been acknowledged.
+Finally, each process sends a **flush message** to the group. A group member acknowledges the flush when it has delivered all messages to the application. **When all flushes are acknowledged, the view change is complete**. At this time we know that there are no undelivered messages that were sent during the previous group view. Any messages sent from this point on will be sent to the new group.
 
 An illustration is as follows:
 

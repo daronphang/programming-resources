@@ -1,6 +1,6 @@
 ## Location systems
 
-When looking at large distributed systems that are dispersed across a wide- area network, it is often necessary to take proximity into account. If two processes that are in the same overlay network communicate a lot, it would be better to ensure that they are also physically placed in each other’s proximity.
+When looking at large distributed systems that are dispersed across a wide-area network, it is often necessary to take proximity into account. If two processes that are in the same overlay network communicate a lot, it would be better to ensure that they are also physically placed in each other’s proximity.
 
 ### GPS
 
