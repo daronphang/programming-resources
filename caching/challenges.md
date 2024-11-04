@@ -20,7 +20,7 @@ For any requests for the key within 5 seconds of the lease token being issued, t
 
 Cache avalanche happens when multiple or all cache entries expire simultaneously or within a short time window, leading to a sudden surge in requests to the underlying data store.
 
-### Staggered expiration
+### Staggered expiration (TTL jitter)
 
 For cache avalanche prevention, use staggered expiration by combining a base time-to-live (TTL) value with a random delta. This approach spreads out the expiration times of cached entries, reducing the likelihood of many items expiring at once.
 

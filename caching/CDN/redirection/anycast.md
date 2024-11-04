@@ -10,11 +10,11 @@ Another CDN anycast methodology used is where anycast-based CDN load balancing p
 
 ### Key features
 
-- Shared IP: Multiple endpoints share a common IP address or range
-- Localization: Traffic is routed to the topologically nearest endpoint server
-- Redundancy: Automatically switches to alternate servers if one goes down
-- Scalability: Seamlessly scales capacity by adding more Anycast nodes
-- Load Distribution: Spreading requests across endpoints balances load efficiently
+- **Shared IP**: Multiple endpoints share a common IP address or range
+- **Localization**: Traffic is routed to the topologically nearest endpoint server
+- **Redundancy**: Automatically switches to alternate servers if one goes down
+- **Scalability**: Seamlessly scales capacity by adding more Anycast nodes
+- **Load Distribution**: Spreading requests across endpoints balances load efficiently
 
 ### How it works
 

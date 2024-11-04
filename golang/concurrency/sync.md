@@ -122,7 +122,7 @@ Pool is a concurrent-safe implementation of the object pool pattern. At a high l
 
 Pool is used instead of instantiating objects as you go because Go has a garbage collector, and instantiated objects will be automatically cleaned up once they are not referenced.
 
-Another common situation where a Pool is useful is for warming a cache of pre-allocated objects for operations that must run as quickly as possible. Instead of trying to guard the host machine’s memory by constraining the number of objects created, we’re trying to guard consumers’ time by front-loading the time it takes to get a reference to another object. This is very common when writing high- throughput network servers that attempt to respond to requests as quickly as possible.
+Another common situation where a Pool is useful is for warming a cache of pre-allocated objects for operations that must run as quickly as possible. Instead of trying to guard the host machine’s memory by constraining the number of objects created, we’re trying to guard consumers’ time by front-loading the time it takes to get a reference to another object. This is very common when writing high-throughput network servers that attempt to respond to requests as quickly as possible.
 
 ### Get, Put
 

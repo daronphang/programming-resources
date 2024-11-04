@@ -24,8 +24,8 @@ https://highscalability.com/gossip-protocol-explained/
 
 A popular propagation model is that of anti-entropy. In this model, a node P picks another node Q at random, and subsequently exchanges updates with Q. There are three approaches to exchanging updates:
 
-1. P only pulls in new updates from Q i.e. push approach
-2. P only pushes its own updates to Q i.e. pull approach
+1. P only pulls in new updates from Q i.e. pull approach
+2. P only pushes its own updates to Q i.e. push approach
 3. P and Q send updates to each other i.e. a push-pull approach (**most effective**)
 
 When it comes to rapidly spreading updates, a pure push-based approach is the worst choice. This is because updates can be propagated only by infected nodes. Moreover, if many nodes are infected, the probability of each one selecting a susceptible node is relatively small. This approach consumes considerable resources and causes many redundant transmissions, in order to achieve reliable delivery with high probability.
