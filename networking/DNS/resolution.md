@@ -26,15 +26,21 @@ Maintains information for all domain names with the same domain extension e.g. .
 
 ### Authoritative nameserver
 
-Stores the DNS records that map domain names to IP addresses. The authoritative nameserver responds to a DNS recursor’s final request with the queried hostname’s IP address. If the IP address is not available, the nameserver will throw an error.
+In each domain, there will be one or more servers used to store all the information of the domain name space and respond to all requests about the domain name space i.e. stores the DNS records that map domain names to IP addresses. These servers are called authoritative nameservers.
+
+Each domain can be divided into multiple subdomains, and each subdomain can maintain its own authoritative nameserver e.g. a.CDN.com, b.CDN.com, c.CDN.com. When a subdomain is authorized, the domain it originally belonged to **no longer contains its data**, leaving only pointers to it.
+
+The authoritative nameserver responds to a DNS recursor’s final request with the queried hostname’s IP address. If the IP address is not available, the nameserver will throw an error.
 
 As a final step in the DNS resolution process, the DNS recursor sends the IP address back to the client’s browser, allowing it to connect to and load the appropriate website or application.
 
 ## DNS resolution
 
-Most hosts on a network (internal or external) have both a unique IP address and a hostname. When a client searches for a hostname, their network’s DNS provider executes a multi-step resolution process via the following four servers in order to find and return the appropriate IP address.
+Most hosts on a network (internal or external) have both a unique IP address and a hostname:
 
-DNS requests from clients use UDP header at port 53. UDP is used because the client will retry an operation if the DNS resolution fails.
+1. When a client searches for a hostname, the browser will first request the **local DNS server** for DNS resolution, and its address is part of the client's configuration or assigned to the client via **DHCP**
+2. Local DNS executes a multi-step resolution process via the following four servers in order to find and return the appropriate IP address
+3. DNS requests from clients use UDP header at port 53. UDP is used because the client will retry an operation if the DNS resolution fails
 
 There are two methods of query resolution in DNS:
 
@@ -49,9 +55,15 @@ In iterative query resolution, the DNS server receiving the query provides refer
 
 ### Recursive query resolution
 
-In recursive query resolution, the DNS server receiving the query takes on the responsibility of finding the IP address on behalf of the client. It may itself use iterative queries to navigate through the DNS hierarchy until it reaches the authoritative DNS server for the requested domain.
+In recursive query resolution, the DNS server receiving the query takes on the responsibility of finding the IP address on behalf of the client. It may itself use iterative queries to navigate through the DNS hierarchy until it reaches the authoritative DNS server for the requested domain. In practical applications, **recursion is more common**.
 
 <img src="../assets/DNS-recursive-resolution.png">
+
+## DNS caching
+
+DNS brings additional latency to internet applications that use it. To solve this problem, caching mechanism can be implemented. Caching refers to the caching of DNS query results in the host. Administrators often set a TTL for the cached data.
+
+Additionally, client browsers can also cache DNS response information.
 
 ## Challenges
 

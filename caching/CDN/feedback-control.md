@@ -2,6 +2,8 @@
 
 The sheer size of a CDN requires that hosted documents are automatically distributed and replicated. In most cases, a large-scale CDN is organized similar to a feedback-control loop.
 
+**Negative feedback** is often implemented, which is a bias-based scheduling. When the system output is not equal to the expected value, the control system applies control to the system based on the deviation between the system output and the expected value. For example, if the actual output is greater than the expected output, a positive difference is generated, and a negative control quantity is generated e.g. reducing requests to a server if the actual request output is greater than expected.
+
 <img src="../assets/feedback-control.png">
 
 ## Metrics aggregation
@@ -40,32 +42,4 @@ To determine when and how adaptations are to be triggered, a simple model is to 
 
 ## Managing replication
 
-An interesting aspect of CDNs is that they need to make a trade-off between many aspects when it comes to hosting replicated content:
-
-- Access times for a document may be optimal if it is massively replicated
-- Incurs financial cost
-- Incurs bandwidth usage for disseminating updates
-
-When considering improving performance of Web applications through caching and replication, matters are complicated by the fact that several solutions can be deployed, with no single one standing out as the best.
-
-<img src="../assets/replication-alternatives.png">
-
-### Full replication
-
-To improve performance, we can decide to apply full replication of the data stored at the origin server. This scheme works well whenever the update ratio is low and when queries require an extensive database search.
-
-Another case for full replication is when queries are generally complex i.e. relational database with multiple table joins.
-
-### Content-aware caches
-
-An alternative to partial replication is to make use of content-aware caches. The basic idea is that an edge server maintains a local database that is now tailored to the type of queries that can be handled at the origin server i.e. organized according to the structure of queries and **not normalized**.
-
-However, data at the edge server needs to be kept consistent, and the origin server needs to know which records are associated with which templates, so that any update of a record, or any update of a table, can be properly addressed.
-
-### Content-blind caching
-
-The idea of content-blind caching is simple: when a client submits a query to an edge server, the server first computes a **unique hash value for that query**. Using this hash value, it subsequently looks in its cache whether it has processed this query before. If not, the query is forwarded to the origin and the result is cached before returning it to the client.
-
-The main advantage of this scheme is the reduced computational effort that is required from an edge server in comparison to database queries.
-
-However, content-blind caching can be wasteful in terms of storage, as the caches may contain much more redundant data in comparison to content-aware caching or database replication. Such redundancy also complicates the process of keeping the cache up-to-date, as the origin server may need to keep an accurate account of which updates can potentially affect cached query results.
+For dynamic content acceleration, it is necessary to make trade-offs between full replication and partial replication of data access layer.

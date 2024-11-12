@@ -14,6 +14,27 @@ While this can work for many cases, most users expect changes to be reflected fa
 
 To prevent multiple objects from expiring at the same time, TTLs can be intentionally scattered. This technique is called **TTL jitter**.
 
+### HTTP headers
+
+#### Expires
+
+The Expires header contains the date/time after which the response is considered expired. However, this requires calculating the exact expiration date each time. If there is a Cache-Control header, the Expires header is ignored.
+
+#### Cache-Control
+
+- **max-age**: After expiring, the browser must refresh its version of the resource by sending another request to the server
+- **public**: Cached version can be recognized by the proxy server or intermediate servers
+- **private**: Only the user's browser can cache the content
+- **no-cache**: Contents of the file should not be cached
+
+#### Last-Modified
+
+Subsequent requests to the server from the browser will check if the file has been modified after the date specified.
+
+#### ETag
+
+Last-Modified is subjected to clock skews and errors in time synchronization. ETag can be used to create a unique hash of the file instead.
+
 ### Purposes
 
 TTL is used to serve three main purposes:

@@ -1,4 +1,4 @@
-## OSI Model (Open System Interconnection)
+## OSI (Open System Interconnection) model
 
 OSI Model is a logical and conceptual/reference model that characterizes and standardizes how different software and hardware components involved in a network communication should divide labor and interact with one another. **There are no real working implementations of the OSI model**.
 
@@ -34,14 +34,22 @@ UDP provides one-to-one or one-to-many, connectionless, unreliable service that 
 
 ### Network (Layer 3)
 
-Handles packet routing via logical addressing and switching functions. A network is a medium to which many nodes can be connected, and each node has an address. When a node needs to transfer a message to other nodes, it can merely provide the message content and the address of the destination node. If the message is long, the network may split it into several segments and sending them separately (possibly through different nodes) and reassembling the fragments at the destination node.
+Handles packet routing/forwarding via logical addressing and switching functions. A network is a medium to which many nodes can be connected, and each node has an address. When a node needs to transfer a message to other nodes, it can merely provide the message content and the address of the destination node. If the message is long, the network may split it into several segments and sending them separately (possibly through different nodes) and reassembling the fragments at the destination node. **IP** operates at layer 3, and bridges the gap across different Ethernet networks i.e. responsible for packet delivery from **end to end**.
 
 ### Data Link (Layer 2)
 
-Provides node-to-node transfer i.e. a link between two directly connected nodes. Layer handles packaging and unpacking the data in frames. Generally divided into two sublayers:
+Provides node-to-node transfer across the physical layer i.e. a link between two directly connected nodes. Network Interface Cards (NICs) and switches operate at layer 2. This layer handles packaging and unpacking the data in frames, and is generally divided into two sublayers:
 
-- Media Access Control (MAC): Responsible for controlling how devices in a network gain access to a media and permission to transmit data.
-- Logical Link Control (LLC): Responsible for identifying and encapsulating network layer protocols.
+- **Media Access Control (MAC) address**: Manages how data is transported from one network node to another on a **direct, physical basis (hop to hop delivery)**. MAC addresses are assigned by the manufacturer on a NIC, and is a unique identifier for a device in a LAN
+- **Logical Link Control (LLC)**: Responsible for identifying and encapsulating network layer protocols
+
+#### Hop to hop
+
+When a computer sends data:
+
+1. It wraps data in an IP header which includes source and destination
+2. IP header is encapsulated in a MAC header, which includes source and destination MAC addresses for the current hop
+3. As data travels from one router to the next, MAC address header is stripped off and a new one is generated for the next hop. IP address remains intact
 
 ### Physical (Layer 1)
 

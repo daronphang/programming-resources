@@ -78,3 +78,30 @@ $ ls dox-sym-link
 ## nohup (no hang up)
 
 Keeps processes running even after exiting the shell or terminal. Processes running with this command will ignore the SIGHUP signal even after exiting the shell. Once a job is started, stdin will not be available to the user.
+
+## PS1
+
+The PS1 (prompt string 1) environment variable in Linux defines the format of the command prompt displayed in the terminal.
+
+https://tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html
+
+```
+export PS1="\[\e[0;33m\][\u@\h \W]\$ \[\e[m\] "
+```
+
+```
+\u  Username of current user
+\h  Hostname of system
+\w  Current working directory
+\W  Base name of pwd
+\n  Inserts a newline
+\t  Inserts current time in 24h format HH:MM:SS
+\d  Inserts current date in format "Weekday Month Day"
+\$  Inserts a $ symbol for regular user and # symbol for root user
+
+\[\033[0;30m\]  Black
+\[\033[0;31m\]  Red
+\[\033[0;32m\]  Green
+\[\033[0;33m\]  Yellow
+\[\033[0;37m\]  White
+```

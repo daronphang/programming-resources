@@ -10,36 +10,6 @@ Keepalived is **primarily used to manage virtual IP (VIP) addresses** and ensure
 
 Accessing the virtual IP from the load balancers or one of the real servers is not supported. Likewise, configuring a load balancer on the same machines as a real server is not supported.
 
-## LVS (Linux Virtual Server)
-
-LVS is a patched Linux kernel that adds a load balancing facility. LVS acts as a network bridge (using NAT) to load balance TCP/UDP stream.
-
-### Algorithms
-
-https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/load_balancer_administration/ch-initial-setup-vsa
-
-### Components
-
-#### VIP (Virtual IP)
-
-the VIP is the IP address that will be accessed by all clients.
-
-#### Real server
-
-A real server hosting the application accessed by client requests.
-
-#### Server pool
-
-A farm of real servers.
-
-#### Virtual server
-
-The access point to a Server pool.
-
-#### Virtual service
-
-A TCP/UDP service associated with the VIP.
-
 ## VRRP (Virtual Router Redundancy Protocol)
 
 VRRP is the protocol implemented for the director's failover/virtualization. VRRP is a fundamental brick for router failover.

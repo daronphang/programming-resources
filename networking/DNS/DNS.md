@@ -6,8 +6,12 @@ DNS is a crucial component of the internet that translates human-readable domain
 
 - **A**: Maps your domain/subdomain to one or more IP addresses e.g. example.com
 - **AAAA**: For mapping IPv6
-- **CNAME**: Maps a name to another name; should only be used when there are no other records on that name
+- **CNAME (Canonical)**: Maps a name to another name; should only be used when there are no other records on that name
 - **ALIAS**: Maps a name to another name, but can coexist with other records on that name e.g. www.example.com
+- **NS (Nameserver)**: Used to indicate which DNS servers in the area are responsible for resolution
+- **SOA (Start of Authority)**: Indicate which DNS server is the authoritative domain nameserver for the zone. Each zone is allowed to have only one SOA record
+- **MX (Mail Exchanger)**: Used to indicate DNS servers for mail records
+- **SRV (Server)**: SRV records are defined in RFC2052; used to indicate what kind of services a server can provide, and they play an important role in AD
 
 ```
 example.com     A       12.34.56.78

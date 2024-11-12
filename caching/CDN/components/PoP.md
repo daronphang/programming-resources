@@ -1,6 +1,6 @@
 ## Point of Presence (PoP)
 
-A PoP is a physical location that houses data center compute, storage and networking infrastructure where high-speed connections to the internet are established. It’s a destination where data from a user’s device given a specific use case or application, is sent to connect to the internet.
+A PoP is a physical location that houses data center compute, storage and networking infrastructure where high-speed connections to the internet are established. It’s a destination where data from a user’s device given a specific use case or application, is sent to connect to the internet. A PoP can be treated as a **service pool**.
 
 A PoP refers to a location, facility or access point that connects to and helps other devices establish connections to the internet. It houses servers, routers, network, switches, multiplexers and other network interface equipment. PoPs are located at co-location centers and Internet exchange points.
 

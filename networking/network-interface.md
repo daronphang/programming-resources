@@ -10,7 +10,7 @@ When you send a packet to an IP address, your route table decides which network 
 
 ### Physical
 
-- Ethernet Interfaces
+- Ethernet Interfaces: Uses MAC addresses for communication
 - Wi-Fi Interfaces
 - Fiber Optic Interfaces
 

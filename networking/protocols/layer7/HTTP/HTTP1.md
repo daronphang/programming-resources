@@ -18,6 +18,8 @@ Allows the server to start sending a response before knowing its total size.
 
 Supports caching mechanisms and compression (e.g., gzip) to reduce load times.
 
+Servers should compress data (HTML, CSS, Javascript, XML) as much as possible, and should use content encoding where appropriate. Compressing already compressed media types (.zip, .jpeg, .png) is usually **not appropriate** as it can increase file size and consume compression time. If the original media is already encoded, this information is **not included** in the Content-Encoding header.
+
 ## Challenges
 
 ### Head-of-line blocking (limited concurrency)

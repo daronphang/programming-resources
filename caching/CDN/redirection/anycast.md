@@ -1,4 +1,4 @@
-## Anycast DNS
+## Anycast (IP routing)
 
 CDN service providers use Anycast to route traffic to the nearest data center with the capacity to process the request efficiently. An anycast-enabled CDN assigns the same IP address to multiple edge servers, relying on IP routing to deliver requests to the servers that are nearby in the network to the clients originating the requests.
 
@@ -27,3 +27,11 @@ Another CDN anycast methodology used is where anycast-based CDN load balancing p
 ### DNS mitigation
 
 A properly Anycasted CDN increases the surface area of the receiving network so that the unfiltered denial-of-service traffic from a distributed botnet will be absorbed by each of the CDN’s data centers. As a result, as a network continues to grow in size and capacity it becomes harder and harder to launch an effective DDoS against anyone using the CDN.
+
+### Benefits
+
+Load balancing systems (GSLB) are not required as it relies on the original routing device on the public network. Moreover, it can use IGP routing calculation to achieve true nearby service and fast redundant backup.
+
+### Drawbacks
+
+One prominent limitation is the **inability to achieve session retention**. Routers treat each data packet in TCP connection as independent, and do not care which TCP connection they belong to.

@@ -48,6 +48,7 @@ Headers contain important identifier information as to the request's metadata, i
 - Accept-Charset
 - Content-Type
 - Location: URL for the browser to redirect to when it receives a 301
+- Content-Encoding: Lets the recipient know how to decode the data to obtain the original content
 
 ## What can be controlled by HTTP
 

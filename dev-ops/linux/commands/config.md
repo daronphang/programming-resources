@@ -5,6 +5,9 @@ $ cat /etc/os-release
 $ lsb_release -a
 
 $ uname -m  # x86_64
+$ uname -a
+
+$ cat /etc/issue # Debian GNU/Linux 10
 
 $ dpkg --print-architecture     # amd64
 ```

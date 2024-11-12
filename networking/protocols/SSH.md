@@ -9,7 +9,7 @@ Two most commonly used protocols for accessing remote machines are:
 - SSH for linux-based
 - Remote Desktop Protocol (RDP) for Windows
 
-### How SSH Works
+### How SSH works
 
 Establishing an SSH connection requires two components:
 
@@ -20,7 +20,7 @@ Need to ensure both client and server components are installed on local and remo
 
 ## Installation
 
-### Installing OpenSSH Client
+### Installing OpenSSH client
 
 For Windows, need to install a version of OpenSSH such as MobaXTerm. To have a full Linux environment available, can setup WSL which has SSH by default.
 
@@ -29,7 +29,7 @@ $ ssh   # check for ssh client
 $ sudo apt-get install openssh-client
 ```
 
-### Installing OpenSSH Server
+### Installing OpenSSH server
 
 On most Linux environments, the ssh server 'sshd' should start automatically.
 
@@ -43,9 +43,9 @@ $ sudo service ssh status       # check if SSH server is running
 
 ## Configuration
 
-### Configuring SSH
+### Configuring SSH on server
 
-Config file is located at '/etc/ssh/sshd_config' whereby you can change the settings.
+Config file is located at `/etc/ssh/sshd_config` whereby you can change the settings.
 
 ```conf
 Port 22
@@ -84,10 +84,74 @@ $ ssh -X remote_host        # X11 forwarding
 $ exit
 ```
 
-## Security Hardening
+### User configuration for client
+
+Location of file is at `~/.ssh/config`. For multiple matches, it will merge the options.
+
+```
+Host hostname1
+    SSH_OPTION value
+    SSH_OPTION value
+
+Host targaryen
+    HostName 192.168.1.10
+    User daenerys
+    Port 7654
+    IdentityFile ~/.ssh/targaryen.key
+
+Host tyrell
+    HostName 192.168.10.20
+
+Host martell
+    HostName 192.168.10.50
+
+Host *ell
+    user oberyn
+
+Host * !martell
+    LogLevel INFO
+
+Host *
+    User root
+    Compression yes
+```
+
+Running `ssh tyrell` will use the following options:
+
+```
+HostName 192.168.10.20
+User oberyn
+LogLevel INFO
+Compression yes
+```
+
+```
+Host *
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+Host 10.*
+    StrictHostKeyChecking no
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+# same as ssh daron.phang@git.byted.org -p 29418
+Host git.byted.org
+    Hostname git.byted.org
+    Port 29418
+    User daron.phang
+Host review.byted.org
+    Hostname git.byted.org
+    Port 29418
+    User daron.phang
+Host *.byted.org
+    GSSAPIAuthentication yes
+    User daron.phang
+```
+
+## Security hardening
 
 - Change default TCP port from 22 to higher i.e. 24596
-- Use SSH key pairs for authentication for passwordless SSH login
+- Use SSH key pairs for authentication for password-less SSH login
 - Disable password-based logins on your server (need ensure key pair is working properly)
 - Disable root access to your server
 - Use TCP wrappers to restrict access to certain IP addresses by editing '/etc/hosts.allow' and '/etc/hosts.deny' files
@@ -103,7 +167,7 @@ ALL: ALL
 sshd: 10.10.0.5, LOCAL
 ```
 
-## SSH Keys
+## SSH keys
 
 SSH key authentication is a more robust and secure alternative to logging in with password. Relies on asymmetric cryptographic algorithms than generate a pair of separate keys that **is generated on the client/local computer**. Private key is kept as a secret on client's machine and stored on the computer you use to connect to the remote system. Public key can be shared with anyone and stored on the remote system in .ssh/authorized_keys directory.
 
@@ -138,7 +202,7 @@ $ ls -l
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAA....0g1bMv+p11K8MDH sanjaydev
 ```
 
-### Transferring Public Key to Server
+### Transferring public key to server
 
 Uploading public key to compute/server instance. To use public key authentication, the public key must be copied to a server and installed in an authorized_keys file.
 
@@ -169,7 +233,7 @@ $ sudo vim /var/log/auth.log
 $ sudo journalctl -t sshd
 ```
 
-### Folder Permissions
+### Folder permissions
 
 ```
 ~/.ssh 700

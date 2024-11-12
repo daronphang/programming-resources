@@ -16,7 +16,7 @@ $ ping [option] [hostname/IP address]
 $ ping google.com
 ```
 
-### Kill ports
+## Kill ports
 
 ```sh
 $ sudo netstat -tulpn
@@ -41,4 +41,18 @@ Used to view and change a system's domain and hostname. Can be confiured to be d
 -s      Display short version of the hostname
 -v      Verbose
 -y      Display NIS domain name
+```
+
+## DNS records
+
+nslookup is used to find a domain name's IP address or DNS record by querying information from the DNS server.
+
+Response is returned by a nameserver from ISP or domain. There are two types of answers:
+
+- **Authoritative**: Comes from a nameserver that is authoritative for the domain it is returning the record for. To get an authoritative answer, need to explicitly specify the authoritative eDNS server when performing nslookup
+- **Non-authoritative**: A non-official nameserver that relays information
+
+```sh
+$ nslookup google.com
+$ nslookup 127.253.118.113 # reverse DNS lookup
 ```
