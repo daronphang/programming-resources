@@ -1,10 +1,3 @@
-## Memory management
-
-When a program is executed, it needs to store data and instructions to execute. Memory is allocated more efficiently based on the lexical scope in which it’s created:
-
-- Local variables and function calls are placed on the memory stack (LIFO data structure), also known as **stack allocation**. This is more efficient than relying the GC, as the Go compiler can predetermine when that memory may be freed and emit machine instructions that clean up
-- If the compiler can't determine the exact lifespan of a variable, it is placed in the **heap**, where memory is dynamically allocated. As both the compiler and runtime can make very few assumptions as to how this memory is used and when it can be cleaned up, this task is delegated to the GC
-
 ## Garbage collection (GC)
 
 Go automatically manages the allocation of variables and includes the GC that automatically recycles memory as needed. The primary role of the GC is to identify and reclaim memory specifically from these dynamic allocations in the heap:
@@ -14,6 +7,8 @@ Go automatically manages the allocation of variables and includes the GC that au
 - Operate concurrently with the program, reducing pause times
 - Abstract away the complexities of manual memory management for developers
 - Ensure efficient memory management with minimal overhead
+
+GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
 
 ### Mark-sweep
 

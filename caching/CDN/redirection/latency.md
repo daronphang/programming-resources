@@ -8,6 +8,7 @@ Common knowledge to optimize client latencies in such a setting is to establish 
 
 - Though most clients are served by a geographically nearby CDN node, a sizeable fraction of clients experience latencies several tens of milliseconds (e.g. 50ms) higher than other clients in the same region due to clients having circuitous routes i.e. **worst-case RTTs remain unchanged**
 - Connections to most clients are impacted by significant **queueing delays**; they often override the benefits of a client interacting with a nearby server
+- Network routes are not bound to follow the shortest geographical path i.e. closer in distance but having more hops
 
 ## RTTs
 

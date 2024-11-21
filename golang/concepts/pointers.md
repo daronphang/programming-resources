@@ -57,6 +57,10 @@ func(pointerToPerson *person) updateName() {    // not an operator; arg must be 
 - If the function needs to modify its receiver
 - When passing large amounts of data
 
+### Dangling pointers
+
+A dangling pointer occurs when a pointer refers to a memory that has already been freed. Go prevents this with its GC, ensuring that memory is not freed while it is still referenced. However, holding onto pointers longer than necessary can lead to increased memory usage and memory leaks.
+
 ## Value vs reference types
 
 Reference types have a pointer pointing to the underlying value; any updates to the reference type will indirectly update the underlying value and hence, do not need to specifically reference a pointer. For value types, need to use pointers to change/update values.

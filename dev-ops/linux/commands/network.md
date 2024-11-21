@@ -9,11 +9,51 @@ $ sudo apt install speedtest-cli
 $ speedtest
 ```
 
-## Ping
+## ping
 
 ```sh
 $ ping [option] [hostname/IP address]
 $ ping google.com
+```
+
+## curl
+
+Both nslookup and ping can be used the query DNS, but curl checks local `/etc/hosts` first then queries DNS.
+
+## nslookup
+
+nslookup is used to find a domain name's IP address or DNS record by querying information from the DNS server.
+
+Response is returned by a nameserver from ISP or domain. There are two types of answers:
+
+- **Authoritative**: Comes from a nameserver that is authoritative for the domain it is returning the record for. To get an authoritative answer, need to explicitly specify the authoritative eDNS server when performing nslookup
+- **Non-authoritative**: A non-official nameserver that relays information
+
+```sh
+$ nslookup google.com
+$ nslookup 127.253.118.113 # reverse DNS lookup
+```
+
+## dig (domain information groper)
+
+Used to gather DNS information and troubleshoot DNS problems. By default, dig uses the local configuration (`/etc/resolv.conf`) to decide which nameserver to query.
+
+```sh
+# dig [server] [name] [type]
+$ dig google.com ANY
+$ dig @8.8.8.8 google.com   # google DNS server
+```
+
+### Answer section
+
+```
+# Server        TTL
+
+google.com.		300	    IN	A	    74.125.200.102
+google.com.		300	    IN	AAAA	2404:6800:4003:c00::8b
+google.com.		300	    IN	AAAA	2404:6800:4003:c00::64
+google.com.		86400	IN	NS	    ns3.google.com.
+google.com.		300	    IN	A	    74.125.200.113
 ```
 
 ## Kill ports
@@ -23,7 +63,7 @@ $ sudo netstat -tulpn
 $ sudo kill <PID>
 ```
 
-## Hostname
+## hostname
 
 Used to obtain the DNS and set the system's hostname. Main purpose is to uniquely identify a computer over a network.
 
@@ -41,18 +81,4 @@ Used to view and change a system's domain and hostname. Can be confiured to be d
 -s      Display short version of the hostname
 -v      Verbose
 -y      Display NIS domain name
-```
-
-## DNS records
-
-nslookup is used to find a domain name's IP address or DNS record by querying information from the DNS server.
-
-Response is returned by a nameserver from ISP or domain. There are two types of answers:
-
-- **Authoritative**: Comes from a nameserver that is authoritative for the domain it is returning the record for. To get an authoritative answer, need to explicitly specify the authoritative eDNS server when performing nslookup
-- **Non-authoritative**: A non-official nameserver that relays information
-
-```sh
-$ nslookup google.com
-$ nslookup 127.253.118.113 # reverse DNS lookup
 ```

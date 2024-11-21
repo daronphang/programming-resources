@@ -2,7 +2,7 @@
 
 A fallacy is something that is believed or assumed to be true but is not. The following are false assumptions that many developers make when developing a distributed application for the first time:
 
-- The network is reliable
+- The network is reliable (ignoring DDoS, natural disasters, power outages)
 - The network is secure
 - The network is homogeneous
 - The topology does not change

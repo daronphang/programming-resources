@@ -45,10 +45,6 @@ Break up generic packages i.e. packages named util, interfaces, common or misc p
 
 Organize packages by responsibility i.e. organizing types together in package models should be avoided. Instead, the individual types/structs should be declared in their respective packages.
 
-## Garbage collector
-
-GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
-
 ## Variable declarations
 
 ```GO

@@ -1,6 +1,11 @@
 ## Dynamic Content Acceleration (DSA)
 
-Web acceleration and streaming media acceleration generally belong to the category of static content acceleration. With the rise of Web2.0, the acceleration of dynamic web, personalized content, electronic transaction data has emerged.
+Web acceleration and streaming media acceleration generally belong to the category of static content acceleration. With the rise of Web2.0, the acceleration of dynamic web, personalized content/pages/search results, and electronic transaction data has emerged. The main technologies used are:
+
+- **Intelligent routing**: Intelligent routing algorithms are used to select the fastest and most reliable network path, avoiding congested network nodes, and improve transmission speed
+- **Protocol optimization**: Optimize transmission protocol (TCP, HTTP/2) to reduce delay and data packet loss in the transmission process
+- **Transmission compression**: Data compression to reduce amount of data transferred
+- **Real-time optimization**: Monitor network conditions in real-time and dynamically adjust transmission paths and parameters according to network changes
 
 A typical web system consists of three layers: presentation layer, business logic layer, and data access layer. **Dynamic content involves copying the logic and data access layers**.
 

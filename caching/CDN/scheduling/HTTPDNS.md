@@ -4,7 +4,7 @@ With the emerging and development of low-latency applications (such as autonomou
 
 HTTPDNS is a domain name resolution service for apps on multiple types of platforms, such as mobile apps and desktop apps. It resolves domain names over HTTP or HTTPS instead of the traditional localDNS. This can effectively prevent domain hijacking, improve the accuracy and stability of domain name resolution, and provide quick updates of resolution results.
 
-Under such architecture, a user's request is directly transmitted to HTTPDNS servers, which will then allocate a specific edge server for this request. With a server scoring module, the proposed HTTPDNS architecture can finally ensure user requests be guided to the optimal edge server.
+Under such architecture, instead of going through local DNS, a user's request is directly transmitted to HTTPDNS servers, which will then allocate a specific edge server for this request. With a server scoring module, the proposed HTTPDNS architecture can finally ensure user requests be guided to the optimal edge server.
 
 <img src="../../assets/HTTPDNS.png">
 
