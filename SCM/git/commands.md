@@ -102,6 +102,7 @@ $ git rebase master
 
 $ git checkout feature
 $ git rebase main
+$ git rebase -i HEAD~3
 ```
 
 ### Example

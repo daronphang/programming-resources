@@ -1,10 +1,10 @@
-## io/ioutil
+## io
 
 Provides helper functions for non-trivial file and io tasks. Often used with the OS package to provide additional methods of handling I/O.
 
 In Go 1.16, **ioutil is deprecated** and same functionality is provided by package io or package os.
 
-### Reader
+## Reader
 
 A reader is any type that implements Read() method. Go standard library contains many implementations of this interface, including files, network connections, compressors, ciphers, etc. Interface is intended to let programmers implement code that reads data from an arbitrary source and transfers it into the provided slice of bytes.
 
@@ -46,15 +46,15 @@ n, err:= io.Copy(w,r)
 err := json.NewDecoder(r).Decode(v)
 ```
 
-### ReadFile
+## ReadFile
 
 Reads an entire file into memory in a single call (as a []byte). Automatically allocates a byte slice of the correct size, closes the file and returns the first error that prevents it from working.
 
-### ReadAll
+## ReadAll
 
 Useful utility function for reading all data from an io.Reader until EOF. It's often used to read data such as HTTP response body, files, and other data sources which implement io.Reader interface.
 
-Nonetheless, need to be careful when using this as reading big files means loading everything into memory, and gets worse when the file is requested by multiple users in parallel i.e. ending up with multiple copies of file in memory.
+Nonetheless, need to be careful when using this as **reading big files means loading everything into memory**, and gets worse when the file is requested by multiple users in parallel i.e. ending up with multiple copies of file in memory.
 
 Better version would be to use io.Copy to copy from file which implements io.Reader interface to w ResponseWriter implementing io.Writer interface. io.Copy uses fixed 32KB buffer to copy from reader to writer until EOF and hence, will always just use 32KB to copy it to destination.
 
@@ -76,7 +76,7 @@ func handle(r *http.Request, w http.ResponseWriter) {
 }
 ```
 
-### WriteFile
+## WriteFile
 
 ```go
 func WriteFile(filename string, data []bytes permission os.FileMode) error  // bytes slice is a computer friendly rep. of a string

@@ -2,23 +2,32 @@
 
 DNS is a crucial component of the internet that translates human-readable domain names (www.example.com) into machine-readable IP addresses (192.0.2.1). This process allows users to access websites and services using familiar names instead of having to remember numerical addresses.
 
-### Resource records
+## Resource records
+
+```
+example.com         A       12.34.56.78
+*.example.com       A       12.34.56.78
+blog.example.com    CNAME   example.com
+```
 
 - **A**: Maps your domain/subdomain to one or more IP addresses e.g. example.com
 - **AAAA**: For mapping IPv6
-- **CNAME (Canonical)**: Maps a name to another name; should only be used when there are no other records on that name
+- **CNAME**: Points from an alias domain to a canonical domain. All CNAME records must point to a domain and never to an IP address
 - **ALIAS**: Maps a name to another name, but can coexist with other records on that name e.g. www.example.com
 - **NS (Nameserver)**: Used to indicate which DNS servers in the area are responsible for resolution
 - **SOA (Start of Authority)**: Indicate which DNS server is the authoritative domain nameserver for the zone. Each zone is allowed to have only one SOA record
 - **MX (Mail Exchanger)**: Used to indicate DNS servers for mail records
 - **SRV (Server)**: SRV records are defined in RFC2052; used to indicate what kind of services a server can provide, and they play an important role in AD
 
-```
-example.com     A       12.34.56.78
-*.example.com   A       12.34.56.78
-```
+### CNAME
 
-### FQDN (Fully Qualified Domain Name)
+When you have multiple subdomains pointing to a root domain, if the IP address of the host changes, only the DNS A record for the root domain needs to be updated.
+
+A frequent misconception is that a CNAME record must always resolve to the same website as the domain it points to, but this is not the case. The web server that the user connects to from the root domain resolution will still handle the URL accordingly i.e. example.com will deliver the blog page for blog.example.com rather than the home page.
+
+CNAME records can point to other CNAME records, but this would be inefficient.
+
+## FQDN (Fully Qualified Domain Name)
 
 FQDNs are complete addresses of websites, computers and other entities that can be accessed on the internet. Consists of three levels, separated by a dot:
 

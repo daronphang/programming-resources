@@ -44,12 +44,12 @@ When you compile/run the projects, go module will download dependencies repo and
 └── pkg/
     └── mod/
         └── cache/
-            └── download/
-                └── github.com/
-                    └── someuser/
-                        └── somelib/     # Source code of the dependency
-                            └── somelib.go
-
+        |   └── download/
+        |       └── github.com/
+        |           └── someuser/
+        |              └── somelib/     # Source code of the dependency
+        |                  └── somelib.go
+        └── github.com/
 ```
 
 ### go.mod
@@ -84,6 +84,11 @@ go get        Downloads raw source code of someone else's package
 go test       Runs any tests associated with current project
 ```
 
+```
+go mod tidy
+go mod download     Downloads dependencies in go.mod and stores in module cache
+```
+
 ```sh
 $ go build test.go
 $ ls
@@ -95,7 +100,7 @@ $ rm test
 
 The go get command is primarily used for retrieving remote packages from version control repositories and making them available for use in your projects. When you run `go get`:
 
-- Go downloads the source code of the package and its dependencies within your **workspace's bin and pkg directories**
+- Go downloads the source code of the package and its dependencies within your **workspace's bin and pkg directories** (GOMODCACHE or GOPATH/pkg)
 - Updates packages to their latest versions if you have already installed them
 
 ### go install
@@ -103,7 +108,7 @@ The go get command is primarily used for retrieving remote packages from version
 The go install command operates on the local codebase residing in your development environment:
 
 - Fetches remote packages and their dependencies
-- Compiles and installs the package present in your local code repository (GOPATH) and makes them **executable**
+- Compiles and installs the package present in your local code repository (GOPATH/bin or GOBIN) and makes them **executable**
 
 ### Installing packages
 
