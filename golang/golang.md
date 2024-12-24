@@ -37,6 +37,13 @@ Names in Go should:
 - Acronyms should be all capitals e.g. ServeHTTP
 - Be kept short as long names obscure what the code does e.g. i to index
 
+### Structs
+
+- Prefer clarity over brevity
+- Use full words unless the abbreviation is widely recognized e.g. HTTP, Resp, Addr, Config
+- Avoid overly short abbreviations that may confuse other developers
+- Follow CamelCase convention for struct names
+
 ### Packages
 
 Package names are short and clear, lowercase, with no underscores or camelCases. A package name and its contents are coupled.

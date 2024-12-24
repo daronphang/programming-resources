@@ -75,3 +75,9 @@ seconds, ok := timeZone[tz]
 ```go
 var methodsWithPayload = map[string]struct{}{"POST": {}, "PUT": {}, "PATCH": {}}
 ```
+
+### Updating slices in maps
+
+```go
+someMap[key] = append(someMap[key], row)
+```

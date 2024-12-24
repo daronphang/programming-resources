@@ -118,7 +118,7 @@ hits[address{"golang.org", 443}]++
 
 ### Struct embedding and anonymous fields
 
-Composition in Go is achieved through embedding, which allows a struct to inherit the fields and methods of another struct.
+Composition in Go is achieved through embedding, which allows a struct to inherit the fields and methods of another struct. You can access the fields directly as if they were part of the parent struct.
 
 Allows using named struct type as an anonymous field of another struct type. Provides convenient syntactic shortcut where x.f can stand for a chain of fields like x.d.e.f.
 
@@ -142,6 +142,9 @@ jim := person{
     number: 1234567,
   },
 }
+
+fmt.Println(jim.firstName)
+fmt.Println(jim.email)
 ```
 
 ```go

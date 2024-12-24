@@ -106,3 +106,43 @@ If the use case needs to call the presenter, the call must not be direct as it w
 ### Data
 
 Typically the data that crosses the boundaries is simple data structures such as DTO. The important thing is that isolated, simple, data structures are passed across the boundaries. We don’t want to cheat and pass Entities or Database rows. We don’t want the data structures to have any kind of dependency that violates The Dependency Rule.
+
+## Generated types
+
+Generated types (Protobuf/Thrift) should be used only in the **handler and infrastructure layers**. Domain models should be used in the use case layer and should not depend on infrastructure details. Instead, use mappers or transformers to convert between domain models and external formats (Protobuf/Thrift) in the handler layer.
+
+```go
+// Generated Protobuf message
+type GetUserRequest struct {
+  UserId string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+}
+
+// Handler logic
+func (h *Handler) GetUser(ctx context.Context, req *pb.GetUserRequest) (*pb.GetUserResponse, error) {
+  // Map the incoming Protobuf message to a domain model
+  userDomainModel := mapGetUserRequestToDomainModel(req)
+
+  // Call the use case with the domain model
+  user, err := h.useCase.GetUser(ctx, userDomainModel)
+  if err != nil {
+    return nil, err
+  }
+
+  // Map the domain model back to a Protobuf response
+  return mapUserToProtobufResponse(user), nil
+}
+```
+
+```go
+func mapGetUserRequestToDomainModel(req *pb.GetUserRequest) UserDomainModel {
+  return UserDomainModel{Id: req.UserId}
+}
+
+func mapUserToProtobufResponse(user UserDomainModel) *pb.GetUserResponse {
+  return &pb.GetUserResponse{
+    UserId: user.Id,
+    Name:   user.Name,
+    Email:  user.Email,
+  }
+}
+```
