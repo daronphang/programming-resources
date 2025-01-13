@@ -1,6 +1,4 @@
-### Overview
-
-Stored procedure is a batch of statements (separated by semicolons) that is stored in relational database management system as a group that can be reused. Can access/modify data in a database, but not tied to a specific database. Allows passing of dynamic parameters.
+## Creating stored procedures
 
 ```
 DELIMITER       SQL recognizes semicolons as statement delimiters; need to redefine if passing program to server
@@ -15,7 +13,7 @@ SET @Var1 = 1;
 SET @Var2 = 2;
 ```
 
-### Creating Temporary Table
+## Creating temporary table
 
 ```sql
 CREATE TEMPORARY TABLE credits(
@@ -28,7 +26,7 @@ SELECT * FROM original_table
 LIMIT 0;
 ```
 
-### Getting Results from SELECT
+## Getting results from SELECT
 
 Each SELECT statement that does not insert into a table or variable will produce a result set.
 
@@ -52,11 +50,11 @@ for result in cursor.stored_results():
   print(result.fetchall())
 ```
 
-### Passing Parameters
+## Passing parameters
 
-- MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters.
-- Can only pass parameters to query statements and not tablename.
-- Avoid name collision between parameter names and name of columns.
+- MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters
+- Can only pass parameters to query statements and not tablename
+- Avoid name collision between parameter names and name of columns
 
 ```sql
 CREATE PROCEDURE `deletePortfolio`(IN user_id CHAR(36), IN portfolio_name VARCHAR(255))
@@ -107,7 +105,7 @@ DEALLOCATE PREPARE dynamic_statement;
 END
 ```
 
-### Execute Stored Procedures
+## Executing stored procedures
 
 SQL Server uses EXEC or SP_EXECUTESQL for executing dynamic SQL.
 

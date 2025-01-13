@@ -1,6 +1,6 @@
-### Indexing
+## Indexing
 
-In any database, indexes support the efficient execution of queries. Without them, database must scan every document in a collection or table to select those that match the query statement. Indexes improve the speed of search operations as it is performed on indexes that holds only few fields. A unique index ensures that indexed fields do not store duplicate values. MongoDB creates a unique index on the \_id field during creation of a collection.
+In any database, indexes support the efficient execution of queries. Without them, database must scan every document in a collection or table to select those that match the query statement. Indexes improve the speed of search operations as it is performed on indexes that holds only few fields. A unique index ensures that indexed fields do not store duplicate values. MongoDB creates a unique index on the `_id` field during creation of a collection.
 
 However, indexing comes with a performance cost (indexes are resource-intensive), but are more than worth the cost for frequent queries on large data sets. For instance, having too many indexes can hamper the performance of insert, update and delete operations due to the additional write and data space used by indexes.
 
@@ -17,7 +17,7 @@ db.products.createIndex(
 )
 ```
 
-#### Example
+### Example
 
 ```mongodb
 db.users.insert(
@@ -57,7 +57,7 @@ db.users.find({tags:"cricket"}).pretty()
 }
 ```
 
-### Compound Indexing
+## Compound indexing
 
 Can enforce a unique constraint on compound indexes i.e. combination of index key values is unique.
 

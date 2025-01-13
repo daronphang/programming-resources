@@ -1,11 +1,11 @@
-### SELECT
+## SELECT
 
 ```sql
 SELECT col1,col2 FROM table
-SELECT * FROM infomration_schema.tables
+SELECT * FROM information_schema.tables
 ```
 
-### SELECT DISTINCT
+## SELECT DISTINCT
 
 Should use it sparingly as it has significant overhead cost. If query returns duplicate, need to understand why joining tables produce duplicate results i.e. database PK may not be properly designed, ON statement is not sufficient, etc.
 
@@ -16,26 +16,26 @@ https://weblogs.sqlteam.com/markc/2008/11/11/60752/
 SELECT DISTINCT col1,col2 FROM table
 ```
 
-### COUNT
+## COUNT
 
 ```sql
 SELECT COUNT(col1) FROM table
 ```
 
-### WHERE
+## WHERE
 
 ```sql
 SELECT * FROM table WHERE col1 = 'David'
 ```
 
-### ORDER BY
+## ORDER BY
 
 ```sql
 # Added towards end of query, default setting is ASC (ascending).
 SELECT * FROM table ORDER BY col1,col2
 ```
 
-### LIMIT
+## LIMIT
 
 Different DB use different syntax.
 
@@ -47,7 +47,7 @@ SELECT TOP 100|50% column_name FROM table_name
 SELECT col1 FROM table ORDER BY col2 LIMIT 5
 ```
 
-### BETWEEN
+## BETWEEN
 
 ```sql
 SELECT * FROM table WHERE col1 BETWEEN 5 AND 10
@@ -57,7 +57,7 @@ SELECT * FROM table WHERE col1 NOT BETWEEN 5 AND 10
 SELECT * FROM table WHERE col2 BETWEEN '2007-02-01' AND '2007-02-15'
 ```
 
-### IN, NOT IN
+## IN, NOT IN
 
 Used to replace group of arguments using <> or != operator that are combined with AND. It CANNOT replace =, <, >, <=, >=, BETWEEN, or LIKE.
 
@@ -74,7 +74,7 @@ SELECT * FROM t1 WHERE colors IN (SELECT colors FROM #temp);
 
 ```
 
-### LIKE, ILIKE
+## LIKE, ILIKE
 
 ```
 %	Represents zero or more characters
@@ -93,7 +93,7 @@ WHERE col LIKE 'h[^oa]t'	-- 'hit' but not 'hat' or 'hot'
 WHERE col1 LIKE 'Mission Impossible _'
 ```
 
-### GROUP BY
+## GROUP BY
 
 Often used with aggregate functions i.e. COUNT(), SUM(), MIN(), AVG() to group the result-set by one or more columns. When grouping by multiple columns, it means to place all the rows with same values in multiple columns in one group i.e. all rows having the same values for col1 and col2 are placed in 1 group and then the aggregate is calculated.
 
@@ -114,35 +114,35 @@ SELECT col1,col2,SUM(sales) FROM table GROUP BY col1,col2
 SELECT DATE(col1),SUM(sales) FROM table GROUP BY DATE(col1)
 ```
 
-### HAVING
+## HAVING
 
 ```sql
 # Clause that allows to filter aggregate results.
 SELECT col1,SUM(sales) FROM table WHERE col1 != 'Google' GROUP BY col1 HAVING SUM(sales) > 1000
 ```
 
-### AS
+## AS
 
 ```sql
 SELECT col1 AS name FROM table
 SELECT SUM(sales) AS total_revenue FROM table HAVING SUM(sales) > 1000    # agg functions need to use original name
 ```
 
-### IS NULL/NOT NULL
+## IS NULL/NOT NULL
 
 ```sql
 SELECT col1 FROM table1 WHERE col1 IS NULL
 ```
 
-### Sub Query
+## Subquery
 
-Allows to construct complex queries, essentially performign a query on the results of another query. Involves two SELECT statements.
+Allows to construct complex queries, essentially performing a query on the results of another query. Involves two SELECT statements.
 
 ```sql
 SELECT col1,col2 FROM table WHERE col2 > (SELECT AVG(col2) FROM table) -- sub query is performed first
 ```
 
-### EXISTS
+## EXISTS
 
 Operator is used to test for existence of rows; typically a subquery is passed in EXISTS() function.
 

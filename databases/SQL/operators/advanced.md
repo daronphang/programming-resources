@@ -1,4 +1,4 @@
-### IF NOT EXISTS
+## IF NOT EXISTS
 
 Can be used to prevent inserting duplicates if duplicate key is not UNIQUE or PRIMARY constraint.
 
@@ -10,11 +10,11 @@ IF NOT EXISTS (
 INSERT INTO dbo.testing(username, fab) VALUES('testing123', 'f10w')
 ```
 
-### OVER
+## OVER
 
-Used in almost all invocations of window functions like AVG(), MAX(), and RANK(). Window functions operate on window frames which are sets of rows taht can be different for each record in the query result.
+Used in almost all invocations of window functions like AVG(), MAX(), and RANK(). Window functions operate on window frames which are sets of rows that can be different for each record in the query result.
 
-### PARTITION BY
+## PARTITION BY
 
 Subclause of the OVER clause. Contrasting with GROUP BY, GROUP BY collapses individual records into a group and as a consequence, you cannot refer to any individual record field i.e. only the columns in the GROUP BY clause can be referenced.
 
@@ -38,7 +38,7 @@ SELECT
 FROM car_list_prices
 ```
 
-### MERGE/ON DUPLICATE
+## MERGE/ON DUPLICATE
 
 Used to synchronize two tables by inserting, updating and deleting the target table based on condition with source table.
 
@@ -83,7 +83,7 @@ SOURCE.req_completed
 );
 ```
 
-### LEAD, LAG
+## LEAD, LAG
 
 LAG is used to access previous rows data as per defined offset value while LEAD is for subsequent rows. Useful function in comparing the current row value from the previous row value.
 
@@ -94,15 +94,15 @@ OVER ([partition_by_clause] order_by_clause)
 LAG (col1, 1, 'this is default') OVER (ORDER BY col2 DESC) AS PREV_ROW_VALUE
 ```
 
-### WITH (NOLOCK)
+## WITH (NOLOCK)
 
-Used to override the default transaction isolation level of the table or the tables within the view in a specific query. Allows users to retrieve data without being affected by the locks, on the requested data, due to another process changing it i.e. another user updating the same table but transaction has not been committed. 
+Used to override the default transaction isolation level of the table or the tables within the view in a specific query. Allows users to retrieve data without being affected by the locks, on the requested data, due to another process changing it i.e. another user updating the same table but transaction has not been committed.
 
-Considered as "dirty read" as data may or may not exist depending on the final outcome of an update transaction. There is a possibility of reading data that has been changed, but not yet committed to the database. This is not ideal if the data needs to be in a consistent state. 
+Considered as "dirty read" as data may or may not exist depending on the final outcome of an update transaction. There is a possibility of reading data that has been changed, but not yet committed to the database. This is not ideal if the data needs to be in a consistent state.
 
 ```sql
-UPDATE Person.Contact SET Suffix = 'B' WHERE ContactID < 20    
+UPDATE Person.Contact SET Suffix = 'B' WHERE ContactID < 20
 
 -- if updates are recorded but transaction has not completed, query will still return updated data
-SELECT * FROM Person.Contact WITH (NOLOCK) WHERE ContactID < 20 
+SELECT * FROM Person.Contact WITH (NOLOCK) WHERE ContactID < 20
 ```

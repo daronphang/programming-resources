@@ -1,4 +1,4 @@
-## API Naming Conventions
+## API naming conventions
 
 ### Use nouns to represent resources, not verbs
 

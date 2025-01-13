@@ -1,10 +1,12 @@
-## MySQL
+## SQL Server
 
-### START TRANSACTION, COMMIT and ROLLBACK
+https://www.sommarskog.se/error_handling/Part2.html#classification
 
-MySQL runs with autocommit enabled i.e. if have 3 queries and second fails, first query will be committed. To disable autocommit, use START TRANSACTION.
+## START TRANSACTION, COMMIT and ROLLBACK
 
-### Implict Commits
+MySQL runs with auto-commit enabled i.e. if have three queries and second fails, first query will be committed. To disable auto-commit, use START TRANSACTION.
+
+## Implicit commits
 
 Some statements implicitly end any transaction active in current session i.e. done a commit before executing the statement, and also cause implicit commit after executing.
 
@@ -53,13 +55,9 @@ COMMIT;
 END
 ```
 
-## SQL Server
+## TRANCOUNT
 
-https://www.sommarskog.se/error_handling/Part2.html#classification
-
-### TRANCOUNT
-
-@@ in SQL Server denotes global variables. @@TRANCOUNT function records the current transaction nesting level, and counts system and user-defined transactions i.e. BEGIN TRANSACTION. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more.
+`@@` in SQL Server denotes global variables. @@TRANCOUNT function records the current transaction nesting level, and counts system and user-defined transactions i.e. BEGIN TRANSACTION. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more.
 
 ```
 BEGIN TRANSACTION		@@TRANCOUNT increments by 1
@@ -70,7 +68,7 @@ ROLLBACK TRANSACTION		@@TRANCOUNT decrements by 0 (not in transaction)
 ROLLBACK <TRANSACTION NAME>
 ```
 
-### XACT_STATE
+## XACT_STATE
 
 Function that reports the user transaction state of current running request. SET XACT_ABORT ON will auto rollback the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout.
 
@@ -80,17 +78,17 @@ Function that reports the user transaction state of current running request. SET
 -1	Current request has active user transaction but an error has occurred (uncommittable)
 ```
 
-### TRY CATCH
+## TRY CATCH
 
 Catches all execution errors that have severity higher than 10 that do not close the database connection. If there are no errors enclosed in TRY block, control passes to statement immediately after END CATCH after executing last statement in TRY block. If END CATCH statement is last statement in stored procedure/trigger, control is passed back to the statement that called the stored procedure/trigger.
 
 When transactions are doomed in CATCH block, you cannot perform write.
 
-#### Errors Unaffected by TRY CATCH
+### Errors Unaffected by TRY CATCH
 
-- Warnings or informational messages that have severity of 10 or lower.
-- Errors having severity of 20 or higher that stop database connection (errors higher than 20 will terminate the connection and hence, uncatchable).
-- Sessions ended by system admin using KILL statement.
+- Warnings or informational messages that have severity of 10 or lower
+- Errors having severity of 20 or higher that stop database connection (errors higher than 20 will terminate the connection and hence, un-catchable)
+- Sessions ended by system admin using KILL statement
 
 Following errors are not handled by TRY CATCH when they occur at same level of execution as TRY CATCH; these errors are returned to the level that ran the batch/stored procedure/trigger:
 
@@ -135,13 +133,11 @@ BEGIN CATCH
 END CATCH;
 ```
 
-### Common Errors
+## Common errors
 
-#### Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements (266)
+### Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements (266)
 
-When you exit a stored procedure, and @@trancaount has a different value from when the procedure started executing, SQL Server will raise this error. However, it may also appear as a consequence of other errors i.e. noise on the wire. In this situation, preferably to filter out error 266 as long as there are other errors.
-
-### Example
+When you exit a stored procedure, and @@trancount has a different value from when the procedure started executing, SQL Server will raise this error. However, it may also appear as a consequence of other errors i.e. noise on the wire. In this situation, preferably to filter out error 266 as long as there are other errors.
 
 ```sql
 ALTER PROCEDURE [dbo].[update_user_settings]

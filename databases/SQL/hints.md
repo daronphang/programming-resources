@@ -14,7 +14,7 @@ https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-transactio
 
 https://learn.microsoft.com/en-us/sql/t-sql/queries/hints-transact-sql-table?redirectedfrom=MSDN&view=sql-server-ver16
 
-### Lock Escalation
+### Lock escalation
 
 Adding locks take up memory, and SQL Server has an internal lock escalation threshold of 5000 which will replace smaller locks with a larger table level lock. This escalation would lead to an exclusive lock to the entire table which may be undesired.
 
@@ -26,7 +26,7 @@ GO
 
 https://littlekendra.com/2016/02/04/why-rowlock-hints-can-make-queries-slower-and-blocking-worse-in-sql-server/
 
-### Hint Types
+### Hint types
 
 ```
 INDEX

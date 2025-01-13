@@ -1,4 +1,4 @@
-## Common Date Functions
+## Common date functions
 
 ```sql
 CURRENT_DATE()
@@ -12,7 +12,7 @@ SELECT NOW()
 SELECT TIMEOFDAY()
 ```
 
-### Extracting Information from Timebased Data
+### Extracting information from time0based data
 
 ```sql
 EXTRACT()   -- Arguments include YEAR, MONTH, DAY, WEEK, QUARTER
@@ -20,7 +20,7 @@ EXTRACT()   -- Arguments include YEAR, MONTH, DAY, WEEK, QUARTER
 SELECT EXTRACT(YEAR FROM col1) FROM table
 ```
 
-### Converting Data Type to Text
+### Converting data type to text
 
 ```sql
 -- Useful for timestamp formatting
@@ -30,7 +30,7 @@ TO_CHAR()
 SELECT TO_CHAR(col1,'mm/dd/yyyy') FROM table
 ```
 
-### Inserting Date Values to SQL
+### Inserting date values into SQL
 
 Need insert string in date-time format.
 

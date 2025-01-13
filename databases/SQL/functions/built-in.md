@@ -1,4 +1,4 @@
-### Built-in Functions
+## Built-in functions
 
 ```sql
 EXTRACT()
@@ -9,7 +9,7 @@ CHARINDEX()   -- Condition check for substring, returns 1 or -1
 CONCAT()      -- Combine multiple columns into single string
 ```
 
-### String Helpers
+## String helpers
 
 ```sql
 LENGTH()
@@ -26,7 +26,7 @@ SELECT LEGNTH(col1) FROM table
 SELECT col1 || ' ' || col2 AS full_name FROM table  -- Concantenate
 ```
 
-### Aggregate Functions
+## Aggregate functions
 
 Aggegrate function calls happen only in SELECT or HAVING clause.
 

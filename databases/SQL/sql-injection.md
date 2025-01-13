@@ -1,4 +1,4 @@
-## SQL Injection Attacks
+## SQL injection attacks
 
 Fundamental problem that causes SQL injection is data being treated as query language.
 

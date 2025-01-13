@@ -1,8 +1,8 @@
-## Query Best Practices
+## Optimizing queries
 
-- SELECT fields instead of using SELECT \*
+- SELECT fields individually instead of using `SELECT *`
 - Avoid using SELECT DISTINCT by adding more SELECT fields as GROUPing is expensive and may be inaccurate
-- When joining tables, exclude unncessary columns and perform query first before joining
+- When joining tables, exclude unnecessary columns and perform query first before joining
 - use WHERE instead of HAVING to define filters
 
 ```sql
@@ -36,23 +36,23 @@ CREATE UNIQUE INDEX index_name ON table_name (column_name)
 CREATE INDEX index_name ON table_name (col1, col2)
 ```
 
-### Unique Indexes vs Constraint
+### Unique indexes vs constraint
 
-- When a unique constraint is created, a unique index is also created.
-- No functional difference between both of them.
-- Boils down to preferred style/consistency where constraint is more for business rule and index for querying.
-- Unique index can be disabled while constraint cannot be disabled.
+- When a unique constraint is created, a unique index is also created
+- No functional difference between both of them
+- Boils down to preferred style/consistency where constraint is more for business rule and index for querying
+- Unique index can be disabled while constraint cannot be disabled
 
-### When to Avoid Indexes
+### When to Avoid indexes
 
 - Indexes should not be used on small tables
-- For tables that have frequent, large database UPDATES or INSERT operations.
-- Indexes should not be used on columns that have high number of NULL values.
-- Columns that are frequently manipulated should not be indexed.
+- For tables that have frequent, large database UPDATES or INSERT operations
+- Indexes should not be used on columns that have high number of NULL values
+- Columns that are frequently manipulated should not be indexed
 
-## Removing Duplicates
+## Removing duplicates
 
-### Row Number
+### Row number
 
 ```sql
 WITH CTE (Col1, Col2, Col3, DuplicateCount)
@@ -65,7 +65,7 @@ AS
 ) SELECT * from CTE Where DuplicateCount = 1
 ```
 
-### Group By
+### GROUP BY
 
 ```sql
 SELECT FirstName, LastName, MobileNo
@@ -73,10 +73,10 @@ FROM  CUSTOMER
 GROUP BY FirstName, LastName, MobileNo;
 ```
 
-### Self Join
+### Self-join
 
 ```
-emp_name   emp_address  sex  matial_status  
+emp_name   emp_address  sex  matial_status
 uuuu       eee          m    s
 iiii       iii          f    s
 uuuu       eee          m    s
@@ -84,13 +84,12 @@ uuuu       eee          m    s
 
 ```sql
 -- use self join
-
 SELECT emp_name, emp_address, sex, marital_status
 FROM YourTable a
 WHERE NOT EXISTS (
-  SELECT 1 
+  SELECT 1
   FROM YourTable b
-  WHERE 
+  WHERE
   b.emp_name = a.emp_name AND
   b.emp_address = a.emp_address AND
   b.sex = a.sex AND
@@ -98,14 +97,14 @@ WHERE NOT EXISTS (
 )
 ```
 
-### Using LAG
+### LAG
 
 ```sql
 SELECT
     *,
-    LAG(unique_row,1) OVER (ORDER BY event_note_datetime ASC) AS next_unique_row 
+    LAG(unique_row,1) OVER (ORDER BY event_note_datetime ASC) AS next_unique_row
 INTO #ETOSTATES2
-FROM 
+FROM
     #ETOSTATES
 
 SELECT
@@ -120,3 +119,22 @@ FROM
 WHERE
     unique_row != next_unique_row
 ```
+
+## Avoid storing delimited lists
+
+Violates First Normal Form. Exception would be employing de-normalization. If tables are normalized, to avoid storing entries in column as delimited lists for following reasons:
+
+- Can't ensure each value is right data type i.e. 1,2,3,banana,5
+- Can't use FK to link values to lookup table and unable to enforce referential integrity
+- Can't enforce uniqueness and consistency i.e. 1,3,3,5
+- Can't delete a value from list without fetching the whole list
+- Can't store a list longer than the specified length of string column
+- Difficult to search for all entities with a given value in list with inefficient table-scan
+- Difficult to count elements in list or perform aggregate functions
+- Difficult to fetch list in sorted order
+
+https://stackoverflow.com/questions/3653462/is-storing-a-delimited-list-in-a-database-column-really-that-bad
+
+## Querying from different DB servers
+
+For SQL Server, can use link server. Alternative is to create and insert into a temporary table and inner join to that temporary table.

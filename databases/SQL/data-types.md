@@ -1,4 +1,4 @@
-## Data Types
+## Data types
 
 ```
 Boolean                 # 0 as false, 1 as true
@@ -11,7 +11,7 @@ JSON
 Hstore key-value pair
 ```
 
-### CHAR/VARCHAR/VARCHAR2
+## CHAR/VARCHAR/VARCHAR2
 
 Stores values as a fixed-length string. For string values, space characters will be added to them to match the length.
 
@@ -19,7 +19,7 @@ Both VARCHAR and VARCHAR2 are used to store variable-length strings. However, if
 
 In Oracle, both VARCHAR and VARCHAR2 are the same.
 
-### Binary
+## Binary
 
 Storing byte-arrays in SQL can be useful for storing large binary objects (documents, multimedia, images, etc). Can also be used to store hash values for faster searching/high-level analysis. Binary value in SQL Server is a series of bytes (byte-array). Different types include BINARY(1-8000), VARBINARY(1-8000) or VARBINARY(MAX). SQL displays binary values as hexadecimal values prefixed with "0x".
 

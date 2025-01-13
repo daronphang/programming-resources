@@ -1,4 +1,4 @@
-## Passing List as Parameter
+## Passing list as parameter
 
 Three main contenders are Table-Valued Parameters, delimited list string and JSON string.
 
@@ -6,9 +6,9 @@ Three main contenders are Table-Valued Parameters, delimited list string and JSO
 
 Allows multiple rows of data to be passed to stored procedure by Transact-SQL code. Involves 3 step process:
 
-1. Create user-defined table that corresponds to table to be populated.
-2. Create stored procedure that uses TVP.
-3. Declare table type, populate it with data, and pass it to stored procedure.
+1. Create user-defined table that corresponds to table to be populated
+2. Create stored procedure that uses TVP
+3. Declare table type, populate it with data, and pass it to stored procedure
 
 ```sql
 CREATE DATABASE ShowRoom
@@ -49,13 +49,13 @@ INSERT INTO @CarTableType VALUES (5, 'Mustang', 'Ford')
 EXECUTE spInsertCars @CarTableType
 ```
 
-### Delimited List String
+### Delimited list string
 
 Can use built in STRING_SPLIT() but there are several shortcomings:
 
-- Delimiter can only be single character.
-- Returns values and not position of values i.e. multiple lists keeping in sync.
-- Returns strings only and type specified as parameter i.e. VARCHAR(MAX) which comes with performance overhead.
+- Delimiter can only be single character
+- Returns values and not position of values i.e. multiple lists keeping in sync
+- Returns strings only and type specified as parameter i.e. VARCHAR(MAX) which comes with performance overhead
 - Does not trim spaces around values
 
 https://www.sommarskog.se/arrays-in-sql.html

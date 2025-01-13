@@ -2,6 +2,14 @@
 
 A test function in Go starts with Test and takes `*testing.T` as the only parameter.
 
+When naming test functions in Go, the naming convention should focus on what is being tested rather than how it behaves.
+
+```
+TestMultiply_ReturnsCorrectResult
+TestParseDate_ValidFormat
+TestParseDate_InvalidFormat
+```
+
 ```sh
 $ go mod init <current_directory_folder_name>
 $ go test

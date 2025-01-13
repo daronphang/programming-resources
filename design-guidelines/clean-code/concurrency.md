@@ -1,6 +1,6 @@
-## Concurrency Defense Principles
+## Concurrency defense principles
 
-### Single Responsibility Principle
+### Single responsibility principle
 
 SRP states that a given method/class/component should have a single reason to change. Concurrency design is complex enough to be a reason to change in it's own right and hence, deserves to be separated from the rest of the code.
 
@@ -10,19 +10,19 @@ Few things to consider for concurrency-related code:
 - Has its own challenges which are different and more difficult than nonconcurrency-related code
 - Keep it separate from other code
 
-### Limit the Scope of Data
+### Limit the scope of data
 
 Two threads modifying a field of a shared object can cause unexpected behavior. One solution is to lock to protect a critical section in the code that uses the shared object.
 
-### Threads Should Be as Independent as Possible
+### Threads should be as independent as possible
 
 Consider writing your threaded code such that each thread exists in its own world, sharing no data with any other thread. Each thread processes one client request, with all of its required data coming from an unshared source and stored as local variables.
 
-### Keep Synchronized/Lock Sections Small
+### Keep synchronized/lock sections small
 
 Sections of code guarded by lock are guaranteed to have only one thread executing through them at any given time. Locks are expensive because they create delays and add overhead.
 
-### Think About Shutdown Early
+### Think about shutdown early
 
 Graceful shutdown can be hard to get correct. Common problems involve deadlock, with threads waiting for a signal to continue that never comes.
 
@@ -30,11 +30,11 @@ For example, a parent thread spawning child threads and waits for them all to fi
 
 ## Terminologies
 
-### Bound Resources
+### Bound resources
 
 Resources of a fixed size or number used in a concurrent environment i.e. database connections, read/write buffers.
 
-### Mutual Exclusion
+### Mutual exclusion
 
 Only one thread can access shared data or a shared resource at a time.
 
@@ -52,13 +52,13 @@ Threads in lockstep, each trying to do work but finding another 'in the way'.
 
 ## Execution Models
 
-### Producer-Consumer
+### Producer and consumer
 
 Producer threads create work and place it in a buffer or queue. Consumer threads acquire that work from the queue and complete it. The **queue becomes a bound resource**.
 
 Producers must wait for queue to have space and consumers must wait until there is something in the queue.
 
-### Readers-Writers
+### Readers and writers
 
 When you have a shared resource that primarily serves as a source of information for readers, but which is occasionally updated by writers, **throughput is an issue**.
 
