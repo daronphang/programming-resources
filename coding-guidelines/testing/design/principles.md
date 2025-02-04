@@ -1,8 +1,16 @@
-## Unit test
+## Unit testing
 
 ### Strive for unchanging tests
 
 The ideal test is unchanging: after it is written, it never needs to change unless the requirements of the system under test change.
+
+### Be deterministic
+
+Tests should be deterministic, i.e. running the test with the same inputs always yields the same outcome. Nondeterminism (remote services, time, async behavior) in tests can lead to flakiness (brittle tests), which can harm the health of a test suite if developers start to distrust the results of the test and ignore failures.
+
+A common cause of nondeterminism is code that is not hermetic, i.e. it has dependencies on external services that are outside the control of a test.
+
+https://martinfowler.com/articles/nonDeterminism.html
 
 ### Test via Public APIs
 
@@ -12,9 +20,9 @@ The most important way to ensure this is to write tests that invoke the system b
 
 Another way that tests commonly depend on implementation details involves not which methods of the system that test calls, but how the results of those calls are verified.
 
-With state testing, you observe the system itself to see what it looks like after invoking with it. With interaction testing, you instead check that the system took an expected sequence of actions on its collaborators in response to invoking it i.e. validate how a function is called without actually calling the implementation of the function. Many tests will perform a combination of state and interaction validation.
+Interaction testing is a way to validate how a function is called without actually calling the implementation of the function. A test should fail if a function isn't called the correct way, i.e. assert_called_once, assert_call_count, checking call arguments, etc. With state testing, you observe the system itself to see what it looks like after invoking it.
 
-Interaction tests tend to be more brittle as they check how a system arrived at its result, whereas usually **you should care only what the result is**. Also, they are less scalable, doesn't tell you that the system under test is working properly, and utilizes implementation details.
+Interaction tests tend to be more brittle as they check how a system arrived at its result, whereas usually **you should care only what the result is**. Also, they are less scalable, don't tell you that the system under test is working properly, and utilizes implementation details.
 
 ### Test behaviors, not methods
 
@@ -24,9 +32,9 @@ The problem is that framing tests around methods can naturally encourage unclear
 
 A behavior is any guarantee that a system makes about how it will respond to a series of inputs while in a particular state i.e. **cause and effect**. Behaviors can often be expressed using words "given", "when", "then" i.e. given a bank account is empty, when attempting to withdraw money from it, then the transaction is rejected.
 
-### Don't put logic in tests
+### Avoid putting logic in tests
 
-Complexity is most often introduced in the form of logic. Logic is defined via imperative parts of programming languages including operators, loops, and conditionals.
+Complexity is most often introduced in the form of logic. Logic is defined via imperative parts of programming languages including operators, loops, and conditionals. Simplicity is more important than flexibility in tests.
 
 ### Code sharing with DAMP, not DRY
 
@@ -47,7 +55,7 @@ def constructUser(name, age):
     )
 ```
 
-## Larger test
+## Integration testing
 
 ### Test journeys, not stories
 
@@ -60,3 +68,7 @@ Any functionality not covered in these core journeys needs to be covered in test
 When using integration tests, we want to ensure that deploying a new service doesn't break consumers. One way to do this without requiring test against the real consumer is by using consumer-driven contract (CDC).
 
 With CDCs, we are defining the expectations of a consumer on a service/producer. They should be run as part of CI build of the producer, ensuring that it never gets deployed if it breaks one of these contracts. Should only be run against a single producer in isolation so that it can be more reliable than E2E tests.
+
+### Avoid test doubles with remote services
+
+When using test doubles, it is to ensure that the call was made. If the expected call is not made, the test fails. Can be classified as behavioral testing. Implementing this approach requires more intelligence in the fake collaborators that we create, and if overused, it can cause tests to become brittle. Instead, we should use actual third-party dependencies when performing integration testing, i.e. database, MQ, etc.

@@ -37,3 +37,22 @@ for key := range m {
     }
 }
 ```
+
+### Using references in loops
+
+https://go.dev/blog/loopvar-preview
+
+```go
+func getLatestPropertyVersionItem(items []PropertyVersionItem) *PropertyVersionItem {
+	var latestItem *PropertyVersionItem
+	for _, item := range items {
+		if item.ProductionStatus == statusActive || item.ProductionStatus == statusPending {
+			if latestItem == nil || item.PropertyVersion > latestItem.PropertyVersion {
+				itemCopy := item // TODO: bug in Go, fixed in 1.22
+				latestItem = &itemCopy
+			}
+		}
+	}
+	return latestItem
+}
+```

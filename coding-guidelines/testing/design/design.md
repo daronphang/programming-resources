@@ -1,4 +1,4 @@
-## Designing a Test suite
+## Designing a test suite
 
 There are two distinct dimensions for every test case: size and scope. Both are interrelated but distinct concepts.
 
@@ -36,7 +36,7 @@ A better way to approach the quality of your test suite is to think about the be
 - Do you feel confident you can catch breaking changes in your dependencies?
 - Are your tests stable and reliable?
 
-## Pitfalls of Large test suite
+## Pitfalls of large test suite
 
 As a codebase grows, you will inevitably need to make changes to existing code. Brittle tests that rely on extensive and complicated boilerplate, can actually resist change.
 

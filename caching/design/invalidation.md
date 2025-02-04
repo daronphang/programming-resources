@@ -33,7 +33,7 @@ Subsequent requests to the server from the browser will check if the file has be
 
 #### ETag
 
-Last-Modified is subjected to clock skews and errors in time synchronization. ETag can be used to create a unique hash of the file instead.
+Last-Modified is subjected to clock skews and errors in time synchronization. ETag can be used to create a unique hash of the file instead. This provides optimistic concurrency control.
 
 ### Purposes
 

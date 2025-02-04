@@ -1,11 +1,11 @@
 ## Larger tests
 
-Larger tests do not have the same restrictions as smaller tests i.e. can be multithreaded or multiprocess, across multiple machines, etc. They also typically involve several real dependencies and fewer test doubles.
+Larger tests do not have the same restrictions as smaller tests i.e. can be multithreaded or multi-process, across multiple machines, etc. They also typically involve several real dependencies and fewer test doubles.
 
 Larger tests can exhibit the following characteristics:
 
 - They may be slow i.e. hours or days
-- May be nonhermetic as they may share resources with other tests or traffic
+- May be non-hermetic as they may share resources with other tests or traffic
 - May be nondeterministic
 
 Unit tests can give you confidence about individual functions, objects, and modules, but large tests can provide more confidence that the overall system works as intended.

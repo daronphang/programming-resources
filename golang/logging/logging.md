@@ -1,4 +1,4 @@
-## Standard library
+## Logging
 
 Go standard library has a built-in log package that provides most basic logging features. Does not have log levels (INFO, DEBUG, WARNING, ERROR).
 

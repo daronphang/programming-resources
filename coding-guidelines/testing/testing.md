@@ -1,4 +1,4 @@
-## Why Write tests?
+## Why write tests?
 
 The act of writing tests improves the design of your systems, and generally leads to more modular software that enables greater flexibility later on. As the first clients of your code, a test can tell you much about your design choices:
 

@@ -9,18 +9,15 @@ http://localhost:8000/api/v1/users/{id}
 http://localhost:8000/api/v1/store/prices/{order-id}
 ```
 
+### Use verbs for controller actions (non-CRUD operations)
+
 For non-CRUD operations, you can execute them as **controllers**. A controller resource models a procedural concept. Controller resources are like executable functions, with parameters and return values; inputs and outputs. Like a traditional web application’s use of HTML forms, a REST API relies on controller resources to perform application-specific actions that cannot be logically mapped to one of the standard methods (create, retrieve, update, and delete, also known as CRUD). Controller names typically appear as the last segment in a URI path, with no child resources to follow them in the hierarchy.
 
 POST should be used to create a new resource within a collection and execute controllers.
 
 ```
-PATCH engines/123 "activate"
-PUT engines/123/state "active"
-POST engines/123/activation null
-
-PATCH engines/123 "deploy"
-PUT engines/123/state "before-deploy"
-POST engines/123/execution null
+POST /api/v1/resources/{id}/activate
+POST /api/v1/resources/{id}/deactivate
 ```
 
 ### Use pluralized nouns for resources
@@ -38,3 +35,15 @@ They are unnecessary and add length and complexity to URIs.
 ### Version your APIs
 
 Always attempt to version your APIs. You can provide an upgrade path without making any fundamental changes to the existing APIs.
+
+### Use hyphens to separate words
+
+```
+Correct:
+GET /api/v1/user-profiles
+POST /api/v1/transaction-history
+
+Avoid:
+GET /api/v1/user_profiles
+POST /api/v1/transactionHistory
+```

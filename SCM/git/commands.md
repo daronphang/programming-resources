@@ -29,7 +29,7 @@ $ git reset --soft HEAD
 
 ## Logging
 
-```
+```sh
 $ git log
 $ git log src/myassistant/app/api/v1/endpoint.py   # View all changes made to file
 ```
@@ -48,22 +48,21 @@ $ git remote -v                               # to verify remote repository URL
 $ git remote set-url origin <new repo URL>
 ```
 
-## git pull
+## git pull vs git fetch
 
-Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. If you don't want to integrate/merge changes directly, use git fetch instead as it will download the new changes only but leaves HEAD branch and working copy files untouched.
-
-To pull other branches from remote repo, use git fetch followed by git pull origin <new_branch_name>.
+Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. If the current branch is behind the remote, then **by default it will fast-forward** the current branch to match the remote.
 
 ```sh
 $ git pull <remote URL>
 $ git pull --no-commit <remote>
 $ git pull origin master --allow-unrelated-histories    # When encountered "refusing to merge unrelated histories"
+```
 
+If you don't want to merge changes directly, use git fetch instead as it will download the new changes only but leaves HEAD branch and working copy files untouched i.e. it updates your remote-tracking branches under `refs/remotes/<remote>` but not `refs/heads`.
+
+```sh
 $ git fetch --all # Fetch all branches in remote repo
 $ git fetch <remote> <branch>
-
-$ git pull origin <new_branch_name>
-$ git pull <repo> <remotebranchname>:<localbranchname>
 ```
 
 ## Integrating changes from one branch to another
@@ -76,13 +75,39 @@ Integrating changes can be done via git merge or git rebase. Both commands are d
 
 ### git merge
 
-Merging is a **non-destructive operation** i.e. the existing branches are not changed in any way. Merge will create an extra dummy commit; this can pollute branch's history.
+Merging is a **non-destructive operation** i.e. the existing branches are not changed in any way. Merge will create an extra dummy commit; this can pollute branch's history and make it less readable.
 
 <img src="../assets/git-merge.png">
 
 ```sh
 $ git checkout some-feature-branch
 $ git merge main
+```
+
+### git fast forward
+
+A fast forward occurs in Git when you merge one branch into another, and there are no divergent commits between them. In this case, the merge can simply move the branch pointer forward, effectively catching it up with the commits on the other branch **without creating a new merge commit**. This is the default behavior of Git when it detects that a fast forward is possible.
+
+```
+Before:
+A - B - C [main]
+         \
+          D - E [feature]
+
+After:
+A - B - C - D - E [main]
+```
+
+```sh
+$ git checkout main
+$ git merge feature --ff-only
+$ git merge pr --no-ff # forces a merge commit
+```
+
+```sh
+$ git pull --ff-only # equivalent to below
+$ git fetch
+$ git merge --ff-only origin/master
 ```
 
 ### git rebase
@@ -94,7 +119,17 @@ Rebasing is a **destructive operation**. Hence, it is considerably difficult to 
 - **Do not rebase for public repositories**. This destroy the branch and developers will have broken/inconsistent repositories unless they use `git pull --rebase`
 - Do not rebase after you have pushed your commits (or someone has pulled them). The feature branch commits after the rebase are not the same as the ones before merge
 
-<img src="../assets/git-rebase.png">
+```
+Before:
+A - B - C [main]
+ \
+  D - E [feature]
+
+After:
+A - B - C [main]
+         \
+          D - E [feature, rebased commits]
+```
 
 ```sh
 $ git fetch
@@ -104,6 +139,23 @@ $ git checkout feature
 $ git rebase main
 $ git rebase -i HEAD~3
 ```
+
+```sh
+$ git config --global pull.rebase true
+```
+
+```sh
+$ git pull --rebase # equivalent to running below commands
+$ git fetch
+$ git rebase origin/master
+```
+
+### git semi-linear merge
+
+This strategy is a combination of rebase and a merge:
+
+1. Commits are rebased on top of the master branch `git rebase master`
+2. Rebased commits are merged into the master branch `git merge pr --no-ff`
 
 ### Example
 

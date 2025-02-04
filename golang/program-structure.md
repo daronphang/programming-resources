@@ -150,3 +150,7 @@ if err := thisCouldFail(); err != nil {
   log.Fatal(err)
 }
 ```
+
+## Style guidelines
+
+https://github.com/uber-go/guide/blob/master/style.md#guidelines
