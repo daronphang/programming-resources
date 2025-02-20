@@ -1,10 +1,13 @@
 ## Domain-Driven Design (DDD)
 
-DDD is a collection of principles and patterns that help developers craft elegant object systems i.e. defines a **methodology for structuring business logic**. The approach is particularly suited to **complex domains**.
+DDD is an approach to designing and building software where the focus is on accurately expressing business rules in isolation from other technical concerns such as persistence of data. When properly applied, it can lead to software abstractions called domain models. These models encapsulate complex business logic, closing the gap between business reality and code.
 
-DDD focuses on modeling software to match a domain’s complexity and nuances called **domain models**. It emphasizes a deep understanding and representation of the domain within the software. These models encapsulate complex business logic, closing the gap between business reality and code.
+DDD helps to address the following challenges for complex projects with complex business logic:
 
-### Key Characteristics
+- Communication gap between technical and non-technical stakeholders
+- Align software design (scalability, flexibility, etc) with complex, evolving requirements of the business domain
+
+### Key characteristics
 
 - Ubiquitous language: DDD advocates for a common language shared between developers and domain experts
 - Rich domain models: Focus is on developing a rich model that encapsulates business logic/domain

@@ -56,10 +56,10 @@ For instance, if you add a shared Service Layer to be accessed by components wit
 
 ### Sinkhole
 
-This pattern falls into the 'architecture sinkhole anti-pattern'. This anti-pattern describes the situation where requests flow through multiple layers of the architecture as simple pass-through processing with little or no logic performed within each layer.
+This pattern falls into the 'architectural sinkhole anti-pattern'. This anti-pattern describes the situation where requests flow through multiple layers of architecture as simple pass-through processing with little or no logic performed within each layer.
 
 ### Monolithic
 
-Another consideration with the layered architecture pattern is that it tends to lend itself toward monolithic applications, even if you split the presentation layer and business layers into separate deployable units. While this may not be a concern for some applications, it does pose some potential issues in terms of deployment, general robustness and reliability, performance, and scalability.
+Another consideration with the layered architecture pattern is that it tends to lend itself to monolithic applications, even if you split the presentation layer and business layers into separate deployable units. While this may not be a concern for some applications, it does pose some potential issues in terms of deployment, general robustness and reliability, performance, and scalability.
 
 Also, it creates **tightly coupled objects** between layers i.e. Presentation Layer is coupled to Business Layer, and Business is coupled to Data Access.

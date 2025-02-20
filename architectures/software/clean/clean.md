@@ -68,9 +68,15 @@ Interfaces/Adapters:
 - Controller that takes input from the user and create output for the user
 - Presenter accepts a response from use case and formats it in away that can be presented to the output device
 
-### Frameworks and Drivers
+### Infrastructure (frameworks, drivers, delivery)
 
-The outermost layer is generally composed of frameworks and tools such as database, web, devices, etc.
+The outermost layer is generally composed of frameworks and tools such as database, web, devices, etc. It can also include delivery methods (websocket, Kafka, etc.) and OpenAPI.
+
+```go
+type OpenAPIClient interface {
+    FetchExternalData(id string) (*domain.ExternalData, error)
+}
+```
 
 ## Control flow
 

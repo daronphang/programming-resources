@@ -10,15 +10,46 @@ Passing by value is safe and straightforward, but **for large data structures, c
 
 **Pass by reference** will pass the **memory location** instead of the value. In other words, it passes the ‘container’ of the variable to the method so, anything that happens to the variable inside the method will affect the original variable. This introduces considerations about memory allocation.
 
-### Basic types
+### Primitive types
 
 - Default to pass by value
 - To pass by reference, use pointers
 
-### Arrays, slices
+### Arrays
 
-- A slice value is a header, describing a contiguous section of a backing array
-- Slice value contains a pointer to the array
+- Arrays by default are passed by value
+
+### Slices
+
+- When you pass a slice to a function, you are passing a reference to the underlying array i.e. default to pass by reference
+- However, the **slice itself is passed by value** i.e. the function receives a copy of the slice header that describes a contiguous section of a backing array, but it still refers to the same underlying array
+- To modify existing slice, use a pointer
+
+```go
+package main
+
+import "fmt"
+
+func myFunc(s []int) {
+    s[0] = 10
+    s = append(s, 6)
+}
+
+func main() {
+    mySlice := []int{1, 2, 3, 4, 5}
+    myFunc(mySlice)
+	fmt.Println(mySlice)
+
+	// Output: [10 2 3 4 5]
+	// append() creates a new slice, and the modified slice header
+	// inside myFunc does not affect the original slice header in the
+	// main function. Hence, the original slice remains unchanged,
+	// and its length and capacity are still the same.
+}
+```
+
+### Maps
+
 - Default to pass by reference
 
 ### Structs
@@ -27,32 +58,30 @@ Passing by value is safe and straightforward, but **for large data structures, c
 
 ### Structs in slices, maps
 
-- Default to pass by reference
+- For slices, although structs in slices are passed by value, but because the slice holds references to the original elements, it will affect the original slice
+- For maps, the actual struct is **passed by value**; need to assign the struct back into the key if you want to modify
 
 ```go
-package main
-
-import "fmt"
-
-type Example struct {
-	name string
-	nested World
+type Person struct {
+	Name string
+	Age  int
 }
 
-type World struct {
-	name string
-}
-
-func testing(p []Example) {
-    // Underlying values are passed by reference
-	p[0].hello = "oh my world!"
+func testing(arr []Person) {
+	arr[0].Name = "hello world!"
+	mary := arr[1]   // This copies the struct.
+	mary.Age = 12345 // This will not modify existing slice.
 }
 
 func main() {
-	p := make([]Example, 1)
-	testing(p)
-	fmt.Print(p[0].hello) // oh my world!
+	arr := []Person{
+		{Name: "john", Age: 10},
+		{Name: "Mary", Age: 25},
+	}
+	testing(arr)
+	fmt.Println(arr) // [{hello world! 10} {Mary 25}]
 }
+
 ```
 
 ```go
@@ -60,24 +89,26 @@ package main
 
 import "fmt"
 
-type Example struct {
-	name string
-	nested World
+type Person struct {
+    Name string
+    Age  int
 }
 
-type World struct {
-	name string
-}
-
-func testing(p []*Example) {
-    p[0] = &Example{}
-	p[0].hello = "oh my world!"
+func modifyMap(m map[string]Person) {
+    p := m["Alice"] // This struct is passed by value.
+    p.Age = 100 // This will not change the original struct in the map.
+    m["Alice"] = p // This explicitly sets the updated struct back to the map.
 }
 
 func main() {
-	p := make([]*Example, 1) // [nil]
-	testing(p)
-	fmt.Print(p[0].hello) // oh my world!
+    people := map[string]Person{
+        "Alice": {"Alice", 30},
+        "Bob":   {"Bob", 25},
+    }
+
+    fmt.Println(people) // Before modification
+    modifyMap(people)
+    fmt.Println(people) // After modification
 }
 ```
 

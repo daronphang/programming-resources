@@ -103,7 +103,19 @@ func main() {
 
 ## Buffered vs unbuffered
 
-The choice between unbuffered and buffered channels may affect the correctness of a program. Unbuffered channels give stronger synchronization guarantees while in buffered channels, the operations are decoupled.
+The choice between unbuffered and buffered channels may affect the correctness of a program.
+
+<table>
+<tr><th>Buffered</th><th>Unbuffered</th></tr>
+<tr>
+<td>Do not have any internal buffer (queue)</td>
+<td>Have a fixed-size internal buffer</td>
+</tr>
+<tr>
+<td>Gives stronger synchronization guarantees and ensuring that data is passed between them at the moment is needed</td>
+<td>Useful for decoupling sender and receiver, allowing for asynchronous operations</td>
+</tr>
+</table>
 
 ## Unidirectional channel types
 

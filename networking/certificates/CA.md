@@ -150,3 +150,9 @@ To sign a certificate yourself, you need the private key which should only be kn
 | Definition | Created, signed, and issued by the subject of the certificate (the entity it is issued to) | Created, signed and issued by a third party called CA that is authorized to validate the identity of the applicant |
 | Usage      | Private networks/Intranet                                                                  | Public networks to build trust among website visitors                                                              |
 | Signature  | Signed by your own private keys                                                            | Signed by third parties including Sectigo, Symantec, Digicert, Thawte, GeoTrust, GlobalSign, GoDaddy, and Entrust  |
+
+## Checking certificates
+
+```sh
+$ openssl s_client -showcerts -connect  lf-indoc.bytetstatic.com:443
+```

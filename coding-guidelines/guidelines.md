@@ -60,13 +60,13 @@ Keep the number of arguments low, and group them into meaningful objects if poss
 
 ### Should do one thing
 
-Keep each function small, doing at most one thing (single responsibility) and doing it well. Having multiple responsibilities mean higher coupling, and we have to look deeper to find what we want which decreases productivity. Be explicit about its purpose. Separate command queries where functions should either do something or answer something, but not both.
+Keep each function small, doing at most one thing (single responsibility principle) and doing it well. Having multiple responsibilities mean higher coupling, and we have to look deeper to find what we want which decreases productivity. Be explicit about its purpose. Separate command queries where functions should either do something or answer something, but not both.
 
 ### Should be deterministic
 
 Functions should be deterministic. A deterministic function always returns the same results if given the same input values. For handling side effects (changing non-local state or non-deterministic output such as HTTP calls, IO operations, etc.), make them explicit and isolate them as much as possible.
 
-### Opt for dependency injection (DI)
+### Avoid declaring dependencies implicitly, opt for dependency injection (DI)
 
 Avoid declaring/instantiating dependencies in functions implicitly and mutating global variables, instead opting for DI. DI helps to achieve inversion of control (IoC) by decreasing coupling and increasing adhesion. Other benefits include making testing easier, improving application modularity, and increasing flexibility of configurable components.
 

@@ -116,6 +116,12 @@ hits := make(map[address]int)
 hits[address{"golang.org", 443}]++
 ```
 
+For comparing the values of any two structs.
+
+```go
+reflect.DeepEqual(structA, structB)
+```
+
 ### Struct embedding and anonymous fields
 
 Composition in Go is achieved through embedding, which allows a struct to inherit the fields and methods of another struct. You can access the fields directly as if they were part of the parent struct.
