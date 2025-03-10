@@ -16,7 +16,7 @@ Change history of entities can allow access to previous states, but ignores the 
 
 ## Event Sourcing
 
-Event Sourcing is an alternative way to persist **aggregates**. In contrast with state-oriented persistance, Event Sourcing stores each state mutation as a separate record called an **event** in an append-only log.
+Event Sourcing is an alternative way to persist **aggregates**. In contrast with state-oriented persistence, Event Sourcing stores each state mutation as a separate record called an **event** in an append-only log.
 
 Event Sourcing ensures that all changes to application state are stored as a sequence of events. An entity’s current state can be created by **replaying** all the events in order of occurrence i.e. chronologically ordered list of events. As the context is stored within the events, the ‘why’ and ‘when’ of the event are implicitly stored within the data for the event.
 

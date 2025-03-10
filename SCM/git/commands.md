@@ -105,7 +105,7 @@ $ git merge pr --no-ff # forces a merge commit
 ```
 
 ```sh
-$ git pull --ff-only # equivalent to below
+$ git pull master --ff-only # equivalent to below
 $ git fetch
 $ git merge --ff-only origin/master
 ```
@@ -116,8 +116,8 @@ Rebasing is the process of combining a sequence of commits to a new base commit,
 
 Rebasing is a **destructive operation**. Hence, it is considerably difficult to revert/undo once performed. As a rule of thumb:
 
-- **Do not rebase for public repositories**. This destroy the branch and developers will have broken/inconsistent repositories unless they use `git pull --rebase`
-- Do not rebase after you have pushed your commits (or someone has pulled them). The feature branch commits after the rebase are not the same as the ones before merge
+- **Do not rebase for public repositories**. This destroys the branch and developers will have broken/inconsistent repositories unless they use `git pull --rebase`
+- **Do not rebase after you have pushed your commits** (or someone has pulled them). The feature branch commits after the rebase are not the same as the ones before merge. The only way to do so is to create a new branch and then perform the rebase
 
 ```
 Before:
@@ -145,7 +145,7 @@ $ git config --global pull.rebase true
 ```
 
 ```sh
-$ git pull --rebase # equivalent to running below commands
+$ git pull origin/master --rebase # equivalent to running below commands
 $ git fetch
 $ git rebase origin/master
 ```
@@ -270,4 +270,10 @@ $ git rebase -i HEAD~3 # squash 3 commits
 
 # alternative
 $ git merge --squash feature-branch
+```
+
+## Text editor
+
+```sh
+$ git config --global core.editor "vim"
 ```

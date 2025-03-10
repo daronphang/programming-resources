@@ -1,4 +1,4 @@
-## Migration Methods
+## Migration
 
 To deprecate a service that has accumulated several years of technical debt, there are two choices.
 

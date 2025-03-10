@@ -52,5 +52,5 @@ Dynamic connascence analyzes calls at runtime. The different types include:
 
 - Connascence of Execution: Order of execution of multiple components is important
 - Connascence of Timing: Timing of execution of multiple components is important
-- Connascence of Values: Occurs when several values relate on one another and must change together
+- Connascence of Values: Occurs when several values relate to one another and must change together
 - Connascence of Identity: Occurs when multiple components must reference the same entity

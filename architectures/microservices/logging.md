@@ -25,6 +25,23 @@ Logs should include the following information at bare minimum:
 - Method name
 - Call stack
 
+## Logging HTTP requests and responses
+
+### Benefits
+
+- Logging HTTP requests and responses provides valuable insights into the behavior of your API, especially when things go wrong (debugging)
+- Useful to track the health and performance of the system
+- For security-sensitive applications, you might need to log all requests and responses for compliance reasons
+- Detecting patterns of abuse or overuse
+
+### Factors to consider
+
+- Logging responses can expose sensitive user information which may violate privacy policies or regulations e.g. GDPR, HIPAA. Hence, it is important to **sanitize sensitive data**
+- Log volume can be intensive which will lead to storage costs and performance overhead
+- Writing to disk will incur CPU cost which will have a performance impact
+- Log only what you need; if your purpose is to build a profile of your users, then logging request is helpful. Otherwise, for debugging, log during errors would suffice
+- **Controlling the logging level** during runtime helps to filter the logs you need for different scenarios
+
 ### Dumping requests and responses into log
 
 Convert request into a curl command and dump it into logs.

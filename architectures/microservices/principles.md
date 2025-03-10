@@ -4,7 +4,15 @@ Help us frame the various decisions when building systems.
 
 ### Model around business concepts
 
+Microservices should be organized around a business capability or domain (DDD), not technical functions. This ensures that the service aligns with business goals and can evolve independently. Design them around bounded contexts, which ensures that the service owns its own model, data, and logic.
+
 Interfaces structures around business-bounded contexts are more stable than those structured around technical concepts.
+
+### Loose coupling and high cohesion
+
+Microservices should be loosely coupled, meaning that each service should not have direct dependencies on other services' internal implementations. Use well-defined APIs (e.g., REST, GraphQL) for communication.
+
+Each microservice should have high cohesion, meaning that the services are focused on a specific domain or functionality and contain everything needed to manage that functionality.
 
 ### Adopt a culture of automation
 
@@ -14,7 +22,7 @@ Think about creating custom images to speed up deployment, and embracing the cre
 
 ### Hide internal implementation details
 
-To maximize the ability of one service to evolve independently of any others, it is vital that we hide implementation details. Modeling bounded contexts can help, as this helps us focus on those models that should be shared, and those that should be hidden.
+To maximize the ability of one service to evolve independently of any others, it is vital that we hide implementation details e.g. hiding database schema/type, frameworks, libraries, communication protocols, technical error messages, algorithms used, etc. Otherwise, it makes it harder to evolve and maintain over time. Modeling bounded contexts can help, as this helps us focus on those models that should be shared, and those that should be hidden.
 
 Services should hide their databases to avoid falling into one of the most common sorts of coupling that can appear in monolithic architectures and use data pumps for reporting purposes.
 

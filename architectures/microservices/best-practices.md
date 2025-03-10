@@ -24,7 +24,7 @@ Best way to reduce the impact of making breaking changes is to avoid making them
 
 ### Encourage good behavior
 
-One way is to encourage good behavior in your clients, and avoid binding them too tightly to your services. For example, when retrieving a resource, sometimes the fields of the resource change, or additional fields are added to cater for other services that might be in need of them. However, if consumers are extracting all fields out, it could cause them to break needlessly. This could be avoided by implementing a reader that can ignore changes we don't care about, also known as a **"Tolerant Reader"**.
+One way is to encourage good behavior in your clients, and avoid binding them too tightly to your services. For example, when retrieving a resource, sometimes the fields of the resource change, or additional fields are added to cater for other services that might be in need of them. However, if consumers are extracting all fields out, it could cause them to break needlessly. This could be avoided by implementing a reader that can ignore changes we don't care about, also known as a **tolerant reader**.
 
 ### Use semantic versioning
 
@@ -49,3 +49,7 @@ Another option is to make use of materialized views (virtual tables) provided by
 ### Event data pump
 
 For microservices emitting events based on state change, we have the option of writing our own event subscriber that pumps data into the reporting database. We can send data to the reporting system as we see an event, allowing data to flow faster to our reporting system, rather than relying on a scheduler with the data pump. The coupling on the underlying database of the source microservice is now avoided.
+
+## Hyrum's law
+
+Be mindful of Hyrum's law when building APIs: all observable behaviors of your system will be depended on by somebody, e.g. content of error messages, ordering in responses, deprecated features, etc.

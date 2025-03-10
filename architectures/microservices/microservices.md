@@ -1,16 +1,16 @@
 ## Microservices
 
-An approach to distributed systems that promote the use of finely-grained services with their own lifecycles, which collaborate together. By embracing, can delivery software faster, embrace newer technologies, and more freedom to react and make different decisions.
+An approach to distributed systems that promote the use of finely-grained services with their own lifecycle, which collaborate together. By embracing, it can deliver software faster, embrace newer technologies, and has more freedom to react and make different decisions.
 
 This approach values granularity, being lightweight and ability to share similar process across multiple apps. Similar to Service-Oriented Architecture (SOA), an established style of software design. However, Microservices can communicate with each other (stateless).
 
 ### Autonomous Design
 
-- The smaller the microservices are, the benefits around interdependence increase, but complexity that arises from more moving parts increases.
-- All communication between services themselves are via network calls, to enforce separation between services and avoid the perils of tight coupling.
-- Services need to be able to change independently of each other, and be deployed themselves without requiring consumers to change.
-- Need to think about what the services should expose and hide; too much sharing would increase coupling to internal representations and decreases autonomy.
-- API exposed by services that facilitate communication between each other should use technology that doesn't couple consumers i.e. picking technology agnostic APIs.
+- The smaller the microservices are, the benefits around interdependence increase, but complexity that arises from more moving parts increases
+- All communication between services themselves are via network calls, to enforce separation between services and avoid the perils of tight coupling
+- Services need to be able to change independently of each other, and be deployed themselves without requiring consumers to change
+- Need to think about what the services should expose and hide; too much sharing would increase coupling to internal representations and decreases autonomy
+- API exposed by services that facilitate communication between each other should use technology that doesn't couple consumers i.e. picking technology agnostic APIs
 
 ## Benefits
 

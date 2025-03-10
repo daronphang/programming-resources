@@ -24,7 +24,7 @@ By the same token, **data formats used in an outer circle should not be used by 
 
 ### Entities (Domain)
 
-Entities encapsulate **Enterprise wide business rules**. An entity can be an object with methods, or it can be a set of data structures and functions.
+Entities encapsulate **enterprise wide business rules**. An entity can be an object with methods, or it can be a set of data structures and functions.
 
 If you don’t have an enterprise, and are just writing a single application, then these entities are the business objects of the application. They encapsulate the most general and high-level rules. They are the least likely to change when something external changes.
 
@@ -63,10 +63,10 @@ Use Case -> Adapter <- Web
 Interfaces/Adapters:
 
 - Implement the interfaces defined by the use case
-- Retrieve and store data from and to a number of sources
+- Retrieve and store data from/to a number of sources
 - Trigger a use case and convert the result to the appropriate format for the delivery mechanism
-- Controller that takes input from the user and create output for the user
-- Presenter accepts a response from use case and formats it in away that can be presented to the output device
+- Controller that takes input from the user and creates output for the user
+- Presenter accepts a response from use case and formats it in a way that can be presented to the output device
 
 ### Infrastructure (frameworks, drivers, delivery)
 

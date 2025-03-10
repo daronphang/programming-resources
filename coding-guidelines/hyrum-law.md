@@ -1,8 +1,12 @@
 ## Hyrum's law
 
-An observation on Software Engineering that: with a sufficient number of users of an API, it does not matter what you promise in the contract; all observable behaviors of your system will be depended on by somebody. This law is applicable in the context of maintaining a system with a longer lifespan and sufficient high usage.
+Hyrum's law is a principle in software engineering that states: with a sufficient number of users of an API, it does not matter what you promise in the contract; all observable behaviors of your system will be depended on by somebody.
+
+Hyrum’s Law is a reminder of the complexity of maintaining software over time and the challenges of managing user expectations and assumptions. It encourages caution when making changes to public-facing APIs or widely used systems. This law is applicable in the context of maintaining a system with a longer lifespan and sufficient high usage.
 
 The name of the API, input and output data types define the **published contract**, while actual values of input and output data govern the **observable behavior**. Developers often rely on what they get, and not necessarily what they are promised.
+
+As the user base and complexity of an API grow, maintaining backward compatibility and avoiding breaking changes becomes increasingly difficult, even if you try to be careful.
 
 ### Interface and implementation
 
@@ -34,3 +38,6 @@ Examples of observable traits and behaviors that developers might come to depend
 - Status codes and reference numbers of error messages
 - Large or small objects or payloads
 - Fast or slow response times
+- Using deprecated feature
+- Assuming a certain return type
+- Relying on side effects

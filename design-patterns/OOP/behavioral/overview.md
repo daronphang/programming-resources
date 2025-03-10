@@ -1,4 +1,4 @@
-## Behavioral Patterns
+## Behavioral patterns
 
 Behavioral patterns are concerned with algorithms and assignment of responsibilities between objects. They describe not just patterns of objects or classes, but also the patterns of communication between them. These patterns characterize complex control flow that's difficult to follow at run-time.
 
@@ -9,7 +9,7 @@ Behavioral class patterns use inheritance to distribute behavior between classes
 - Command pattern re-execute commands in the same order that changed attributes of a state
 - Memento completely replaces the state by retrieving from a cache/store
 
-### Encapsulating Variation
+### Encapsulating variation
 
 Encapsulating variation is a theme of many behavioral patterns. When an aspect of a program changes frequently, these patterns define an object that encapsulates that aspect, and other parts of the program can collaborate with the object whenever they depend on that aspect:
 

@@ -1,4 +1,4 @@
-## Factory Method
+## Factory method
 
 Intent is to define an interface for creating an object, but let subclasses decide which class to instantiate. Can take in a parameter to identify the kind of object to create. Used to create concrete implementations of a common interface. Decision to instantiate a specific class is delegated to subclasses.
 
