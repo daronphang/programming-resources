@@ -10,7 +10,7 @@ The primary purpose of a CDN is to reduce latency and high WAN bandwidth cost, o
 
 ### How it works
 
-1. Browser requests local DNS to resolve domain name. If it caches the resolution result of the domain name, it responds directly back to the user. Otherwise, a recursion request is made to the entire DNS system for resolution, which points to the CDN dedicated DNS server by CNAME. DNS server returns the IP address of the CDN's GSLB back to the user
+1. Browser requests local DNS to resolve domain name. If it caches the resolution result of the domain name, it responds directly back to the user. Otherwise, a recursion request is made to the entire DNS system for resolution, which points to the CDN dedicated DNS server (edge server) by CNAME. DNS server returns the IP address of the CDN's GSLB back to the user. The SSL/TLS certificate typically **belongs to the CNAME** and not to the primary domain
 2. User initiates a content URL access request to the GSLB
 3. GSLB selects a regional LB in the user's region based on the user's IP address and the requested content URL
 4. User initiates a content URL access request to the regional LB

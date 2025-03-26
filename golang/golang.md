@@ -71,3 +71,13 @@ $ go build -o /rest ./cmd/rest
 In binary, when using runtime.Caller(0) to get the path of the calling file, it refers to the path of where the binary was built.
 
 As a workaround, you can copy the source code into the same working path in the image.
+
+## Unused dependencies
+
+Just because a package is listed in your go.mod file doesn't mean it will be included in the final build. Go keeps track of dependencies in go.mod for versioning and resolution purposes. If a dependency is listed in go.mod but is never actually used in your code (directly or indirectly), you can safely remove it.
+
+Go uses a combination of import tracking and **tree shaking** to include only the necessary dependencies in your binary:
+
+- go get: Go updates your go.mod file to include the direct and transitive dependencies that your code relies on. However, not everything from go.mod is included in the final build
+- go mod tidy: Go will download and track all the dependencies in your go.mod file. This includes both direct and transitive dependencies. However, unused dependencies will not be included in the final binary
+- go build: Go will only include the dependencies that are actually used in the final binary

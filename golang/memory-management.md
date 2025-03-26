@@ -59,7 +59,7 @@ func main() {
 ### Structs in slices, maps
 
 - For slices, although structs in slices are passed by value, but because the slice holds references to the original elements, it will affect the original slice
-- For maps, the actual struct is **passed by value**; need to assign the struct back into the key if you want to modify
+- For maps, the actual struct is **passed by value**; need to assign the struct back into the key if you want to modify. Alternatively, assign pointers to keys in maps
 
 ```go
 type Person struct {

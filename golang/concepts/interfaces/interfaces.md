@@ -75,7 +75,35 @@ func shuffle(c Card) {
 
 ### Naming
 
-By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier etc.
+By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier, Handler, Closer, Provider, Adapter, Invoker, Provider, etc.
+
+Interface names should be focused on what behavior or actions they represent. They should describe what the implementing structs can do, not what they are.
+
+When instantiating the actual implementation with New(), it should also return the interface rather than the actual implementation. This follows a common Go idiom and design pattern to promote abstraction and loose coupling.
+
+```go
+type Provider interface {
+	BatchGetCDNDomains(ctx context.Context, pageNum, pageSize int) (cdn_domain.ListDomainsResponse, error)
+	UpdateDomainInVulcan(ctx context.Context, arg *cdn_domain.Domain) error
+}
+
+type Client struct {
+	config         Config
+	jwt            string
+	httpClient     *http.Client
+	bdClient       *bdhttp.HttpClient
+	byteTreeClient bytetree.Client
+}
+
+func New(cfg Config) Provider {
+	return &Client{
+		config:         cfg,
+		httpClient:     &http.Client{},
+		bdClient:       bdhttp.NewHttpClient(),
+		byteTreeClient: NewByteTreeClient(cfg),
+	}
+}
+```
 
 ### Compile errors
 
