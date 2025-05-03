@@ -15,6 +15,54 @@ If the main function (or the main goroutine) ends and the program exits, any rem
 ### Use channels to signal termination
 
 ```go
+func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	maxRoutines := 3
+	guard := make(chan bool, maxRoutines)
+	errCh := make(chan error, 1) // buffered channel
+	var wg sync.WaitGroup
+
+	for i := 0; i <= 10; i++ {
+		if len(errCh) > 0 {
+			break
+		}
+		wg.Add(1)
+		guard <- true
+		go someGoroutine(ctx, cancel, i, errCh, &wg, guard)
+	}
+
+	wg.Wait()
+	if len(errCh) > 0 {
+		x := <-errCh
+		fmt.Println(x)
+	} else {
+		fmt.Println("all routines complete")
+	}
+}
+
+func someGoroutine(ctx context.Context, cancel context.CancelFunc, arg int, errCh chan error, wg *sync.WaitGroup, guard chan bool) {
+	defer func() {
+		wg.Done()
+		<-guard
+	}()
+
+	select {
+	case <-ctx.Done():
+		fmt.Printf("goroutine %v exiting \n", arg)
+		return
+	default:
+		if arg == 6 {
+			errCh <- errors.New("some error msg")
+			cancel()
+			return
+		}
+		time.Sleep(time.Duration(arg) * time.Second)
+		fmt.Printf("goroutine %v completed \n", arg)
+	}
+}
+```
+
+```go
 func myProcess(stopChannel chan bool) {
   for {
     select {

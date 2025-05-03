@@ -15,6 +15,7 @@ type Example struct {
   Field int `json:",omitempty"`   // skipped if empty
   Field int `json:"-"`    // skipped
   Field int `json:"-,"` // appears as key "-"
+  Field Address `json:",inline"` // flattened into the parent struct
 }
 ```
 

@@ -40,6 +40,8 @@ for key := range m {
 
 ### Using references in loops
 
+When iterating through a slice, each row is a copy of the element.
+
 https://go.dev/blog/loopvar-preview
 
 ```go

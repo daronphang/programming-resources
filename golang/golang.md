@@ -48,6 +48,12 @@ Names in Go should:
 
 Package names are short and clear, lowercase, with no underscores or camelCases. A package name and its contents are coupled.
 
+```
+net/http
+grpcservice
+rcmservice
+```
+
 Break up generic packages i.e. packages named util, interfaces, common or misc provide clients with no sense what the package contains, grows without bound, accumulates dependencies, and collides with other imports.
 
 Organize packages by responsibility i.e. organizing types together in package models should be avoided. Instead, the individual types/structs should be declared in their respective packages.

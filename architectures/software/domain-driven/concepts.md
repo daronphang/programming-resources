@@ -1,6 +1,6 @@
 ## Domain
 
-The problem space that a business occupies and provides solutions to. This encompasses everything that the business must contend with, including rules, processes, ideas, business-specific terminology, and anything related to its problem space. The domain exists regardless of the existence of the business.
+The problem space that a business occupies and provides solutions to i.e. the subject matter or the area of expertise that the system is built to address. This encompasses everything that the business must contend with, including rules, processes, ideas, business-specific terminology, and anything related to its problem space. The domain exists regardless of the existence of the business.
 Taking an e-commerce application as an example, the various areas of expertise include (but not limited to) sales, advertisement, customer management, inventory management, products, orders, etc.
 
 ### Domain logic

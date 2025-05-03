@@ -59,9 +59,11 @@ def constructUser(name, age):
 
 ### Test journeys, not stories
 
-Despite the disadvantages outlined, we should focus on a small number of core journeys (high value interactions) to test for the whole system. A user journey test simulates a multi-step interaction of a user with the system e.g. for e-commerce, create an order, modify it, and finally cancel it.
+Despite the disadvantages outlined, instead of covering every test case (lead to brittle tests, and would never be 100% foolproof), we should focus on a small number of core journeys (high value interactions) to test for the whole system. A user journey test simulates a multi-step interaction of a user with the system e.g. for e-commerce, create an order, modify it, and finally cancel it.
 
-Any functionality not covered in these core journeys needs to be covered in tests that analyze services in isolation from each other.
+Any functionality not covered in these core journeys needs to be covered in tests that analyze services in isolation from each other (unit tests). Ultimately, the cost and benefit of end-to-end testing needs to make sense.
+
+For testing events, the publisher of the event should stop the test once they successfully create an event. They can include cleanup steps to allow multiple tests without downstream impact. Ensure topics are flexible (use headers to distinguish) and that the test events are ignored by everyone else except your test.
 
 ### Consumer-driven tests
 

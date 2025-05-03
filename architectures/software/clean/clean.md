@@ -52,25 +52,25 @@ Use Cases:
 - May access any external services using any of output ports made available to it
 - Often loads one or several aggregates and invokes business logic on them
 
-### Interfaces/Adapters
+### Interfaces/Adapters (delivery)
 
-The software in this layer is a set of adapters that convert data from the format most convenient for the use cases and entities, to the format most convenient for some external agency such as the Database or the Web, and vice versa.
+The software in this layer is a set of adapters that convert data from the format most convenient for the use cases and entities, to the format most convenient for some external agency such as the Database or the Web, and vice versa, i.e. DTOs. This layer defines how external actors interact with your system, and may include controllers/handlers, DTOs, formatters, etc. In other words, it is responsible for translating between external requests and usecase inputs, i.e. entry points of the application.
 
 ```
-Use Case -> Adapter <- Web
+Web server -> Adapter (interfaces) <- Use Case
 ```
 
-Interfaces/Adapters:
+Interfaces:
 
 - Implement the interfaces defined by the use case
 - Retrieve and store data from/to a number of sources
 - Trigger a use case and convert the result to the appropriate format for the delivery mechanism
 - Controller that takes input from the user and creates output for the user
-- Presenter accepts a response from use case and formats it in a way that can be presented to the output device
+- Presenter accepts a response from the use case and formats it in a way that can be presented to the output device, i.e. Transforms use case output to DTO. Presenter avoids leaking internal models (like entities) to the outside
 
-### Infrastructure (frameworks, drivers, delivery)
+### Infrastructure (frameworks, drivers)
 
-The outermost layer is generally composed of frameworks and tools such as database, web, devices, etc. It can also include delivery methods (websocket, Kafka, etc.) and OpenAPI.
+This layer handles outbound dependencies and provides their concrete implementations needed by the system such as GORM, Kafka, caching (Redis), logging, OpenAPI (third party APIs), etc. These implementations are used by usecases. When naming, prefer technology-agnostic names (nosql, sql, cache) over specific technology names (Redis, MySQL, MongoDB) to avoid tightly coupling structure to implementation.
 
 ```go
 type OpenAPIClient interface {
@@ -151,4 +151,56 @@ func mapUserToProtobufResponse(user UserDomainModel) *pb.GetUserResponse {
     Email:  user.Email,
   }
 }
+```
+
+## Project structure
+
+```
+📂cmd/
+├─ 📂http/
+│  ├─ main.go // entrance where program is executed
+│
+📂config/     // app config exists at top-level or root
+│ ├─ config.go
+│ ├─ logger.go
+│
+📂internal/
+├─ 📂delivery/
+│  ├─ 📂grpc/
+│  │  ├─ 📂middleware/
+│  │  │  ├─ logging.go
+│  │  │  ├─ cors.go
+│  │  │  ├─ user.go
+│  │  ├─ server.go // kitex framework
+│  │
+│  ├─ 📂http/
+│  │  ├─ 📂middleware/
+│  │  │  ├─ logging.go
+│  │  │  ├─ cors.go
+│  │  │  ├─ user.go
+│  │  ├─ server.go // hertz framework
+│
+├─ 📂domain/
+│  ├─ certificate.go
+│  ├─ domain.go // each certificate is associated to a domain name
+│  ├─ repository.go // if different schemas may be used for storing and reading
+│
+├─ 📂infrastructure/
+│  ├─ 📂kafka/
+│  │  ├─ kafka.go
+│  │
+│  ├─📂rabbitmq/
+│  │  ├─ rabbitmq.go
+│  │
+│  ├─ 📂repository/
+│  │  ├─ 📂migration/
+│  │  │  ├─ 000001_init_cert.up.sql
+│  │  ├─ db.go // actual implementation
+│  │  ├─ models.go
+│
+├─ 📂usecase/
+│  ├─ certificate.go
+│
+├─ 📂util/
+   ├─ exp_backoff.go
 ```

@@ -2,7 +2,7 @@
 
 An approach to distributed systems that promote the use of finely-grained services with their own lifecycle, which collaborate together. By embracing, it can deliver software faster, embrace newer technologies, and has more freedom to react and make different decisions.
 
-This approach values granularity, being lightweight and ability to share similar process across multiple apps. Similar to Service-Oriented Architecture (SOA), an established style of software design. However, Microservices can communicate with each other (stateless).
+This approach values granularity, being lightweight and ability to share similar process across multiple apps. Similar to Service-Oriented Architecture (SOA), an established style of software design. However, microservices can communicate with each other (stateless).
 
 ### Autonomous Design
 
