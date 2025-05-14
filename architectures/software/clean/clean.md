@@ -1,24 +1,31 @@
 ## Clean architecture
 
-Clean architecture is a system architecture guideline proposed by Robert C. Martin, derived from many architectural guidelines including hexagonal, onion, etc.
+Clean architecture is a system architecture guideline popularized by Robert C. Martin, derived from many architectural guidelines including hexagonal, onion, domain-driven design, etc. It emphasizes separation of concerns, testability, and independence of frameworks or external systems.
 
 <img src="../assets/clean-architecture.png">
 
 ### Benefits
 
-- Independent of frameworks
-- Testable
-- Independent of UI
-- Independent of database
-- Independent of any external agency
+- Separation of concerns: Business rules (core logic) are isolated from delivery mechanisms (web, CLI, DB)
+- Testability: As core logic is decoupled from frameworks and I/O, it's easier to write fast, reliable unit tests without requiring real databases or servers
+- Framework independence: You can swap out frameworks (web, DB, etc.) without rewriting core business logic, which is ideal for long-term maintainability and adaptability
+- Scalability: Large teams can work on different layers without stepping on each other’s toes, and allows feature growth without entangling unrelated concerns
+- Maintainability: Changes in one part of the system (e.g., UI or DB schema) typically don't ripple into the core business logic
+
+### Drawbacks
+
+- Initial complexity and overhead: More layers mean more files, packages and abstractions. Can be overengineering for smaller projects
+- Higher learning curve: Developers unfamiliar with the pattern may struggle to understand the separation and data flow, and adhering to this architecture requires discipline and architectural consistency
+- Boilerplate code: To maintain decoupling, you often write interfaces and translation layers (DTOs, mappers), which can feel repetitive
+- Requires strong architectural leadership: Without a clear vision and consistent application of principles, the codebase can become fragmented or misaligned with Clean Architecture goals
 
 ### Dependency rule
 
-The concentric circles represent different areas of software. In general, the further in you go, the higher level the software becomes. The outer circles are mechanisms. The inner circles are policies.
+The Dependency Rule is a key principle in Clean Architecture. It dictates how dependencies should flow in architecture and defines the relationship between different layers of the application. The rule essentially enforces that **dependencies should only point inward, meaning that outer-level layers should depend on inner-level layers but not the other way around**. This means nothing in an inner circle can know anything at all about something in an outer circle. i.e. the inner circle shouldn’t depend on anything in the outer circle.
 
-The Dependency Rule states that the source code dependencies can only point inwards. This means nothing in an inner circle can know anything at all about something in an outer circle. i.e. the inner circle shouldn’t depend on anything in the outer circle.
+For instance, the core logic (entities and use cases) should not depend on any external framework, database, or UI layer. It should only depend on abstractions. Outer layers (like frameworks or UI) depend on inner layers (core business logic), but not the other way around.
 
-By the same token, **data formats used in an outer circle should not be used by an inner circle**, especially if those formats are generate by a framework in an outer circle. We don’t want anything in an outer circle to impact the inner circles.
+This rule makes the code more modular, testable, and flexible, allowing you to replace or change external dependencies with minimal impact on the core logic.
 
 ## Layers
 

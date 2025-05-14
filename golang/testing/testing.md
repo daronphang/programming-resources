@@ -1,6 +1,6 @@
 ## Testing package
 
-A test function in Go starts with Test and takes `*testing.T` as the only parameter.
+A test function in Go starts with Test and takes `*testing.T` as the only parameter. When you run a test, Go compiles and runs tests **per package** i.e. each package is compiled into its own test binary.
 
 When naming test functions in Go, the naming convention should focus on what is being tested rather than how it behaves.
 
@@ -157,5 +157,40 @@ TempDir() is a method that automatically creates a temporary directory for your 
 func TestFooerTempDir(t *testing.T) {
     tmpDir := t.TempDir()
   	// your tests
+}
+```
+
+### Global setup and teardown (package-level)
+
+You can use TestMain() for a setup that persists across all test cases within a package. It acts as an entry point for that package's tests.
+
+```go
+package yourpackage
+
+import (
+    "fmt"
+    "os"
+    "testing"
+)
+
+func TestMain(m *testing.M) {
+    // Global setup
+    fmt.Println("Setting up before all tests")
+
+    // Run tests
+    exitCode := m.Run()
+
+    // Global teardown
+    fmt.Println("Tearing down after all tests")
+
+    os.Exit(exitCode)
+}
+
+func TestOne(t *testing.T) {
+    fmt.Println("Running TestOne")
+}
+
+func TestTwo(t *testing.T) {
+    fmt.Println("Running TestTwo")
 }
 ```

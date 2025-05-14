@@ -1,10 +1,8 @@
 ## Overview
 
-Design patterns are reusable solutions to commonly occurring problems in software design. It is rarely the case that the problems we solve or systems we build are truly unique. Patterns allow us to learn from the mistake of others.
+Design patterns are reusable solutions to commonly occurring problems in software design. It is rarely the case that the problems we solve or systems we build are truly unique. Patterns allow us to learn from the mistakes of others. They are proven solutions, easily reusable and expressive. They lower the size of your codebase, prevent future refactoring, and make your code easier to understand by other developers.
 
-Design patterns are proven solutions, easily reusable and expressive. They lower the size of your codebase, prevent future refactoring, and make your code easier to understand by other developers. Design patterns can be creational, structural, behavioral, concurrency or architectural.
-
-However, applying wrong pattern to given problem could lead to undesirable effects such as unnecessary code complexity, overhead on performance or spawning of new anti-pattern.
+Design patterns should be used to solve specific problems or improve aspects like maintainability, scalability, or performance. However, misuse or over-engineering can lead to undesirable effects such as unnecessary complexity, overhead on performance or spawning of new anti-patterns. Hence, don't commit to patterns until there is a real need. Use patterns only if they improve clarity, not just because they are trendy.
 
 Design patterns are all about increasing abstraction in code and hence, objects have less dependencies between them. However, every extra layer of indirection will open up more places for developers to change code. Patterns are best in the hands of framework designers i.e. events as Observer pattern, Prototype pattern in JS, MVC pattern in server-side web frameworks.
 
