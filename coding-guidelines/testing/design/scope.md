@@ -12,7 +12,7 @@ A unit test validates the behavior of a small part of the codebase e.g. individu
 - Test for state changes in the SUT
 - Test for behaviors
 
-The prime goal of these tests is to give us very fast feedback about whether our functionality is good.
+Unit testing is one of the most important components in legacy code work. These small, localized tests can give you fast feedback as you develop and allow you to refactor with much more safety.
 
 ### Integration tests
 

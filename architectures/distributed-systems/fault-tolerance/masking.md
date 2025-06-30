@@ -1,6 +1,6 @@
 ## Failure masking by redundancy
 
-If a system is to be fault tolerant, the best it can do is to try to hide the occurrence of failures from other processes. The key technique for masking faults is to use **redundancy**.
+If a system is to be fault tolerant, the best it can do is to try to hide the occurrence of failures from other processes. The key technique for masking faults is to use **redundancy**. For example, a database cluster with primary and replica nodes. If the primary fails, a replica takes over automatically.
 
 ### Information redundancy
 

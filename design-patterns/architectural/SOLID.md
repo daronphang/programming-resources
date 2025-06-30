@@ -30,7 +30,9 @@ def calculate_area(shapes):
 
 ## Liskov Substitution Principle (LSP)
 
-LSP states that child classes or subclasses must be substitutable for their parent classes or super classes. In other words, the child class must be able to replace the parent class.
+LSP states that child classes or subclasses must be substitutable for their parent classes or super classes. In other words, the child class must be able to replace the parent class, without it having to know that they are objects of a subclass.
+
+A classic example of this violation is when subclasses override concrete methods of their parent classes, leading to silent errors in code.
 
 ## Interface Segregation Principle (ISP)
 

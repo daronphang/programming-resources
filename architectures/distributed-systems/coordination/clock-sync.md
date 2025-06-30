@@ -1,8 +1,20 @@
 ## Clock synchronization
 
-Strongly related to communication between processes is the issue of how processes in distributed systems synchronize. Synchronization is all about doing the right thing at the right time.
+Strongly related to communication between processes is the issue of how processes in distributed systems synchronize. Synchronization is all about doing the right thing at the right time. Without synchronized clocks, you can face problems like inconsistent data, race conditions, and bugs that are very hard to reproduce.
 
 In a distributed system, achieving agreement on time is not trivial. When each machine has its own clock, an event that occurred after another event may nevertheless be assigned an earlier time. Having an accurate time is needed in application domains including financial brokerage, security auditing, collaborative sensing, etc.
+
+### Why is clock sync important
+
+- Casual ordering and event consistency
+
+```
+Node A: 2025-05-16T10:00:01 - Updated Balance
+Node B: 2025-05-16T09:59:58 - Transfer Completed
+```
+
+- Data consistency and conflict resolution: Many distributed databases (DynamoDB) use timestamps to resolve conflicts
+- Security: Token expiry, TLS, etc.
 
 ## Physical clocks
 

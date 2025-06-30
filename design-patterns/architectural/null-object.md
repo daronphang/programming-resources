@@ -1,6 +1,6 @@
 ## Null Object Pattern
 
-The intent of a Null Object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default do nothing behavior. In short, a design where "nothing will come of nothing".
+The intent of a Null Object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default do nothing behavior. In short, a design where "nothing will come of nothing". Null objects are particularly useful when a client doesn't have toc care whether an operation is successful. In contexts like this, null objects can shield clients from explicit error checking i.e. checking for null or exceptions.
 
 It is sometimes thought that null objects are over simple and "stupid" but in truth a null object always knows exactly what needs to be done without interacting with any other objects.
 

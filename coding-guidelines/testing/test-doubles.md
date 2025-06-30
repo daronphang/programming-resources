@@ -47,6 +47,12 @@ Spies are stubs that also record some information based on how they were called 
 
 Objects pre-programmed with expectations which form a specification of the calls they are expected to receive. When mocking, it is to ensure that the call was made. If the expected call is not made, the test fails. Can be classified as **behavioral testing**. Implementing this approach requires more smarts in the fake collaborators that we create, and if overused can cause tests to become brittle.
 
+## Seams (OOP)
+
+One of the biggest challenges in getting legacy code under test is breaking dependencies. When we are lucky, the dependencies that we have are small and localized; but in pathological cases, they are numerous and spread out throughout a code base.
+
+A seam is a place where you can alter behavior in your program without editing in that place. If we can replace behavior at seams, we can selectively exclude dependencies in our tests. We can also run other code where those dependencies were if we want to sense conditions in the code and write tests against those conditions.
+
 ## Stubbing vs mocking
 
 The easiest way to tell we are dealing with a stub is to notice that a stub can never fail the test. The assert the test uses are always against the class under test. On the other hand, the test will use a mock object to verify whether the test has failed or not. Mocks can be useful to ensure that the expected side effects happen.

@@ -7,7 +7,10 @@ DIP is about the level of abstraction in the messages sent from your code to the
 In simple terms:
 
 - we should not depend on low-level implementations, but rely on high-level abstractions
+- It is better to depend on interfaces or abstract classes than on concrete classes which are more volatile to changes
 - Abstractions should not depend on details, but details should depend on abstractions
+
+However, there is a cost of introducing more interfaces and packages into your design to break dependencies. The amount of time it takes to rebuild the entire system goes up slightly as there are more files to compile. However, this is a fair price to pay.
 
 ### Abstractions
 
@@ -20,7 +23,7 @@ Many people confuse abstraction with:
 
 Any of them can be misleading.
 
-In the context of interface and abstract base class, an example would be java.sql.Connection. If the methods make sense to your domain e.g. getAutoCommit(), createStatement(), it might be okay, but not if the methods make sense to a software library. As soon as you given in and **allow clients to see unnecessary methods**, you probably **violate both DIP and Liskov Substitution Principle**. Instead, the abstraction should be at a level that is **appropriate for your domain**.
+In the context of interface and abstract base class, an example would be java.sql.Connection. If the methods make sense to your domain e.g. getAutoCommit(), createStatement(), it might be okay, but not if the methods make sense to a software library. As soon as you give in and **allow clients to see unnecessary methods**, you probably **violate both DIP and Liskov Substitution Principle**. Instead, the abstraction should be at a level that is **appropriate for your domain**.
 
 ## Example
 

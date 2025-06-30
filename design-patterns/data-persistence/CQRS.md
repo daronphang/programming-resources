@@ -2,7 +2,7 @@
 
 CQRS is the notion that you can use a different model to update information than the model you use to read information. CQRS uses command handlers to simplify the query process and hide complex, multisystem changes.
 
-However, for most systems, CQRS adds **risky complexity**.
+Simply put: a method should be a command or a query, but not both. A command is a method that can modify the state of the object but that doesn’t return a value. A query is a method that returns a value but that does not modify the object. The primary reason for this is communication. If a method is a query, we shouldn't need to look at its body to determine whether it cause any side effects. However, for most systems, CQRS adds **risky complexity**.
 
 ### Limitations of CRUD
 

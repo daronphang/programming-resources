@@ -13,7 +13,9 @@ A wide range of problems can occur in distributed systems, including:
 
 ## Fault tolerance
 
-Fault tolerance is the ability of a software system to maintain its functionality and performance **in the presence of faults**. Faults are any deviations from the expected or desired behavior of the system, such as errors, exceptions, or anomalies. A fault-tolerant system can detect, isolate, and correct faults, or at least tolerate them without compromising the system's integrity or availability.
+Fault tolerance is the ability of a software system to maintain its functionality and performance **in the presence of faults**. It refers to the ability of a system to continue functioning correctly even when one or more components fail.
+
+Faults are any deviations from the expected or desired behavior of the system, such as errors, exceptions, or anomalies. A fault-tolerant system can detect, isolate, and correct faults, or at least tolerate them without compromising the system's integrity or availability.
 
 Being fault tolerant is strongly related to what are called **dependable systems**. Dependability is a term that covers a number of useful requirements for distributed systems:
 
@@ -40,7 +42,7 @@ Traditionally, fault-tolerance has been related to the following three metrics:
 
 ### Detecting
 
-To tolerance faults, first step is to detect them, but even that is hard. Most systems don't have an accurate mechanism of detecting whether a node has failed, so most distributed algorithms rely on timeouts to determine whether a remote node is still available. However, **timeouts cannot distinguish between network and node failures.**
+To tolerate faults, the first step is to detect them, but even that is hard. Most systems don't have an accurate mechanism of detecting whether a node has failed, so most distributed algorithms rely on timeouts to determine whether a remote node is still available. However, **timeouts cannot distinguish between network and node failures.**
 
 Once a fault is detected, making a system tolerate is not easy as there is no global variable, shared memory, common knowledge or any kind of shared state between nodes. Major decisions cannot be safely made by a single node, and hence, require protocols that enlist help from other nodes i.e. get a quorum to agree.
 

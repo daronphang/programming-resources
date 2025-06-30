@@ -27,7 +27,7 @@ The process is as follows:
 5. When the signed certificate is presented to a third party, the recipient (browser) can cryptographically confirm the CA's digital signature via the CA's public key (stored in the CA bundle)
 6. The CA's public key is used to decrypt the digital signature and compares the values with the contents of the certificate itself; if they match, the signature is valid
 7. The recipient performs signature validation through the certificate chain (or certificate path) to obtain the root CA certificate (the signatures of all certificates in the chain must be verified)
-8. If the client trusts the root CA, it will automatically trust the server
+8. If the client trusts the root CA (stored in trusted root store), it will automatically trust the server
 
 <img src="../assets/certificate-chain.png">
 
