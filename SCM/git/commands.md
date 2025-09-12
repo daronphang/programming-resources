@@ -150,6 +150,32 @@ $ git fetch
 $ git rebase origin/master
 ```
 
+If rebasing main onto your local branch results in local changes getting lost, you are likely doing:
+
+```sh
+git checkout my-branch
+git rebase main
+```
+
+This tells Git to take commits from my-branch, and replay them on top of main. However, if main was rebased, the shared history is broken, and Git may think your local commits are already included. Instead, you want to bring the latest main into your local branch and preserve local changes. In other words, to rebase main onto your local branch by reversing the order:
+
+```sh
+git checkout my-branch
+git fetch origin
+git rebase --onto my-branch origin/main main
+```
+
+Alternatively, if rebase is too much pain, simply use merge:
+
+```sh
+git checkout my-branch
+git merge origin/main
+# Resolve conflicts, keep your changes with `--ours`
+git checkout --ours .
+git add .
+git commit
+```
+
 ### git semi-linear merge
 
 This strategy is a combination of rebase and a merge:

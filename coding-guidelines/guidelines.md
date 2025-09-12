@@ -103,6 +103,11 @@ func ExecuteTask() {
 
 All library code should wrap errors liberally, and return them. The application using the package should have appropriate logging for those errors.
 
+## Logging
+
+- Log at the source of knowledge where you have enough context to make the log meaningful, not the source of error
+- Log in application or interface layer
+
 ## Emergence
 
 For creating well-designed software, four rules from Kent Beck are of significant help in order of importance:

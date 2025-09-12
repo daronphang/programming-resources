@@ -1,3 +1,13 @@
+## Naming
+
+Use singular when naming tables as each table represents a "type" or "entity", not a collection. However, using plural is the default for most ORMs.
+
+### Reserved keywords
+
+```
+`column` `table` `status` `select` `key` `order` `desc` `group` `rank` `limit` `like` `int` `value` `type` `user` `date` `time` `float` `text` `primary` `default` `exists` `null` `index` `unique` `references` `foreign` `constraint` `check` `case` `when` `then` `else` `end` `interval` `if` `now` `schema` `database` `cursor` `procedure` `lock` `view` `column` `desc` `asc` `having` `union` `intersect` `except` `cast` `coalesce` `collate` `current_user` `current_date` `current_time` `current_timestamp` `isnull` `notnull` `replace` `rownum` `sysdate` `tablespace` `temporary` `trigger` `truncate` `with` `row` `rows` `percent` `rank` `dense_rank` `lag` `lead` `ntile` `first_value` `last_value` `nth_value` `over` `partition` `range` `row_number`
+```
+
 ## Optimizing queries
 
 - SELECT fields individually instead of using `SELECT *`

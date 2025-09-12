@@ -36,3 +36,15 @@ CONSTRAINT_NAME,
 CONSTRAINT_TYPE
 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS;
 ```
+
+### ON DELETE CASCADE
+
+Use the ON DELETE CASCADE option to specify whether you want rows deleted in a child table when corresponding rows are deleted in the parent table. If you do not specify cascading deletes, the default behavior of the database server prevents you from deleting data in a table if other tables reference it.
+
+```sql
+CREATE TABLE user_profiles (
+    user_id INTEGER PRIMARY KEY,
+    bio TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+```

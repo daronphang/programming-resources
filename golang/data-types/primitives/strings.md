@@ -106,3 +106,29 @@ y, err := strconv.ParseInt("123", 10, 64) // base 10, up to 64 bits
 w := "hello world!"
 strings.Contains(w, "hello")
 ```
+
+## String Builder vs concatenation
+
+strings.Builder is designed for efficient string construction, particularly when concatenating multiple strings or building large strings incrementally. It uses an internal `[]byte` slice and manages memory allocation strategically. Hence, it reduces memory allocations and copying, leading to lower memory usage.
+
+```go
+import "strings"
+
+var builder strings.Builder
+builder.WriteString("Hello")
+builder.WriteString(" ")
+builder.WriteString("World")
+result := builder.String() // "Hello World"
+```
+
+String concatenation uses the `+` operator, is simple and readable for concatenating a few strings. This concatenation creates a new string in memory, copying the contents of the operands. However, this creates a performance overhead for repeated use of `+` or `fmt.Sprintf` when building large strings.
+
+```go
+s1 := "Hello"
+s2 := "World"
+result := s1 + " " + s2 // "Hello World"
+
+name := "Alice"
+age := 30
+formattedString := fmt.Sprintf("Name: %s, Age: %d", name, age) // "Name: Alice, Age: 30"
+```
