@@ -17,9 +17,18 @@ TCP uses a **three-way handshake** to setup a TCP/IP connection over an IP based
 3. The client receives SYN-ACK and sends an ACKnowledge
 4. The server receives ACK and TCP socket connection is established
 
-TCP requires a total of **1 RTT** to complete the handshake.
+When the client has not yet ACKed, connection is half-opened. TCP defines that data can be sent after sending the final ACK. In practice, many TCP stacks allow sending the first data together with the final ACK in the same packet, i.e. **TCP ACK piggybacking**. Hence, TCP requires a total of **1 RTT** to complete the handshake.
 
 <img src="../../assets/TCP.png">
+
+### TCP vs TLS vs HTTP
+
+TCP handshake establishes connection (LAYER 4), while TLS handshake secures the connection. TLS handshake happens after TCP if using HTTPS. TCP protocol operates at layer 4 (transport) while HTTP protocol operates at layer 7 (application):
+
+- HTTPS over TCP
+- HTTP/1.1 over TCP
+- HTTP/2 over TCP
+- HTTP/3 over QUIC (which runs over UDP)
 
 ### Segmentation
 
@@ -37,7 +46,7 @@ TCP not only guards against overwhelming the receiver, but also against flooding
 
 The sender estimates the available bandwidth of the underlying network empirically through measurements. The sender maintains a **congestion window**, which represents the total number of outstanding segments that can be sent without an acknowledgement from the receiver.
 
-When a new connection is established, the size of the congestion window is set to a system default. Then, for every segment acknowledged, the window increases its size exponentially until reaching an upper limit. When the congestion window size reaches the limit, it will start an additive increase. This means that we can’t use the network’s full capacity right after a connection is established. **The lower the round trip time (RTT) is, the quicker the sender can start utilizing the underlying network’s bandwidth**.
+When a new connection is established, the size of the congestion window is set to a system default. Then, for every segment acknowledged, the window increases its size exponentially until reaching an upper limit. When the congestion window size reaches the limit, it will start an additive increase. This means that we can’t use the network’s full capacity right after a connection is established. **The lower the RTT is, the quicker the sender can start utilizing the underlying network’s bandwidth**.
 
 When packet loss occurs, however, the congestion window size decreases significantly and enters the exponential increase phase again.
 

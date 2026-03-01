@@ -95,3 +95,17 @@ spec:
         - mountPath: "/usr/share/nginx/html"
           name: task-pv-storage
 ```
+
+## LV (Logical Volume)
+
+LV allows you to pool multiple physical disks into a Volume Group (VG) and carve them into LVs.
+
+```
+/dev/sda  /dev/sdb
+   ↓        ↓
+  PVs (physical volumes)
+        ↓
+     VG (volume group)
+        ↓
+      LVs (logical volumes)
+```

@@ -1,6 +1,6 @@
 ## HTTP3
 
-HTTP/3 does away with TCP, and instead utilizes a flavor of **UDP** called Quick UDP Internet Connections (QUIC).
+HTTP/3 does away with TCP, and instead utilizes a flavor of **UDP 443** called Quick UDP Internet Connections (QUIC). When QUIC is enabled but not supported on the server, the connection will automatically fallback to HTTP/2 or HTTP1.1 over TCP, i.e. designed to fail gracefully.
 
 ## Benefits
 
@@ -12,9 +12,9 @@ HTTP/3 utilizes UDP for faster, lower-latency data transmission. QUIC ensures re
 
 UDP doesn't require a handshake to start sending data; however, QUIC has introduced its own handshake mechanism for security.
 
-QUIC combines both transport and cryptographic handshakes in its connection establishment process i.e. integrated handshake. It reduces the number of round trips required to establish a secure connection.
+QUIC **combines both transport and cryptographic handshakes** in its connection establishment process i.e. integrated handshake. It reduces the number of round trips required to establish a secure connection.
 
-QUIC enables 0-RTT (round trip time) connection establishment in certain situations, which can significantly reduce latency when connecting to a previously visited server.
+QUIC enables **0-RTT** connection establishment in certain situations, which can significantly reduce latency when connecting to a previously visited server.
 
 <img src="../../../assets/QUIC-handshake.png">
 

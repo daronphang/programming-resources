@@ -1,6 +1,6 @@
 ## Underlay network
 
-An underlay network is a physical network consisting of multiple types of devices and is responsible for data packet transmission between networks. The underlay network can either be a Layer 2 or Layer 3 network:
+An underlay network is a physical network consisting of multiple types of devices and is responsible for data packet transmission between networks. It is the real, physical IP network infrastructure that includes physical switches, routers, cables, BGP, etc. The underlay network can either be a Layer 2 or Layer 3 network:
 
 - Layer 2: Ethernet network i.e. where VLANs are created
 - Layer 3: Internet network
@@ -21,7 +21,7 @@ However, traditional network devices **forward data packets based on hardware**.
 
 ## Overlay network
 
-An overlay network is a virtual network that is built on top of an existing network infrastructure, called an underlay network. It enables the creation of a separate logical network that can facilitate communication and data transfer among nodes, regardless of their physical location or the underlying network they are connected to.
+An overlay network is a virtual network that is built on top of an existing network infrastructure (underlay network). It enables the creation of a separate logical network that can facilitate communication and data transfer among nodes, regardless of their physical location or the underlying network they are connected to. It helps to create virtual IP spaces, encapsulate packets, and hides complexity from the physical network.
 
 By creating this virtual layer, overlay networks can enhance security, improve performance, and support new services and applications more efficiently. Also, new services or functions without needing to reconfigure an entire network design.
 

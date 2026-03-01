@@ -4,6 +4,10 @@ RTT is the duration in milliseconds it takes for a network request to go from a 
 
 **Reducing RTT is a primary goal of a CDN**. Improvements in latency can be measured in the reduction of RTT and by eliminating instances where roundtrips are required, such as by modifying the standard TLS/SSL handshake.
 
+### 0-RTT
+
+RTT refers to the network delay cost, and 0-RTT means skipping one network delay before sending real data, i.e. 0-RTT means the client can send application data immediately, without waiting for the server's handshake response.
+
 ### Factors affecting RTT
 
 - **Nature of transmission medium**: Connections made over optical fiber behaves differently from connections made over copper

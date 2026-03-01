@@ -281,6 +281,12 @@ $ git commit --amend
 $ git push
 ```
 
+## Reverting a single file after git commit
+
+```sh
+$ git checkout origin/master -- go.mod
+```
+
 ## Squashing commits
 
 Squashing commits means that you combine multiple existing commits into one. Squashing commits is the preferred way to merge a feature branch back into a main branch.

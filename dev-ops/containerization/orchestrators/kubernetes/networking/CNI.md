@@ -1,8 +1,8 @@
 ## Container Network Interface (CNI)
 
-The CNI specification provides a common interface between container runtimes (containerd, CRI-O, Podman) and network plugins (Flannel, Calico, Weave Net, Cilium), aiming to standardize container network configuration. CNI can be used to configure both overlay and underlay networks.
+The CNI specification (Pod networking) provides a common interface between container runtimes (containerd, CRI-O, Podman) and network plugins (Flannel, Calico, Weave Net, Cilium), aiming to standardize container network configuration. CNI can be used to configure both overlay and underlay networks.
 
-CNI plugins are responsible for providing connectivity by assigning IP addresses to Pods and Services, and reachability through its routing daemon.
+CNI plugins are responsible for providing connectivity by assigning IP addresses to Pods and Services, and reachability through its routing daemon. It is deployed as a DaemonSet and runs on top of each node.
 
 The CNI specification comprises several core components:
 

@@ -8,6 +8,9 @@ DNS is a crucial component of the internet that translates human-readable domain
 example.com         A       12.34.56.78
 *.example.com       A       12.34.56.78
 blog.example.com    CNAME   example.com
+
+google.com 8.8.8.8
+cloudflare 1.1.1.1
 ```
 
 - **A**: Maps your domain/subdomain to one or more IP addresses e.g. example.com
@@ -82,3 +85,15 @@ $ sudo hostnamectl set-hostname mail.linuxize.com
 # for IPv6
 2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
 ```
+
+## EDNS (Extended DNS)
+
+A DNS extension mechanism that allows DNS to carry extra information beyond the original DNS limits. EDNS by itself does not change DNS behavior; it just enables features.
+
+### ECS (EDNS Client Subnet)
+
+ECS is a specific EDNS option that carries part of the client's IP address. ECS is an EDNS application defined in RFC 7871. When a recursive DNS sends a request to an authoritative DNS, ECS allows the inclusion of the client subnet information (truncated prefix e.g. `/24`) represented by the recursive DNS. The authoritative DNS can use this information to return customized resolution results to the client via the recursive DNS. ECS is commonly used to optimize CDN, including helping improve user access speed, enhancing load balancing strategies, strengthening localized service capabilities, and supporting precise network performance monitoring and fault localization, thereby increasing overall network availability and user experience.
+
+## DOH (DNS over HTTP)
+
+DoH encrypts DNS queries by sending them over HTTPS, improving privacy but changing how networks observe and control DNS. Although it improves privacy, it may reduce geo-accuracy for CDN routing or traffic engineering based on DNS.

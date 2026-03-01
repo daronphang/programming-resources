@@ -9,3 +9,18 @@ UDP is a good choice in situations where delayed data is worthless. For RTC, the
 UDP enables continuous data transmission without acknowledging or confirming the connection. It is **connection-less** as no connection is established before communication occurs. Commonly referred to as the 'fire-and-forget' protocol.
 
 UDP does not guarantee delivery of packets (reliability) as datagrams don't have sequence numbers are not acknowledged. Also, UDP doesn’t implement flow and congestion control.
+
+### UDP restriction
+
+Some company networks block UDP intentionally for the following:
+
+- Harder to control: Firewalls cannot easily track sessions
+- Harder to inspect: Security devices are optimized for TCP (deep packet inspection), and UDP is harder to verify legitimacy, spoofed packets are easier to send
+- Easier to abuse
+- Often used in DDoS attacks
+
+UDP can be used for:
+
+- Global users
+- High packet loss
+- Long TLS handshake distances

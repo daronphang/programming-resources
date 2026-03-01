@@ -14,7 +14,7 @@ Any IP packet sent to a multicast address is delivered to only those hosts that 
 
 ## Anycast
 
-Anycast is an IP network addressing scheme that allows multiple servers to share the same IP address, allowing for multiple physical destination servers to be logically identified by a single IP address i.e. Anycast network routing is able to route incoming connection requests across multiple data centers.
+Anycast is an IP network addressing scheme that allows multiple servers to share the same IP address, allowing for multiple physical destination servers to be logically identified by a single IP address i.e. Anycast network routing is able to route incoming connection requests across multiple DCs, but traffic goes to the closest DC.
 
 When requests come into a single IP address associated with the Anycast network, the network distributes the data based on some prioritization methodology i.e. location, number of hops, etc. The selection process behind choosing a particular data center will typically be optimized to reduce latency by selecting the data center with the shortest distance from the requester.
 
@@ -22,13 +22,33 @@ Anycast IP addresses are distributed across various geographic locations. Networ
 
 Anycast is characterized by a 1-to-1 of many association, and is one of the 5 main network protocol methods used in the Internet protocol.
 
+### Usecases
+
+Anycast works best for:
+
+- Stateless services
+- DNS
+- CDN edge caching
+- DDoS absorption
+
+However, it can be problematic for:
+
+- Long-lived TCP sessions
+- Stateful applications
+
 ### IPv4 and IPv6
 
-Anycast is not officially supported in IPv4. However, this can be worked around through using BGP. Essentially, multiple hosts are given the same unicast IP and routes are announced through BGP. Therefore, routers interpret this as multiple routes to the same destination whereas in fact, they are routed to different destinations with the same address.
+Anycast is not officially supported in IPv4 (there is no special address type labeled 'anycast'). However, this can be worked around through using BGP (unicast with BGP):
+
+- Same IPV4 address is configured in multiple DCs
+- Each location advertises the same prefix via BGP, e.g. 203.0.113.0/24
+- BGP routes traffic by fastest route
+
+Essentially, multiple hosts are given the same unicast IP and routes are announced through BGP. Therefore, routers interpret this as multiple routes to the same destination whereas in fact, they are routed to different destinations with the same address.
 
 The drawback to this approach, however, is that the network may perform what is called a **"POP switch"** (point of presence) which changes the routing packets in the event that there is congestion or changes in the network.
 
-IPv6 on the other hand explicitly supports anycast. IPv6 routers typically won't distinguish an anycast packet from a unicast packet through the network although special handling from the routers near the destination is required.
+IPv6 on the other hand explicitly supports anycast, i.e. RFC explicitly defines anycast addresses. IPv6 routers typically won't distinguish an anycast packet from a unicast packet through the network although special handling from the routers near the destination is required.
 
 ### DNS
 

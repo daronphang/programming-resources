@@ -34,6 +34,11 @@ $ xrandr --output DVI-D-0 --mode 1920x1080 --rate 60.00
 
 ## Checking disk space
 
+df and du commands are used to monitor disk space but serve different purposes:
+
+- df (disk free) reports space at the filesystem level. Defaults to showing all mounted filesystems
+- du (disk usage) reports space at the directory/file level. It calculates the size of each file one at a time, giving a more accurate snapshot of a given directory/subdirectory. du doesn't follow symlinks (a running process can keep a deleted file open, du doesn't see this so it will report a lower number than df)
+
 ```sh
 $ df -h /data     # h is short for human-readable
 $ df -h -total    # see total disk space available

@@ -2,7 +2,7 @@
 
 In Kubernetes, the ephemeral nature of Pods means their IP addresses can change, making it challenging to establish stable connections. This is where the Service object comes into play. Services provide a **consistent IP address** to access Pods and are linked to a group of Pods. When traffic arrives at a Service, it is intelligently directed to the relevant backend Pods.
 
-Kube-Proxy is a network proxy that runs on each node in a Kubernetes cluster. It is responsible for maintaining network connectivity between services and pods. Kube-Proxy does this by translating service definitions into actionable networking rules.
+Kube-Proxy is a network proxy that runs on each node in a Kubernetes cluster. It is responsible for maintaining network connectivity between services and pods (handles Kubernetes Service networking). Kube-Proxy does this by translating service definitions into actionable networking rules.
 
 ### How it works
 

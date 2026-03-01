@@ -16,7 +16,7 @@ Serves as the middleman between a client and the other DNS servers, following a 
 
 ### Root nameserver
 
-Receives the first request from the DNS recursor and sends back the appropriate top level domain (TLD) server, based on the queried host’s domain extension.
+Receives the first request from the DNS recursor (root is the first dot of abc.domain.com., hidden from users) and sends back the appropriate top level domain (TLD) server, based on the queried host’s domain extension.
 
 There are 13 root servers deployed across the world, and each of these nodes is highly distributed and replicated for performance and availability.
 

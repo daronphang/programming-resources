@@ -8,7 +8,7 @@ BGP creates network stability by guaranteeing that routers can adapt to route fa
 
 ### Autonomous systems (AS)
 
-The Internet is a network of networks, and broken up into hundreds of thousands of smaller networks known as **autonomous systems (AS)**. Each of these network is essentially a large pool of routers run by a single organization e.g. ISP. An AS may have many subnetworks, but they all share the same routing policy.
+The Internet is a network of networks, and broken up into hundreds of thousands of smaller networks known as **autonomous systems (AS)**. Each of these network is essentially a large pool of routers run by a single organization e.g. ISP. An AS may have many sub-networks, but they all share the same routing policy.
 
 The structure of the Internet is constantly changing, and every AS must be kept up to date with information regarding new routes as well as obsolete routes. This is done through **peering sessions** where each AS connects to neighboring ASes with a TCP/IP connection for the purpose of sharing routing information.
 
@@ -68,6 +68,13 @@ Internal BGP refers to a mechanism that gives information about the internal rou
 BGP hijacking is when attackers maliciously reroute Internet traffic. Attackers accomplish this by falsely announcing ownership of groups of IP addresses, called IP prefixes, that they do not actually own, control, or route to.
 
 As BGP is built on the assumption that interconnected networks are telling the truth about which IP addresses they own i.e. **based on trust**, BGP hijacking is nearly impossible to stop. However, for a hijack to occur, attackers need to control or compromise a BGP-enabled router that bridges between one AS and another.
+
+If someone advertises false routes, it can disrupt networks globally as networks may believe it and reroute traffic incorrectly. Examples of false advertising include:
+
+- A prefix they don't own
+- A more specific prefix
+- A wrong next-hop
+- A shorter AS path
 
 When an AS announces a route to IP prefixes that it does not actually control, this announcement, if not filtered, can spread and be added to routing tables in BGP routers across the Internet. In order for the BGP hijack to be successful, the route announcement must either:
 
