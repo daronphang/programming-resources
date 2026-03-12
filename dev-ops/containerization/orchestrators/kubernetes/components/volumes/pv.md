@@ -1,5 +1,7 @@
 ## Persistent Volume (PV)
 
+A PV is an abstraction representing storage available to the cluster, i.e. cluster-level storage resource exposed to Kubernetes. It represents storage that could come from many backends, including NFS, Ceph, LVMs, local disks, etc. PVs point to storage, but they do not create or manage the underlying storage system.
+
 Storage resource located in the cluster. Administrators can manually (static) provision PVs or they can be **dynamically provisioned using Storage Classes**. PVs are mapped to external storage assets. However, you cannot map an external storage volume to multiple PVs i.e. cannot have 50GB external storage that has two 25GB PVs.
 
 ```yaml
@@ -96,16 +98,39 @@ spec:
           name: task-pv-storage
 ```
 
-## LV (Logical Volume)
+## LVM (Logical Volume Manager)
 
-LV allows you to pool multiple physical disks into a Volume Group (VG) and carve them into LVs.
+LVM is a Linux storage construct created from physical disks. It allows you to pool multiple physical disks into a Volume Group (VG) and carve them into LVs, allowing you to:
+
+- Resize disks
+- Combine multiple disks
+- Snapshot volumes
+- Move data between disks
 
 ```
-/dev/sda  /dev/sdb
-   ↓        ↓
-  PVs (physical volumes)
-        ↓
-     VG (volume group)
-        ↓
-      LVs (logical volumes)
+Physical Disk
+ → Volume Group
+   → Logical Volume
+     → Filesystem
 ```
+
+```
+Pod
+ ↓
+PVC
+ ↓
+PV
+ ↓
+Actual storage (EBS / NFS / LVM / etc.)
+```
+
+## Ceph (distributed storage system)
+
+Ceph is an open-source storage platform that provides a highly scalable and reliable solution for object, block, and file storage in a unified system. Some of the benefits it offers include fault tolerance, high availability, and scalability without a single point of failure. It automatically manages data replication and recovery. With Ceph, users can self-manage their storage data, minimizing administration time and other costs. Ceph storage is versatile, fitting various use cases due to its scalable and resilient nature.
+Key features include:
+
+- Scalability: Seamlessly scale out by adding more storage nodes to the cluster without disrupting service.
+- High availability: Built-in redundancy and self-healing capabilities to ensure data availability and integrity
+- Unified storage: Support for object, block and file storage in one platform, simplifying infrastructure and management
+
+Ceph is ideal for large-scale deployments that require high-availability, fault tolerance, and scalability, such as data-intensive applications.

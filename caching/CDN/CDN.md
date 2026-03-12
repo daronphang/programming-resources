@@ -23,11 +23,11 @@ The primary purpose of a CDN is to reduce latency and high WAN bandwidth cost, o
 
 By serving content from geographically distributed edge servers, CDNs reduce the time it takes for content to travel from the server to the user, resulting in faster page load times and improved user experience.
 
-### Improved performance and reduced origin server costs
+### Improved performance and reduced origin server costs (bandwidth offloading)
 
 As website content keeps diversifying, the load on origin server also increases. Scaling up the origin server or implementing distributed deployment for user access often result in higher costs.
 
-CDNs can offload static content delivery from the origin server, freeing up resources for dynamic content generation and reducing server load. This can lead to improved overall performance for web applications.
+CDNs can offload static content delivery from the origin server (bandwidth offloading), freeing up resources for dynamic content generation and reducing server load. This can lead to improved overall performance for web applications.
 
 ### Enhanced reliability and availability
 

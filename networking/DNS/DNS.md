@@ -93,7 +93,3 @@ A DNS extension mechanism that allows DNS to carry extra information beyond the 
 ### ECS (EDNS Client Subnet)
 
 ECS is a specific EDNS option that carries part of the client's IP address. ECS is an EDNS application defined in RFC 7871. When a recursive DNS sends a request to an authoritative DNS, ECS allows the inclusion of the client subnet information (truncated prefix e.g. `/24`) represented by the recursive DNS. The authoritative DNS can use this information to return customized resolution results to the client via the recursive DNS. ECS is commonly used to optimize CDN, including helping improve user access speed, enhancing load balancing strategies, strengthening localized service capabilities, and supporting precise network performance monitoring and fault localization, thereby increasing overall network availability and user experience.
-
-## DOH (DNS over HTTP)
-
-DoH encrypts DNS queries by sending them over HTTPS, improving privacy but changing how networks observe and control DNS. Although it improves privacy, it may reduce geo-accuracy for CDN routing or traffic engineering based on DNS.

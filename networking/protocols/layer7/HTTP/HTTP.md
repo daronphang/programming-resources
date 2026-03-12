@@ -50,6 +50,13 @@ Headers contain important identifier information as to the request's metadata, i
 - Location: URL for the browser to redirect to when it receives a 301
 - Content-Encoding: Lets the recipient know how to decode the data to obtain the original content
 
+### Status codes
+
+- 2XX: Okay response
+- 3XX: Redirect
+- 4XX: Client errors
+- 5XX: Server errors (service crash, database down, etc.)
+
 ## What can be controlled by HTTP
 
 - Caching

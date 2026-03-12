@@ -22,7 +22,7 @@ CSI is an open-source project that defines a standards-based interface so that s
 
 CSI is the preferred way to write plugins (drivers) and means that plugin code no longer needs to exist in the main Kubernetes code tree. Main interaction with CSI from developer's perspective will be referencing the appropriate CSI plugin in YAML manifest files.
 
-### Acesss modes
+### Access modes
 
 Kubernetes support three access modes for volumes:
 

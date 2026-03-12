@@ -26,7 +26,7 @@ The process is as follows:
 
 This is the default and widely used mode. Kube-Proxy relies on IPtables, a Linux feature for packet processing and filtering. In this mode, Kube-Proxy inserts Service-to-Pod NAT rules (provided by CNI plugins) into IPtables, redirecting traffic from Service IP to Pod IP.
 
-In this mode, kube-proxy **watches for changes in the API Server**. For each new Service, or when Pods get created or destroyed, it installs iptables rules, which capture traffic to the Service's clusterIP and port, then redirects traffic to the backend Pod for the Service. The Pod is selected randomly. This mode is reliable and has a lower system overhead because Linux Netfilter handles traffic without the need to switch between userspace and kernel space.
+In this mode, kube-proxy **watches for changes in the API Server**. For each new Service, or when Pods get created or destroyed, it installs iptables rules, which capture traffic to the Service's clusterIP and port, then redirects traffic to the backend Pod for the Service. The Pod is selected randomly. This mode is reliable and has a lower system overhead because Linux Netfilter handles traffic without the need to switch between user space and kernel space.
 
 When we send packets from a Pod to the Service IP, they get filtered through the iptables rules, where the destination IP (Service IP) gets changed to one of the backing Pod IPs.
 

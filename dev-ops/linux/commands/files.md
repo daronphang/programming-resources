@@ -75,6 +75,15 @@ $ scp readme.md roo@45.79.185.156:/home/daronphang
 $ scp roo@45.79.185.156:readme.md .     # copy from server to local pc
 ```
 
+### Moving
+
+The wildcard `*` matches all files and directories in the current directory excluding hidden ones.
+
+```sh
+$ mv source destination
+$ mv * TARGET
+```
+
 ### Emptying
 
 ```sh

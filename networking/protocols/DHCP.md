@@ -20,8 +20,10 @@ DHCP enables mobility. For example, every time a user moves to a new location wi
 
 As a DHCP client, the host begins with no IPv4 settings i.e. no IPv4 address, no mask, no default router, no DNS server IP addresses. However, a DHCP client does have knowledge of the DHCP protocol, so the client can use that protocol to:
 
-1.  Discover a DHCP server
+1.  Discover a DHCP server (router)
 2.  Request to lease an IPv4 address
+3.  DHCP server replies with DHCP offer
+4.  Client requests the IP and router confirms the lease
 
 DHCP uses the following messages between client and server:
 

@@ -99,3 +99,9 @@ BGP hijacking can be used for several kinds of attacks:
 - Impersonation attacks to eavesdrop on communications
 
 Incidents like these can happen because the **route-sharing function of BGP relies on trust**, and autonomous systems **implicitly trust** the routes that are shared with them. When peers announce incorrect route information (intentionally or not), traffic goes where it is not supposed to, potentially with malicious results.
+
+## FlowSpec
+
+FlowSpec is a specialized BGP rule that overrides standard BGP routing, supporting configuration of Destination Classification Token (DCT) and source prefix. It is used to flexibly control traffic routing when BGP's default path selection (which prioritizes shorter paths rather than capacity) is not suitable for actual network needs.
+
+For example, we have ARELION and COGENT that are connected to ORANGE. BGP prefers ARELION as it provides a shorter path, but capacity is small (and BGP does not route traffic by capacity). Hence, we need to force traffic through COGENT using flowspec.

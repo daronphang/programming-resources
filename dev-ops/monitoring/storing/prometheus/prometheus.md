@@ -1,5 +1,7 @@
 ## Prometheus
 
+A time-series monitoring and alerting system that collects metrics from applications and systems, storing data locally on the Prometheus server. Good for short to medium-term storage (days to weeks).
+
 ### Pull-based model
 
 In an event-based monitoring system:

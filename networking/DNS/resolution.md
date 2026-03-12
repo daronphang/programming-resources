@@ -20,6 +20,8 @@ Receives the first request from the DNS recursor (root is the first dot of abc.d
 
 There are 13 root servers deployed across the world, and each of these nodes is highly distributed and replicated for performance and availability.
 
+Your computer knows which root DNS server to contact as every modern OS ships with a hardcoded list of root server IP addresses.
+
 ### Top-level-domain (TLD) server
 
 Maintains information for all domain names with the same domain extension e.g. .com, .edu, .net, .org, etc. A TLD server receives the next request from the DNS recursor and responds with the appropriate authoritative nameserver.
@@ -58,6 +60,23 @@ In iterative query resolution, the DNS server receiving the query provides refer
 In recursive query resolution, the DNS server receiving the query takes on the responsibility of finding the IP address on behalf of the client. It may itself use iterative queries to navigate through the DNS hierarchy until it reaches the authoritative DNS server for the requested domain. In practical applications, **recursion is more common**.
 
 <img src="../assets/DNS-recursive-resolution.png">
+
+## TCP vs UDP
+
+DNS use both TCP and UDP, depending on the situation:
+
+- UDP: Most DNS queries use UDP as it's faster and lightweight but has size limit (512-byte)
+- TCP: DNS switches to TCP when UDP is not suitable, i.e. large response
+
+Some secure DNS methods also rely on TCP-based protocols.
+
+### DoH (DNS over HTTPS)
+
+DoH encrypts DNS queries by sending them over HTTPS using port 443, improving privacy but changing how networks observe and control DNS. Although it improves privacy, it may reduce geo-accuracy for CDN routing or traffic engineering based on DNS.
+
+### DoT (DNS over TLS)
+
+A standard for encrypting DNS queries to keep them secure and private by adding TLS encryption on top of the UDP.
 
 ## DNS caching
 
