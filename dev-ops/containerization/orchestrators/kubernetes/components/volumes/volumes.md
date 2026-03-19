@@ -66,9 +66,12 @@ spec:
       command: ["sh", "-c", 'echo "The app is running!" && tail -f /dev/null']
       volumeMounts:
         - name: config-vol
-          mountPath: /etc/config
+          mountPath: /etc/config # path inside the container where a volume is mounted
         - name: empty-vol
           mountPath: /etc/empty
+      volumeDevices:
+        - name: data
+          devicePath: /dev/xvda # Exposes volume as a raw block device instead of a FS
   volumes:
     - name: config-vol
       configMap:

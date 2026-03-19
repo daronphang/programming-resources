@@ -27,7 +27,13 @@ By serving content from geographically distributed edge servers, CDNs reduce the
 
 As website content keeps diversifying, the load on origin server also increases. Scaling up the origin server or implementing distributed deployment for user access often result in higher costs.
 
-CDNs can offload static content delivery from the origin server (bandwidth offloading), freeing up resources for dynamic content generation and reducing server load. This can lead to improved overall performance for web applications.
+CDNs can offload static content delivery from the origin server (bandwidth offloading), freeing up resources for dynamic content generation and reducing server load. This can lead to improved overall performance for web applications. Also, this would significantly save costs as network bandwidth is expensive (especially across geographical locations).
+
+### Leveraging CDN network backbone for improved performance
+
+Without CDN, when a user accesses the origin directly, he will connect directly to the ISP through DNS resolver. However, when traffic crosses over public internet networks, it may cause packet loss, congestion, unpredictable routing, and higher latency.
+
+With CDN, when the request reaches CDN edge node, it will carry the traffic inside its optimized global network (backbone through different links) and not over the public internet.
 
 ### Enhanced reliability and availability
 

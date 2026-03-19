@@ -36,10 +36,6 @@ func fib(x int) int {
 
 Goroutines are not OS threads nor green threads (managed by a language's runtime), but a higher level of abstraction known as **coroutines**. Coroutines are simply concurrent subroutines (functions, closures, methods) that are non-preemptive i.e. cannot be interrupted. Instead, coroutines have multiple points throughout which allow for suspension or reentry.
 
-### Scheduling
-
-Go’s mechanism for hosting goroutines is an implementation of what’s called an M:N scheduler, which means it maps M green threads to N OS threads i.e. runtime handles multiplexing the goroutines onto any number of OS threads. When we have more goroutines than green threads available, the scheduler handles the distribution of the goroutines across the available threads and ensures that when these goroutines become blocked, other goroutines can be run.
-
 ### Fork-join model
 
 Go follows a model of concurrency called fork-join model. Fork refers to the fact that at any point in the program, it can split off a child branch of execution to be run concurrently with the parent. Join refers to the fact that at some point in the future, these concurrent branches of execution will join back together.
@@ -55,6 +51,18 @@ The OS thread must save things like register values, lookup tables, and memory m
 However, context switching in software is much cheaper. Under a software-defined scheduler, the runtime can be more selective in what is persisted for retrieval, how it is persisted, and when the persisting need occur.
 
 It’s difficult to make any claims about how many goroutines will cause too much context switching, but we can comfortably say that the upper limit is likely not to be any kind of barrier to using goroutines.
+
+## Scheduling (G-M-P model)
+
+Go’s mechanism for hosting goroutines is an implementation of what’s called an M:N scheduler, which means it maps M green threads to N OS threads i.e. runtime handles multiplexing the goroutines onto any number of OS threads. When we have more goroutines than green threads available, the scheduler handles the distribution of the goroutines across the available threads and ensures that when these goroutines become blocked, other goroutines can be run.
+
+```
+G (goroutines) → scheduled onto → P (processors) → executed by → M (OS threads)
+```
+
+### Controlling threads
+
+GOMAXPROCS controls how many OS threads can execute Go code simultaneously. Default value of GOMAXPROCS is the number of CPU cores.
 
 ## Goroutine vs thread
 

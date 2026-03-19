@@ -1,8 +1,10 @@
 ## Persistent Volume (PV)
 
-A PV is an abstraction representing storage available to the cluster, i.e. cluster-level storage resource exposed to Kubernetes. It represents storage that could come from many backends, including NFS, Ceph, LVMs, local disks, etc. PVs point to storage, but they do not create or manage the underlying storage system.
+A PV is an abstraction representing storage available to the cluster, i.e. cluster-level storage resource exposed to Kubernetes. It represents storage that could come from many backends, including NFS, Ceph, LVMs, host disks, etc. PVs point to storage, but they do not create or manage the underlying storage system.
 
-Storage resource located in the cluster. Administrators can manually (static) provision PVs or they can be **dynamically provisioned using Storage Classes**. PVs are mapped to external storage assets. However, you cannot map an external storage volume to multiple PVs i.e. cannot have 50GB external storage that has two 25GB PVs.
+Administrators can manually (static) provision PVs or they can be **dynamically provisioned using Storage Classes**. PVs are mapped to external storage assets. However, you cannot map an external storage volume to multiple PVs i.e. cannot have 50GB external storage that has two 25GB PVs. They live independently of Pods and Kubernetes manages its lifecycle.
+
+Pods should never reference PVs directly, only PVCs. This keeps storage decoupled and portable. When a PVC is referenced, the PVs are mounted onto the node where the Pods are scheduled on.
 
 ```yaml
 apiVersion: v1
@@ -27,6 +29,14 @@ spec:
 $ kubectl get pv
 ```
 
+### Reclaim policy
+
+When a Pod gets deleted, PVCs remain unchanged and requires manual deletion. Reclaim policy controls what happens to a PV after its bound PVC is deleted:
+
+- Retain: PV is kept (status is Released) and data is preserved. To reuse, need to remove claimRef from PV
+- Recycle (deprecated): PV is scrubbed and made available again
+- Delete: PV is automatically deleted
+
 ### Pre-bind PV to PVC
 
 Use the ClaimRef field referencing a PVC that you will subsequently create.
@@ -40,7 +50,7 @@ spec:
 
 ## Persistent Volume Claim (PVC)
 
-Storage request made by a user. Consumes PV resources rather than Node resources. Kubernetes searches for PVs that correspond to the PVCs' requested capacity and specified properties, so that each PVC can bind to a single PV.
+Storage request made by a user or Pod. Consumes PV resources rather than Node resources. Kubernetes searches for PVs that correspond to the PVCs' requested capacity and specified properties, so that each PVC can bind to a single PV.
 
 PVCs are like tickets that authorize applications (Pods) to use them i.e. Pods use a PVC to claim access to the PV and start using it.
 

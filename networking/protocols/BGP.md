@@ -10,7 +10,7 @@ BGP creates network stability by guaranteeing that routers can adapt to route fa
 
 The Internet is a network of networks, and broken up into hundreds of thousands of smaller networks known as **autonomous systems (AS)**. Each of these network is essentially a large pool of routers run by a single organization e.g. ISP. An AS may have many sub-networks, but they all share the same routing policy.
 
-The structure of the Internet is constantly changing, and every AS must be kept up to date with information regarding new routes as well as obsolete routes. This is done through **peering sessions** where each AS connects to neighboring ASes with a TCP/IP connection for the purpose of sharing routing information.
+The structure of the Internet is constantly changing, and every AS must be kept up to date with information regarding new routes as well as obsolete routes. This is done through **peering sessions** where each AS connects to neighboring ASes with a TCP/IP connection for the purpose of sharing routing information. AS advertises IP prefixes (CIDRs) to its neighbours through BGP announcement.
 
 ### Who operates BGP autonomous systems?
 

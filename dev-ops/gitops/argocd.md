@@ -20,6 +20,8 @@ Application definitions, configurations, and environments should be declarative 
 
 ### How it works
 
+ArgoCD acts as a controller and watches your Git repo (desired state), compares it with the cluster (actual state), and syncs the cluster to match with Git:
+
 1. A developer pushes resource changes to a single Git repository
 2. The continuous integration tool is triggered and saves new container image to the registry
 3. The pull request (PR) changes the Kubernetes manifest, which is merged and triggers Argo CD

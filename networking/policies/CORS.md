@@ -1,6 +1,6 @@
 ## Cross-Origin Resource Sharing (CORS)
 
-CORS is an HTTP-header based mechanism for integrating applications. CORS defines a way for client web applications that are **loaded in one domain to interact with resources in a different domain**. This is useful because complex applications often reference third-party APIs and resources in their client-side code.
+CORS is a browser security mechanism that controls whether a web page can make requests to a different origin. It defines a way for client web applications that are **loaded in one domain to interact with resources in a different domain**. This is useful because complex applications often reference third-party APIs and resources in their client-side code.
 
 CORS is an **extension of SOP**. You need CORS when you want to pull data from external APIs that are public/authorized. You also need CORS if you want to allow third-party access to your own server resources.
 

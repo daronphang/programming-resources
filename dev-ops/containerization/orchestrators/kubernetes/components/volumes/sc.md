@@ -1,8 +1,12 @@
 ## Storage Classes (SC)
 
-SCs lets you dynamically create physical back-end storage resources that get automatically mapped to PVs on Kubernetes i.e. helps to automate the provisioning of PVs. You define SCs in YAML files that reference a plugin and tie them to a particular tier of storage on a particular storage back-end i.e. AWS SSD storage in the AWS EU Region.
+SCs lets you dynamically create physical back-end storage resources that get automatically mapped to PVs on Kubernetes i.e. helps to automate the provisioning of PVs through a storage template. You define SCs in YAML files that reference a plugin and tie them to a particular tier of storage on a particular storage back-end i.e. AWS SSD storage in the AWS EU Region.
 
 When SCs are deployed, the SC watches the API server for new PVC objects referencing its name. When matching PVCs appear, the SC dynamically creates the required asset on the back-end storage system and maps it to a PV on Kubernetes. Apps can then claim it with a PVC.
+
+```sh
+$ kubectl get sc -o yaml
+```
 
 ### Key components
 
@@ -66,12 +70,16 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-    name: mypod
-spec:
-    volumes:
-        - name: data
-        persistentVolumeClaim:
-            claimName: mypvc
+  name: mypod
 containers:
-    # ...
+  - name: my-container
+    image: nginx
+    volumeMounts:
+      - name: my-data # Name used inside pod.spec.volumes
+        mountPath: /data # Where container sees it
+spec:
+  volumes:
+    - name: my-data
+      persistentVolumeClaim:
+        claimName: mypvc
 ```

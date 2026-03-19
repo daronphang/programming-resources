@@ -120,3 +120,16 @@ $ curl --resolve example.com:443:23.xx.xx.xx https://example.com/image.jpg
 ```sh
 $ curl https://api.ipify.org
 ```
+
+## 5XX
+
+Could be due to response headers too large (default is 8KB).
+
+## 4XX
+
+If forward host header is wrong, Nginx may not able to find the location path resulting in 404.
+
+```sh
+size=$(curl -s -D - -o /dev/null https://example.com | wc -c)
+echo "Total Header Size: $size bytes"
+```
