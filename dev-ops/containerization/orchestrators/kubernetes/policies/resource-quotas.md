@@ -35,6 +35,8 @@ A resource quota provides constraints that limit aggregate resource consumption 
 
 If quota is enabled in a namespace for compute resources like **cpu** and **memory**, users must specify **requests or limits** for those values. Otherwise, the quota system may reject pod creation. Use the **LimitRanger admission controller to force defaults** for pods that make no compute resource requirements.
 
+Requests and limits define how CPU/memory are reserved/capped for each container, and they affect scheduling, performance and failure behavior differently. If memory is exceeded (OOM), the container will be killed and restarted. CPU cannot exceed the limit.
+
 You can configure as follows:
 
 - No requests, no limits

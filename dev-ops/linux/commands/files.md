@@ -212,3 +212,13 @@ $ rsync [options] source destination
 
 $ rsync -av /home/user/docs/ /backup/docs/
 ```
+
+## wc (word count)
+
+Used to count the number of lines, words, and characters in a file or from an input.
+
+```sh
+$ wc -l # count number of lines
+$ wc -w # word count
+$ wc -m # character count
+```

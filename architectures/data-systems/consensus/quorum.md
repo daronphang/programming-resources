@@ -20,7 +20,7 @@ Consensus algorithms are designed to work efficiently with large-scale distribut
 
 Consensus algorithms aim to maintain system integrity and availability even in the presence of failures or network partitions. By considering the initial cluster size, **the algorithm can handle failures or temporary unavailability of nodes without disrupting the leader election process**. It ensures that decisions can still be made and progress can continue even if some nodes are temporarily inactive.
 
-### Network partition
+### Network partition (split-brain)
 
 In the event of a network partition, where a network becomes divided into two or more isolated sub-networks, **an odd number quorum is still able to make progress and resolve the partition**.
 

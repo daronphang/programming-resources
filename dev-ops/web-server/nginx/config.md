@@ -55,6 +55,8 @@ Multiple servers are usually decomposed into smaller config files by server_name
 
 ### Location
 
+The location directive is the traffic controller of your configuration. It defines how Nginx should handle requests based on the URI. When a request comes in, NGINX compares the URI against all location blocks and chooses the best match to decide which configuration rules to apply.
+
 ```
 # prefixes
 

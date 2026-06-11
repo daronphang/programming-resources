@@ -105,3 +105,9 @@ Incidents like these can happen because the **route-sharing function of BGP reli
 FlowSpec is a specialized BGP rule that overrides standard BGP routing, supporting configuration of Destination Classification Token (DCT) and source prefix. It is used to flexibly control traffic routing when BGP's default path selection (which prioritizes shorter paths rather than capacity) is not suitable for actual network needs.
 
 For example, we have ARELION and COGENT that are connected to ORANGE. BGP prefers ARELION as it provides a shorter path, but capacity is small (and BGP does not route traffic by capacity). Hence, we need to force traffic through COGENT using flowspec.
+
+## iBGP Full Mesh
+
+iBGP Full Mesh refers to a configuration where every router in an internal BGP network is directly peered with every other router.
+
+In a standard iBGP setup, there is a fundamental rule called "iBGP split horizon": a router will not advertise a route learned from an iBGP peer to another iBGP peer to prevent routing loops. However, this creates a problem: if Router A tells Router B about a path, Router B won't tell Router C. To ensure every router knows every route, you must connect them all together in a Full Mesh.
